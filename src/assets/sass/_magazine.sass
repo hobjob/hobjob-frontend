@@ -1,0 +1,125 @@
+// magazine
+.magazine
+	margin: 100px 0
+
+	&-block
+		&-big
+			display: flex
+			justify-content: space-between
+			align-items: center
+			padding: 0 15px
+
+			&-cover
+				width: 45%
+				min-height: 400px
+
+				+backgroundSetting
+				+borderRadius
+
+			&-text
+				width: 50%
+
+				&-top
+					display: flex
+					align-items: center
+
+					margin-bottom: 50px
+
+					&__date
+						font-size: 18px
+						color: $gray
+
+						margin-right: 50px
+
+					&-views
+						margin-right: 50px
+
+						& svg
+							margin-right: 5px
+
+						&__number
+							font-size: 18px
+							color: $gray
+
+					&__hashtag
+						font-size: 18px
+						color: $mainColor
+
+				&__title
+					font-size: 32px
+
+				&__auth
+					display: block
+					font-size: 21px
+					color: $mainColor
+
+					margin-top: 75px
+
+	&-block-wrapper
+		margin-top: 100px
+
+		display: flex
+		flex-wrap: wrap
+
+	&-block
+		width: calc( 33% - 30px )
+
+		margin: 0 15px
+
+		display: flex
+		justify-content: space-between
+		flex-direction: column
+
+		padding-bottom: 50px
+
+		border-bottom: 1px solid $borderGray
+
+		&-cover
+			width: 100%
+			min-height: 250px
+
+			+backgroundSetting
+			+borderRadius
+
+		&-text
+			margin-top: 25px
+
+			&-top
+				display: flex
+				align-items: center
+
+				margin-bottom: 25px
+
+				&__date
+					font-size: 16px
+					color: $gray
+
+					margin-right: 50px
+
+				&-views
+					margin-right: 50px
+
+					& svg
+						margin-right: 5px
+
+					&__number
+						font-size: 16px
+						color: $gray
+
+				&__hashtag
+					font-size: 16px
+					color: $mainColor
+
+			&__title
+				font-size: 32px
+
+			&__description
+				font-size: 21px
+				margin-top: 25px
+
+			&__auth
+				display: block
+				font-size: 18px
+				color: $mainColor
+
+				margin-top: 50px

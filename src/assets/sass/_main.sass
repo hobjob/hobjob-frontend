@@ -1,0 +1,56 @@
+// main
+.main
+	position: relative
+	margin-top: 100px
+	margin-bottom: 150px
+
+	&-wrapper
+		display: flex
+		justify-content: space-between
+		align-items: flex-end
+
+	&-text
+		width: 65%
+
+		&__title
+			font-size: 72px
+
+		&__btn
+			margin-top: 75px
+
+	&-special-offer-shop-block
+		width: 30%
+
+		display: flex
+
+		&-left
+			position: relative
+			&-cover
+				width: 150px
+				height: 150px
+				border-radius: 50%
+
+				+backgroundSetting
+
+		&-right
+			margin-left: 25px
+			&-text
+				&__subtitle
+					display: block
+					color: $gray
+					margin-bottom: 10px
+
+				&__title
+					font-size: 24px
+					+Lora
+
+				&__auth
+					display: block
+					margin-top: 35px
+					font-size: 18px
+					color: $mainColor
+
+	&-circle
+		width: 450px
+		height: 450px
+		left: 250px

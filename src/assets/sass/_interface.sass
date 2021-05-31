@@ -1,0 +1,190 @@
+// interface
+*
+	margin: 0
+	padding: 0
+	box-sizing: border-box
+
+body
+	font-size: 17px
+	font-family: "Gilroy Regular"
+
+// link
+a
+	text-decoration: none
+	color: $black
+
+// title
+h1,h2,h3,h4,h5,h6
+	line-height: 1.3em
+	font-weight: 400
+	+Lora
+
+.title
+	font-size: 48px
+
+.title__mb
+	font-size: 48px
+	margin-bottom: 100px
+
+// p
+p
+	line-height: 1.4em
+
+.description
+	font-size: 24px
+
+.description__mt
+	font-size: 24px
+	margin-top: 50px
+
+.description__mb
+	font-size: 24px
+	margin-bottom: 50px
+
+// container
+.container
+	width: 90%
+	max-width: 1300px
+
+	margin: 0 auto
+
+// btn
+.btn-arrow
+	display: inline-flex
+	align-items: center
+	font-size: 24px
+	color: $mainColor
+	+Lora
+
+	& svg
+		margin-left: 15px
+		+transition
+
+	&:hover svg
+		+rotate
+
+.btn
+	display: inline-block
+	border: none
+	background-color: $mainColor
+	padding: 20px 30px
+	color: $white
+	+borderRadius
+	cursor: pointer
+	user-select: none
+	font-size: 17px
+	+SanFranciscoLight
+	+transition
+
+	&:hover
+		background-color: #e2ab74
+
+	&.disabled
+		pointer-events: none
+		background-color: $borderGray
+		color: $gray
+
+// input
+.input
+	position: relative
+
+	&__field
+		outline: none
+		font-size: 18px
+		padding: 18px 0
+		display: block
+		width: 100%
+		border: none
+		border-bottom: 1px solid $gray
+
+	&__label
+		color: $gray
+		font-size: 18px
+		position: absolute
+		pointer-events: none
+		top: 15px
+		+transition
+
+	&__field
+		&:focus ~ label,
+		&:valid ~ label
+			top: -10px
+			font-size: 14px
+			color: $mainColor
+
+	&__span
+		position: relative
+		display: block
+		width: 100%
+		&:before,
+		&:after
+			content: ''
+			height: 2px
+			width: 0
+			bottom: 0
+			position: absolute
+			background-color: $mainColor
+			+transition
+
+		&:before
+			left: 50%
+
+		&:after
+			right: 50%
+
+		&__error
+			height: 2px
+			width: 100%
+			bottom: 0
+			position: absolute
+			background-color: $red
+			+transition
+
+	&__field:focus
+		~ .input__span:before,
+		~ .input__span:after
+			width: 50%
+
+	&__icon
+		position: absolute
+		right: 0
+		top: 50%
+		transform: translateY(-50%)
+
+// checkbox 
+.checkbox
+	position: absolute
+	z-index: -1
+	opacity: 0
+
+	&+label
+		cursor: pointer
+		display: inline-flex
+		align-items: center
+		user-select: none
+		font-size: 16px
+		+transition
+
+	&+label::before
+		content: ''
+		display: inline-block
+		min-width: 19px
+		height: 19px
+		border: 1px solid $black
+		border-radius: 2px
+		background-repeat: no-repeat
+		background-position: center center
+		background-size: 50% 50%
+		margin-right: 15px
+		+transition
+
+	&:checked+label::before
+		background-image: url('data:image/svg+xml,%3Csvg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cline x1="0.707107" y1="6.55614" x2="8.07553" y2="13.9246" stroke="%23DD9E5E" stroke-width="2"/%3E%3Cline x1="6.6613" y1="13.9245" x2="19.2929" y2="1.2929" stroke="%23DD9E5E" stroke-width="2"/%3E%3C/svg%3E')
+		border: 1px solid $mainColor
+
+// circle
+.circle
+	position: absolute
+	border-radius: 50%
+	z-index: -1
+	background-color: rgba(221, 158, 94, 0.05)

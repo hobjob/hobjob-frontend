@@ -1,0 +1,136 @@
+// shop
+.shop
+	margin: 100px 0
+
+	&-top
+		display: flex
+		justify-content: space-between
+		align-items: center
+
+		&-search
+			width: 40%
+
+		&-filters
+			cursor: pointer
+
+			&__title
+				user-select: none
+				font-size: 24px
+				color: $mainColor
+
+				margin-right: 10px
+				+Lora
+
+	&-btn-wrapper
+		margin-top: 50px
+
+	&__btn
+		display: inline-block
+		border: none
+		border: 1px solid $mainColor
+		background-color: transparent
+		padding: 10px 20px
+		color: $mainColor
+		cursor: pointer
+		user-select: none
+		font-size: 17px
+		border-radius: 100px
+
+		margin-right: 5px
+		margin-bottom: 5px
+
+		+SanFranciscoLight
+		+transition
+
+		&:hover
+			background-color: $mainColor
+			color: $white
+
+		&.active
+			background-color: $mainColor
+			color: $white
+
+	&-block-wrapper
+		display: flex
+		flex-wrap: wrap
+
+		margin-top: 100px
+
+	&-block
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+
+		width: 25%
+		
+		margin-bottom: 75px
+		padding: 0 15px
+
+		&:nth-of-type(4n+4)
+			margin-right: 0
+
+		&-top
+			&-cover
+				width: 100%
+				height: 230px
+
+				+backgroundSetting
+				+borderRadius
+
+			&-text
+				margin-top: 25px
+
+				&__title
+					font-size: 24px
+
+				&__auth
+					display: block
+					margin-top: 35px
+					font-size: 21px
+					color: $mainColor
+
+				&-tags
+					margin-top: 15px
+
+				&__tags
+					margin-right: 5px
+					color: $gray
+
+		&-bottom
+			margin-top: 50px
+
+			display: flex
+			justify-content: space-between
+			align-items: flex-end
+
+			&__subprice
+				font-size: 21px
+				margin-bottom: 5px
+				color: $gray
+				text-decoration: line-through
+
+				& span
+					font-size: 16px
+
+			&__price
+				font-size: 24px
+
+				& span
+					font-size: 16px
+
+			&__btn
+				padding: 15px 25px
+				font-size: 16px
+
+// shop-section
+.shop-section
+	&-block-wrapper
+		display: flex
+		flex-wrap: wrap
+
+	&-btn
+		margin-top: 50px
+
+		display: flex
+		justify-content: center
+		align-items: center

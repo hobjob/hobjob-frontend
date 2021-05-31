@@ -1,0 +1,98 @@
+// cart
+.cart
+	margin-top: 100px
+	margin-bottom: 150px
+
+	&-block
+		display: flex
+		justify-content: space-between
+		align-items: center
+
+		padding-bottom: 50px
+		border-bottom: 1px solid $borderGray
+
+		&-content
+			display: flex
+
+			&-cover
+				width: 250px
+				height: auto
+
+				+backgroundSetting
+				+borderRadius
+
+			&-text
+				margin-left: 50px
+
+				&__title
+					font-size: 32px
+
+				&__auth
+					display: block
+					margin-top: 35px
+					font-size: 21px
+					color: $mainColor
+
+				&-tags
+					margin-top: 15px
+					margin-bottom: 50px
+
+				&__tags
+					margin-right: 5px
+					color: $gray
+
+				&__subprice
+					font-size: 21px
+					margin-bottom: 5px
+					color: $gray
+					text-decoration: line-through
+
+					& span
+						font-size: 16px
+
+				&__price
+					font-size: 24px
+
+					& span
+						font-size: 16px
+
+		&-close
+			cursor: pointer
+
+			& svg
+				stroke: #B8B7B7
+				+transition
+
+				&:hover
+					stroke: $red
+
+	&-total
+		margin-top: 50px
+
+		display: flex
+		justify-content: space-between
+		align-items: center
+
+		&-text
+			display: flex
+			align-items: center
+
+		&__subtitle
+			font-size: 24px
+			margin-right: 15px
+
+		&__title
+			font-size: 32px
+
+			& span
+				font-size: 21px
+
+	&-empty
+		max-width: 75%
+		margin: 0 auto
+		
+		text-align: center
+		display: flex
+		justify-content: center
+		align-items: center
+		flex-direction: column
