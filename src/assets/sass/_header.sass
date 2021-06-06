@@ -45,61 +45,65 @@
 			&:hover svg
 				+rotate
 
-	&-user
-		position: relative
+	&-menu-button
+		display: none
+		margin-left: 50px
 
-		&-avatar-arrow
-			display: inline-flex
-			align-items: center
-			cursor: pointer
+	// &-user
+	// 	position: relative
 
-		&-avatar
-			width: 50px
-			height: 50px
+	// 	&-avatar-arrow
+	// 		display: inline-flex
+	// 		align-items: center
+	// 		cursor: pointer
 
-			+backgroundSetting
+	// 	&-avatar
+	// 		width: 50px
+	// 		height: 50px
 
-			border-radius: 50%
+	// 		+backgroundSetting
 
-			margin-right: 15px
+	// 		border-radius: 50%
 
-		&-arrow
-			+transition
+	// 		margin-right: 15px
 
-		&-menu
-			z-index: 1
-			position: absolute
-			width: 300px
-			background-color: $white
+	// 	&-arrow
+	// 		+transition
 
-			top: 65px
-			right: 0
+	// 	&-menu
+	// 		z-index: 1
+	// 		position: absolute
+	// 		width: 300px
+	// 		background-color: $white
 
-			padding: 25px
+	// 		top: 65px
+	// 		right: 0
 
-			opacity: 0
-			z-index: -1
+	// 		padding: 25px
 
-			+boxShadow
-			+borderRadius
-			+transition
+	// 		opacity: 0
+	// 		z-index: -1
 
-			&__link
-				display: block
-				font-size: 18px
-				margin-bottom: 30px
+	// 		+boxShadow
+	// 		+borderRadius
+	// 		+transition
 
-				&:last-child
-					margin-bottom: 0
-					margin-top: 5px
-					padding-top: 25px
+	// 		&__link
+	// 			display: block
+	// 			font-size: 18px
+	// 			margin-bottom: 30px
 
-					border-top: 1px solid $borderGray
+	// 			&:last-child
+	// 				margin-bottom: 0
+	// 				margin-top: 5px
+	// 				padding-top: 25px
 
-		&:hover &-menu
-			opacity: 1
-			top: 75px
-			z-index: 1
+	// 				border-top: 1px solid $borderGray
 
-		&:hover &-arrow
-			transform: rotate(180deg)
+	// 	&:hover &-menu
+	// 		opacity: 1
+	// 		top: 75px
+	// 		z-index: 1
+
+	// 	&:hover &-arrow
+	// 		transform: rotate(180deg)

@@ -5,6 +5,8 @@
 	box-sizing: border-box
 
 body
+	position: relative
+	overflow-x: hidden
 	font-size: 17px
 	font-family: "Gilroy Regular"
 
@@ -25,6 +27,18 @@ h1,h2,h3,h4,h5,h6
 .title__mb
 	font-size: 48px
 	margin-bottom: 100px
+
+// subtitle
+.subtitle
+	display: block
+	color: $gray
+	font-size: 18px
+
+.subtitle__mb
+	display: block
+	color: $gray
+	font-size: 18px
+	margin-bottom: 25px
 
 // p
 p
@@ -83,6 +97,18 @@ p
 		pointer-events: none
 		background-color: $borderGray
 		color: $gray
+
+.btn-regular
+	display: inline-block
+	border: 1px solid $mainColor
+	padding: 20px 30px
+	color: $mainColor
+	+borderRadius
+	cursor: pointer
+	user-select: none
+	font-size: 17px
+	+SanFranciscoLight
+	+transition
 
 // input
 .input
@@ -150,6 +176,13 @@ p
 		right: 0
 		top: 50%
 		transform: translateY(-50%)
+		fill: #b8b7b7
+		+transition
+
+	&__field
+		&:focus ~ .input__icon,
+		&:valid ~ .input__icon
+			fill: #dd9e5e
 
 // checkbox 
 .checkbox

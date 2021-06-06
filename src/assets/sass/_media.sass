@@ -20,7 +20,22 @@
 		&-special-offer-shop-block
 			width: 40%
 
+@media screen and ( max-width: 1250px )
+	// categories
+	.categories
+		&-item
+			margin-right: 0
+			width: 75%
+
 @media screen and ( max-width: 1200px )
+	// header
+	.header
+		&-nav
+			display: none
+
+		&-menu-button
+			display: block
+
 	// main
 	.main
 		&-wrapper
@@ -28,8 +43,109 @@
 			flex-direction: column
 
 		&-text
-			width: 75%
+			width: 90%
 
 		&-special-offer-shop-block
-			margin-top: 109px
+			margin-top: 100px
+			width: 100%
+
+	// about-section
+	.about-section
+		&-wrapper
+			flex-direction: column
+
+		&-right
+			margin-top: 50px
+			width: 75%
+
+	// master-section
+	.master-section
+		&-wrapper
+			flex-direction: column
+
+		&-right
+			margin-top: 50px
+			width: 75%
+
+@media screen and ( max-width: 1050px )
+	// shop
+	.shop
+		&-block
 			width: 50%
+
+			&-top
+				&-cover
+					height: 280px
+
+@media screen and ( max-width: 1000px )
+	// about-section
+	.about-section
+		&-right
+			width: 100%
+
+		&-text
+			width: 100%
+
+		&-statistics
+			justify-content: space-between
+
+			&-item
+				margin-right: 0
+
+	// master-section
+	.master-section
+		&-right
+			width: 100%
+
+		&-text
+			width: 100%
+
+		&-statistics
+			justify-content: space-between
+
+			&-item
+				width: 45%
+				margin-right: 0
+
+@media screen and ( max-width: 900px )
+	// main
+	.main
+		&-circle
+			width: 350px
+			height: 350px
+			left: 50%
+			top: -50px
+			transform: translateX(-50%)
+
+	// categories
+	.categories
+		&-item
+			width: 100%
+
+	// about-section
+	.about-section
+		&-circle
+			width: 350px
+			height: 350px
+			left: 50%
+			transform: translateX(-50%)
+
+		&-statistics
+			&-item
+				width: 48%
+				margin-bottom: 50px
+
+	// master-section
+	.master-section
+		&-circle
+			width: 350px
+			height: 350px
+			left: 50%
+			transform: translateX(-50%)
+
+		&-statistics
+			&-item
+				width: 48%
+				margin-bottom: 50px
+
+// @media screen and ( max-width: 800px )

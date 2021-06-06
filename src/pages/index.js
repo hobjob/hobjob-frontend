@@ -1,0 +1,22 @@
+// Home
+export { default as Home } from "./Home"
+
+// Cart
+export { default as Cart } from "./Cart"
+
+// Shop
+export { default as Shop } from "./Shop"
+
+// Magazine
+export { default as Magazine } from "./Magazine"
+// Magazine Post Page
+export { default as MagazinePostPage } from "./MagazinePostPage"
+
+// Master
+export { default as Master } from "./Master"
+
+// Pro
+export { default as Pro } from "./Pro"
+
+// Err404
+export { default as Err404 } from "./Err404"

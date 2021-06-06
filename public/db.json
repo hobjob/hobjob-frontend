@@ -1,0 +1,154 @@
+{
+	"courses": [
+		{
+			"_id": 1,
+			"title": "Стратегия бренда в Instagram",
+			"description": "Не следует, однако, забывать, что высокое качество позиционных исследований требует анализа глубокомысленных рассуждений.",
+			"image": "https://i.pinimg.com/564x/4a/82/6d/4a826da8d31bbf6f90a4700ff86f70a7.jpg",
+			"masterId": "c4ca4238a0b923820dcc509a6f75849b",
+			"master": "Нина Петровна",
+			"price": 600,
+			"discountNotPrice": 1200,
+			"percentSale": 0,
+			"tags": [
+				{
+					"title": "#48часов",
+					"url": "48h"
+				},
+				{
+					"title": "#бусинки",
+					"url": "businki"
+				}
+			],
+			"category": "illustration",
+			"buyCount": "133",
+			"buyCountWeek": 12
+		},
+		{
+			"_id": 2,
+			"title": "Стратегия бренда в Instagram",
+			"description": "Не следует, однако, забывать, что высокое качество позиционных исследований требует анализа глубокомысленных рассуждений.",
+			"image": "https://i.pinimg.com/564x/97/cd/6e/97cd6e188410d05d403f7d9c20c2f738.jpg",
+			"masterId": "c4ca4238a0b923820dcc509a6f75849b",
+			"master": "Нина Петровна",
+			"price": 400,
+			"discountNotPrice": 3500,
+			"percentSale": 0,
+			"category": "photo",
+			"tags": [
+				{
+					"title": "#48часов",
+					"url": "48h"
+				},
+				{
+					"title": "#бусинки",
+					"url": "businki"
+				}
+			],
+			"buyCount": 133,
+			"buyCountWeek": 64
+		}
+	],
+	"statistics": {
+		"masters": 343,
+		"courses": 167,
+		"students": 119400,
+		"payouts": 107938
+	},
+	"magazine": [
+		{
+			"_id": 1,
+			"title": "Учите тому, что вы любите и умеете Станьте мастером HobJob и получайте доход от ваших онлайн-курсов",
+			"description": "Высокий уровень вовлечения представителей целевой аудитории является четким доказательством простого факта: базовый вектор развития способствует повышению качества анализа существующих паттернов поведения.",
+			"image": "https://images.unsplash.com/photo-1577640064668-cf230bee547a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80",
+			"masterId": "c4ca4238a0b923820dcc509a6f75849b",
+			"master": "Нина Петровна",
+			"date": "05.05.2021",
+			"tag": "#48часов",
+			"views": 1243,
+			"content": [
+				{
+					"title": "Шитьё и вязание",
+					"description": [
+						"Шитьё — одна из древнейших технологий производства, возникшая ещё в каменном веке. До изобретения пряжи и тканных материалов одежда шилась из меха и шкур добытых животных с помощью игл из кости или рогов и «нитей» из сухожилий, вен или кишок животных. Обычно шитьё ассоциируется с изготовлением одежды или домашнего текстиля, однако оно применяется и при изготовлении обуви, игрушек, украшений и многого другого.",
+						"Тысячелетиями люди шили исключительно руками, а изобретение швейной машины в XIX веке привело к массовому промышленному производству, однако шитьё вручную по-прежнему является востребованным во всём мире. Вязание и шитьё одежды —кропотливая, творческая и важная работа, пользующаяся огромным спросом как в прошлом, так и в настоящем."
+					],
+					"image": "https://sun9-26.userapi.com/impg/_s67PKC8g3PlTjS7OadTVHj2K9J6wmuz-jSLRw/EXb7j75xPyI.jpg?size=807x536&quality=96&sign=c3fdea4eb23ce3b70da5cd018c3a494c&type=album"
+				},
+				{
+					"title": "Шитьё и вязание",
+					"description": [
+						"Шитьё — одна из древнейших технологий производства, возникшая ещё в каменном веке. До изобретения пряжи и тканных материалов одежда шилась из меха и шкур добытых животных с помощью игл из кости или рогов и «нитей» из сухожилий, вен или кишок животных. Обычно шитьё ассоциируется с изготовлением одежды или домашнего текстиля, однако оно применяется и при изготовлении обуви, игрушек, украшений и многого другого.",
+						"Тысячелетиями люди шили исключительно руками, а изобретение швейной машины в XIX веке привело к массовому промышленному производству, однако шитьё вручную по-прежнему является востребованным во всём мире. Вязание и шитьё одежды —кропотливая, творческая и важная работа, пользующаяся огромным спросом как в прошлом, так и в настоящем."
+					],
+					"image": "https://sun9-26.userapi.com/impg/_s67PKC8g3PlTjS7OadTVHj2K9J6wmuz-jSLRw/EXb7j75xPyI.jpg?size=807x536&quality=96&sign=c3fdea4eb23ce3b70da5cd018c3a494c&type=album"
+				}
+			],
+			"nextPost": {
+				"_id": 2,
+				"title": "5 видов рукоделия, на которых можно хорошо заработать"
+			}
+		},
+		{
+			"_id": 2,
+			"title": "1",
+			"description": "На нашем сайте люди постоянно изучают что-то новое и делятся своими работами",
+			"image": "https://images.unsplash.com/photo-1577640064668-cf230bee547a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80",
+			"masterId": "c4ca4238a0b923820dcc509a6f75849b",
+			"master": "Нина Петровна",
+			"date": "04.04.2021",
+			"tag": "#48часов",
+			"views": 1243,
+			"content": [
+				{
+					"title": "1",
+					"description": [
+						"1",
+						"1"
+					],
+					"image": "https://sun9-26.userapi.com/impg/_s67PKC8g3PlTjS7OadTVHj2K9J6wmuz-jSLRw/EXb7j75xPyI.jpg?size=807x536&quality=96&sign=c3fdea4eb23ce3b70da5cd018c3a494c&type=album"
+				},
+				{
+					"title": "2",
+					"description": [
+						"2",
+						"2"
+					],
+					"image": "https://sun9-26.userapi.com/impg/_s67PKC8g3PlTjS7OadTVHj2K9J6wmuz-jSLRw/EXb7j75xPyI.jpg?size=807x536&quality=96&sign=c3fdea4eb23ce3b70da5cd018c3a494c&type=album"
+				}
+			]
+		}
+	],
+	"categories": [
+		{
+			"title": "Иллюстрация",
+			"image": "http://localhost:5000/all/illustration-category.svg",
+			"category": "illustration"
+		},
+		{
+			"title": "Фотография и видео",
+			"image": "http://localhost:5000/all/photo-category.svg",
+			"category": "photo"
+		},
+		{
+			"title": "3D и анимация",
+			"image": "http://localhost:5000/all/3d-category.svg",
+			"category": "3d"
+		},
+		{
+			"title": "Дизайн",
+			"image": "http://localhost:5000/all/design-category.svg",
+			"category": "design"
+		},
+		{
+			"title": "Каллиграфия и типографика",
+			"image": "http://localhost:5000/all/fonts-category.svg",
+			"category": "fonts"
+		},
+		{
+			"title": "Ремесло и Технология",
+			"image": "http://localhost:5000/all/craft-category.svg",
+			"category": "craft"
+		}
+	]
+}
