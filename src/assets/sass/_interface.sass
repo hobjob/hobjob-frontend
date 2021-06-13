@@ -7,6 +7,7 @@
 body
 	position: relative
 	overflow-x: hidden
+	overflow-y: scroll
 	font-size: 17px
 	font-family: "Gilroy Regular"
 
@@ -68,6 +69,7 @@ p
 	align-items: center
 	font-size: 24px
 	color: $mainColor
+	white-space: nowrap
 	+Lora
 
 	& svg
@@ -86,6 +88,7 @@ p
 	+borderRadius
 	cursor: pointer
 	user-select: none
+	text-align: center
 	font-size: 17px
 	+SanFranciscoLight
 	+transition
@@ -215,9 +218,22 @@ p
 		background-image: url('data:image/svg+xml,%3Csvg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cline x1="0.707107" y1="6.55614" x2="8.07553" y2="13.9246" stroke="%23DD9E5E" stroke-width="2"/%3E%3Cline x1="6.6613" y1="13.9245" x2="19.2929" y2="1.2929" stroke="%23DD9E5E" stroke-width="2"/%3E%3C/svg%3E')
 		border: 1px solid $mainColor
 
+	&-img
+		width: 35px
+		height: 35px
+
+		+backgroundSetting
+		border-radius: 50%
+
+		margin-left: 15px
+
 // circle
 .circle
 	position: absolute
 	border-radius: 50%
 	z-index: -1
 	background-color: rgba(221, 158, 94, 0.05)
+
+// nagibinstudio
+.nagibinstudio
+	margin-top: 50px

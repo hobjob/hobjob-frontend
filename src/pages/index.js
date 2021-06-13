@@ -15,8 +15,14 @@ export { default as MagazinePostPage } from "./MagazinePostPage"
 // Master
 export { default as Master } from "./Master"
 
+// MastersPage
+export { default as MastersAbout } from "./MastersAbout"
+
 // Pro
 export { default as Pro } from "./Pro"
+
+// About
+export { default as About } from "./About"
 
 // Err404
 export { default as Err404 } from "./Err404"

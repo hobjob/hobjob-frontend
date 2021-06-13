@@ -3,24 +3,45 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {Link} from "react-router-dom";
 
-import {fetchCourses} from "../../redux/actions/courses";
+import {fetchCoursesSection} from "../../redux/actions/courses";
 import {addCourseCart} from "../../redux/actions/cart";
-import ShopBlock from "./ShopBlock";
+import {ShopBlock, ShopBlockLoader} from "../";
 
 const ShopSection = ({title}) => {
     const dispatch = useDispatch();
 
-    const {items} = useSelector(({courses}) => courses);
+    const {itemsSection, isLoadedSectionCourses} = useSelector(
+        ({courses}) => courses
+    );
     const {cart} = useSelector(({cart}) => cart);
 
     React.useEffect(() => {
-        if (!items.length) {
-            dispatch(fetchCourses());
+        if (!itemsSection.length) {
+            dispatch(fetchCoursesSection());
         }
     }, []);
 
     const onClickAddCourseCart = (obj) => {
         dispatch(addCourseCart(obj));
+    };
+
+    //склонение ["час", "часа", "часов"]
+    const checkDeclension = (num, title) => {
+        let result;
+
+        if (num % 100 >= 5 && num % 100 <= 20) {
+            result = num + " " + title[2];
+        } else {
+            if (num % 10 === 1) {
+                result = num + " " + title[0];
+            } else if (num % 10 >= 2 && num % 10 <= 4) {
+                result = num + " " + title[1];
+            } else {
+                result = num + " " + title[2];
+            }
+        }
+
+        return result;
     };
 
     return (
@@ -29,14 +50,28 @@ const ShopSection = ({title}) => {
                 <div className="shop-section-wrapper">
                     <h2 className="title__mb shop-section__title">{title}</h2>
                     <div className="shop-section-block-wrapper">
-                        {items.map((item, index) => (
-                            <ShopBlock
-                                {...item}
-                                onClickAddCourseCart={onClickAddCourseCart}
-                                cartItems={cart}
-                                key={`shop-section-block-${index}`}
-                            />
-                        ))}
+                        {isLoadedSectionCourses
+                            ? itemsSection.map((item, index) => (
+                                  <ShopBlock
+                                      {...item}
+                                      onClickAddCourseCart={
+                                          onClickAddCourseCart
+                                      }
+                                      checkDeclension={checkDeclension(
+                                          item.transitTime,
+                                          ["час", "часа", "часов"]
+                                      )}
+                                      cartItems={cart}
+                                      key={`shop-section-block-${index}`}
+                                  />
+                              ))
+                            : Array(4)
+                                  .fill(0)
+                                  .map((_, index) => (
+                                      <ShopBlockLoader
+                                          key={`shop-block-loader-${index}`}
+                                      />
+                                  ))}
                     </div>
 
                     <div className="shop-section-btn">

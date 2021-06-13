@@ -1,11 +1,26 @@
 // pro
 .pro
 	margin: 100px 0
+	+openAnimation
+
+	&__btn
+		position: fixed
+
+		bottom: 30px
+		right: 30px
+
+		min-width: 300px
+
+		opacity: 0
+		+transition
+
+		&.active
+			opacity: 1
 
 	&-main
 		display: flex
 		justify-content: space-between
-		
+
 		&-text
 			max-width: 60%
 
@@ -57,7 +72,7 @@
 
 			padding-bottom: 75px
 			margin-bottom: 100px
-			
+
 			border-bottom: 1px solid $borderGray
 
 			&__img
@@ -66,9 +81,11 @@
 
 				margin-right: 100px
 
+				pointer-events: none
 				user-select: none
 
 			&-text
+				width: 75%
 				&__title
 					font-size: 32px
 					margin-bottom: 25px

@@ -1,19 +1,20 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import NumberFormat from "react-number-format";
 
 const ShopBlock = React.memo(
     ({
         _id,
         image,
         title,
-        masterId,
         master,
-        tags,
+        category,
         percentSale,
         price,
         discountNotPrice,
         onClickAddCourseCart,
         cartItems,
+        checkDeclension,
     }) => {
         const [addState, setAddState] = React.useState(false);
 
@@ -30,11 +31,11 @@ const ShopBlock = React.memo(
                 _id,
                 image,
                 title,
-                masterId,
                 master,
-                tags,
+                category,
                 percentSale,
                 price,
+                checkDeclension,
                 discountNotPrice,
             };
 
@@ -60,36 +61,54 @@ const ShopBlock = React.memo(
                             <h4>{title}</h4>
                         </Link>
                         <Link
-                            to={`/master/${masterId}`}
+                            to={`/master/${master._id}`}
                             className="shop-block-top-text__auth"
                         >
-                            {master}
+                            {master.name}
                         </Link>
                         <div className="shop-block-top-text-tags">
-                            {tags.map((tag, index) => (
-                                <Link
-                                    to={`/shop/${tag.url}`}
-                                    className="shop-block-top-text__tags"
-                                    key={`shop-block-top-text__tag-${index}`}
-                                >
-                                    {tag.title}
-                                </Link>
-                            ))}
+                            <span className="shop-block-top-text__time">
+                                {checkDeclension}
+                            </span>
+                            <a
+                                href={`/shop/?category=${category.key}`}
+                                className="shop-block-top-text__category"
+                            >
+                                {category.title}
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div className="shop-block-bottom">
                     {!percentSale ? (
                         <p className="shop-block-bottom__price">
-                            {price} <span>₽</span>
+                            <NumberFormat
+                                value={price}
+                                displayType={"text"}
+                                thousandSeparator={" "}
+                                renderText={(value) => value}
+                            />
+                            <span>₽</span>
                         </p>
                     ) : (
                         <div className="shop-block-bottom-price">
                             <p className="shop-block-bottom__subprice">
-                                {discountNotPrice} <span>₽</span>
+                                <NumberFormat
+                                    value={discountNotPrice}
+                                    displayType={"text"}
+                                    thousandSeparator={" "}
+                                    renderText={(value) => value}
+                                />
+                                <span>₽</span>
                             </p>
                             <p className="shop-block-bottom__price">
-                                {price} <span>₽</span>
+                                <NumberFormat
+                                    value={price}
+                                    displayType={"text"}
+                                    thousandSeparator={" "}
+                                    renderText={(value) => value}
+                                />
+                                <span>₽</span>
                             </p>
                         </div>
                     )}
@@ -104,7 +123,6 @@ const ShopBlock = React.memo(
                         <Link
                             to="/cart"
                             className="btn-regular shop-block-bottom__btn"
-                            onClick={onClickAdd}
                         >
                             Перейти в корзину
                         </Link>

@@ -6,6 +6,8 @@ import {setCoursesFiltersSearch} from "../../../redux/actions/courses";
 const ShopFiltersSearch = () => {
     const dispatch = useDispatch();
 
+	const { filters } = useSelector(({ courses }) => courses);
+	
     const searchFunc = (search) => {
         dispatch(setCoursesFiltersSearch(search));
     };
@@ -29,6 +31,7 @@ const ShopFiltersSearch = () => {
                     className="input__field"
                     onBlur={onChangeInput}
                     onKeyPress={onKeyPressInput}
+                    defaultValue={filters.search}
                     required
                 />
                 <span className="input__span"></span>

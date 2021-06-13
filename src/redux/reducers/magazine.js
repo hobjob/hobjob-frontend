@@ -3,7 +3,11 @@ const initialState = {
 	items: [],
 
 	isLoadedByIdMagazine: false,
-	itemById: {}
+	itemById: {},
+
+	filters: {
+		categories: {}
+	}
 }
 
 const magazine = (state = initialState, action) => {
@@ -20,6 +24,58 @@ const magazine = (state = initialState, action) => {
 			...state,
 			itemById: action.payload,
 			isLoadedByIdMagazine: true,
+		}
+	}
+
+	if (action.type === "SET_LOADED_MAGAZINE_BY_ID") {
+		return {
+			...state,
+			isLoadedByIdMagazine: action.payload,
+		}
+	}
+
+	if (action.type === "SET_MAGAZINE_FILTERS_CATEGORIES") {
+		if (action.payload === "all") {
+			return {
+				...state,
+				filters: {
+					...state.filters,
+					categories: {}
+				},
+			}
+		}
+
+		if (state.filters.categories[action.payload]) {
+			delete state.filters.categories[action.payload];
+
+			return {
+				...state,
+			}
+		}
+
+		return {
+			...state,
+			filters: {
+				...state.filters,
+				categories: {
+					...state.filters.categories,
+					[action.payload]: action.payload
+				}
+			},
+		}
+	}
+
+	if (action.type === "SET_MAGAZINE_FILTERS") {
+		return {
+			...state,
+			filters: action.payload
+		}
+	}
+
+	if (action.type === "SET_LOADED_MAGAZINE_ALL") {
+		return {
+			...state,
+			isLoadedAllMagazine: action.payload,
 		}
 	}
 

@@ -1,16 +1,54 @@
 import React from "react";
+import {useSelector} from "react-redux";
 
-import ShopFiltersSearch from "./ShopFiltersSearch";
+import {ShopFiltersSearch, ShopFilters} from "../../";
 
 const ShopFiltersTop = () => {
+    const [openFilters, setOpenFilters] = React.useState(false);
+    const [filtersCount, setFiltersCount] = React.useState(0);
+
+    const {filters} = useSelector(({courses}) => courses);
+
+    React.useEffect(() => {
+        let count = 0;
+
+        count += Object.keys(filters.masters).length;
+        count += Object.keys(filters.times).length;
+
+        if (filters.sale !== null) {
+            count += 1;
+        }
+
+        setFiltersCount(count);
+    }, [
+        Object.keys(filters.masters).length,
+        filters.sale,
+        Object.keys(filters.times).length,
+    ]);
+
+    const onClickOpenFilters = () => {
+        setOpenFilters(!openFilters);
+    };
+
     return (
-        <div className="shop-top">
-            <ShopFiltersSearch />
-			
-            <div className="shop-top-filters">
-                <span className="shop-top-filters__title">Фильтры</span>
+        <>
+            <div className="shop-top">
+                <ShopFiltersSearch />
+
+                <div className="shop-top-filters">
+                    <span
+                        className={`shop-top-filters__title ${
+                            openFilters ? "active" : ""
+                        }`}
+                        onClick={onClickOpenFilters}
+                    >
+                        Фильтры ({filtersCount})
+                    </span>
+                </div>
             </div>
-        </div>
+
+            {openFilters ? <ShopFilters /> : null}
+        </>
     );
 };
 

@@ -2,8 +2,10 @@
 .cart
 	margin-top: 100px
 	margin-bottom: 150px
+	+openAnimation
 
 	&-block
+		position: relative
 		display: flex
 		justify-content: space-between
 		align-items: center
@@ -43,6 +45,11 @@
 					margin-right: 5px
 					color: $gray
 
+				&-bottom
+					display: flex
+					justify-content: space-between
+					align-items: center
+
 				&__subprice
 					font-size: 21px
 					margin-bottom: 5px
@@ -58,7 +65,7 @@
 					& span
 						font-size: 16px
 
-		&-close
+		&-close, &-close-phone
 			cursor: pointer
 
 			& svg
@@ -67,6 +74,9 @@
 
 				&:hover
 					stroke: $red
+
+		&-close-phone
+			display: none
 
 	&-total
 		margin-top: 50px
@@ -99,3 +109,4 @@
 		justify-content: center
 		align-items: center
 		flex-direction: column
+		+openAnimation

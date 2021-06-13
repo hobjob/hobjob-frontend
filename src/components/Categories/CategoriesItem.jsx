@@ -1,12 +1,14 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-const CategoriesItem = ({category, title, image}) => {
+const CategoriesItem = ({category, title, image, DOMEN, checkDeclension}) => {
     return (
         <Link to={`/shop/?category=${category}`} className="categories-item">
             <div className="categories-item-text">
                 <h3 className="categories-item__title">{title}</h3>
-                <span className="categories-item__subtitle">77 курсов</span>
+                <span className="categories-item__subtitle">
+                    {checkDeclension}
+                </span>
             </div>
 
             <div className="categories-item-img">
@@ -24,7 +26,11 @@ const CategoriesItem = ({category, title, image}) => {
                         />
                     </svg>
                 </div>
-                <img src={image} alt={title} className="categories-item__img" />
+                <img
+                    src={`${DOMEN}/${image}`}
+                    alt={title}
+                    className="categories-item__img"
+                />
             </div>
         </Link>
     );

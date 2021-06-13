@@ -21,7 +21,7 @@ const HomeMainSectionSpecialOffer = ({title, image, master, _id}) => {
                         {title}
                     </h3>
                     <span className="main-special-offer-shop-block-right-text__auth">
-                        {master}
+                        {master.name}
                     </span>
                 </div>
             </div>

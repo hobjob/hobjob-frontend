@@ -1,14 +1,17 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 
-import {categories} from "../../../categories";
-
 import {setCoursesFiltersCategories} from "../../../redux/actions/courses";
+
+import {CategoriesBtnLoader} from "../../";
 
 const ShopFiltersCategories = () => {
     const dispatch = useDispatch();
 
     const {filters} = useSelector(({courses}) => courses);
+    const {items, isLoadedAllCategories} = useSelector(
+        ({categories}) => categories
+    );
 
     const onClickCategory = (category) => {
         dispatch(setCoursesFiltersCategories(category));
@@ -24,18 +27,27 @@ const ShopFiltersCategories = () => {
             >
                 Все категории
             </button>
-
-            {categories.map((item, index) => (
-                <button
-                    className={`shop__btn ${
-                        filters.categories[item.category] ? "active" : ""
-                    }`}
-                    key={`shop-btn-filters-${index}`}
-                    onClick={() => onClickCategory(item.category)}
-                >
-                    {item.title}
-                </button>
-            ))}
+            {isLoadedAllCategories
+                ? Object.keys(items).map((key, index) => (
+                      <button
+                          className={`shop__btn ${
+                              filters.categories[items[key].category]
+                                  ? "active"
+                                  : ""
+                          }`}
+                          key={`shop-btn-filters-${index}`}
+                          onClick={() => onClickCategory(items[key].category)}
+                      >
+                          {items[key].title}
+                      </button>
+                  ))
+                : Array(5)
+                      .fill(0)
+                      .map((_, index) => (
+                          <CategoriesBtnLoader
+                              key={`shop-categories-filters-btn-loader-${index}`}
+                          />
+                      ))}
         </div>
     );
 };

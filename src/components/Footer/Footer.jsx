@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 import {DOMEN} from "../../api";
 
@@ -17,6 +17,21 @@ const Footer = () => {
                                     className="footer-logo__img"
                                 />
                             </Link>
+
+                            {/* Hi, we are Nagibin's studio */}
+                            <div className="nagibinstudio">
+                                <a href="https://nagibinstudio.ru">
+                                    <img
+                                        src="https://api.nagibinstudio.ru:5000/all/nagibin-develompent-black.svg"
+                                        alt=""
+                                        className="nagibinstudio__img"
+                                        style={{
+                                            width: "300px",
+                                            userSelect: "none",
+                                        }}
+                                    />
+                                </a>
+                            </div>
                         </div>
 
                         <div className="footer-block-top-right">
@@ -45,7 +60,10 @@ const Footer = () => {
                                             />
                                         </svg>
                                     </a>
-                                    <a href="" className="footer-social__link">
+                                    <a
+                                        href="https://www.instagram.com/hobjob.ru/"
+                                        className="footer-social__link"
+                                    >
                                         <svg
                                             width="23"
                                             height="19"
@@ -88,34 +106,51 @@ const Footer = () => {
                             </div>
 
                             <nav className="footer-nav">
-                                <Link
+                                <NavLink
                                     to="/shop"
-                                    className="footer-nav__link active"
+                                    className="footer-nav__link"
+                                    activeClassName="footer-nav__link active"
                                 >
                                     Магазин курсов
-                                </Link>
-                                <Link to="/pro" className="footer-nav__link">
+                                </NavLink>
+                                <NavLink
+                                    to="/pro"
+                                    className="footer-nav__link"
+                                    activeClassName="footer-nav__link active"
+                                >
                                     Pro аккаунт
-                                </Link>
-                                <Link to="/about" className="footer-nav__link">
+                                </NavLink>
+                                <NavLink
+                                    to="/about"
+                                    className="footer-nav__link"
+                                    activeClassName="footer-nav__link active"
+                                >
                                     О HobJob
-                                </Link>
-                                <Link to="/master" className="footer-nav__link">
+                                </NavLink>
+                                <NavLink
+                                    to="/masters-about"
+                                    className="footer-nav__link"
+                                    activeClassName="footer-nav__link active"
+                                >
                                     Для мастеров
-                                </Link>
-                                <Link
+                                </NavLink>
+                                <NavLink
                                     to="/magazine"
                                     className="footer-nav__link"
+                                    activeClassName="footer-nav__link active"
                                 >
                                     Журнал
-                                </Link>
+                                </NavLink>
                             </nav>
                         </div>
                     </div>
                     <div className="footer-block-bottom">
                         <div className="footer-block-bottom-left">
                             <Link to="#" className="footer-block-bottom__link">
-                                {" "}
+                                Политика конфиденциальности
+                            </Link>
+                            <Link to="#" className="footer-block-bottom__link">
+                                Публичная оферта
                             </Link>
                         </div>
 

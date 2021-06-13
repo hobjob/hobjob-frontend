@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import NumberFormat from "react-number-format";
 
 import moment from "moment";
 import "moment/locale/ru";
@@ -7,7 +8,7 @@ import "moment/locale/ru";
 const MagazinePostPageCover = ({
     title,
     description,
-    tag,
+    category,
     image,
     views,
     date,
@@ -40,14 +41,19 @@ const MagazinePostPageCover = ({
                         </svg>
 
                         <span className="magazine-post-page-cover-text-top-views__number">
-                            {views}
+                            <NumberFormat
+                                value={views}
+                                displayType={"text"}
+                                thousandSeparator={" "}
+                                renderText={(value) => value}
+                            />
                         </span>
                     </div>
                     <Link
-                        to=""
+                        to={`/magazine/?category=${category.key}`}
                         className="magazine-post-page-cover-text-top__hashtag"
                     >
-                        {tag}
+                        {category.title}
                     </Link>
                 </div>
                 <h2 className="magazine-post-page-cover-text__title">

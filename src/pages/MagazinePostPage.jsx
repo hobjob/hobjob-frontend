@@ -9,6 +9,7 @@ import {
     MagazinePostPageCover,
     MagazinePostPageBlock,
     MagazinePostPageNext,
+    MagazinePostPageLoader,
 } from "../components/";
 
 const MagazinePostPage = ({
@@ -54,7 +55,15 @@ const MagazinePostPage = ({
                 ) : (
                     <Err404 />
                 )
-            ) : null}
+            ) : (
+                <section className="magazine-post-page">
+                    <div className="container">
+                        <div className="magazine-post-page-wrapper">
+                            <MagazinePostPageLoader />
+                        </div>
+                    </div>
+                </section>
+            )}
         </>
     );
 };

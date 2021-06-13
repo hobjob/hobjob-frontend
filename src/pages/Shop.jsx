@@ -3,9 +3,21 @@ import {useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import queryString from "query-string";
 
-import {fetchCourses, setCoursesFilters} from "../redux/actions/courses";
+import {
+    fetchCourses,
+    setCoursesFilters,
+    setCoursesFiltersQuery,
+} from "../redux/actions/courses";
+import {fetchCategories} from "../redux/actions/categories";
+import {addCourseCart} from "../redux/actions/cart";
 
-import {ShopFiltersTop, ShopFiltersCategories, ShopBlock} from "../components/";
+import {
+    ShopFiltersTop,
+    ShopFiltersCategories,
+    ShopBlock,
+    ShopNotFound,
+    ShopBlockLoader,
+} from "../components/";
 
 const Shop = ({
     history: {
@@ -18,14 +30,22 @@ const Shop = ({
     const {items, isLoadedAllCourses, filters} = useSelector(
         ({courses}) => courses
     );
+    const categories = useSelector(({categories}) => categories.items);
     const {cart} = useSelector(({cart}) => cart);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
 
+        if (!Object.keys(categories).length) {
+            dispatch(fetchCategories());
+        }
+
         const newFilters = {
             categories: {},
             search: "",
+            sale: null,
+            masters: {},
+            times: {},
         };
 
         const parseQuery = queryString.parse(search, {
@@ -33,13 +53,40 @@ const Shop = ({
         });
 
         if (parseQuery.category) {
-            parseQuery.category.map(
-                (item) => (newFilters.categories[item] = item)
-            );
+            if (typeof parseQuery.category === "object") {
+                parseQuery.category.map(
+                    (item) => (newFilters.categories[item] = item)
+                );
+            } else {
+                newFilters.categories[parseQuery.category] =
+                    parseQuery.category;
+            }
         }
 
-		if (parseQuery.q !== "") {
+        if (parseQuery.q !== undefined) {
             newFilters.search = parseQuery.q;
+        }
+
+        if (parseQuery.sale !== undefined) {
+            newFilters.sale = parseQuery.sale;
+        }
+
+        if (parseQuery.masters) {
+            if (typeof parseQuery.masters === "object") {
+                parseQuery.masters.map(
+                    (item) => (newFilters.masters[item] = item)
+                );
+            } else {
+                newFilters.masters[parseQuery.masters] = parseQuery.masters;
+            }
+        }
+
+        if (parseQuery.times) {
+            if (typeof parseQuery.times === "object") {
+                parseQuery.times.map((item) => (newFilters.times[item] = item));
+            } else {
+                newFilters.times[parseQuery.times] = parseQuery.times;
+            }
         }
 
         dispatch(setCoursesFilters(newFilters));
@@ -47,15 +94,28 @@ const Shop = ({
 
     React.useEffect(() => {
         const arrayCategories = [];
+        const arrayMasters = [];
+        const arrayTimes = [];
 
         Object.keys(filters.categories).map((key) => {
             arrayCategories.push(filters.categories[key]);
+        });
+
+        Object.keys(filters.masters).map((key) => {
+            arrayMasters.push(filters.masters[key]);
+        });
+
+        Object.keys(filters.times).map((key) => {
+            arrayTimes.push(filters.times[key]);
         });
 
         const query = queryString.stringify(
             {
                 q: filters.search,
                 category: arrayCategories,
+                sale: filters.sale,
+                masters: arrayMasters,
+                times: arrayTimes,
             },
             {arrayFormat: "comma", skipNull: true, skipEmptyString: true}
         );
@@ -63,7 +123,36 @@ const Shop = ({
         history.push(`/shop/?${query}`);
 
         dispatch(fetchCourses(query));
-    }, [Object.keys(filters.categories).length, filters.search]);
+    }, [
+        Object.keys(filters.categories).length,
+        filters.search,
+        filters.sale,
+        Object.keys(filters.masters).length,
+        Object.keys(filters.times).length,
+    ]);
+
+    const onClickAddCourseCart = (obj) => {
+        dispatch(addCourseCart(obj));
+    };
+
+    //склонение ["час", "часа", "часов"]
+    const checkDeclension = (num, title) => {
+        let result;
+
+        if (num % 100 >= 5 && num % 100 <= 20) {
+            result = num + " " + title[2];
+        } else {
+            if (num % 10 === 1) {
+                result = num + " " + title[0];
+            } else if (num % 10 >= 2 && num % 10 <= 4) {
+                result = num + " " + title[1];
+            } else {
+                result = num + " " + title[2];
+            }
+        }
+
+        return result;
+    };
 
     return (
         <section className="shop">
@@ -76,16 +165,37 @@ const Shop = ({
                     <ShopFiltersCategories />
 
                     {isLoadedAllCourses ? (
+                        items.length ? (
+                            <div className="shop-block-wrapper">
+                                {items.map((item, index) => (
+                                    <ShopBlock
+                                        {...item}
+                                        onClickAddCourseCart={
+                                            onClickAddCourseCart
+                                        }
+                                        checkDeclension={checkDeclension(
+                                            item.transitTime,
+                                            ["час", "часа", "часов"]
+                                        )}
+                                        cartItems={cart}
+                                        key={`shop-block-${index}`}
+                                    />
+                                ))}
+                            </div>
+                        ) : (
+                            <ShopNotFound />
+                        )
+                    ) : (
                         <div className="shop-block-wrapper">
-                            {items.map((item, index) => (
-                                <ShopBlock
-                                    {...item}
-                                    cartItems={cart}
-                                    key={`shop-block-${index}`}
-                                />
-                            ))}
+                            {Array(4)
+                                .fill(0)
+                                .map((_, index) => (
+                                    <ShopBlockLoader
+                                        key={`shop-block-loader-${index}`}
+                                    />
+                                ))}
                         </div>
-                    ) : null}
+                    )}
                 </div>
             </div>
         </section>

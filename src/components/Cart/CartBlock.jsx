@@ -6,11 +6,11 @@ const CartBlock = React.memo(
         _id,
         image,
         title,
-        masterId,
         master,
-        tags,
+        category,
         percentSale,
         price,
+        checkDeclension,
         discountNotPrice,
         removeCourse,
     }) => {
@@ -37,39 +37,64 @@ const CartBlock = React.memo(
                             <h4>{title}</h4>
                         </Link>
                         <Link
-                            to={`/master/${masterId}`}
+                            to={`/master/${master._id}`}
                             className="cart-block-content-text__auth"
                         >
-                            {master}
+                            {master.name}
                         </Link>
-
                         <div className="cart-block-content-text-tags">
-                            {tags.map((tag, index) => (
-                                <Link
-                                    to={`/shop/${tag.url}`}
-                                    className="cart-block-content-text__tags"
-                                    key={`cart-block-content-text__tag-${index}`}
-                                >
-                                    {tag.title}
-                                </Link>
-                            ))}
+                            <span className="cart-block-content-text__tags">
+                                {checkDeclension}
+                            </span>
+                            <Link
+                                to={`/shop/?category=${category.key}`}
+                                className="cart-block-content-text__tags"
+                            >
+                                {category.title}
+                            </Link>
                         </div>
-
-                        {!percentSale ? (
-                            <p className="cart-block-content-text__price">
-                                {price} <span>₽</span>
-                            </p>
-                        ) : (
-                            <div className="cart-block-content-text-price">
-                                <p className="cart-block-content-text__subprice">
-                                    {discountNotPrice} <span>₽</span>
-                                </p>
+                        <div className="cart-block-content-text-bottom">
+                            {!percentSale ? (
                                 <p className="cart-block-content-text__price">
-                                    {price}
-                                    <span>₽</span>
+                                    {price} <span>₽</span>
                                 </p>
+                            ) : (
+                                <div className="cart-block-content-text-price">
+                                    <p className="cart-block-content-text__subprice">
+                                        {discountNotPrice} <span>₽</span>
+                                    </p>
+                                    <p className="cart-block-content-text__price">
+                                        {price}
+                                        <span>₽</span>
+                                    </p>
+                                </div>
+                            )}
+                            <div
+                                className="cart-block-close-phone"
+                                onClick={onClickRemoveCourse}
+                            >
+                                <svg
+                                    width="107"
+                                    height="107"
+                                    viewBox="0 0 107 107"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <line
+                                        x1="26.8702"
+                                        y1="26.8403"
+                                        x2="79.9032"
+                                        y2="79.8733"
+                                    />
+                                    <line
+                                        x1="26.163"
+                                        y1="79.8735"
+                                        x2="79.1961"
+                                        y2="26.8405"
+                                    />
+                                </svg>
                             </div>
-                        )}
+                        </div>
                     </div>
                 </div>
                 <div className="cart-block-close" onClick={onClickRemoveCourse}>

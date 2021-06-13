@@ -4,12 +4,17 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {fetchCourseBuyCountWeek} from "../../redux/actions/courses";
 
-import HomeMainSectionSpecialOffer from "./HomeMainSectionSpecialOffer";
+import {
+    HomeMainSectionSpecialOffer,
+    HomeMainSectionSpecialOfferLoader,
+} from "../";
 
 const HomeMainSection = () => {
     const dispatch = useDispatch();
 
-    const {itemBuyCountWeek} = useSelector(({courses}) => courses);
+    const {itemBuyCountWeek, isLoadedBuyCountWeek} = useSelector(
+        ({courses}) => courses
+    );
 
     React.useEffect(() => {
         if (!Object.keys(itemBuyCountWeek).length) {
@@ -43,7 +48,11 @@ const HomeMainSection = () => {
                         </Link>
                     </div>
 
-                    <HomeMainSectionSpecialOffer {...itemBuyCountWeek} />
+                    {isLoadedBuyCountWeek ? (
+                        <HomeMainSectionSpecialOffer {...itemBuyCountWeek} />
+                    ) : (
+                        <HomeMainSectionSpecialOfferLoader />
+                    )}
                 </div>
             </div>
         </section>

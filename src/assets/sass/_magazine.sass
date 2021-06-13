@@ -1,6 +1,42 @@
 // magazine
 .magazine
 	margin: 100px 0
+	+openAnimation
+
+	&-filters
+		&-categories
+			display: flex
+			flex-wrap: wrap
+			align-items: center
+
+			margin-bottom: 100px
+
+	&__btn
+		display: inline-block
+		border: none
+		border: 1px solid $mainColor
+		background-color: transparent
+		padding: 10px 20px
+		color: $mainColor
+		cursor: pointer
+		user-select: none
+		font-size: 17px
+		border-radius: 100px
+
+		margin-right: 5px
+		margin-bottom: 5px
+
+		+SanFranciscoLight
+		+transition
+		+openAnimation
+
+		&:hover
+			background-color: $mainColor
+			color: $white
+
+		&.active
+			background-color: $mainColor
+			color: $white
 
 	&-block
 		&-big
@@ -8,6 +44,7 @@
 			justify-content: space-between
 			align-items: center
 			padding: 0 15px
+			+openAnimation
 
 			&-cover
 				width: 45%
@@ -22,19 +59,23 @@
 				&-top
 					display: flex
 					align-items: center
+					flex-wrap: wrap
 
-					margin-bottom: 50px
+					margin-bottom: 25px
 
 					&__date
 						font-size: 18px
 						color: $gray
 
 						margin-right: 50px
+						margin-bottom: 20px
 
 					&-views
-						margin-right: 50px
 						display: flex
 						align-items: center
+
+						margin-right: 50px
+						margin-bottom: 20px
 
 						& svg
 							margin-right: 5px
@@ -47,8 +88,11 @@
 						font-size: 18px
 						color: $mainColor
 
+						margin-bottom: 20px
+
 				&__title
 					font-size: 32px
+					+Lora
 
 				&__auth
 					display: block
@@ -62,17 +106,18 @@
 
 		display: flex
 		flex-wrap: wrap
+		+openAnimation
 
 	&-block
 		width: calc( 33% - 30px )
 
 		margin: 0 15px
 
-		display: flex
-		justify-content: space-between
-		flex-direction: column
-
 		padding-bottom: 50px
+		margin-bottom: 50px
+
+		display: flex
+		flex-direction: column
 
 		border-bottom: 1px solid $borderGray
 
@@ -88,20 +133,23 @@
 
 			&-top
 				display: flex
+				flex-wrap: wrap
 				align-items: center
-
-				margin-bottom: 25px
+				margin-bottom: 15px
 
 				&__date
 					font-size: 16px
 					color: $gray
 
-					margin-right: 50px
+					margin-right: 25px
+					margin-bottom: 10px
 
 				&-views
-					margin-right: 50px
 					display: flex
 					align-items: center
+
+					margin-right: 25px
+					margin-bottom: 10px
 
 					& svg
 						margin-right: 5px
@@ -114,8 +162,11 @@
 					font-size: 16px
 					color: $mainColor
 
+					margin-bottom: 10px
+
 			&__title
 				font-size: 32px
+				+Lora
 
 			&__description
 				font-size: 21px
@@ -127,6 +178,16 @@
 				color: $mainColor
 
 				margin-top: 50px
+
+	&-not-found
+		margin: 150px 0
+		display: flex
+		justify-content: center
+		+openAnimation
+
+		&__title
+			font-size: 32px
+			color: $gray
 
 // magazine-post-page
 .magazine-post-page
@@ -216,6 +277,6 @@
 
 		&-text
 			max-width: 50%
-			
+
 			&__title
 				font-size: 32px

@@ -1,18 +1,28 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import NumberFormat from "react-number-format";
 
 import moment from "moment";
 import "moment/locale/ru";
 
-const MagazineBlockBig = ({_id, image, date, title, master, views, tag}) => {
+const MagazineBlockBig = ({
+    _id,
+    image,
+    date,
+    title,
+    master,
+    views,
+    category,
+}) => {
     return (
-        <Link to={`/magazine/post/${_id}`} className="magazine-block-big">
-            <div
+        <div className="magazine-block-big">
+            <Link
+                to={`/magazine/post/${_id}`}
                 className="magazine-block-big-cover"
                 style={{
                     backgroundImage: `url(${image})`,
                 }}
-            ></div>
+            ></Link>
 
             <div className="magazine-block-big-text">
                 <div className="magazine-block-big-text-top">
@@ -41,19 +51,32 @@ const MagazineBlockBig = ({_id, image, date, title, master, views, tag}) => {
                         </svg>
 
                         <span className="magazine-block-big-text-top-views__number">
-                            {views}
+                            <NumberFormat
+                                value={views}
+                                displayType={"text"}
+                                thousandSeparator={" "}
+                                renderText={(value) => value}
+                            />
                         </span>
                     </div>
 
-                    <span className="magazine-block-big-text-top__hashtag">
-                        {tag}
-                    </span>
+                    <a
+                        href={`/magazine/?category=${category.key}`}
+                        className="magazine-block-big-text-top__hashtag"
+                    >
+                        {category.title}
+                    </a>
                 </div>
-                <h3 className="magazine-block-big-text__title">{title}</h3>
+                <Link
+                    to={`/magazine/post/${_id}`}
+                    className="magazine-block-big-text__title"
+                >
+                    {title}
+                </Link>
 
                 <span className="magazine-block-big-text__auth">{master}</span>
             </div>
-        </Link>
+        </div>
     );
 };
 

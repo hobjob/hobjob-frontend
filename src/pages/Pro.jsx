@@ -1,16 +1,35 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 import {DOMEN} from "../api";
 
 const Pro = () => {
+    const [visibleButton, setVisibleButton] = React.useState(false);
+
     React.useEffect(() => {
         window.scrollTo(0, 0);
+
+        window.addEventListener("scroll", () => {
+            if (Math.floor(window.pageYOffset) > 200) {
+                setVisibleButton(true);
+            } else {
+                setVisibleButton(false);
+            }
+        });
     }, []);
 
     return (
         <section className="pro">
             <div className="container">
                 <div className="pro-wrapper">
+					<Link
+						to="/"
+                        className={`btn pro__btn ${
+                            visibleButton ? "active" : ""
+                        }`}
+                    >
+                        Вступить
+                    </Link>
                     <div className="pro-main">
                         <div className="pro-main-text">
                             <h2 className="pro-main-text__title">
@@ -35,9 +54,9 @@ const Pro = () => {
                                     5 000 <span>₽</span>
                                 </p>
                             </div>
-                            <button className="btn pro-main-text__btn">
+                            <Link to="" className="btn pro-main-text__btn">
                                 Вступить
-                            </button>
+                            </Link>
                         </div>
 
                         <img
