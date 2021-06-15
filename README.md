@@ -1,4 +1,4 @@
-### HobJob
+### HobJob - frontend
 
 ## Стек технологий
 
