@@ -3,20 +3,17 @@ import {useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import queryString from "query-string";
 
-import {
-    fetchCourses,
-    setCoursesFilters,
-    setCoursesFiltersQuery,
-} from "../redux/actions/courses";
+import {fetchCourses, setCoursesFilters} from "../redux/actions/courses";
 import {fetchCategories} from "../redux/actions/categories";
 import {addCourseCart} from "../redux/actions/cart";
+import {fetchMasters} from "../redux/actions/masters";
 
 import {
     ShopFiltersTop,
     ShopFiltersCategories,
     ShopBlock,
     ShopNotFound,
-    ShopBlockLoader,
+    Loader,
 } from "../components/";
 
 const Shop = ({
@@ -31,13 +28,22 @@ const Shop = ({
         ({courses}) => courses
     );
     const categories = useSelector(({categories}) => categories.items);
+    const isLoadedAllCategories = useSelector(
+        ({categories}) => categories.isLoadedAllCategories
+    );
     const {cart} = useSelector(({cart}) => cart);
+    const masters = useSelector(({masters}) => masters.items);
+    const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
 
         if (!Object.keys(categories).length) {
             dispatch(fetchCategories());
+        }
+
+        if (!Object.keys(masters).length) {
+            dispatch(fetchMasters());
         }
 
         const newFilters = {
@@ -164,7 +170,9 @@ const Shop = ({
 
                     <ShopFiltersCategories />
 
-                    {isLoadedAllCourses ? (
+                    {isLoadedAllCourses &&
+                    isLoadedMasters &&
+                    isLoadedAllCategories ? (
                         items.length ? (
                             <div className="shop-block-wrapper">
                                 {items.map((item, index) => (
@@ -179,6 +187,8 @@ const Shop = ({
                                         )}
                                         cartItems={cart}
                                         key={`shop-block-${index}`}
+                                        masters={masters}
+                                        categories={categories}
                                     />
                                 ))}
                             </div>
@@ -186,15 +196,7 @@ const Shop = ({
                             <ShopNotFound />
                         )
                     ) : (
-                        <div className="shop-block-wrapper">
-                            {Array(4)
-                                .fill(0)
-                                .map((_, index) => (
-                                    <ShopBlockLoader
-                                        key={`shop-block-loader-${index}`}
-                                    />
-                                ))}
-                        </div>
+                        <Loader />
                     )}
                 </div>
             </div>

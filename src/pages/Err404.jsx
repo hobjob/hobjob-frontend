@@ -3,8 +3,6 @@ import {Link} from "react-router-dom";
 
 import { ShopSection } from "../components/";
 
-import {DOMEN} from '../api';
-
 const Err404 = () => {
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -35,7 +33,7 @@ const Err404 = () => {
                                 </svg>
                             </Link>
 						</div>
-						<img src={`${DOMEN}/all/404.svg`} alt="404" className="err404__img" />
+						<img src={`${process.env.REACT_APP_DOMEN}/all/404.svg`} alt="404" className="err404__img" />
                     </div>
                 </div>
             </section>

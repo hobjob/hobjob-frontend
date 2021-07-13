@@ -1,9 +1,12 @@
+import dotenv from 'dotenv';
 import React, { Suspense } from 'react'
 import { Route, Switch } from 'react-router-dom';
 
 import { Header, Footer } from './components/';
 
 import { Home, Cart, Shop, Magazine, MagazinePostPage, Master, MastersAbout, Pro, About, Err404 } from './pages/';
+
+dotenv.config()
 
 const App = () => {
 	return (
@@ -19,7 +22,7 @@ const App = () => {
 					<Route path="/magazine" render={(props) => <Magazine {...props} />} exact />
 					<Route path="/magazine/post/:id" render={(props) => <MagazinePostPage {...props} />} exact />
 
-					<Route path="/master" render={() => <Master />} exact />
+					<Route path="/master/:id" render={(props) => <Master {...props} />} exact />
 					<Route path="/masters-about" render={() => <MastersAbout />} exact />
 					<Route path="/pro" render={() => <Pro />} exact />
 					<Route path="/about" render={() => <About />} exact />

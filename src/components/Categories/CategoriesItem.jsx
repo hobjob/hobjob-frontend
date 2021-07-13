@@ -1,9 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-const CategoriesItem = ({category, title, image, DOMEN, checkDeclension}) => {
+const CategoriesItem = ({transfer, title, image, checkDeclension}) => {
     return (
-        <Link to={`/shop/?category=${category}`} className="categories-item">
+        <Link to={`/shop/?category=${transfer}`} className="categories-item">
             <div className="categories-item-text">
                 <h3 className="categories-item__title">{title}</h3>
                 <span className="categories-item__subtitle">
@@ -27,7 +27,7 @@ const CategoriesItem = ({category, title, image, DOMEN, checkDeclension}) => {
                     </svg>
                 </div>
                 <img
-                    src={`${DOMEN}/${image}`}
+                    src={`${process.env.REACT_APP_DOMEN}/${image}`}
                     alt={title}
                     className="categories-item__img"
                 />

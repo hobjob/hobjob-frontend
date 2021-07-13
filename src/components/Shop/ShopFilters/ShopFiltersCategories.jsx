@@ -31,12 +31,12 @@ const ShopFiltersCategories = () => {
                 ? Object.keys(items).map((key, index) => (
                       <button
                           className={`shop__btn ${
-                              filters.categories[items[key].category]
+                              filters.categories[items[key].transfer]
                                   ? "active"
                                   : ""
                           }`}
                           key={`shop-btn-filters-${index}`}
-                          onClick={() => onClickCategory(items[key].category)}
+                          onClick={() => onClickCategory(items[key].transfer)}
                       >
                           {items[key].title}
                       </button>

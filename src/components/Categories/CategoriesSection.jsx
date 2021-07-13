@@ -3,8 +3,6 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {fetchCategories} from "../../redux/actions/categories";
 
-import {DOMEN} from "../../api";
-
 import {CategoriesItem, CategoriesItemLoader} from "../";
 
 const CategoriesSection = () => {
@@ -38,7 +36,7 @@ const CategoriesSection = () => {
         }
 
         return result;
-    };
+	};
 
     return (
         <section className="categories">
@@ -53,7 +51,6 @@ const CategoriesSection = () => {
                             ? Object.keys(items).map((key, index) => (
                                   <CategoriesItem
                                       {...items[key]}
-                                      DOMEN={DOMEN}
                                       key={`categories-items-${index}`}
                                       checkDeclension={checkDeclension(
                                           courses.filter(

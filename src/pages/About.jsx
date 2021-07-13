@@ -4,8 +4,6 @@ import NumberFormat from "react-number-format";
 
 import {fetchStatistics} from "../redux/actions/statistics";
 
-import {DOMEN} from "../api";
-
 import {CategoriesSection, ShopSection} from "../components/";
 
 const About = () => {
@@ -109,7 +107,7 @@ const About = () => {
                             <div className="about-services-items-wrapper">
                                 <div className="about-services-item">
                                     <img
-                                        src={`${DOMEN}/all/online-platform-about-hb.svg`}
+                                        src={`${process.env.REACT_APP_DOMEN}/all/online-platform-about-hb.svg`}
                                         alt=""
                                         className="about-services-item__img"
                                     />
@@ -130,7 +128,7 @@ const About = () => {
 
                                 <div className="about-services-item">
                                     <img
-                                        src={`${DOMEN}/all/like-about-hb.svg`}
+                                        src={`${process.env.REACT_APP_DOMEN}/all/like-about-hb.svg`}
                                         alt=""
                                         className="about-services-item__img"
                                     />
@@ -151,7 +149,7 @@ const About = () => {
 
                                 <div className="about-services-item">
                                     <img
-                                        src={`${DOMEN}/all/master-about-hb.svg`}
+                                        src={`${process.env.REACT_APP_DOMEN}/all/master-about-hb.svg`}
                                         alt=""
                                         className="about-services-item__img"
                                     />

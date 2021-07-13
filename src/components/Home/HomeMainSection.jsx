@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
 import {fetchCourseBuyCountWeek} from "../../redux/actions/courses";
+import {fetchMasters} from "../../redux/actions/masters";
 
 import {
     HomeMainSectionSpecialOffer,
@@ -15,10 +16,16 @@ const HomeMainSection = () => {
     const {itemBuyCountWeek, isLoadedBuyCountWeek} = useSelector(
         ({courses}) => courses
     );
+    const masters = useSelector(({masters}) => masters.items);
+    const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
 
     React.useEffect(() => {
         if (!Object.keys(itemBuyCountWeek).length) {
             dispatch(fetchCourseBuyCountWeek());
+		}
+		
+		if (!Object.keys(masters).length) {
+            dispatch(fetchMasters());
         }
     }, []);
 
@@ -48,8 +55,13 @@ const HomeMainSection = () => {
                         </Link>
                     </div>
 
-                    {isLoadedBuyCountWeek ? (
-                        <HomeMainSectionSpecialOffer {...itemBuyCountWeek} />
+                    {isLoadedBuyCountWeek && isLoadedMasters ? (
+                        itemBuyCountWeek ? (
+                            <HomeMainSectionSpecialOffer
+                                {...itemBuyCountWeek}
+                                masters={masters}
+                            />
+                        ) : null
                     ) : (
                         <HomeMainSectionSpecialOfferLoader />
                     )}

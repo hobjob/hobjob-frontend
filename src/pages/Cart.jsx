@@ -62,7 +62,7 @@ const Cart = () => {
                                                     }
                                                 />
                                             }
-                                            <span>₽</span>
+                                            ₽
                                         </h4>
                                     </div>
                                     <div className="cart-total-btn">

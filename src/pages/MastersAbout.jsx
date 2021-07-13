@@ -5,8 +5,6 @@ import NumberFormat from "react-number-format";
 
 import {fetchStatistics} from "../redux/actions/statistics";
 
-import {DOMEN} from "../api";
-
 import {MastersAboutTabItem} from "../components/";
 
 const MastersAbout = () => {
@@ -142,7 +140,7 @@ const MastersAbout = () => {
                         <div className="masters-about-services-items-wrapper">
                             <div className="masters-about-services-item">
                                 <img
-                                    src={`${DOMEN}/all/large-community-masters-page.svg`}
+                                    src={`${process.env.REACT_APP_DOMEN}/all/large-community-masters-page.svg`}
                                     alt=""
                                     className="masters-about-services-item__img"
                                 />
@@ -162,7 +160,7 @@ const MastersAbout = () => {
 
                             <div className="masters-about-services-item">
                                 <img
-                                    src={`${DOMEN}/all/affiliate-system-masters-page.svg`}
+                                    src={`${process.env.REACT_APP_DOMEN}/all/affiliate-system-masters-page.svg`}
                                     alt=""
                                     className="masters-about-services-item__img"
                                 />
@@ -181,7 +179,7 @@ const MastersAbout = () => {
 
                             <div className="masters-about-services-item">
                                 <img
-                                    src={`${DOMEN}/all/interface-masters-page.svg`}
+                                    src={`${process.env.REACT_APP_DOMEN}/all/interface-masters-page.svg`}
                                     alt=""
                                     className="masters-about-services-item__img"
                                 />
@@ -201,7 +199,7 @@ const MastersAbout = () => {
 
                             <div className="masters-about-services-item">
                                 <img
-                                    src={`${DOMEN}/all/followers-masters-page.svg`}
+                                    src={`${process.env.REACT_APP_DOMEN}/all/followers-masters-page.svg`}
                                     alt=""
                                     className="masters-about-services-item__img"
                                 />

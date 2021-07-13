@@ -3,15 +3,17 @@ import { combineReducers } from 'redux';
 import courses from './courses';
 import cart from './cart';
 import statistics from './statistics';
-import magazine from './magazine';
+import posts from './posts';
 import categories from './categories';
+import masters from './masters';
 
 const rootReducer = combineReducers({
 	courses,
 	cart,
 	statistics,
-	magazine,
-	categories
+	posts,
+	categories,
+	masters
 });
 
 export default rootReducer;

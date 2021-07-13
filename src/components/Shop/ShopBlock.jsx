@@ -7,7 +7,7 @@ const ShopBlock = React.memo(
         _id,
         image,
         title,
-        master,
+        masterId,
         category,
         percentSale,
         price,
@@ -15,6 +15,8 @@ const ShopBlock = React.memo(
         onClickAddCourseCart,
         cartItems,
         checkDeclension,
+        masters,
+        categories,
     }) => {
         const [addState, setAddState] = React.useState(false);
 
@@ -31,8 +33,14 @@ const ShopBlock = React.memo(
                 _id,
                 image,
                 title,
-                master,
-                category,
+                master: {
+                    _id: masterId,
+                    name: masters[masterId].name,
+                },
+                category: {
+                    transfer: categories[category].transfer,
+                    title: categories[category].title,
+                },
                 percentSale,
                 price,
                 checkDeclension,
@@ -50,7 +58,7 @@ const ShopBlock = React.memo(
                         to={`/course/${_id}`}
                         className="shop-block-top-cover"
                         style={{
-                            backgroundImage: `url(${image})`,
+                            backgroundImage: `url(${process.env.REACT_APP_DOMEN}/${image})`,
                         }}
                     ></Link>
                     <div className="shop-block-top-text">
@@ -61,21 +69,28 @@ const ShopBlock = React.memo(
                             <h4>{title}</h4>
                         </Link>
                         <Link
-                            to={`/master/${master._id}`}
+                            to={`/master/${masterId}`}
                             className="shop-block-top-text__auth"
                         >
-                            {master.name}
+                            {masters[masterId] ? (
+                                <>
+                                    {masters[masterId].name}{" "}
+                                    {masters[masterId].surname}
+                                </>
+                            ) : null}
                         </Link>
                         <div className="shop-block-top-text-tags">
                             <span className="shop-block-top-text__time">
                                 {checkDeclension}
                             </span>
-                            <a
-                                href={`/shop/?category=${category.key}`}
-                                className="shop-block-top-text__category"
-                            >
-                                {category.title}
-                            </a>
+                            {categories[category] ? (
+                                <a
+                                    href={`/shop/?category=${categories[category].transfer}`}
+                                    className="shop-block-top-text__category"
+                                >
+                                    {categories[category].title}
+                                </a>
+                            ) : null}
                         </div>
                     </div>
                 </div>
@@ -88,7 +103,7 @@ const ShopBlock = React.memo(
                                 thousandSeparator={" "}
                                 renderText={(value) => value}
                             />
-                            <span>₽</span>
+                            ₽
                         </p>
                     ) : (
                         <div className="shop-block-bottom-price">
@@ -99,7 +114,7 @@ const ShopBlock = React.memo(
                                     thousandSeparator={" "}
                                     renderText={(value) => value}
                                 />
-                                <span>₽</span>
+                                ₽
                             </p>
                             <p className="shop-block-bottom__price">
                                 <NumberFormat
@@ -108,7 +123,7 @@ const ShopBlock = React.memo(
                                     thousandSeparator={" "}
                                     renderText={(value) => value}
                                 />
-                                <span>₽</span>
+                                ₽
                             </p>
                         </div>
                     )}

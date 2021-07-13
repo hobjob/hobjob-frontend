@@ -1,20 +1,20 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 
-import {setMagazineFiltersCategories} from "../../redux/actions/magazine";
+import {setPostsFiltersCategories} from "../../redux/actions/posts";
 
 import {CategoriesBtnLoader} from "../";
 
 const MagazineFiltersCategories = () => {
     const dispatch = useDispatch();
 
-    const {filters} = useSelector(({magazine}) => magazine);
+    const {filters} = useSelector(({posts}) => posts);
     const {items, isLoadedAllCategories} = useSelector(
         ({categories}) => categories
     );
 
     const onClickCategory = (category) => {
-        dispatch(setMagazineFiltersCategories(category));
+        dispatch(setPostsFiltersCategories(category));
     };
 
     return (
@@ -32,12 +32,12 @@ const MagazineFiltersCategories = () => {
                 ? Object.keys(items).map((key, index) => (
                       <button
                           className={`magazine__btn ${
-                              filters.categories[items[key].category]
+                              filters.categories[items[key].transfer]
                                   ? "active"
                                   : ""
                           }`}
                           key={`magazine-btn-filters-${index}`}
-                          onClick={() => onClickCategory(items[key].category)}
+                          onClick={() => onClickCategory(items[key].transfer)}
                       >
                           {items[key].title}
                       </button>

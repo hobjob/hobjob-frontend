@@ -25,7 +25,7 @@ const CartBlock = React.memo(
                         to={`/course/${_id}`}
                         className="cart-block-content-cover"
                         style={{
-                            backgroundImage: `url(${image})`,
+                            backgroundImage: `url(${process.env.REACT_APP_DOMEN}/${image})`,
                         }}
                     ></Link>
 
@@ -56,16 +56,15 @@ const CartBlock = React.memo(
                         <div className="cart-block-content-text-bottom">
                             {!percentSale ? (
                                 <p className="cart-block-content-text__price">
-                                    {price} <span>₽</span>
+                                    {price} ₽
                                 </p>
                             ) : (
                                 <div className="cart-block-content-text-price">
                                     <p className="cart-block-content-text__subprice">
-                                        {discountNotPrice} <span>₽</span>
+                                        {discountNotPrice} ₽
                                     </p>
                                     <p className="cart-block-content-text__price">
-                                        {price}
-                                        <span>₽</span>
+                                        {price} ₽
                                     </p>
                                 </div>
                             )}

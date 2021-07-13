@@ -1,7 +1,8 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 
-import {fetchMagazineById} from "../redux/actions/magazine";
+import {fetchPostsById} from "../redux/actions/posts";
+import {fetchCategories} from "../redux/actions/categories";
 
 import {Err404} from "../pages/";
 
@@ -9,6 +10,7 @@ import {
     MagazinePostPageCover,
     MagazinePostPageBlock,
     MagazinePostPageNext,
+    MagazinePostPageEnd,
     MagazinePostPageLoader,
 } from "../components/";
 
@@ -19,24 +21,35 @@ const MagazinePostPage = ({
 }) => {
     const dispatch = useDispatch();
 
-    const {itemById, isLoadedByIdMagazine} = useSelector(
-        ({magazine}) => magazine
+    const {itemById, isLoadedByIdPosts} = useSelector(({posts}) => posts);
+    const categories = useSelector(({categories}) => categories.items);
+    const isLoadedAllCategories = useSelector(
+        ({categories}) => categories.isLoadedAllCategories
     );
+
+    React.useEffect(() => {
+        if (!Object.keys(categories).length) {
+            dispatch(fetchCategories());
+        }
+    }, []);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
 
-        dispatch(fetchMagazineById(id));
+        dispatch(fetchPostsById(id));
     }, [id]);
 
     return (
         <>
-            {isLoadedByIdMagazine ? (
+            {isLoadedByIdPosts && isLoadedAllCategories ? (
                 itemById ? (
                     <section className="magazine-post-page">
                         <div className="container">
                             <div className="magazine-post-page-wrapper">
-                                <MagazinePostPageCover {...itemById} />
+                                <MagazinePostPageCover
+                                    {...itemById}
+                                    categories={categories}
+                                />
 
                                 <div className="magazine-post-page-block-wrapper">
                                     {itemById.content.map((block, index) => (
@@ -47,9 +60,11 @@ const MagazinePostPage = ({
                                     ))}
                                 </div>
                             </div>
-                            {itemById.nextPost ? (
-                                <MagazinePostPageNext {...itemById.nextPost} />
-                            ) : null}
+                            {itemById.next ? (
+                                <MagazinePostPageNext {...itemById.next} />
+                            ) : (
+                                <MagazinePostPageEnd />
+                            )}
                         </div>
                     </section>
                 ) : (

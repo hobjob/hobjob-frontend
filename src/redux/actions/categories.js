@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-import { API_DOMEN } from '../../api';
-
 export const fetchCategories = () => (dispatch) => {
-	axios.get(`${API_DOMEN}/categories`).then(({ data }) => {
+	axios.get(`${process.env.REACT_APP_API_DOMEN}/categories`).then(({ data }) => {
 		dispatch(setCategories(data))
 	})
 }

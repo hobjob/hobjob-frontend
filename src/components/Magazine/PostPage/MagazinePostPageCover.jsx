@@ -8,7 +8,8 @@ import "moment/locale/ru";
 const MagazinePostPageCover = ({
     title,
     description,
-    category,
+	category,
+	categories,
     image,
     views,
     date,
@@ -50,10 +51,10 @@ const MagazinePostPageCover = ({
                         </span>
                     </div>
                     <Link
-                        to={`/magazine/?category=${category.key}`}
+                        to={`/magazine/?category=${categories[category].transfer}`}
                         className="magazine-post-page-cover-text-top__hashtag"
                     >
-                        {category.title}
+                        {categories[category].title}
                     </Link>
                 </div>
                 <h2 className="magazine-post-page-cover-text__title">
@@ -65,7 +66,9 @@ const MagazinePostPageCover = ({
             </div>
             <div
                 className="magazine-post-page-cover-img"
-                style={{backgroundImage: `url(${image})`}}
+                style={{
+                    backgroundImage: `url(${process.env.REACT_APP_DOMEN}/${image})`,
+                }}
             ></div>
         </div>
     );

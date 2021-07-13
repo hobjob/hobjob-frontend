@@ -3,8 +3,9 @@ import {useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import queryString from "query-string";
 
-import {fetchMagazine, setMagazineFilters} from "../redux/actions/magazine";
+import {fetchPosts, setPostsFilters} from "../redux/actions/posts";
 import {fetchCategories} from "../redux/actions/categories";
+import {fetchMasters} from "../redux/actions/masters";
 
 import {
     MagazineBlockBig,
@@ -23,16 +24,25 @@ const Magazine = ({
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const {items, filters, isLoadedAllMagazine} = useSelector(
-        ({magazine}) => magazine
-    );
+    const {items, filters, isLoadedAllPosts} = useSelector(({posts}) => posts);
+
+    const masters = useSelector(({masters}) => masters.items);
+    const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
+
     const categories = useSelector(({categories}) => categories.items);
+    const isLoadedAllCategories = useSelector(
+        ({categories}) => categories.isLoadedAllCategories
+    );
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
 
         if (!Object.keys(categories).length) {
             dispatch(fetchCategories());
+        }
+
+        if (!Object.keys(masters).length) {
+            dispatch(fetchMasters());
         }
 
         const newFilters = {
@@ -54,7 +64,7 @@ const Magazine = ({
             }
         }
 
-        dispatch(setMagazineFilters(newFilters));
+        dispatch(setPostsFilters(newFilters));
     }, []);
 
     React.useEffect(() => {
@@ -73,7 +83,7 @@ const Magazine = ({
 
         history.push(`/magazine/?${query}`);
 
-        dispatch(fetchMagazine(query));
+        dispatch(fetchPosts(query));
     }, [Object.keys(filters.categories).length, filters.search]);
 
     return (
@@ -84,11 +94,17 @@ const Magazine = ({
 
                     <MagazineFiltersCategories />
 
-                    {isLoadedAllMagazine ? (
+                    {isLoadedAllPosts &&
+                    isLoadedAllCategories &&
+                    isLoadedMasters ? (
                         items.length ? (
                             <>
                                 {window.innerWidth > 900 ? (
-                                    <MagazineBlockBig {...items[0]} />
+                                    <MagazineBlockBig
+                                        {...items[0]}
+                                        masters={masters}
+                                        categories={categories}
+                                    />
                                 ) : null}
 
                                 <div className="magazine-block-wrapper">
@@ -97,12 +113,16 @@ const Magazine = ({
                                             index !== 0 ? (
                                                 <MagazineBlock
                                                     {...item}
+                                                    masters={masters}
+                                                    categories={categories}
                                                     key={`magazine-block-${index}`}
                                                 />
                                             ) : null
                                         ) : (
                                             <MagazineBlock
                                                 {...item}
+                                                masters={masters}
+                                                categories={categories}
                                                 key={`magazine-block-${index}`}
                                             />
                                         )

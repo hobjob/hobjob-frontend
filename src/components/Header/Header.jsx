@@ -4,8 +4,6 @@ import {useSelector} from "react-redux";
 
 import {HeaderModalMenu} from "../";
 
-import {DOMEN} from "../../api";
-
 const Header = () => {
     const {cart} = useSelector(({cart}) => cart);
 
@@ -75,7 +73,7 @@ const Header = () => {
                     <div className="header-wrapper">
                         <Link to="/" className="header-logo__link">
                             <img
-                                src={`${DOMEN}/all/logo.svg`}
+                                src={`${process.env.REACT_APP_DOMEN}/all/logo.svg`}
                                 alt="HobJob"
                                 className="header-logo__img"
                             />

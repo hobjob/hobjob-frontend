@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-import { API_DOMEN } from '../../api';
-
 export const fetchStatistics = () => (dispatch) => {
-	axios.get(`${API_DOMEN}/statistics`).then(({ data }) => {
+	axios.get(`${process.env.REACT_APP_API_DOMEN}/statistics`).then(({ data }) => {
 		dispatch(setStatistics(data))
 	})
 }

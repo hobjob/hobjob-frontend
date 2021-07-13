@@ -1,8 +1,8 @@
 const initialState = {
-	isLoadedAllMagazine: false,
+	isLoadedAllPosts: false,
 	items: [],
 
-	isLoadedByIdMagazine: false,
+	isLoadedByIdPosts: false,
 	itemById: {},
 
 	filters: {
@@ -10,31 +10,31 @@ const initialState = {
 	}
 }
 
-const magazine = (state = initialState, action) => {
-	if (action.type === "SET_MAGAZINE") {
+const posts = (state = initialState, action) => {
+	if (action.type === "SET_POSTS") {
 		return {
 			...state,
 			items: action.payload,
-			isLoadedAllMagazine: true,
+			isLoadedAllPosts: true,
 		}
 	}
 
-	if (action.type === "SET_MAGAZINE_BY_ID") {
+	if (action.type === "SET_POSTS_BY_ID") {
 		return {
 			...state,
 			itemById: action.payload,
-			isLoadedByIdMagazine: true,
+			isLoadedByIdPosts: true,
 		}
 	}
 
-	if (action.type === "SET_LOADED_MAGAZINE_BY_ID") {
+	if (action.type === "SET_LOADED_POSTS_BY_ID") {
 		return {
 			...state,
-			isLoadedByIdMagazine: action.payload,
+			isLoadedByIdPosts: action.payload,
 		}
 	}
 
-	if (action.type === "SET_MAGAZINE_FILTERS_CATEGORIES") {
+	if (action.type === "SET_POSTS_FILTERS_CATEGORIES") {
 		if (action.payload === "all") {
 			return {
 				...state,
@@ -65,28 +65,28 @@ const magazine = (state = initialState, action) => {
 		}
 	}
 
-	if (action.type === "SET_MAGAZINE_FILTERS") {
+	if (action.type === "SET_POSTS_FILTERS") {
 		return {
 			...state,
 			filters: action.payload
 		}
 	}
 
-	if (action.type === "SET_LOADED_MAGAZINE_ALL") {
+	if (action.type === "SET_LOADED_POSTS_ALL") {
 		return {
 			...state,
-			isLoadedAllMagazine: action.payload,
+			isLoadedAllPosts: action.payload,
 		}
 	}
 
-	if (action.type === "SET_LOADED_MAGAZINE_BY_ID") {
+	if (action.type === "SET_LOADED_POSTS_BY_ID") {
 		return {
 			...state,
-			isLoadedByIdMagazine: action.payload,
+			isLoadedByIdPosts: action.payload,
 		}
 	}
 
 	return state;
 }
 
-export default magazine;
+export default posts;

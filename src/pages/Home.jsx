@@ -5,7 +5,7 @@ import {
     ShopSection,
     CategoriesSection,
 	AboutSection,
-	MasterSection
+	MastersSection
 } from "../components/";
 
 const Home = () => {
@@ -23,7 +23,7 @@ const Home = () => {
 
 			<AboutSection />
 			
-			<MasterSection />
+			<MastersSection />
         </>
     );
 };

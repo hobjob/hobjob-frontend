@@ -8,7 +8,7 @@ const categories = (state = initialState, action) => {
 		const newObj = {};
 
 		action.payload.map((item) => {
-			newObj[item.category] = item
+			newObj[item.transfer] = item
 		})
 
 		return {

@@ -1,8 +1,6 @@
 import React from "react";
 import {Link, NavLink} from "react-router-dom";
 
-import {DOMEN} from "../../api";
-
 const Footer = () => {
     return (
         <footer className="footer">
@@ -12,7 +10,7 @@ const Footer = () => {
                         <div className="footer-block-top-left">
                             <Link to="/" className="footer-logo__link">
                                 <img
-                                    src={`${DOMEN}/all/logo.svg`}
+                                    src={`${process.env.REACT_APP_DOMEN}/all/logo.svg`}
                                     alt="HobJob"
                                     className="footer-logo__img"
                                 />

@@ -1,14 +1,12 @@
 import axios from 'axios';
 
-import { API_DOMEN } from '../../api';
-
 export const fetchCourses = (query = null) => (dispatch) => {
 	dispatch({
 		type: "SET_LOADED_COURSES",
 		payload: false,
 	})
 
-	axios.get(`${API_DOMEN}/courses?${query !== null ? query : ""}`).then(({ data }) => {
+	axios.get(`${process.env.REACT_APP_API_DOMEN}/courses?${query !== null ? query : ""}`).then(({ data }) => {
 		dispatch(setCourses(data))
 	})
 }
@@ -19,13 +17,13 @@ export const fetchCoursesSection = () => (dispatch) => {
 		payload: false,
 	})
 
-	axios.get(`${API_DOMEN}/courses?_sort=buyCountWeek&_order=desc&_limit=4`).then(({ data }) => {
+	axios.get(`${process.env.REACT_APP_API_DOMEN}/courses?_sort=buyCountWeek&_order=desc&_limit=4`).then(({ data }) => {
 		dispatch(setCoursesSection(data))
 	})
 }
 
 export const fetchCourseBuyCountWeek = () => (dispatch) => {
-	axios.get(`${API_DOMEN}/courses?_sort=buyCountWeek&_order=desc`).then(({ data }) => {
+	axios.get(`${process.env.REACT_APP_API_DOMEN}/courses?_sort=buyCountWeek&_order=desc`).then(({ data }) => {
 		dispatch(setCoursesBuyCountWeek(data[0]))
 	})
 }

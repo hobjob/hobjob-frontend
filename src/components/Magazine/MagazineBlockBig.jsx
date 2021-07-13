@@ -10,9 +10,11 @@ const MagazineBlockBig = ({
     image,
     date,
     title,
-    master,
+    masterId,
     views,
     category,
+    categories,
+    masters,
 }) => {
     return (
         <div className="magazine-block-big">
@@ -20,7 +22,7 @@ const MagazineBlockBig = ({
                 to={`/magazine/post/${_id}`}
                 className="magazine-block-big-cover"
                 style={{
-                    backgroundImage: `url(${image})`,
+                    backgroundImage: `url(${process.env.REACT_APP_DOMEN}/${image})`,
                 }}
             ></Link>
 
@@ -61,10 +63,10 @@ const MagazineBlockBig = ({
                     </div>
 
                     <a
-                        href={`/magazine/?category=${category.key}`}
+                        href={`/magazine/?category=${categories[category].transfer}`}
                         className="magazine-block-big-text-top__hashtag"
                     >
-                        {category.title}
+                        {categories[category].title}
                     </a>
                 </div>
                 <Link
@@ -74,7 +76,12 @@ const MagazineBlockBig = ({
                     {title}
                 </Link>
 
-                <span className="magazine-block-big-text__auth">{master}</span>
+                <Link
+                    to={`/master/${masterId}`}
+                    className="magazine-block-big-text__auth"
+                >
+                    {masters[masterId].name} {masters[masterId].surname}
+                </Link>
             </div>
         </div>
     );

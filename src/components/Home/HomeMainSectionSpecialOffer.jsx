@@ -1,14 +1,20 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-const HomeMainSectionSpecialOffer = ({title, image, master, _id}) => {
+const HomeMainSectionSpecialOffer = ({
+    title,
+    image,
+    masters,
+    masterId,
+    _id,
+}) => {
     return (
         <Link to={`/course/${_id}`} className="main-special-offer-shop-block">
             <div className="main-special-offer-shop-block-left">
                 <div
                     className="main-special-offer-shop-block-left-cover"
                     style={{
-                        backgroundImage: `url(${image})`,
+                        backgroundImage: `url(${process.env.REACT_APP_DOMEN}/${image})`,
                     }}
                 ></div>
             </div>
@@ -21,7 +27,7 @@ const HomeMainSectionSpecialOffer = ({title, image, master, _id}) => {
                         {title}
                     </h3>
                     <span className="main-special-offer-shop-block-right-text__auth">
-                        {master.name}
+                        {masters[masterId].name} {masters[masterId].surname}
                     </span>
                 </div>
             </div>

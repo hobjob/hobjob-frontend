@@ -2,8 +2,6 @@ import React from "react";
 import {Link, NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
 
-import {DOMEN} from "../../api";
-
 const HeaderModalMenu = ({HeaderModalMenuRef, menuAnimationState, onClickMenu}) => {
     const {cart} = useSelector(({cart}) => cart);
 
@@ -46,7 +44,7 @@ const HeaderModalMenu = ({HeaderModalMenuRef, menuAnimationState, onClickMenu}) 
                     onClick={onClickMenu}
                 >
                     <img
-                        src={`${DOMEN}/all/logo.svg`}
+                        src={`${process.env.REACT_APP_DOMEN}/all/logo.svg`}
                         alt="HobJob"
                         className="header-modal-menu-logo__img"
                     />

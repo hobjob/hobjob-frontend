@@ -1,8 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 
-import {DOMEN} from "../api";
-
 const Pro = () => {
     const [visibleButton, setVisibleButton] = React.useState(false);
 
@@ -33,7 +31,7 @@ const Pro = () => {
                     <div className="pro-main">
                         <div className="pro-main-text">
                             <h2 className="pro-main-text__title">
-                                Pro аккаунт HobJob - участие (членство) в лучшем
+                                Pro аккаунт HobJob - участие в лучшем
                                 творческом клубе
                             </h2>
                             <p className="description__mb pro-main-text__description">
@@ -47,11 +45,10 @@ const Pro = () => {
                             </p>
                             <div className="pro-main-text-price">
                                 <p className="pro-main-text__price">
-                                    3 500
-                                    <span>₽</span>
+                                    3 500 ₽
                                 </p>
                                 <p className="pro-main-text__subprice">
-                                    5 000 <span>₽</span>
+                                    5 000 ₽
                                 </p>
                             </div>
                             <Link to="" className="btn pro-main-text__btn">
@@ -60,7 +57,7 @@ const Pro = () => {
                         </div>
 
                         <img
-                            src={`${DOMEN}/all/pro-main-section.svg`}
+                            src={`${process.env.REACT_APP_DOMEN}/all/pro-main-section.svg`}
                             alt=""
                             className="pro-main__img"
                         />
@@ -74,7 +71,7 @@ const Pro = () => {
                         <div className="pro-about-items-wrapper">
                             <div className="pro-about-item">
                                 <img
-                                    src={`${DOMEN}/all/20percent-pro.svg`}
+                                    src={`${process.env.REACT_APP_DOMEN}/all/20percent-pro.svg`}
                                     alt=""
                                     className="pro-about-item__img"
                                 />
@@ -91,7 +88,7 @@ const Pro = () => {
                             </div>
                             <div className="pro-about-item">
                                 <img
-                                    src={`${DOMEN}/all/certificate-pro.svg`}
+                                    src={`${process.env.REACT_APP_DOMEN}/all/certificate-pro.svg`}
                                     alt=""
                                     className="pro-about-item__img"
                                 />
@@ -109,7 +106,7 @@ const Pro = () => {
                             </div>
                             <div className="pro-about-item">
                                 <img
-                                    src={`${DOMEN}/all/free-pro.svg`}
+                                    src={`${process.env.REACT_APP_DOMEN}/all/free-pro.svg`}
                                     alt=""
                                     className="pro-about-item__img"
                                 />
@@ -133,7 +130,7 @@ const Pro = () => {
                             </div>
                             <div className="pro-about-item">
                                 <img
-                                    src={`${DOMEN}/all/news-pro.svg`}
+                                    src={`${process.env.REACT_APP_DOMEN}/all/news-pro.svg`}
                                     alt=""
                                     className="pro-about-item__img"
                                 />

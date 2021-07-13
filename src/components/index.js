@@ -1,3 +1,6 @@
+// All
+export { default as Loader } from "./All/Loader"
+
 // Header
 export { default as Header } from "./Header/Header"
 export { default as HeaderModalMenu } from "./Header/HeaderModalMenu"
@@ -15,7 +18,6 @@ export { default as CategoriesBtnLoader } from "./Categories/CategoriesBtnLoader
 
 // Shop
 export { default as ShopBlock } from "./Shop/ShopBlock"
-export { default as ShopBlockLoader } from "./Shop/ShopBlockLoader"
 export { default as ShopSection } from "./Shop/ShopSection"
 export { default as ShopNotFound } from "./Shop/ShopNotFound"
 // ShopFilters
@@ -30,10 +32,13 @@ export { default as ShopFiltersBlockTimes } from "./Shop/ShopFilters/ShopFilters
 // About
 export { default as AboutSection } from "./About/AboutSection"
 
-// Master
-export { default as MasterSection } from "./Master/MasterSection"
 // Masters About
-export { default as MastersAboutTabItem } from "./Master/MastersAboutTabItem"
+export { default as MastersSection } from "./MastersAbout/MastersSection"
+export { default as MastersAboutTabItem } from "./MastersAbout/MastersAboutTabItem"
+
+// Master
+export { default as MasterCartInfo } from "./Master/MasterCartInfo"
+export { default as MasterCartInfoLoader } from "./Master/MasterCartInfoLoader"
 
 // Cart
 export { default as CartBlock } from "./Cart/CartBlock"
@@ -50,6 +55,7 @@ export { default as MagazineFiltersCategories } from "./Magazine/MagazineFilters
 export { default as MagazinePostPageCover } from "./Magazine/PostPage/MagazinePostPageCover"
 export { default as MagazinePostPageBlock } from "./Magazine/PostPage/MagazinePostPageBlock"
 export { default as MagazinePostPageNext } from "./Magazine/PostPage/MagazinePostPageNext"
+export { default as MagazinePostPageEnd } from "./Magazine/PostPage/MagazinePostPageEnd"
 export { default as MagazinePostPageLoader } from "./Magazine/PostPage/MagazinePostPageLoader"
 
 // Footer

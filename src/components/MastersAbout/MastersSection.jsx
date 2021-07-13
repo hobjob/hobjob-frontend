@@ -3,9 +3,7 @@ import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 import NumberFormat from "react-number-format";
 
-import {DOMEN} from '../../api';
-
-const MasterSection = () => {
+const MastersSection = () => {
     const {statistics} = useSelector(({statistics}) => statistics);
 
     return (
@@ -77,7 +75,7 @@ const MasterSection = () => {
                         </div>
                     </div>
                     <div className="master-section-right">
-                        <img src={`${DOMEN}/all/master-section-what.svg`} alt="" className="master-section__img" />
+                        <img src={`${process.env.REACT_APP_DOMEN}/all/master-section-what.svg`} alt="" className="master-section__img" />
                     </div>
                 </div>
             </div>
@@ -85,4 +83,4 @@ const MasterSection = () => {
     );
 };
 
-export default MasterSection;
+export default MastersSection;
