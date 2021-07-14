@@ -40,18 +40,15 @@ const CartBlock = React.memo(
                             to={`/master/${master._id}`}
                             className="cart-block-content-text__auth"
                         >
-                            {master.name}
+                            {master.name} {master.surname}
                         </Link>
                         <div className="cart-block-content-text-tags">
-                            <span className="cart-block-content-text__tags">
+                            <span className="cart-block-content-text__time">
                                 {checkDeclension}
                             </span>
-                            <Link
-                                to={`/shop/?category=${category.key}`}
-                                className="cart-block-content-text__tags"
-                            >
+                            <span className="cart-block-content-text__category">
                                 {category.title}
-                            </Link>
+                            </span>
                         </div>
                         <div className="cart-block-content-text-bottom">
                             {!percentSale ? (

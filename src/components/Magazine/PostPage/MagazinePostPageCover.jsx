@@ -8,8 +8,10 @@ import "moment/locale/ru";
 const MagazinePostPageCover = ({
     title,
     description,
-	category,
-	categories,
+    category,
+    categories,
+    masterId,
+    masters,
     image,
     views,
     date,
@@ -52,17 +54,33 @@ const MagazinePostPageCover = ({
                     </div>
                     <Link
                         to={`/magazine/?category=${categories[category].transfer}`}
-                        className="magazine-post-page-cover-text-top__hashtag"
+                        className="magazine-post-page-cover-text-top__category"
                     >
                         {categories[category].title}
+                    </Link>
+
+                    <Link
+                        to={`/master/${masterId}`}
+                        className="magazine-post-page-cover-text-top-auth"
+                    >
+                        <div
+                            className="magazine-post-page-cover-text-top-auth-avatar"
+                            style={{
+                                backgroundImage: `url(${process.env.REACT_APP_DOMEN}/${masters[masterId].avatar})`,
+                            }}
+                        ></div>
+                        <span className="magazine-post-page-cover-text-top-auth__name">
+                            {masters[masterId].name} {masters[masterId].surname}
+                        </span>
                     </Link>
                 </div>
                 <h2 className="magazine-post-page-cover-text__title">
                     {title}
                 </h2>
-                <p className="magazine-post-page-cover-text__description">
-                    {description}
-                </p>
+                <p
+                    className="magazine-post-page-cover-text__description"
+                    dangerouslySetInnerHTML={{__html: description}}
+                ></p>
             </div>
             <div
                 className="magazine-post-page-cover-img"

@@ -62,7 +62,10 @@ const Header = () => {
                     <h4 className="cookies__title">
                         Мы используем файлы Cookies
                     </h4>
-                    <button className="cookies__btn" onClick={setCookiesClick}>
+                    <button
+                        className="btn-small-round"
+                        onClick={setCookiesClick}
+                    >
                         Хорошо
                     </button>
                 </div>

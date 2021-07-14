@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import NumberFormat from "react-number-format";
 
 const MastersSection = () => {
-    const {statistics} = useSelector(({statistics}) => statistics);
+    const {statistics, isLoaded} = useSelector(({statistics}) => statistics);
 
     return (
         <section className="master-section">
@@ -48,12 +48,16 @@ const MastersSection = () => {
                         <div className="master-section-statistics">
                             <div className="master-section-statistics-item">
                                 <h4 className="master-section-statistics-item__title">
-                                    <NumberFormat
-                                        value={statistics.masters}
-                                        displayType={"text"}
-                                        thousandSeparator={" "}
-                                        renderText={(value) => value}
-                                    />
+                                    {isLoaded ? (
+                                        <NumberFormat
+                                            value={statistics.masters}
+                                            displayType={"text"}
+                                            thousandSeparator={" "}
+                                            renderText={(value) => value}
+                                        />
+                                    ) : (
+                                        "-"
+                                    )}
                                 </h4>
                                 <span className="master-section-statistics-item__subtitle">
                                     Мастеров уже с нами!
@@ -61,12 +65,16 @@ const MastersSection = () => {
                             </div>
                             <div className="master-section-statistics-item">
                                 <h4 className="master-section-statistics-item__title">
-                                    <NumberFormat
-                                        value={statistics.payouts}
-                                        displayType={"text"}
-                                        thousandSeparator={" "}
-                                        renderText={(value) => value}
-                                    />
+                                    {isLoaded ? (
+                                        <NumberFormat
+                                            value={statistics.payouts}
+                                            displayType={"text"}
+                                            thousandSeparator={" "}
+                                            renderText={(value) => value}
+                                        />
+                                    ) : (
+                                        "-"
+                                    )}
                                 </h4>
                                 <span className="master-section-statistics-item__subtitle">
                                     Выплат
@@ -75,7 +83,11 @@ const MastersSection = () => {
                         </div>
                     </div>
                     <div className="master-section-right">
-                        <img src={`${process.env.REACT_APP_DOMEN}/all/master-section-what.svg`} alt="" className="master-section__img" />
+                        <img
+                            src={`${process.env.REACT_APP_DOMEN}/all/master-section-what.svg`}
+                            alt=""
+                            className="master-section__img"
+                        />
                     </div>
                 </div>
             </div>

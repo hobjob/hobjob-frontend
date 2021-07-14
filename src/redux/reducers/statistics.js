@@ -7,7 +7,8 @@ const statistics = (state = initialState, action) => {
 	if (action.type === "SET_STATISTICS") {
 		return {
 			...state,
-			statistics: action.payload
+			statistics: action.payload,
+			isLoaded: true
 		}
 	}
 

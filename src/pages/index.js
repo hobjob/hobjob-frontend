@@ -26,3 +26,6 @@ export { default as About } from "./About"
 
 // Err404
 export { default as Err404 } from "./Err404"
+
+// Login
+export { default as Login } from "./Login"

@@ -3,10 +3,19 @@ import ContentLoader from "react-content-loader";
 
 const Loader = () => {
     return (
-        <div style={{display: "flex", alignItems: "center", height: "250px"}} className="loader">
+        <div
+            style={{
+                display: "flex",
+                justifyContent: "center",
+                height: "300px",
+                alignItems: "center",
+                width: "100%",
+            }}
+        >
             <ContentLoader
-                viewBox="0 0 400 100"
-                height={100}
+                title="Загрузка"
+                viewBox="0 0 400 150"
+                height={150}
                 width="100%"
                 speed={2}
                 backgroundColor="#E6E5E5"

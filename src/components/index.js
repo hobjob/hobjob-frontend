@@ -38,7 +38,6 @@ export { default as MastersAboutTabItem } from "./MastersAbout/MastersAboutTabIt
 
 // Master
 export { default as MasterCartInfo } from "./Master/MasterCartInfo"
-export { default as MasterCartInfoLoader } from "./Master/MasterCartInfoLoader"
 
 // Cart
 export { default as CartBlock } from "./Cart/CartBlock"
@@ -56,7 +55,6 @@ export { default as MagazinePostPageCover } from "./Magazine/PostPage/MagazinePo
 export { default as MagazinePostPageBlock } from "./Magazine/PostPage/MagazinePostPageBlock"
 export { default as MagazinePostPageNext } from "./Magazine/PostPage/MagazinePostPageNext"
 export { default as MagazinePostPageEnd } from "./Magazine/PostPage/MagazinePostPageEnd"
-export { default as MagazinePostPageLoader } from "./Magazine/PostPage/MagazinePostPageLoader"
 
 // Footer
 export { default as Footer } from "./Footer/Footer"

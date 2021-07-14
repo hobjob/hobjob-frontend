@@ -84,22 +84,33 @@
 							font-size: 18px
 							color: $gray
 
-					&__hashtag
+					&__category
 						font-size: 18px
 						color: $mainColor
-
 						margin-bottom: 20px
 
 				&__title
 					font-size: 32px
 					+Lora
 
-				&__auth
-					display: block
-					font-size: 21px
-					color: $mainColor
+				&__description
+					font-size: 24px
+					margin-top: 25px
 
-					margin-top: 75px
+				&-auth
+					margin-top: 50px
+					display: flex
+					align-items: center
+
+					&-avatar
+						margin-right: 15px
+						width: 50px
+						height: 50px
+						border-radius: 50%
+						+backgroundSetting
+
+					&__name
+						font-size: 18px
 
 	&-block-wrapper
 		margin-top: 100px
@@ -158,10 +169,9 @@
 						font-size: 16px
 						color: $gray
 
-				&__hashtag
+				&__category
 					font-size: 16px
 					color: $mainColor
-
 					margin-bottom: 10px
 
 			&__title
@@ -172,12 +182,20 @@
 				font-size: 21px
 				margin-top: 25px
 
-			&__auth
-				display: block
-				font-size: 18px
-				color: $mainColor
-
+			&-auth
 				margin-top: 50px
+				display: flex
+				align-items: center
+
+				&-avatar
+					margin-right: 15px
+					width: 50px
+					height: 50px
+					border-radius: 50%
+					+backgroundSetting
+
+				&__name
+					font-size: 18px
 
 	&-not-found
 		margin: 150px 0
@@ -222,9 +240,24 @@
 						font-size: 18px
 						color: $gray
 
-				&__hashtag
+				&__category
+					margin-right: 50px
 					font-size: 18px
 					color: $mainColor
+
+				&-auth
+					display: flex
+					align-items: center
+
+					&-avatar
+						margin-right: 15px
+						width: 50px
+						height: 50px
+						border-radius: 50%
+						+backgroundSetting
+
+					&__name
+						font-size: 18px
 
 			&__title
 				font-size: 36px

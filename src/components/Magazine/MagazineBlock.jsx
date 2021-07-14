@@ -11,9 +11,11 @@ const MagazineBlock = ({
     date,
     title,
     description,
-    master,
+    masterId,
     views,
     category,
+    categories,
+    masters,
 }) => {
     return (
         <div className="magazine-block">
@@ -21,7 +23,7 @@ const MagazineBlock = ({
                 to={`/magazine/post/${_id}`}
                 className="magazine-block-cover"
                 style={{
-                    backgroundImage: `url(${image})`,
+                    backgroundImage: `url(${process.env.REACT_APP_DOMEN}/${image})`,
                 }}
             ></Link>
 
@@ -61,12 +63,14 @@ const MagazineBlock = ({
                         </span>
                     </div>
 
-                    <a
-                        href={`/magazine/?category=${category.key}`}
-                        className="magazine-block-text-top__hashtag"
-                    >
-                        {category.title}
-                    </a>
+                    {categories[category] ? (
+                        <a
+                            href={`/magazine/?category=${categories[category].transfer}`}
+                            className="magazine-block-text-top__category"
+                        >
+                            {categories[category].title}
+                        </a>
+                    ) : null}
                 </div>
                 <Link
                     to={`/magazine/post/${_id}`}
@@ -74,10 +78,24 @@ const MagazineBlock = ({
                 >
                     {title}
                 </Link>
-                <p className="magazine-block-text__description">
-                    {description}
-                </p>
-                <span className="magazine-block-text__auth">{master}</span>
+                <p
+                    className="magazine-block-text__description"
+                    dangerouslySetInnerHTML={{__html: description}}
+                ></p>
+                <Link
+                    to={`/master/${masterId}`}
+                    className="magazine-block-text-auth"
+                >
+                    <div
+                        className="magazine-block-text-auth-avatar"
+                        style={{
+                            backgroundImage: `url(${process.env.REACT_APP_DOMEN}/${masters[masterId].avatar})`,
+                        }}
+                    ></div>
+                    <span className="magazine-block-text-auth__name">
+                        {masters[masterId].name} {masters[masterId].surname}
+                    </span>
+                </Link>
             </div>
         </div>
     );

@@ -55,8 +55,8 @@ const CategoriesSection = () => {
                                       checkDeclension={checkDeclension(
                                           courses.filter(
                                               (keyGoods) =>
-                                                  keyGoods.category.key ===
-                                                  items[key].category
+                                                  keyGoods.category ===
+                                                  items[key].transfer
                                           ).length,
                                           ["курс", "курса", "курсов"]
                                       )}

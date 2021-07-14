@@ -9,7 +9,7 @@ import {CategoriesSection, ShopSection} from "../components/";
 const About = () => {
     const dispatch = useDispatch();
 
-    const {statistics} = useSelector(({statistics}) => statistics);
+    const {statistics, isLoaded} = useSelector(({statistics}) => statistics);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -48,12 +48,18 @@ const About = () => {
                                 <div className="about-section-statistics">
                                     <div className="about-section-statistics-item">
                                         <h4 className="about-section-statistics-item__title">
-                                            <NumberFormat
-                                                value={statistics.masters}
-                                                displayType={"text"}
-                                                thousandSeparator={" "}
-                                                renderText={(value) => value}
-                                            />
+                                            {isLoaded ? (
+                                                <NumberFormat
+                                                    value={statistics.masters}
+                                                    displayType={"text"}
+                                                    thousandSeparator={" "}
+                                                    renderText={(value) =>
+                                                        value
+                                                    }
+                                                />
+                                            ) : (
+                                                "-"
+                                            )}
                                         </h4>
                                         <span
                                             className="
@@ -65,12 +71,18 @@ const About = () => {
                                     </div>
                                     <div className="about-section-statistics-item">
                                         <h4 className="about-section-statistics-item__title">
-                                            <NumberFormat
-                                                value={statistics.courses}
-                                                displayType={"text"}
-                                                thousandSeparator={" "}
-                                                renderText={(value) => value}
-                                            />
+                                            {isLoaded ? (
+                                                <NumberFormat
+                                                    value={statistics.courses}
+                                                    displayType={"text"}
+                                                    thousandSeparator={" "}
+                                                    renderText={(value) =>
+                                                        value
+                                                    }
+                                                />
+                                            ) : (
+                                                "-"
+                                            )}
                                         </h4>
                                         <span
                                             className="
@@ -82,12 +94,18 @@ const About = () => {
                                     </div>
                                     <div className="about-section-statistics-item">
                                         <h4 className="about-section-statistics-item__title">
-                                            <NumberFormat
-                                                value={statistics.students}
-                                                displayType={"text"}
-                                                thousandSeparator={" "}
-                                                renderText={(value) => value}
-                                            />
+                                            {isLoaded ? (
+                                                <NumberFormat
+                                                    value={statistics.students}
+                                                    displayType={"text"}
+                                                    thousandSeparator={" "}
+                                                    renderText={(value) =>
+                                                        value
+                                                    }
+                                                />
+                                            ) : (
+                                                "-"
+                                            )}
                                         </h4>
                                         <span
                                             className="

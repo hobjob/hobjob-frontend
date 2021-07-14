@@ -8,7 +8,7 @@ import {fetchStatistics} from "../../redux/actions/statistics";
 const AboutSection = () => {
     const dispatch = useDispatch();
 
-    const {statistics} = useSelector(({statistics}) => statistics);
+    const {statistics, isLoaded} = useSelector(({statistics}) => statistics);
 
     React.useEffect(() => {
         if (!Object.keys(statistics).length) {
@@ -62,12 +62,12 @@ const AboutSection = () => {
                         <div className="about-section-statistics">
                             <div className="about-section-statistics-item">
                                 <h4 className="about-section-statistics-item__title">
-                                    <NumberFormat
+                                    {isLoaded ? <NumberFormat
                                         value={statistics.masters}
                                         displayType={"text"}
                                         thousandSeparator={" "}
                                         renderText={(value) => value}
-                                    />
+                                    /> : "-"}
                                 </h4>
                                 <span
                                     className="
@@ -79,12 +79,12 @@ const AboutSection = () => {
                             </div>
                             <div className="about-section-statistics-item">
                                 <h4 className="about-section-statistics-item__title">
-                                    <NumberFormat
+                                    {isLoaded ? <NumberFormat
                                         value={statistics.courses}
                                         displayType={"text"}
                                         thousandSeparator={" "}
                                         renderText={(value) => value}
-                                    />
+                                    /> : "-"}
                                 </h4>
                                 <span
                                     className="
@@ -96,12 +96,12 @@ const AboutSection = () => {
                             </div>
                             <div className="about-section-statistics-item">
                                 <h4 className="about-section-statistics-item__title">
-                                    <NumberFormat
+                                    {isLoaded ? <NumberFormat
                                         value={statistics.students}
                                         displayType={"text"}
                                         thousandSeparator={" "}
                                         renderText={(value) => value}
-                                    />
+                                    /> : "-"}
                                 </h4>
                                 <span
                                     className="

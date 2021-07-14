@@ -107,12 +107,50 @@ p
 	border: 1px solid $mainColor
 	padding: 20px 30px
 	color: $mainColor
-	+borderRadius
 	cursor: pointer
 	user-select: none
 	font-size: 17px
+	+borderRadius
 	+SanFranciscoLight
 	+transition
+
+.btn-small
+	border: none
+	text-align: center
+
+	padding: 13px 23px
+	font-size: 17px
+
+	background-color: $mainColor
+	color: $white
+
+	cursor: pointer
+	line-height: 1.4em
+
+	+borderRadius
+	+transition
+
+	&:hover
+		background-color: #e2ab74
+
+.btn-small-round
+	border: none
+	text-align: center
+	border-radius: 100px
+
+	padding: 13px 23px
+	font-size: 17px
+
+	background-color: $mainColor
+	color: $white
+
+	cursor: pointer
+	line-height: 1.4em
+
+	+transition
+
+	&:hover
+		background-color: #e2ab74
 
 // input
 .input
@@ -220,8 +258,8 @@ p
 		border: 1px solid $mainColor
 
 	&-img
-		width: 35px
-		height: 35px
+		width: 40px
+		height: 40px
 
 		+backgroundSetting
 		border-radius: 50%

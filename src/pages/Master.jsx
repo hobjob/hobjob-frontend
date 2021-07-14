@@ -5,6 +5,8 @@ import {fetchMasterById} from "../redux/actions/masters";
 import {fetchCategories} from "../redux/actions/categories";
 import {addCourseCart} from "../redux/actions/cart";
 
+import {Err404} from "../pages/";
+
 import {
     MasterCartInfo,
     MasterCartInfoLoader,
@@ -64,129 +66,119 @@ const Master = ({
     };
 
     return (
-        <section className="master">
-            <div className="container">
-                <div className="master-wrapper">
-                    {isLoadedById && isLoadedAllCategories ? (
-                        <MasterCartInfo {...itemById} categories={categories} />
-                    ) : (
-                        <MasterCartInfoLoader />
-                    )}
+        <>
+            {isLoadedById && isLoadedAllCategories ? (
+                Object.keys(itemById).length ? (
+                    <section className="master">
+                        <div className="container">
+                            <div className="master-wrapper">
+                                <MasterCartInfo
+                                    {...itemById}
+                                    categories={categories}
+                                />
 
-                    {isLoadedById && isLoadedAllCategories ? (
-                        itemById.courses ? (
-                            <div className="master-course">
-                                <h2 className="title__mb master-course__title">
-                                    Курсы
-                                </h2>
+                                {itemById.courses && itemById.courses.length ? (
+                                    <div className="master-course">
+                                        <h2 className="title__mb master-course__title">
+                                            Курсы
+                                        </h2>
 
-                                <div className="master-course-block-wrapper">
-                                    {itemById.courses.map((item, index) => (
-                                        <ShopBlock
-                                            {...item}
-                                            onClickAddCourseCart={
-                                                onClickAddCourseCart
-                                            }
-                                            checkDeclension={checkDeclension(
-                                                item.transitTime,
-                                                ["час", "часа", "часов"]
-                                            )}
-                                            cartItems={cart}
-                                            key={`shop-master-block-${index}`}
-                                            masters={{
-                                                [itemById._id]: itemById,
-                                            }}
-                                            categories={categories}
-                                        />
-                                    ))}
-                                </div>
-                            </div>
-                        ) : null
-                    ) : (
-                        <div className="master-course">
-                            <h2 className="title__mb master-course__title">
-                                Курсы
-                            </h2>
-                            <div className="master-course-block-wrapper">
-                                <Loader />
-                            </div>
-                        </div>
-                    )}
-
-                    {isLoadedById && isLoadedAllCategories ? (
-                        itemById.posts ? (
-                            <div className="master-magazine">
-                                <h2 className="title__mb master-magazine__title">
-                                    Журнал
-                                </h2>
-
-                                <div className="master-magazine-block-wrapper">
-                                    <>
-                                        {window.innerWidth > 900 ? (
-                                            <MagazineBlockBig
-                                                {...itemById.posts[0]}
-                                                masters={{
-                                                    [itemById._id]: itemById,
-                                                }}
-                                                categories={categories}
-                                            />
-                                        ) : null}
-
-                                        <div className="magazine-block-wrapper">
-                                            {itemById.posts.map((item, index) =>
-                                                window.innerWidth > 900 ? (
-                                                    index !== 0 ? (
-                                                        <MagazineBlock
-                                                            {...item}
-                                                            masters={{
-                                                                [itemById._id]:
-                                                                    itemById,
-                                                            }}
-                                                            categories={
-                                                                categories
-                                                            }
-                                                            key={`master-magazine-block-${index}`}
-                                                        />
-                                                    ) : null
-                                                ) : (
-                                                    <MagazineBlock
+                                        <div className="master-course-block-wrapper">
+                                            {itemById.courses.map(
+                                                (item, index) => (
+                                                    <ShopBlock
                                                         {...item}
+                                                        onClickAddCourseCart={
+                                                            onClickAddCourseCart
+                                                        }
+                                                        checkDeclension={checkDeclension(
+                                                            item.transitTime,
+                                                            [
+                                                                "час",
+                                                                "часа",
+                                                                "часов",
+                                                            ]
+                                                        )}
+                                                        cartItems={cart}
+                                                        key={`shop-master-block-${index}`}
                                                         masters={{
                                                             [itemById._id]:
                                                                 itemById,
                                                         }}
                                                         categories={categories}
-                                                        key={`master-magazine-block-${index}`}
                                                     />
                                                 )
                                             )}
                                         </div>
-                                    </>
-                                </div>
-                            </div>
-                        ) : null
-                    ) : (
-                        <div className="master-magazine">
-                            <h2 className="title__mb master-magazine__title">
-                                Журнал
-                            </h2>
-                            <div className="master-magazine-block-wrapper">
-                                <MagazineBlockBigLoader />
-                                <div className="magazine-block-wrapper">
-                                    {Array(3)
-                                        .fill(0)
-                                        .map((_, index) => (
-                                            <MagazineBlockLoader
-                                                key={`magazine-block-loader-${index}`}
-                                            />
-                                        ))}
-                                </div>
+                                    </div>
+                                ) : null}
+
+                                {itemById.posts && itemById.posts.length ? (
+                                    <div className="master-magazine">
+                                        <h2 className="title__mb master-magazine__title">
+                                            Журнал
+                                        </h2>
+
+                                        <div className="master-magazine-block-wrapper">
+                                            <>
+                                                {window.innerWidth > 900 ? (
+                                                    <MagazineBlockBig
+                                                        {...itemById.posts[0]}
+                                                        masters={{
+                                                            [itemById._id]:
+                                                                itemById,
+                                                        }}
+                                                        categories={categories}
+                                                    />
+                                                ) : null}
+
+                                                <div className="magazine-block-wrapper">
+                                                    {itemById.posts.map(
+                                                        (item, index) =>
+                                                            window.innerWidth >
+                                                            900 ? (
+                                                                index !== 0 ? (
+                                                                    <MagazineBlock
+                                                                        {...item}
+                                                                        masters={{
+                                                                            [itemById._id]:
+                                                                                itemById,
+                                                                        }}
+                                                                        categories={
+                                                                            categories
+                                                                        }
+                                                                        key={`master-magazine-block-${index}`}
+                                                                    />
+                                                                ) : null
+                                                            ) : (
+                                                                <MagazineBlock
+                                                                    {...item}
+                                                                    masters={{
+                                                                        [itemById._id]:
+                                                                            itemById,
+                                                                    }}
+                                                                    categories={
+                                                                        categories
+                                                                    }
+                                                                    key={`master-magazine-block-${index}`}
+                                                                />
+                                                            )
+                                                    )}
+                                                </div>
+                                            </>
+                                        </div>
+                                    </div>
+                                ) : null}
                             </div>
                         </div>
-                    )}
-                </div>
-            </div>
-        </section>
+                    </section>
+                ) : (
+                    <Err404 />
+                )
+            ) : (
+                <Loader />
+            )}
+        </>
     );
 };
 

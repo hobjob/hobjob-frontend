@@ -60,7 +60,7 @@ const MastersAbout = () => {
                 <div className="masters-about-wrapper">
                     <Link
                         to="/"
-                        className={`btn masters-about__btn ${
+                        className={`btn-small-round masters-about__btn ${
                             visibleButton ? "active" : ""
                         }`}
                     >

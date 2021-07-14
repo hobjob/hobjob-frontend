@@ -84,6 +84,16 @@ const courses = (state = initialState, action) => {
 	}
 
 	if (action.type === "SET_COURSES_FILTERS_SALE") {
+		if (action.payload === state.filters.sale) {
+			return {
+				...state,
+				filters: {
+					...state.filters,
+					sale: null
+				},
+			}
+		}
+
 		return {
 			...state,
 			filters: {

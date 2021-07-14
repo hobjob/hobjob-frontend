@@ -20,9 +20,9 @@ const Pro = () => {
         <section className="pro">
             <div className="container">
                 <div className="pro-wrapper">
-					<Link
-						to="/"
-                        className={`btn pro__btn ${
+                    <Link
+                        to="/"
+                        className={`btn-small-round pro__btn ${
                             visibleButton ? "active" : ""
                         }`}
                     >
@@ -31,8 +31,8 @@ const Pro = () => {
                     <div className="pro-main">
                         <div className="pro-main-text">
                             <h2 className="pro-main-text__title">
-                                Pro аккаунт HobJob - участие в лучшем
-                                творческом клубе
+                                Pro аккаунт HobJob - участие в лучшем творческом
+                                клубе
                             </h2>
                             <p className="description__mb pro-main-text__description">
                                 Сделав свой аккаунт Pro, вы получите скрытые
@@ -44,9 +44,7 @@ const Pro = () => {
                                 Годовая подписка
                             </p>
                             <div className="pro-main-text-price">
-                                <p className="pro-main-text__price">
-                                    3 500 ₽
-                                </p>
+                                <p className="pro-main-text__price">3 500 ₽</p>
                                 <p className="pro-main-text__subprice">
                                     5 000 ₽
                                 </p>

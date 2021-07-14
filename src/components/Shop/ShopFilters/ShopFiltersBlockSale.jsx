@@ -20,10 +20,10 @@ const ShopFiltersBlockSale = () => {
             <div className="shop-filters-col-block">
                 <div className="shop-filters-col-block-checkbox">
                     <input
-                        type="radio"
+                        type="checkbox"
                         className="checkbox"
                         id="shop-filters-col-block-checkbox-sale-yes"
-                        name="sale"
+                        name="sale-yes"
                         checked={filters.sale === "true" ? true : false}
                         onChange={() => setStatusSale("true")}
                     />
@@ -36,10 +36,10 @@ const ShopFiltersBlockSale = () => {
                 </div>
                 <div className="shop-filters-col-block-checkbox">
                     <input
-                        type="radio"
+                        type="checkbox"
                         className="checkbox"
                         id="shop-filters-col-block-checkbox-sale-no"
-                        name="sale"
+                        name="sale-no"
                         checked={filters.sale === "false" ? true : false}
                         onChange={() => setStatusSale("false")}
                     />

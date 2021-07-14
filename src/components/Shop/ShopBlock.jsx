@@ -36,6 +36,7 @@ const ShopBlock = React.memo(
                 master: {
                     _id: masterId,
                     name: masters[masterId].name,
+                    surname: masters[masterId].surname,
                 },
                 category: {
                     transfer: categories[category].transfer,
@@ -84,12 +85,9 @@ const ShopBlock = React.memo(
                                 {checkDeclension}
                             </span>
                             {categories[category] ? (
-                                <a
-                                    href={`/shop/?category=${categories[category].transfer}`}
-                                    className="shop-block-top-text__category"
-                                >
+                                <span className="shop-block-top-text__category">
                                     {categories[category].title}
-                                </a>
+                                </span>
                             ) : null}
                         </div>
                     </div>

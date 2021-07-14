@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {fetchPostsById} from "../redux/actions/posts";
 import {fetchCategories} from "../redux/actions/categories";
+import {fetchMasters} from "../redux/actions/masters";
 
 import {Err404} from "../pages/";
 
@@ -11,7 +12,7 @@ import {
     MagazinePostPageBlock,
     MagazinePostPageNext,
     MagazinePostPageEnd,
-    MagazinePostPageLoader,
+    Loader,
 } from "../components/";
 
 const MagazinePostPage = ({
@@ -26,10 +27,16 @@ const MagazinePostPage = ({
     const isLoadedAllCategories = useSelector(
         ({categories}) => categories.isLoadedAllCategories
     );
+    const masters = useSelector(({masters}) => masters.items);
+    const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
 
     React.useEffect(() => {
         if (!Object.keys(categories).length) {
             dispatch(fetchCategories());
+		}
+		
+		if (!Object.keys(masters).length) {
+            dispatch(fetchMasters());
         }
     }, []);
 
@@ -41,14 +48,15 @@ const MagazinePostPage = ({
 
     return (
         <>
-            {isLoadedByIdPosts && isLoadedAllCategories ? (
+            {isLoadedByIdPosts && isLoadedAllCategories && isLoadedMasters ? (
                 itemById ? (
                     <section className="magazine-post-page">
                         <div className="container">
                             <div className="magazine-post-page-wrapper">
                                 <MagazinePostPageCover
                                     {...itemById}
-                                    categories={categories}
+									categories={categories}
+									masters={masters}
                                 />
 
                                 <div className="magazine-post-page-block-wrapper">
@@ -74,7 +82,7 @@ const MagazinePostPage = ({
                 <section className="magazine-post-page">
                     <div className="container">
                         <div className="magazine-post-page-wrapper">
-                            <MagazinePostPageLoader />
+                            <Loader />
                         </div>
                     </div>
                 </section>

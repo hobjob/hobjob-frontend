@@ -34,7 +34,7 @@ const ShopFiltersBlockTimes = () => {
                     className="checkbox__label"
                     htmlFor="shop-filters-col-block-checkbox-less-time-12"
                 >
-                    <span>Меньше 12 часов</span>
+                    <span>Менее 12 часов</span>
                 </label>
             </div>
             <div className="shop-filters-col-block-checkbox">

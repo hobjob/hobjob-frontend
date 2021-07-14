@@ -10,6 +10,7 @@ const MagazineBlockBig = ({
     image,
     date,
     title,
+    description,
     masterId,
     views,
     category,
@@ -62,12 +63,14 @@ const MagazineBlockBig = ({
                         </span>
                     </div>
 
-                    <a
-                        href={`/magazine/?category=${categories[category].transfer}`}
-                        className="magazine-block-big-text-top__hashtag"
-                    >
-                        {categories[category].title}
-                    </a>
+                    {categories[category] ? (
+                        <a
+                            href={`/magazine/?category=${categories[category].transfer}`}
+                            className="magazine-block-big-text-top__category"
+                        >
+                            {categories[category].title}
+                        </a>
+                    ) : null}
                 </div>
                 <Link
                     to={`/magazine/post/${_id}`}
@@ -76,11 +79,24 @@ const MagazineBlockBig = ({
                     {title}
                 </Link>
 
+                <p
+                    className="magazine-block-big-text__description"
+                    dangerouslySetInnerHTML={{__html: description}}
+                ></p>
+
                 <Link
                     to={`/master/${masterId}`}
-                    className="magazine-block-big-text__auth"
+                    className="magazine-block-big-text-auth"
                 >
-                    {masters[masterId].name} {masters[masterId].surname}
+                    <div
+                        className="magazine-block-big-text-auth-avatar"
+                        style={{
+                            backgroundImage: `url(${process.env.REACT_APP_DOMEN}/${masters[masterId].avatar})`,
+                        }}
+                    ></div>
+                    <span className="magazine-block-big-text-auth__name">
+                        {masters[masterId].name} {masters[masterId].surname}
+                    </span>
                 </Link>
             </div>
         </div>

@@ -11,9 +11,8 @@ const MagazinePostPageBlock = ({title, description, image}) => {
                     <p
                         className="magazine-post-page-block-text__description"
                         key={`magazine-post-page-block-text__description-${index}`}
-                    >
-                        {item}
-                    </p>
+                        dangerouslySetInnerHTML={{__html: item}}
+                    ></p>
                 ))}
             </div>
             <div
