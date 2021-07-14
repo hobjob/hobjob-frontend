@@ -1,4 +1,4 @@
-import axios from 'axios';
+import $api from '../../http/';
 
 export const fetchPosts = (query = null) => (dispatch) => {
 	dispatch({
@@ -6,7 +6,7 @@ export const fetchPosts = (query = null) => (dispatch) => {
 		payload: false,
 	})
 
-	axios.get(`${process.env.REACT_APP_API_DOMEN}/posts?${query !== null ? query : ""}`).then(({ data }) => {
+	$api.get(`/posts?${query !== null ? query : ""}`).then(({ data }) => {
 		dispatch(setPosts(data))
 	})
 }
@@ -22,7 +22,7 @@ export const fetchPostsById = (id) => (dispatch) => {
 		payload: false,
 	})
 
-	axios.get(`${process.env.REACT_APP_API_DOMEN}/posts/${id}`).then(({ data }) => {
+	$api.get(`/posts/${id}`).then(({ data }) => {
 		dispatch(setPostsById(data))
 	})
 }

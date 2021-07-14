@@ -1,13 +1,13 @@
-import axios from 'axios'
+import $api from '../../http/';
 
 export const fetchMasters = () => (dispatch) => {
-	axios.get(`${process.env.REACT_APP_API_DOMEN}/masters`).then(({ data }) => {
+	$api.get(`/masters`).then(({ data }) => {
 		dispatch(setMasters(data))
 	})
 }
 
 export const fetchMasterById = (id) => (dispatch) => {
-	axios.get(`${process.env.REACT_APP_API_DOMEN}/masters/${id}`).then(({ data }) => {
+	$api.get(`/masters/${id}`).then(({ data }) => {
 		dispatch(setMasterById(data))
 	})
 }

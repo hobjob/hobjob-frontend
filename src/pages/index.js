@@ -29,3 +29,9 @@ export { default as Err404 } from "./Err404"
 
 // Login
 export { default as Login } from "./Login"
+
+// Register
+export { default as Register } from "./Register"
+
+// Cabinet
+export { default as Cabinet } from "./Cabinet"

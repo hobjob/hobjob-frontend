@@ -8,6 +8,8 @@ import {fetchCategories} from "../redux/actions/categories";
 import {fetchMasters} from "../redux/actions/masters";
 
 import {
+    Header,
+    Footer,
     MagazineBlockBig,
     MagazineBlock,
     MagazineBlockBigLoader,

@@ -129,56 +129,6 @@ const Header = () => {
                                 Корзина ({Object.keys(cart).length})
                             </NavLink>
 
-                            {/* <div className="header-user">
-                            <div className="header-user-avatar-arrow">
-                                <div
-                                    className="header-user-avatar"
-                                    style="
-                                        background-image: url(https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80);
-                                    "
-                                ></div>
-                                <div className="header-user-arrow">
-                                    <svg
-                                        width="18"
-                                        height="10"
-                                        viewBox="0 0 18 10"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <line
-                                            x1="0.353553"
-                                            y1="0.646447"
-                                            x2="8.83883"
-                                            y2="9.13173"
-                                            stroke="#000"
-                                        />
-                                        <line
-                                            x1="8.657"
-                                            y1="8.6362"
-                                            x2="17.1423"
-                                            y2="0.636265"
-                                            stroke="#000"
-                                        />
-                                    </svg>
-                                </div>
-                            </div>
-
-                            <div className="header-user-menu">
-                                <Link to="#" className="header-user-menu__link"
-                                    >Мои курсы</Link
-                                >
-                                <Link to="#" className="header-user-menu__link"
-                                    >Настройки</Link
-                                >
-                                <Link to="#" className="header-user-menu__link"
-                                    >Партнёрская программа</Link
-                                >
-                                <Link to="#" className="header-user-menu__link"
-                                    >Выйти</Link
-                                >
-                            </div>
-                        </div> */}
-
                             <Link to="/login" className="header-login__link">
                                 Войти
                                 <svg

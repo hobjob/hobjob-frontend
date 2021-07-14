@@ -1,5 +1,7 @@
 // All
 export { default as Loader } from "./All/Loader"
+export { default as RenderInput } from "./All/RenderInput"
+export { default as RenderCheckbox } from "./All/RenderCheckbox"
 
 // Header
 export { default as Header } from "./Header/Header"
@@ -27,7 +29,7 @@ export { default as ShopFilters } from "./Shop/ShopFilters/ShopFilters"
 export { default as ShopFiltersCategories } from "./Shop/ShopFilters/ShopFiltersCategories"
 export { default as ShopFiltersBlockSale } from "./Shop/ShopFilters/ShopFiltersBlockSale"
 export { default as ShopFiltersBlockMasters } from "./Shop/ShopFilters/ShopFiltersBlockMasters"
-export { default as ShopFiltersBlockTimes } from "./Shop/ShopFilters/ShopFiltersBlockTimes" 
+export { default as ShopFiltersBlockTimes } from "./Shop/ShopFilters/ShopFiltersBlockTimes"
 
 // About
 export { default as AboutSection } from "./About/AboutSection"
@@ -55,6 +57,12 @@ export { default as MagazinePostPageCover } from "./Magazine/PostPage/MagazinePo
 export { default as MagazinePostPageBlock } from "./Magazine/PostPage/MagazinePostPageBlock"
 export { default as MagazinePostPageNext } from "./Magazine/PostPage/MagazinePostPageNext"
 export { default as MagazinePostPageEnd } from "./Magazine/PostPage/MagazinePostPageEnd"
+
+// Login
+export { default as LoginForm } from "./Login/LoginForm"
+
+// Register
+export { default as RegisterForm } from "./Register/RegisterForm"
 
 // Footer
 export { default as Footer } from "./Footer/Footer"

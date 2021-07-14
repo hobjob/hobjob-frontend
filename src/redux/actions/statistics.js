@@ -1,7 +1,7 @@
-import axios from 'axios';
+import $api from '../../http/';
 
 export const fetchStatistics = () => (dispatch) => {
-	axios.get(`${process.env.REACT_APP_API_DOMEN}/statistics`).then(({ data }) => {
+	$api.get(`/statistics`).then(({ data }) => {
 		dispatch(setStatistics(data))
 	})
 }

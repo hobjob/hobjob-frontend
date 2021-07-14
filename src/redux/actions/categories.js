@@ -1,7 +1,7 @@
-import axios from 'axios';
+import $api from '../../http/';
 
 export const fetchCategories = () => (dispatch) => {
-	axios.get(`${process.env.REACT_APP_API_DOMEN}/categories`).then(({ data }) => {
+	$api.get(`/categories`).then(({ data }) => {
 		dispatch(setCategories(data))
 	})
 }

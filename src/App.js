@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import { Header, Footer } from './components/';
 
-import { Home, Cart, Shop, Magazine, MagazinePostPage, Master, MastersAbout, Pro, About, Err404, Login } from './pages/';
+import { Home, Cart, Shop, Magazine, MagazinePostPage, Master, MastersAbout, Pro, About, Err404, Login, Register, Cabinet } from './pages/';
 
 dotenv.config()
 
@@ -28,6 +28,9 @@ const App = () => {
 					<Route path="/about" render={() => <About />} exact />
 
 					<Route path="/login" render={() => <Login />} exact />
+					<Route path="/register" render={() => <Register />} exact />
+
+					<Route path="/cabinet" render={() => <Cabinet />} exact />
 
 					<Route render={() => <Err404 />} exact />
 				</Switch>

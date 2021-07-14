@@ -154,77 +154,57 @@ p
 
 // input
 .input
+	width: 100%
 	position: relative
 
 	&__field
+		resize: none
 		outline: none
-		font-size: 18px
-		padding: 18px 0
+		font-size: 21px
+		padding: 15px 0
 		display: block
 		width: 100%
 		border: none
 		border-bottom: 1px solid $gray
+		line-height: 1.4em
+		+transition
+		+SanFranciscoLight
+
+		&:focus ~ label,
+		&:valid ~ label
+			top: -15px
+			font-size: 14px
+
+		&.error
+			border-bottom: 1px solid $red
 
 	&__label
 		color: $gray
 		font-size: 18px
 		position: absolute
 		pointer-events: none
-		top: 15px
+		top: 10px
 		+transition
 
-	&__field
-		&:focus ~ label,
-		&:valid ~ label
-			top: -10px
-			font-size: 14px
-			color: $mainColor
+		&.error
+			color: $red
 
-	&__span
-		position: relative
-		display: block
-		width: 100%
-		&:before,
-		&:after
-			content: ''
-			height: 2px
-			width: 0
-			bottom: 0
-			position: absolute
-			background-color: $mainColor
-			+transition
-
-		&:before
-			left: 50%
-
-		&:after
-			right: 50%
-
-		&__error
-			height: 2px
-			width: 100%
-			bottom: 0
-			position: absolute
-			background-color: $red
-			+transition
-
-	&__field:focus
-		~ .input__span:before,
-		~ .input__span:after
-			width: 50%
-
-	&__icon
+	&__state
+		user-select: none
+		cursor: pointer
+		font-size: 15px
+		color: $gray
 		position: absolute
 		right: 0
 		top: 50%
 		transform: translateY(-50%)
-		fill: #b8b7b7
-		+transition
 
-	&__field
-		&:focus ~ .input__icon,
-		&:valid ~ .input__icon
-			fill: #dd9e5e
+	&__error
+		display: block
+		margin-top: 10px
+		font-size: 15px
+		color: $red
+		+transition
 
 // checkbox 
 .checkbox
@@ -232,7 +212,7 @@ p
 	z-index: -1
 	opacity: 0
 
-	&+label
+	&__label
 		cursor: pointer
 		display: inline-flex
 		align-items: center
@@ -240,7 +220,10 @@ p
 		font-size: 16px
 		+transition
 
-	&+label::before
+		&.error
+			color: $red
+
+	&__label::before
 		content: ''
 		display: inline-block
 		min-width: 19px
@@ -252,6 +235,9 @@ p
 		background-size: 50% 50%
 		margin-right: 15px
 		+transition
+
+	&__label.error::before
+		border: 1px solid $red
 
 	&:checked+label::before
 		background-image: url('data:image/svg+xml,%3Csvg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cline x1="0.707107" y1="6.55614" x2="8.07553" y2="13.9246" stroke="%23DD9E5E" stroke-width="2"/%3E%3Cline x1="6.6613" y1="13.9245" x2="19.2929" y2="1.2929" stroke="%23DD9E5E" stroke-width="2"/%3E%3C/svg%3E')

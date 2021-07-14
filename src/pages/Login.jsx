@@ -1,42 +1,25 @@
 import React from "react";
+import {useDispatch} from "react-redux";
+
+import {LoginForm} from "../components/";
+
+import { sendLogin } from "../redux/actions/login";
 
 const Login = () => {
-    return (
-        <section class="reglog">
-            <div class="container">
-                <div class="reglog-wrapper">
-                    <div class="reglog-block">
-                        <div className="reglog-block-title">
-                            <h2 class="reglog-block__title">Войти</h2>
-                            <a href="#" class="reglog-block__subtitle">
-                                Зарегистрироваться
-                            </a>
-                        </div>
-                        <div class="input reglog-block-input">
-                            <input
-                                name="name"
-                                type="text"
-                                class="input__field"
-                                required
-                            />
-                            <span class="input__span"></span>
-                            <label class="input__label">Email</label>
-                        </div>
-                        <div class="input reglog-block-input">
-                            <input
-                                name="name"
-                                type="text"
-                                class="input__field"
-                                required
-                            />
-                            <span class="input__span"></span>
-                            <label class="input__label">Пароль</label>
-                        </div>
-                        <button class="btn reglog-block__btn">Войти</button>
-                    </div>
+    const dispatch = useDispatch();
 
-                    <div class="reglog-bottom">
-                        <a href="#" class="reglog-bottom__link">
+    const onSubmit = ({email, password}) => {
+        dispatch(sendLogin({email, password}));
+    };
+
+    return (
+        <section className="reglog">
+            <div className="container">
+                <div className="reglog-wrapper">
+                    <LoginForm onSubmit={onSubmit} />
+
+                    <div className="reglog-bottom">
+                        <a href="#" className="reglog-bottom__link">
                             Забыли пароль?
                         </a>
                     </div>
