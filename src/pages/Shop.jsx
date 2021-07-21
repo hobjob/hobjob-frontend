@@ -2,6 +2,7 @@ import React from "react";
 import {useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import queryString from "query-string";
+import {Helmet} from "react-helmet";
 
 import {fetchCourses, setCoursesFilters} from "../redux/actions/courses";
 import {fetchCategories} from "../redux/actions/categories";
@@ -161,46 +162,56 @@ const Shop = ({
     };
 
     return (
-        <section className="shop">
-            <div className="container">
-                <div className="shop-wrapper">
-                    <h2 className="title__mb shop__title">Магазин курсов</h2>
+        <>
+            <Helmet>
+                <title>Магазин курсов - HobJob</title>
+            </Helmet>
+            <section className="shop">
+                <div className="container">
+                    <div className="shop-wrapper">
+                        <h2 className="title__mb shop__title">
+                            Магазин курсов
+                            <span>
+                                ({isLoadedAllCourses ? items.length : "-"})
+                            </span>
+                        </h2>
 
-                    <ShopFiltersTop />
+                        <ShopFiltersTop />
 
-                    <ShopFiltersCategories />
+                        <ShopFiltersCategories />
 
-                    {isLoadedAllCourses &&
-                    isLoadedMasters &&
-                    isLoadedAllCategories ? (
-                        items.length ? (
-                            <div className="shop-block-wrapper">
-                                {items.map((item, index) => (
-                                    <ShopBlock
-                                        {...item}
-                                        onClickAddCourseCart={
-                                            onClickAddCourseCart
-                                        }
-                                        checkDeclension={checkDeclension(
-                                            item.transitTime,
-                                            ["час", "часа", "часов"]
-                                        )}
-                                        cartItems={cart}
-                                        key={`shop-block-${index}`}
-                                        masters={masters}
-                                        categories={categories}
-                                    />
-                                ))}
-                            </div>
+                        {isLoadedAllCourses &&
+                        isLoadedMasters &&
+                        isLoadedAllCategories ? (
+                            items.length ? (
+                                <div className="shop-block-wrapper">
+                                    {items.map((item, index) => (
+                                        <ShopBlock
+                                            {...item}
+                                            onClickAddCourseCart={
+                                                onClickAddCourseCart
+                                            }
+                                            checkDeclension={checkDeclension(
+                                                item.transitTime,
+                                                ["час", "часа", "часов"]
+                                            )}
+                                            cartItems={cart}
+                                            key={`shop-block-${index}`}
+                                            masters={masters}
+                                            categories={categories}
+                                        />
+                                    ))}
+                                </div>
+                            ) : (
+                                <ShopNotFound />
+                            )
                         ) : (
-                            <ShopNotFound />
-                        )
-                    ) : (
-                        <Loader />
-                    )}
+                            <Loader />
+                        )}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 };
 

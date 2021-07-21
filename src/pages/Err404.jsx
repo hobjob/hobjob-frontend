@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {Helmet} from "react-helmet";
 
 import { ShopSection } from "../components/";
 
@@ -10,6 +11,9 @@ const Err404 = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Страница не найдена - HobJob</title>
+            </Helmet>
             <section className="err404">
                 <div className="container">
                     <div className="err404-wrapper">
@@ -32,8 +36,12 @@ const Err404 = () => {
                                     />
                                 </svg>
                             </Link>
-						</div>
-						<img src={`${process.env.REACT_APP_DOMEN}/all/404.svg`} alt="404" className="err404__img" />
+                        </div>
+                        <img
+                            src={`${process.env.REACT_APP_DOMEN}/all/404.svg`}
+                            alt="404"
+                            className="err404__img"
+                        />
                     </div>
                 </div>
             </section>

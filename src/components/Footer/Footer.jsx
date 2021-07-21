@@ -161,18 +161,17 @@ const Footer = () => {
                     </div>
                     <div className="footer-block-bottom">
                         <div className="footer-block-bottom-left">
+                            <span className="footer-block-bottom__span">
+                                © HobJob {new Date().getFullYear()}
+                            </span>
+                        </div>
+                        <div className="footer-block-bottom-right">
                             <Link to="#" className="footer-block-bottom__link">
                                 Политика конфиденциальности
                             </Link>
                             <Link to="#" className="footer-block-bottom__link">
                                 Публичная оферта
                             </Link>
-                        </div>
-
-                        <div className="footer-block-bottom-right">
-                            <span className="footer-block-bottom__span">
-                                © HobJob {new Date().getFullYear()}
-                            </span>
                         </div>
                     </div>
                 </div>

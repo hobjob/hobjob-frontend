@@ -7,6 +7,11 @@ export const fetchMasters = () => (dispatch) => {
 }
 
 export const fetchMasterById = (id) => (dispatch) => {
+	dispatch({
+		type: "SET_LOADED_BY_ID",
+		payload: false
+	})
+
 	$api.get(`/masters/${id}`).then(({ data }) => {
 		dispatch(setMasterById(data))
 	})

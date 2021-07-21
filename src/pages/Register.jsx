@@ -1,5 +1,6 @@
 import React from "react";
 import {useDispatch} from "react-redux";
+import {Helmet} from "react-helmet";
 
 import {RegisterForm} from "../components/";
 
@@ -12,14 +13,19 @@ const Register = () => {
         dispatch(sendRegister({name, email, password}));
     };
 
-    return (
-        <section className="reglog">
-            <div className="container">
-                <div className="reglog-wrapper">
-                    <RegisterForm onSubmit={onSubmit} />
+	return (
+        <>
+            <Helmet>
+                <title>Регистрация аккаунта - HobJob</title>
+            </Helmet>
+            <section className="reglog">
+                <div className="container">
+                    <div className="reglog-wrapper">
+                        <RegisterForm onSubmit={onSubmit} />
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 };
 

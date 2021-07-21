@@ -1,4 +1,5 @@
 import React from "react";
+import {Helmet} from "react-helmet";
 
 import {
     HomeMainSection,
@@ -15,15 +16,18 @@ const Home = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Главная - HobJob</title>
+            </Helmet>
             <HomeMainSection />
 
             <ShopSection title="Учитесь на практике" />
 
             <CategoriesSection />
 
-			<AboutSection />
-			
-			<MastersSection />
+            <AboutSection />
+
+            <MastersSection />
         </>
     );
 };

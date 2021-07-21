@@ -1,9 +1,10 @@
 import React from "react";
 import {useDispatch} from "react-redux";
+import {Helmet} from "react-helmet";
 
 import {LoginForm} from "../components/";
 
-import { sendLogin } from "../redux/actions/login";
+import {sendLogin} from "../redux/actions/login";
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -13,19 +14,24 @@ const Login = () => {
     };
 
     return (
-        <section className="reglog">
-            <div className="container">
-                <div className="reglog-wrapper">
-                    <LoginForm onSubmit={onSubmit} />
+        <>
+            <Helmet>
+                <title>Вход в аккаунт - HobJob</title>
+            </Helmet>
+            <section className="reglog">
+                <div className="container">
+                    <div className="reglog-wrapper">
+                        <LoginForm onSubmit={onSubmit} />
 
-                    <div className="reglog-bottom">
-                        <a href="#" className="reglog-bottom__link">
-                            Забыли пароль?
-                        </a>
+                        <div className="reglog-bottom">
+                            <a href="#" className="reglog-bottom__link">
+                                Забыли пароль?
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 };
 

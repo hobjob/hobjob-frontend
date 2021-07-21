@@ -2,6 +2,7 @@ import React from "react";
 import {useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import queryString from "query-string";
+import {Helmet} from "react-helmet";
 
 import {fetchPosts, setPostsFilters} from "../redux/actions/posts";
 import {fetchCategories} from "../redux/actions/categories";
@@ -85,73 +86,83 @@ const Magazine = ({
 
         history.push(`/magazine/?${query}`);
 
-		console.log(query);
+        console.log(query);
         dispatch(fetchPosts(query));
     }, [Object.keys(filters.categories).length]);
 
     return (
-        <section className="magazine">
-            <div className="container">
-                <div className="magazine-wrapper">
-                    <h2 className="title__mb magazine__title">Журнал</h2>
+        <>
+            <Helmet>
+                <title>Журнал - HobJob</title>
+            </Helmet>
+            <section className="magazine">
+                <div className="container">
+                    <div className="magazine-wrapper">
+                        <h2 className="title__mb magazine__title">
+                            Журнал
+                            <span>
+                                ({isLoadedAllPosts ? items.length : "-"})
+                            </span>
+                        </h2>
 
-                    <MagazineFiltersCategories />
+                        <MagazineFiltersCategories />
 
-                    {isLoadedAllPosts &&
-                    isLoadedAllCategories &&
-                    isLoadedMasters ? (
-                        items.length ? (
-                            <>
-                                {window.innerWidth > 900 ? (
-                                    <MagazineBlockBig
-                                        {...items[0]}
-                                        masters={masters}
-                                        categories={categories}
-                                    />
-                                ) : null}
+                        {isLoadedAllPosts &&
+                        isLoadedAllCategories &&
+                        isLoadedMasters ? (
+                            items.length ? (
+                                <>
+                                    {window.innerWidth > 900 ? (
+                                        <MagazineBlockBig
+                                            {...items[0]}
+                                            masters={masters}
+                                            categories={categories}
+                                        />
+                                    ) : null}
 
-                                <div className="magazine-block-wrapper">
-                                    {items.map((item, index) =>
-                                        window.innerWidth > 900 ? (
-                                            index !== 0 ? (
+                                    <div className="magazine-block-wrapper">
+                                        {items.map((item, index) =>
+                                            window.innerWidth > 900 ? (
+                                                index !== 0 ? (
+                                                    <MagazineBlock
+                                                        {...item}
+                                                        masters={masters}
+                                                        categories={categories}
+                                                        key={`magazine-block-${index}`}
+                                                    />
+                                                ) : null
+                                            ) : (
                                                 <MagazineBlock
                                                     {...item}
                                                     masters={masters}
                                                     categories={categories}
                                                     key={`magazine-block-${index}`}
                                                 />
-                                            ) : null
-                                        ) : (
-                                            <MagazineBlock
-                                                {...item}
-                                                masters={masters}
-                                                categories={categories}
-                                                key={`magazine-block-${index}`}
+                                            )
+                                        )}
+                                    </div>
+                                </>
+                            ) : (
+                                <MagazineNotFound />
+                            )
+                        ) : (
+                            <>
+                                <MagazineBlockBigLoader />
+                                <div className="magazine-block-wrapper">
+                                    {Array(3)
+                                        .fill(0)
+                                        .map((_, index) => (
+                                            <MagazineBlockLoader
+                                                key={`magazine-block-loader-${index}`}
                                             />
-                                        )
-                                    )}
+                                        ))}
                                 </div>
                             </>
-                        ) : (
-                            <MagazineNotFound />
-                        )
-                    ) : (
-                        <>
-                            <MagazineBlockBigLoader />
-                            <div className="magazine-block-wrapper">
-                                {Array(3)
-                                    .fill(0)
-                                    .map((_, index) => (
-                                        <MagazineBlockLoader
-                                            key={`magazine-block-loader-${index}`}
-                                        />
-                                    ))}
-                            </div>
-                        </>
-                    )}
+                        )}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 };
 

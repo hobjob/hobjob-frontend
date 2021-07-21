@@ -29,6 +29,13 @@ const masters = (state = initialState, action) => {
 		}
 	}
 
+	if (action.type === "SET_LOADED_BY_ID") {
+		return {
+			...state,
+			isLoadedById: action.payload,
+		}
+	}
+
 	return state
 }
 

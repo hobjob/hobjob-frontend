@@ -25,9 +25,19 @@ h1,h2,h3,h4,h5,h6
 .title
 	font-size: 48px
 
+	& span
+		padding-left: 15px
+		font-size: 28px
+		color: $gray
+
 .title__mb
 	font-size: 48px
 	margin-bottom: 100px
+
+	& span
+		padding-left: 15px
+		font-size: 28px
+		color: $gray
 
 // subtitle
 .subtitle
@@ -188,6 +198,14 @@ p
 
 		&.error
 			color: $red
+	
+	&__icon
+		position: absolute
+		right: 0
+		top: 50%
+		transform: translateY(-50%)
+		fill: #b8b7b7
+		+transition
 
 	&__state
 		user-select: none

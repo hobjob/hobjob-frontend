@@ -1,6 +1,7 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import NumberFormat from "react-number-format";
+import {Helmet} from "react-helmet";
 
 import {fetchStatistics} from "../redux/actions/statistics";
 
@@ -20,7 +21,10 @@ const About = () => {
     }, []);
 
     return (
-        <>
+		<>
+			<Helmet>
+				<title>О нас - HobJob</title>
+			</Helmet>
             <section className="about">
                 <div className="container">
                     <div className="about-wrapper">

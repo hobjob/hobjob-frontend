@@ -2,6 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import NumberFormat from "react-number-format";
+import {Helmet} from "react-helmet";
 
 import {CartBlock, ShopSection} from "../components/";
 
@@ -24,6 +25,9 @@ const Cart = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Корзина - HobJob</title>
+            </Helmet>
             <section className="cart">
                 <div className="container">
                     <div className="cart-wrapper">
