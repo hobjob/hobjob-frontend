@@ -23,7 +23,6 @@ const HomeMainSection = () => {
         if (!Object.keys(itemBuyCountWeek).length) {
             dispatch(fetchCourseBuyCountWeek());
 		}
-		
 		if (!Object.keys(masters).length) {
             dispatch(fetchMasters());
         }

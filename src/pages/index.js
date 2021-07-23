@@ -1,3 +1,19 @@
+// Login
+export { default as Login } from "./Login"
+
+// Register
+export { default as Register } from "./Register"
+
+// PasswordRecovery
+export { default as PasswordRecoveryEmail } from "./PasswordRecoveryEmail"
+export { default as PasswordRecoveryNewPassword } from "./PasswordRecoveryNewPassword"
+
+// RepeatEmail
+export { default as RepeatEmail } from "./RepeatEmail"
+
+// Confirmed
+export { default as Confirmed } from "./Confirmed"
+
 // Home
 export { default as Home } from "./Home"
 
@@ -27,11 +43,11 @@ export { default as About } from "./About"
 // Err404
 export { default as Err404 } from "./Err404"
 
-// Login
-export { default as Login } from "./Login"
+// Training
+export { default as Training } from "./Training"
 
-// Register
-export { default as Register } from "./Register"
+// PassingCourse
+export { default as PassingCourse } from "./PassingCourse"
 
 // Cabinet
 export { default as Cabinet } from "./Cabinet"

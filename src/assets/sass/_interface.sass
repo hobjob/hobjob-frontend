@@ -109,12 +109,14 @@ p
 
 	&.disabled
 		pointer-events: none
+		border: 1px solid $borderGray
 		background-color: $borderGray
 		color: $gray
 
 .btn-regular
 	display: inline-block
 	border: 1px solid $mainColor
+	background-color: transparent
 	padding: 20px 30px
 	color: $mainColor
 	cursor: pointer
@@ -123,6 +125,19 @@ p
 	+borderRadius
 	+SanFranciscoLight
 	+transition
+
+	&_gray
+		display: inline-block
+		border: 1px solid $gray
+		background-color: transparent
+		padding: 20px 30px
+		color: $gray
+		cursor: pointer
+		user-select: none
+		font-size: 17px
+		+borderRadius
+		+SanFranciscoLight
+		+transition
 
 .btn-small
 	border: none
@@ -142,6 +157,40 @@ p
 
 	&:hover
 		background-color: #e2ab74
+
+.btn-small-regular
+	border: none
+	text-align: center
+
+	padding: 13px 23px
+	font-size: 17px
+
+	background-color: transparent
+	border: 1px solid $mainColor
+	color: $mainColor
+
+	cursor: pointer
+	line-height: 1.4em
+
+	+borderRadius
+	+transition
+
+	&_gray
+		border: none
+		text-align: center
+
+		padding: 13px 23px
+		font-size: 17px
+
+		background-color: transparent
+		border: 1px solid $gray
+		color: $gray
+
+		cursor: pointer
+		line-height: 1.4em
+
+		+borderRadius
+		+transition
 
 .btn-small-round
 	border: none
@@ -198,14 +247,6 @@ p
 
 		&.error
 			color: $red
-	
-	&__icon
-		position: absolute
-		right: 0
-		top: 50%
-		transform: translateY(-50%)
-		fill: #b8b7b7
-		+transition
 
 	&__state
 		user-select: none
@@ -223,6 +264,15 @@ p
 		font-size: 15px
 		color: $red
 		+transition
+
+.input
+	&-file
+		opacity: 0
+		position: absolute
+		z-index: -100
+
+		&__label
+			cursor: pointer
 
 // checkbox 
 .checkbox
@@ -270,6 +320,33 @@ p
 
 		margin-left: 15px
 
+// select
+.select
+	width: 100%
+	position: relative
+
+	&__field
+		resize: none
+		outline: none
+		font-size: 21px
+		padding: 15px 0
+		display: block
+		width: 100%
+		border: none
+		border-bottom: 1px solid $gray
+		line-height: 1.4em
+		+transition
+		+SanFranciscoLight
+
+		&.error
+			border-bottom: 1px solid $red
+
+	&__label
+		color: $gray
+		font-size: 18px
+		pointer-events: none
+		+transition
+
 // circle
 .circle
 	position: absolute
@@ -280,3 +357,23 @@ p
 // nagibinstudio
 .nagibinstudio
 	margin-top: 50px
+
+// loader-wrapper
+.loader-wrapper
+	height: 500px
+	display: flex
+	align-items: center
+
+// email-confirmed
+.email-confirmed
+	margin: 100px 0
+
+	&-text
+		max-width: 75%
+
+		&__title
+			margin-bottom: 50px
+
+		&__description
+			& a
+				color: $mainColor

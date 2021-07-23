@@ -1,8 +1,6 @@
 const validate = values => {
 	const errors = {};
 
-	const passwordMin = 2;
-
 	const defaultMin = 2;
 	const defaultMax = 32;
 
@@ -30,8 +28,8 @@ const validate = values => {
 		errors.password = 'Поле не может содержать кириллицу'
 	} else if (values.password.length > defaultMax) {
 		errors.password = `Не более ${defaultMax} символов`;
-	} else if (values.password.length < passwordMin) {
-		errors.password = `Не менее ${passwordMin} символов`;
+	} else if (values.password.length < defaultMin) {
+		errors.password = `Не менее ${defaultMin} символов`;
 	}
 
 	if (!values.policy) {

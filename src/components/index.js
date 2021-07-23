@@ -2,6 +2,27 @@
 export { default as Loader } from "./All/Loader"
 export { default as RenderInput } from "./All/RenderInput"
 export { default as RenderCheckbox } from "./All/RenderCheckbox"
+export { default as RenderSelect } from "./All/RenderSelect"
+export { default as FileInput } from "./All/FileInput"
+export { default as BtnLoader } from "./All/BtnLoader"
+
+// Login
+export { default as LoginForm } from "./Login/LoginForm"
+
+// Register
+export { default as RegisterForm } from "./Register/RegisterForm"
+
+// PasswordRecovery
+export { default as PasswordRecoveryEmailForm } from "./PasswordRecovery/PasswordRecoveryEmailForm"
+export { default as PasswordRecoveryEmailSuccess } from "./PasswordRecovery/PasswordRecoveryEmailSuccess"
+export { default as PasswordRecoveryNewPasswordForm } from "./PasswordRecovery/PasswordRecoveryNewPasswordForm"
+export { default as PasswordRecoveryNewPasswordError } from "./PasswordRecovery/PasswordRecoveryNewPasswordError"
+
+// EmailConfirmed
+export { default as NotEmailConfirmed } from "./EmailConfirmed/NotEmailConfirmed"
+
+// RepeatEmail
+export { default as RepeatEmailForm } from "./RepeatEmail/RepeatEmailForm"
 
 // Header
 export { default as Header } from "./Header/Header"
@@ -58,11 +79,23 @@ export { default as MagazinePostPageBlock } from "./Magazine/PostPage/MagazinePo
 export { default as MagazinePostPageNext } from "./Magazine/PostPage/MagazinePostPageNext"
 export { default as MagazinePostPageEnd } from "./Magazine/PostPage/MagazinePostPageEnd"
 
-// Login
-export { default as LoginForm } from "./Login/LoginForm"
+// Training
+export { default as TrainingBlock } from "./Training/TrainingBlock"
+export { default as TrainingNull } from "./Training/TrainingNull"
 
-// Register
-export { default as RegisterForm } from "./Register/RegisterForm"
+// Passing
+export { default as PassingLessonsList } from "./Passing/PassingLessonsList"
+export { default as PassingLessonsListItem } from "./Passing/PassingLessonsListItem"
+export { default as PassingMaterials } from "./Passing/PassingMaterials"
+export { default as PassingMaterialsItem } from "./Passing/PassingMaterialsItem"
+export { default as PassingTimecodes } from "./Passing/PassingTimecodes"
+export { default as PassingTimecodesItem } from "./Passing/PassingTimecodesItem"
+
+// Cabinet
+export { default as CabinetCardUserInfo } from "./Cabinet/CabinetCardUserInfo"
+export { default as CabinetUserInfoForm } from "./Cabinet/CabinetUserInfoForm"
+export { default as CabinetUserPassword } from "./Cabinet/CabinetUserPassword"
+export { default as CabinetUserSocial } from "./Cabinet/CabinetUserSocial"
 
 // Footer
 export { default as Footer } from "./Footer/Footer"

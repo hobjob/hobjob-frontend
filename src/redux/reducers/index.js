@@ -9,6 +9,10 @@ import categories from './categories';
 import masters from './masters';
 import register from './register';
 import login from './login';
+import password_recovery from './password_recovery';
+import repeat_email from './repeat_email';
+import user from './user';
+import passing from './passing';
 
 const rootReducer = combineReducers({
 	courses,
@@ -19,6 +23,10 @@ const rootReducer = combineReducers({
 	masters,
 	register,
 	login,
+	password_recovery,
+	repeat_email,
+	user,
+	passing,
 	form: formReducer
 });
 

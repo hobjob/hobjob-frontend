@@ -1,26 +1,32 @@
+import { SubmissionError } from 'redux-form'
+
 import $api from '../../http/';
 
 export const sendLogin = (data) => (dispatch) => {
 	dispatch({
-		type: "SET_LOADED_SEND_LOGIN",
+		type: "SET_SEND_LOGIN",
 		payload: true
 	})
 
-	$api.post('/login', data).then(({ data }) => {
+	return $api.post('/login', data).then(({ data }) => {
 		localStorage.setItem("accessToken", data.accessToken)
 
 		dispatch({
-			type: "SET_LOADED_SEND_LOGIN",
+			type: "SET_SEND_LOGIN",
 			payload: false
 		})
 
-		window.location.href = "/cabinet"
+		window.location.href = "/go/training"
 	}).catch(({ response }) => {
-		dispatch(errorLogin(response.data.message))
+		dispatch({
+			type: "SET_SEND_LOGIN",
+			payload: false
+		})
+		
+		if (response) {
+			throw new SubmissionError({
+				[response.data.fieldError]: response.data.message,
+			});
+		}
 	})
 }
-
-const errorLogin = (message) => ({
-	type: "ERROR_SEND_LOGIN",
-	payload: message
-})

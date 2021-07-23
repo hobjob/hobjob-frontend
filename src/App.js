@@ -4,14 +4,15 @@ import { Route, Switch } from 'react-router-dom';
 
 import { Header, Footer } from './components/';
 
-import { Home, Cart, Shop, Magazine, MagazinePostPage, Master, MastersAbout, Pro, About, Err404, Login, Register, Cabinet } from './pages/';
+import { Home, Cart, Shop, Magazine, MagazinePostPage, Master, MastersAbout, Pro, About, Err404, Login, Register, RepeatEmail, PasswordRecoveryEmail, PasswordRecoveryNewPassword, Confirmed, Training, PassingCourse, Cabinet } from './pages/';
 
 dotenv.config()
 
 const App = () => {
 	return (
 		<>
-			<Header />
+			{window.location.pathname === "/go/login" || window.location.pathname === "/go/register" || window.location.pathname === "/go/password-recovery" || window.location.pathname === "/go/repeat-email" || window.location.pathname.indexOf("/go/password-recovery") !== -1 || window.location.pathname.indexOf("/go/confirmed") !== -1 ? null : <Header />}
+
 			<Suspense fallback={() => <></>}>
 				<Switch>
 					<Route path="/" render={() => <Home />} exact />
@@ -27,15 +28,26 @@ const App = () => {
 					<Route path="/pro" render={() => <Pro />} exact />
 					<Route path="/about" render={() => <About />} exact />
 
-					<Route path="/login" render={() => <Login />} exact />
-					<Route path="/register" render={() => <Register />} exact />
+					{/* go */}
+					<Route path="/go/login" render={() => <Login />} exact />
+					<Route path="/go/register" render={() => <Register />} exact />
 
-					<Route path="/cabinet" render={() => <Cabinet />} exact />
+					<Route path="/go/password-recovery" render={() => <PasswordRecoveryEmail />} exact />
+					<Route path="/go/password-recovery/:hash" render={(props) => <PasswordRecoveryNewPassword {...props} />} exact />
+
+					<Route path="/go/repeat-email" render={() => <RepeatEmail />} exact />
+
+					<Route path="/go/confirmed/:hash" render={(props) => <Confirmed {...props} />} exact />
+
+					<Route path="/go/training" render={() => <Training />} exact />
+					<Route path="/go/passing/:courseId/:lessonNum" render={(props) => <PassingCourse {...props} />} exact />
+					<Route path="/go/cabinet" render={() => <Cabinet />} exact />
 
 					<Route render={() => <Err404 />} exact />
 				</Switch>
 			</Suspense>
-			<Footer />
+
+			{window.location.pathname === "/go/login" || window.location.pathname === "/go/register" || window.location.pathname === "/go/password-recovery" || window.location.pathname === "/go/repeat-email" || window.location.pathname.indexOf("/go/password-recovery") !== -1 || window.location.pathname.indexOf("/go/confirmed") !== -1 ? null : <Footer />}
 		</>
 	)
 }

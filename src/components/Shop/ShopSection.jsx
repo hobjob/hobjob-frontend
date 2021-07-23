@@ -15,9 +15,11 @@ const ShopSection = ({title}) => {
     const {itemsSection, isLoadedSectionCourses} = useSelector(
         ({courses}) => courses
     );
-    const {cart} = useSelector(({cart}) => cart);
+	const { cart } = useSelector(({ cart }) => cart);
+	
     const masters = useSelector(({masters}) => masters.items);
-    const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
+	const isLoadedMasters = useSelector(({ masters }) => masters.isLoaded);
+	
     const categories = useSelector(({categories}) => categories.items);
     const isLoadedAllCategories = useSelector(
         ({categories}) => categories.isLoadedAllCategories

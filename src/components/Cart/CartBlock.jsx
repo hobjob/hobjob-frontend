@@ -25,7 +25,7 @@ const CartBlock = React.memo(
                         to={`/course/${_id}`}
                         className="cart-block-content-cover"
                         style={{
-                            backgroundImage: `url(${process.env.REACT_APP_DOMEN}/${image})`,
+                            backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${image}")`,
                         }}
                     ></Link>
 

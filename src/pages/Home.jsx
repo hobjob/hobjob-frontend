@@ -5,20 +5,21 @@ import {
     HomeMainSection,
     ShopSection,
     CategoriesSection,
-	AboutSection,
-	MastersSection
+    AboutSection,
+    MastersSection,
 } from "../components/";
 
 const Home = () => {
-	React.useEffect(() => {
-		window.scrollTo(0, 0)
-	}, [])
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <>
             <Helmet>
                 <title>Главная - HobJob</title>
-            </Helmet>
+			</Helmet>
+			
             <HomeMainSection />
 
             <ShopSection title="Учитесь на практике" />

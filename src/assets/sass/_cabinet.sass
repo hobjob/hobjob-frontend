@@ -1,0 +1,129 @@
+// cabinet
+.cabinet
+	margin: 100px 0
+	+openAnimation
+
+	&-card-user-info
+		display: flex
+		align-items: center
+		padding-bottom: 25px
+		border-bottom: 1px solid $borderGray
+
+		&-avatar
+			cursor: pointer
+			position: relative
+			overflow: hidden
+
+			width: 175px
+			height: 175px
+			border-radius: 50%
+
+			&:hover &-placeholder
+				background-color: $blackTransparency
+
+			&:hover &-icon
+				opacity: 1
+				transform: translate(-50%, -50%) scale3d(1, 1, 1)
+
+			&-placeholder
+				position: absolute
+				width: 100%
+				height: 100%
+
+				background-color: rgba(0, 0, 0, 0)
+				+transition
+
+			&-icon
+				position: absolute
+				left: 50%
+				top: 50%
+
+				transform: translate(-50%, -50%) scale3d(.90, .90, .90)
+				opacity: 0
+				+transition
+
+			&-img
+				width: 100%
+				height: 100%
+				+backgroundSetting
+
+		&-text
+			margin-left: 50px
+
+			&__name
+				font-size: 36px
+				margin-bottom: 10px
+
+				& span
+					color: $gray
+					font-size: 32px
+
+	&-block
+		margin: 100px 0
+		padding-bottom: 50px
+		border-bottom: 1px solid $borderGray
+
+		display: flex
+		justify-content: space-between
+
+		&:last-child
+			border: none
+			margin: 0
+			padding-bottom: 0
+
+		&-text
+			max-width: 40%
+
+			&__title
+				font-size: 42px
+				margin-bottom: 25px
+
+			&__subtitle
+				font-size: 21px
+
+		&-form
+			width: 50%
+
+			&-input
+				width: 100%
+				margin-bottom: 50px
+
+			&-btn
+				width: 100%
+
+		&-social
+			&-item
+				display: flex
+				justify-content: space-between
+				align-items: center
+
+				padding-bottom: 35px
+				margin-bottom: 35px
+				border-bottom: 1px solid $borderGray
+
+				&:last-child
+					border: none
+
+				&-icon
+					display: flex
+					align-items: center
+
+					&__text
+						font-size: 18px
+						margin-left: 15px
+
+				&-info
+					display: flex
+					align-items: center
+
+					&__text
+						font-size: 21px
+						margin-left: 15px
+
+						& span
+							color: $gray
+							font-size: 18px
+
+					&-icon
+						cursor: pointer
+						margin-left: 25px

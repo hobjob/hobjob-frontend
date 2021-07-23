@@ -1,21 +1,60 @@
 import React from "react";
 import {Link, NavLink} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
+
+import {sendLogout} from "../../redux/actions/logout";
+import {fetchUser} from "../../redux/actions/user";
 
 import {HeaderModalMenu} from "../";
 
 const Header = () => {
+    const dispatch = useDispatch();
+
+    const {user, isLoaded} = useSelector(({user}) => user);
     const {cart} = useSelector(({cart}) => cart);
 
     const [menuState, setMenuState] = React.useState(false);
     const [menuAnimationState, setMenuAnimationState] = React.useState(false);
     const [stateCookies, setStateCookies] = React.useState(false);
+    const [headerUserMenu, setHeaderUserMenu] = React.useState(false);
+    const [headerUserMenuAnimateClose, setHeaderUserMenuAnimateClose] =
+        React.useState(false);
 
     const HeaderModalMenuRef = React.useRef();
+    const headerUserMenuRef = React.useRef();
 
     React.useEffect(() => {
         document.body.addEventListener("click", handHeaderModalMenu);
+        document.body.addEventListener("click", handHeaderUserMenu);
+
+        if (!Object.keys(user).length) {
+            dispatch(fetchUser());
+        }
     }, []);
+
+    const toggleMenu = () => {
+        setHeaderUserMenuAnimateClose(true);
+
+        setTimeout(() => {
+            setHeaderUserMenuAnimateClose(false);
+            setHeaderUserMenu(!headerUserMenu);
+        }, 190);
+    };
+
+    const handHeaderUserMenu = (e) => {
+        if (e.target !== headerUserMenuRef.current) {
+            setHeaderUserMenuAnimateClose(true);
+
+            setTimeout(() => {
+                setHeaderUserMenuAnimateClose(false);
+                setHeaderUserMenu(false);
+            }, 190);
+        }
+    };
+
+    const clickLogout = () => {
+        dispatch(sendLogout());
+    };
 
     const onClickMenu = () => {
         setMenuState(!menuState);
@@ -120,57 +159,128 @@ const Header = () => {
                             </NavLink>
                         </nav>
 
-                        <nav className="header-left">
-                            <NavLink
-                                to="/cart"
-                                className="header-nav__link"
-                                activeClassName="header-nav__link active"
-                            >
-                                Корзина ({Object.keys(cart).length})
-                            </NavLink>
-
-                            <Link to="/login" className="header-login__link">
-                                Войти
-                                <svg
-                                    width="21"
-                                    height="10"
-                                    viewBox="0 0 21 10"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
+                        {!isLoaded ? (
+                            <nav className="header-left">
+                                <NavLink
+                                    to="/cart"
+                                    className="header-nav__link"
+                                    activeClassName="header-nav__link active"
                                 >
-                                    <path
-                                        d="M20.4596 5.45962C20.7135 5.20578 20.7135 4.79422 20.4596 4.54038L16.323 0.403806C16.0692 0.149965 15.6576 0.149965 15.4038 0.403806C15.15 0.657647 15.15 1.0692 15.4038 1.32304L19.0808 5L15.4038 8.67696C15.15 8.9308 15.15 9.34235 15.4038 9.59619C15.6576 9.85003 16.0692 9.85003 16.323 9.59619L20.4596 5.45962ZM0 5.65H20V4.35H0V5.65Z"
-                                        fill="#D89350"
-                                    />
-                                </svg>
-                            </Link>
+                                    Корзина ({Object.keys(cart).length})
+                                </NavLink>
 
-                            <div
-                                className="header-menu-button"
-                                onClick={onClickMenu}
-                            >
-                                <svg
-                                    width="25"
-                                    height="16"
-                                    viewBox="0 0 25 16"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
+                                <a
+                                    href="/go/login"
+                                    className="header-login__link"
                                 >
-                                    <path
-                                        d="M24.4792 0H0.52085C0.23335 0 0 0.23335 0 0.52085C0 0.80835 0.23335 1.0417 0.52085 1.0417H24.4792C24.7667 1.0417 25 0.80835 25 0.52085C25 0.23335 24.7667 0 24.4792 0Z"
-                                        fill="black"
-                                    />
-                                    <path
-                                        d="M24.4792 7.29166H0.52085C0.23335 7.29166 0 7.52501 0 7.81251C0 8.10001 0.23335 8.33336 0.52085 8.33336H24.4792C24.7667 8.33336 25 8.10001 25 7.81251C25 7.52501 24.7667 7.29166 24.4792 7.29166Z"
-                                        fill="black"
-                                    />
-                                    <path
-                                        d="M24.4792 14.5833H0.52085C0.23335 14.5833 0 14.8166 0 15.1041C0 15.3916 0.23335 15.625 0.52085 15.625H24.4792C24.7667 15.625 25 15.3916 25 15.1041C25 14.8166 24.7667 14.5833 24.4792 14.5833Z"
-                                        fill="black"
-                                    />
-                                </svg>
-                            </div>
-                        </nav>
+                                    Войти
+                                    <svg
+                                        width="21"
+                                        height="10"
+                                        viewBox="0 0 21 10"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M20.4596 5.45962C20.7135 5.20578 20.7135 4.79422 20.4596 4.54038L16.323 0.403806C16.0692 0.149965 15.6576 0.149965 15.4038 0.403806C15.15 0.657647 15.15 1.0692 15.4038 1.32304L19.0808 5L15.4038 8.67696C15.15 8.9308 15.15 9.34235 15.4038 9.59619C15.6576 9.85003 16.0692 9.85003 16.323 9.59619L20.4596 5.45962ZM0 5.65H20V4.35H0V5.65Z"
+                                            fill="#D89350"
+                                        />
+                                    </svg>
+                                </a>
+
+                                <div
+                                    className="header-menu-button"
+                                    onClick={onClickMenu}
+                                >
+                                    <svg
+                                        width="25"
+                                        height="16"
+                                        viewBox="0 0 25 16"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M24.4792 0H0.52085C0.23335 0 0 0.23335 0 0.52085C0 0.80835 0.23335 1.0417 0.52085 1.0417H24.4792C24.7667 1.0417 25 0.80835 25 0.52085C25 0.23335 24.7667 0 24.4792 0Z"
+                                            fill="black"
+                                        />
+                                        <path
+                                            d="M24.4792 7.29166H0.52085C0.23335 7.29166 0 7.52501 0 7.81251C0 8.10001 0.23335 8.33336 0.52085 8.33336H24.4792C24.7667 8.33336 25 8.10001 25 7.81251C25 7.52501 24.7667 7.29166 24.4792 7.29166Z"
+                                            fill="black"
+                                        />
+                                        <path
+                                            d="M24.4792 14.5833H0.52085C0.23335 14.5833 0 14.8166 0 15.1041C0 15.3916 0.23335 15.625 0.52085 15.625H24.4792C24.7667 15.625 25 15.3916 25 15.1041C25 14.8166 24.7667 14.5833 24.4792 14.5833Z"
+                                            fill="black"
+                                        />
+                                    </svg>
+                                </div>
+                            </nav>
+                        ) : (
+                            <nav className="header-left">
+                                <NavLink
+                                    to="/cart"
+                                    className="header-nav__link"
+                                    activeClassName="header-nav__link active"
+                                >
+                                    Корзина ({Object.keys(cart).length})
+                                </NavLink>
+                                <div className="header-user">
+                                    <div
+                                        onClick={toggleMenu}
+                                        ref={headerUserMenuRef}
+                                        className={`header-user-avatar ${
+                                            headerUserMenu ? "active" : ""
+                                        }`}
+                                        style={{
+                                            backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${user.avatar}")`,
+                                        }}
+                                    ></div>
+                                    {headerUserMenu ? (
+                                        <div
+                                            className={`header-user-menu ${
+                                                headerUserMenuAnimateClose
+                                                    ? "close"
+                                                    : ""
+                                            }`}
+                                        >
+                                            <NavLink
+                                                to="/go/training"
+                                                className="header-user-menu__link"
+                                            >
+                                                Мое обучение
+                                            </NavLink>
+
+                                            <NavLink
+                                                to="/go/cabinet"
+                                                className="header-user-menu__link"
+                                            >
+                                                Мой профиль
+                                            </NavLink>
+
+                                            <NavLink
+                                                to="/go/referral"
+                                                className="header-user-menu__link"
+                                            >
+                                                Пригласи друга
+                                            </NavLink>
+
+                                            <NavLink
+                                                to="/go/master"
+                                                className="header-user-menu__link"
+                                            >
+                                                Для мастера
+                                            </NavLink>
+
+                                            <span
+                                                onClick={clickLogout}
+                                                className="header-user-menu__link"
+                                            >
+                                                Выйти
+                                            </span>
+                                        </div>
+                                    ) : null}
+                                </div>
+                            </nav>
+                        )}
                     </div>
                 </div>
             </header>

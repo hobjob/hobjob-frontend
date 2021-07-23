@@ -1,24 +1,15 @@
 const initialState = {
-	isSend: false,
-	message: ""
+	isSend: false
 }
 
 const register = (state = initialState, action) => {
-	if (action.type === "SET_LOADED_SEND_REGISTER") {
+	if (action.type === "SET_SEND_REGISTER") {
 		return {
 			...state,
 			isSend: action.payload,
 		}
 	}
-
-	if (action.type === "ERROR_SEND_REGISTER") {
-		return {
-			...state,
-			message: action.payload,
-			isSend: false,
-		}
-	}
-
+	
 	return state;
 }
 

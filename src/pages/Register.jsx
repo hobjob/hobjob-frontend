@@ -1,30 +1,44 @@
 import React from "react";
+import {useHistory} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {Helmet} from "react-helmet";
 
 import {RegisterForm} from "../components/";
 
 import {sendRegister} from "../redux/actions/register";
 
 const Register = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
 
     const onSubmit = ({name, email, password}) => {
-        dispatch(sendRegister({name, email, password}));
-    };
+        return dispatch(sendRegister({name, email, password}));
+	};
+	
+	React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
-	return (
+    return (
         <>
-            <Helmet>
-                <title>Регистрация аккаунта - HobJob</title>
-            </Helmet>
-            <section className="reglog">
-                <div className="container">
-                    <div className="reglog-wrapper">
-                        <RegisterForm onSubmit={onSubmit} />
+            {!localStorage.getItem("accessToken") ? (
+                <section className="reglog">
+                    <div className="container">
+                        <div className="reglog-wrapper">
+                            <a href="/" className="reglog-logo">
+                                <img
+                                    src={`${process.env.REACT_APP_DOMEN}/all/logo.svg`}
+                                    alt="HobJob"
+                                    className="reglog-logo__img"
+                                />
+                            </a>
+
+                            <RegisterForm onSubmit={onSubmit} />
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            ) : (
+                history.push("/")
+            )}
         </>
     );
 };

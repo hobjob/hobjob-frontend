@@ -1,8 +1,12 @@
 // reglog
 .reglog
-	margin-top: 100px
-	margin-bottom: 50px
-	+openAnimation
+	display: flex
+	flex-direction: column
+	justify-content: center
+
+	padding: 50px 0
+	min-height: 100vh
+	background-color: #f9f9f9
 
 	&-wrapper
 		display: flex
@@ -10,15 +14,25 @@
 		align-items: center
 		justify-content: center
 
+	&-logo
+		margin-bottom: 75px
+
+		&__img
+			width: 75px
+			user-select: none
+
 	&-block
-		width: 40%
+		width: 600px
+		padding: 50px
+		background-color: $white
+		+borderRadius
+		+openAnimation
 
 		&-title
-			text-align: center
 			margin-bottom: 50px
 
 		&__title
-			font-size: 36px
+			font-size: 32px
 			margin-bottom: 20px
 
 		&__subtitle
@@ -27,12 +41,12 @@
 			font-size: 21px
 			color: $mainColor
 
-		&-error
-			text-align: center
+		&__description
+			display: block
+			font-size: 21px
 
-			&__title
-				font-size: 18px
-				color: $red
+			& a
+				color: $mainColor
 
 		&-input
 			margin-bottom: 40px
