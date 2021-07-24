@@ -97,5 +97,11 @@ export { default as CabinetUserInfoForm } from "./Cabinet/CabinetUserInfoForm"
 export { default as CabinetUserPassword } from "./Cabinet/CabinetUserPassword"
 export { default as CabinetUserSocial } from "./Cabinet/CabinetUserSocial"
 
+// Referrals
+export { default as ReferralsBlockLink } from "./Referrals/ReferralsBlockLink"
+export { default as ReferralsBlockBalance } from "./Referrals/ReferralsBlockBalance"
+export { default as ReferralsPartners } from "./Referrals/ReferralsPartners"
+export { default as ReferralsPartnersItem } from "./Referrals/ReferralsPartnersItem"
+
 // Footer
 export { default as Footer } from "./Footer/Footer"

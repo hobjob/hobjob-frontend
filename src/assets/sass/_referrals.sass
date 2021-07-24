@@ -1,0 +1,141 @@
+// referrals
+.referrals
+	margin: 100px 0
+	+openAnimation
+
+	&-top-text-wrapper
+		padding-bottom: 50px
+		border-bottom: 1px solid $borderGray
+
+	&-top
+		display: flex
+		justify-content: space-between
+		align-items: center
+
+		&-text
+			width: 75%
+
+			&__title
+				margin-bottom: 50px
+
+			&__description
+				font-size: 21px
+
+		&-img
+			&__img
+				user-select: none
+				width: 300px
+
+	&-info-block-wrapper
+		display: flex
+		justify-content: space-between
+
+		margin-top: 75px
+
+	&-info-block
+		padding: 35px
+		+borderRadius
+		+boxShadow
+
+		&-link
+			width: 60%
+
+			&__title
+				font-size: 28px
+				margin-bottom: 25px
+
+			&__subtitle
+				color: $gray
+				font-size: 21px
+				margin-bottom: 50px
+
+			&-copy
+				display: flex
+				align-items: center
+				justify-content: space-between
+				padding-bottom: 10px
+				border-bottom: 1px solid $borderGray
+
+				&__link
+					cursor: text
+					outline: none
+					background-color: transparent
+					border: none
+					width: 100%
+					font-size: 28px
+					color: $mainColor
+					+SanFranciscoLight
+
+				&__subtitle
+					user-select: none
+					cursor: pointer
+					font-size: 15px
+					color: $gray
+					+transition
+
+					&:hover
+						color: $mainColor
+
+		&-balance
+			width: 38%
+
+			&__title
+				font-size: 42px
+				margin-bottom: 50px
+
+			&__subtitle
+				color: $gray
+				font-size: 21px
+				margin-bottom: 25px
+
+			&__btn
+				width: 100%
+
+	&-partners
+		margin: 100px 0
+
+		&__title
+			font-size: 24px
+			margin-bottom: 75px
+
+		&-col
+			width: 25%
+
+		&-subinfo
+			display: flex
+			justify-content: space-between
+			align-items: center
+
+			padding-bottom: 25px
+			margin-bottom: 25px
+			border-bottom: 1px solid $borderGray
+
+			&__title
+				color: $gray
+
+		&-item
+			display: flex
+			justify-content: space-between
+			align-items: center
+
+			padding-bottom: 25px
+			margin-bottom: 25px
+			border-bottom: 1px solid $borderGray
+
+			&-partner
+				display: flex
+				align-items: center
+
+				&-avatar
+					width: 50px
+					height: 50px
+					border-radius: 50%
+					+backgroundSetting
+
+				&__name
+					font-size: 18px
+					margin-left: 15px
+
+			&-earnings, &-purchase
+				&__title
+					font-size: 18px

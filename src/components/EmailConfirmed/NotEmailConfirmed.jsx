@@ -13,8 +13,15 @@ const NotEmailConfirmed = () => {
                             На ваш email было отправлено письмо с ссылкой на
                             подтверждение аккаунта. Если письмо не пришло
                             проверьте папку "спам".{" "}
-                            <a href="/repeat-email">Отправить еще раз</a>
+                            <a href="/go/repeat-email">Отправить еще раз</a>
                         </p>
+                    </div>
+                    <div className="email-confirmed-img">
+                        <img
+                            src={`${process.env.REACT_APP_DOMEN}/all/confirmed.svg`}
+                            alt=""
+                            className="email-confirmed-img__img"
+                        />
                     </div>
                 </div>
             </div>

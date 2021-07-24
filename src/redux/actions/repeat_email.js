@@ -14,7 +14,7 @@ export const sendRepeatEmail = (data) => (dispatch) => {
 			payload: false
 		})
 		
-		window.location.href = "/training"
+		window.location.href = "/go/training"
 	}).catch(({ response }) => {
 		dispatch({
 			type: "SET_SEND_REPEAT_EMAIL",

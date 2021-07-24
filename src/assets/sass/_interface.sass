@@ -367,9 +367,15 @@ p
 // email-confirmed
 .email-confirmed
 	margin: 100px 0
+	+openAnimation
+
+	&-wrapper
+		display: flex
+		justify-content: space-between
+		align-items: center
 
 	&-text
-		max-width: 75%
+		max-width: 50%
 
 		&__title
 			margin-bottom: 50px
@@ -377,3 +383,7 @@ p
 		&__description
 			& a
 				color: $mainColor
+
+	&-img
+		&__img
+			width: 350px

@@ -55,7 +55,7 @@ export const sendPasswordRecoveryNewPassword = (data, hash) => (dispatch) => {
 			payload: false
 		})
 
-		window.location.href = "/training"
+		window.location.href = "/go/training"
 	}).catch(({ response }) => {
 		dispatch({
 			type: "SET_STATUS_PASSWORD_RECOVERY_NEW_PASSWORD",

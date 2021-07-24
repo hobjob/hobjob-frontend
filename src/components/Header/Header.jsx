@@ -257,7 +257,7 @@ const Header = () => {
                                             </NavLink>
 
                                             <NavLink
-                                                to="/go/referral"
+                                                to="/go/referrals"
                                                 className="header-user-menu__link"
                                             >
                                                 Пригласи друга

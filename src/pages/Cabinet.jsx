@@ -2,7 +2,6 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 
 import {
-    fetchUser,
     fetchUpdateUser,
     fetchUpdateUserPassword,
 } from "../redux/actions/user";
@@ -24,10 +23,6 @@ const Cabinet = () => {
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
-
-        if (!Object.keys(user).length) {
-            dispatch(fetchUser());
-        }
     }, []);
 
     const onSubmitCabinetUserInfoForm = (data) => {

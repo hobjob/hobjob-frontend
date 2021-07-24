@@ -1,7 +1,5 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
-
-import {fetchUser} from "../redux/actions/user";
+import {useSelector} from "react-redux";
 
 import {
     Loader,
@@ -17,16 +15,8 @@ const PassingCourse = ({
         params: {courseId, lessonNum},
     },
 }) => {
-    const dispatch = useDispatch();
-
-    const {user, courses, isLoaded} = useSelector(({user}) => user);
+    const {courses, isLoaded} = useSelector(({user}) => user);
     const {timecode} = useSelector(({passing}) => passing);
-
-    React.useEffect(() => {
-        if (!Object.keys(user).length) {
-            dispatch(fetchUser());
-        }
-    }, []);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);

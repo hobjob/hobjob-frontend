@@ -51,3 +51,6 @@ export { default as PassingCourse } from "./PassingCourse"
 
 // Cabinet
 export { default as Cabinet } from "./Cabinet"
+
+// Referrals
+export { default as Referrals } from "./Referrals"
