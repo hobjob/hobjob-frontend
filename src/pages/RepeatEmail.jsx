@@ -1,11 +1,14 @@
 import React from "react";
+import {useHistory} from "react-router-dom";
 import {useDispatch} from "react-redux";
+import {Helmet} from "react-helmet";
 
 import {sendRepeatEmail} from "../redux/actions/repeat_email";
 
 import {RepeatEmailForm} from "../components/";
 
 const RepeatEmail = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
 
     const onSubmit = ({email}) => {
@@ -17,21 +20,30 @@ const RepeatEmail = () => {
     }, []);
 
     return (
-        <section className="reglog">
-            <div className="container">
-                <div className="reglog-wrapper">
-                    <div className="reglog-logo">
-                        <img
-                            src={`${process.env.REACT_APP_DOMEN}/all/logo.svg`}
-                            alt="HobJob"
-                            className="reglog-logo__img"
-                        />
-                    </div>
+        <>
+            <Helmet>
+                <title>Подтвердить email - HobJob</title>
+            </Helmet>
+            {!localStorage.getItem("accessToken") ? (
+                <section className="reglog">
+                    <div className="container">
+                        <div className="reglog-wrapper">
+                            <div className="reglog-logo">
+                                <img
+                                    src={`${process.env.REACT_APP_DOMEN}/all/logo.svg`}
+                                    alt="HobJob"
+                                    className="reglog-logo__img"
+                                />
+                            </div>
 
-                    <RepeatEmailForm onSubmit={onSubmit} />
-                </div>
-            </div>
-        </section>
+                            <RepeatEmailForm onSubmit={onSubmit} />
+                        </div>
+                    </div>
+                </section>
+            ) : (
+                history.push("/")
+            )}
+        </>
     );
 };
 

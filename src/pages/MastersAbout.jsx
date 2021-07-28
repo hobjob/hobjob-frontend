@@ -15,6 +15,8 @@ const MastersAbout = () => {
 
     const {statistics} = useSelector(({statistics}) => statistics);
 
+    const MastersAboutWrapper = React.useRef();
+
     React.useEffect(() => {
         window.scrollTo(0, 0);
 
@@ -55,12 +57,31 @@ const MastersAbout = () => {
         },
     ];
 
+    //склонение ["Мастер", "Мастера", "Мастеров"]
+    const checkDeclension = (num, title) => {
+        let result;
+
+        if (num % 100 >= 5 && num % 100 <= 20) {
+            result = title[2];
+        } else {
+            if (num % 10 === 1) {
+                result = title[0];
+            } else if (num % 10 >= 2 && num % 10 <= 4) {
+                result = title[1];
+            } else {
+                result = title[2];
+            }
+        }
+
+        return result;
+    };
+
     return (
         <>
             <Helmet>
                 <title>Для мастеров - HobJob</title>
             </Helmet>
-            <section className="masters-about">
+            <section className="masters-about" ref={MastersAboutWrapper}>
                 <div className="container">
                     <div className="masters-about-wrapper">
                         <Link
@@ -119,7 +140,15 @@ const MastersAbout = () => {
                                             />
                                         </h4>
                                         <span className="masters-about-statistics-item__subtitle">
-                                            Мастеров уже с нами!
+                                            {checkDeclension(
+                                                statistics.masters,
+                                                [
+                                                    "Мастер",
+                                                    "Мастера",
+                                                    "Мастеров",
+                                                ]
+                                            )}{" "}
+                                            уже с нами!
                                         </span>
                                     </div>
                                     <div className="masters-about-statistics-item">

@@ -4,14 +4,14 @@ import { Route, Switch } from 'react-router-dom';
 
 import { Header, Footer } from './components/';
 
-import { Home, Cart, Shop, Magazine, MagazinePostPage, Master, MastersAbout, Pro, About, Err404, Login, Register, RepeatEmail, PasswordRecoveryEmail, PasswordRecoveryNewPassword, Confirmed, Training, PassingCourse, Cabinet, Referrals } from './pages/';
+import { Home, Cart, Shop, Magazine, MagazinePostPage, Master, MastersAbout, Pro, About, Err404, Login, Register, RepeatEmail, PasswordRecoveryEmail, PasswordRecoveryNewPassword, Confirmed, Training, PassingCourse, Cabinet, Referrals, Payment } from './pages/';
 
 dotenv.config()
 
 const App = () => {
 	return (
 		<>
-			{window.location.pathname === "/go/login" || window.location.pathname === "/go/register" || window.location.pathname === "/go/password-recovery" || window.location.pathname === "/go/repeat-email" || window.location.pathname.indexOf("/go/password-recovery") !== -1 || window.location.pathname.indexOf("/go/confirmed") !== -1 ? null : <Header />}
+			{window.location.pathname === "/payment" || window.location.pathname === "/go/login" || window.location.pathname === "/go/register" || window.location.pathname === "/go/password-recovery" || window.location.pathname === "/go/repeat-email" || window.location.pathname.indexOf("/go/password-recovery") !== -1 || window.location.pathname.indexOf("/go/confirmed") !== -1 ? null : <Header />}
 
 			<Suspense fallback={() => <></>}>
 				<Switch>
@@ -28,9 +28,11 @@ const App = () => {
 					<Route path="/pro" render={() => <Pro />} exact />
 					<Route path="/about" render={() => <About />} exact />
 
+					<Route path="/payment" render={() => <Payment />} exact />
+
 					{/* GO */}
 					<Route path="/go/login" render={() => <Login />} exact />
-					<Route path="/go/register" render={() => <Register />} exact />
+					<Route path="/go/register" render={(props) => <Register {...props} />} exact />
 
 					<Route path="/go/password-recovery" render={() => <PasswordRecoveryEmail />} exact />
 					<Route path="/go/password-recovery/:hash" render={(props) => <PasswordRecoveryNewPassword {...props} />} exact />
@@ -48,7 +50,7 @@ const App = () => {
 				</Switch>
 			</Suspense>
 
-			{window.location.pathname === "/go/login" || window.location.pathname === "/go/register" || window.location.pathname === "/go/password-recovery" || window.location.pathname === "/go/repeat-email" || window.location.pathname.indexOf("/go/password-recovery") !== -1 || window.location.pathname.indexOf("/go/confirmed") !== -1 ? null : <Footer />}
+			{window.location.pathname === "/payment" || window.location.pathname === "/go/login" || window.location.pathname === "/go/register" || window.location.pathname === "/go/password-recovery" || window.location.pathname === "/go/repeat-email" || window.location.pathname.indexOf("/go/password-recovery") !== -1 || window.location.pathname.indexOf("/go/confirmed") !== -1 ? null : <Footer />}
 		</>
 	)
 }

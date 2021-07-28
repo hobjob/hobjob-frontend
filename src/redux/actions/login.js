@@ -22,7 +22,7 @@ export const sendLogin = (data) => (dispatch) => {
 			type: "SET_SEND_LOGIN",
 			payload: false
 		})
-		
+
 		if (response) {
 			throw new SubmissionError({
 				[response.data.fieldError]: response.data.message,

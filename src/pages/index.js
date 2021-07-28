@@ -54,3 +54,6 @@ export { default as Cabinet } from "./Cabinet"
 
 // Referrals
 export { default as Referrals } from "./Referrals"
+
+// Payment
+export { default as Payment } from "./Payment"

@@ -86,7 +86,6 @@ const Magazine = ({
 
         history.push(`/magazine/?${query}`);
 
-        console.log(query);
         dispatch(fetchPosts(query));
     }, [Object.keys(filters.categories).length]);
 

@@ -2,6 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {useHistory} from "react-router-dom";
 import {useDispatch} from "react-redux";
+import {Helmet} from "react-helmet";
 
 import {LoginForm} from "../components/";
 
@@ -21,6 +22,9 @@ const Login = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Войти - HobJob</title>
+            </Helmet>
             {!localStorage.getItem("accessToken") ? (
                 <section className="reglog">
                     <div className="container">

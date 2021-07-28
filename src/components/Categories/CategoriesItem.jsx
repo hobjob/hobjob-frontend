@@ -1,9 +1,8 @@
 import React from "react";
-import {Link} from "react-router-dom";
 
 const CategoriesItem = ({transfer, title, image, checkDeclension}) => {
     return (
-        <Link to={`/shop/?category=${transfer}`} className="categories-item">
+        <a href={`/shop/?category=${transfer}`} className="categories-item">
             <div className="categories-item-text">
                 <h3 className="categories-item__title">{title}</h3>
                 <span className="categories-item__subtitle">
@@ -32,7 +31,7 @@ const CategoriesItem = ({transfer, title, image, checkDeclension}) => {
                     className="categories-item__img"
                 />
             </div>
-        </Link>
+        </a>
     );
 };
 

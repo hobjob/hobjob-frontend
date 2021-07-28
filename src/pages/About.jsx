@@ -20,11 +20,32 @@ const About = () => {
         }
     }, []);
 
+    //склонение ["мастер", "мастера", "мастеров"]
+    //склонение ["курс", "курса", "курсов"]
+    //склонение ["ученик", "ученика", "учеников"]
+    const checkDeclension = (num, title) => {
+        let result;
+
+        if (num % 100 >= 5 && num % 100 <= 20) {
+            result = title[2];
+        } else {
+            if (num % 10 === 1) {
+                result = title[0];
+            } else if (num % 10 >= 2 && num % 10 <= 4) {
+                result = title[1];
+            } else {
+                result = title[2];
+            }
+        }
+
+        return result;
+    };
+
     return (
-		<>
-			<Helmet>
-				<title>О нас - HobJob</title>
-			</Helmet>
+        <>
+            <Helmet>
+                <title>О нас - HobJob</title>
+            </Helmet>
             <section className="about">
                 <div className="container">
                     <div className="about-wrapper">
@@ -70,7 +91,14 @@ const About = () => {
                                         about-section-statistics-item__subtitle
                                     "
                                         >
-                                            Преподавателей
+                                            {checkDeclension(
+                                                statistics.masters,
+                                                [
+                                                    "Мастер",
+                                                    "Мастера",
+                                                    "Мастеров",
+                                                ]
+                                            )}
                                         </span>
                                     </div>
                                     <div className="about-section-statistics-item">
@@ -93,7 +121,10 @@ const About = () => {
                                         about-section-statistics-item__subtitle
                                     "
                                         >
-                                            Курсов
+                                            {checkDeclension(
+                                                statistics.courses,
+                                                ["Курс", "Курса", "Курсов"]
+                                            )}
                                         </span>
                                     </div>
                                     <div className="about-section-statistics-item">
@@ -116,7 +147,10 @@ const About = () => {
                                         about-section-statistics-item__subtitle
                                     "
                                         >
-                                            Ученика
+                                            {checkDeclension(
+                                                statistics.students,
+                                                ["Ученик", "Ученика", "Учеников"]
+                                            )}
                                         </span>
                                     </div>
                                 </div>

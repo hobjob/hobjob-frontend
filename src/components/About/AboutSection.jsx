@@ -16,6 +16,27 @@ const AboutSection = () => {
         }
     }, []);
 
+    //склонение ["Мастер", "Мастера", "Мастеров"]
+    //склонение ["Курс", "Курса", "Курсов"]
+    //склонение ["Ученик", "Ученика", "Учеников"]
+    const checkDeclension = (num, title) => {
+        let result;
+
+        if (num % 100 >= 5 && num % 100 <= 20) {
+            result = title[2];
+        } else {
+            if (num % 10 === 1) {
+                result = title[0];
+            } else if (num % 10 >= 2 && num % 10 <= 4) {
+                result = title[1];
+            } else {
+                result = title[2];
+            }
+        }
+
+        return result;
+    };
+
     return (
         <section className="about-section">
             <div className="container">
@@ -40,7 +61,7 @@ const AboutSection = () => {
                                 умеют лучше всего - творить.
                             </p>
                             <Link
-                                to="#"
+                                to="/about"
                                 className="btn-arrow about-section__btn"
                             >
                                 Подробнее
@@ -62,53 +83,77 @@ const AboutSection = () => {
                         <div className="about-section-statistics">
                             <div className="about-section-statistics-item">
                                 <h4 className="about-section-statistics-item__title">
-                                    {isLoaded ? <NumberFormat
-                                        value={statistics.masters}
-                                        displayType={"text"}
-                                        thousandSeparator={" "}
-                                        renderText={(value) => value}
-                                    /> : "-"}
+                                    {isLoaded ? (
+                                        <NumberFormat
+                                            value={statistics.masters}
+                                            displayType={"text"}
+                                            thousandSeparator={" "}
+                                            renderText={(value) => value}
+                                        />
+                                    ) : (
+                                        "-"
+                                    )}
                                 </h4>
                                 <span
                                     className="
                                         about-section-statistics-item__subtitle
                                     "
                                 >
-                                    Преподавателей
+                                    {checkDeclension(statistics.masters, [
+                                        "Мастер",
+                                        "Мастера",
+                                        "Мастеров",
+                                    ])}
                                 </span>
                             </div>
                             <div className="about-section-statistics-item">
                                 <h4 className="about-section-statistics-item__title">
-                                    {isLoaded ? <NumberFormat
-                                        value={statistics.courses}
-                                        displayType={"text"}
-                                        thousandSeparator={" "}
-                                        renderText={(value) => value}
-                                    /> : "-"}
+                                    {isLoaded ? (
+                                        <NumberFormat
+                                            value={statistics.courses}
+                                            displayType={"text"}
+                                            thousandSeparator={" "}
+                                            renderText={(value) => value}
+                                        />
+                                    ) : (
+                                        "-"
+                                    )}
                                 </h4>
                                 <span
                                     className="
                                         about-section-statistics-item__subtitle
                                     "
                                 >
-                                    Курсов
+                                    {checkDeclension(statistics.courses, [
+                                        "Курс",
+                                        "Курса",
+                                        "Курсов",
+                                    ])}
                                 </span>
                             </div>
                             <div className="about-section-statistics-item">
                                 <h4 className="about-section-statistics-item__title">
-                                    {isLoaded ? <NumberFormat
-                                        value={statistics.students}
-                                        displayType={"text"}
-                                        thousandSeparator={" "}
-                                        renderText={(value) => value}
-                                    /> : "-"}
+                                    {isLoaded ? (
+                                        <NumberFormat
+                                            value={statistics.students}
+                                            displayType={"text"}
+                                            thousandSeparator={" "}
+                                            renderText={(value) => value}
+                                        />
+                                    ) : (
+                                        "-"
+                                    )}
                                 </h4>
                                 <span
                                     className="
                                         about-section-statistics-item__subtitle
                                     "
                                 >
-                                    Ученика
+                                    {checkDeclension(statistics.students, [
+                                        "Ученик",
+                                        "Ученика",
+                                        "Учеников",
+                                    ])}
                                 </span>
                             </div>
                         </div>

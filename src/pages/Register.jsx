@@ -1,25 +1,30 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
 import {useDispatch} from "react-redux";
+import {Helmet} from "react-helmet";
+import queryString from "query-string";
 
 import {RegisterForm} from "../components/";
 
 import {sendRegister} from "../redux/actions/register";
 
-const Register = () => {
+const Register = ({location: {search}}) => {
     const history = useHistory();
     const dispatch = useDispatch();
 
     const onSubmit = ({name, email, password}) => {
-        return dispatch(sendRegister({name, email, password}));
-	};
-	
-	React.useEffect(() => {
+        return dispatch(sendRegister({name, email, password}, queryString.parse(search)));
+    };
+
+    React.useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
     return (
         <>
+            <Helmet>
+                <title>Зарегистрируйтесь - HobJob</title>
+            </Helmet>
             {!localStorage.getItem("accessToken") ? (
                 <section className="reglog">
                     <div className="container">

@@ -22,9 +22,14 @@ export const validateInfo = (values) => {
 
 	if (!values.dateOfBirth) {
 		errors.dateOfBirth = 'Поле не может быть пустым';
+	} else if (values.dateOfBirth.indexOf("_") !== -1) {
+		errors.dateOfBirth = 'Поле не может быть пустым';
 	}
 
 	if (!values.phone) {
+		errors.phone = 'Поле не может быть пустым';
+	}
+	else if (values.phone.length !== 16) {
 		errors.phone = 'Поле не может быть пустым';
 	}
 

@@ -1,6 +1,7 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import {Helmet} from "react-helmet";
 
 import {sendPasswordRecoveryEmail} from "../redux/actions/password_recovery";
 
@@ -27,6 +28,9 @@ const PasswordRecoveryEmail = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Восстановить пароль - HobJob</title>
+            </Helmet>
             {!localStorage.getItem("accessToken") ? (
                 <section className="reglog">
                     <div className="container">

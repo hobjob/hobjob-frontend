@@ -13,6 +13,7 @@ import password_recovery from './password_recovery';
 import repeat_email from './repeat_email';
 import user from './user';
 import passing from './passing';
+import payment from './payment';
 
 const rootReducer = combineReducers({
 	courses,
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
 	repeat_email,
 	user,
 	passing,
+	payment,
 	form: formReducer
 });
 

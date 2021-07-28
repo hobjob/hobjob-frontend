@@ -58,7 +58,7 @@ let LoginForm = ({handleSubmit}) => {
 };
 
 LoginForm = reduxForm({
-    form: "login",
+    form: "login-form",
     validate,
 })(LoginForm);
 
