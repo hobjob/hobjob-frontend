@@ -1,5 +1,4 @@
 import React from "react";
-import {useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 
@@ -11,7 +10,6 @@ import {
 } from "../components/";
 
 const PasswordRecoveryEmail = () => {
-    const history = useHistory();
     const dispatch = useDispatch();
 
     const {emailStatus} = useSelector(
@@ -53,7 +51,7 @@ const PasswordRecoveryEmail = () => {
                     </div>
                 </section>
             ) : (
-                history.push("/")
+                (window.location.href = "/")
             )}
         </>
     );

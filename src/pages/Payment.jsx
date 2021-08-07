@@ -1,44 +1,30 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {NavLink} from "react-router-dom";
 
-import {sendCreatePayment} from "../redux/actions/payment";
-import {fetchUser} from "../redux/actions/user";
+import {fetchPaymentById} from "../redux/actions/payment";
 
-const Payment = () => {
+import {PaymentCourseBlock} from "../components/";
+
+const Payment = ({
+    match: {
+        params: {id},
+    },
+}) => {
     const dispatch = useDispatch();
 
-    const {user, isLoaded} = useSelector(({user}) => user);
     const {cart} = useSelector(({cart}) => cart);
-    const {payment} = useSelector(({payment}) => payment);
-    const isLoadedPayment = useSelector(({payment}) => payment.isLoaded);
+    const {payment, isLoaded} = useSelector(({payment}) => payment);
 
     React.useEffect(() => {
-        if (!Object.keys(user).length) {
-            dispatch(fetchUser());
-        }
+        dispatch(fetchPaymentById(id));
     }, []);
 
     React.useEffect(() => {
         if (isLoaded) {
-            const order = [];
-
-            Object.keys(cart).map((key) => order.push(cart[key]._id));
-
-            dispatch(
-                sendCreatePayment({
-                    email: user.email,
-                    order,
-                    refId: "",
-                })
-            );
-        }
-    }, [isLoaded]);
-
-    React.useEffect(() => {
-        if (isLoadedPayment) {
             const checkout = new window.YooMoneyCheckoutWidget({
-                confirmation_token: payment.confirmation_token,
-                return_url: `http://localhost:3000/payment/${payment.numberPayment}`,
+                confirmation_token: payment.confirmation.confirmation_token,
+                return_url: `http://localhost:3000/payment/confirmation/${payment.paymentNumber}`,
 
                 customization: {
                     colors: {
@@ -53,19 +39,39 @@ const Payment = () => {
 
             checkout.render("payment-form");
         }
-    }, [isLoadedPayment]);
+    }, [isLoaded]);
 
     return (
         <>
-            {isLoadedPayment ? (
-                <section className="payment">
-                    <div className="container">
-                        <div className="payment-wrapper">
-                        
-                            <div id="payment-form"></div>
+            {isLoaded ? (
+                <>
+                    <section className="payment">
+                        <div className="container">
+                            <div className="payment-wrapper">
+                                <div
+                                    className="payment-form"
+                                    id="payment-form"
+                                ></div>
+                                <div className="payment-info">
+                                    <h2 className="payment-info__title">
+                                        Заказ
+                                        <span>
+                                            ({Object.keys(cart).length})
+                                        </span>
+                                    </h2>
+                                    <div className="payment-info-course-wrapper">
+                                        {Object.keys(cart).map((key, index) => (
+                                            <PaymentCourseBlock
+                                                {...cart[key]}
+                                                key={`payment-info-course-${index}`}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </>
             ) : null}
         </>
     );

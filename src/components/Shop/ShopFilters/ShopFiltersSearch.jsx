@@ -35,7 +35,7 @@ const ShopFiltersSearch = () => {
                     required
                 />
                 <span className="input__span"></span>
-                <label className="input__label">Поиск</label>
+                <label className="input__label">Я ищу</label>
 
                 <svg
                     width="20"

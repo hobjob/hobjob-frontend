@@ -1,8 +1,6 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
-
-import {fetchMasters} from "../redux/actions/masters";
 
 import {
     Loader,
@@ -15,19 +13,32 @@ import {
 import Err404 from "./Err404";
 
 const Training = () => {
-    const dispatch = useDispatch();
-
     const {user, courses, isLoaded} = useSelector(({user}) => user);
     const masters = useSelector(({masters}) => masters.items);
     const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
-
-        if (!Object.keys(masters).length) {
-            dispatch(fetchMasters());
-        }
     }, []);
+
+    //склонение ["урок", "урока", "уроков"]
+    const checkDeclension = (num, title) => {
+        let result;
+
+        if (num % 100 >= 5 && num % 100 <= 20) {
+            result = num + " " + title[2];
+        } else {
+            if (num % 10 === 1) {
+                result = num + " " + title[0];
+            } else if (num % 10 >= 2 && num % 10 <= 4) {
+                result = num + " " + title[1];
+            } else {
+                result = num + " " + title[2];
+            }
+        }
+
+        return result;
+    };
 
     return (
         <>
@@ -62,6 +73,16 @@ const Training = () => {
                                                                 {...courses[
                                                                     key
                                                                 ]}
+                                                                completedLessons={checkDeclension(
+                                                                    courses[key]
+                                                                        .completedLessons
+                                                                        .length,
+                                                                    [
+                                                                        "урок",
+                                                                        "урока",
+                                                                        "уроков",
+                                                                    ]
+                                                                )}
                                                                 masters={
                                                                     masters
                                                                 }

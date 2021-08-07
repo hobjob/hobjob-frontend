@@ -1,13 +1,32 @@
 // passing
 .passing
 	margin: 100px 0
+	+openAnimation
 
-	&-top-text
-		&__title
-			font-size: 36px
+	&-top
+		display: flex
+		align-items: flex-start
+		justify-content: space-between
+
+		&-text
+			&__title
+				font-size: 36px
+
+		&-next
+			color: $gray
+			+transition
+
+			&:hover
+				color: $black
 
 	&-video-wrapper
 		margin-top: 50px
+		+openAnimation
+
+		&__title
+			user-select: none
+			position: absolute
+			color: $gray
 
 	&-lessons-list
 		display: flex
@@ -38,6 +57,7 @@
 
 			&.active
 				opacity: 1
+				pointer-events: none
 
 	&-lesson
 		&-info
@@ -62,14 +82,20 @@
 						font-size: 24px
 						margin-bottom: 25px
 
-					&-item
-						cursor: pointer
+					&-item-wrapper
 						display: flex
+						justify-content: space-between
 						align-items: center
+
 						margin-bottom: 15px
 						padding-bottom: 15px
 
 						border-bottom: 1px solid $borderGray
+
+					&-item
+						cursor: pointer
+						display: flex
+						align-items: center
 
 						&:last-child
 							border: none

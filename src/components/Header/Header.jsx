@@ -4,6 +4,8 @@ import {useSelector, useDispatch} from "react-redux";
 
 import {sendLogout} from "../../redux/actions/logout";
 import {fetchUser} from "../../redux/actions/user";
+import {fetchMasters} from "../../redux/actions/masters";
+import {fetchCategories} from "../../redux/actions/categories";
 
 import {HeaderModalMenu} from "../";
 
@@ -11,6 +13,8 @@ const Header = () => {
     const dispatch = useDispatch();
 
     const {user, isLoaded} = useSelector(({user}) => user);
+    const masters = useSelector(({masters}) => masters.items);
+    const categories = useSelector(({categories}) => categories.items);
     const {cart} = useSelector(({cart}) => cart);
 
     const [menuState, setMenuState] = React.useState(false);
@@ -29,6 +33,14 @@ const Header = () => {
 
         if (!Object.keys(user).length) {
             dispatch(fetchUser());
+        }
+
+        if (!Object.keys(masters).length) {
+            dispatch(fetchMasters());
+        }
+
+        if (!Object.keys(categories).length) {
+            dispatch(fetchCategories());
         }
     }, []);
 
@@ -90,6 +102,7 @@ const Header = () => {
         <>
             {menuState ? (
                 <HeaderModalMenu
+                    isLoaded={isLoaded}
                     HeaderModalMenuRef={HeaderModalMenuRef}
                     onClickMenu={onClickCloseMenu}
                     menuAnimationState={menuAnimationState}
@@ -163,8 +176,8 @@ const Header = () => {
                             <nav className="header-left">
                                 <NavLink
                                     to="/cart"
-                                    className="header-nav__link"
-                                    activeClassName="header-nav__link active"
+                                    className="header-nav__link header-nav-cart__link"
+                                    activeClassName="header-nav__link header-nav-cart__link active"
                                 >
                                     Корзина ({Object.keys(cart).length})
                                 </NavLink>
@@ -218,8 +231,8 @@ const Header = () => {
                             <nav className="header-left">
                                 <NavLink
                                     to="/cart"
-                                    className="header-nav__link"
-                                    activeClassName="header-nav__link active"
+                                    className="header-nav__link header-nav-cart__link"
+                                    activeClassName="header-nav__link header-nav-cart__link active"
                                 >
                                     Корзина ({Object.keys(cart).length})
                                 </NavLink>

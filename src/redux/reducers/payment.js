@@ -12,7 +12,7 @@ const payment = (state = initialState, action) => {
 		}
 	}
 
-	if (action.type === "SET_LOADED_CREATE_PAYMENT") {
+	if (action.type === "SET_LOADED_PAYMENT") {
 		return {
 			...state,
 			isLoaded: action.payload

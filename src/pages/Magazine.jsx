@@ -5,12 +5,8 @@ import queryString from "query-string";
 import {Helmet} from "react-helmet";
 
 import {fetchPosts, setPostsFilters} from "../redux/actions/posts";
-import {fetchCategories} from "../redux/actions/categories";
-import {fetchMasters} from "../redux/actions/masters";
 
 import {
-    Header,
-    Footer,
     MagazineBlockBig,
     MagazineBlock,
     MagazineBlockBigLoader,
@@ -39,14 +35,6 @@ const Magazine = ({
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
-
-        if (!Object.keys(categories).length) {
-            dispatch(fetchCategories());
-        }
-
-        if (!Object.keys(masters).length) {
-            dispatch(fetchMasters());
-        }
 
         const newFilters = {
             categories: {},
@@ -111,7 +99,7 @@ const Magazine = ({
                         isLoadedMasters ? (
                             items.length ? (
                                 <>
-                                    {window.innerWidth > 900 ? (
+                                    {window.innerWidth > 1100 ? (
                                         <MagazineBlockBig
                                             {...items[0]}
                                             masters={masters}
@@ -121,7 +109,7 @@ const Magazine = ({
 
                                     <div className="magazine-block-wrapper">
                                         {items.map((item, index) =>
-                                            window.innerWidth > 900 ? (
+                                            window.innerWidth > 1100 ? (
                                                 index !== 0 ? (
                                                     <MagazineBlock
                                                         {...item}

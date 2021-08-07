@@ -1,5 +1,4 @@
 import React from "react";
-import {useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 
@@ -15,7 +14,6 @@ const PasswordRecoveryNewPassword = ({
         params: {hash},
     },
 }) => {
-    const history = useHistory();
     const dispatch = useDispatch();
 
     const {newPasswordStatus} = useSelector(
@@ -60,7 +58,7 @@ const PasswordRecoveryNewPassword = ({
                     </div>
                 </section>
             ) : (
-                history.push("/")
+                (window.location.href = "/")
             )}
         </>
     );

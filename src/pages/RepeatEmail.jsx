@@ -1,5 +1,4 @@
 import React from "react";
-import {useHistory} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
 
@@ -8,7 +7,6 @@ import {sendRepeatEmail} from "../redux/actions/repeat_email";
 import {RepeatEmailForm} from "../components/";
 
 const RepeatEmail = () => {
-    const history = useHistory();
     const dispatch = useDispatch();
 
     const onSubmit = ({email}) => {
@@ -41,7 +39,7 @@ const RepeatEmail = () => {
                     </div>
                 </section>
             ) : (
-                history.push("/")
+                (window.location.href = "/")
             )}
         </>
     );

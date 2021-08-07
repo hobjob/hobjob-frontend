@@ -6,6 +6,7 @@ const HeaderModalMenu = ({
     HeaderModalMenuRef,
     menuAnimationState,
     onClickMenu,
+    isLoaded,
 }) => {
     const {cart} = useSelector(({cart}) => cart);
 
@@ -95,22 +96,6 @@ const HeaderModalMenu = ({
                         Журнал
                     </NavLink>
                     <NavLink
-                        to="/login"
-                        className="header-modal-menu-nav__link"
-                        activeClassName="header-modal-menu-nav__link active"
-                        onClick={onClickMenu}
-                    >
-                        Войти
-                    </NavLink>
-                    <NavLink
-                        to="/register"
-                        className="header-modal-menu-nav__link"
-                        activeClassName="header-modal-menu-nav__link active"
-                        onClick={onClickMenu}
-                    >
-                        Зарегистрироваться
-                    </NavLink>
-                    <NavLink
                         to="/cart"
                         className="header-modal-menu-nav__link"
                         activeClassName="header-modal-menu-nav__link active"
@@ -118,6 +103,64 @@ const HeaderModalMenu = ({
                     >
                         Корзина ({Object.keys(cart).length})
                     </NavLink>
+                    {!isLoaded ? (
+                        <div className="header-modal-menu-nav-bottom">
+                            <a
+                                href="/go/login"
+                                className="header-modal-menu-nav__link"
+                                activeClassName="header-modal-menu-nav__link active"
+                                onClick={onClickMenu}
+                            >
+                                Войти
+                            </a>
+                            <a
+                                href="/go/register"
+                                className="header-modal-menu-nav__link"
+                                activeClassName="header-modal-menu-nav__link active"
+                                onClick={onClickMenu}
+                            >
+                                Зарегистрироваться
+                            </a>
+                        </div>
+                    ) : (
+                        <div className="header-modal-menu-nav-bottom">
+                            <NavLink
+                                to="/go/training"
+                                className="header-modal-menu-nav__link"
+                                activeClassName="header-modal-menu-nav__link active"
+                                onClick={onClickMenu}
+                            >
+                                Мое обучение
+                            </NavLink>
+
+                            <NavLink
+                                to="/go/cabinet"
+                                className="header-modal-menu-nav__link"
+                                activeClassName="header-modal-menu-nav__link active"
+                                onClick={onClickMenu}
+                            >
+                                Мой профиль
+                            </NavLink>
+
+                            <NavLink
+                                to="/go/referrals"
+                                className="header-modal-menu-nav__link"
+                                activeClassName="header-modal-menu-nav__link active"
+                                onClick={onClickMenu}
+                            >
+                                Пригласи друга
+                            </NavLink>
+
+                            <NavLink
+                                to="/go/master"
+                                className="header-modal-menu-nav__link"
+                                activeClassName="header-modal-menu-nav__link active"
+                                onClick={onClickMenu}
+                            >
+                                Для мастера
+                            </NavLink>
+                        </div>
+                    )}
                 </nav>
                 <div className="header-modal-menu-social">
                     <a

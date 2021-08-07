@@ -1,5 +1,4 @@
 import React from "react";
-import {useHistory} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
 import queryString from "query-string";
@@ -9,11 +8,12 @@ import {RegisterForm} from "../components/";
 import {sendRegister} from "../redux/actions/register";
 
 const Register = ({location: {search}}) => {
-    const history = useHistory();
     const dispatch = useDispatch();
 
     const onSubmit = ({name, email, password}) => {
-        return dispatch(sendRegister({name, email, password}, queryString.parse(search)));
+        return dispatch(
+            sendRegister({name, email, password}, queryString.parse(search))
+        );
     };
 
     React.useEffect(() => {
@@ -42,7 +42,7 @@ const Register = ({location: {search}}) => {
                     </div>
                 </section>
             ) : (
-                history.push("/")
+                (window.location.href = "/")
             )}
         </>
     );

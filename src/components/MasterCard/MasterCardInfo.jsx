@@ -1,6 +1,6 @@
 import React from "react";
 
-const MasterCartInfo = ({
+const MasterCardInfo = ({
     avatar,
     name,
     surname,
@@ -12,24 +12,24 @@ const MasterCartInfo = ({
     categories,
 }) => {
     return (
-        <div className="master-cart-info">
+        <div className="master-card-info">
             <div
-                className="master-cart-info-avatar"
+                className="master-card-info-avatar"
                 style={{
                     backgroundImage: `url(${process.env.REACT_APP_DOMEN}/${avatar})`,
                 }}
             ></div>
-            <div className="master-cart-info-text">
-                <div className="master-cart-info-text-title">
-                    <h2 className="title master-cart-info-text__title">
+            <div className="master-card-info-text">
+                <div className="master-card-info-text-title">
+                    <h2 className="title master-card-info-text__title">
                         {name} {surname}
                     </h2>
 
-                    <div className="master-cart-info-text-title-social">
-                        {vk !== "" ? (
+                    <div className="master-card-info-text-title-social">
+                        {vk.id !== "" ? (
                             <a
-                                href={vk}
-                                className="master-cart-info-text-title-social__link"
+                                href={vk.id}
+                                className="master-card-info-text-title-social__link"
                             >
                                 <svg
                                     width="25"
@@ -48,7 +48,7 @@ const MasterCartInfo = ({
                         {youtube !== "" ? (
                             <a
                                 href={youtube}
-                                className="master-cart-info-text-title-social__link"
+                                className="master-card-info-text-title-social__link"
                             >
                                 <svg
                                     width="23"
@@ -67,7 +67,7 @@ const MasterCartInfo = ({
                         {instagram !== "" ? (
                             <a
                                 href={instagram}
-                                className="master-cart-info-text-title-social__link"
+                                className="master-card-info-text-title-social__link"
                             >
                                 <svg
                                     width="20"
@@ -93,19 +93,21 @@ const MasterCartInfo = ({
                         ) : null}
                     </div>
                 </div>
-                <p className="master-cart-info-text__description">
+                <p className="master-card-info-text__description">
                     {masterDescription}
                 </p>
 
-                <div className="master-cart-info-text-specialty">
-                    <span className="master-cart-info-text-specialty__subspan">
+                <div className="master-card-info-text-specialty">
+                    <span className="master-card-info-text-specialty__subspan">
                         Специалность:
                     </span>
-                    <span className="master-cart-info-text-specialty__specialty">
+                    <span className="master-card-info-text-specialty__specialty">
                         {masterCategories.map(
                             (key, index) =>
                                 `${categories[key].title}${
-                                    index+1 !== masterCategories.length ? ", " : ""
+                                    index + 1 !== masterCategories.length
+                                        ? ", "
+                                        : ""
                                 }`
                         )}
                     </span>
@@ -115,4 +117,4 @@ const MasterCartInfo = ({
     );
 };
 
-export default MasterCartInfo;
+export default MasterCardInfo;

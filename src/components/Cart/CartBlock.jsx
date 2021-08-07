@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import NumberFormat from "react-number-format";
 
 const CartBlock = React.memo(
     ({
@@ -9,7 +10,9 @@ const CartBlock = React.memo(
         master,
         category,
         percentSale,
-        price,
+		price,
+		proPrice,
+		pro,
         checkDeclension,
         discountNotPrice,
         removeCourse,
@@ -20,6 +23,14 @@ const CartBlock = React.memo(
 
         return (
             <div className="cart-block">
+                <Link
+                    to={`/course/${_id}`}
+                    className="cart-block-content-cover-media"
+                    style={{
+                        backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${image}")`,
+                    }}
+                ></Link>
+
                 <div className="cart-block-content">
                     <Link
                         to={`/course/${_id}`}
@@ -52,17 +63,70 @@ const CartBlock = React.memo(
                         </div>
                         <div className="cart-block-content-text-bottom">
                             {!percentSale ? (
-                                <p className="cart-block-content-text__price">
-                                    {price} ₽
-                                </p>
+                                pro ? (
+                                    <div className="cart-block-content-text-price">
+                                        <p className="cart-block-content-text__subprice">
+                                            <NumberFormat
+                                                value={price}
+                                                displayType={"text"}
+                                                thousandSeparator={" "}
+                                                renderText={(value) => value}
+                                            />
+                                            ₽
+                                        </p>
+                                        <p className="cart-block-content-text__price">
+                                            <NumberFormat
+                                                value={proPrice}
+                                                displayType={"text"}
+                                                thousandSeparator={" "}
+                                                renderText={(value) => value}
+                                            />
+                                            ₽
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <p className="cart-block-content-text__price">
+                                        <NumberFormat
+                                            value={price}
+                                            displayType={"text"}
+                                            thousandSeparator={" "}
+                                            renderText={(value) => value}
+                                        />
+                                        ₽
+                                    </p>
+                                )
                             ) : (
                                 <div className="cart-block-content-text-price">
                                     <p className="cart-block-content-text__subprice">
-                                        {discountNotPrice} ₽
+                                        <NumberFormat
+                                            value={discountNotPrice}
+                                            displayType={"text"}
+                                            thousandSeparator={" "}
+                                            renderText={(value) => value}
+                                        />
+                                        ₽
                                     </p>
-                                    <p className="cart-block-content-text__price">
-                                        {price} ₽
-                                    </p>
+                                    {pro ? (
+                                        <p className="cart-block-content-text__price">
+                                            <NumberFormat
+                                                value={proPrice}
+                                                displayType={"text"}
+                                                thousandSeparator={" "}
+                                                renderText={(value) => value}
+                                            />
+                                            ₽
+                                        </p>
+                                    ) : (
+                                        <p className="cart-block-content-text__price">
+                                            <NumberFormat
+                                                value={price}
+                                                displayType={"text"}
+                                                thousandSeparator={" "}
+                                                renderText={(value) => value}
+                                            />
+                                            ₽
+                                        </p>
+                                    )}
                                 </div>
                             )}
                             <div

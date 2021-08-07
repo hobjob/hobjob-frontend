@@ -5,9 +5,7 @@ import queryString from "query-string";
 import {Helmet} from "react-helmet";
 
 import {fetchCourses, setCoursesFilters} from "../redux/actions/courses";
-import {fetchCategories} from "../redux/actions/categories";
 import {addCourseCart} from "../redux/actions/cart";
-import {fetchMasters} from "../redux/actions/masters";
 
 import {
     ShopFiltersTop,
@@ -25,6 +23,7 @@ const Shop = ({
     const dispatch = useDispatch();
     const history = useHistory();
 
+    const {user} = useSelector(({user}) => user);
     const {items, isLoadedAllCourses, filters} = useSelector(
         ({courses}) => courses
     );
@@ -38,14 +37,6 @@ const Shop = ({
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
-
-        if (!Object.keys(categories).length) {
-            dispatch(fetchCategories());
-        }
-
-        if (!Object.keys(masters).length) {
-            dispatch(fetchMasters());
-        }
 
         const newFilters = {
             categories: {},
@@ -195,6 +186,11 @@ const Shop = ({
                                                 item.transitTime,
                                                 ["час", "часа", "часов"]
                                             )}
+                                            pro={user.pro}
+                                            proPrice={
+                                                item.price -
+                                                (item.price / 100) * 20
+                                            }
                                             cartItems={cart}
                                             key={`shop-block-${index}`}
                                             masters={masters}

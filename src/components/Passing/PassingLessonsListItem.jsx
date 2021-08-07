@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 const PassingLessonsListItem = ({image, title, active, courseId, num}) => {
     return (
         <Link
-            to={`/passing/${courseId}/${num}`}
+            to={`/go/passing/${courseId}/${num}`}
             className={`passing-lessons-list-item ${active ? "active" : ""}`}
         >
             <div

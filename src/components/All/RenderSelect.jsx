@@ -1,6 +1,12 @@
 import React from "react";
 
-const RenderSelect = ({input, label, choise, meta: {touched, error}}) => {
+const RenderSelect = ({
+    disabled,
+    input,
+    label,
+    choise,
+    meta: {touched, error},
+}) => {
     return (
         <div className="select">
             <label
@@ -10,9 +16,8 @@ const RenderSelect = ({input, label, choise, meta: {touched, error}}) => {
             </label>
             <select
                 {...input}
-                className={`select__field ${
-                    touched && error ? "error" : ""
-                }`}
+                className={`select__field ${touched && error ? "error" : ""}`}
+                disabled={disabled ? true : false}
             >
                 {choise.map((item, index) => (
                     <option

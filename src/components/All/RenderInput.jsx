@@ -1,6 +1,7 @@
 import React from "react";
 
 const RenderInput = ({
+    disabled,
     input,
     label,
     type,
@@ -19,11 +20,12 @@ const RenderInput = ({
                         touched && error ? "error" : ""
                     }`}
                     required
+                    disabled={disabled ? true : false}
                 />
                 <label
                     className={`input__label ${
                         touched && error ? "error" : ""
-                    }`}
+                    } ${disabled ? "active" : ""}`}
                 >
                     {label}
                 </label>

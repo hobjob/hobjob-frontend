@@ -17,6 +17,8 @@ const ShopBlock = React.memo(
         checkDeclension,
         masters,
         categories,
+		pro,
+		proPrice,
     }) => {
         const [addState, setAddState] = React.useState(false);
 
@@ -43,7 +45,9 @@ const ShopBlock = React.memo(
                     title: categories[category].title,
                 },
                 percentSale,
-                price,
+				price,
+				proPrice,
+				pro,
                 checkDeclension,
                 discountNotPrice,
             };
@@ -94,15 +98,38 @@ const ShopBlock = React.memo(
                 </div>
                 <div className="shop-block-bottom">
                     {!percentSale ? (
-                        <p className="shop-block-bottom__price">
-                            <NumberFormat
-                                value={price}
-                                displayType={"text"}
-                                thousandSeparator={" "}
-                                renderText={(value) => value}
-                            />
-                            ₽
-                        </p>
+                        pro ? (
+                            <div className="shop-block-bottom-price">
+                                <p className="shop-block-bottom__subprice">
+                                    <NumberFormat
+                                        value={price}
+                                        displayType={"text"}
+                                        thousandSeparator={" "}
+                                        renderText={(value) => value}
+                                    />
+                                    ₽
+                                </p>
+                                <p className="shop-block-bottom__price">
+                                    <NumberFormat
+                                        value={proPrice}
+                                        displayType={"text"}
+                                        thousandSeparator={" "}
+                                        renderText={(value) => value}
+                                    />
+                                    ₽
+                                </p>
+                            </div>
+                        ) : (
+                            <p className="shop-block-bottom__price">
+                                <NumberFormat
+                                    value={price}
+                                    displayType={"text"}
+                                    thousandSeparator={" "}
+                                    renderText={(value) => value}
+                                />
+                                ₽
+                            </p>
+                        )
                     ) : (
                         <div className="shop-block-bottom-price">
                             <p className="shop-block-bottom__subprice">
@@ -114,15 +141,27 @@ const ShopBlock = React.memo(
                                 />
                                 ₽
                             </p>
-                            <p className="shop-block-bottom__price">
-                                <NumberFormat
-                                    value={price}
-                                    displayType={"text"}
-                                    thousandSeparator={" "}
-                                    renderText={(value) => value}
-                                />
-                                ₽
-                            </p>
+                            {pro ? (
+                                <p className="shop-block-bottom__price">
+                                    <NumberFormat
+                                        value={proPrice}
+                                        displayType={"text"}
+                                        thousandSeparator={" "}
+                                        renderText={(value) => value}
+                                    />
+                                    ₽
+                                </p>
+                            ) : (
+                                <p className="shop-block-bottom__price">
+                                    <NumberFormat
+                                        value={price}
+                                        displayType={"text"}
+                                        thousandSeparator={" "}
+                                        renderText={(value) => value}
+                                    />
+                                    ₽
+                                </p>
+                            )}
                         </div>
                     )}
                     {!addState ? (

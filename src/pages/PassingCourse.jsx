@@ -1,11 +1,20 @@
 import React from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {Link} from "react-router-dom";
+import ReactWebMediaPlayer from "react-web-media-player";
+
+import {
+    fetchPassingCourseLessonVideo,
+    fetchPassingCourseLessonMaterial,
+    fetchCompletePassingCourseLesson,
+} from "../redux/actions/passing";
 
 import {
     Loader,
     PassingLessonsList,
     PassingMaterials,
     PassingTimecodes,
+    PassingVideoLoader,
 } from "../components/";
 
 import Err404 from "./Err404";
@@ -15,15 +24,52 @@ const PassingCourse = ({
         params: {courseId, lessonNum},
     },
 }) => {
-    const {courses, isLoaded} = useSelector(({user}) => user);
-    const {timecode} = useSelector(({passing}) => passing);
+    const dispatch = useDispatch();
 
-    React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [courseId, lessonNum]);
+    const {courses, isLoaded} = useSelector(({user}) => user);
+    const {videoUrl, percentLoading} = useSelector(({passing}) => passing);
+
+    const PlayerRef = React.useRef();
 
     // Array of lessons starts at zero
     const lessonIndex = lessonNum - 1;
+
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+
+        if (isLoaded) {
+            dispatch(fetchPassingCourseLessonVideo(courseId, lessonNum));
+        }
+    }, [courseId, lessonNum, isLoaded]);
+
+    React.useEffect(() => {
+        if (courses[courseId]) {
+            const isLesson = courses[courseId].completedLessons.map((item) => {
+                if (parseInt(lessonNum) === item) {
+                    return true;
+                }
+
+                return false;
+            });
+
+            if (!isLesson[lessonIndex] && isLoaded) {
+                dispatch(fetchCompletePassingCourseLesson(courseId, lessonNum));
+            }
+        }
+    }, [courseId, lessonNum, isLoaded]);
+
+    const setTime = (seconds) => {
+        PlayerRef.current.store.dispatch({
+            type: "UPDATE_ASKED_TIME",
+            payload: {askedTime: seconds},
+        });
+    };
+
+    const downloadFile = (title, index) => {
+        dispatch(
+            fetchPassingCourseLessonMaterial(courseId, lessonNum, index, title)
+        );
+    };
 
     return (
         <>
@@ -32,29 +78,55 @@ const PassingCourse = ({
                     <section className="passing">
                         <div className="container">
                             <div className="passing-wrapper">
-                                <div className="passing-top-text">
-                                    <span className="subtitle__mb passing-top-text__subtitle">
-                                        {courses[courseId].title} ({lessonNum}{" "}
-                                        урок)
-                                    </span>
-                                    <h2 className="passing-top-text__title">
-                                        {
-                                            courses[courseId].lessons[
-                                                lessonIndex
-                                            ].title
-                                        }
-                                    </h2>
+                                <div className="passing-top">
+                                    <div className="passing-top-text">
+                                        <span className="subtitle__mb passing-top-text__subtitle">
+                                            {courses[courseId].title} (
+                                            {lessonNum} урок)
+                                        </span>
+                                        <h2 className="passing-top-text__title">
+                                            {
+                                                courses[courseId].lessons[
+                                                    lessonIndex
+                                                ].title
+                                            }
+                                        </h2>
+                                    </div>
+                                    {courses[courseId].lessons[
+                                        lessonIndex + 1
+                                    ] ? (
+                                        <Link
+                                            to={`/go/passing/${courseId}/${
+                                                lessonIndex + 2
+                                            }`}
+                                            className="passing-top-next"
+                                        >
+                                            К следующему уроку →
+                                        </Link>
+                                    ) : null}
                                 </div>
-                                <div className="passing-video-wrapper">
-                                    <iframe
-                                        width="100%"
-                                        height="500"
-                                        src={`${courses[courseId].lessons[lessonIndex].videoUrl}?start=${timecode.seconds}&autoplay=1`}
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    ></iframe>
-                                </div>
+
+                                {videoUrl !== "" ? (
+                                    <div className="passing-video-wrapper">
+                                        <ReactWebMediaPlayer
+                                            ref={PlayerRef}
+                                            title={
+                                                courses[courseId].lessons[
+                                                    lessonIndex
+                                                ].title
+                                            }
+                                            color="#dd9e5e"
+                                            video={`${videoUrl}`}
+                                            height="500"
+                                            width="100%"
+                                            thumbnail={`${process.env.REACT_APP_DOMEN}/${courses[courseId].lessons[lessonIndex].image}`}
+                                        />
+                                    </div>
+                                ) : (
+                                    <PassingVideoLoader
+                                        percentLoading={percentLoading}
+                                    />
+                                )}
 
                                 <PassingLessonsList
                                     lessons={courses[courseId].lessons}
@@ -82,9 +154,11 @@ const PassingCourse = ({
                                                 lessonIndex
                                             ].materials
                                         }
+                                        downloadFunc={downloadFile}
                                     />
 
                                     <PassingTimecodes
+                                        setTime={setTime}
                                         timecodes={
                                             courses[courseId].lessons[
                                                 lessonIndex

@@ -1,7 +1,7 @@
 import $api from '../../http/';
 
 export const fetchStatistics = () => (dispatch) => {
-	$api.get(`/statistics`).then(({ data }) => {
+	return $api.get(`/statistics`).then(({ data }) => {
 		dispatch(setStatistics(data))
 	})
 }

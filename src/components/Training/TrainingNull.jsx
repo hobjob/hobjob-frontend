@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 const TrainingNull = () => {
     return (
@@ -12,12 +13,12 @@ const TrainingNull = () => {
                     вебинары, чтобы понять, какое направление вам больше
                     подходит.
                 </p>
-                <a
-                    href={`${process.env.REACT_APP_HB_MAIN_DOMEN}/shop`}
+                <Link
+                    to="/shop"
                     className="btn training-null-text__btn"
                 >
                     Перейти в магазин курсов
-                </a>
+                </Link>
             </div>
             <div className="training-null-img">
                 <img

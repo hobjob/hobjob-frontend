@@ -1,6 +1,5 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {useHistory} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
 
@@ -9,7 +8,6 @@ import {LoginForm} from "../components/";
 import {sendLogin} from "../redux/actions/login";
 
 const Login = () => {
-    const history = useHistory();
     const dispatch = useDispatch();
 
     const onSubmit = ({email, password}) => {
@@ -51,7 +49,7 @@ const Login = () => {
                     </div>
                 </section>
             ) : (
-                history.push("/")
+                (window.location.href = "/")
             )}
         </>
     );

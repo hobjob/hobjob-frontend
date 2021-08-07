@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
 import {fetchCourseBuyCountWeek} from "../../redux/actions/courses";
-import {fetchMasters} from "../../redux/actions/masters";
 
 import {
     HomeMainSectionSpecialOffer,
@@ -23,9 +22,6 @@ const HomeMainSection = () => {
         if (!Object.keys(itemBuyCountWeek).length) {
             dispatch(fetchCourseBuyCountWeek());
 		}
-		if (!Object.keys(masters).length) {
-            dispatch(fetchMasters());
-        }
     }, []);
 
     return (

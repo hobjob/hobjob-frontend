@@ -16,6 +16,7 @@ let CabinetUserInfoForm = ({
     phone,
     city,
     sex,
+    master,
 }) => {
     const selector = formValueSelector("cabinet-user-info-form");
 
@@ -76,6 +77,7 @@ let CabinetUserInfoForm = ({
                     type="name"
                     name="name"
                     label="Имя"
+                    disabled={master === "" ? false : true}
                 />
             </div>
             <div className="cabinet-block-form-input">
@@ -84,6 +86,7 @@ let CabinetUserInfoForm = ({
                     type="name"
                     name="surname"
                     label="Фамилия"
+                    disabled={master === "" ? false : true}
                 />
             </div>
             <div className="cabinet-block-form-input">
@@ -92,6 +95,7 @@ let CabinetUserInfoForm = ({
                     type="text"
                     name="dateOfBirth"
                     label="Дата рождения"
+                    disabled={master === "" ? false : true}
                     {...dateMask}
                 />
             </div>
@@ -101,6 +105,7 @@ let CabinetUserInfoForm = ({
                     type="phone"
                     name="phone"
                     label="Номер телефона"
+                    disabled={master === "" ? false : true}
                     {...phoneMask}
                 />
             </div>
@@ -110,6 +115,7 @@ let CabinetUserInfoForm = ({
                     type="text"
                     name="city"
                     label="Город"
+                    disabled={master === "" ? false : true}
                 />
             </div>
             <div className="cabinet-block-form-input">
@@ -118,16 +124,18 @@ let CabinetUserInfoForm = ({
                     name="sex"
                     label="Пол"
                     choise={["Не указан", "Мужской", "Женский"]}
+                    disabled={master === "" ? false : true}
                 />
             </div>
             <button
                 className={`btn ${
-                    nameValue !== name ||
-                    surnameValue !== surname ||
-                    dateOfBirthValue !== dateOfBirth ||
-                    phoneValue !== phone ||
-                    cityValue !== city ||
-                    sexValue !== sex
+                    (nameValue !== name ||
+                        surnameValue !== surname ||
+                        dateOfBirthValue !== dateOfBirth ||
+                        phoneValue !== phone ||
+                        cityValue !== city ||
+                        sexValue !== sex) &&
+                    master === ""
                         ? ""
                         : "disabled"
                 } cabinet-block-form-btn`}

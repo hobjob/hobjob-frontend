@@ -7,11 +7,13 @@ import {Helmet} from "react-helmet";
 import {CartBlock, ShopSection} from "../components/";
 
 import {removeCourseCart} from "../redux/actions/cart";
+import {sendCreatePayment} from "../redux/actions/payment";
 
 const Cart = () => {
     const dispatch = useDispatch();
 
     const {cart} = useSelector(({cart}) => cart);
+    const {user} = useSelector(({user}) => user);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -21,6 +23,20 @@ const Cart = () => {
 
     const removeCourse = (id) => {
         dispatch(removeCourseCart(id));
+    };
+
+    const createPayment = () => {
+        const order = [];
+
+        Object.keys(cart).map((key) => order.push(cart[key]._id));
+
+        dispatch(
+            sendCreatePayment({
+                email: user.email,
+                order,
+                refId: localStorage.getItem("refId"),
+            })
+        );
     };
 
     return (
@@ -34,7 +50,7 @@ const Cart = () => {
                         {Object.keys(cart).length ? (
                             <>
                                 <h2 className="title__mb cart__title">
-                                    Корзина ({Object.keys(cart).length})
+                                    Корзина<span>({Object.keys(cart).length})</span>
                                 </h2>
 
                                 <div className="cart-block-wrapper">
@@ -50,11 +66,17 @@ const Cart = () => {
                                 <div className="cart-total">
                                     <div className="cart-total-text">
                                         <span className="cart-total__subtitle">
-                                            Итого:{" "}
+                                            Итого:
                                         </span>
                                         <h4 className="cart-total__title">
                                             {Object.keys(cart).map((key) => {
-                                                totalPrice += cart[key].price;
+                                                if (user.pro) {
+                                                    totalPrice +=
+                                                        cart[key].proPrice;
+                                                } else {
+                                                    totalPrice +=
+                                                        cart[key].price;
+                                                }
                                             })}
                                             {
                                                 <NumberFormat
@@ -70,12 +92,10 @@ const Cart = () => {
                                         </h4>
                                     </div>
                                     <div className="cart-total-btn">
-                                        {localStorage.getItem(
-                                            "accessToken"
-                                        ) ? (
-                                            <a
-                                                href="/payment"
+                                        {localStorage.getItem("accessToken") ? (
+                                            <button
                                                 className="btn-arrow cart-total__btn"
+                                                onClick={createPayment}
                                             >
                                                 Оформить заказ
                                                 <svg
@@ -90,7 +110,7 @@ const Cart = () => {
                                                         fill="#D89350"
                                                     />
                                                 </svg>
-                                            </a>
+                                            </button>
                                         ) : (
                                             <a
                                                 href="/go/register?redirect=cart"

@@ -1,15 +1,16 @@
 import React from "react";
-import {useDispatch} from "react-redux";
-
-import {setPassingTimecode} from "../../redux/actions/passing";
 
 import {PassingTimecodesItem} from "../";
 
-const PassingTimecodes = ({timecodes}) => {
-    const dispatch = useDispatch();
-
+const PassingTimecodes = ({timecodes, setTime}) => {
     const onClickTimecode = (timecode) => {
-        dispatch(setPassingTimecode(timecode));
+		const splitTimecode = timecode.split(":");
+		
+        setTime(
+            parseFloat(
+                parseInt(splitTimecode[0]) * 60 + parseInt(splitTimecode[1])
+            )
+        );
     };
 
     return (

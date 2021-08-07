@@ -83,13 +83,17 @@
 
 				&:hover
 					background-color: #FAFAFA
+					color: $black
+
+				&.active
+					color: $gray
 
 			&.close
 				animation: closeHeaderMenu .2s
 
 	&-menu-button
 		display: none
-		margin-left: 50px
+		margin-left: 25px
 
 @keyframes openHeaderMenu
 	0%
@@ -168,6 +172,11 @@
 
 			&:hover
 				color: $mainColor
+
+		&-bottom
+			margin-top: 50px
+			padding-top: 50px
+			border-top: 1px solid $borderGray
 
 	&-social
 		display: flex

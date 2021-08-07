@@ -3,8 +3,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 
 import {fetchPostsById} from "../redux/actions/posts";
-import {fetchCategories} from "../redux/actions/categories";
-import {fetchMasters} from "../redux/actions/masters";
 
 import {Err404} from "../pages/";
 
@@ -30,16 +28,6 @@ const MagazinePostPage = ({
     );
     const masters = useSelector(({masters}) => masters.items);
     const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
-
-    React.useEffect(() => {
-        if (!Object.keys(categories).length) {
-            dispatch(fetchCategories());
-        }
-
-        if (!Object.keys(masters).length) {
-            dispatch(fetchMasters());
-        }
-    }, []);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);

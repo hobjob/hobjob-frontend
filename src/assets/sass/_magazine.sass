@@ -14,6 +14,7 @@
 			margin-bottom: 100px
 
 	&__btn
+		white-space: nowrap
 		display: inline-block
 		border: none
 		border: 1px solid $mainColor
@@ -220,20 +221,25 @@
 			padding: 25px 0
 
 			&-top
-				margin-bottom: 50px
 				display: flex
 				align-items: center
+				flex-wrap: wrap
+
+				margin-bottom: 25px
 
 				&__date
 					font-size: 18px
 					color: $gray
 
 					margin-right: 50px
+					margin-bottom: 25px
 
 				&-views
 					margin-right: 50px
 					display: flex
 					align-items: center
+
+					margin-bottom: 25px
 
 					& svg
 						margin-right: 5px
@@ -246,10 +252,14 @@
 					margin-right: 50px
 					font-size: 18px
 					color: $mainColor
+					
+					margin-bottom: 25px
 
 				&-auth
 					display: flex
 					align-items: center
+					
+					margin-bottom: 25px
 
 					&-avatar
 						margin-right: 15px

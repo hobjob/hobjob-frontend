@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 const TrainingBlock = ({
-	_id,
+    _id,
     image,
     title,
     lessons,
@@ -40,8 +40,7 @@ const TrainingBlock = ({
                 <div className="training-block-text-top">
                     <h3 className="training-block-text__title">{title}</h3>
                     <p className="subtitle training-block-text__subtitle">
-                        Пройдено {completedLessons.length} уроков из{" "}
-                        {lessons.length}
+                        Пройдено {completedLessons} из {lessons.length}
                     </p>
                 </div>
                 <div className="training-block-text-bottom">

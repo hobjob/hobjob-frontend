@@ -28,11 +28,14 @@ export { default as Magazine } from "./Magazine"
 // Magazine Post Page
 export { default as MagazinePostPage } from "./MagazinePostPage"
 
+// MasterCard
+export { default as MasterCard } from "./MasterCard"
+
+// MastersAbout
+export { default as MastersAbout } from "./MastersAbout"
+
 // Master
 export { default as Master } from "./Master"
-
-// MastersPage
-export { default as MastersAbout } from "./MastersAbout"
 
 // Pro
 export { default as Pro } from "./Pro"
@@ -57,3 +60,4 @@ export { default as Referrals } from "./Referrals"
 
 // Payment
 export { default as Payment } from "./Payment"
+export { default as PaymentConfirmation } from "./PaymentConfirmation"

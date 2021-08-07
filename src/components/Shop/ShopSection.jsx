@@ -4,14 +4,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {fetchCoursesSection} from "../../redux/actions/courses";
-import {fetchCategories} from "../../redux/actions/categories";
-import {fetchMasters} from "../../redux/actions/masters";
 import {addCourseCart} from "../../redux/actions/cart";
 import {ShopBlock, Loader} from "../";
 
 const ShopSection = ({title}) => {
     const dispatch = useDispatch();
 
+    const {user} = useSelector(({user}) => user);
     const {itemsSection, isLoadedSectionCourses} = useSelector(
         ({courses}) => courses
     );
@@ -28,14 +27,6 @@ const ShopSection = ({title}) => {
     React.useEffect(() => {
         if (!itemsSection.length) {
             dispatch(fetchCoursesSection());
-        }
-
-        if (!Object.keys(categories).length) {
-            dispatch(fetchCategories());
-        }
-
-        if (!Object.keys(masters).length) {
-            dispatch(fetchMasters());
         }
     }, []);
 
@@ -79,6 +70,10 @@ const ShopSection = ({title}) => {
                                         item.transitTime,
                                         ["час", "часа", "часов"]
                                     )}
+                                    pro={user.pro}
+                                    proPrice={
+                                        item.price - (item.price / 100) * 20
+                                    }
                                     cartItems={cart}
                                     key={`shop-section-block-${index}`}
                                     masters={masters}

@@ -1,0 +1,57 @@
+// payment
+.payment
+	display: flex
+	flex-direction: column
+	justify-content: center
+
+	min-height: 100vh
+	background-color: #f9f9f9
+
+	&-wrapper
+		display: flex
+		justify-content: space-between
+		align-items: center
+
+	&-form
+		width: 50%
+
+	&-info
+		width: 35%
+		padding: 50px
+		background-color: $white
+		+borderRadius
+		+openAnimation
+
+		&__title
+			font-size: 36px
+			margin-bottom: 50px
+
+			& span
+				padding-left: 15px
+				font-size: 28px
+				color: $gray
+
+		&-course
+			&-block
+				display: flex
+				align-items: center
+
+				padding-bottom: 25px
+				margin-bottom: 25px
+				border-bottom: 1px solid $borderGray
+
+				&:last-child
+					padding-bottom: 0
+					border: none
+
+				&-img
+					display: block
+					min-width: 75px
+					min-height: 75px
+
+					+backgroundSetting
+					+borderRadius
+
+				&__title
+					font-size: 21px
+					margin-left: 25px

@@ -1,10 +1,10 @@
 // master
-.master
+.master-card
 	margin-top: 100px
 	margin-bottom: 150px
 	+openAnimation
 
-	&-cart-info
+	&-info
 		display: flex
 		align-items: center
 
@@ -153,9 +153,10 @@
 		margin-top: 100px
 
 		display: flex
+		flex-wrap: wrap
 
 		&-item
-			width: 50%
+			width: 40%
 			padding-bottom: 25px
 			border-bottom: 1px solid $borderGray
 			margin-right: 50px
@@ -240,3 +241,86 @@
 
 		&-right
 			width: 40%
+
+// master
+.master
+	margin: 100px 0
+	+openAnimation
+
+	&-text
+		&__title
+			margin-bottom: 25px
+
+		&__description
+			font-size: 21px
+			color: $gray
+
+	&-info
+		margin: 100px 0
+
+		display: flex
+		justify-content: space-between
+		align-items: flex-start
+
+		&-list-courses
+			width: 60%
+
+			&-col
+				width: 50%
+
+			&-subinfo
+				display: flex
+				justify-content: space-between
+				align-items: center
+
+				padding-bottom: 25px
+				margin-bottom: 25px
+				border-bottom: 1px solid $borderGray
+
+				&__title
+					color: $gray
+
+			&-item
+				display: flex
+				justify-content: space-between
+				align-items: center
+
+				padding-bottom: 25px
+				margin-bottom: 25px
+				border-bottom: 1px solid $borderGray
+
+				&-course
+					display: flex
+					align-items: center
+
+					&-image
+						width: 50px
+						height: 50px
+						border-radius: 50%
+						+backgroundSetting
+
+					&__title
+						font-size: 18px
+						margin-left: 15px
+
+				&-count
+					&__title
+						font-size: 18px
+
+		&-balance
+			width: 35%
+			padding: 35px
+			+borderRadius
+			+boxShadow
+
+			&__title
+				font-size: 42px
+				margin-bottom: 50px
+
+			&__subtitle
+				color: $gray
+				font-size: 21px
+				margin-bottom: 25px
+
+			&__btn
+				width: 100%
