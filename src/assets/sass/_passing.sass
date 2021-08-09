@@ -38,8 +38,10 @@
 
 		border-bottom: 1px solid $borderGray
 
+		overflow-y: auto
+
 		&-item
-			width: 15%
+			min-width: 200px
 			margin-right: 25px
 
 			user-select: none
@@ -92,6 +94,9 @@
 
 						border-bottom: 1px solid $borderGray
 
+						&:last-child
+							margin-bottom: 0
+
 					&-item
 						cursor: pointer
 						display: flex
@@ -123,6 +128,9 @@
 						display: flex
 						align-items: center
 						margin-bottom: 15px
+
+						&:last-child
+							margin-bottom: 0
 
 						&__title
 							& span

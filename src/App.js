@@ -10,7 +10,7 @@ dotenv.config()
 
 const App = () => {
 	return (
-		<>
+		<div className="wrapper">
 			{window.location.pathname.indexOf("/payment") !== -1 || window.location.pathname === "/go/login" || window.location.pathname === "/go/register" || window.location.pathname === "/go/password-recovery" || window.location.pathname === "/go/repeat-email" || window.location.pathname.indexOf("/go/password-recovery") !== -1 || window.location.pathname.indexOf("/go/confirmed") !== -1 ? null : <Header />}
 
 			<Suspense fallback={() => <></>}>
@@ -53,7 +53,7 @@ const App = () => {
 			</Suspense>
 
 			{window.location.pathname.indexOf("/payment") !== -1 || window.location.pathname === "/go/login" || window.location.pathname === "/go/register" || window.location.pathname === "/go/password-recovery" || window.location.pathname === "/go/repeat-email" || window.location.pathname.indexOf("/go/password-recovery") !== -1 || window.location.pathname.indexOf("/go/confirmed") !== -1 ? null : <Footer />}
-		</>
+		</div>
 	)
 }
 

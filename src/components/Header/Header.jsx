@@ -17,8 +17,9 @@ const Header = () => {
     const categories = useSelector(({categories}) => categories.items);
     const {cart} = useSelector(({cart}) => cart);
 
-    const [menuState, setMenuState] = React.useState(false);
-    const [menuAnimationState, setMenuAnimationState] = React.useState(false);
+    const [modalMenuState, setModalMenuState] = React.useState(false);
+    const [modalMenuAnimationState, setModalMenuAnimationState] =
+        React.useState(false);
     const [stateCookies, setStateCookies] = React.useState(false);
     const [headerUserMenu, setHeaderUserMenu] = React.useState(false);
     const [headerUserMenuAnimateClose, setHeaderUserMenuAnimateClose] =
@@ -44,7 +45,7 @@ const Header = () => {
         }
     }, []);
 
-    const toggleMenu = () => {
+    const toggleUserMenu = () => {
         setHeaderUserMenuAnimateClose(true);
 
         setTimeout(() => {
@@ -68,28 +69,28 @@ const Header = () => {
         dispatch(sendLogout());
     };
 
-    const onClickMenu = () => {
-        setMenuState(!menuState);
+    const onClickModalMenu = () => {
+        setModalMenuState(!modalMenuState);
     };
 
-    const onClickCloseMenu = () => {
-        setMenuAnimationState(true);
+    const onClickCloseModalMenu = () => {
+        setModalMenuAnimationState(true);
 
         setTimeout(() => {
-            setMenuState(false);
-            setMenuAnimationState(false);
+            setModalMenuState(false);
+            setModalMenuAnimationState(false);
         }, 200);
     };
 
-    if (menuState === true) {
+    if (modalMenuState === true) {
         document.body.style.overflow = "hidden";
     } else {
         document.body.style.overflow = "visible";
     }
 
     const handHeaderModalMenu = (e) => {
-        if (e.target <= HeaderModalMenuRef.current) {
-            onClickCloseMenu(false);
+        if (e.target === HeaderModalMenuRef.current) {
+            onClickCloseModalMenu();
         }
     };
 
@@ -100,12 +101,13 @@ const Header = () => {
 
     return (
         <>
-            {menuState ? (
+            {modalMenuState ? (
                 <HeaderModalMenu
                     isLoaded={isLoaded}
                     HeaderModalMenuRef={HeaderModalMenuRef}
-                    onClickMenu={onClickCloseMenu}
-                    menuAnimationState={menuAnimationState}
+                    onClickCloseModalMenu={onClickCloseModalMenu}
+                    modalMenuAnimationState={modalMenuAnimationState}
+                    clickLogout={clickLogout}
                 />
             ) : null}
 
@@ -203,7 +205,7 @@ const Header = () => {
 
                                 <div
                                     className="header-menu-button"
-                                    onClick={onClickMenu}
+                                    onClick={onClickModalMenu}
                                 >
                                     <svg
                                         width="25"
@@ -236,65 +238,79 @@ const Header = () => {
                                 >
                                     Корзина ({Object.keys(cart).length})
                                 </NavLink>
-                                <div className="header-user">
-                                    <div
-                                        onClick={toggleMenu}
-                                        ref={headerUserMenuRef}
-                                        className={`header-user-avatar ${
-                                            headerUserMenu ? "active" : ""
-                                        }`}
-                                        style={{
-                                            backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${user.avatar}")`,
-                                        }}
-                                    ></div>
-                                    {headerUserMenu ? (
+                                {document.documentElement.clientWidth > 1200 ? (
+                                    <div className="header-user">
                                         <div
-                                            className={`header-user-menu ${
-                                                headerUserMenuAnimateClose
-                                                    ? "close"
-                                                    : ""
+                                            onClick={toggleUserMenu}
+                                            ref={headerUserMenuRef}
+                                            className={`header-user-avatar ${
+                                                headerUserMenu ? "active" : ""
                                             }`}
-                                        >
-                                            <NavLink
-                                                to="/go/training"
-                                                className="header-user-menu__link"
+                                            style={{
+                                                backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${user.avatar}")`,
+                                            }}
+                                        ></div>
+                                        {headerUserMenu ? (
+                                            <div
+                                                className={`header-user-menu ${
+                                                    headerUserMenuAnimateClose
+                                                        ? "close"
+                                                        : ""
+                                                }`}
                                             >
-                                                Мое обучение
-                                            </NavLink>
+                                                <NavLink
+                                                    to="/go/training"
+                                                    className="header-user-menu__link"
+                                                >
+                                                    Мое обучение
+                                                </NavLink>
 
-                                            <NavLink
-                                                to="/go/cabinet"
-                                                className="header-user-menu__link"
-                                            >
-                                                Мой профиль
-                                            </NavLink>
+                                                <NavLink
+                                                    to="/go/cabinet"
+                                                    className="header-user-menu__link"
+                                                >
+                                                    Мой профиль
+                                                </NavLink>
 
-                                            <NavLink
-                                                to="/go/referrals"
-                                                className="header-user-menu__link"
-                                            >
-                                                Пригласи друга
-                                            </NavLink>
+                                                <NavLink
+                                                    to="/go/referrals"
+                                                    className="header-user-menu__link"
+                                                >
+                                                    Пригласи друга
+                                                </NavLink>
 
-                                            <NavLink
-                                                to="/go/master"
-                                                className="header-user-menu__link"
-                                            >
-                                                Для мастера
-                                            </NavLink>
+                                                <NavLink
+                                                    to="/go/master"
+                                                    className="header-user-menu__link"
+                                                >
+                                                    Для мастера
+                                                </NavLink>
 
-                                            <span
-                                                onClick={clickLogout}
-                                                className="header-user-menu__link"
-                                            >
-                                                Выйти
-                                            </span>
-                                        </div>
-                                    ) : null}
-                                </div>
+                                                <span
+                                                    onClick={clickLogout}
+                                                    className="header-user-menu__link"
+                                                >
+                                                    Выйти
+                                                </span>
+                                            </div>
+                                        ) : null}
+                                    </div>
+                                ) : (
+                                    <div
+                                        className="header-user"
+                                        onClick={onClickModalMenu}
+                                    >
+                                        <div
+                                            className="header-user-avatar"
+                                            style={{
+                                                backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${user.avatar}")`,
+                                            }}
+                                        ></div>
+                                    </div>
+                                )}
                                 <div
                                     className="header-menu-button"
-                                    onClick={onClickMenu}
+                                    onClick={onClickModalMenu}
                                 >
                                     <svg
                                         width="25"

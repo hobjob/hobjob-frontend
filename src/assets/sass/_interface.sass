@@ -66,8 +66,15 @@ p
 	font-size: 24px
 	margin-bottom: 50px
 
+// wrapper
+.wrapper
+	display: flex
+	flex-direction: column
+	min-height: 100vh
+
 // container
 .container
+	position: relative
 	width: 90%
 	max-width: 1300px
 
@@ -388,7 +395,7 @@ p
 .email-confirmed
 	margin: 100px 0
 	+openAnimation
-
+	
 	&-wrapper
 		display: flex
 		justify-content: space-between

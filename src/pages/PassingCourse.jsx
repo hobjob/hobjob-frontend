@@ -43,17 +43,31 @@ const PassingCourse = ({
     }, [courseId, lessonNum, isLoaded]);
 
     React.useEffect(() => {
-        if (courses[courseId]) {
-            const isLesson = courses[courseId].completedLessons.map((item) => {
-                if (parseInt(lessonNum) === item) {
-                    return true;
+		if (courses[courseId]) {
+			if (courses[courseId].completedLessons.length === 0 && isLoaded) {
+                dispatch(fetchCompletePassingCourseLesson(courseId, lessonNum));
+            }
+
+            let isLesson;
+
+            for (
+                let i = 0;
+                i < courses[courseId].completedLessons.length;
+                i++
+			) {
+                if (
+                    parseInt(lessonNum) ===
+                    courses[courseId].completedLessons[i]
+                ) {
+                    isLesson = false;
+                    continue;
                 }
 
-                return false;
-            });
+                isLesson = true;
+			}
 
-            if (!isLesson[lessonIndex] && isLoaded) {
-                dispatch(fetchCompletePassingCourseLesson(courseId, lessonNum));
+            if (isLesson && isLoaded) {
+				dispatch(fetchCompletePassingCourseLesson(courseId, lessonNum));
             }
         }
     }, [courseId, lessonNum, isLoaded]);
@@ -117,7 +131,12 @@ const PassingCourse = ({
                                             }
                                             color="#dd9e5e"
                                             video={`${videoUrl}`}
-                                            height="500"
+                                            height={
+                                                document.documentElement
+                                                    .clientWidth > 900
+                                                    ? 500
+                                                    : 350
+                                            }
                                             width="100%"
                                             thumbnail={`${process.env.REACT_APP_DOMEN}/${courses[courseId].lessons[lessonIndex].image}`}
                                         />

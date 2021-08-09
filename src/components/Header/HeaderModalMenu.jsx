@@ -4,20 +4,25 @@ import {useSelector} from "react-redux";
 
 const HeaderModalMenu = ({
     HeaderModalMenuRef,
-    menuAnimationState,
-    onClickMenu,
+    modalMenuAnimationState,
+    onClickCloseModalMenu,
     isLoaded,
+    clickLogout,
 }) => {
     const {cart} = useSelector(({cart}) => cart);
 
     return (
         <div
             className={`header-modal-menu-wrapper ${
-                menuAnimationState ? "hidden" : ""
+                modalMenuAnimationState ? "hidden" : ""
             }`}
+            ref={HeaderModalMenuRef}
         >
-            <div className="header-modal-menu-content" ref={HeaderModalMenuRef}>
-                <div className="header-modal-menu-close" onClick={onClickMenu}>
+            <div className="header-modal-menu-content">
+                <div
+                    className="header-modal-menu-close"
+                    onClick={onClickCloseModalMenu}
+                >
                     <svg
                         width="39"
                         height="38"
@@ -46,7 +51,7 @@ const HeaderModalMenu = ({
                 <Link
                     to="/"
                     className="header-modal-menu-logo__link"
-                    onClick={onClickMenu}
+                    onClick={onClickCloseModalMenu}
                 >
                     <img
                         src={`${process.env.REACT_APP_DOMEN}/all/logo.svg`}
@@ -59,7 +64,7 @@ const HeaderModalMenu = ({
                         to="/shop"
                         className="header-modal-menu-nav__link"
                         activeClassName="header-modal-menu-nav__link active"
-                        onClick={onClickMenu}
+                        onClick={onClickCloseModalMenu}
                     >
                         Магазин курсов
                     </NavLink>
@@ -67,7 +72,7 @@ const HeaderModalMenu = ({
                         to="/pro"
                         className="header-modal-menu-nav__link"
                         activeClassName="header-modal-menu-nav__link active"
-                        onClick={onClickMenu}
+                        onClick={onClickCloseModalMenu}
                     >
                         Pro аккаунт
                     </NavLink>
@@ -75,7 +80,7 @@ const HeaderModalMenu = ({
                         to="/about"
                         className="header-modal-menu-nav__link"
                         activeClassName="header-modal-menu-nav__link active"
-                        onClick={onClickMenu}
+                        onClick={onClickCloseModalMenu}
                     >
                         О HobJob
                     </NavLink>
@@ -83,7 +88,7 @@ const HeaderModalMenu = ({
                         to="/masters-about"
                         className="header-modal-menu-nav__link"
                         activeClassName="header-modal-menu-nav__link active"
-                        onClick={onClickMenu}
+                        onClick={onClickCloseModalMenu}
                     >
                         Для мастеров
                     </NavLink>
@@ -91,7 +96,7 @@ const HeaderModalMenu = ({
                         to="/magazine"
                         className="header-modal-menu-nav__link"
                         activeClassName="header-modal-menu-nav__link active"
-                        onClick={onClickMenu}
+                        onClick={onClickCloseModalMenu}
                     >
                         Журнал
                     </NavLink>
@@ -99,7 +104,7 @@ const HeaderModalMenu = ({
                         to="/cart"
                         className="header-modal-menu-nav__link"
                         activeClassName="header-modal-menu-nav__link active"
-                        onClick={onClickMenu}
+                        onClick={onClickCloseModalMenu}
                     >
                         Корзина ({Object.keys(cart).length})
                     </NavLink>
@@ -109,7 +114,7 @@ const HeaderModalMenu = ({
                                 href="/go/login"
                                 className="header-modal-menu-nav__link"
                                 activeClassName="header-modal-menu-nav__link active"
-                                onClick={onClickMenu}
+                                onClick={onClickCloseModalMenu}
                             >
                                 Войти
                             </a>
@@ -117,7 +122,7 @@ const HeaderModalMenu = ({
                                 href="/go/register"
                                 className="header-modal-menu-nav__link"
                                 activeClassName="header-modal-menu-nav__link active"
-                                onClick={onClickMenu}
+                                onClick={onClickCloseModalMenu}
                             >
                                 Зарегистрироваться
                             </a>
@@ -128,7 +133,7 @@ const HeaderModalMenu = ({
                                 to="/go/training"
                                 className="header-modal-menu-nav__link"
                                 activeClassName="header-modal-menu-nav__link active"
-                                onClick={onClickMenu}
+                                onClick={onClickCloseModalMenu}
                             >
                                 Мое обучение
                             </NavLink>
@@ -137,7 +142,7 @@ const HeaderModalMenu = ({
                                 to="/go/cabinet"
                                 className="header-modal-menu-nav__link"
                                 activeClassName="header-modal-menu-nav__link active"
-                                onClick={onClickMenu}
+                                onClick={onClickCloseModalMenu}
                             >
                                 Мой профиль
                             </NavLink>
@@ -146,7 +151,7 @@ const HeaderModalMenu = ({
                                 to="/go/referrals"
                                 className="header-modal-menu-nav__link"
                                 activeClassName="header-modal-menu-nav__link active"
-                                onClick={onClickMenu}
+                                onClick={onClickCloseModalMenu}
                             >
                                 Пригласи друга
                             </NavLink>
@@ -155,10 +160,17 @@ const HeaderModalMenu = ({
                                 to="/go/master"
                                 className="header-modal-menu-nav__link"
                                 activeClassName="header-modal-menu-nav__link active"
-                                onClick={onClickMenu}
+                                onClick={onClickCloseModalMenu}
                             >
                                 Для мастера
                             </NavLink>
+
+                            <span
+                                onClick={clickLogout}
+                                className="header-modal-menu-nav__link"
+                            >
+                                Выйти
+                            </span>
                         </div>
                     )}
                 </nav>
