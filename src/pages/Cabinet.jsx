@@ -1,13 +1,11 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 
-import {
-    fetchUpdateUser,
-    fetchUpdateUserPassword,
-} from "../redux/actions/user";
+import {fetchUpdateUser, fetchUpdateUserPassword} from "../redux/actions/user";
 
 import {
     Loader,
+    CabinetMessage,
     CabinetCardUserInfo,
     CabinetUserInfoForm,
     CabinetUserPassword,
@@ -21,6 +19,8 @@ const Cabinet = () => {
 
     const {user, isLoaded} = useSelector(({user}) => user);
 
+    const [masterInfoMessage, setMasterInfoMessage] = React.useState(false);
+
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -33,6 +33,11 @@ const Cabinet = () => {
         return dispatch(fetchUpdateUserPassword(data));
     };
 
+    const closeMasterInfoMessage = () => {
+        localStorage.setItem("close-master-info-message", true);
+        setMasterInfoMessage(true);
+    };
+
     return (
         <>
             {localStorage.getItem("accessToken") ? (
@@ -41,6 +46,17 @@ const Cabinet = () => {
                         <section className="cabinet">
                             <div className="container">
                                 <div className="cabinet-wrapper">
+                                    {localStorage.getItem(
+                                        "close-master-info-message"
+                                    ) || masterInfoMessage ? null : (
+                                        <CabinetMessage
+                                            message={
+                                                "Вы не можете поменять свои личные данные, так являетесь мастером HobJob. Если вы хотите изменить данные напишите на почту поддержки"
+                                            }
+                                            closeFunc={closeMasterInfoMessage}
+                                        />
+                                    )}
+
                                     <CabinetCardUserInfo {...user} />
 
                                     <div className="cabinet-block-wrapper">

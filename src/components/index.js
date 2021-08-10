@@ -99,6 +99,7 @@ export { default as PassingTimecodesItem } from "./Passing/PassingTimecodesItem"
 export { default as PassingVideoLoader } from "./Passing/PassingVideoLoader"
 
 // Cabinet
+export { default as CabinetMessage } from "./Cabinet/CabinetMessage"
 export { default as CabinetCardUserInfo } from "./Cabinet/CabinetCardUserInfo"
 export { default as CabinetUserInfoForm } from "./Cabinet/CabinetUserInfoForm"
 export { default as CabinetUserPassword } from "./Cabinet/CabinetUserPassword"
@@ -112,6 +113,9 @@ export { default as ReferralsPartnersItem } from "./Referrals/ReferralsPartnersI
 
 // Payment
 export { default as PaymentCourseBlock } from "./Payment/PaymentCourseBlock"
+
+// Policy
+export { default as PolicyBlock } from "./Policy/PolicyBlock"
 
 // Footer
 export { default as Footer } from "./Footer/Footer"

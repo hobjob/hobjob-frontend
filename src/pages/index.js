@@ -61,3 +61,9 @@ export { default as Referrals } from "./Referrals"
 // Payment
 export { default as Payment } from "./Payment"
 export { default as PaymentConfirmation } from "./PaymentConfirmation"
+
+// Policy
+export { default as Policy } from "./Policy"
+
+// PublicOffer
+export { default as PublicOffer } from "./PublicOffer"

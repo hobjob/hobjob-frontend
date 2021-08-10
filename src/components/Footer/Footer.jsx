@@ -166,10 +166,10 @@ const Footer = () => {
                             </span>
                         </div>
                         <div className="footer-block-bottom-right">
-                            <Link to="#" className="footer-block-bottom__link">
+                            <Link to="/policy" className="footer-block-bottom__link">
                                 Политика конфиденциальности
                             </Link>
-                            <Link to="#" className="footer-block-bottom__link">
+                            <Link to="/public-offer" className="footer-block-bottom__link">
                                 Публичная оферта
                             </Link>
                         </div>

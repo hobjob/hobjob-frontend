@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import { Header, Footer } from './components/';
 
-import { Home, Cart, Shop, Magazine, MagazinePostPage, MasterCard, MastersAbout, Master, Pro, About, Err404, Login, Register, RepeatEmail, PasswordRecoveryEmail, PasswordRecoveryNewPassword, Confirmed, Training, PassingCourse, Cabinet, Referrals, Payment, PaymentConfirmation } from './pages/';
+import { Home, Cart, Shop, Magazine, MagazinePostPage, MasterCard, MastersAbout, Master, Pro, About, Err404, Login, Register, RepeatEmail, PasswordRecoveryEmail, PasswordRecoveryNewPassword, Confirmed, Training, PassingCourse, Cabinet, Referrals, Payment, PaymentConfirmation, Policy, PublicOffer } from './pages/';
 
 dotenv.config()
 
@@ -31,7 +31,10 @@ const App = () => {
 					<Route path="/payment/:id" render={(props) => <Payment {...props} />} exact />
 					<Route path="/payment/confirmation/:number" render={(props) => <PaymentConfirmation {...props} />} exact />
 
-					{/* GO */}
+					<Route path="/policy" render={() => <Policy />} exact />
+					<Route path="/public-offer" render={() => <PublicOffer />} exact />
+
+					{/* Go */}
 					<Route path="/go/login" render={() => <Login />} exact />
 					<Route path="/go/register" render={(props) => <Register {...props} />} exact />
 
