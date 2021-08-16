@@ -58,9 +58,13 @@ export { default as Cabinet } from "./Cabinet"
 // Referrals
 export { default as Referrals } from "./Referrals"
 
-// Payment
-export { default as Payment } from "./Payment"
-export { default as PaymentConfirmation } from "./PaymentConfirmation"
+// PaymentCourses
+export { default as PaymentCourses } from "./PaymentCourses"
+export { default as PaymentCoursesConfirmation } from "./PaymentCoursesConfirmation"
+
+// PaymentProSubscribe
+export { default as PaymentProSubscribe } from "./PaymentProSubscribe"
+export { default as PaymentProSubscribeConfirmation } from "./PaymentProSubscribeConfirmation"
 
 // Policy
 export { default as Policy } from "./Policy"

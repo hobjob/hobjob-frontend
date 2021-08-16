@@ -1,12 +1,11 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {NavLink} from "react-router-dom";
 
-import {fetchPaymentById} from "../redux/actions/payment";
+import {fetchPaymentCoursesById} from "../redux/actions/payment";
 
 import {PaymentCourseBlock} from "../components/";
 
-const Payment = ({
+const PaymentCourses = ({
     match: {
         params: {id},
     },
@@ -17,27 +16,31 @@ const Payment = ({
     const {payment, isLoaded} = useSelector(({payment}) => payment);
 
     React.useEffect(() => {
-        dispatch(fetchPaymentById(id));
+        dispatch(fetchPaymentCoursesById(id));
     }, []);
 
     React.useEffect(() => {
         if (isLoaded) {
-            const checkout = new window.YooMoneyCheckoutWidget({
-                confirmation_token: payment.confirmation.confirmation_token,
-                return_url: `http://localhost:3000/payment/confirmation/${payment.paymentNumber}`,
+            if (payment.confirmation) {
+                const checkout = new window.YooMoneyCheckoutWidget({
+                    confirmation_token: payment.confirmation.confirmation_token,
+                    return_url: `http://localhost:3000/payment/courses/confirmation/${payment.paymentNumber}`,
 
-                customization: {
-                    colors: {
-                        controlPrimary: "#DD9E5E",
-                        background: "#F9F9F9",
+                    customization: {
+                        colors: {
+                            controlPrimary: "#DD9E5E",
+                            background: "#F9F9F9",
+                        },
                     },
-                },
-                error_callback: function (error) {
-                    console.log(error);
-                },
-            });
+                    error_callback: function (error) {
+                        console.log(error);
+                    },
+                });
 
-            checkout.render("payment-form");
+                checkout.render("payment-form");
+            } else {
+                window.location.href = "/";
+            }
         }
     }, [isLoaded]);
 
@@ -77,4 +80,4 @@ const Payment = ({
     );
 };
 
-export default Payment;
+export default PaymentCourses;

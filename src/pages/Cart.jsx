@@ -7,13 +7,13 @@ import {Helmet} from "react-helmet";
 import {CartBlock, ShopSection} from "../components/";
 
 import {removeCourseCart} from "../redux/actions/cart";
-import {sendCreatePayment} from "../redux/actions/payment";
+import {sendCreateCoursesPayment} from "../redux/actions/payment";
 
 const Cart = () => {
     const dispatch = useDispatch();
 
     const {cart} = useSelector(({cart}) => cart);
-    const {user} = useSelector(({user}) => user);
+    const {user, isLoaded} = useSelector(({user}) => user);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -31,8 +31,7 @@ const Cart = () => {
         Object.keys(cart).map((key) => order.push(cart[key]._id));
 
         dispatch(
-            sendCreatePayment({
-                email: user.email,
+            sendCreateCoursesPayment({
                 order,
                 refId: localStorage.getItem("refId"),
             })
@@ -50,7 +49,8 @@ const Cart = () => {
                         {Object.keys(cart).length ? (
                             <>
                                 <h2 className="title__mb cart__title">
-                                    Корзина<span>({Object.keys(cart).length})</span>
+                                    Корзина
+                                    <span>({Object.keys(cart).length})</span>
                                 </h2>
 
                                 <div className="cart-block-wrapper">
@@ -92,7 +92,8 @@ const Cart = () => {
                                         </h4>
                                     </div>
                                     <div className="cart-total-btn">
-                                        {localStorage.getItem("accessToken") ? (
+                                        {localStorage.getItem("accessToken") &&
+                                        isLoaded ? (
                                             <button
                                                 className="btn-arrow cart-total__btn"
                                                 onClick={createPayment}

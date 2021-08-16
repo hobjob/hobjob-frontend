@@ -1,11 +1,11 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 
-import {sendConfirmationPayment} from "../redux/actions/payment";
+import {sendConfirmationProSubscribePayment} from "../redux/actions/payment";
 
 import {Loader} from "../components/";
 
-const PaymentConfirmation = ({
+const PaymentProSubscribeConfirmation = ({
     match: {
         params: {number},
     },
@@ -13,7 +13,7 @@ const PaymentConfirmation = ({
     const dispatch = useDispatch();
 
     React.useEffect(() => {
-        dispatch(sendConfirmationPayment(number));
+        dispatch(sendConfirmationProSubscribePayment(number));
     }, []);
 
     return (
@@ -23,4 +23,4 @@ const PaymentConfirmation = ({
     );
 };
 
-export default PaymentConfirmation;
+export default PaymentProSubscribeConfirmation;

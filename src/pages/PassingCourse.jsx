@@ -43,31 +43,30 @@ const PassingCourse = ({
     }, [courseId, lessonNum, isLoaded]);
 
     React.useEffect(() => {
-		if (courses[courseId]) {
-			if (courses[courseId].completedLessons.length === 0 && isLoaded) {
+        if (courses[courseId]) {
+            if (courses[courseId].completedLessons.length === 0 && isLoaded) {
                 dispatch(fetchCompletePassingCourseLesson(courseId, lessonNum));
             }
 
-            let isLesson;
+            let isLesson = false;
 
             for (
                 let i = 0;
                 i < courses[courseId].completedLessons.length;
                 i++
-			) {
+            ) {
                 if (
                     parseInt(lessonNum) ===
                     courses[courseId].completedLessons[i]
                 ) {
-                    isLesson = false;
                     continue;
                 }
 
                 isLesson = true;
-			}
+            }
 
             if (isLesson && isLoaded) {
-				dispatch(fetchCompletePassingCourseLesson(courseId, lessonNum));
+                dispatch(fetchCompletePassingCourseLesson(courseId, lessonNum));
             }
         }
     }, [courseId, lessonNum, isLoaded]);

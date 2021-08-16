@@ -4,7 +4,15 @@ const initialState = {
 }
 
 const payment = (state = initialState, action) => {
-	if (action.type === "SET_PAYMENT") {
+	if (action.type === "SET_COURSES_PAYMENT") {
+		return {
+			...state,
+			payment: action.payload,
+			isLoaded: true
+		}
+	}
+
+	if (action.type === "SET_PRO_SUBSCRIBE_PAYMENT") {
 		return {
 			...state,
 			payment: action.payload,

@@ -1,9 +1,16 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {Helmet} from "react-helmet";
+import {useDispatch, useSelector} from "react-redux";
+
+import {sendCreateProSubscribePayment} from "../redux/actions/payment";
 
 const Pro = () => {
+    const dispatch = useDispatch();
+
     const [visibleButton, setVisibleButton] = React.useState(false);
+
+    const {user, isLoaded} = useSelector(({user}) => user);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -17,6 +24,10 @@ const Pro = () => {
         });
     }, []);
 
+    const createPayment = () => {
+        dispatch(sendCreateProSubscribePayment());
+    };
+
     return (
         <>
             <Helmet>
@@ -25,14 +36,27 @@ const Pro = () => {
             <section className="pro">
                 <div className="container">
                     <div className="pro-wrapper">
-                        <Link
-                            to="/"
-                            className={`btn-small-round pro__btn ${
-                                visibleButton ? "active" : ""
-                            }`}
-                        >
-                            Вступить
-                        </Link>
+                        {localStorage.getItem("accessToken") && isLoaded ? (
+                            user.pro ? null : (
+                                <button
+                                    className={`btn-small-round pro__btn ${
+                                        visibleButton ? "active" : ""
+                                    }`}
+                                    onClick={createPayment}
+                                >
+                                    Вступить
+                                </button>
+                            )
+                        ) : (
+                            <a
+                                href="/go/register?redirect=pro"
+                                className={`btn-small-round pro__btn ${
+                                    visibleButton ? "active" : ""
+                                }`}
+                            >
+                                Вступить
+                            </a>
+                        )}
                         <div className="pro-main">
                             <div className="pro-main-text">
                                 <h2 className="pro-main-text__title">
@@ -56,9 +80,28 @@ const Pro = () => {
                                         5 000 ₽
                                     </p>
                                 </div>
-                                <Link to="" className="btn pro-main-text__btn">
-                                    Вступить
-                                </Link>
+                                {localStorage.getItem("accessToken") &&
+                                isLoaded ? (
+                                    user.pro ? (
+                                        <button className="btn disabled pro-main-text__btn">
+                                            Спасибо, вы уже с нами!
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className="btn pro-main-text__btn"
+                                            onClick={createPayment}
+                                        >
+                                            Вступить
+                                        </button>
+                                    )
+                                ) : (
+                                    <a
+                                        href="/go/register?redirect=pro"
+                                        className="btn pro-main-text__btn"
+                                    >
+                                        Вступить
+                                    </a>
+                                )}
                             </div>
 
                             <img
@@ -112,43 +155,22 @@ const Pro = () => {
                                 </div>
                                 <div className="pro-about-item">
                                     <img
-                                        src={`${process.env.REACT_APP_DOMEN}/all/free-pro.svg`}
+                                        src={`${process.env.REACT_APP_DOMEN}/all/additional-materials-pro.svg`}
                                         alt=""
                                         className="pro-about-item__img"
                                     />
 
                                     <div className="pro-about-item-text">
                                         <h3 className="pro-about-item-text__title">
-                                            1 бесплатный курс в месяц
+                                            Дополнительные материалы
                                         </h3>
                                         <p className="pro-about-item-text__description">
-                                            Каждый месяц мы будем давать вам
-                                            бесплатный ограниченный доступ к
-                                            одному из курсов на нашей платформе.
-                                            Ограниченный доступ: курс доступен 1
-                                            месяц, без дополнительных материалов
-                                            и сопровождения мастера. Но если вы
-                                            захотите получить полный функцианал
-                                            данного курса, то сможете его
-                                            преобрести со скидкой 50%
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="pro-about-item">
-                                    <img
-                                        src={`${process.env.REACT_APP_DOMEN}/all/news-pro.svg`}
-                                        alt=""
-                                        className="pro-about-item__img"
-                                    />
-                                    <div className="pro-about-item-text">
-                                        <h3 className="pro-about-item-text__title">
-                                            Возможность голосовать
-                                        </h3>
-                                        <p className="pro-about-item-text__description">
-                                            Вы будете получать новости первым и
-                                            сможете выбирать, какой курс будет
-                                            следующим выпускаться на нашей
-                                            платформе
+                                            У кажого курса есть дополнительные
+                                            материалы, которые помогут вам
+                                            глубже погрузиться в тему. Вы можете
+                                            приобрести их либо за фиксированную
+                                            сумму навсегда, либо получить к ним
+                                            доступ через Pro Подписку бесплатно.
                                         </p>
                                     </div>
                                 </div>

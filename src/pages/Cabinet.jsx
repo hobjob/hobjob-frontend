@@ -48,7 +48,9 @@ const Cabinet = () => {
                                 <div className="cabinet-wrapper">
                                     {localStorage.getItem(
                                         "close-master-info-message"
-                                    ) || masterInfoMessage ? null : (
+                                    ) ||
+                                    masterInfoMessage ||
+                                    user.master !== "confirmed" ? null : (
                                         <CabinetMessage
                                             message={
                                                 "Вы не можете поменять свои личные данные, так являетесь мастером HobJob. Если вы хотите изменить данные напишите на почту поддержки"
