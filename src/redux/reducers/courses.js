@@ -1,6 +1,12 @@
 const initialState = {
+	isLoadedAllCoursesFirst: false,
 	isLoadedAllCourses: false,
+	isFetchAllCourses: false,
+
 	items: [],
+
+	totalCount: 0,
+	page: 1,
 
 	isLoadedSectionCourses: false,
 	itemsSection: [],
@@ -21,8 +27,19 @@ const courses = (state = initialState, action) => {
 	if (action.type === "SET_COURSES") {
 		return {
 			...state,
-			items: action.payload,
+			items: action.payload.data,
+			totalCount: action.payload.headers["x-total-count"],
+			isLoadedAllCoursesFirst: true,
+			page: 1,
+		}
+	}
+
+	if (action.type === "SET_ADD_PAGINATION_COURSES") {
+		return {
+			...state,
+			items: [...state.items, ...action.payload.data],
 			isLoadedAllCourses: true,
+			page: state.page + 1
 		}
 	}
 
@@ -152,10 +169,25 @@ const courses = (state = initialState, action) => {
 		}
 	}
 
+	if (action.type === "SET_LOADED_COURSES_FIRST") {
+		return {
+			...state,
+			isLoadedAllCoursesFirst: action.payload,
+		}
+	}
+
 	if (action.type === "SET_LOADED_COURSES") {
 		return {
 			...state,
 			isLoadedAllCourses: action.payload,
+		}
+	}
+
+
+	if (action.type === "SET_IS_FETCH_ALL_COURSES") {
+		return {
+			...state,
+			isFetchAllCourses: action.payload,
 		}
 	}
 

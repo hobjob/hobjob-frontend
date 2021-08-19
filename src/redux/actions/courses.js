@@ -1,13 +1,44 @@
 import $api from '../../http/';
 
-export const fetchCourses = (query = null) => (dispatch) => {
+export const fetchCourses = (query = null, page) => (dispatch) => {
+	dispatch({
+		type: "SET_LOADED_COURSES_FIRST",
+		payload: false,
+	})
+
+	dispatch({
+		type: "SET_IS_FETCH_ALL_COURSES",
+		payload: true,
+	})
+
+	$api.get(`/courses?limit=8&page=${page}&${query !== null ? query : ""}`).then((response) => {
+		dispatch(setCourses(response))
+
+		dispatch({
+			type: "SET_IS_FETCH_ALL_COURSES",
+			payload: false,
+		})
+	})
+}
+
+export const fetchAddPaginationCourses = (query = null, page) => (dispatch) => {
 	dispatch({
 		type: "SET_LOADED_COURSES",
 		payload: false,
 	})
 
-	$api.get(`/courses?${query !== null ? query : ""}`).then(({ data }) => {
-		dispatch(setCourses(data))
+	dispatch({
+		type: "SET_IS_FETCH_ALL_COURSES",
+		payload: true,
+	})
+
+	$api.get(`/courses?limit=8&page=${page}&${query !== null ? query : ""}`).then((response) => {
+		dispatch(setAddPaginationCourses(response))
+
+		dispatch({
+			type: "SET_IS_FETCH_ALL_COURSES",
+			payload: false,
+		})
 	})
 }
 
@@ -17,13 +48,13 @@ export const fetchCoursesSection = () => (dispatch) => {
 		payload: false,
 	})
 
-	$api.get(`/courses?_sort=buyCountWeek&_order=desc&_limit=4`).then(({ data }) => {
+	$api.get(`/courses?sort=buyCountWeek&order=desc&limit=4`).then(({ data }) => {
 		dispatch(setCoursesSection(data))
 	})
 }
 
 export const fetchCourseBuyCountWeek = () => (dispatch) => {
-	$api.get(`/courses?_sort=buyCountWeek&_order=desc`).then(({ data }) => {
+	$api.get(`/courses?sort=buyCountWeek&order=desc`).then(({ data }) => {
 		dispatch(setCoursesBuyCountWeek(data[0]))
 	})
 }
@@ -32,6 +63,12 @@ const setCourses = (items) => ({
 	type: "SET_COURSES",
 	payload: items
 })
+
+const setAddPaginationCourses = (items) => ({
+	type: "SET_ADD_PAGINATION_COURSES",
+	payload: items
+})
+
 
 const setCoursesSection = (items) => ({
 	type: "SET_COURSES_SECTION",

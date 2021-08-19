@@ -23,6 +23,9 @@ export { default as Cart } from "./Cart"
 // Shop
 export { default as Shop } from "./Shop"
 
+// CoursePage
+export { default as CoursePage } from "./CoursePage"
+
 // Magazine
 export { default as Magazine } from "./Magazine"
 // Magazine Post Page

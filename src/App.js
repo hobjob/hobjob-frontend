@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import { Header, Footer } from './components/';
 
-import { Home, Cart, Shop, Magazine, MagazinePostPage, MasterCard, MastersAbout, Master, Pro, About, Err404, Login, Register, RepeatEmail, PasswordRecoveryEmail, PasswordRecoveryNewPassword, Confirmed, Training, PassingCourse, Cabinet, Referrals, PaymentCourses, PaymentCoursesConfirmation, PaymentProSubscribe, PaymentProSubscribeConfirmation, Policy, PublicOffer } from './pages/';
+import { Home, Cart, Shop, CoursePage, Magazine, MagazinePostPage, MasterCard, MastersAbout, Master, Pro, About, Err404, Login, Register, RepeatEmail, PasswordRecoveryEmail, PasswordRecoveryNewPassword, Confirmed, Training, PassingCourse, Cabinet, Referrals, PaymentCourses, PaymentCoursesConfirmation, PaymentProSubscribe, PaymentProSubscribeConfirmation, Policy, PublicOffer } from './pages/';
 
 dotenv.config()
 
@@ -19,6 +19,8 @@ const App = () => {
 
 					<Route path="/cart" render={() => <Cart />} exact />
 					<Route path="/shop" render={(props) => <Shop {...props} />} exact />
+					
+					<Route path="/course/:id" render={(props) => <CoursePage {...props} />} exact />
 
 					<Route path="/magazine" render={(props) => <Magazine {...props} />} exact />
 					<Route path="/magazine/post/:id" render={(props) => <MagazinePostPage {...props} />} exact />

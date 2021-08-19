@@ -1,4 +1,8 @@
 // animations
+.rotate
+  animation: rotate 1.5s infinite
+
+// keyframes
 @keyframes open
 	0%
 		opacity: 0
@@ -10,3 +14,7 @@
 		opacity: 1
 	100%
 		opacity: 0
+
+@keyframes rotate
+	from
+		transform: rotate(-360deg)

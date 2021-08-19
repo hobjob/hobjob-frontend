@@ -1,12 +1,11 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import ReactWebMediaPlayer from "react-web-media-player";
 
 import {
-    fetchPassingCourseLessonVideo,
     fetchPassingCourseLessonMaterial,
-    fetchCompletePassingCourseLesson,
+    fetchCertificateCourse,
 } from "../redux/actions/passing";
 
 import {
@@ -14,7 +13,6 @@ import {
     PassingLessonsList,
     PassingMaterials,
     PassingTimecodes,
-    PassingVideoLoader,
 } from "../components/";
 
 import Err404 from "./Err404";
@@ -24,10 +22,10 @@ const PassingCourse = ({
         params: {courseId, lessonNum},
     },
 }) => {
+    const history = useHistory();
     const dispatch = useDispatch();
 
-    const {courses, isLoaded} = useSelector(({user}) => user);
-    const {videoUrl, percentLoading} = useSelector(({passing}) => passing);
+    const {user, courses, isLoaded} = useSelector(({user}) => user);
 
     const PlayerRef = React.useRef();
 
@@ -36,39 +34,6 @@ const PassingCourse = ({
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
-
-        if (isLoaded) {
-            dispatch(fetchPassingCourseLessonVideo(courseId, lessonNum));
-        }
-    }, [courseId, lessonNum, isLoaded]);
-
-    React.useEffect(() => {
-        if (courses[courseId]) {
-            if (courses[courseId].completedLessons.length === 0 && isLoaded) {
-                dispatch(fetchCompletePassingCourseLesson(courseId, lessonNum));
-            }
-
-            let isLesson = false;
-
-            for (
-                let i = 0;
-                i < courses[courseId].completedLessons.length;
-                i++
-            ) {
-                if (
-                    parseInt(lessonNum) ===
-                    courses[courseId].completedLessons[i]
-                ) {
-                    continue;
-                }
-
-                isLesson = true;
-            }
-
-            if (isLesson && isLoaded) {
-                dispatch(fetchCompletePassingCourseLesson(courseId, lessonNum));
-            }
-        }
     }, [courseId, lessonNum, isLoaded]);
 
     const setTime = (seconds) => {
@@ -84,109 +49,150 @@ const PassingCourse = ({
         );
     };
 
+    const getCertificate = () => {
+        dispatch(
+            fetchCertificateCourse(
+                courseId,
+                "Сертификат «Шитьё мишек изо льна»"
+            )
+        );
+    };
+
     return (
         <>
             {localStorage.getItem("accessToken") ? (
                 isLoaded ? (
-                    <section className="passing">
-                        <div className="container">
-                            <div className="passing-wrapper">
-                                <div className="passing-top">
-                                    <div className="passing-top-text">
-                                        <span className="subtitle__mb passing-top-text__subtitle">
-                                            {courses[courseId].title} (
-                                            {lessonNum} урок)
-                                        </span>
-                                        <h2 className="passing-top-text__title">
-                                            {
-                                                courses[courseId].lessons[
-                                                    lessonIndex
-                                                ].title
-                                            }
-                                        </h2>
-                                    </div>
-                                    {courses[courseId].lessons[
-                                        lessonIndex + 1
-                                    ] ? (
-                                        <Link
-                                            to={`/go/passing/${courseId}/${
-                                                lessonIndex + 2
-                                            }`}
-                                            className="passing-top-next"
-                                        >
-                                            К следующему уроку →
-                                        </Link>
-                                    ) : null}
-                                </div>
-
-                                {videoUrl !== "" ? (
-                                    <div className="passing-video-wrapper">
-                                        <ReactWebMediaPlayer
-                                            ref={PlayerRef}
-                                            title={
-                                                courses[courseId].lessons[
-                                                    lessonIndex
-                                                ].title
-                                            }
-                                            color="#dd9e5e"
-                                            video={`${videoUrl}`}
-                                            height={
-                                                document.documentElement
-                                                    .clientWidth > 900
-                                                    ? 500
-                                                    : 350
-                                            }
-                                            width="100%"
-                                            thumbnail={`${process.env.REACT_APP_DOMEN}/${courses[courseId].lessons[lessonIndex].image}`}
+                    courses[courseId] ? (
+                        courses[courseId].lessons[lessonIndex].materials ||
+                        courses[courseId].lessons[lessonIndex].timecodes ? (
+                            <section className="passing">
+                                <div className="container">
+                                    <div className="passing-wrapper">
+                                        <div className="passing-top">
+                                            <div className="passing-top-text">
+                                                <span className="subtitle__mb passing-top-text__subtitle">
+                                                    {courses[courseId].title} (
+                                                    {lessonNum} урок)
+                                                </span>
+                                                <h2 className="passing-top-text__title">
+                                                    {
+                                                        courses[courseId]
+                                                            .lessons[
+                                                            lessonIndex
+                                                        ].title
+                                                    }
+                                                </h2>
+                                            </div>
+                                            {courses[courseId].lessons[
+                                                lessonIndex + 1
+                                            ] ? (
+                                                (courses[courseId].lessons[
+                                                    lessonIndex + 1
+                                                ].extraLesson &&
+                                                    user.pro) ||
+                                                (courses[courseId].lessons[
+                                                    lessonIndex + 1
+                                                ] &&
+                                                    !courses[courseId].lessons[
+                                                        lessonIndex + 1
+                                                    ].extraLesson) ? (
+                                                    <Link
+                                                        to={`/go/passing/${courseId}/${
+                                                            lessonIndex + 2
+                                                        }`}
+                                                        className="passing-top-next"
+                                                    >
+                                                        К следующему уроку →
+                                                    </Link>
+                                                ) : null
+                                            ) : null}
+                                        </div>
+                                        <div className="passing-video-wrapper">
+                                            <ReactWebMediaPlayer
+                                                ref={PlayerRef}
+                                                title={
+                                                    courses[courseId].lessons[
+                                                        lessonIndex
+                                                    ].title
+                                                }
+                                                color="#dd9e5e"
+                                                video={`${
+                                                    process.env
+                                                        .REACT_APP_API_DOMEN
+                                                }/courses/${courseId}/video/${lessonNum}/${localStorage.getItem(
+                                                    "accessToken"
+                                                )}`}
+                                                height={
+                                                    document.documentElement
+                                                        .clientWidth > 900
+                                                        ? 500
+                                                        : 350
+                                                }
+                                                width="100%"
+                                                thumbnail={`${process.env.REACT_APP_DOMEN}/${courses[courseId].lessons[lessonIndex].image}`}
+                                            />
+                                        </div>
+                                        <PassingLessonsList
+                                            lessons={courses[courseId].lessons}
+                                            pro={user.pro}
+                                            courseId={courseId}
+                                            lessonActive={lessonNum}
                                         />
+                                        <div className="passing-lesson-info">
+                                            <div className="passing-lesson-info-block-text">
+                                                <h4 className="passing-lesson-info-block-text__title">
+                                                    Описание
+                                                </h4>
+                                                <p className="passing-lesson-info-block-text__description">
+                                                    {
+                                                        courses[courseId]
+                                                            .lessons[
+                                                            lessonIndex
+                                                        ].description
+                                                    }
+                                                </p>
+                                            </div>
+
+                                            <PassingMaterials
+                                                materials={
+                                                    courses[courseId].lessons[
+                                                        lessonIndex
+                                                    ].materials
+                                                }
+                                                downloadFunc={downloadFile}
+                                            />
+
+                                            <PassingTimecodes
+                                                setTime={setTime}
+                                                timecodes={
+                                                    courses[courseId].lessons[
+                                                        lessonIndex
+                                                    ].timecodes
+                                                }
+                                            />
+                                        </div>
+                                        <div className="passing-lesson-bottom-btn">
+                                            {user.pro &&
+                                            !courses[courseId].lessons[
+                                                lessonIndex+1
+                                            ] ? (
+                                                <button
+                                                    className="btn"
+                                                    onClick={getCertificate}
+                                                >
+                                                    Получить сертификат
+                                                </button>
+                                            ) : null}
+                                        </div>
                                     </div>
-                                ) : (
-                                    <PassingVideoLoader
-                                        percentLoading={percentLoading}
-                                    />
-                                )}
-
-                                <PassingLessonsList
-                                    lessons={courses[courseId].lessons}
-                                    courseId={courseId}
-                                    lessonActive={lessonNum}
-                                />
-
-                                <div className="passing-lesson-info">
-                                    <div className="passing-lesson-info-block-text">
-                                        <h4 className="passing-lesson-info-block-text__title">
-                                            Описание
-                                        </h4>
-                                        <p className="passing-lesson-info-block-text__description">
-                                            {
-                                                courses[courseId].lessons[
-                                                    lessonIndex
-                                                ].description
-                                            }
-                                        </p>
-                                    </div>
-
-                                    <PassingMaterials
-                                        materials={
-                                            courses[courseId].lessons[
-                                                lessonIndex
-                                            ].materials
-                                        }
-                                        downloadFunc={downloadFile}
-                                    />
-
-                                    <PassingTimecodes
-                                        setTime={setTime}
-                                        timecodes={
-                                            courses[courseId].lessons[
-                                                lessonIndex
-                                            ].timecodes
-                                        }
-                                    />
                                 </div>
-                            </div>
-                        </div>
-                    </section>
+                            </section>
+                        ) : (
+                            history.push("/go/training")
+                        )
+                    ) : (
+                        history.push("/go/training")
+                    )
                 ) : (
                     <div className="loader-wrapper">
                         <Loader />

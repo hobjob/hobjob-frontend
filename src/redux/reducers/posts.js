@@ -1,6 +1,12 @@
 const initialState = {
+	isLoadedAllPostsFirst: false,
 	isLoadedAllPosts: false,
+	isFetchAllPosts: false,
+
 	items: [],
+
+	totalCount: 0,
+	page: 1,
 
 	isLoadedByIdPosts: false,
 	itemById: {},
@@ -14,8 +20,19 @@ const posts = (state = initialState, action) => {
 	if (action.type === "SET_POSTS") {
 		return {
 			...state,
-			items: action.payload,
+			items: action.payload.data,
+			totalCount: action.payload.headers["x-total-count"],
+			isLoadedAllPostsFirst: true,
+			page: 1,
+		}
+	}
+
+	if (action.type === "SET_ADD_PAGINATION_POSTS") {
+		return {
+			...state,
+			items: [...state.items, ...action.payload.data],
 			isLoadedAllPosts: true,
+			page: state.page + 1
 		}
 	}
 
@@ -72,6 +89,13 @@ const posts = (state = initialState, action) => {
 		}
 	}
 
+	if (action.type === "SET_LOADED_POSTS_ALL_FIRST") {
+		return {
+			...state,
+			isLoadedAllPostsFirst: action.payload,
+		}
+	}
+
 	if (action.type === "SET_LOADED_POSTS_ALL") {
 		return {
 			...state,
@@ -83,6 +107,13 @@ const posts = (state = initialState, action) => {
 		return {
 			...state,
 			isLoadedByIdPosts: action.payload,
+		}
+	}
+
+	if (action.type === "SET_IS_FETCH_ALL_POSTS") {
+		return {
+			...state,
+			isFetchAllPosts: action.payload,
 		}
 	}
 

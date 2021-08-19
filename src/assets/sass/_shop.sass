@@ -115,7 +115,6 @@
 		flex-wrap: wrap
 
 		margin-top: 100px
-		+openAnimation
 
 	&-block
 		display: flex
@@ -126,6 +125,7 @@
 
 		margin-bottom: 75px
 		padding: 0 15px
+		+openAnimation
 
 		&:nth-of-type(4n+4)
 			margin-right: 0
@@ -182,6 +182,12 @@
 				padding: 15px 25px
 				font-size: 16px
 
+	&-btn-pagination
+		margin-top: 50px
+
+		display: flex
+		justify-content: center
+
 	&-not-found
 		margin: 150px 0
 		display: flex
@@ -195,7 +201,7 @@
 // shop-section
 .shop-section
 	margin: 100px 0
-	
+
 	&-block-wrapper
 		display: flex
 		flex-wrap: wrap
@@ -206,3 +212,66 @@
 		display: flex
 		justify-content: center
 		align-items: center
+
+// course-page
+.course-page
+	&-main
+		margin: 75px 0
+
+		&-wrapper
+			display: flex
+			justify-content: space-between
+			align-items: center
+
+		&-text
+			width: 50%
+			&-subinfo
+				margin-bottom: 25px
+				font-size: 21px
+
+				&__category
+					color: $mainColor
+					margin-right: 25px
+
+				&__time
+					color: $gray
+
+			&__title
+				font-size: 48px
+
+			&__description
+				margin-top: 25px
+				font-size: 24px
+				max-width: 75%
+
+			&-master
+				margin-top: 50px
+
+				display: flex
+				align-items: center
+
+				&-avatar
+					width: 50px
+					height: 50px
+					border-radius: 50%
+					margin-right: 15px
+					+backgroundSetting
+
+				&__name
+					font-size: 21px
+
+			&__price
+				margin-top: 50px
+				display: block
+				font-size: 24px
+
+			&__btn
+				margin-top: 25px
+				width: 75%
+
+		&-video
+			width: 47%
+			height: 450px
+			
+			+borderRadius
+			+backgroundSetting

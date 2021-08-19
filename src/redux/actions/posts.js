@@ -1,13 +1,44 @@
 import $api from '../../http/';
 
-export const fetchPosts = (query = null) => (dispatch) => {
+export const fetchPosts = (query = null, page) => (dispatch) => {
+	dispatch({
+		type: "SET_LOADED_POSTS_ALL_FIRST",
+		payload: false,
+	})
+
+	dispatch({
+		type: "SET_IS_FETCH_ALL_POSTS",
+		payload: true,
+	})
+
+	$api.get(`/posts?limit=8&page=${page}&${query !== null ? query : ""}`).then((response) => {
+		dispatch(setPosts(response))
+
+		dispatch({
+			type: "SET_IS_FETCH_ALL_POSTS",
+			payload: false,
+		})
+	})
+}
+
+export const fetchAddPaginationPosts = (query = null, page) => (dispatch) => {
 	dispatch({
 		type: "SET_LOADED_POSTS_ALL",
 		payload: false,
 	})
 
-	$api.get(`/posts?${query !== null ? query : ""}`).then(({ data }) => {
-		dispatch(setPosts(data))
+	dispatch({
+		type: "SET_IS_FETCH_ALL_POSTS",
+		payload: true,
+	})
+
+	$api.get(`/posts?limit=8&page=${page}&${query !== null ? query : ""}`).then((response) => {
+		dispatch(setAddPaginationPosts(response))
+
+		dispatch({
+			type: "SET_IS_FETCH_ALL_POSTS",
+			payload: false,
+		})
 	})
 }
 
@@ -29,6 +60,11 @@ export const fetchPostsById = (id) => (dispatch) => {
 
 const setPosts = (items) => ({
 	type: "SET_POSTS",
+	payload: items,
+})
+
+const setAddPaginationPosts = (items) => ({
+	type: "SET_ADD_PAGINATION_POSTS",
 	payload: items,
 })
 

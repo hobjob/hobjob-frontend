@@ -2,31 +2,6 @@ import $api from '../../http/';
 
 import { saveAs } from "file-saver";
 
-export const fetchPassingCourseLessonVideo = (courseId, lessonNum) => (dispatch) => {
-	dispatch(setVideoUrlCourseLesson(""))
-
-	dispatch({
-		type: "SET_PERCENT_LOADED_VIDEO_COURSE_LESSON",
-		payload: 0
-	})
-
-	$api.get(`/courses/${courseId}/video/${lessonNum}`, {
-		responseType: "blob",
-		onDownloadProgress: function (progressEvent) {
-			let percentLoading = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-
-			dispatch({
-				type: "SET_PERCENT_LOADED_VIDEO_COURSE_LESSON",
-				payload: percentLoading
-			})
-		}
-	}).then((response) => {
-		let myUrl = window.URL.createObjectURL(response.data);
-
-		dispatch(setVideoUrlCourseLesson(myUrl))
-	});
-}
-
 export const fetchPassingCourseLessonMaterial = (courseId, lessonNum, materialNum, title) => (dispatch) => {
 	dispatch({
 		type: "PUSH_STATE_MATERIALS_DOWNLOADING",
@@ -50,9 +25,9 @@ export const fetchPassingCourseLessonMaterial = (courseId, lessonNum, materialNu
 	});
 }
 
-export const fetchCompletePassingCourseLesson = (courseId, lessonNum) => (dispatch) => {
-	$api.get(`/complete/${courseId}/${lessonNum}`).then(() => {
-		return true
+export const fetchCertificateCourse = (courseId, title) => (dispatch) => {
+	$api.get(`/certificate/${courseId}`).then(({ data }) => {
+		saveAs(data.url, title)
 	});
 }
 

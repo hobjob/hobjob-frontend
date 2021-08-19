@@ -1,16 +1,8 @@
 const initialState = {
-	videoUrl: "",
-	percentLoading: 0,
 	materialsIsDownloading: {}
 }
 
 const passing = (state = initialState, action) => {
-	if (action.type === "SET_VIDEO_URL_COURSE_LESSON") {
-		return {
-			...state,
-			videoUrl: action.payload
-		}
-	}
 
 	if (action.type === "PUSH_STATE_MATERIALS_DOWNLOADING") {
 		const newObj = { ...state.materialsIsDownloading, [action.payload.materialNum]: action.payload.state }
@@ -28,13 +20,6 @@ const passing = (state = initialState, action) => {
 
 		return {
 			...state
-		}
-	}
-
-	if (action.type === "SET_PERCENT_LOADED_VIDEO_COURSE_LESSON") {
-		return {
-			...state,
-			percentLoading: action.payload
 		}
 	}
 
