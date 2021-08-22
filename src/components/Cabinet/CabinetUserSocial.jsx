@@ -21,8 +21,12 @@ const CabinetUserSocial = () => {
         });
     };
 
-    const handleResponse = (data) => {
-        console.log(data);
+    const handleResponse = ({profile}) => {
+        dispatch(
+            fetchUpdateUser({
+                facebook: profile,
+            })
+        );
     };
 
     const handleError = (error) => {
@@ -31,6 +35,10 @@ const CabinetUserSocial = () => {
 
     const toUntieVk = () => {
         dispatch(fetchUpdateUser({vk: {}}));
+    };
+
+    const toUntieFacebook = () => {
+        dispatch(fetchUpdateUser({facebook: {}}));
     };
 
     return (
@@ -115,16 +123,44 @@ const CabinetUserSocial = () => {
                 {/* <button className="btn-small-round cabinet-block-social-item__btn">
                     Привязать
                 </button> */}
-                <FacebookProvider appId={508604530225245}>
-                    <LoginButton
-                        scope="email"
-                        onCompleted={handleResponse}
-                        onError={handleError}
-                        className="btn-small-round cabinet-block-social-item__btn"
+                {user.facebook.id === "" ? (
+                    <FacebookProvider
+                        appId={process.env.REACT_APP_FACEBOOK_APP_ID}
                     >
-                        Привязать
-                    </LoginButton>
-                </FacebookProvider>
+                        <LoginButton
+                            scope="email"
+                            onCompleted={handleResponse}
+                            onError={handleError}
+                            className="btn-small-round cabinet-block-social-item__btn"
+                        >
+                            Привязать
+                        </LoginButton>
+                    </FacebookProvider>
+                ) : (
+                    <div className="cabinet-block-social-item-info">
+                        <p className="cabinet-block-social-item-info__text">
+                            {user.facebook.name}{" "}
+                            <span>(id{user.facebook.id})</span>
+                        </p>
+                        <div
+                            className="cabinet-block-social-item-info-icon"
+                            onClick={toUntieFacebook}
+                        >
+                            <svg
+                                width="15"
+                                height="15"
+                                viewBox="0 0 15 15"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M15 0.883783L14.1162 0L7.5 6.61621L0.883783 0L0 0.883783L6.61621 7.5L0 14.1162L0.883783 15L7.5 8.38378L14.1162 15L15 14.1162L8.38378 7.5L15 0.883783Z"
+                                    fill="black"
+                                />
+                            </svg>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

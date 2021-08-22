@@ -90,8 +90,10 @@ export { default as TrainingBlock } from "./Training/TrainingBlock"
 export { default as TrainingNull } from "./Training/TrainingNull"
 
 // Passing
+export { default as PassingTopText } from "./Passing/PassingTopText"
 export { default as PassingLessonsList } from "./Passing/PassingLessonsList"
 export { default as PassingLessonsListItem } from "./Passing/PassingLessonsListItem"
+export { default as PassingVideo } from "./Passing/PassingVideo"
 export { default as PassingMaterials } from "./Passing/PassingMaterials"
 export { default as PassingMaterialsItem } from "./Passing/PassingMaterialsItem"
 export { default as PassingTimecodes } from "./Passing/PassingTimecodes"
@@ -103,6 +105,7 @@ export { default as CabinetCardUserInfo } from "./Cabinet/CabinetCardUserInfo"
 export { default as CabinetUserInfoForm } from "./Cabinet/CabinetUserInfoForm"
 export { default as CabinetUserPassword } from "./Cabinet/CabinetUserPassword"
 export { default as CabinetUserSocial } from "./Cabinet/CabinetUserSocial"
+export { default as CabinetUserProInfo } from "./Cabinet/CabinetUserProInfo"
 
 // Referrals
 export { default as ReferralsBlockLink } from "./Referrals/ReferralsBlockLink"

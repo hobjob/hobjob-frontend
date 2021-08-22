@@ -78,7 +78,7 @@
 
 	&-block
 		margin: 100px 0
-		padding-bottom: 50px
+		padding-bottom: 100px
 		border-bottom: 1px solid $borderGray
 
 		display: flex
@@ -87,7 +87,6 @@
 		&:last-child
 			border: none
 			margin: 0
-			padding-bottom: 0
 
 		&-text
 			width: 40%
@@ -121,6 +120,8 @@
 
 				&:last-child
 					border: none
+					margin-bottom: 0
+					padding-bottom: 0
 
 				&-icon
 					display: flex
@@ -150,3 +151,29 @@
 					&-icon
 						cursor: pointer
 						margin-left: 25px
+
+		&-pro
+			&-info
+				&-item
+					display: flex
+					justify-content: space-between
+					align-items: center
+
+					padding-bottom: 35px
+					margin-bottom: 35px
+					border-bottom: 1px solid $borderGray
+
+					&:last-child
+						border: none
+						margin-bottom: 0
+						padding-bottom: 0
+
+					&__title
+						font-size: 21px
+
+					&__description
+						font-size: 18px
+
+						& span
+							cursor: pointer
+							color: $gray

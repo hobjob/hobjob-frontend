@@ -6,7 +6,6 @@ const PassingCoursesList = ({
     lessons,
     lessonActive,
     courseId,
-    pro,
 }) => {
     return (
         <div className="passing-lessons-list">
@@ -16,7 +15,6 @@ const PassingCoursesList = ({
                     courseId={courseId}
                     active={lessonActive == index + 1 ? true : false}
                     num={index + 1}
-                    blocked={pro ? false : true}
                     key={`passing-lessons-list-item-${index}`}
                 />
             ))}

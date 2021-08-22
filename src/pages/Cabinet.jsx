@@ -10,6 +10,7 @@ import {
     CabinetUserInfoForm,
     CabinetUserPassword,
     CabinetUserSocial,
+    CabinetUserProInfo,
 } from "../components/";
 
 import Err404 from "./Err404";
@@ -102,6 +103,16 @@ const Cabinet = () => {
                                             </div>
 
                                             <CabinetUserSocial />
+                                        </div>
+
+                                        <div className="cabinet-block">
+                                            <div className="cabinet-block-text">
+                                                <h3 className="cabinet-block-text__title">
+                                                    Pro подписка
+                                                </h3>
+                                            </div>
+
+                                            <CabinetUserProInfo />
                                         </div>
                                     </div>
                                 </div>
