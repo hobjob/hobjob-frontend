@@ -104,7 +104,6 @@ export { default as CabinetMessage } from "./Cabinet/CabinetMessage"
 export { default as CabinetCardUserInfo } from "./Cabinet/CabinetCardUserInfo"
 export { default as CabinetUserInfoForm } from "./Cabinet/CabinetUserInfoForm"
 export { default as CabinetUserPassword } from "./Cabinet/CabinetUserPassword"
-export { default as CabinetUserSocial } from "./Cabinet/CabinetUserSocial"
 export { default as CabinetUserProInfo } from "./Cabinet/CabinetUserProInfo"
 
 // Referrals

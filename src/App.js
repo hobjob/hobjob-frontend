@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import { Header, Footer } from './components/';
 
-import { Home, Cart, Shop, CoursePage, Magazine, MagazinePostPage, MasterCard, MastersAbout, Master, Pro, About, Err404, Login, Register, RepeatEmail, PasswordRecoveryEmail, PasswordRecoveryNewPassword, Confirmed, Training, PassingCourse, Cabinet, Referrals, PaymentCourses, PaymentCoursesConfirmation, PaymentProSubscribe, PaymentProSubscribeConfirmation, Policy, PublicOffer } from './pages/';
+import { Home, Cart, Shop, CoursePage, Magazine, MagazinePostPage, MasterCard, MastersAbout, Master, Pro, About, Err404, Login, Register, RepeatEmail, PasswordRecoveryEmail, PasswordRecoveryNewPassword, Confirmed, Training, PassingCourse, Cabinet, Referrals, PaymentCourses, PaymentCoursesConfirmation, PaymentCourseExtraLessons, PaymentCourseExtraLessonsConfirmation, PaymentProSubscribe, PaymentProSubscribeConfirmation, Policy, PublicOffer } from './pages/';
 
 dotenv.config()
 
@@ -30,10 +30,13 @@ const App = () => {
 					<Route path="/pro" render={() => <Pro />} exact />
 					<Route path="/about" render={() => <About />} exact />
 
-					<Route path="/payment/courses/:id" render={(props) => <PaymentCourses {...props} />} exact />
+					<Route path="/payment/courses/:number" render={(props) => <PaymentCourses {...props} />} exact />
 					<Route path="/payment/courses/confirmation/:number" render={(props) => <PaymentCoursesConfirmation {...props} />} exact />
 
-					<Route path="/payment/pro/:id" render={(props) => <PaymentProSubscribe {...props} />} exact />
+					<Route path="/payment/courses/extra-lessons/:number" render={(props) => <PaymentCourseExtraLessons {...props} />} exact />
+					<Route path="/payment/courses/extra-lessons/confirmation/:number" render={(props) => <PaymentCourseExtraLessonsConfirmation {...props} />} exact />
+					
+					<Route path="/payment/pro/:number" render={(props) => <PaymentProSubscribe {...props} />} exact />
 					<Route path="/payment/pro/confirmation/:number" render={(props) => <PaymentProSubscribeConfirmation {...props} />} exact />
 
 					<Route path="/policy" render={() => <Policy />} exact />

@@ -65,6 +65,10 @@ export { default as Referrals } from "./Referrals"
 export { default as PaymentCourses } from "./PaymentCourses"
 export { default as PaymentCoursesConfirmation } from "./PaymentCoursesConfirmation"
 
+// PaymentCourseExtraLessons
+export { default as PaymentCourseExtraLessons } from "./PaymentCourseExtraLessons"
+export { default as PaymentCourseExtraLessonsConfirmation } from "./PaymentCourseExtraLessonsConfirmation"
+
 // PaymentProSubscribe
 export { default as PaymentProSubscribe } from "./PaymentProSubscribe"
 export { default as PaymentProSubscribeConfirmation } from "./PaymentProSubscribeConfirmation"

@@ -153,6 +153,7 @@
 		&-info
 			display: flex
 			justify-content: space-between
+			align-items: flex-start
 
 			&-block
 				&-text
@@ -224,6 +225,48 @@
 							& span
 								cursor: pointer
 								color: $mainColor
+
+				&-pro
+					width: 45%
+					padding: 35px
+					+borderRadius
+					+boxShadow
+
+					&__title
+						font-size: 28px
+						margin-bottom: 25px
+
+					&__description
+						font-size: 21px
+						margin-bottom: 35px
+
+					&-list
+						list-style: none
+						margin-left: 25px
+
+						&__item
+							font-size: 21px
+							margin-bottom: 10px
+
+					&__btn
+						margin-top: 50px
+
+				&-middle
+					display: flex
+					align-items: center
+					height: 250px
+
+				&-buy-extra-lessons
+					width: 35%
+					padding: 35px
+					+borderRadius
+					+boxShadow
+
+					&__title
+						font-size: 28px
+
+					&__btn
+						margin-top: 50px
 
 	&-certificate
 		margin-top: 100px

@@ -95,15 +95,6 @@ const Cabinet = () => {
                                                 }
                                             />
                                         </div>
-                                        <div className="cabinet-block">
-                                            <div className="cabinet-block-text">
-                                                <h3 className="cabinet-block-text__title">
-                                                    Социальные сети
-                                                </h3>
-                                            </div>
-
-                                            <CabinetUserSocial />
-                                        </div>
 
                                         <div className="cabinet-block">
                                             <div className="cabinet-block-text">

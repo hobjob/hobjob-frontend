@@ -54,7 +54,7 @@ const Home = ({
 
             <AboutSection />
 
-            <MastersSection />
+            {/* <MastersSection /> */}
         </>
     );
 };

@@ -1,22 +1,19 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 
-import {fetchPaymentCoursesById} from "../redux/actions/payment";
+import {fetchPaymentCourseExtraLessonsById} from "../redux/actions/payment";
 
-import {PaymentCourseBlock} from "../components/";
-
-const PaymentCourses = ({
+const PaymentCourseExtraLessons = ({
     match: {
         params: {number},
     },
 }) => {
     const dispatch = useDispatch();
 
-    const {cart} = useSelector(({cart}) => cart);
     const {payment, isLoaded} = useSelector(({payment}) => payment);
 
     React.useEffect(() => {
-        dispatch(fetchPaymentCoursesById(number));
+        dispatch(fetchPaymentCourseExtraLessonsById(number));
     }, []);
 
     React.useEffect(() => {
@@ -24,7 +21,7 @@ const PaymentCourses = ({
             if (payment.confirmation) {
                 const checkout = new window.YooMoneyCheckoutWidget({
                     confirmation_token: payment.confirmation.confirmation_token,
-                    return_url: `http://localhost:3000/payment/courses/confirmation/${payment.paymentNumber}`,
+                    return_url: `http://localhost:3000/payment/courses/extra-lessons/confirmation/${payment.paymentNumber}`,
 
                     customization: {
                         colors: {
@@ -56,20 +53,8 @@ const PaymentCourses = ({
                                     id="payment-form"
                                 ></div>
                                 <div className="payment-info">
-                                    <h2 className="payment-info__title">
-                                        Заказ
-                                        <span>
-                                            ({Object.keys(cart).length})
-                                        </span>
-                                    </h2>
-                                    <div className="payment-info-course-wrapper">
-                                        {Object.keys(cart).map((key, index) => (
-                                            <PaymentCourseBlock
-                                                {...cart[key]}
-                                                key={`payment-info-course-${index}`}
-                                            />
-                                        ))}
-                                    </div>
+                                    <h2 className="payment-info__title"></h2>
+                                    <div className="payment-info-course-wrapper"></div>
                                 </div>
                             </div>
                         </div>
@@ -80,4 +65,4 @@ const PaymentCourses = ({
     );
 };
 
-export default PaymentCourses;
+export default PaymentCourseExtraLessons;

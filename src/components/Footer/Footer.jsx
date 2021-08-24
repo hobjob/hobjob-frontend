@@ -142,13 +142,13 @@ const Footer = () => {
                                 >
                                     О HobJob
                                 </NavLink>
-                                <NavLink
+                                {/* <NavLink
                                     to="/masters-about"
                                     className="footer-nav__link"
                                     activeClassName="footer-nav__link active"
                                 >
                                     Для мастеров
-                                </NavLink>
+                                </NavLink> */}
                                 <NavLink
                                     to="/magazine"
                                     className="footer-nav__link"

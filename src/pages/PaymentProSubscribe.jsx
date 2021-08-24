@@ -5,7 +5,7 @@ import {fetchPaymentProSubscribeById} from "../redux/actions/payment";
 
 const PaymentProSubscribe = ({
     match: {
-        params: {id},
+        params: {number},
     },
 }) => {
     const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const PaymentProSubscribe = ({
     const {payment, isLoaded} = useSelector(({payment}) => payment);
 
     React.useEffect(() => {
-        dispatch(fetchPaymentProSubscribeById(id));
+        dispatch(fetchPaymentProSubscribeById(number));
     }, []);
 
     React.useEffect(() => {
@@ -35,9 +35,9 @@ const PaymentProSubscribe = ({
                 });
 
                 checkout.render("payment-form");
-			} else {
-				window.location.href = "/"
-			}
+            } else {
+                window.location.href = "/";
+            }
         }
     }, [isLoaded]);
 
@@ -59,7 +59,7 @@ const PaymentProSubscribe = ({
                                     </h2>
                                     <ul className="payment-info-list">
                                         <li className="payment-info-list__item">
-                                            - Скидка 20%
+                                            - Скидка 20% на все курсы
                                         </li>
                                         <li className="payment-info-list__item">
                                             - Получение сертификата

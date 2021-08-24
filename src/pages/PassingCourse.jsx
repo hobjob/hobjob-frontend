@@ -1,11 +1,14 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useHistory} from "react-router-dom";
+import NumberFormat from "react-number-format";
 
 import {
     fetchPassingCourseLessonMaterial,
     fetchCertificateCourse,
 } from "../redux/actions/passing";
+
+import {sendCreateCourseExtraLessonsPayment} from "../redux/actions/payment";
 
 import {
     Loader,
@@ -59,13 +62,17 @@ const PassingCourse = ({
         );
     };
 
+    const buyExtraLessons = () => {
+        dispatch(sendCreateCourseExtraLessonsPayment({courseId}));
+    };
+
     return (
         <>
             {localStorage.getItem("accessToken") ? (
                 isLoaded ? (
                     courses[courseId] ? (
                         (courses[courseId].lessons[lessonIndex].extraLesson &&
-                            user.pro) ||
+                            (user.pro || courses[courseId].extraLessonsBuy)) ||
                         !courses[courseId].lessons[lessonIndex].extraLesson ? (
                             <section className="passing">
                                 <div className="container">
@@ -223,7 +230,65 @@ const PassingCourse = ({
                                             lessonActive={lessonNum}
                                         />
 
-                                        <div className="passing-lesson-info"></div>
+                                        <div className="passing-lesson-info">
+                                            <div className="passing-lesson-info-block-pro">
+                                                <h3 className="passing-lesson-info-block-pro__title">
+                                                    Оформите Pro подписку
+                                                </h3>
+
+                                                <p className="passing-lesson-info-block-pro__description">
+                                                    Что бы, получить доступ к
+                                                    дополнительным материалам,
+                                                    нужно офрмить Pro подписку
+                                                </p>
+
+                                                <ul className="passing-lesson-info-block-pro-list">
+                                                    <li className="passing-lesson-info-block-pro-list__item">
+                                                        - Скидка 20% на все
+                                                        курсы
+                                                    </li>
+                                                    <li className="passing-lesson-info-block-pro-list__item">
+                                                        - Получение сертификата
+                                                    </li>
+                                                    <li className="passing-lesson-info-block-pro-list__item">
+                                                        - Дополнительные
+                                                        материалы
+                                                    </li>
+                                                </ul>
+
+                                                <button className="btn passing-lesson-info-block-pro__btn">
+                                                    Оформить Pro подписку
+                                                </button>
+                                            </div>
+                                            <div className="passing-lesson-info-block-middle">
+                                                <p className="subtitle">или</p>
+                                            </div>
+                                            <div className="passing-lesson-info-block-buy-extra-lessons">
+                                                <h3 className="passing-lesson-info-block-buy-extra-lessons__title">
+                                                    Купите дополнительные
+                                                    материалы за{" "}
+                                                    <NumberFormat
+                                                        value={
+                                                            courses[courseId]
+                                                                .extraLessonsPrice
+                                                        }
+                                                        displayType={"text"}
+                                                        thousandSeparator={" "}
+                                                        renderText={(value) =>
+                                                            value
+                                                        }
+                                                    />
+                                                    ₽
+                                                </h3>
+
+                                                <button
+                                                    className="btn-regular passing-lesson-info-block-buy-extra-lessons__btn"
+                                                    onClick={buyExtraLessons}
+                                                >
+                                                    Купить
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </section>

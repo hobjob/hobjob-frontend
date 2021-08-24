@@ -12,6 +12,14 @@ const payment = (state = initialState, action) => {
 		}
 	}
 
+	if (action.type === "SET_COURSE_EXTRA_LESSONS_PAYMENT") {
+		return {
+			...state,
+			payment: action.payload,
+			isLoaded: true
+		}
+	}
+
 	if (action.type === "SET_PRO_SUBSCRIBE_PAYMENT") {
 		return {
 			...state,

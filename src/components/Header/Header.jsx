@@ -158,13 +158,13 @@ const Header = () => {
                             >
                                 О HobJob
                             </NavLink>
-                            <NavLink
+                            {/* <NavLink
                                 to="/masters-about"
                                 className="header-nav__link"
                                 activeClassName="header-nav__link active"
                             >
                                 Для мастеров
-                            </NavLink>
+                            </NavLink> */}
                             <NavLink
                                 to="/magazine"
                                 className="header-nav__link"
@@ -279,12 +279,14 @@ const Header = () => {
                                                     Пригласи друга
                                                 </NavLink>
 
-                                                <NavLink
-                                                    to="/go/master"
-                                                    className="header-user-menu__link"
-                                                >
-                                                    Для мастера
-                                                </NavLink>
+                                                {user.master === "confirmed" ? (
+                                                    <NavLink
+                                                        to="/go/master"
+                                                        className="header-user-menu__link"
+                                                    >
+                                                        Для мастера
+                                                    </NavLink>
+                                                ) : null}
 
                                                 <span
                                                     onClick={clickLogout}

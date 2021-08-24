@@ -12,25 +12,29 @@ const Master = () => {
         <>
             {localStorage.getItem("accessToken") ? (
                 isLoaded ? (
-                    <section className="master">
-                        <div className="container">
-                            <div className="master-wrapper">
-                                <div className="master-text">
-                                    <h2 className="title master-text__title">
-                                        Здравствуйте, {user.name}!
-                                    </h2>
-                                    <p className="master-text__description">
-                                        Здесь будут отображаться продажи ваших
-                                        курсов:
-                                    </p>
-                                </div>
-                                <div className="master-info">
-                                    <MasterCoursesList />
-                                    <MasterBalance {...user} />
+                    user.master === "confirmed" ? (
+                        <section className="master">
+                            <div className="container">
+                                <div className="master-wrapper">
+                                    <div className="master-text">
+                                        <h2 className="title master-text__title">
+                                            Здравствуйте, {user.name}!
+                                        </h2>
+                                        <p className="master-text__description">
+                                            Здесь будут отображаться продажи
+                                            ваших курсов:
+                                        </p>
+                                    </div>
+                                    <div className="master-info">
+                                        <MasterCoursesList />
+                                        <MasterBalance {...user} />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+                        </section>
+                    ) : (
+                        <Err404 />
+                    )
                 ) : (
                     <div className="loader-wrapper">
                         <Loader />
