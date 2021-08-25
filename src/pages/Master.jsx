@@ -1,5 +1,6 @@
 import React from "react";
 import {useSelector} from "react-redux";
+import {Helmet} from "react-helmet";
 
 import {MasterCoursesList, MasterBalance, Loader} from "../components/";
 
@@ -13,25 +14,30 @@ const Master = () => {
             {localStorage.getItem("accessToken") ? (
                 isLoaded ? (
                     user.master === "confirmed" ? (
-                        <section className="master">
-                            <div className="container">
-                                <div className="master-wrapper">
-                                    <div className="master-text">
-                                        <h2 className="title master-text__title">
-                                            Здравствуйте, {user.name}!
-                                        </h2>
-                                        <p className="master-text__description">
-                                            Здесь будут отображаться продажи
-                                            ваших курсов:
-                                        </p>
-                                    </div>
-                                    <div className="master-info">
-                                        <MasterCoursesList />
-                                        <MasterBalance {...user} />
+                        <>
+                            <Helmet>
+                                <title>Для мастера - HobJob</title>
+                            </Helmet>
+                            <section className="master">
+                                <div className="container">
+                                    <div className="master-wrapper">
+                                        <div className="master-text">
+                                            <h2 className="title master-text__title">
+                                                Здравствуйте, {user.name}!
+                                            </h2>
+                                            <p className="master-text__description">
+                                                Здесь будут отображаться продажи
+                                                ваших курсов:
+                                            </p>
+                                        </div>
+                                        <div className="master-info">
+                                            <MasterCoursesList />
+                                            <MasterBalance {...user} />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
+                            </section>
+                        </>
                     ) : (
                         <Err404 />
                     )

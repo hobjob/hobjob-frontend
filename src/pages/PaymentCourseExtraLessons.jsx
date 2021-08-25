@@ -1,7 +1,11 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {Helmet} from "react-helmet";
 
 import {fetchPaymentCourseExtraLessonsById} from "../redux/actions/payment";
+import {fetchCourseById} from "../redux/actions/courses";
+
+import {PaymentCourseBlock} from "../components/";
 
 const PaymentCourseExtraLessons = ({
     match: {
@@ -10,6 +14,7 @@ const PaymentCourseExtraLessons = ({
 }) => {
     const dispatch = useDispatch();
 
+    const {itemById, isLoadedCourseById} = useSelector(({courses}) => courses);
     const {payment, isLoaded} = useSelector(({payment}) => payment);
 
     React.useEffect(() => {
@@ -18,6 +23,8 @@ const PaymentCourseExtraLessons = ({
 
     React.useEffect(() => {
         if (isLoaded) {
+            dispatch(fetchCourseById(payment.order[0]));
+
             if (payment.confirmation) {
                 const checkout = new window.YooMoneyCheckoutWidget({
                     confirmation_token: payment.confirmation.confirmation_token,
@@ -45,6 +52,11 @@ const PaymentCourseExtraLessons = ({
         <>
             {isLoaded ? (
                 <>
+                    <Helmet>
+                        <title>
+                            Покупка (дополнительные материалы) - HobJob
+                        </title>
+                    </Helmet>
                     <section className="payment">
                         <div className="container">
                             <div className="payment-wrapper">
@@ -52,10 +64,16 @@ const PaymentCourseExtraLessons = ({
                                     className="payment-form"
                                     id="payment-form"
                                 ></div>
-                                <div className="payment-info">
-                                    <h2 className="payment-info__title"></h2>
-                                    <div className="payment-info-course-wrapper"></div>
-                                </div>
+                                {isLoadedCourseById ? (
+                                    <div className="payment-info">
+                                        <h2 className="payment-info__title">
+                                            Дополнительные материалы
+                                        </h2>
+                                        <div className="payment-info-course-wrapper">
+                                            <PaymentCourseBlock {...itemById} />
+                                        </div>
+                                    </div>
+                                ) : null}
                             </div>
                         </div>
                     </section>

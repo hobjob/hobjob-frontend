@@ -59,6 +59,17 @@ export const fetchCourseBuyCountWeek = () => (dispatch) => {
 	})
 }
 
+export const fetchCourseById = (id) => (dispatch) => {
+	dispatch({
+		type: "SET_LOADED_COURSE_BY_ID",
+		payload: false,
+	})
+
+	$api.get(`/courses/${id}`).then(({data}) => {
+		dispatch(setCourseById(data))
+	})
+}
+
 const setCourses = (items) => ({
 	type: "SET_COURSES",
 	payload: items
@@ -77,6 +88,11 @@ const setCoursesSection = (items) => ({
 
 const setCoursesBuyCountWeek = (item) => ({
 	type: "SET_COURSES_BUY_COUNT_WEEK",
+	payload: item
+})
+
+const setCourseById = (item) => ({
+	type: "SET_COURSE_BY_ID",
 	payload: item
 })
 

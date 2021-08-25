@@ -1,12 +1,13 @@
 import React from "react";
+import {Helmet} from "react-helmet";
 
 import {PolicyBlock} from "../components/";
 
 const Policy = () => {
-	React.useEffect(() => {
+    React.useEffect(() => {
         window.scrollTo(0, 0);
-	}, []);
-	
+    }, []);
+
     const documentContent = [
         {
             title: "1. Общие положения",
@@ -435,24 +436,29 @@ const Policy = () => {
     ];
 
     return (
-        <section className="policy">
-            <div className="container">
-                <div className="policy-wrapper">
-                    <h2 className="title__mb policy__title">
-                        Политика конфиденциальности
-                    </h2>
-                    <div className="policy-block-wrapper">
-                        {documentContent.map((item, index) => (
-                            <PolicyBlock
-                                {...item}
-                                blockIndex={index}
-                                key={`policy-block-${index}`}
-                            />
-                        ))}
+        <>
+            <Helmet>
+                <title>Политика конфиденциальности - HobJob</title>
+            </Helmet>
+            <section className="policy">
+                <div className="container">
+                    <div className="policy-wrapper">
+                        <h2 className="title__mb policy__title">
+                            Политика конфиденциальности
+                        </h2>
+                        <div className="policy-block-wrapper">
+                            {documentContent.map((item, index) => (
+                                <PolicyBlock
+                                    {...item}
+                                    blockIndex={index}
+                                    key={`policy-block-${index}`}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 };
 

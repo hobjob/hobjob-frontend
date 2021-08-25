@@ -1,5 +1,6 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {Helmet} from "react-helmet";
 
 import {fetchPaymentCoursesById} from "../redux/actions/payment";
 
@@ -48,6 +49,11 @@ const PaymentCourses = ({
         <>
             {isLoaded ? (
                 <>
+                    <Helmet>
+                        <title>
+                            Покупка (курсы) - HobJob
+                        </title>
+                    </Helmet>
                     <section className="payment">
                         <div className="container">
                             <div className="payment-wrapper">

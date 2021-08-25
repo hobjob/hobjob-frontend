@@ -1,5 +1,6 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {Helmet} from "react-helmet";
 
 import {fetchUpdateUser, fetchUpdateUserPassword} from "../redux/actions/user";
 
@@ -44,6 +45,9 @@ const Cabinet = () => {
             {localStorage.getItem("accessToken") ? (
                 isLoaded ? (
                     <>
+                        <Helmet>
+                            <title>Мой профиль - HobJob</title>
+                        </Helmet>
                         <section className="cabinet">
                             <div className="container">
                                 <div className="cabinet-wrapper">

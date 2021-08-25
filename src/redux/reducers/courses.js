@@ -2,8 +2,10 @@ const initialState = {
 	isLoadedAllCoursesFirst: false,
 	isLoadedAllCourses: false,
 	isFetchAllCourses: false,
-
 	items: [],
+
+	isLoadedCourseById: false,
+	itemById: {},
 
 	totalCount: 0,
 	page: 1,
@@ -56,6 +58,14 @@ const courses = (state = initialState, action) => {
 			...state,
 			itemBuyCountWeek: action.payload,
 			isLoadedBuyCountWeek: true,
+		}
+	}
+
+	if (action.type === "SET_COURSE_BY_ID") {
+		return {
+			...state,
+			itemById: action.payload,
+			isLoadedCourseById: true,
 		}
 	}
 
@@ -183,6 +193,12 @@ const courses = (state = initialState, action) => {
 		}
 	}
 
+	if (action.type === "SET_LOADED_COURSE_BY_ID") {
+		return {
+			...state,
+			isLoadedCourseById: action.payload,
+		}
+	}
 
 	if (action.type === "SET_IS_FETCH_ALL_COURSES") {
 		return {
@@ -190,6 +206,7 @@ const courses = (state = initialState, action) => {
 			isFetchAllCourses: action.payload,
 		}
 	}
+
 
 	return state;
 }

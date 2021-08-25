@@ -1,5 +1,6 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {Helmet} from "react-helmet";
 
 import {fetchPaymentProSubscribeById} from "../redux/actions/payment";
 
@@ -45,6 +46,9 @@ const PaymentProSubscribe = ({
         <>
             {isLoaded ? (
                 <>
+                    <Helmet>
+                        <title>Оформление Pro подписки (1 год) - HobJob</title>
+                    </Helmet>
                     <section className="payment">
                         <div className="container">
                             <div className="payment-wrapper">
