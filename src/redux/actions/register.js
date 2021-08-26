@@ -11,11 +11,6 @@ export const sendRegister = (data, redirect = {}) => (dispatch) => {
 	return $api.post(`/register`, data).then(({ data }) => {
 		localStorage.setItem("accessToken", data.accessToken)
 
-		dispatch({
-			type: "SET_SEND_REGISTER",
-			payload: false
-		})
-
 		if (!Object.keys(redirect).length) {
 			window.location.href = "/go/training"
 		} else {

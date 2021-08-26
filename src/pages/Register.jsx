@@ -31,7 +31,7 @@ const Register = ({location: {search}}) => {
                         <div className="reglog-wrapper">
                             <a href="/" className="reglog-logo">
                                 <img
-                                    src={`${process.env.REACT_APP_DOMEN}/all/logo.svg`}
+                                    src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/logo.svg`}
                                     alt="HobJob"
                                     className="reglog-logo__img"
                                 />

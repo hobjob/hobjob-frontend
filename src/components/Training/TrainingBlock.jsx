@@ -32,7 +32,7 @@ const TrainingBlock = ({
                 <div
                     className="training-block-cover-img"
                     style={{
-                        backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${image}")`,
+                        backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
                     }}
                 ></div>
             </div>
@@ -40,7 +40,7 @@ const TrainingBlock = ({
                 <div className="training-block-text-top">
                     <h3 className="training-block-text__title">{title}</h3>
                     <p className="subtitle training-block-text__subtitle">
-                        Пройдено {completedLessons} из {lessons.length}
+                        Пройдено {completedLessons} из {lessons ? lessons.length : "-"}
                     </p>
                 </div>
                 <div className="training-block-text-bottom">

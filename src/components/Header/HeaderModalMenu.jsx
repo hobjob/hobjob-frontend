@@ -54,7 +54,7 @@ const HeaderModalMenu = ({
                     onClick={onClickCloseModalMenu}
                 >
                     <img
-                        src={`${process.env.REACT_APP_DOMEN}/all/logo.svg`}
+                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/logo.svg`}
                         alt="HobJob"
                         className="header-modal-menu-logo__img"
                     />

@@ -38,7 +38,7 @@ const Err404 = () => {
                             </Link>
                         </div>
                         <img
-                            src={`${process.env.REACT_APP_DOMEN}/all/404.svg`}
+                            src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/404.svg`}
                             alt="404"
                             className="err404__img"
                         />

@@ -9,7 +9,10 @@ import {
     fetchCertificateCourse,
 } from "../redux/actions/passing";
 
-import {sendCreateCourseExtraLessonsPayment} from "../redux/actions/payment";
+import {
+    sendCreateCourseExtraLessonsPayment,
+    sendCreateProSubscribePayment,
+} from "../redux/actions/payment";
 
 import {
     Loader,
@@ -67,6 +70,10 @@ const PassingCourse = ({
         dispatch(sendCreateCourseExtraLessonsPayment({courseId}));
     };
 
+    const createPaymentProSubscribe = () => {
+        dispatch(sendCreateProSubscribePayment());
+    };
+
     return (
         <>
             {localStorage.getItem("accessToken") ? (
@@ -83,6 +90,10 @@ const PassingCourse = ({
                                                 lessonIndex
                                             ].title
                                         }{" "}
+                                        {courses[courseId].lessons[lessonIndex]
+                                            .extraLesson
+                                            ? "(Дополнительные материалы)"
+                                            : ""}{" "}
                                         - HobJob
                                     </title>
                                 </Helmet>
@@ -93,7 +104,6 @@ const PassingCourse = ({
                                                 <PassingTopText
                                                     {...courses[courseId]}
                                                     lessonIndex={lessonIndex}
-                                                    lessonNum={lessonNum}
                                                 />
 
                                                 {courses[courseId].lessons[
@@ -162,30 +172,50 @@ const PassingCourse = ({
                                                 />
                                             </div>
 
-                                            {user.pro &&
-                                            !courses[courseId].lessons[
+                                            {(!courses[courseId].lessons[
                                                 lessonIndex + 1
-                                            ] ? (
-                                                <div className="passing-certificate">
-                                                    <p className="subtitle passing-certificate__subtitle">
-                                                        Сертификат
-                                                    </p>
-                                                    <h4 className="passing-certificate__title">
-                                                        Вы успешно прошли курс «
-                                                        {
-                                                            courses[courseId]
-                                                                .title
-                                                        }
-                                                        »
-                                                    </h4>
+                                            ] &&
+                                                !courses[courseId].lessons[
+                                                    lessonIndex
+                                                ].extraLesson) ||
+                                            (courses[courseId].lessons[
+                                                lessonIndex + 1
+                                            ] &&
+                                                courses[courseId].lessons[
+                                                    lessonIndex + 1
+                                                ].extraLesson) ? (
+                                                user.pro ? (
+                                                    <div className="passing-certificate">
+                                                        <p className="subtitle passing-certificate__subtitle">
+                                                            Сертификат
+                                                        </p>
+                                                        <h4 className="passing-certificate__title">
+                                                            Вы успешно прошли
+                                                            курс «
+                                                            {
+                                                                courses[
+                                                                    courseId
+                                                                ].title
+                                                            }
+                                                            »
+                                                        </h4>
 
-                                                    <button
-                                                        className="btn passing-certificate__btn"
-                                                        onClick={getCertificate}
-                                                    >
-                                                        Получить сертификат
-                                                    </button>
-                                                </div>
+                                                        <button
+                                                            className="btn passing-certificate__btn"
+                                                            onClick={
+                                                                getCertificate
+                                                            }
+                                                        >
+                                                            Получить сертификат
+                                                        </button>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        Оформите про подписку,
+                                                        что бы получить
+                                                        сертификат
+                                                    </>
+                                                )
                                             ) : null}
                                         </div>
                                     </div>
@@ -251,7 +281,7 @@ const PassingCourse = ({
                                                 <div
                                                     className="passing-cover-img"
                                                     style={{
-                                                        backgroundImage: `url('${process.env.REACT_APP_DOMEN}/${courses[courseId].lessons[lessonIndex].image}')`,
+                                                        backgroundImage: `url('${process.env.REACT_APP_IMAGE_DOMEN}/${courses[courseId].lessons[lessonIndex].image}')`,
                                                     }}
                                                 ></div>
                                             </div>
@@ -292,7 +322,12 @@ const PassingCourse = ({
                                                         </li>
                                                     </ul>
 
-                                                    <button className="btn passing-lesson-info-block-pro__btn">
+                                                    <button
+                                                        className="btn passing-lesson-info-block-pro__btn"
+                                                        onClick={
+                                                            createPaymentProSubscribe
+                                                        }
+                                                    >
                                                         Оформить Pro подписку
                                                     </button>
                                                 </div>

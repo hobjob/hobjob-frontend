@@ -18,7 +18,7 @@ const MagazinePostPageBlock = ({title, description, image}) => {
             <div
                 className="magazine-post-page-block__img"
                 style={{
-                    backgroundImage: `url(${process.env.REACT_APP_DOMEN}/${image})`,
+                    backgroundImage: `url(${process.env.REACT_APP_IMAGE_DOMEN}/${image})`,
                 }}
             ></div>
         </div>

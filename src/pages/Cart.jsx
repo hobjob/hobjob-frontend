@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import NumberFormat from "react-number-format";
 import {Helmet} from "react-helmet";
 
-import {CartBlock, ShopSection} from "../components/";
+import {CartBlock, ShopSection, BtnLoader} from "../components/";
 
 import {removeCourseCart} from "../redux/actions/cart";
 import {sendCreateCoursesPayment} from "../redux/actions/payment";
@@ -13,6 +13,7 @@ const Cart = () => {
     const dispatch = useDispatch();
 
     const {cart} = useSelector(({cart}) => cart);
+    const {isSend} = useSelector(({payment}) => payment);
     const {user, isLoaded} = useSelector(({user}) => user);
 
     React.useEffect(() => {
@@ -95,8 +96,9 @@ const Cart = () => {
                                         {localStorage.getItem("accessToken") &&
                                         isLoaded ? (
                                             <button
-                                                className="btn-arrow cart-total__btn"
+                                                className={`btn-arrow cart-total__btn`}
                                                 onClick={createPayment}
+                                                disabled={isSend}
                                             >
                                                 Оформить заказ
                                                 <svg

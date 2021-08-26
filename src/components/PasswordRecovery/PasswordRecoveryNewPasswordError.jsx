@@ -7,7 +7,7 @@ const PasswordRecoveryNewPasswordError = () => {
             <h2 className="reglog-block__title">Ссылка устарела</h2>
             <p className="reglog-block__description">
                 Ваша ссылка на восстановление пароля устарела.{" "}
-                <Link to="/password-recovery">Отправить еще раз</Link>
+                <Link to="/go/password-recovery">Отправить еще раз</Link>
             </p>
         </div>
     );

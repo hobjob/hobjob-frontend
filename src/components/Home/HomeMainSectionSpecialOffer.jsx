@@ -14,7 +14,7 @@ const HomeMainSectionSpecialOffer = ({
                 <div
                     className="main-special-offer-shop-block-left-cover"
                     style={{
-                        backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${image}")`,
+                        backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
                     }}
                 ></div>
             </div>

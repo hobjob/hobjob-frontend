@@ -9,7 +9,7 @@ body
 	overflow-x: hidden
 	overflow-y: scroll
 	font-size: 17px
-	font-family: "Gilroy Regular"
+	+GilroyRegular
 
 // link
 a
@@ -97,6 +97,7 @@ li
 	color: $mainColor
 	white-space: nowrap
 	+Lora
+	+transition
 
 	& svg
 		margin-left: 15px
@@ -104,6 +105,9 @@ li
 
 	&:hover svg
 		+rotate
+
+	&.disabled
+		opacity: 0.5
 
 .btn
 	display: inline-block
@@ -117,7 +121,7 @@ li
 	text-align: center
 	font-size: 17px
 	+borderRadius
-	+SanFranciscoLight
+	+GilroyRegular
 	+transition
 
 	&:hover
@@ -143,7 +147,7 @@ li
 		text-align: center
 		font-size: 17px
 		+borderRadius
-		+SanFranciscoLight
+		+GilroyRegular
 		+transition
 
 		&:hover
@@ -163,7 +167,7 @@ li
 	user-select: none
 	font-size: 17px
 	+borderRadius
-	+SanFranciscoLight
+	+GilroyRegular
 	+transition
 
 	&__gray
@@ -176,7 +180,7 @@ li
 		user-select: none
 		font-size: 17px
 		+borderRadius
-		+SanFranciscoLight
+		+GilroyRegular
 		+transition
 
 .btn-small
@@ -251,6 +255,12 @@ li
 	&:hover
 		background-color: #e2ab74
 
+	&.disabled
+		pointer-events: none
+		border: 1px solid $borderGray
+		background-color: $borderGray
+		color: $gray
+
 // input
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -274,7 +284,7 @@ input:-webkit-autofill:active
 		border-bottom: 1px solid $gray
 		line-height: 1.4em
 		+transition
-		+SanFranciscoLight
+		+GilroyRegular
 
 		&:focus ~ label,
 		&:valid ~ label
@@ -395,7 +405,7 @@ input:-webkit-autofill:active
 		border-bottom: 1px solid $gray
 		line-height: 1.4em
 		+transition
-		+SanFranciscoLight
+		+GilroyRegular
 
 		&.error
 			border-bottom: 1px solid $red

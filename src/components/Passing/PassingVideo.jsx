@@ -12,7 +12,7 @@ const PassingVideo = ({
         <div className="passing-video">
             <ReactWebMediaPlayer
                 ref={PlayerRef}
-                title={lessons[lessonIndex].title}
+                title={`${lessons[lessonIndex].title} ${lessons[lessonIndex].extraLesson ? "(Дополнительные материалы)" : ""}`}
                 color="#dd9e5e"
                 video={`${
                     process.env.REACT_APP_API_DOMEN
@@ -21,7 +21,7 @@ const PassingVideo = ({
                 )}`}
                 height={document.documentElement.clientWidth > 900 ? 500 : 350}
                 width="100%"
-                thumbnail={`${process.env.REACT_APP_DOMEN}/${lessons[lessonIndex].image}`}
+                thumbnail={`${process.env.REACT_APP_IMAGE_DOMEN}/${lessons[lessonIndex].image}`}
             />
         </div>
     );

@@ -1,6 +1,7 @@
 const initialState = {
 	payment: {},
 	isLoaded: false,
+	isSend: false,
 }
 
 const payment = (state = initialState, action) => {
@@ -32,6 +33,13 @@ const payment = (state = initialState, action) => {
 		return {
 			...state,
 			isLoaded: action.payload
+		}
+	}
+
+	if (action.type === "SET_SEND_PAYMENT") {
+		return {
+			...state,
+			isSend: action.payload
 		}
 	}
 

@@ -42,7 +42,7 @@ const ShopFiltersBlockMasters = () => {
                             </span>
                             <div
                                 style={{
-                                    backgroundImage: `url(${process.env.REACT_APP_DOMEN}/${items[key].avatar})`,
+                                    backgroundImage: `url(${process.env.REACT_APP_IMAGE_DOMEN}/${items[key].avatar})`,
                                 }}
                                 className="checkbox-img"
                             ></div>

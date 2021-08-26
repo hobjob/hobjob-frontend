@@ -27,7 +27,7 @@ const CartBlock = React.memo(
                     to={`/course/${_id}`}
                     className="cart-block-content-cover-media"
                     style={{
-                        backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${image}")`,
+                        backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
                     }}
                 ></Link>
 
@@ -36,7 +36,7 @@ const CartBlock = React.memo(
                         to={`/course/${_id}`}
                         className="cart-block-content-cover"
                         style={{
-                            backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${image}")`,
+                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
                         }}
                     ></Link>
 

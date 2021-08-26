@@ -6,7 +6,7 @@ const PaymentCourseBlock = ({image, title}) => {
             <div
                 className="payment-info-course-block-img"
                 style={{
-                    backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${image}")`,
+                    backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
                 }}
             ></div>
             <h4 className="payment-info-course-block__title">{title}</h4>

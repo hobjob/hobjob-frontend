@@ -10,7 +10,7 @@ const Footer = () => {
                         <div className="footer-block-top-left">
                             <Link to="/" className="footer-logo__link">
                                 <img
-                                    src={`${process.env.REACT_APP_DOMEN}/all/logo.svg`}
+                                    src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/logo.svg`}
                                     alt="HobJob"
                                     className="footer-logo__img"
                                 />
@@ -35,10 +35,10 @@ const Footer = () => {
                         <div className="footer-block-top-right">
                             <div className="footer-contact">
                                 <a
-                                    href="tel:+7 499 444-90-36"
-                                    className="footer__phone"
+                                    href="mailto:hello@hobjob.ru"
+                                    className="footer__email"
                                 >
-                                    +7 499 444-90-36
+                                    hello@hobjob.ru
                                 </a>
                                 <div className="footer-social">
                                     <a
@@ -166,10 +166,16 @@ const Footer = () => {
                             </span>
                         </div>
                         <div className="footer-block-bottom-right">
-                            <Link to="/policy" className="footer-block-bottom__link">
+                            <Link
+                                to="/policy"
+                                className="footer-block-bottom__link"
+                            >
                                 Политика конфиденциальности
                             </Link>
-                            <Link to="/public-offer" className="footer-block-bottom__link">
+                            <Link
+                                to="/public-offer"
+                                className="footer-block-bottom__link"
+                            >
                                 Публичная оферта
                             </Link>
                         </div>

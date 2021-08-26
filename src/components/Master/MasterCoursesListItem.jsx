@@ -8,7 +8,7 @@ const MasterCoursesListItem = ({image, title, buyCount, buyCountTitle}) => {
                     <div
                         className="master-info-list-courses-item-course-image"
                         style={{
-                            backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${image}")`,
+                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
                         }}
                     ></div>
                     <h5 className="master-info-list-courses-item-course__title">

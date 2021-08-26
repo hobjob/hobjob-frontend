@@ -18,7 +18,7 @@ const NotEmailConfirmed = () => {
                     </div>
                     <div className="email-confirmed-img">
                         <img
-                            src={`${process.env.REACT_APP_DOMEN}/all/confirmed.svg`}
+                            src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/confirmed.svg`}
                             alt=""
                             className="email-confirmed-img__img"
                         />

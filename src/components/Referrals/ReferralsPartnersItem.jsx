@@ -8,7 +8,7 @@ const ReferralsPartnersItem = ({partner, course, earnings}) => {
                     <div
                         className="referrals-partners-item-partner-avatar"
                         style={{
-                            backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${partner.avatar}")`,
+                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${partner.avatar}")`,
                         }}
                     ></div>
                     <h5 className="referrals-partners-item-partner__name">

@@ -174,7 +174,7 @@ const MastersAbout = () => {
                             <div className="masters-about-services-items-wrapper">
                                 <div className="masters-about-services-item">
                                     <img
-                                        src={`${process.env.REACT_APP_DOMEN}/all/large-community-masters-page.svg`}
+                                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/large-community-masters-page.svg`}
                                         alt=""
                                         className="masters-about-services-item__img"
                                     />
@@ -194,7 +194,7 @@ const MastersAbout = () => {
 
                                 <div className="masters-about-services-item">
                                     <img
-                                        src={`${process.env.REACT_APP_DOMEN}/all/affiliate-system-masters-page.svg`}
+                                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/affiliate-system-masters-page.svg`}
                                         alt=""
                                         className="masters-about-services-item__img"
                                     />
@@ -214,7 +214,7 @@ const MastersAbout = () => {
 
                                 <div className="masters-about-services-item">
                                     <img
-                                        src={`${process.env.REACT_APP_DOMEN}/all/interface-masters-page.svg`}
+                                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/interface-masters-page.svg`}
                                         alt=""
                                         className="masters-about-services-item__img"
                                     />
@@ -236,7 +236,7 @@ const MastersAbout = () => {
 
                                 <div className="masters-about-services-item">
                                     <img
-                                        src={`${process.env.REACT_APP_DOMEN}/all/followers-masters-page.svg`}
+                                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/followers-masters-page.svg`}
                                         alt=""
                                         className="masters-about-services-item__img"
                                     />

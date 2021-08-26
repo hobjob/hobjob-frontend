@@ -63,7 +63,7 @@ const CabinetCardUserInfo = ({pro, avatar, name, surname, email, master}) => {
                                 <div
                                     className="cabinet-card-user-info-avatar-img"
                                     style={{
-                                        backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${avatar}")`,
+                                        backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${avatar}")`,
                                     }}
                                 ></div>
                             </label>
@@ -72,7 +72,7 @@ const CabinetCardUserInfo = ({pro, avatar, name, surname, email, master}) => {
                         <div
                             className="cabinet-card-user-info-avatar-img"
                             style={{
-                                backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${avatar}")`,
+                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${avatar}")`,
                             }}
                         ></div>
                     )}

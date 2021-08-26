@@ -130,7 +130,7 @@ const Header = () => {
                     <div className="header-wrapper">
                         <Link to="/" className="header-logo__link">
                             <img
-                                src={`${process.env.REACT_APP_DOMEN}/all/logo.svg`}
+                                src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/logo.svg`}
                                 alt="HobJob"
                                 className="header-logo__img"
                             />
@@ -247,7 +247,7 @@ const Header = () => {
                                                 headerUserMenu ? "active" : ""
                                             }`}
                                             style={{
-                                                backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${user.avatar}")`,
+                                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${user.avatar}")`,
                                             }}
                                         ></div>
                                         {headerUserMenu ? (
@@ -305,7 +305,7 @@ const Header = () => {
                                         <div
                                             className="header-user-avatar"
                                             style={{
-                                                backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${user.avatar}")`,
+                                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${user.avatar}")`,
                                             }}
                                         ></div>
                                     </div>

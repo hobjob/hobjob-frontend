@@ -22,7 +22,7 @@ const TrainingNull = () => {
             </div>
             <div className="training-null-img">
                 <img
-                    src={`${process.env.REACT_APP_DOMEN}/all/training-null.svg`}
+                    src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/training-null.svg`}
                     alt="Не знаете с чего начать?"
                     className="training-null__img"
                 />

@@ -63,7 +63,7 @@ const ShopBlock = React.memo(
                         to={`/course/${_id}`}
                         className="shop-block-top-cover"
                         style={{
-                            backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${image}")`,
+                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
                         }}
                     ></Link>
                     <div className="shop-block-top-text">

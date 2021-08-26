@@ -9,7 +9,7 @@ const PasswordRecoveryEmailSuccess = () => {
                 На ваш email было отправлено письмо с ссылкой на изменения
                 пароля. Если письмо не пришло проверьте папку "спам".{" "}
                 <Link
-                    to="/password-recovery"
+                    to="/go/password-recovery"
                     onClick={() => window.location.reload()}
                 >
                     Отправить еще раз

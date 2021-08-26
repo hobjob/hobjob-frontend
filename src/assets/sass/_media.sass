@@ -57,11 +57,17 @@
 			flex-direction: column
 
 			&-block
-				&-text, &-materials, &-timecodes
+				&-text, &-materials, &-timecodes, &-pro, &-middle, &-buy-extra-lessons
 					width: 100%
+
+				&-middle
+					height: 100px
 
 				&-materials, &-timecodes
 					margin-top: 50px
+
+		&-certificate
+			width: 100%
 
 	// payment
 	.payment
@@ -864,6 +870,36 @@
 		&-info
 			&__title
 				font-size: 28px
+
+    // passing
+	.passing
+		&-lesson-info
+			&-block
+				&-pro
+					padding: 25px
+
+					&__title
+						font-size: 24px
+
+					&__description
+						font-size: 18px
+
+					&-list
+						margin: 0
+
+						&__item
+							font-size: 18px
+
+				&-buy-extra-lessons
+					padding: 25px
+
+					&__title
+						font-size: 24px
+
+		&-certificate
+			padding: 25px
+			&__title
+				font-size: 24px
 
 	// footer
 	.footer

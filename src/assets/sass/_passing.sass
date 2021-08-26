@@ -1,6 +1,6 @@
 // passing
 .passing
-	margin: 100px 0
+	margin: 75px 0
 	+openAnimation
 
 	&-top
@@ -11,6 +11,11 @@
 		&-text
 			&__title
 				font-size: 36px
+
+				& span
+					padding-left: 15px
+					font-size: 28px
+					color: $gray
 
 		&-next
 			color: $gray
@@ -35,6 +40,7 @@
 
 		height: 500px
 		width: 100%
+		+openAnimation
 
 		&-icon
 			position: absolute
@@ -76,6 +82,8 @@
 		overflow-y: auto
 
 		&-item
+			display: block
+			width: 200px
 			min-width: 200px
 			margin-right: 25px
 
@@ -83,6 +91,9 @@
 			user-select: none
 
 			+transition
+
+			&:last-child
+				margin-right: 0
 
 			&-cover
 				position: relative
@@ -100,6 +111,9 @@
 
 			&__title
 				margin-top: 10px
+				overflow: hidden
+				text-overflow: ellipsis
+				white-space: nowrap
 
 			&.active
 				opacity: 1
@@ -253,6 +267,7 @@
 
 				&-middle
 					display: flex
+					justify-content: center
 					align-items: center
 					height: 250px
 
@@ -270,7 +285,7 @@
 
 	&-certificate
 		margin-top: 100px
-		max-width: 60%
+		width: 60%
 
 		padding: 35px
 		+borderRadius

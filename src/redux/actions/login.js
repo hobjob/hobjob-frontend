@@ -11,11 +11,6 @@ export const sendLogin = (data) => (dispatch) => {
 	return $api.post('/login', data).then(({ data }) => {
 		localStorage.setItem("accessToken", data.accessToken)
 
-		dispatch({
-			type: "SET_SEND_LOGIN",
-			payload: false
-		})
-
 		window.location.href = "/go/training"
 	}).catch(({ response }) => {
 		dispatch({

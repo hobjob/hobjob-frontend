@@ -2,11 +2,7 @@ import React from "react";
 
 import {PassingLessonsListItem} from "../";
 
-const PassingCoursesList = ({
-    lessons,
-    lessonActive,
-    courseId,
-}) => {
+const PassingCoursesList = ({lessons, lessonActive, courseId}) => {
     return (
         <div className="passing-lessons-list">
             {lessons.map((lesson, index) => (

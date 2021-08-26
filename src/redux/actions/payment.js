@@ -12,6 +12,11 @@ export const fetchPaymentCoursesById = (id) => (dispatch) => {
 }
 
 export const sendCreateCoursesPayment = (data) => (dispatch) => {
+	dispatch({
+		type: "SET_SEND_PAYMENT",
+		payload: true,
+	})
+
 	$api.post(`/payment/courses`, data).then(({ data }) => {
 		window.location.href = `/payment/courses/${data.paymentNumber}`
 	})
@@ -38,6 +43,11 @@ export const fetchPaymentCourseExtraLessonsById = (id) => (dispatch) => {
 }
 
 export const sendCreateCourseExtraLessonsPayment = (data) => (dispatch) => {
+	dispatch({
+		type: "SET_SEND_PAYMENT",
+		payload: true,
+	})
+
 	$api.post(`/payment/courses/extra-lessons`, data).then(({ data }) => {
 		window.location.href = `/payment/courses/extra-lessons/${data.paymentNumber}`
 	})
@@ -63,6 +73,11 @@ export const fetchPaymentProSubscribeById = (id) => (dispatch) => {
 }
 
 export const sendCreateProSubscribePayment = () => (dispatch) => {
+	dispatch({
+		type: "SET_SEND_PAYMENT",
+		payload: true,
+	})
+	
 	$api.get(`/payment/pro`).then(({ data }) => {
 		window.location.href = `/payment/pro/${data.paymentNumber}`
 	})

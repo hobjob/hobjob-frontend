@@ -21,11 +21,11 @@ const PassingLessonsListItem = ({
                     <div
                         className="passing-lessons-list-item-cover-img"
                         style={{
-                            backgroundImage: `url("${process.env.REACT_APP_DOMEN}/${image}")`,
+                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
                         }}
                     ></div>
                 </div>
-                <p className="passing-lessons-list-item__title">{title}</p>
+				<p className="passing-lessons-list-item__title">{title} {extraLesson && "(Дополнительные материалы)"}</p>
             </Link>
         </>
     );

@@ -28,7 +28,7 @@ const PaymentCourseExtraLessons = ({
             if (payment.confirmation) {
                 const checkout = new window.YooMoneyCheckoutWidget({
                     confirmation_token: payment.confirmation.confirmation_token,
-                    return_url: `http://localhost:3000/payment/courses/extra-lessons/confirmation/${payment.paymentNumber}`,
+                    return_url: `${process.env.REACT_APP_DOMEN}/payment/courses/extra-lessons/confirmation/${payment.paymentNumber}`,
 
                     customization: {
                         colors: {

@@ -108,7 +108,7 @@ const MastersSection = () => {
                     </div>
                     <div className="master-section-right">
                         <img
-                            src={`${process.env.REACT_APP_DOMEN}/all/master-section-what.svg`}
+                            src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/master-section-what.svg`}
                             alt=""
                             className="master-section__img"
                         />

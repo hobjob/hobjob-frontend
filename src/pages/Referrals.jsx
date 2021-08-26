@@ -49,7 +49,7 @@ const Referral = () => {
                                         </div>
                                         <div className="referrals-top-img">
                                             <img
-                                                src={`${process.env.REACT_APP_DOMEN}/all/referral.svg`}
+                                                src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/referral.svg`}
                                                 alt=""
                                                 className="referrals-top-img__img"
                                             />

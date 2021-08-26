@@ -26,7 +26,7 @@ const CategoriesItem = ({transfer, title, image, checkDeclension}) => {
                     </svg>
                 </div>
                 <img
-                    src={`${process.env.REACT_APP_DOMEN}/${image}`}
+                    src={`${process.env.REACT_APP_IMAGE_DOMEN}/${image}`}
                     alt={title}
                     className="categories-item__img"
                 />

@@ -149,7 +149,11 @@ const About = () => {
                                         >
                                             {checkDeclension(
                                                 statistics.students,
-                                                ["Ученик", "Ученика", "Учеников"]
+                                                [
+                                                    "Ученик",
+                                                    "Ученика",
+                                                    "Учеников",
+                                                ]
                                             )}
                                         </span>
                                     </div>
@@ -163,15 +167,15 @@ const About = () => {
                             <div className="about-services-items-wrapper">
                                 <div className="about-services-item">
                                     <img
-                                        src={`${process.env.REACT_APP_DOMEN}/all/online-platform-about-hb.svg`}
+                                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/online-platform-about-hb.svg`}
                                         alt=""
                                         className="about-services-item__img"
                                     />
 
                                     <div className="about-services-item-text">
                                         <h3 className="about-services-item-text__title">
-                                            Онлайн платформа в которой легко
-                                            разобраться и учится
+                                            Онлайн платформа, в которой легко
+                                            разобраться и учиться
                                         </h3>
                                         <p className="about-services-item-text__description">
                                             Команда HobJob сделала удобную
@@ -184,7 +188,7 @@ const About = () => {
 
                                 <div className="about-services-item">
                                     <img
-                                        src={`${process.env.REACT_APP_DOMEN}/all/like-about-hb.svg`}
+                                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/like-about-hb.svg`}
                                         alt=""
                                         className="about-services-item__img"
                                     />
@@ -205,7 +209,7 @@ const About = () => {
 
                                 <div className="about-services-item">
                                     <img
-                                        src={`${process.env.REACT_APP_DOMEN}/all/master-about-hb.svg`}
+                                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/master-about-hb.svg`}
                                         alt=""
                                         className="about-services-item__img"
                                     />

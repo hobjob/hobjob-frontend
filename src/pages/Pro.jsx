@@ -4,12 +4,15 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {sendCreateProSubscribePayment} from "../redux/actions/payment";
 
+import {BtnLoader} from "../components/";
+
 const Pro = () => {
     const dispatch = useDispatch();
 
     const [visibleButton, setVisibleButton] = React.useState(false);
 
     const {user, isLoaded} = useSelector(({user}) => user);
+    const {isSend} = useSelector(({payment}) => payment);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -36,7 +39,16 @@ const Pro = () => {
                 <div className="container">
                     <div className="pro-wrapper">
                         {localStorage.getItem("accessToken") && isLoaded ? (
-                            user.pro ? null : (
+                            user.pro ? null : isSend ? (
+                                <button
+                                    className={`btn-small-round disabled pro__btn ${
+                                        visibleButton ? "active" : ""
+                                    }`}
+                                    disabled
+                                >
+                                    <BtnLoader />
+                                </button>
+                            ) : (
                                 <button
                                     className={`btn-small-round pro__btn ${
                                         visibleButton ? "active" : ""
@@ -83,7 +95,14 @@ const Pro = () => {
                                 isLoaded ? (
                                     user.pro ? (
                                         <button className="btn disabled pro-main-text__btn">
-                                            Спасибо, вы уже с нами!
+                                            Спасибо, вы уже с нами
+                                        </button>
+                                    ) : isSend ? (
+                                        <button
+                                            className="btn pro-main-text__btn disabled"
+                                            disabled
+                                        >
+                                            <BtnLoader />
                                         </button>
                                     ) : (
                                         <button
@@ -104,7 +123,7 @@ const Pro = () => {
                             </div>
 
                             <img
-                                src={`${process.env.REACT_APP_DOMEN}/all/pro-main-section.svg`}
+                                src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/pro-main-section.svg`}
                                 alt=""
                                 className="pro-main__img"
                             />
@@ -118,7 +137,7 @@ const Pro = () => {
                             <div className="pro-about-items-wrapper">
                                 <div className="pro-about-item">
                                     <img
-                                        src={`${process.env.REACT_APP_DOMEN}/all/20percent-pro.svg`}
+                                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/20percent-pro.svg`}
                                         alt=""
                                         className="pro-about-item__img"
                                     />
@@ -135,7 +154,7 @@ const Pro = () => {
                                 </div>
                                 <div className="pro-about-item">
                                     <img
-                                        src={`${process.env.REACT_APP_DOMEN}/all/certificate-pro.svg`}
+                                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/certificate-pro.svg`}
                                         alt=""
                                         className="pro-about-item__img"
                                     />
@@ -154,7 +173,7 @@ const Pro = () => {
                                 </div>
                                 <div className="pro-about-item">
                                     <img
-                                        src={`${process.env.REACT_APP_DOMEN}/all/additional-materials-pro.svg`}
+                                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/additional-materials-pro.svg`}
                                         alt=""
                                         className="pro-about-item__img"
                                     />

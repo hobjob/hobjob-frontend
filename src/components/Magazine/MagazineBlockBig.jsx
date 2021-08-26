@@ -23,7 +23,7 @@ const MagazineBlockBig = ({
                 to={`/magazine/post/${_id}`}
                 className="magazine-block-big-cover"
                 style={{
-                    backgroundImage: `url(${process.env.REACT_APP_DOMEN}/${image})`,
+                    backgroundImage: `url(${process.env.REACT_APP_IMAGE_DOMEN}/${image})`,
                 }}
             ></Link>
 
@@ -91,7 +91,7 @@ const MagazineBlockBig = ({
                     <div
                         className="magazine-block-big-text-auth-avatar"
                         style={{
-                            backgroundImage: `url(${process.env.REACT_APP_DOMEN}/${masters[masterId].avatar})`,
+                            backgroundImage: `url(${process.env.REACT_APP_IMAGE_DOMEN}/${masters[masterId].avatar})`,
                         }}
                     ></div>
                     <span className="magazine-block-big-text-auth__name">
