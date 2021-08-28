@@ -13,7 +13,7 @@ export const fetchPaymentCoursesById = (id) => (dispatch) => {
 
 export const sendCreateCoursesPayment = (data) => (dispatch) => {
 	dispatch({
-		type: "SET_SEND_PAYMENT",
+		type: "SET_SEND_COURSES_PAYMENT",
 		payload: true,
 	})
 
@@ -44,7 +44,7 @@ export const fetchPaymentCourseExtraLessonsById = (id) => (dispatch) => {
 
 export const sendCreateCourseExtraLessonsPayment = (data) => (dispatch) => {
 	dispatch({
-		type: "SET_SEND_PAYMENT",
+		type: "SET_SEND_COURSE_EXTRA_LESSONS_PAYMENT",
 		payload: true,
 	})
 
@@ -74,7 +74,7 @@ export const fetchPaymentProSubscribeById = (id) => (dispatch) => {
 
 export const sendCreateProSubscribePayment = () => (dispatch) => {
 	dispatch({
-		type: "SET_SEND_PAYMENT",
+		type: "SET_SEND_PRO_SUBSCRIBE_PAYMENT",
 		payload: true,
 	})
 	

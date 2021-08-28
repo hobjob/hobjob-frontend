@@ -170,6 +170,10 @@ li
 	+GilroyRegular
 	+transition
 
+	&.disabled
+		pointer-events: none
+		border: 1px solid $borderGray
+
 	&__gray
 		display: inline-block
 		border: 1px solid $gray
@@ -197,6 +201,7 @@ li
 	line-height: 1.4em
 
 	+borderRadius
+	+GilroyRegular
 	+transition
 
 	&:hover
@@ -217,6 +222,7 @@ li
 	line-height: 1.4em
 
 	+borderRadius
+	+GilroyRegular
 	+transition
 
 	&__gray
@@ -234,6 +240,7 @@ li
 		line-height: 1.4em
 
 		+borderRadius
+		+GilroyRegular
 		+transition
 
 .btn-small-round
@@ -250,6 +257,7 @@ li
 	cursor: pointer
 	line-height: 1.4em
 
+	+GilroyRegular
 	+transition
 
 	&:hover
@@ -267,7 +275,7 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active
 	-webkit-box-shadow: 0 0 0 30px white inset !important
-	
+
 .input
 	width: 100%
 	position: relative

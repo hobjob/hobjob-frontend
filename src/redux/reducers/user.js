@@ -4,6 +4,9 @@ const initialState = {
 	referrals: [],
 	masterCourses: [],
 	isLoaded: false,
+
+	isSendUpdateUserInfo: false,
+	isSendUpdateUserPassword: false,
 }
 
 const user = (state = initialState, action) => {
@@ -27,6 +30,20 @@ const user = (state = initialState, action) => {
 			referrals,
 			masterCourses,
 			isLoaded: true
+		}
+	}
+
+	if (action.type === "SET_SEND_UPDATE_USER_INFO") {
+		return {
+			...state,
+			isSendUpdateUserInfo: action.payload,
+		}
+	}
+
+	if (action.type === "SET_SEND_UPDATE_USER_PASSWORD") {
+		return {
+			...state,
+			isSendUpdateUserPassword: action.payload,
 		}
 	}
 

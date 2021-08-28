@@ -1,7 +1,10 @@
 const initialState = {
 	payment: {},
 	isLoaded: false,
-	isSend: false,
+
+	isSendCourses: false,
+	isSendCourseExtraLessons: false,
+	isSendProSubscribe: false,
 }
 
 const payment = (state = initialState, action) => {
@@ -36,10 +39,24 @@ const payment = (state = initialState, action) => {
 		}
 	}
 
-	if (action.type === "SET_SEND_PAYMENT") {
+	if (action.type === "SET_SEND_COURSES_PAYMENT") {
 		return {
 			...state,
-			isSend: action.payload
+			isSendCourses: action.payload
+		}
+	}
+
+	if (action.type === "SET_SEND_COURSE_EXTRA_LESSONS_PAYMENT") {
+		return {
+			...state,
+			isSendCourseExtraLessons: action.payload
+		}
+	}
+
+	if (action.type === "SET_SEND_PRO_SUBSCRIBE_PAYMENT") {
+		return {
+			...state,
+			isSendProSubscribe: action.payload
 		}
 	}
 

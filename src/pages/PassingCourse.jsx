@@ -7,6 +7,7 @@ import {Helmet} from "react-helmet";
 import {
     fetchPassingCourseLessonMaterial,
     fetchCertificateCourse,
+    fetchPassingCourseLessonVideo,
 } from "../redux/actions/passing";
 
 import {
@@ -15,6 +16,7 @@ import {
 } from "../redux/actions/payment";
 
 import {
+    BtnLoader,
     Loader,
     PassingTopText,
     PassingLessonsList,
@@ -33,7 +35,11 @@ const PassingCourse = ({
     const history = useHistory();
     const dispatch = useDispatch();
 
+    const {url} = useSelector(({passing}) => passing);
     const {user, courses, isLoaded} = useSelector(({user}) => user);
+    const {isSendCourseExtraLessons, isSendProSubscribe} = useSelector(
+        ({payment}) => payment
+    );
 
     const PlayerRef = React.useRef();
 
@@ -72,6 +78,10 @@ const PassingCourse = ({
 
     const createPaymentProSubscribe = () => {
         dispatch(sendCreateProSubscribePayment());
+    };
+
+    const clickGetVideo = () => {
+        dispatch(fetchPassingCourseLessonVideo(courseId, lessonNum));
     };
 
     return (
@@ -210,11 +220,59 @@ const PassingCourse = ({
                                                         </button>
                                                     </div>
                                                 ) : (
-                                                    <>
-                                                        Оформите про подписку,
-                                                        что бы получить
-                                                        сертификат
-                                                    </>
+                                                    <div className="passing-pro">
+                                                        <h3 className="passing-pro__title">
+                                                            Вы успешно прошли
+                                                            курс «
+                                                            {
+                                                                courses[
+                                                                    courseId
+                                                                ].title
+                                                            }
+                                                            »
+                                                        </h3>
+
+                                                        <p className="passing-pro__description">
+                                                            Что бы, получить
+                                                            доступ к
+                                                            сертификату, нужно
+                                                            офрмить Pro подписку
+                                                        </p>
+
+                                                        <ul className="passing-pro-list">
+                                                            <li className="passing-pro-list__item">
+                                                                - Скидка 20% на
+                                                                все курсы
+                                                            </li>
+                                                            <li className="passing-pro-list__item">
+                                                                - Получение
+                                                                сертификата
+                                                            </li>
+                                                            <li className="passing-pro-list__item">
+                                                                - Дополнительные
+                                                                материалы
+                                                            </li>
+                                                        </ul>
+
+                                                        {isSendProSubscribe ? (
+                                                            <button
+                                                                className="btn disabled passing-pro__btn"
+                                                                disabled
+                                                            >
+                                                                <BtnLoader />
+                                                            </button>
+                                                        ) : (
+                                                            <button
+                                                                className="btn passing-pro__btn"
+                                                                onClick={
+                                                                    createPaymentProSubscribe
+                                                                }
+                                                            >
+                                                                Оформить Pro
+                                                                подписку
+                                                            </button>
+                                                        )}
+                                                    </div>
                                                 )
                                             ) : null}
                                         </div>
@@ -322,14 +380,24 @@ const PassingCourse = ({
                                                         </li>
                                                     </ul>
 
-                                                    <button
-                                                        className="btn passing-lesson-info-block-pro__btn"
-                                                        onClick={
-                                                            createPaymentProSubscribe
-                                                        }
-                                                    >
-                                                        Оформить Pro подписку
-                                                    </button>
+                                                    {isSendProSubscribe ? (
+                                                        <button
+                                                            className="btn disabled passing-lesson-info-block-pro__btn"
+                                                            disabled
+                                                        >
+                                                            <BtnLoader />
+                                                        </button>
+                                                    ) : (
+                                                        <button
+                                                            className="btn passing-lesson-info-block-pro__btn"
+                                                            onClick={
+                                                                createPaymentProSubscribe
+                                                            }
+                                                        >
+                                                            Оформить Pro
+                                                            подписку
+                                                        </button>
+                                                    )}
                                                 </div>
                                                 <div className="passing-lesson-info-block-middle">
                                                     <p className="subtitle">
@@ -358,14 +426,23 @@ const PassingCourse = ({
                                                         ₽
                                                     </h3>
 
-                                                    <button
-                                                        className="btn-regular passing-lesson-info-block-buy-extra-lessons__btn"
-                                                        onClick={
-                                                            buyExtraLessons
-                                                        }
-                                                    >
-                                                        Купить
-                                                    </button>
+                                                    {isSendCourseExtraLessons ? (
+                                                        <button
+                                                            className="btn-regular disabled passing-lesson-info-block-buy-extra-lessons__btn"
+                                                            disabled
+                                                        >
+                                                            <BtnLoader />
+                                                        </button>
+                                                    ) : (
+                                                        <button
+                                                            className="btn-regular passing-lesson-info-block-buy-extra-lessons__btn"
+                                                            onClick={
+                                                                buyExtraLessons
+                                                            }
+                                                        >
+                                                            Купить
+                                                        </button>
+                                                    )}
                                                 </div>
                                             </div>
                                         </div>

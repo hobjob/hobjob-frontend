@@ -25,6 +25,20 @@ export const fetchPassingCourseLessonMaterial = (courseId, lessonNum, materialNu
 	});
 }
 
+export const fetchPassingCourseLessonVideo = (courseId, lessonNum) => (dispatch) => {
+	$api.get(`/courses/${courseId}/video/${lessonNum}`, {
+		responseType: 'blob'
+	}).then((response) => {
+		let myUrl = (window.URL || window.webkitURL).createObjectURL(response.data); // response.data.data
+
+		var myVid = document.getElementById('vidObj');
+		myVid.setAttribute("src", myUrl);
+		myVid.play(); //# test playback
+
+		// dispatch(setVideoUrlCourseLesson(myUrl))
+	});
+}
+
 export const fetchCertificateCourse = (courseId, title) => (dispatch) => {
 	$api.get(`/certificate/${courseId}`).then(({ data }) => {
 		saveAs(data.url, title)

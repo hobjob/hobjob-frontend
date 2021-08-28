@@ -13,7 +13,7 @@ const Cart = () => {
     const dispatch = useDispatch();
 
     const {cart} = useSelector(({cart}) => cart);
-    const {isSend} = useSelector(({payment}) => payment);
+    const {isSendCourses} = useSelector(({payment}) => payment);
     const {user, isLoaded} = useSelector(({user}) => user);
 
     React.useEffect(() => {
@@ -98,7 +98,7 @@ const Cart = () => {
                                             <button
                                                 className={`btn-arrow cart-total__btn`}
                                                 onClick={createPayment}
-                                                disabled={isSend}
+                                                disabled={isSendCourses}
                                             >
                                                 Оформить заказ
                                                 <svg

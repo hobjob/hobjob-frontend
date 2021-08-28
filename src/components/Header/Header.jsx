@@ -103,7 +103,6 @@ const Header = () => {
         <>
             {modalMenuState ? (
                 <HeaderModalMenu
-                    isLoaded={isLoaded}
                     HeaderModalMenuRef={HeaderModalMenuRef}
                     onClickCloseModalMenu={onClickCloseModalMenu}
                     modalMenuAnimationState={modalMenuAnimationState}

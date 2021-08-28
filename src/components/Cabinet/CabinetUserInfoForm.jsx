@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 import {Field, reduxForm, formValueSelector} from "redux-form";
 import {createTextMask} from "redux-form-input-masks";
 
-import {RenderInput, RenderSelect} from "../";
+import {RenderInput, RenderSelect, BtnLoader} from "../";
 
 import {validateInfo as validate} from "./validateInfo";
 
@@ -18,6 +18,8 @@ let CabinetUserInfoForm = ({
     sex,
     master,
 }) => {
+    const {isSendUpdateUserInfo} = useSelector(({user}) => user);
+
     const selector = formValueSelector("cabinet-user-info-form");
 
     const {
@@ -127,21 +129,27 @@ let CabinetUserInfoForm = ({
                     disabled={master === "" ? false : true}
                 />
             </div>
-            <button
-                className={`btn ${
-                    (nameValue !== name ||
-                        surnameValue !== surname ||
-                        dateOfBirthValue !== dateOfBirth ||
-                        phoneValue !== phone ||
-                        cityValue !== city ||
-                        sexValue !== sex) &&
-                    master === ""
-                        ? ""
-                        : "disabled"
-                } cabinet-block-form-btn`}
-            >
-                Обновить
-            </button>
+            {isSendUpdateUserInfo ? (
+                <button className="btn disabled cabinet-block-form-btn" disabled>
+                    <BtnLoader />
+                </button>
+            ) : (
+                <button
+                    className={`btn ${
+                        (nameValue !== name ||
+                            surnameValue !== surname ||
+                            dateOfBirthValue !== dateOfBirth ||
+                            phoneValue !== phone ||
+                            cityValue !== city ||
+                            sexValue !== sex) &&
+                        master === ""
+                            ? ""
+                            : "disabled"
+                    } cabinet-block-form-btn`}
+                >
+                    Обновить
+                </button>
+            )}
         </form>
     );
 };

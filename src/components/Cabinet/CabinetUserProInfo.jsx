@@ -4,19 +4,18 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchUpdateUser} from "../../redux/actions/user";
 import { sendCreateProSubscribePayment } from "../../redux/actions/payment";
 
+import {BtnLoader} from "../";
+
 const CabinetUserProInfo = () => {
-	const dispatch = useDispatch();
-	
+    const dispatch = useDispatch();
+
     const {
         user: {pro, registrationPro, completionPro, autoPayment},
     } = useSelector(({user}) => user);
+    const {isSendProSubscribe} = useSelector(({payment}) => payment);
 
     const disableAutoPayment = () => {
         dispatch(fetchUpdateUser({autoPayment: false}));
-    };
-
-    const turnOnAutoPayment = () => {
-        dispatch(fetchUpdateUser({autoPayment: true}));
     };
 
     const createPayment = () => {
@@ -59,17 +58,24 @@ const CabinetUserProInfo = () => {
                                 </>
                             ) : (
                                 <>
-                                    Отключен{" "}
-                                    <span onClick={turnOnAutoPayment}>
-                                        (включить)
-                                    </span>
+                                    Отключен
                                 </>
                             )}
                         </p>
                     </div>
                 </>
+            ) : isSendProSubscribe ? (
+                <button
+                    className="btn cabinet-block-pro__btn disabled"
+                    disabled
+                >
+                    <BtnLoader />
+                </button>
             ) : (
-                <button className="btn" onClick={createPayment}>
+                <button
+                    className="btn cabinet-block-pro__btn"
+                    onClick={createPayment}
+                >
                     Подключить Pro подписку
                 </button>
             )}

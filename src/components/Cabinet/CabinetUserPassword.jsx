@@ -1,11 +1,14 @@
 import React from "react";
+import {useSelector} from "react-redux";
 import {Field, reduxForm} from "redux-form";
 
-import {RenderInput} from "../";
+import {RenderInput, BtnLoader} from "../";
 
 import {validatePassword as validate} from "./validatePassword";
 
 let CabinetUserPassword = ({handleSubmit, invalid, submitting, pristine}) => {
+    const {isSendUpdateUserPassword} = useSelector(({user}) => user);
+
     const [passwordState1, setPasswordState1] = React.useState(false);
     const [passwordState2, setPasswordState2] = React.useState(false);
     const [passwordState3, setPasswordState3] = React.useState(false);
@@ -23,7 +26,7 @@ let CabinetUserPassword = ({handleSubmit, invalid, submitting, pristine}) => {
     };
 
     return (
-		<form className="cabinet-block-form" onSubmit={handleSubmit}>
+        <form className="cabinet-block-form" onSubmit={handleSubmit}>
             <div className="cabinet-block-form-input">
                 <Field
                     component={RenderInput}
@@ -54,14 +57,23 @@ let CabinetUserPassword = ({handleSubmit, invalid, submitting, pristine}) => {
                     label="Повторите новый пароль"
                 />
             </div>
-            <button
-                className={`btn ${
-                    invalid ? "disabled" : ""
-                } cabinet-block-form-btn`}
-                disabled={invalid || submitting || pristine}
-            >
-                Обновить
-            </button>
+            {isSendUpdateUserPassword ? (
+                <button
+                    className="btn disabled cabinet-block-form-btn"
+                    disabled
+                >
+                    <BtnLoader />
+                </button>
+            ) : (
+                <button
+                    className={`btn ${
+                        invalid ? "disabled" : ""
+                    } cabinet-block-form-btn`}
+                    disabled={invalid || submitting || pristine}
+                >
+                    Обновить
+                </button>
+            )}
         </form>
     );
 };

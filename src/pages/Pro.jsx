@@ -12,7 +12,7 @@ const Pro = () => {
     const [visibleButton, setVisibleButton] = React.useState(false);
 
     const {user, isLoaded} = useSelector(({user}) => user);
-    const {isSend} = useSelector(({payment}) => payment);
+    const {isSendProSubscribe} = useSelector(({payment}) => payment);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -39,7 +39,7 @@ const Pro = () => {
                 <div className="container">
                     <div className="pro-wrapper">
                         {localStorage.getItem("accessToken") && isLoaded ? (
-                            user.pro ? null : isSend ? (
+                            user.pro ? null : isSendProSubscribe ? (
                                 <button
                                     className={`btn-small-round disabled pro__btn ${
                                         visibleButton ? "active" : ""
@@ -97,7 +97,7 @@ const Pro = () => {
                                         <button className="btn disabled pro-main-text__btn">
                                             Спасибо, вы уже с нами
                                         </button>
-                                    ) : isSend ? (
+                                    ) : isSendProSubscribe ? (
                                         <button
                                             className="btn pro-main-text__btn disabled"
                                             disabled

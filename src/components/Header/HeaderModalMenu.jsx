@@ -6,10 +6,10 @@ const HeaderModalMenu = ({
     HeaderModalMenuRef,
     modalMenuAnimationState,
     onClickCloseModalMenu,
-    isLoaded,
     clickLogout,
 }) => {
     const {cart} = useSelector(({cart}) => cart);
+    const {isLoaded, user} = useSelector(({user}) => user);
 
     return (
         <div
@@ -84,14 +84,14 @@ const HeaderModalMenu = ({
                     >
                         О HobJob
                     </NavLink>
-                    <NavLink
+                    {/* <NavLink
                         to="/masters-about"
                         className="header-modal-menu-nav__link"
                         activeClassName="header-modal-menu-nav__link active"
                         onClick={onClickCloseModalMenu}
                     >
                         Для мастеров
-                    </NavLink>
+                    </NavLink> */}
                     <NavLink
                         to="/magazine"
                         className="header-modal-menu-nav__link"
@@ -156,14 +156,16 @@ const HeaderModalMenu = ({
                                 Пригласи друга
                             </NavLink>
 
-                            <NavLink
-                                to="/go/master"
-                                className="header-modal-menu-nav__link"
-                                activeClassName="header-modal-menu-nav__link active"
-                                onClick={onClickCloseModalMenu}
-                            >
-                                Для мастера
-                            </NavLink>
+                            {user.master === "confirmed" ? (
+                                <NavLink
+                                    to="/go/master"
+                                    className="header-modal-menu-nav__link"
+                                    activeClassName="header-modal-menu-nav__link active"
+                                    onClick={onClickCloseModalMenu}
+                                >
+                                    Для мастера
+                                </NavLink>
+                            ) : null}
 
                             <span
                                 onClick={clickLogout}

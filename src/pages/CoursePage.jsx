@@ -1,4 +1,5 @@
 import React from "react";
+import ReactWebMediaPlayer from "react-web-media-player";
 
 import {AboutSection} from "../components";
 
@@ -36,7 +37,8 @@ const CoursePage = ({
                     visibleButton ? "active" : ""
                 }`}
             >
-                Добавить в корзину
+                Добавить в корзину{" "}
+                {document.documentElement.clientWidth > 500 ? "" : " за 1 790₽"}
             </button>
 
             <section className="course-flax-bears-main">
@@ -55,7 +57,7 @@ const CoursePage = ({
                                 </span>
                             </div>
 
-                            <h2 className="course-flax-bears-main-text__title">
+                            <h2 className="course-flax-bears__title course-flax-bears-main-text__title">
                                 Шитьё мишек изо льна
                             </h2>
 
@@ -65,14 +67,14 @@ const CoursePage = ({
                             </p>
 
                             <a
-                                href="http://localhost:3000/master/610bd1d248914c0390aa9a36"
+                                href="https://api.hobjob.ru:3000/master/610bd1d248914c0390aa9a36"
                                 className="course-flax-bears-main-text-master"
                             >
                                 <div
                                     className="course-flax-bears-main-text-master-avatar"
                                     style={{
                                         backgroundImage:
-                                            "url('http://localhost:5000/uploads/user_avatar/78581a85-6767-482d-b723-bf1e75c1a383-IMG_2410_1.jpg')",
+                                            "url('https://api.hobjob.ru:5000/uploads/user_avatar/78581a85-6767-482d-b723-bf1e75c1a383-IMG_2410_1.jpg')",
                                     }}
                                 ></div>
                                 <h4 className="course-flax-bears-main-text-master__name">
@@ -80,19 +82,23 @@ const CoursePage = ({
                                 </h4>
                             </a>
                             <span className="course-flax-bears-main-text__price">
-                                1 790 ₽
+                                1 790₽
                             </span>
                             <button className="btn course-flax-bears-main-text__btn buy-btn">
                                 Добавить в корзину
                             </button>
                         </div>
-                        <div
-                            className="course-flax-bears-main-video"
-                            style={{
-                                backgroundImage:
-                                    "url('http://localhost:5000/uploads/courses/dad3aa21-5cb9-487a-8333-56411e655805-IMG_2410.jpg')",
-                            }}
-                        ></div>
+                        <div className="course-flax-bears-main-video">
+                            <video
+                                controls
+                                poster="https://api.hobjob.ru:5000/uploads/courses/dad3aa21-5cb9-487a-8333-56411e655805-IMG_2410.jpg"
+                            >
+                                <source
+                                    src="https://api.hobjob.ru:5000/uploads/courses/course_1.mp4"
+                                    type="video/mp4"
+                                />
+                            </video>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -103,7 +109,7 @@ const CoursePage = ({
                             className="course-flax-bears-about-img"
                             style={{
                                 backgroundImage:
-                                    "url('http://localhost:5000/uploads/courses/IMG_2440.jpg')",
+                                    "url('https://api.hobjob.ru:5000/uploads/courses/IMG_2440.jpg')",
                             }}
                         ></div>
                         <div className="course-flax-bears-about-text">
@@ -295,7 +301,7 @@ const CoursePage = ({
                             className="course-flax-bears-skills-img"
                             style={{
                                 backgroundImage:
-                                    "url('http://localhost:5000/uploads/courses/P1140428.jpg')",
+                                    "url('https://api.hobjob.ru:5000/uploads/courses/P1140428.jpg')",
                             }}
                         ></div>
 
@@ -303,7 +309,7 @@ const CoursePage = ({
                             className="course-flax-bears-skills-img long"
                             style={{
                                 backgroundImage:
-                                    "url('http://localhost:5000/uploads/courses/IMG_2529.jpg')",
+                                    "url('https://api.hobjob.ru:5000/uploads/courses/IMG_2529.jpg')",
                             }}
                         ></div>
 
@@ -311,7 +317,7 @@ const CoursePage = ({
                             className="course-flax-bears-skills-img"
                             style={{
                                 backgroundImage:
-                                    "url('http://localhost:5000/uploads/courses/P1140435.jpg')",
+                                    "url('https://api.hobjob.ru:5000/uploads/courses/P1140435.jpg')",
                             }}
                         ></div>
                     </div>
@@ -337,7 +343,7 @@ const CoursePage = ({
                                 className="course-flax-bears-result-img"
                                 style={{
                                     backgroundImage:
-                                        "url('http://localhost:5000/uploads/courses/IMG_2170.jpg')",
+                                        "url('https://api.hobjob.ru:5000/uploads/courses/IMG_2170.jpg')",
                                 }}
                             ></div>
                         </div>
@@ -352,188 +358,131 @@ const CoursePage = ({
                         </h2>
                         <div className="course-flax-bears-programm-items-wrapper">
                             <div className="course-flax-bears-programm-item">
-                                <h3 className="course-flax-bears-programm-item__title">
-                                    Введение
-                                </h3>
+                                <div className="course-flax-bears-programm-item-title">
+                                    <p className="course-flax-bears-programm-item-title__subtitle">
+                                        01
+                                    </p>
+                                    <h3 className="course-flax-bears-programm-item-title__title">
+                                        Введение
+                                    </h3>
+                                </div>
                                 <ul className="course-flax-bears-programm-item-ul">
                                     <li className="course-flax-bears-programm-item__li">
-                                        <p className="course-flax-bears-programm-item__li__subtitle">
-                                            01
-                                        </p>
-                                        <p className="course-flax-bears-programm-item__li__title">
-                                            Обо мне
-                                        </p>
+                                        Обо мне
                                     </li>
                                     <li className="course-flax-bears-programm-item__li">
-                                        <p className="course-flax-bears-programm-item__li__subtitle">
-                                            02
-                                        </p>
-                                        <p className="course-flax-bears-programm-item__li__title">
-                                            Что будем делать на курсе?
-                                        </p>
+                                        Что будем делать на курсе?
                                     </li>
                                 </ul>
                             </div>
 
                             <div className="course-flax-bears-programm-item">
-                                <h3 className="course-flax-bears-programm-item__title">
-                                    Вырезание выкроек
-                                </h3>
+                                <div className="course-flax-bears-programm-item-title">
+                                    <p className="course-flax-bears-programm-item-title__subtitle">
+                                        02
+                                    </p>
+                                    <h3 className="course-flax-bears-programm-item-title__title">
+                                        Вырезание выкроек
+                                    </h3>
+                                </div>
                                 <ul className="course-flax-bears-programm-item-ul">
                                     <li className="course-flax-bears-programm-item__li">
-                                        <p className="course-flax-bears-programm-item__li__subtitle">
-                                            01
-                                        </p>
-                                        <p className="course-flax-bears-programm-item__li__title">
-                                            Правильное расположение выкроек на
-                                            ткани
-                                        </p>
+                                        Правильное расположение выкроек на ткани
                                     </li>
                                     <li className="course-flax-bears-programm-item__li">
-                                        <p className="course-flax-bears-programm-item__li__subtitle">
-                                            02
-                                        </p>
-                                        <p className="course-flax-bears-programm-item__li__title">
-                                            Формирование отступа для красивых
-                                            швов
-                                        </p>
+                                        Формирование отступа для красивых швов
                                     </li>
                                     <li className="course-flax-bears-programm-item__li">
-                                        <p className="course-flax-bears-programm-item__li__subtitle">
-                                            03
-                                        </p>
-                                        <p className="course-flax-bears-programm-item__li__title">
-                                            Вырезание выкроек
-                                        </p>
+                                        Вырезание выкроек
                                     </li>
                                 </ul>
                             </div>
 
                             <div className="course-flax-bears-programm-item">
-                                <h3 className="course-flax-bears-programm-item__title">
-                                    Сшивание деталей мишки
-                                </h3>
+                                <div className="course-flax-bears-programm-item-title">
+                                    <p className="course-flax-bears-programm-item-title__subtitle">
+                                        03
+                                    </p>
+                                    <h3 className="course-flax-bears-programm-item-title__title">
+                                        Сшивание деталей мишки
+                                    </h3>
+                                </div>
                                 <ul className="course-flax-bears-programm-item-ul">
                                     <li className="course-flax-bears-programm-item__li">
-                                        <p className="course-flax-bears-programm-item__li__subtitle">
-                                            01
-                                        </p>
-                                        <p className="course-flax-bears-programm-item__li__title">
-                                            Правило сшивания обратным швом
-                                        </p>
+                                        Правило сшивания обратным швом
                                     </li>
                                     <li className="course-flax-bears-programm-item__li">
-                                        <p className="course-flax-bears-programm-item__li__subtitle">
-                                            02
-                                        </p>
-                                        <p className="course-flax-bears-programm-item__li__title">
-                                            Расположение вырезанных деталей
-                                        </p>
+                                        Расположение вырезанных деталей
                                     </li>
                                     <li className="course-flax-bears-programm-item__li">
-                                        <p className="course-flax-bears-programm-item__li__subtitle">
-                                            03
-                                        </p>
-                                        <p className="course-flax-bears-programm-item__li__title">
-                                            Прокатывание швов
-                                        </p>
+                                        Прокатывание швов
                                     </li>
                                 </ul>
                             </div>
 
                             <div className="course-flax-bears-programm-item">
-                                <h3 className="course-flax-bears-programm-item__title">
-                                    Наполнение игрушки
-                                </h3>
+                                <div className="course-flax-bears-programm-item-title">
+                                    <p className="course-flax-bears-programm-item-title__subtitle">
+                                        04
+                                    </p>
+                                    <h3 className="course-flax-bears-programm-item-title__title">
+                                        Наполнение игрушки
+                                    </h3>
+                                </div>
                                 <ul className="course-flax-bears-programm-item-ul">
                                     <li className="course-flax-bears-programm-item__li">
-                                        <p className="course-flax-bears-programm-item__li__subtitle">
-                                            01
-                                        </p>
-                                        <p className="course-flax-bears-programm-item__li__title">
-                                            Набивание деталей
-                                        </p>
+                                        Набивание деталей
                                     </li>
                                     <li className="course-flax-bears-programm-item__li">
-                                        <p className="course-flax-bears-programm-item__li__subtitle">
-                                            02
-                                        </p>
-                                        <p className="course-flax-bears-programm-item__li__title">
-                                            Формирование туловища
-                                        </p>
+                                        Формирование туловища
                                     </li>
                                     <li className="course-flax-bears-programm-item__li">
-                                        <p className="course-flax-bears-programm-item__li__subtitle">
-                                            03
-                                        </p>
-                                        <p className="course-flax-bears-programm-item__li__title">
-                                            Формирование головы
-                                        </p>
+                                        Формирование головы
                                     </li>
                                     <li className="course-flax-bears-programm-item__li">
-                                        <p className="course-flax-bears-programm-item__li__subtitle">
-                                            04
-                                        </p>
-                                        <p className="course-flax-bears-programm-item__li__title">
-                                            Секрет красивых ушек
-                                        </p>
+                                        Секрет красивых ушек
                                     </li>
                                 </ul>
                             </div>
 
                             <div className="course-flax-bears-programm-item">
-                                <h3 className="course-flax-bears-programm-item__title">
-                                    Украшение и детализация
-                                </h3>
+                                <div className="course-flax-bears-programm-item-title">
+                                    <p className="course-flax-bears-programm-item-title__subtitle">
+                                        05
+                                    </p>
+                                    <h3 className="course-flax-bears-programm-item-title__title">
+                                        Украшение и детализация
+                                    </h3>
+                                </div>
                                 <ul className="course-flax-bears-programm-item-ul">
                                     <li className="course-flax-bears-programm-item__li">
-                                        <p className="course-flax-bears-programm-item__li__subtitle">
-                                            01
-                                        </p>
-                                        <p className="course-flax-bears-programm-item__li__title">
-                                            Сшивание набитых деталей
-                                        </p>
+                                        Сшивание набитых деталей
                                     </li>
                                     <li className="course-flax-bears-programm-item__li">
-                                        <p className="course-flax-bears-programm-item__li__subtitle">
-                                            02
-                                        </p>
-                                        <p className="course-flax-bears-programm-item__li__title">
-                                            Создание глаз
-                                        </p>
+                                        Создание глаз
                                     </li>
                                     <li className="course-flax-bears-programm-item__li">
-                                        <p className="course-flax-bears-programm-item__li__subtitle">
-                                            03
-                                        </p>
-                                        <p className="course-flax-bears-programm-item__li__title">
-                                            Создание улыбки
-                                        </p>
+                                        Создание улыбки
                                     </li>
                                     <li className="course-flax-bears-programm-item__li">
-                                        <p className="course-flax-bears-programm-item__li__subtitle">
-                                            04
-                                        </p>
-                                        <p className="course-flax-bears-programm-item__li__title">
-                                            Завязывание шарфа
-                                        </p>
+                                        Завязывание шарфа
                                     </li>
                                 </ul>
                             </div>
 
                             <div className="course-flax-bears-programm-item">
-                                <h3 className="course-flax-bears-programm-item__title">
-                                    Готовый мишка
-                                </h3>
+                                <div className="course-flax-bears-programm-item-title">
+                                    <p className="course-flax-bears-programm-item-title__subtitle">
+                                        06
+                                    </p>
+                                    <h3 className="course-flax-bears-programm-item-title__title">
+                                        Готовый мишка
+                                    </h3>
+                                </div>
                                 <ul className="course-flax-bears-programm-item-ul">
                                     <li className="course-flax-bears-programm-item__li">
-                                        <p className="course-flax-bears-programm-item__li__subtitle">
-                                            01
-                                        </p>
-                                        <p className="course-flax-bears-programm-item__li__title">
-                                            Прекрасный мишка который, украсит
-                                            любой интерьер
-                                        </p>
+                                        Прекрасный мишка который, украсит любой
+                                        интерьер
                                     </li>
                                 </ul>
                             </div>
@@ -650,7 +599,7 @@ const CoursePage = ({
                                 медвежат в инстаграм
                             </p>
                             <a
-                                href="http://localhost:3000/master/610bd1d248914c0390aa9a36"
+                                href="https://api.hobjob.ru:3000/master/610bd1d248914c0390aa9a36"
                                 className="btn course-flax-bears-master__btn"
                             >
                                 Перейти на страницу мастера
@@ -660,9 +609,15 @@ const CoursePage = ({
                             className="course-flax-bears-master-img"
                             style={{
                                 backgroundImage:
-                                    "url('http://localhost:5000/uploads/courses/IMG_2458.jpg')",
+                                    "url('https://api.hobjob.ru:5000/uploads/courses/IMG_2458.jpg')",
                             }}
                         ></div>
+                        <a
+                            href="https://api.hobjob.ru:3000/master/610bd1d248914c0390aa9a36"
+                            className="btn course-flax-bears-master-media__btn"
+                        >
+                            Перейти на страницу мастера
+                        </a>
                     </div>
                 </div>
             </section>
@@ -798,21 +753,21 @@ const CoursePage = ({
                                     className="course-flax-bears-work-img long"
                                     style={{
                                         backgroundImage:
-                                            "url('http://localhost:5000/uploads/courses/IMG_2529.jpg')",
+                                            "url('https://api.hobjob.ru:5000/uploads/courses/IMG_2529.jpg')",
                                     }}
                                 ></div>
                                 <div
                                     className="course-flax-bears-work-img"
                                     style={{
                                         backgroundImage:
-                                            "url('http://localhost:5000/uploads/courses/IMG_2529.jpg')",
+                                            "url('https://api.hobjob.ru:5000/uploads/courses/IMG_2529.jpg')",
                                     }}
                                 ></div>
                                 <div
                                     className="course-flax-bears-work-img"
                                     style={{
                                         backgroundImage:
-                                            "url('http://localhost:5000/uploads/courses/IMG_2529.jpg')",
+                                            "url('https://api.hobjob.ru:5000/uploads/courses/IMG_2529.jpg')",
                                     }}
                                 ></div>
                             </div>
@@ -821,17 +776,48 @@ const CoursePage = ({
                                     className="course-flax-bears-work-img long"
                                     style={{
                                         backgroundImage:
-                                            "url('http://localhost:5000/uploads/courses/IMG_2529.jpg')",
+                                            "url('https://api.hobjob.ru:5000/uploads/courses/IMG_2529.jpg')",
                                     }}
                                 ></div>
                                 <div
                                     className="course-flax-bears-work-img"
                                     style={{
                                         backgroundImage:
-                                            "url('http://localhost:5000/uploads/courses/IMG_2529.jpg')",
+                                            "url('https://api.hobjob.ru:5000/uploads/courses/IMG_2529.jpg')",
                                     }}
                                 ></div>
                             </div>
+                        </div>
+
+                        <div className="course-flax-bears-work-media-wrapper">
+                            <div
+                                className="course-flax-bears-work-media-img"
+                                style={{
+                                    backgroundImage:
+                                        "url('https://api.hobjob.ru:5000/uploads/courses/IMG_2529.jpg')",
+                                }}
+                            ></div>
+                            <div
+                                className="course-flax-bears-work-media-img"
+                                style={{
+                                    backgroundImage:
+                                        "url('https://api.hobjob.ru:5000/uploads/courses/IMG_2529.jpg')",
+                                }}
+                            ></div>
+                            <div
+                                className="course-flax-bears-work-media-img"
+                                style={{
+                                    backgroundImage:
+                                        "url('https://api.hobjob.ru:5000/uploads/courses/IMG_2529.jpg')",
+                                }}
+                            ></div>
+                            <div
+                                className="course-flax-bears-work-media-img"
+                                style={{
+                                    backgroundImage:
+                                        "url('https://api.hobjob.ru:5000/uploads/courses/IMG_2529.jpg')",
+                                }}
+                            ></div>
                         </div>
                     </div>
                 </div>

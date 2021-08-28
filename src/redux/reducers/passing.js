@@ -1,5 +1,6 @@
 const initialState = {
-	materialsIsDownloading: {}
+	materialsIsDownloading: {},
+	url: ""
 }
 
 const passing = (state = initialState, action) => {
@@ -20,6 +21,13 @@ const passing = (state = initialState, action) => {
 
 		return {
 			...state
+		}
+	}
+
+	if (action.type === "SET_VIDEO_URL_COURSE_LESSON") {
+		return {
+			...state,
+			url: action.payload
 		}
 	}
 

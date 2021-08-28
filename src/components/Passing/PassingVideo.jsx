@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import ReactWebMediaPlayer from "react-web-media-player";
 
 const PassingVideo = ({
@@ -27,4 +27,4 @@ const PassingVideo = ({
     );
 };
 
-export default PassingVideo
+export default PassingVideo;
