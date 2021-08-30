@@ -7,15 +7,17 @@ const CartBlock = React.memo(
         _id,
         image,
         title,
-        master,
+        masterId,
         category,
         percentSale,
-		price,
-		proPrice,
-		pro,
+        price,
+        proPrice,
+        pro,
         checkDeclension,
         discountNotPrice,
         removeCourse,
+        masters,
+        categories,
     }) => {
         const onClickRemoveCourse = () => {
             removeCourse(_id);
@@ -42,23 +44,28 @@ const CartBlock = React.memo(
 
                     <div className="cart-block-content-text">
                         <Link
-                            to={`/course/${_id}`}
+                            to={`/course/${masterId}`}
                             className="cart-block-content-text__title"
                         >
                             <h4>{title}</h4>
                         </Link>
                         <Link
-                            to={`/master/${master._id}`}
+                            to={`/master/${masterId}`}
                             className="cart-block-content-text__auth"
                         >
-                            {master.name} {master.surname}
+                            {masters[masterId] ? (
+                                <>
+                                    {masters[masterId].name}{" "}
+                                    {masters[masterId].surname}
+                                </>
+                            ) : null}
                         </Link>
                         <div className="cart-block-content-text-tags">
                             <span className="cart-block-content-text__time">
                                 {checkDeclension}
                             </span>
                             <span className="cart-block-content-text__category">
-                                {category.title}
+                                {categories[category].title}
                             </span>
                         </div>
                         <div className="cart-block-content-text-bottom">
@@ -76,7 +83,9 @@ const CartBlock = React.memo(
                                         </p>
                                         <p className="cart-block-content-text__price">
                                             <NumberFormat
-                                                value={proPrice}
+                                                value={
+                                                    price - (price / 100) * 20
+                                                }
                                                 displayType={"text"}
                                                 thousandSeparator={" "}
                                                 renderText={(value) => value}

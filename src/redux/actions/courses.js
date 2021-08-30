@@ -21,6 +21,17 @@ export const fetchCourses = (query = null, page) => (dispatch) => {
 	})
 }
 
+export const fetchCoursesArrayById = (arrayId) => (dispatch) => {
+	dispatch({
+		type: "SET_LOADED_COURSES_ARRAY_BY_ID",
+		payload: false,
+	})
+
+	$api.get(`/courses?_id=${Object.keys(arrayId).map(id => arrayId[id]._id)}`).then(({ data }) => {
+		dispatch(setCoursesArrayById(data))
+	})
+}
+
 export const fetchAddPaginationCourses = (query = null, page) => (dispatch) => {
 	dispatch({
 		type: "SET_LOADED_COURSES",
@@ -65,13 +76,18 @@ export const fetchCourseById = (id) => (dispatch) => {
 		payload: false,
 	})
 
-	$api.get(`/courses/${id}`).then(({data}) => {
+	$api.get(`/courses/${id}`).then(({ data }) => {
 		dispatch(setCourseById(data))
 	})
 }
 
 const setCourses = (items) => ({
 	type: "SET_COURSES",
+	payload: items
+})
+
+const setCoursesArrayById = (items) => ({
+	type: "SET_COURSES_ARRAY_BY_ID",
 	payload: items
 })
 

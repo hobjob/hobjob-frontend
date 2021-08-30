@@ -17,8 +17,9 @@ const ShopBlock = React.memo(
         checkDeclension,
         masters,
         categories,
-		pro,
-		proPrice,
+        pro,
+        proPrice,
+        isBuy,
     }) => {
         const [addState, setAddState] = React.useState(false);
 
@@ -31,28 +32,7 @@ const ShopBlock = React.memo(
         }, [cartItems]);
 
         const onClickAdd = () => {
-            const obj = {
-                _id,
-                image,
-                title,
-                master: {
-                    _id: masterId,
-                    name: masters[masterId].name,
-                    surname: masters[masterId].surname,
-                },
-                category: {
-                    transfer: categories[category].transfer,
-                    title: categories[category].title,
-                },
-                percentSale,
-				price,
-				proPrice,
-				pro,
-                checkDeclension,
-                discountNotPrice,
-            };
-
-            onClickAddCourseCart(obj);
+            onClickAddCourseCart({_id});
             setAddState(true);
         };
 
@@ -165,11 +145,21 @@ const ShopBlock = React.memo(
                         </div>
                     )}
                     {!addState ? (
-                        <button
-                            className="btn shop-block-bottom__btn"
-                            onClick={onClickAdd}
-                        >
-                            Добавить в корзину
+                        isBuy ? (
+                            <button className="btn disabled shop-block-bottom__btn">
+                                Приобретен
+                            </button>
+                        ) : (
+                            <button
+                                className="btn shop-block-bottom__btn"
+                                onClick={onClickAdd}
+                            >
+                                Добавить в корзину
+                            </button>
+                        )
+                    ) : isBuy ? (
+                        <button className="btn disabled shop-block-bottom__btn">
+                            Приобретен
                         </button>
                     ) : (
                         <Link

@@ -1,6 +1,6 @@
-export const addCourseCart = (item) => ({
+export const addCourseCart = (id) => ({
 	type: "ADD_COURSE_CART",
-	payload: item
+	payload: id
 })
 
 export const removeCourseCart = (id) => ({

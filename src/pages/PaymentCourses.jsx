@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 
 import {fetchPaymentCoursesById} from "../redux/actions/payment";
+import {fetchCoursesArrayById} from "../redux/actions/courses";
 
 import {PaymentCourseBlock} from "../components/";
 
@@ -13,12 +14,26 @@ const PaymentCourses = ({
 }) => {
     const dispatch = useDispatch();
 
-    const {cart} = useSelector(({cart}) => cart);
+    const {itemsArrayById, isLoadedCoursesArrayById} = useSelector(
+        ({courses}) => courses
+    );
     const {payment, isLoaded} = useSelector(({payment}) => payment);
 
     React.useEffect(() => {
         dispatch(fetchPaymentCoursesById(number));
     }, []);
+
+    React.useEffect(() => {
+        if (isLoaded) {
+            const newObj = {};
+
+            payment.order.map((id) => {
+                newObj[id] = {_id: id};
+            });
+
+            dispatch(fetchCoursesArrayById(newObj));
+        }
+    }, [isLoaded]);
 
     React.useEffect(() => {
         if (isLoaded) {
@@ -47,12 +62,10 @@ const PaymentCourses = ({
 
     return (
         <>
-            {isLoaded ? (
+            {isLoaded && isLoadedCoursesArrayById ? (
                 <>
                     <Helmet>
-                        <title>
-                            Покупка (курсы) - HobJob
-                        </title>
+                        <title>Покупка (курсы) - HobJob</title>
                     </Helmet>
                     <section className="payment">
                         <div className="container">
@@ -65,16 +78,20 @@ const PaymentCourses = ({
                                     <h2 className="payment-info__title">
                                         Заказ
                                         <span>
-                                            ({Object.keys(cart).length})
+                                            (
+                                            {Object.keys(itemsArrayById).length}
+                                            )
                                         </span>
                                     </h2>
                                     <div className="payment-info-course-wrapper">
-                                        {Object.keys(cart).map((key, index) => (
-                                            <PaymentCourseBlock
-                                                {...cart[key]}
-                                                key={`payment-info-course-${index}`}
-                                            />
-                                        ))}
+                                        {Object.keys(itemsArrayById).map(
+                                            (key, index) => (
+                                                <PaymentCourseBlock
+                                                    {...itemsArrayById[key]}
+                                                    key={`payment-info-course-${index}`}
+                                                />
+                                            )
+                                        )}
                                     </div>
                                 </div>
                             </div>

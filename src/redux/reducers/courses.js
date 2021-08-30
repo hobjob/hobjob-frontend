@@ -2,10 +2,14 @@ const initialState = {
 	isLoadedAllCoursesFirst: false,
 	isLoadedAllCourses: false,
 	isFetchAllCourses: false,
+
 	items: [],
 
 	isLoadedCourseById: false,
 	itemById: {},
+
+	isLoadedCoursesArrayById: false,
+	itemsArrayById: {},
 
 	totalCount: 0,
 	page: 1,
@@ -33,6 +37,20 @@ const courses = (state = initialState, action) => {
 			totalCount: action.payload.headers["x-total-count"],
 			isLoadedAllCoursesFirst: true,
 			page: 1,
+		}
+	}
+
+	if (action.type === "SET_COURSES_ARRAY_BY_ID") {
+		const newObj = {}
+
+		action.payload.map((item) => {
+			newObj[item._id] = item
+		})
+
+		return {
+			...state,
+			itemsArrayById: newObj,
+			isLoadedCoursesArrayById: true,
 		}
 	}
 

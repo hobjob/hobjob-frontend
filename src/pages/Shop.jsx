@@ -27,7 +27,7 @@ const Shop = ({
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const {user} = useSelector(({user}) => user);
+    const {user, courses} = useSelector(({user}) => user);
     const {
         items,
         totalCount,
@@ -138,13 +138,13 @@ const Shop = ({
         Object.keys(filters.times).length,
     ]);
 
-    const onClickAddCourseCart = (obj) => {
-        dispatch(addCourseCart(obj));
+    const onClickAddCourseCart = (id) => {
+        dispatch(addCourseCart(id));
     };
 
-	const onClickaddPaginationPageCourses = () => {
-		dispatch(fetchAddPaginationCourses(search, page+1));
-	};
+    const onClickaddPaginationPageCourses = () => {
+        dispatch(fetchAddPaginationCourses(search, page + 1));
+    };
 
     //склонение ["час", "часа", "часов"]
     const checkDeclension = (num, title) => {
@@ -209,6 +209,11 @@ const Shop = ({
                                                 key={`shop-block-${index}`}
                                                 masters={masters}
                                                 categories={categories}
+                                                isBuy={
+                                                    courses[item._id]
+                                                        ? true
+                                                        : false
+                                                }
                                             />
                                         ))}
                                     </div>
