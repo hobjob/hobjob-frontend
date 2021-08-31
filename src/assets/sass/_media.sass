@@ -456,11 +456,19 @@
 				padding-bottom: 25px
 				border-bottom: 1px solid $borderGray
 
-		&-lessons-list-item
-			min-width: 150px
+		&-lessons-list
+			flex-direction: column
+			padding-bottom: 0
 
-			&-cover
-				height: 100px
+			&-block
+				width: 100%
+				margin-bottom: 50px
+
+				&-item
+					min-width: 150px
+
+					&-cover
+						height: 100px
 
 @media screen and ( max-width: 820px )
 	// main

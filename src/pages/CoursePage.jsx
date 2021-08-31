@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 
 import {fetchCourseById} from "../redux/actions/courses";
+import {addCourseCart} from "../redux/actions/cart";
 
 import {AboutSection, Loader} from "../components";
 
@@ -15,6 +16,7 @@ const CoursePage = ({
 
     const {itemById, isLoadedCourseById} = useSelector(({courses}) => courses);
     const {cart} = useSelector(({cart}) => cart);
+    const {courses} = useSelector(({user}) => user);
 
     const [visibleButton, setVisibleButton] = React.useState(false);
     const [addState, setAddState] = React.useState(false);
@@ -25,34 +27,66 @@ const CoursePage = ({
         } else {
             setAddState(false);
         }
+    }, [Object.keys(cart).length]);
 
+    React.useEffect(() => {
         const arrayBtn = document.querySelectorAll(".buy-btn");
 
         if (addState) {
+            if (courses[id]) {
+                for (let i = 0; i < arrayBtn.length; i++) {
+                    var link = document.createElement("button");
+
+                    link.innerHTML = "Приобретен";
+
+                    link.classList.add("btn");
+                    link.classList.add("disabled");
+                    link.classList.add("course-flax-bears-main-text__btn");
+
+                    arrayBtn[i].parentNode.replaceChild(link, arrayBtn[i]);
+                }
+            } else {
+                for (let i = 0; i < arrayBtn.length; i++) {
+                    var link = document.createElement("a");
+
+                    link.innerHTML = "Перейти в корзину";
+                    link.setAttribute("href", "/cart");
+
+                    link.classList.add("btn-regular");
+                    link.classList.add("course-flax-bears-main-text__btn");
+
+                    arrayBtn[i].parentNode.replaceChild(link, arrayBtn[i]);
+                }
+            }
+        } else if (courses[id]) {
             for (let i = 0; i < arrayBtn.length; i++) {
-                var link = document.createElement("a");
+                var link = document.createElement("button");
 
-				link.innerHTML = "Перейти в корзину";
-				link.setAttribute("href", "/cart");
+                link.innerHTML = "Приобретен";
 
-                link.classList.add("btn-regular");
+                link.classList.add("btn");
+                link.classList.add("disabled");
                 link.classList.add("course-flax-bears-main-text__btn");
 
                 arrayBtn[i].parentNode.replaceChild(link, arrayBtn[i]);
+            }
+        }
+    }, [Object.keys(courses).length, addState, isLoadedCourseById]);
+
+    React.useEffect(() => {
+        if (isLoadedCourseById) {
+            const arrayBtn = document.querySelectorAll(".buy-btn");
+
+            for (let i = 0; i < arrayBtn.length; i++) {
+                arrayBtn[i].addEventListener("click", () => {
+                    dispatch(addCourseCart({_id: id}));
+                });
             }
         }
     }, [isLoadedCourseById]);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
-
-        const arrayBtn = document.querySelectorAll(".buy-btn");
-
-        for (let i = 0; i < arrayBtn.length; i++) {
-            arrayBtn[i].addEventListener("click", () => {
-                console.log("buy");
-            });
-        }
 
         window.addEventListener("scroll", () => {
             if (Math.floor(window.pageYOffset) > 200) {
@@ -72,7 +106,7 @@ const CoursePage = ({
                     <Helmet>
                         <title>{itemById.title} - HobJob</title>
                     </Helmet>
-                    {addState ? null : (
+                    {addState || courses[id] ? null : (
                         <button
                             className={`btn-small-round buy-btn course-flax-bears__btn ${
                                 visibleButton ? "active" : ""
@@ -1329,24 +1363,24 @@ const CoursePage = ({
                                 <div className="course-flax-bears-work-cols-wrapper">
                                     <div className="course-flax-bears-work-col">
                                         <div
-                                            className="course-flax-bears-work-img long"
+                                            className="course-flax-bears-work-img"
                                             style={{
                                                 backgroundImage:
-                                                    "url('http://localhost:5000/uploads/courses/IMG_2529.jpg')",
+                                                    "url('http://localhost:5000/uploads/courses/IMG_5144.JPG')",
                                             }}
                                         ></div>
                                         <div
                                             className="course-flax-bears-work-img"
                                             style={{
                                                 backgroundImage:
-                                                    "url('http://localhost:5000/uploads/courses/IMG_2529.jpg')",
+                                                    "url('http://localhost:5000/uploads/courses/IMG_5149.JPG')",
                                             }}
                                         ></div>
                                         <div
                                             className="course-flax-bears-work-img"
                                             style={{
                                                 backgroundImage:
-                                                    "url('http://localhost:5000/uploads/courses/IMG_2529.jpg')",
+                                                    "url('http://localhost:5000/uploads/courses/photo_2021-08-30_10-30-10.jpg')",
                                             }}
                                         ></div>
                                     </div>

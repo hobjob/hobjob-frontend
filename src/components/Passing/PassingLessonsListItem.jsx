@@ -13,19 +13,21 @@ const PassingLessonsListItem = ({
         <>
             <Link
                 to={`/go/passing/${courseId}/${num}`}
-                className={`passing-lessons-list-item ${
+                className={`passing-lessons-list-block-item ${
                     active ? "active" : ""
                 }`}
             >
-                <div className="passing-lessons-list-item-cover">
+                <div className="passing-lessons-list-block-item-cover">
                     <div
-                        className="passing-lessons-list-item-cover-img"
+                        className="passing-lessons-list-block-item-cover-img"
                         style={{
                             backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
                         }}
                     ></div>
                 </div>
-				<p className="passing-lessons-list-item__title">{title} {extraLesson && "(Дополнительные материалы)"}</p>
+                <p className="passing-lessons-list-block-item__title">
+                    {title} {extraLesson && "(Дополнительные материалы)"}
+                </p>
             </Link>
         </>
     );

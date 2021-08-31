@@ -44,7 +44,7 @@ const CartBlock = React.memo(
 
                     <div className="cart-block-content-text">
                         <Link
-                            to={`/course/${masterId}`}
+                            to={`/course/${_id}`}
                             className="cart-block-content-text__title"
                         >
                             <h4>{title}</h4>

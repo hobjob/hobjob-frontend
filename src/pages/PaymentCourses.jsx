@@ -62,7 +62,7 @@ const PaymentCourses = ({
 
     return (
         <>
-            {isLoaded && isLoadedCoursesArrayById ? (
+            {isLoaded ? (
                 <>
                     <Helmet>
                         <title>Покупка (курсы) - HobJob</title>
@@ -74,26 +74,31 @@ const PaymentCourses = ({
                                     className="payment-form"
                                     id="payment-form"
                                 ></div>
-                                <div className="payment-info">
-                                    <h2 className="payment-info__title">
-                                        Заказ
-                                        <span>
-                                            (
-                                            {Object.keys(itemsArrayById).length}
-                                            )
-                                        </span>
-                                    </h2>
-                                    <div className="payment-info-course-wrapper">
-                                        {Object.keys(itemsArrayById).map(
-                                            (key, index) => (
-                                                <PaymentCourseBlock
-                                                    {...itemsArrayById[key]}
-                                                    key={`payment-info-course-${index}`}
-                                                />
-                                            )
-                                        )}
+                                {isLoadedCoursesArrayById ? (
+                                    <div className="payment-info">
+                                        <h2 className="payment-info__title">
+                                            Заказ
+                                            <span>
+                                                (
+                                                {
+                                                    Object.keys(itemsArrayById)
+                                                        .length
+                                                }
+                                                )
+                                            </span>
+                                        </h2>
+                                        <div className="payment-info-course-wrapper">
+                                            {Object.keys(itemsArrayById).map(
+                                                (key, index) => (
+                                                    <PaymentCourseBlock
+                                                        {...itemsArrayById[key]}
+                                                        key={`payment-info-course-${index}`}
+                                                    />
+                                                )
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
+                                ) : null}
                             </div>
                         </div>
                     </section>
