@@ -95,7 +95,7 @@ const Header = () => {
     };
 
     const setCookiesClick = () => {
-        localStorage.setItem("cookies", true);
+        localStorage.setItem("cookie", true);
         setStateCookies(true);
     };
 
@@ -110,16 +110,16 @@ const Header = () => {
                 />
             ) : null}
 
-            {localStorage.getItem("cookies") || stateCookies ? null : (
-                <div className="cookies">
-                    <h4 className="cookies__title">
-                        Мы используем файлы Cookies
+            {localStorage.getItem("cookie") || stateCookies ? null : (
+                <div className="cookie">
+                    <h4 className="cookie__title">
+                        Мы используем файлы cookie
                     </h4>
                     <button
                         className="btn-small-round"
                         onClick={setCookiesClick}
                     >
-                        Хорошо
+                        Принять
                     </button>
                 </div>
             )}

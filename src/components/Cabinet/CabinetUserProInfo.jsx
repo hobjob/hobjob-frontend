@@ -51,15 +51,19 @@ const CabinetUserProInfo = () => {
                         <p className="cabinet-block-pro-info-item__description">
                             {autoPayment ? (
                                 <>
-                                    Включен{" "}
-                                    <span onClick={disableAutoPayment}>
-                                        (отключить)
-                                    </span>
+                                    <button
+                                        className="btn-small-round"
+                                        onClick={disableAutoPayment}
+                                    >
+                                        Отключить
+                                    </button>
                                 </>
                             ) : (
-                                <>
+                                <button
+                                    className="btn-small-round disabled"
+                                >
                                     Отключен
-                                </>
+                                </button>
                             )}
                         </p>
                     </div>
