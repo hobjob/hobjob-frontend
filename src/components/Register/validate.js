@@ -32,10 +32,6 @@ const validate = values => {
 		errors.password = `Не менее ${defaultMin} символов`;
 	}
 
-	if (!values.policy) {
-		errors.policy = 'Подтвердите согласие';
-	}
-
 	return errors;
 };
 

@@ -10,8 +10,8 @@ import {
     CabinetCardUserInfo,
     CabinetUserInfoForm,
     CabinetUserPassword,
-    CabinetUserSocial,
     CabinetUserProInfo,
+    NotEmailConfirmed,
 } from "../components/";
 
 import Err404 from "./Err404";
@@ -44,76 +44,83 @@ const Cabinet = () => {
         <>
             {localStorage.getItem("accessToken") ? (
                 isLoaded ? (
-                    <>
-                        <Helmet>
-                            <title>Мой профиль - HobJob</title>
-                        </Helmet>
-                        <section className="cabinet">
-                            <div className="container">
-                                <div className="cabinet-wrapper">
-                                    {localStorage.getItem(
-                                        "close-master-info-message"
-                                    ) ||
-                                    masterInfoMessage ||
-                                    user.master !== "confirmed" ? null : (
-                                        <CabinetMessage
-                                            message={
-                                                "Вы не можете поменять свои личные данные, так являетесь мастером HobJob. Если вы хотите изменить данные напишите на почту поддержки"
-                                            }
-                                            closeFunc={closeMasterInfoMessage}
-                                        />
-                                    )}
-
-                                    <CabinetCardUserInfo {...user} />
-
-                                    <div className="cabinet-block-wrapper">
-                                        <div className="cabinet-block">
-                                            <div className="cabinet-block-text">
-                                                <h3 className="cabinet-block-text__title">
-                                                    О себе
-                                                </h3>
-                                                <p className="cabinet-block-text__subtitle">
-                                                    Просьба заполнять реальные
-                                                    данные - они будут
-                                                    отбражаться на сертификатах
-                                                </p>
-                                            </div>
-
-                                            <CabinetUserInfoForm
-                                                onSubmit={
-                                                    onSubmitCabinetUserInfoForm
+                    user.confirmed ? (
+                        <>
+                            <Helmet>
+                                <title>Мой профиль - HobJob</title>
+                            </Helmet>
+                            <section className="cabinet">
+                                <div className="container">
+                                    <div className="cabinet-wrapper">
+                                        {localStorage.getItem(
+                                            "close-master-info-message"
+                                        ) ||
+                                        masterInfoMessage ||
+                                        user.master !== "confirmed" ? null : (
+                                            <CabinetMessage
+                                                message={
+                                                    "Вы не можете поменять свои личные данные, так являетесь мастером HobJob. Если вы хотите изменить данные напишите на почту поддержки"
                                                 }
-                                                {...user}
-                                            />
-                                        </div>
-                                        <div className="cabinet-block">
-                                            <div className="cabinet-block-text">
-                                                <h3 className="cabinet-block-text__title">
-                                                    Изменение пароля
-                                                </h3>
-                                            </div>
-
-                                            <CabinetUserPassword
-                                                onSubmit={
-                                                    onSubmitCabinetUserPassword
+                                                closeFunc={
+                                                    closeMasterInfoMessage
                                                 }
                                             />
-                                        </div>
+                                        )}
 
-                                        <div className="cabinet-block">
-                                            <div className="cabinet-block-text">
-                                                <h3 className="cabinet-block-text__title">
-                                                    Pro подписка
-                                                </h3>
+                                        <CabinetCardUserInfo {...user} />
+
+                                        <div className="cabinet-block-wrapper">
+                                            <div className="cabinet-block">
+                                                <div className="cabinet-block-text">
+                                                    <h3 className="cabinet-block-text__title">
+                                                        О себе
+                                                    </h3>
+                                                    <p className="cabinet-block-text__subtitle">
+                                                        Просьба заполнять
+                                                        реальные данные - они
+                                                        будут отбражаться на
+                                                        сертификатах
+                                                    </p>
+                                                </div>
+
+                                                <CabinetUserInfoForm
+                                                    onSubmit={
+                                                        onSubmitCabinetUserInfoForm
+                                                    }
+                                                    {...user}
+                                                />
+                                            </div>
+                                            <div className="cabinet-block">
+                                                <div className="cabinet-block-text">
+                                                    <h3 className="cabinet-block-text__title">
+                                                        Изменение пароля
+                                                    </h3>
+                                                </div>
+
+                                                <CabinetUserPassword
+                                                    onSubmit={
+                                                        onSubmitCabinetUserPassword
+                                                    }
+                                                />
                                             </div>
 
-                                            <CabinetUserProInfo />
+                                            <div className="cabinet-block">
+                                                <div className="cabinet-block-text">
+                                                    <h3 className="cabinet-block-text__title">
+                                                        Pro подписка
+                                                    </h3>
+                                                </div>
+
+                                                <CabinetUserProInfo />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
-                    </>
+                            </section>
+                        </>
+                    ) : (
+                        <NotEmailConfirmed />
+                    )
                 ) : (
                     <div className="loader-wrapper">
                         <Loader />

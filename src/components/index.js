@@ -2,7 +2,6 @@
 export { default as Loader } from "./All/Loader"
 export { default as LoaderSmall } from "./All/LoaderSmall"
 export { default as RenderInput } from "./All/RenderInput"
-export { default as RenderCheckbox } from "./All/RenderCheckbox"
 export { default as RenderSelect } from "./All/RenderSelect"
 export { default as FileInput } from "./All/FileInput"
 export { default as BtnLoader } from "./All/BtnLoader"

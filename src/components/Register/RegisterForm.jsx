@@ -3,14 +3,14 @@ import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {Field, reduxForm} from "redux-form";
 
-import {RenderInput, RenderCheckbox, BtnLoader} from "../";
+import {RenderInput, BtnLoader} from "../";
 
 import validate from "./validate";
 
 let RegisterForm = ({handleSubmit}) => {
     const [passwordState, setPasswordState] = React.useState(false);
 
-	const {isSend} = useSelector(({register}) => register);
+    const {isSend} = useSelector(({register}) => register);
 
     const onClickSetPasswordState = () => {
         setPasswordState(!passwordState);
@@ -52,14 +52,6 @@ let RegisterForm = ({handleSubmit}) => {
                     label="Пароль"
                 />
             </div>
-            <div className="reglog-block-checkbox">
-                <Field
-                    component={RenderCheckbox}
-                    name="policy"
-                    label="Я согласен с условиями обработки персональных данных"
-                    id="reglog-checkbox"
-                />
-            </div>
             {isSend ? (
                 <button className="btn reglog-block__btn disabled" disabled>
                     <BtnLoader />
@@ -69,6 +61,10 @@ let RegisterForm = ({handleSubmit}) => {
                     Зарегистрироваться
                 </button>
             )}
+            <span className="reglog-block__policy">
+                Нажимая на кнопку, я соглашаюсь на обработку{" "}
+                <a href="/policy">персональных данных</a>
+            </span>
         </form>
     );
 };

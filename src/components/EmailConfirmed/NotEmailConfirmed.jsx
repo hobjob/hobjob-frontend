@@ -12,7 +12,7 @@ const NotEmailConfirmed = () => {
                         <p className="description email-confirmed-text__description">
                             На ваш email было отправлено письмо с ссылкой на
                             подтверждение аккаунта. Если письмо не пришло
-                            проверьте папку "спам".{" "}
+                            проверьте папку «спам‎».{" "}
                             <a href="/go/repeat-email">Отправить еще раз</a>
                         </p>
                     </div>

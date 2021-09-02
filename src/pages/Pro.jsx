@@ -70,7 +70,7 @@ const Pro = () => {
                         )}
                         <div className="pro-main">
                             <div className="pro-main-text">
-                                <h2 className="pro-main-text__title">
+                                <h2 className="title pro-main-text__title">
                                     Pro аккаунт HobJob - участие в лучшем
                                     творческом клубе
                                 </h2>

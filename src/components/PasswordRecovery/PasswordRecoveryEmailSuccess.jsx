@@ -7,7 +7,7 @@ const PasswordRecoveryEmailSuccess = () => {
             <h2 className="reglog-block__title">Письмо отправлено</h2>
             <p className="reglog-block__description">
                 На ваш email было отправлено письмо с ссылкой на изменения
-                пароля. Если письмо не пришло проверьте папку "спам".{" "}
+                пароля. Если письмо не пришло проверьте папку «спам‎».{" "}
                 <Link
                     to="/go/password-recovery"
                     onClick={() => window.location.reload()}

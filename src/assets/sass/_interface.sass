@@ -402,6 +402,9 @@ input:-webkit-autofill:active
 		margin-left: 15px
 
 // select
+select, option
+  -webkit-appearance: none
+
 .select
 	width: 100%
 	position: relative
@@ -441,9 +444,7 @@ input:-webkit-autofill:active
 
 // loader-wrapper
 .loader-wrapper
-	height: 500px
-	display: flex
-	align-items: center
+	margin-bottom: 75px
 	+openAnimation
 
 .loader-small-wrapper
@@ -451,13 +452,12 @@ input:-webkit-autofill:active
 
 // email-confirmed
 .email-confirmed
-	margin: 100px 0
+	margin: 75px 0 100px 0
 	+openAnimation
 
 	&-wrapper
 		display: flex
 		justify-content: space-between
-		align-items: center
 
 	&-text
 		max-width: 50%
