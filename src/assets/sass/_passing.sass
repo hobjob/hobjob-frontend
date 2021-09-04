@@ -12,18 +12,6 @@
 			&__title
 				font-size: 36px
 
-				& span
-					padding-left: 15px
-					font-size: 28px
-					color: $gray
-
-		&-next
-			color: $gray
-			+transition
-
-			&:hover
-				color: $black
-
 	&-video
 		margin-top: 50px
 		+openAnimation
@@ -83,6 +71,9 @@
 
 		&-block
 			width: 45%
+
+			&.long
+				width: 100%
 
 			&__subtitle
 				margin-bottom: 15px
@@ -232,6 +223,9 @@
 							& span
 								cursor: pointer
 								color: $mainColor
+
+					&.long
+						width: 40%
 
 				&-pro
 					width: 45%

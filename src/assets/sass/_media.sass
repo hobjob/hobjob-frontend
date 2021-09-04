@@ -57,7 +57,7 @@
 			flex-direction: column
 
 			&-block
-				&-text, &-materials, &-timecodes, &-pro, &-middle, &-buy-extra-lessons
+				&-text, &-materials, &-timecodes, &-pro, &-middle, &-buy-extra-lessons, &-timecodes.long
 					width: 100%
 
 				&-middle
@@ -126,6 +126,15 @@
 	.magazine-post-page
 		&-wrapper
 			max-width: 100%
+
+		&-cover
+			&-img
+				height: 350px
+
+		&-block
+			margin-bottom: 50px
+			&__img
+				height: 350px
 
 	// pro
 	.pro
@@ -255,6 +264,10 @@
 				display: none
 
 @media screen and ( max-width: 900px )
+	// interface
+	.title__mb
+		margin-bottom: 50px
+
 	// cookie
 	.cookie
 		width: 95%
@@ -262,8 +275,14 @@
 		&__title
 			font-size: 18px
 
+	// main
+	.main
+		margin: 50px 0
+
 	// shop
 	.shop
+		margin: 50px 0
+
 		&-filters
 			flex-direction: column
 
@@ -279,8 +298,13 @@
 		&-block-wrapper
 			margin-top: 50px
 
+		&-section
+			margin: 50px 0
+
 	// magazine
 	.magazine
+		margin: 50px 0
+
 		&-filters-categories
 			max-width: 100%
 			flex-wrap: nowrap
@@ -308,6 +332,8 @@
 
 	// cart
 	.cart
+		margin: 50px 0
+
 		&-block
 			position: relative
 			flex-direction: column
@@ -353,6 +379,8 @@
 
 	// pro
 	.pro
+		margin: 50px 0
+
 		&-about-item
 			flex-direction: column
 
@@ -372,6 +400,8 @@
 			width: 100%
 
 	.about
+		margin: 50px 0
+
 		&-services-items-wrapper
 			margin-top: 100px
 
@@ -390,6 +420,8 @@
 
 	// masters-about
 	.masters-about
+		margin: 50px 0
+
 		&-services-items-wrapper
 			margin-top: 100px
 
@@ -412,6 +444,8 @@
 
 	// cabinet
 	.cabinet
+		margin: 50px 0
+
 		&-card-user-info
 			flex-direction: column
 			text-align: center
@@ -419,9 +453,16 @@
 			&-text
 				margin: 50px 0 0 0
 
+		&-block
+			margin: 75px 0
+			padding-bottom: 50px
+
+			&-form
+				margin-top: 25px
+
 	// training
 	.training
-		margin: 75px 0
+		margin: 50px 0
 
 		&-block
 			flex-direction: column
@@ -448,7 +489,7 @@
 
 	// passing
 	.passing
-		margin: 75px 0
+		margin: 50px 0
 
 		&-top
 			flex-direction: column
@@ -476,6 +517,9 @@
 
 					&-cover
 						height: 100px
+
+	.referrals
+		margin: 50px 0
 
 @media screen and ( max-width: 820px )
 	// main
@@ -728,9 +772,6 @@
 	.title, .title__mb
 		font-size: 32px
 
-	.title__mb
-		margin-bottom: 50px
-
 	.description, .description__mt, .description__mb
 		font-size: 21px
 
@@ -843,6 +884,8 @@
 
 	// cabinet
 	.cabinet
+		margin: 25px 0
+
 		&-card-user-info
 			&-avatar
 				width: 125px
@@ -858,6 +901,9 @@
 						font-size: 28px
 
 		&-block
+			margin: 50px 0
+			padding-bottom: 25px
+
 			&-text
 				&__title
 					font-size: 32px

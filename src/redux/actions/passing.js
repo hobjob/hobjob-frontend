@@ -25,27 +25,8 @@ export const fetchPassingCourseLessonMaterial = (courseId, lessonNum, materialNu
 	});
 }
 
-export const fetchPassingCourseLessonVideo = (courseId, lessonNum) => (dispatch) => {
-	$api.get(`/courses/${courseId}/video/${lessonNum}`, {
-		responseType: 'blob'
-	}).then((response) => {
-		let myUrl = (window.URL || window.webkitURL).createObjectURL(response.data); // response.data.data
-
-		var myVid = document.getElementById('vidObj');
-		myVid.setAttribute("src", myUrl);
-		myVid.play(); //# test playback
-
-		// dispatch(setVideoUrlCourseLesson(myUrl))
-	});
-}
-
-export const fetchCertificateCourse = (courseId, title) => (dispatch) => {
+export const fetchCertificateCourse = (courseId) => (dispatch) => {
 	$api.get(`/certificate/${courseId}`).then(({ data }) => {
-		saveAs(data.url, title)
+		window.location.href = data.url
 	});
 }
-
-const setVideoUrlCourseLesson = (url) => ({
-	type: "SET_VIDEO_URL_COURSE_LESSON",
-	payload: url
-})

@@ -2,10 +2,10 @@ import React from "react";
 
 import {PassingTimecodesItem} from "../";
 
-const PassingTimecodes = ({timecodes, setTime}) => {
+const PassingTimecodes = ({timecodes, setTime, isMaterials}) => {
     const onClickTimecode = (timecode) => {
-		const splitTimecode = timecode.split(":");
-		
+        const splitTimecode = timecode.split(":");
+
         setTime(
             parseFloat(
                 parseInt(splitTimecode[0]) * 60 + parseInt(splitTimecode[1])
@@ -14,7 +14,11 @@ const PassingTimecodes = ({timecodes, setTime}) => {
     };
 
     return (
-        <div className="passing-lesson-info-block-timecodes">
+        <div
+            className={`passing-lesson-info-block-timecodes ${
+                isMaterials ? "" : "long"
+            }`}
+        >
             <h4 className="passing-lesson-info-block-timecodes__title">
                 Таймкоды
             </h4>

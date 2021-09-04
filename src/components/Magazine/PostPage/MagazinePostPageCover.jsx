@@ -66,7 +66,7 @@ const MagazinePostPageCover = ({
                         <div
                             className="magazine-post-page-cover-text-top-auth-avatar"
                             style={{
-                                backgroundImage: `url(${process.env.REACT_APP_IMAGE_DOMEN}/${masters[masterId].avatar})`,
+                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${masters[masterId].avatar}")`,
                             }}
                         ></div>
                         <span className="magazine-post-page-cover-text-top-auth__name">
@@ -85,7 +85,7 @@ const MagazinePostPageCover = ({
             <div
                 className="magazine-post-page-cover-img"
                 style={{
-                    backgroundImage: `url(${process.env.REACT_APP_IMAGE_DOMEN}/${image})`,
+                    backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
                 }}
             ></div>
         </div>

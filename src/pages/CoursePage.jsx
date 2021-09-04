@@ -172,7 +172,7 @@ const CoursePage = ({
                                         poster="http://localhost:5000/uploads/courses/dad3aa21-5cb9-487a-8333-56411e655805-IMG_2410.jpg"
                                     >
                                         <source
-                                            src="http://localhost:5000/uploads/courses/course_1.mp4"
+                                            src="http://localhost:5000/uploads/courses/course-flax-bears-tiser.mp4"
                                             type="video/mp4"
                                         />
                                     </video>
@@ -1376,6 +1376,8 @@ const CoursePage = ({
                                                     "url('http://localhost:5000/uploads/courses/IMG_5149.JPG')",
                                             }}
                                         ></div>
+                                    </div>
+                                    <div className="course-flax-bears-work-col">
                                         <div
                                             className="course-flax-bears-work-img"
                                             style={{
@@ -1383,20 +1385,11 @@ const CoursePage = ({
                                                     "url('http://localhost:5000/uploads/courses/photo_2021-08-30_10-30-10.jpg')",
                                             }}
                                         ></div>
-                                    </div>
-                                    <div className="course-flax-bears-work-col">
-                                        <div
-                                            className="course-flax-bears-work-img long"
-                                            style={{
-                                                backgroundImage:
-                                                    "url('http://localhost:5000/uploads/courses/IMG_2529.jpg')",
-                                            }}
-                                        ></div>
                                         <div
                                             className="course-flax-bears-work-img"
                                             style={{
                                                 backgroundImage:
-                                                    "url('http://localhost:5000/uploads/courses/IMG_2529.jpg')",
+                                                    "url('http://localhost:5000/uploads/courses/photo_2021-09-01_10-25-45.jpg')",
                                             }}
                                         ></div>
                                     </div>
@@ -1407,28 +1400,28 @@ const CoursePage = ({
                                         className="course-flax-bears-work-media-img"
                                         style={{
                                             backgroundImage:
-                                                "url('http://localhost:5000/uploads/courses/IMG_2529.jpg')",
+                                                "url('http://localhost:5000/uploads/courses/IMG_5144.JPG')",
                                         }}
                                     ></div>
                                     <div
                                         className="course-flax-bears-work-media-img"
                                         style={{
                                             backgroundImage:
-                                                "url('http://localhost:5000/uploads/courses/IMG_2529.jpg')",
+                                                "url('http://localhost:5000/uploads/courses/IMG_5149.JPG')",
                                         }}
                                     ></div>
                                     <div
                                         className="course-flax-bears-work-media-img"
                                         style={{
                                             backgroundImage:
-                                                "url('http://localhost:5000/uploads/courses/IMG_2529.jpg')",
+                                                "url('http://localhost:5000/uploads/courses/photo_2021-08-30_10-30-10.jpg')",
                                         }}
                                     ></div>
                                     <div
                                         className="course-flax-bears-work-media-img"
                                         style={{
                                             backgroundImage:
-                                                "url('http://localhost:5000/uploads/courses/IMG_2529.jpg')",
+                                                "url('http://localhost:5000/uploads/courses/photo_2021-09-01_10-25-45.jpg')",
                                         }}
                                     ></div>
                                 </div>

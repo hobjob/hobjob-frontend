@@ -16,7 +16,7 @@ const MasterCardInfo = ({
             <div
                 className="master-card-info-avatar"
                 style={{
-                    backgroundImage: `url(${process.env.REACT_APP_IMAGE_DOMEN}/${avatar})`,
+                    backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${avatar}")`,
                 }}
             ></div>
             <div className="master-card-info-text">

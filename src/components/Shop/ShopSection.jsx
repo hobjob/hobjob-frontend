@@ -10,7 +10,7 @@ import {ShopBlock, Loader} from "../";
 const ShopSection = ({title}) => {
     const dispatch = useDispatch();
 
-    const {user} = useSelector(({user}) => user);
+    const {user, courses} = useSelector(({user}) => user);
     const {itemsSection, isLoadedSectionCourses} = useSelector(
         ({courses}) => courses
     );
@@ -78,6 +78,7 @@ const ShopSection = ({title}) => {
                                     key={`shop-section-block-${index}`}
                                     masters={masters}
                                     categories={categories}
+                                    isBuy={courses[item._id] ? true : false}
                                 />
                             ))
                         ) : (

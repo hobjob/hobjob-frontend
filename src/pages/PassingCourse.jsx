@@ -50,7 +50,9 @@ const PassingCourse = ({
         window.scrollTo(0, 0);
     }, [courseId, lessonNum, isLoaded]);
 
-    const setTime = (seconds) => {
+	const setTime = (seconds) => {
+        window.scrollTo(0, 0);
+
         PlayerRef.current.store.dispatch({
             type: "UPDATE_ASKED_TIME",
             payload: {askedTime: seconds},
@@ -64,12 +66,7 @@ const PassingCourse = ({
     };
 
     const getCertificate = () => {
-        dispatch(
-            fetchCertificateCourse(
-                courseId,
-                "Сертификат «Шитьё мишек изо льна»"
-            )
-        );
+        dispatch(fetchCertificateCourse(courseId));
     };
 
     const buyExtraLessons = () => {
@@ -78,10 +75,6 @@ const PassingCourse = ({
 
     const createPaymentProSubscribe = () => {
         dispatch(sendCreateProSubscribePayment());
-    };
-
-    const clickGetVideo = () => {
-        dispatch(fetchPassingCourseLessonVideo(courseId, lessonNum));
     };
 
     return (
@@ -115,19 +108,6 @@ const PassingCourse = ({
                                                     {...courses[courseId]}
                                                     lessonIndex={lessonIndex}
                                                 />
-
-                                                {courses[courseId].lessons[
-                                                    lessonIndex + 1
-                                                ] ? (
-                                                    <Link
-                                                        to={`/go/passing/${courseId}/${
-                                                            lessonIndex + 2
-                                                        }`}
-                                                        className="passing-top-next"
-                                                    >
-                                                        К следующему уроку →
-                                                    </Link>
-                                                ) : null}
                                             </div>
 
                                             <PassingVideo
@@ -161,18 +141,32 @@ const PassingCourse = ({
                                                     </p>
                                                 </div>
 
-                                                <PassingMaterials
-                                                    materials={
-                                                        courses[courseId]
-                                                            .lessons[
-                                                            lessonIndex
-                                                        ].materials
-                                                    }
-                                                    downloadFunc={downloadFile}
-                                                />
+                                                {courses[courseId].lessons[
+                                                    lessonIndex
+                                                ].materials.length ? (
+                                                    <PassingMaterials
+                                                        materials={
+                                                            courses[courseId]
+                                                                .lessons[
+                                                                lessonIndex
+                                                            ].materials
+                                                        }
+                                                        downloadFunc={
+                                                            downloadFile
+                                                        }
+                                                    />
+                                                ) : null}
 
                                                 <PassingTimecodes
                                                     setTime={setTime}
+                                                    isMaterials={
+                                                        courses[courseId]
+                                                            .lessons[
+                                                            lessonIndex
+                                                        ].materials.length
+                                                            ? true
+                                                            : false
+                                                    }
                                                     timecodes={
                                                         courses[courseId]
                                                             .lessons[
@@ -339,7 +333,7 @@ const PassingCourse = ({
                                                 <div
                                                     className="passing-cover-img"
                                                     style={{
-                                                        backgroundImage: `url('${process.env.REACT_APP_IMAGE_DOMEN}/${courses[courseId].lessons[lessonIndex].image}')`,
+                                                        backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${courses[courseId].lessons[lessonIndex].image}")`,
                                                     }}
                                                 ></div>
                                             </div>

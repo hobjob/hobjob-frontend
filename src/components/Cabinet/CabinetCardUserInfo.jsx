@@ -23,7 +23,11 @@ const CabinetCardUserInfo = ({pro, avatar, name, surname, email, master}) => {
 
     return (
         <>
-            {messageAvatate}
+            {messageAvatate ? (
+                <div className="cabinet-message">
+                    <p className="cabinet-message__title">{messageAvatate}</p>
+                </div>
+            ) : null}
             <div className="cabinet-card-user-info">
                 <div className="cabinet-card-user-info-avatar">
                     {master === "" ? (
