@@ -1,4 +1,5 @@
 import React from "react";
+import {useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 
@@ -12,6 +13,7 @@ const CoursePage = ({
         params: {id},
     },
 }) => {
+    const history = useHistory();
     const dispatch = useDispatch();
 
     const {itemById, isLoadedCourseById} = useSelector(({courses}) => courses);
@@ -80,6 +82,8 @@ const CoursePage = ({
             for (let i = 0; i < arrayBtn.length; i++) {
                 arrayBtn[i].addEventListener("click", () => {
                     dispatch(addCourseCart({_id: id}));
+
+                    history.push("/cart");
                 });
             }
         }
@@ -108,7 +112,7 @@ const CoursePage = ({
                     </Helmet>
                     {addState || courses[id] ? null : (
                         <button
-                            className={`btn-small-round buy-btn course-flax-bears__btn ${
+                            className={`btn-small-round buy-btn course-page__btn ${
                                 visibleButton ? "active" : ""
                             }`}
                         >
@@ -151,7 +155,7 @@ const CoursePage = ({
                                             className="course-flax-bears-main-text-master-avatar"
                                             style={{
                                                 backgroundImage:
-                                                    "url('http://localhost:5000/uploads/user_avatar/78581a85-6767-482d-b723-bf1e75c1a383-IMG_2410_1.jpg')",
+                                                    "url('https://api.hobjob.ru:5000/uploads/user_avatar/78581a85-6767-482d-b723-bf1e75c1a383-IMG_2410_1.jpg')",
                                             }}
                                         ></div>
                                         <h4 className="course-flax-bears-main-text-master__name">
@@ -169,10 +173,10 @@ const CoursePage = ({
                                     <video
                                         controls
                                         playsInline
-                                        poster="http://localhost:5000/uploads/courses/dad3aa21-5cb9-487a-8333-56411e655805-IMG_2410.jpg"
+                                        poster="https://api.hobjob.ru:5000/uploads/courses/dad3aa21-5cb9-487a-8333-56411e655805-IMG_2410.jpg"
                                     >
                                         <source
-                                            src="http://localhost:5000/uploads/courses/course-flax-bears-tiser.mp4"
+                                            src="https://api.hobjob.ru:5000/uploads/courses/course-flax-bears-tiser.mp4"
                                             type="video/mp4"
                                         />
                                     </video>
@@ -187,7 +191,7 @@ const CoursePage = ({
                                     className="course-flax-bears-about-img"
                                     style={{
                                         backgroundImage:
-                                            "url('http://localhost:5000/uploads/courses/IMG_2440.jpg')",
+                                            "url('https://api.hobjob.ru:5000/uploads/courses/IMG_2440.jpg')",
                                     }}
                                 ></div>
                                 <div className="course-flax-bears-about-text">
@@ -385,7 +389,7 @@ const CoursePage = ({
                                     className="course-flax-bears-skills-img"
                                     style={{
                                         backgroundImage:
-                                            "url('http://localhost:5000/uploads/courses/P1140428.jpg')",
+                                            "url('https://api.hobjob.ru:5000/uploads/courses/P1140428.jpg')",
                                     }}
                                 ></div>
 
@@ -393,7 +397,7 @@ const CoursePage = ({
                                     className="course-flax-bears-skills-img long"
                                     style={{
                                         backgroundImage:
-                                            "url('http://localhost:5000/uploads/courses/IMG_2529.jpg')",
+                                            "url('https://api.hobjob.ru:5000/uploads/courses/IMG_2529.jpg')",
                                     }}
                                 ></div>
 
@@ -401,7 +405,7 @@ const CoursePage = ({
                                     className="course-flax-bears-skills-img"
                                     style={{
                                         backgroundImage:
-                                            "url('http://localhost:5000/uploads/courses/P1140435.jpg')",
+                                            "url('https://api.hobjob.ru:5000/uploads/courses/P1140435.jpg')",
                                     }}
                                 ></div>
                             </div>
@@ -427,7 +431,7 @@ const CoursePage = ({
                                         className="course-flax-bears-result-img"
                                         style={{
                                             backgroundImage:
-                                                "url('http://localhost:5000/uploads/courses/IMG_2170.jpg')",
+                                                "url('https://api.hobjob.ru:5000/uploads/courses/IMG_2170.jpg')",
                                         }}
                                     ></div>
                                 </div>
@@ -1223,7 +1227,7 @@ const CoursePage = ({
                                     className="course-flax-bears-master-img"
                                     style={{
                                         backgroundImage:
-                                            "url('http://localhost:5000/uploads/courses/IMG_2458.jpg')",
+                                            "url('https://api.hobjob.ru:5000/uploads/courses/IMG_2458.jpg')",
                                     }}
                                 ></div>
                                 <a
@@ -1366,14 +1370,14 @@ const CoursePage = ({
                                             className="course-flax-bears-work-img"
                                             style={{
                                                 backgroundImage:
-                                                    "url('http://localhost:5000/uploads/courses/IMG_5144.JPG')",
+                                                    "url('https://api.hobjob.ru:5000/uploads/courses/IMG_5144.JPG')",
                                             }}
                                         ></div>
                                         <div
                                             className="course-flax-bears-work-img"
                                             style={{
                                                 backgroundImage:
-                                                    "url('http://localhost:5000/uploads/courses/IMG_5149.JPG')",
+                                                    "url('https://api.hobjob.ru:5000/uploads/courses/IMG_5149.JPG')",
                                             }}
                                         ></div>
                                     </div>
@@ -1382,14 +1386,14 @@ const CoursePage = ({
                                             className="course-flax-bears-work-img"
                                             style={{
                                                 backgroundImage:
-                                                    "url('http://localhost:5000/uploads/courses/photo_2021-08-30_10-30-10.jpg')",
+                                                    "url('https://api.hobjob.ru:5000/uploads/courses/photo_2021-08-30_10-30-10.jpg')",
                                             }}
                                         ></div>
                                         <div
                                             className="course-flax-bears-work-img"
                                             style={{
                                                 backgroundImage:
-                                                    "url('http://localhost:5000/uploads/courses/photo_2021-09-01_10-25-45.jpg')",
+                                                    "url('https://api.hobjob.ru:5000/uploads/courses/photo_2021-09-01_10-25-45.jpg')",
                                             }}
                                         ></div>
                                     </div>
@@ -1400,28 +1404,28 @@ const CoursePage = ({
                                         className="course-flax-bears-work-media-img"
                                         style={{
                                             backgroundImage:
-                                                "url('http://localhost:5000/uploads/courses/IMG_5144.JPG')",
+                                                "url('https://api.hobjob.ru:5000/uploads/courses/IMG_5144.JPG')",
                                         }}
                                     ></div>
                                     <div
                                         className="course-flax-bears-work-media-img"
                                         style={{
                                             backgroundImage:
-                                                "url('http://localhost:5000/uploads/courses/IMG_5149.JPG')",
+                                                "url('https://api.hobjob.ru:5000/uploads/courses/IMG_5149.JPG')",
                                         }}
                                     ></div>
                                     <div
                                         className="course-flax-bears-work-media-img"
                                         style={{
                                             backgroundImage:
-                                                "url('http://localhost:5000/uploads/courses/photo_2021-08-30_10-30-10.jpg')",
+                                                "url('https://api.hobjob.ru:5000/uploads/courses/photo_2021-08-30_10-30-10.jpg')",
                                         }}
                                     ></div>
                                     <div
                                         className="course-flax-bears-work-media-img"
                                         style={{
                                             backgroundImage:
-                                                "url('http://localhost:5000/uploads/courses/photo_2021-09-01_10-25-45.jpg')",
+                                                "url('https://api.hobjob.ru:5000/uploads/courses/photo_2021-09-01_10-25-45.jpg')",
                                         }}
                                     ></div>
                                 </div>

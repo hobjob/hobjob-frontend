@@ -75,13 +75,7 @@ const MagazinePostPage = ({
                     <Err404 />
                 )
             ) : (
-                <section className="magazine-post-page">
-                    <div className="container">
-                        <div className="magazine-post-page-wrapper">
-                            <Loader />
-                        </div>
-                    </div>
-                </section>
+                <Loader />
             )}
         </>
     );

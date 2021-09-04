@@ -1,6 +1,6 @@
 // shop
 .shop
-	margin: 100px 0
+	margin: 75px 0
 	+openAnimation
 
 	&-top
@@ -200,28 +200,19 @@
 
 // shop-section
 .shop-section
-	margin: 100px 0
+	margin: 75px 0
 
 	&-block-wrapper
 		display: flex
 		flex-wrap: wrap
 
 	&-btn
-		margin-top: 50px
-
 		display: flex
 		justify-content: center
 		align-items: center
 
-// course-flax-bears
-.course-flax-bears
-	&__title
-		font-size: 48px
-
-	&__title__mb
-		margin-bottom: 100px
-		font-size: 48px
-
+// course-page
+.course-page
 	&__btn
 		position: fixed
 		z-index: 10
@@ -236,6 +227,15 @@
 
 		&.active
 			opacity: 1
+
+// course-flax-bears
+.course-flax-bears
+	&__title
+		font-size: 48px
+
+	&__title__mb
+		margin-bottom: 100px
+		font-size: 48px
 
 	&-main
 		margin: 100px 0
@@ -788,7 +788,7 @@
 				min-width: 250px
 				height: 250px
 				margin-right: 25px
-				
+
 				&:last-child
 					margin-right: 0
 
@@ -842,6 +842,13 @@
 					display: flex
 
 @media screen and ( max-width: 500px )
+	.course-page
+		&__btn
+			width: 95%
+			left: 50%
+			bottom: 10px
+			transform: translateX(-50%)
+
 	.course-flax-bears
 		&__title
 			font-size: 32px
@@ -849,12 +856,6 @@
 		&__title__mb
 			font-size: 32px
 			margin-bottom: 50px
-
-		&__btn
-			width: 95%
-			left: 50%
-			bottom: 10px
-			transform: translateX(-50%)
 
 		&-main
 			&-text
