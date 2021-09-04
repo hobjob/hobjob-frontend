@@ -26,9 +26,9 @@ const MasterCardInfo = ({
                     </h2>
 
                     <div className="master-card-info-text-title-social">
-                        {vk.id !== "" || true ? (
+                        {vk !== "" ? (
                             <a
-                                href={vk.id}
+                                href={vk}
                                 className="master-card-info-text-title-social__link"
                             >
                                 <svg
@@ -45,7 +45,7 @@ const MasterCardInfo = ({
                                 </svg>
                             </a>
                         ) : null}
-                        {youtube !== "" || true ? (
+                        {youtube !== "" ? (
                             <a
                                 href={youtube}
                                 className="master-card-info-text-title-social__link"
@@ -64,7 +64,7 @@ const MasterCardInfo = ({
                                 </svg>
                             </a>
                         ) : null}
-                        {instagram !== "" || true ? (
+                        {instagram !== "" ? (
                             <a
                                 href={instagram}
                                 className="master-card-info-text-title-social__link"
