@@ -7,7 +7,6 @@ import {Helmet} from "react-helmet";
 import {
     fetchPassingCourseLessonMaterial,
     fetchCertificateCourse,
-    fetchPassingCourseLessonVideo,
 } from "../redux/actions/passing";
 
 import {
@@ -35,7 +34,6 @@ const PassingCourse = ({
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const {url} = useSelector(({passing}) => passing);
     const {user, courses, isLoaded} = useSelector(({user}) => user);
     const {isSendCourseExtraLessons, isSendProSubscribe} = useSelector(
         ({payment}) => payment
@@ -50,7 +48,7 @@ const PassingCourse = ({
         window.scrollTo(0, 0);
     }, [courseId, lessonNum, isLoaded]);
 
-	const setTime = (seconds) => {
+    const setTime = (seconds) => {
         window.scrollTo(0, 0);
 
         PlayerRef.current.store.dispatch({
