@@ -22,7 +22,7 @@ const RepeatEmail = () => {
             <Helmet>
                 <title>Подтвердить email - HobJob</title>
             </Helmet>
-            {!localStorage.getItem("accessToken") ? (
+            {localStorage.getItem("accessToken") ? (
                 <section className="reglog">
                     <div className="container">
                         <div className="reglog-wrapper">

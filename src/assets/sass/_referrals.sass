@@ -57,24 +57,62 @@
 				border-bottom: 1px solid $borderGray
 
 				&__link
+					display: block
+					overflow: hidden
 					cursor: text
 					outline: none
 					background-color: transparent
 					border: none
-					width: 100%
+					width: 80%
+					text-overflow: ellipsis
 					font-size: 28px
-					color: $mainColor
+					color: $black
 					+GilroyRegular
 
-				&__subtitle
-					user-select: none
-					cursor: pointer
-					font-size: 15px
-					color: $gray
-					+transition
+				&-subtitle
+					display: flex
+					justify-content: flex-end
+					align-items: center
 
-					&:hover
+					overflow: hidden
+					position: relative
+					width: 20%
+					height: 25px
+
+					&__subtitle
+						position: absolute
+						right: 0
+						top: 50%
+
+						transform: translateY(-50%)
+
+						display: block
+						user-select: none
+						cursor: pointer
+						font-size: 15px
+						color: $gray
+						+transition
+
+						&:hover
+							color: $mainColor
+
+						&.active
+							top: -100%
+
+					&__success
+						position: absolute
+						right: 0
+						top: 100%
+
+						display: block
+						user-select: none
+						font-size: 15px
 						color: $mainColor
+						+transition
+
+						&.active
+							top: 50%
+							transform: translateY(-50%)
 
 		&-balance
 			width: 38%

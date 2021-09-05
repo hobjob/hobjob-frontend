@@ -78,3 +78,6 @@ export { default as Policy } from "./Policy"
 
 // PublicOffer
 export { default as PublicOffer } from "./PublicOffer"
+
+// Regulations
+export { default as Regulations } from "./Regulations"

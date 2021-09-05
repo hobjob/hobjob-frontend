@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import {Link} from "react-router-dom";
 
 const TrainingNull = () => {
     return (
@@ -9,14 +9,10 @@ const TrainingNull = () => {
                     Не знаете с чего начать?
                 </h2>
                 <p className="description__mb training-null-text__description">
-                    Посмотрите наши бесплатные
-                    вебинары, чтобы понять, какое направление вам больше
-                    подходит.
+                    Перейдите в магазин курсов и подберите для себя то, что вам
+                    понравится
                 </p>
-                <Link
-                    to="/shop"
-                    className="btn training-null-text__btn"
-                >
+                <Link to="/shop" className="btn training-null-text__btn">
                     Перейти в магазин курсов
                 </Link>
             </div>

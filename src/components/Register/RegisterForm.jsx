@@ -63,7 +63,8 @@ let RegisterForm = ({handleSubmit}) => {
             )}
             <span className="reglog-block__policy">
                 Нажимая на кнопку, я соглашаюсь на обработку{" "}
-                <a href="/policy">персональных данных</a>
+                <a href="/policy">персональных данных</a> и с{" "}
+                <a href="/regulations">правилами пользования Платформой</a>
             </span>
         </form>
     );

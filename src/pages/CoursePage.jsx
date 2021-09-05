@@ -1482,17 +1482,6 @@ const CoursePage = ({
 
                                 <div className="course-flax-bears-faq-item">
                                     <h3 className="course-flax-bears-faq-item__title">
-                                        Будут ли методические материалы?
-                                    </h3>
-                                    <p className="course-flax-bears-faq-item__description">
-                                        Да, к курсу прилагаются подробные
-                                        PDF-файлы с инструкцией по изготовлению
-                                        мишки
-                                    </p>
-                                </div>
-
-                                <div className="course-flax-bears-faq-item">
-                                    <h3 className="course-flax-bears-faq-item__title">
                                         Какие условия участие в конкурсе на
                                         лучшую работу ?
                                     </h3>

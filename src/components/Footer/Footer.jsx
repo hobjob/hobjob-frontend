@@ -168,6 +168,12 @@ const Footer = () => {
                         </div>
                         <div className="footer-block-bottom-right">
                             <Link
+                                to="/regulations"
+                                className="footer-block-bottom__link"
+                            >
+                                Правила пользования Платформой
+                            </Link>
+                            <Link
                                 to="/policy"
                                 className="footer-block-bottom__link"
                             >

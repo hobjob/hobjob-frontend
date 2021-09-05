@@ -12,14 +12,14 @@ const PassingVideo = ({
         <div className="passing-video">
             <ReactWebMediaPlayer
                 ref={PlayerRef}
-                title={`${lessons[lessonIndex].title} ${lessons[lessonIndex].extraLesson ? "(Дополнительные материалы)" : ""}`}
+                title={`${lessons[lessonIndex].title}`}
                 color="#dd9e5e"
                 video={`${
                     process.env.REACT_APP_API_DOMEN
                 }/courses/${courseId}/video/${lessonNum}/${localStorage.getItem(
                     "accessToken"
                 )}`}
-                height={document.documentElement.clientWidth > 900 ? 500 : 350}
+                height="100%"
                 width="100%"
                 thumbnail={`${process.env.REACT_APP_IMAGE_DOMEN}/${lessons[lessonIndex].image}`}
             />
