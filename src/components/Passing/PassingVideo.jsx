@@ -20,7 +20,8 @@ const PassingVideo = ({
                     "accessToken"
                 )}`}
                 height="100%"
-                width="100%"
+				width="100%"
+				style={{backgroundColor: "#ffffff"}}
                 thumbnail={`${process.env.REACT_APP_IMAGE_DOMEN}/${lessons[lessonIndex].image}`}
             />
         </div>

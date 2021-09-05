@@ -23,10 +23,21 @@ git clone https://github.com/hobjob/hobjob-frontend.git
 cd hobjob-frontend
 ```
 
-Установка зависимостей, запуск сборки.
+Установка зависимостей
 
 ```
 npm install
+```
+
+Конфигурация
+
+```
+Создайте файл .env и заполните его с примера .env.example
+```
+
+Запуск сборки
+
+```
 npm start
 ```
 
