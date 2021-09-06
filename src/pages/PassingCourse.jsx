@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link, useHistory} from "react-router-dom";
 import NumberFormat from "react-number-format";
 import {Helmet} from "react-helmet";
+import moment from "moment";
 
 import {
     fetchPassingCourseLessonMaterial,
@@ -34,6 +35,8 @@ const PassingCourse = ({
     const history = useHistory();
     const dispatch = useDispatch();
 
+    const [hashtag, setHashtag] = React.useState("");
+
     const {user, courses, isLoaded} = useSelector(({user}) => user);
     const {isSendCourseExtraLessons, isSendProSubscribe} = useSelector(
         ({payment}) => payment
@@ -46,6 +49,14 @@ const PassingCourse = ({
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
+
+        if (isLoaded) {
+            setHashtag(
+                `#${courses[courseId].title
+                    .replace(/\s+/g, "")
+                    .toLowerCase()}${moment().format("MM.YYYY")}`
+            );
+        }
     }, [courseId, lessonNum, isLoaded]);
 
     const setTime = (seconds) => {
@@ -91,10 +102,6 @@ const PassingCourse = ({
                                                 lessonIndex
                                             ].title
                                         }{" "}
-                                        {courses[courseId].lessons[lessonIndex]
-                                            .extraLesson
-                                            ? "(Дополнительные материалы)"
-                                            : ""}{" "}
                                         - HobJob
                                     </title>
                                 </Helmet>
@@ -187,31 +194,67 @@ const PassingCourse = ({
                                                     lessonIndex + 1
                                                 ].extraLesson) ? (
                                                 user.pro ? (
-                                                    <div className="passing-certificate">
-                                                        <p className="subtitle passing-certificate__subtitle">
-                                                            Сертификат
-                                                        </p>
-                                                        <h4 className="passing-certificate__title">
-                                                            Вы успешно прошли
-                                                            курс «
-                                                            {
-                                                                courses[
-                                                                    courseId
-                                                                ].title
-                                                            }
-                                                            »
-                                                        </h4>
+                                                    <div className="passing-bottom-block">
+                                                        <div className="passing-certificate">
+                                                            <p className="subtitle passing-certificate__subtitle">
+                                                                Сертификат
+                                                            </p>
+                                                            <h4 className="passing-certificate__title">
+                                                                Вы успешно
+                                                                прошли курс «
+                                                                {
+                                                                    courses[
+                                                                        courseId
+                                                                    ].title
+                                                                }
+                                                                »
+                                                            </h4>
 
-                                                        <button
-                                                            className="btn passing-certificate__btn"
-                                                            onClick={
-                                                                getCertificate
-                                                            }
-                                                        >
-                                                            Получить сертификат
-                                                        </button>
+                                                            <button
+                                                                className="btn passing-certificate__btn"
+                                                                onClick={
+                                                                    getCertificate
+                                                                }
+                                                            >
+                                                                Получить
+                                                                сертификат
+                                                            </button>
+                                                        </div>
+
+                                                        <div className="passing-hashtag">
+                                                            <h3 className="passing-hashtag__title">
+                                                                Участвуйте в
+                                                                Конкурсе на
+                                                                лучшую работу
+                                                            </h3>
+
+                                                            <p className="passing-hashtag__description">
+                                                                Выложите пост в
+                                                                Инстаграм с
+                                                                фотографией
+                                                                вашей работы и
+                                                                хештегом{" "}
+                                                                <a>{hashtag}</a>{" "}
+                                                                отметьте наш
+                                                                аккаунт
+                                                                <a href="https://www.instagram.com/hobjob.ru">
+                                                                    @hobjob.ru
+                                                                </a>{" "}
+                                                                В конце месяца
+                                                                мы выберем
+                                                                лучшую работу и
+                                                                подарим Pro
+                                                                подписку. Также
+                                                                проверьте, чтобы
+                                                                ваш аккаунт был
+                                                                открыт, иначе мы
+                                                                не сможем
+                                                                оценить работу.
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 ) : (
+                                                    <div className="passing-bottom-block">
                                                     <div className="passing-pro">
                                                         <h3 className="passing-pro__title">
                                                             Вы успешно прошли
@@ -264,7 +307,38 @@ const PassingCourse = ({
                                                                 подписку
                                                             </button>
                                                         )}
-                                                    </div>
+                                                    </div><div className="passing-hashtag">
+                                                            <h3 className="passing-hashtag__title">
+                                                                Участвуйте в
+                                                                Конкурсе на
+                                                                лучшую работу
+                                                            </h3>
+
+                                                            <p className="passing-hashtag__description">
+                                                                Выложите пост в
+                                                                Инстаграм с
+                                                                фотографией
+                                                                вашей работы и
+                                                                хештегом{" "}
+                                                                <a>{hashtag}</a>{" "}
+                                                                отметьте наш
+                                                                аккаунт
+                                                                <a href="https://www.instagram.com/hobjob.ru">
+                                                                    @hobjob.ru
+                                                                </a>{" "}
+                                                                В конце месяца
+                                                                мы выберем
+                                                                лучшую работу и
+                                                                подарим Pro
+                                                                подписку. Также
+                                                                проверьте, чтобы
+                                                                ваш аккаунт был
+                                                                открыт, иначе мы
+                                                                не сможем
+                                                                оценить работу.
+                                                            </p>
+                                                        </div>
+													</div>
                                                 )
                                             ) : null}
                                         </div>

@@ -148,7 +148,7 @@ const CoursePage = ({
                                     </p>
 
                                     <a
-                                        href="/master/610bd1d248914c0390aa9a36"
+                                        href="/master/6131038eb7244e821cb17650"
                                         className="course-flax-bears-main-text-master"
                                     >
                                         <div
@@ -1217,7 +1217,7 @@ const CoursePage = ({
                                         продаёт своих медвежат в инстаграм
                                     </p>
                                     <a
-                                        href="/master/610bd1d248914c0390aa9a36"
+                                        href="/master/6131038eb7244e821cb17650"
                                         className="btn course-flax-bears-master__btn"
                                     >
                                         Перейти на страницу мастера
@@ -1231,7 +1231,7 @@ const CoursePage = ({
                                     }}
                                 ></div>
                                 <a
-                                    href="/master/610bd1d248914c0390aa9a36"
+                                    href="/master/6131038eb7244e821cb17650"
                                     className="btn course-flax-bears-master-media__btn"
                                 >
                                     Перейти на страницу мастера

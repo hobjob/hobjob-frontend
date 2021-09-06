@@ -21,7 +21,7 @@ const PassingVideo = ({
                 )}`}
                 height="100%"
 				width="100%"
-				style={{backgroundColor: "#ffffff"}}
+				style={{backgroundColor: "transparent", marginBottom: 0}}
                 thumbnail={`${process.env.REACT_APP_IMAGE_DOMEN}/${lessons[lessonIndex].image}`}
             />
         </div>
