@@ -1,52 +1,31 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
 
-import {fetchPaymentProSubscribeById} from "../redux/actions/payment";
+import {sendLogin} from "../redux/actions/login";
+import {sendCreateProSubscribePayment} from "../redux/actions/payment";
 
-import { PaymentProgressbar } from "../components/";
+import {PaymentProgressbar, LoginForm} from "../components/";
 
-const PaymentProSubscribe = ({
-    match: {
-        params: {number},
-    },
-}) => {
+const PaymentProSubscribeLogin = () => {
     const dispatch = useDispatch();
 
-    const {payment, isLoaded} = useSelector(({payment}) => payment);
-
     React.useEffect(() => {
-        dispatch(fetchPaymentProSubscribeById(number));
+        window.scrollTo(0, 0);
     }, []);
 
-    React.useEffect(() => {
-        if (isLoaded) {
-            if (payment.confirmation) {
-                const checkout = new window.YooMoneyCheckoutWidget({
-                    confirmation_token: payment.confirmation.confirmation_token,
-                    return_url: `${process.env.REACT_APP_DOMEN}/payment/pro/confirmation/${payment.paymentNumber}`,
+    const onSubmit = ({email, password}) => {
+        const functionSuccess = () => {
+            dispatch(sendCreateProSubscribePayment());
+        };
 
-                    customization: {
-                        colors: {
-                            controlPrimary: "#DD9E5E",
-                            background: "#F9F9F9",
-                        },
-                    },
-                    error_callback: function (error) {
-                        console.log(error);
-                    },
-                });
-
-                checkout.render("payment-form");
-            } else {
-                window.location.href = "/";
-            }
-        }
-    }, [isLoaded]);
+        return dispatch(sendLogin({email, password}, functionSuccess));
+    };
 
     return (
         <>
-            {isLoaded ? (
+            {!localStorage.getItem("accessToken") ? (
                 <>
                     <Helmet>
                         <title>Оформление Pro подписки (1 год) - HobJob</title>
@@ -54,12 +33,22 @@ const PaymentProSubscribe = ({
                     <section className="payment">
                         <div className="container">
                             <div className="payment-wrapper">
-                                <div className="payment-form-wrapper">
-                                    <PaymentProgressbar number={2} />
-                                    <div
-                                        className="payment-form"
-                                        id="payment-form"
-                                    ></div>
+                                <div className="payment-login-wrapper">
+                                    <PaymentProgressbar number={1} />
+
+                                    <LoginForm
+                                        onSubmit={onSubmit}
+                                        registerLink="/payment/pro/register"
+                                    />
+
+                                    <div className="reglog-bottom">
+                                        <Link
+                                            to="/go/password-recovery"
+                                            className="reglog-bottom__link"
+                                        >
+                                            Забыли пароль?
+                                        </Link>
+                                    </div>
                                 </div>
                                 <div className="payment-info">
                                     <h2 className="payment-info__title">
@@ -82,9 +71,11 @@ const PaymentProSubscribe = ({
                         </div>
                     </section>
                 </>
-            ) : null}
+            ) : (
+                (window.location.href = "/")
+            )}
         </>
     );
 };
 
-export default PaymentProSubscribe;
+export default PaymentProSubscribeLogin;

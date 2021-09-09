@@ -349,15 +349,48 @@ input:-webkit-autofill:active
 			top: -15px
 			font-size: 14px
 
-	&__state
-		user-select: none
-		cursor: pointer
-		font-size: 15px
-		color: $gray
+	&-state
 		position: absolute
 		right: 0
 		top: 50%
 		transform: translateY(-50%)
+
+		height: 18px
+		min-width: 70px
+		overflow: hidden
+
+		&__visible
+			position: absolute
+			right: 0
+			top: 50%
+			transform: translateY(-50%)
+			display: block
+
+			user-select: none
+			cursor: pointer
+			font-size: 15px
+			color: $gray
+			+transition
+
+			&.active
+				top: -100%
+
+		&__hidden
+			position: absolute
+			right: 0
+			top: 100%
+
+			display: block
+
+			user-select: none
+			cursor: pointer
+			font-size: 15px
+			color: $gray
+			+transition
+
+			&.active
+				top: 50%
+				transform: translateY(-50%)
 
 	&__error
 		display: block

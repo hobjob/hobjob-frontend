@@ -31,21 +31,24 @@ const RenderInput = ({
                 </label>
 
                 {type === "password" ? (
-                    passwordState ? (
+                    <div className="input-state">
                         <span
-                            className="input__state"
+                            className={`input-state__hidden ${
+                                passwordState ? "active" : ""
+                            }`}
                             onClick={setStatePasswordFunc}
                         >
                             Скрыть
-                        </span>
-                    ) : (
+                        </span>{" "}
                         <span
-                            className="input__state"
+                            className={`input-state__visible ${
+                                passwordState ? "active" : ""
+                            }`}
                             onClick={setStatePasswordFunc}
                         >
                             Показать
                         </span>
-                    )
+                    </div>
                 ) : null}
             </div>
 

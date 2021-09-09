@@ -5,6 +5,7 @@
 	justify-content: center
 
 	min-height: 100vh
+	padding: 75px 0
 	background-color: $backgroundGray
 
 	&-wrapper
@@ -13,14 +14,76 @@
 		align-items: center
 		flex-wrap: wrap
 
-	&-form
+	&-login-wrapper
+		display: flex
+		flex-direction: column
+		align-items: center
+		justify-content: center
+
+	&-progressbar
+		margin-bottom: 50px
+
+		width: 100%
+		display: flex
+		align-items: center
+		justify-content: center
+
+		&-item
+			display: flex
+			align-items: center
+
+			margin: 0 15px
+
+			&.active &__number
+				color: $mainColor
+				background-color: $lightMainColor
+
+			&.active &__title
+				color: $black
+
+			&__number
+				user-select: none
+				margin-right: 10px
+
+				border-radius: 50%
+				width: 30px
+				height: 30px
+
+				display: flex
+				justify-content: center
+				align-items: center
+
+				font-size: 15px
+				background-color: $borderGray
+				color: $gray
+
+			&__title
+				white-space: nowrap
+				font-size: 15px
+				user-select: none
+				color: $gray
+
+		&-line
+			width: 10%
+			height: 1px
+
+			background-color: $borderGray
+
+	&-form-wrapper
 		width: 50%
 
+	&-form
+		display: flex
+		justify-content: center
+		align-items: center
+		width: 100%
+		min-height: 300px
+
 	&-info
-		width: 450px
-		padding: 50px
+		width: 40%
+		padding: 35px
 		background-color: $white
-		+borderRadius
+		+borderRadiusBlock
 		+openAnimation
 
 		&__title
@@ -44,8 +107,6 @@
 
 				&:last-child
 					margin-bottom: 0
-
-				&:last-child
 					padding-bottom: 0
 					border: none
 
@@ -53,9 +114,9 @@
 					display: block
 					min-width: 75px
 					min-height: 75px
+					border-radius: 50%
 
 					+backgroundSetting
-					+borderRadius
 
 				&__title
 					font-size: 21px

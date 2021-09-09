@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import { Header, Footer } from './components/';
 
-import { Home, Cart, Shop, CoursePage, Magazine, MagazinePostPage, MasterCard, MastersAbout, Master, Pro, About, Err404, Login, Register, RepeatEmail, PasswordRecoveryEmail, PasswordRecoveryNewPassword, Confirmed, Training, PassingCourse, Cabinet, Referrals, PaymentCourses, PaymentCoursesConfirmation, PaymentCourseExtraLessons, PaymentCourseExtraLessonsConfirmation, PaymentProSubscribe, PaymentProSubscribeConfirmation, Policy, PublicOffer, Regulations } from './pages/';
+import { Home, Cart, Shop, CoursePage, Magazine, MagazinePostPage, MasterCard, MastersAbout, Master, Pro, About, Err404, Login, Register, RepeatEmail, PasswordRecoveryEmail, PasswordRecoveryNewPassword, Confirmed, Training, PassingCourse, Cabinet, Referrals, PaymentCoursesLogin, PaymentCoursesRegister, PaymentCourses, PaymentCoursesConfirmation, PaymentCourseExtraLessons, PaymentCourseExtraLessonsConfirmation, PaymentProSubscribeLogin, PaymentProSubscribeRegister, PaymentProSubscribe, PaymentProSubscribeConfirmation, Policy, PublicOffer, Regulations } from './pages/';
 
 dotenv.config()
 
@@ -19,7 +19,7 @@ const App = () => {
 
 					<Route path="/cart" render={() => <Cart />} exact />
 					<Route path="/shop" render={(props) => <Shop {...props} />} exact />
-					
+
 					<Route path="/course/:id" render={(props) => <CoursePage {...props} />} exact />
 
 					<Route path="/magazine" render={(props) => <Magazine {...props} />} exact />
@@ -30,12 +30,19 @@ const App = () => {
 					<Route path="/pro" render={() => <Pro />} exact />
 					<Route path="/about" render={() => <About />} exact />
 
+					{/* Payment */}
+					<Route path="/payment/courses/login" render={() => <PaymentCoursesLogin />} exact />
+					<Route path="/payment/courses/register" render={() => <PaymentCoursesRegister />} exact />
+
 					<Route path="/payment/courses/:number" render={(props) => <PaymentCourses {...props} />} exact />
 					<Route path="/payment/courses/confirmation/:number" render={(props) => <PaymentCoursesConfirmation {...props} />} exact />
 
 					<Route path="/payment/courses/extra-lessons/:number" render={(props) => <PaymentCourseExtraLessons {...props} />} exact />
 					<Route path="/payment/courses/extra-lessons/confirmation/:number" render={(props) => <PaymentCourseExtraLessonsConfirmation {...props} />} exact />
-					
+
+					<Route path="/payment/pro/login" render={() => <PaymentProSubscribeLogin />} exact />
+					<Route path="/payment/pro/register" render={() => <PaymentProSubscribeRegister />} exact />
+
 					<Route path="/payment/pro/:number" render={(props) => <PaymentProSubscribe {...props} />} exact />
 					<Route path="/payment/pro/confirmation/:number" render={(props) => <PaymentProSubscribeConfirmation {...props} />} exact />
 

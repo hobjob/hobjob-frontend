@@ -2,7 +2,7 @@ import { SubmissionError } from 'redux-form'
 
 import $api from '../../http/';
 
-export const sendLogin = (data) => (dispatch) => {
+export const sendLogin = (data, functionSuccess) => (dispatch) => {
 	dispatch({
 		type: "SET_SEND_LOGIN",
 		payload: true
@@ -11,7 +11,12 @@ export const sendLogin = (data) => (dispatch) => {
 	return $api.post('/login', data).then(({ data }) => {
 		localStorage.setItem("accessToken", data.accessToken)
 
-		window.location.href = "/go/training"
+		functionSuccess()
+
+		dispatch({
+			type: "SET_SEND_LOGIN",
+			payload: false
+		})
 	}).catch(({ response }) => {
 		dispatch({
 			type: "SET_SEND_LOGIN",

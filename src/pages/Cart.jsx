@@ -174,10 +174,10 @@ const Cart = () => {
                                                 </button>
                                             ) : (
                                                 <a
-                                                    href="/go/register?redirect=cart"
+                                                    href="/payment/courses/login"
                                                     className="btn-arrow cart-total__btn"
                                                 >
-                                                    Создать аккаунт
+                                                    Оформить заказ
                                                     <svg
                                                         width="31"
                                                         height="12"

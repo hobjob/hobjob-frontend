@@ -1,8 +1,9 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
+import moment from "moment";
 
 import {fetchUpdateUser} from "../../redux/actions/user";
-import { sendCreateProSubscribePayment } from "../../redux/actions/payment";
+import {sendCreateProSubscribePayment} from "../../redux/actions/payment";
 
 import {BtnLoader} from "../";
 
@@ -10,7 +11,7 @@ const CabinetUserProInfo = () => {
     const dispatch = useDispatch();
 
     const {
-        user: {pro, registrationPro, completionPro, autoPayment},
+        user: {pro, registrationPro, autoPayment},
     } = useSelector(({user}) => user);
     const {isSendProSubscribe} = useSelector(({payment}) => payment);
 
@@ -40,7 +41,9 @@ const CabinetUserProInfo = () => {
                             Завершится
                         </h4>
                         <p className="cabinet-block-pro-info-item__description">
-                            {completionPro}
+                            {moment(registrationPro, "DD.MM.YYYY, HH:mm")
+                                .add(1, "Y")
+                                .format("DD.MM.YYYY, HH:mm")}
                         </p>
                     </div>
 
@@ -59,9 +62,7 @@ const CabinetUserProInfo = () => {
                                     </button>
                                 </>
                             ) : (
-                                <button
-                                    className="btn-small-round disabled"
-                                >
+                                <button className="btn-small-round disabled">
                                     Отключен
                                 </button>
                             )}

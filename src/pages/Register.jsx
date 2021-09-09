@@ -1,19 +1,20 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
-import queryString from "query-string";
 
 import {RegisterForm} from "../components/";
 
 import {sendRegister} from "../redux/actions/register";
 
-const Register = ({location: {search}}) => {
+const Register = () => {
     const dispatch = useDispatch();
 
     const onSubmit = ({name, email, password}) => {
-        return dispatch(
-            sendRegister({name, email, password}, queryString.parse(search))
-        );
+		const functionSuccess = () => {
+            window.location.href = "/go/training/";
+		};
+		
+        return dispatch(sendRegister({name, email, password}, functionSuccess));
     };
 
     React.useEffect(() => {

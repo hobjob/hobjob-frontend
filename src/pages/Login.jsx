@@ -10,8 +10,12 @@ import {sendLogin} from "../redux/actions/login";
 const Login = () => {
     const dispatch = useDispatch();
 
-    const onSubmit = ({email, password}) => {
-        return dispatch(sendLogin({email, password}));
+	const onSubmit = ({ email, password }) => {
+		const functionSuccess = () => {
+			window.location.href = "/go/training/"
+		}
+
+        return dispatch(sendLogin({email, password}, functionSuccess));
     };
 
     React.useEffect(() => {

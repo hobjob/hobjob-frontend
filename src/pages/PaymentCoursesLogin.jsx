@@ -1,70 +1,56 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 
-import {fetchPaymentCoursesById} from "../redux/actions/payment";
 import {fetchCoursesArrayById} from "../redux/actions/courses";
+import {sendLogin} from "../redux/actions/login";
+import {sendCreateCoursesPayment} from "../redux/actions/payment";
 
-import {PaymentProgressbar, PaymentCourseBlock} from "../components/";
+import {
+    PaymentProgressbar,
+    PaymentCourseBlock,
+    LoginForm,
+} from "../components/";
 
-const PaymentCourses = ({
-    match: {
-        params: {number},
-    },
-}) => {
+const PaymentCoursesLogin = () => {
     const dispatch = useDispatch();
 
     const {itemsArrayById, isLoadedCoursesArrayById} = useSelector(
         ({courses}) => courses
     );
-    const {payment, isLoaded} = useSelector(({payment}) => payment);
+    const {cart} = useSelector(({cart}) => cart);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
 
-        dispatch(fetchPaymentCoursesById(number));
+        if (Object.keys(cart).length) {
+            dispatch(fetchCoursesArrayById(cart));
+        } else {
+            window.location.href = "/";
+        }
     }, []);
 
-    React.useEffect(() => {
-        if (isLoaded) {
-            const newObj = {};
+    const onSubmit = ({email, password}) => {
+        const functionSuccess = () => {
+            const order = [];
 
-            payment.order.map((id) => {
-                newObj[id] = {_id: id};
-            });
+            Object.keys(cart).map((key) => order.push(cart[key]._id));
 
-            dispatch(fetchCoursesArrayById(newObj));
-        }
-    }, [isLoaded]);
+            dispatch(
+                sendCreateCoursesPayment({
+                    order,
+                    refId: localStorage.getItem("refId"),
+                })
+            );
+        };
 
-    React.useEffect(() => {
-        if (isLoaded) {
-            if (payment.confirmation) {
-                const checkout = new window.YooMoneyCheckoutWidget({
-                    confirmation_token: payment.confirmation.confirmation_token,
-                    return_url: `${process.env.REACT_APP_DOMEN}/payment/courses/confirmation/${payment.paymentNumber}`,
-
-                    customization: {
-                        colors: {
-                            controlPrimary: "#DD9E5E",
-                            background: "#F9F9F9",
-                        },
-                    },
-                    error_callback: function (error) {
-                        console.log(error);
-                    },
-                });
-
-                checkout.render("payment-form");
-            } else {
-                window.location.href = "/";
-            }
-        }
-    }, [isLoaded]);
+        return dispatch(sendLogin({email, password}, functionSuccess));
+    };
 
     return (
         <>
-            {isLoaded ? (
+            {!localStorage.getItem("accessToken") ? (
                 <>
                     <Helmet>
                         <title>Покупка (курсы) - HobJob</title>
@@ -72,14 +58,24 @@ const PaymentCourses = ({
                     <section className="payment">
                         <div className="container">
                             <div className="payment-wrapper">
-                                <div className="payment-form-wrapper">
-                                    <PaymentProgressbar number={2} />
-                                    <div
-                                        className="payment-form"
-                                        id="payment-form"
-                                    ></div>
-								</div>
-								
+                                <div className="payment-login-wrapper">
+                                    <PaymentProgressbar number={1} />
+
+                                    <LoginForm
+                                        onSubmit={onSubmit}
+                                        registerLink="/payment/courses/register"
+                                    />
+
+                                    <div className="reglog-bottom">
+                                        <Link
+                                            to="/go/password-recovery"
+                                            className="reglog-bottom__link"
+                                        >
+                                            Забыли пароль?
+                                        </Link>
+                                    </div>
+                                </div>
+
                                 {isLoadedCoursesArrayById ? (
                                     <div className="payment-info">
                                         <h2 className="payment-info__title">
@@ -109,9 +105,11 @@ const PaymentCourses = ({
                         </div>
                     </section>
                 </>
-            ) : null}
+            ) : (
+                (window.location.href = "/")
+            )}
         </>
     );
 };
 
-export default PaymentCourses;
+export default PaymentCoursesLogin;

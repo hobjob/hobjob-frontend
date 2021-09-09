@@ -2,7 +2,7 @@ import { SubmissionError } from 'redux-form'
 
 import $api from '../../http/';
 
-export const sendRegister = (data, redirect = {}) => (dispatch) => {
+export const sendRegister = (data, functionSuccess) => (dispatch) => {
 	dispatch({
 		type: "SET_SEND_REGISTER",
 		payload: true
@@ -11,12 +11,12 @@ export const sendRegister = (data, redirect = {}) => (dispatch) => {
 	return $api.post(`/register`, data).then(({ data }) => {
 		localStorage.setItem("accessToken", data.accessToken)
 
-		if (!Object.keys(redirect).length) {
-			window.location.href = "/go/training"
-		} else {
-			window.location.href = `/${redirect.redirect}`
-		}
+		functionSuccess()
 
+		dispatch({
+			type: "SET_SEND_REGISTER",
+			payload: false
+		})
 	}).catch(({ response }) => {
 		dispatch({
 			type: "SET_SEND_REGISTER",

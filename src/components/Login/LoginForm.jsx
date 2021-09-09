@@ -1,16 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import {useSelector} from 'react-redux';
+import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 import {Field, reduxForm} from "redux-form";
 
 import {RenderInput, BtnLoader} from "../";
 
 import validate from "./validate";
 
-let LoginForm = ({handleSubmit}) => {
+let LoginForm = ({handleSubmit, registerLink}) => {
     const [passwordState, setPasswordState] = React.useState(false);
 
-	const {isSend} = useSelector(({login}) => login);
+    const {isSend} = useSelector(({login}) => login);
 
     const onClickSetPasswordState = () => {
         setPasswordState(!passwordState);
@@ -20,7 +20,10 @@ let LoginForm = ({handleSubmit}) => {
         <form className="reglog-block" onSubmit={handleSubmit}>
             <div className="reglog-block-title">
                 <h2 className="reglog-block__title">Войти</h2>
-                <Link to="/go/register" className="reglog-block__subtitle">
+                <Link
+                    to={registerLink ? registerLink : "/go/register"}
+                    className="reglog-block__subtitle"
+                >
                     Зарегистрироваться
                 </Link>
             </div>
@@ -49,9 +52,7 @@ let LoginForm = ({handleSubmit}) => {
                     <BtnLoader />
                 </button>
             ) : (
-                <button className="btn reglog-block__btn">
-                    Войти
-                </button>
+                <button className="btn reglog-block__btn">Войти</button>
             )}
         </form>
     );

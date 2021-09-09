@@ -113,6 +113,7 @@ export { default as ReferralsPartnersItem } from "./Referrals/ReferralsPartnersI
 
 // Payment
 export { default as PaymentCourseBlock } from "./Payment/PaymentCourseBlock"
+export { default as PaymentProgressbar } from "./Payment/PaymentProgressbar"
 
 // Policy
 export { default as PolicyBlock } from "./Policy/PolicyBlock"

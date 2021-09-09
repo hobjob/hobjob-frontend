@@ -62,16 +62,20 @@ export { default as Cabinet } from "./Cabinet"
 export { default as Referrals } from "./Referrals"
 
 // PaymentCourses
+export { default as PaymentCoursesLogin } from "./PaymentCoursesLogin"
+export { default as PaymentCoursesRegister } from "./PaymentCoursesRegister"
 export { default as PaymentCourses } from "./PaymentCourses"
 export { default as PaymentCoursesConfirmation } from "./PaymentCoursesConfirmation"
+
+// PaymentProSubscribe
+export { default as PaymentProSubscribeLogin } from "./PaymentProSubscribeLogin"
+export { default as PaymentProSubscribeRegister } from "./PaymentProSubscribeRegister"
+export { default as PaymentProSubscribe } from "./PaymentProSubscribe"
+export { default as PaymentProSubscribeConfirmation } from "./PaymentProSubscribeConfirmation"
 
 // PaymentCourseExtraLessons
 export { default as PaymentCourseExtraLessons } from "./PaymentCourseExtraLessons"
 export { default as PaymentCourseExtraLessonsConfirmation } from "./PaymentCourseExtraLessonsConfirmation"
-
-// PaymentProSubscribe
-export { default as PaymentProSubscribe } from "./PaymentProSubscribe"
-export { default as PaymentProSubscribeConfirmation } from "./PaymentProSubscribeConfirmation"
 
 // Policy
 export { default as Policy } from "./Policy"

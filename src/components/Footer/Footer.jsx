@@ -187,6 +187,14 @@ const Footer = () => {
                             </Link>
                         </div>
                     </div>
+                    <div className="footer-block-bottom-bottom">
+                        <span className="footer-block-bottom-bottom__span">
+                            ИНН 614319107277
+                        </span>
+                        <span className="footer-block-bottom-bottom__span">
+                            НАГИБИНА АЛЕКСАНДРА ПЕТРОВНА
+                        </span>
+                    </div>
                 </div>
             </div>
         </footer>

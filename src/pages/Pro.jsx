@@ -60,7 +60,7 @@ const Pro = () => {
                             )
                         ) : (
                             <a
-                                href="/go/register?redirect=pro"
+                                href="/payment/pro/login"
                                 className={`btn-small-round pro__btn ${
                                     visibleButton ? "active" : ""
                                 }`}
@@ -114,7 +114,7 @@ const Pro = () => {
                                     )
                                 ) : (
                                     <a
-                                        href="/go/register?redirect=pro"
+                                        href="/payment/pro/login"
                                         className="btn pro-main-text__btn"
                                     >
                                         Вступить

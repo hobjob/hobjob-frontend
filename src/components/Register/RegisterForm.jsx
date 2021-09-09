@@ -7,7 +7,7 @@ import {RenderInput, BtnLoader} from "../";
 
 import validate from "./validate";
 
-let RegisterForm = ({handleSubmit}) => {
+let RegisterForm = ({handleSubmit, loginLink}) => {
     const [passwordState, setPasswordState] = React.useState(false);
 
     const {isSend} = useSelector(({register}) => register);
@@ -22,7 +22,10 @@ let RegisterForm = ({handleSubmit}) => {
                 <h2 className="reglog-block__title">
                     Зарегистрируйтесь в HobJob
                 </h2>
-                <Link to="/go/login" className="reglog-block__subtitle">
+                <Link
+                    to={loginLink ? loginLink : "/go/login"}
+                    className="reglog-block__subtitle"
+                >
                     Войти
                 </Link>
             </div>
@@ -37,7 +40,7 @@ let RegisterForm = ({handleSubmit}) => {
             <div className="input reglog-block-input">
                 <Field
                     component={RenderInput}
-                    type="email"
+                    type="text"
                     name="email"
                     label="Email"
                 />
