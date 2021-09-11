@@ -110,7 +110,18 @@ const CoursePage = ({
                     <Helmet>
                         <title>{itemById.title} - HobJob</title>
                     </Helmet>
-                    {addState || courses[id] ? null : (
+                    {addState ? (
+                        courses[id] ? null : (
+                            <a
+                                href="/cart/"
+                                className={`btn-small-round-regular course-page__btn ${
+                                    visibleButton ? "active" : ""
+                                }`}
+                            >
+                                Перейти в корзину
+                            </a>
+                        )
+                    ) : courses[id] ? null : (
                         <button
                             className={`btn-small-round buy-btn course-page__btn ${
                                 visibleButton ? "active" : ""
