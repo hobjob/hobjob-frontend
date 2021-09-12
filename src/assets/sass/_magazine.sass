@@ -48,12 +48,16 @@
 			padding: 0 15px
 			+openAnimation
 
+			&:hover &-cover
+				transform: scale3d(1.03, 1.03, 1.03)
+
 			&-cover
 				width: 45%
 				min-height: 100%
 
 				+backgroundSetting
-				+borderRadius
+				+borderRadiusBlock
+				+transition
 
 			&-text
 				width: 50%
@@ -139,12 +143,16 @@
 		border-bottom: 1px solid $borderGray
 		+openAnimation
 
+		&:hover &-cover
+			transform: scale3d(1.03, 1.03, 1.03)
+
 		&-cover
 			width: 100%
 			min-height: 250px
 
 			+backgroundSetting
-			+borderRadius
+			+borderRadiusBlock
+			+transition
 
 		&-text
 			margin-top: 25px

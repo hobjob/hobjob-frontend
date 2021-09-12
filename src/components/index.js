@@ -52,6 +52,21 @@ export { default as ShopFiltersBlockSale } from "./Shop/ShopFilters/ShopFiltersB
 export { default as ShopFiltersBlockMasters } from "./Shop/ShopFilters/ShopFiltersBlockMasters"
 export { default as ShopFiltersBlockTimes } from "./Shop/ShopFilters/ShopFiltersBlockTimes"
 
+// CoursePage
+export { default as CoursePageMain } from "./CoursePage/CoursePageMain"
+export { default as CoursePageAbout } from "./CoursePage/CoursePageAbout"
+export { default as CoursePageFor } from "./CoursePage/CoursePageFor"
+export { default as CoursePageSkills } from "./CoursePage/CoursePageSkills"
+export { default as CoursePageResult } from "./CoursePage/CoursePageResult"
+export { default as CoursePageProgramm } from "./CoursePage/CoursePageProgramm"
+export { default as CoursePageMiddleIcon } from "./CoursePage/CoursePageMiddleIcon"
+export { default as CoursePageMaterials } from "./CoursePage/CoursePageMaterials"
+export { default as CoursePageMaster } from "./CoursePage/CoursePageMaster"
+export { default as CoursePageContest } from "./CoursePage/CoursePageContest"
+export { default as CoursePageChat } from "./CoursePage/CoursePageChat"
+export { default as CoursePageWork } from "./CoursePage/CoursePageWork"
+export { default as CoursePageFaq } from "./CoursePage/CoursePageFaq"
+
 // About
 export { default as AboutSection } from "./About/AboutSection"
 

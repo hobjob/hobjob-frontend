@@ -68,11 +68,12 @@ const ShopBlock = React.memo(
                             <span className="shop-block-top-text__time">
                                 {checkDeclension}
                             </span>
-                            {categories[category] ? (
-                                <span className="shop-block-top-text__category">
-                                    {categories[category].title}
-                                </span>
-                            ) : null}
+
+                            <span className="shop-block-top-text__category">
+                                {categories[category]
+                                    ? categories[category].title
+                                    : null}
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -144,30 +145,24 @@ const ShopBlock = React.memo(
                             )}
                         </div>
                     )}
-                    {!addState ? (
-                        isBuy ? (
-                            <button className="btn disabled shop-block-bottom__btn">
-                                Приобретен
-                            </button>
-                        ) : (
-                            <button
-                                className="btn shop-block-bottom__btn"
-                                onClick={onClickAdd}
-                            >
-                                Добавить в корзину
-                            </button>
-                        )
-                    ) : isBuy ? (
+                    {isBuy ? (
                         <button className="btn disabled shop-block-bottom__btn">
                             Приобретен
                         </button>
-                    ) : (
+                    ) : addState ? (
                         <Link
                             to="/cart"
                             className="btn-regular shop-block-bottom__btn"
                         >
                             Перейти в корзину
                         </Link>
+                    ) : (
+                        <button
+                            className="btn shop-block-bottom__btn"
+                            onClick={onClickAdd}
+                        >
+                            Добавить в корзину
+                        </button>
                     )}
                 </div>
             </div>
