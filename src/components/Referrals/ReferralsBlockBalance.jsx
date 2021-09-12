@@ -1,4 +1,5 @@
 import React from "react";
+import NumberFormat from "react-number-format";
 
 const ReferralBlockBalance = ({refBalance}) => {
     return (
@@ -7,7 +8,13 @@ const ReferralBlockBalance = ({refBalance}) => {
                 Вы заработали
             </p>
             <h3 className="referrals-info-block-balance__title">
-                {refBalance}₽
+                <NumberFormat
+                    value={refBalance}
+                    displayType={"text"}
+                    thousandSeparator={" "}
+                    renderText={(value) => value}
+                />
+                ₽
             </h3>
             <button className="btn referrals-info-block-balance__btn">
                 Вывести

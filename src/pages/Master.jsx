@@ -23,7 +23,7 @@ const Master = () => {
                                     <div className="master-wrapper">
                                         <div className="master-text">
                                             <h2 className="title master-text__title">
-                                                Здравствуйте, {user.name}!
+                                                Здравствуйте, {user.name}
                                             </h2>
                                             <p className="master-text__description">
                                                 Здесь будут отображаться продажи

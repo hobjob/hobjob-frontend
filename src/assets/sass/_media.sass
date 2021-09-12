@@ -810,7 +810,10 @@
 	// referrals
 	.referrals
 		&-partners
-			&-subinfo, &-item
+			&-subinfo
+				display: none
+
+			&-item
 				flex-direction: column
 				border: none
 				padding: 35px
@@ -1013,16 +1016,9 @@
 	// payment
 	.payment
 		&-progressbar
-			width: auto
-			flex-direction: column
-
-			&-item
-				margin: 15px 0 15px 0
-
-			&-line
-				display: block
-				width: 1px
-				height: 35px
+			width: 90%
+			justify-content: flex-start
+			overflow: auto
 
 		&-info
 			padding: 35px
@@ -1201,7 +1197,6 @@
 
 				&__description
 					font-size: 21px
-
 
 	// pro
 	.pro
