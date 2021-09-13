@@ -1,6 +1,8 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 
+import {fetchCourses} from "../../redux/actions/courses";
+
 import {CategoriesItem, CategoriesItemLoader} from "../";
 
 const CategoriesSection = () => {
@@ -9,7 +11,13 @@ const CategoriesSection = () => {
     const {items, isLoadedAllCategories} = useSelector(
         ({categories}) => categories
     );
-    const courses = useSelector(({courses}) => courses.itemsSection);
+    const courses = useSelector(({courses}) => courses.items);
+
+    React.useEffect(() => {
+        if (!courses.length) {
+            dispatch(fetchCourses());
+        }
+    }, []);
 
     //склонение ["курс", "курса", "курсов"]
     const checkDeclension = (num, title) => {
@@ -28,7 +36,7 @@ const CategoriesSection = () => {
         }
 
         return result;
-	};
+    };
 
     return (
         <section className="categories">

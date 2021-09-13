@@ -64,9 +64,15 @@ const courses = (state = initialState, action) => {
 	}
 
 	if (action.type === "SET_COURSES_SECTION") {
+		const newObj = {}
+
+		action.payload.map((item) => {
+			newObj[item._id] = item
+		})
+
 		return {
 			...state,
-			itemsSection: action.payload,
+			itemsSection: newObj,
 			isLoadedSectionCourses: true,
 		}
 	}
@@ -222,6 +228,13 @@ const courses = (state = initialState, action) => {
 		return {
 			...state,
 			isFetchAllCourses: action.payload,
+		}
+	}
+
+	if (action.type === "SET_LOADED_COURSES_ARRAY_BY_ID") {
+		return {
+			...state,
+			isLoadedCoursesArrayById: action.payload,
 		}
 	}
 

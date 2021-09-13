@@ -32,16 +32,18 @@ const PaymentCoursesLogin = () => {
     }, []);
 
     const onSubmit = ({email, password}) => {
-        const functionSuccess = () => {
+        const functionSuccess = (courses) => {
             const order = [];
-
             Object.keys(cart).map((key) => order.push(cart[key]._id));
 
             dispatch(
-                sendCreateCoursesPayment({
-                    order,
-                    refId: localStorage.getItem("refId"),
-                })
+                sendCreateCoursesPayment(
+                    {
+                        order,
+                        refId: localStorage.getItem("refId"),
+                    },
+                    courses
+                )
             );
         };
 

@@ -11,7 +11,7 @@ export const sendLogin = (data, functionSuccess) => (dispatch) => {
 	return $api.post('/login', data).then(({ data }) => {
 		localStorage.setItem("accessToken", data.accessToken)
 
-		functionSuccess()
+		functionSuccess(data.user.courses)
 
 		dispatch({
 			type: "SET_SEND_LOGIN",

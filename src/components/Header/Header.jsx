@@ -6,13 +6,14 @@ import {sendLogout} from "../../redux/actions/logout";
 import {fetchUser} from "../../redux/actions/user";
 import {fetchMasters} from "../../redux/actions/masters";
 import {fetchCategories} from "../../redux/actions/categories";
+import {removeCourseCart} from "../../redux/actions/cart";
 
 import {HeaderModalMenu} from "../";
 
 const Header = () => {
     const dispatch = useDispatch();
 
-    const {user, isLoaded} = useSelector(({user}) => user);
+    const {user, courses, isLoaded} = useSelector(({user}) => user);
     const masters = useSelector(({masters}) => masters.items);
     const categories = useSelector(({categories}) => categories.items);
     const {cart} = useSelector(({cart}) => cart);
@@ -44,6 +45,16 @@ const Header = () => {
             dispatch(fetchCategories());
         }
     }, []);
+
+    React.useEffect(() => {
+        if (isLoaded) {
+            Object.keys(cart).map((key) => {
+				if (courses[key]) {
+                    dispatch(removeCourseCart(key));
+                }
+            });
+        }
+    }, [isLoaded]);
 
     const toggleUserMenu = () => {
         setHeaderUserMenuAnimateClose(true);

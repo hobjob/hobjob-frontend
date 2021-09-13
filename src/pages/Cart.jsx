@@ -26,13 +26,15 @@ const Cart = () => {
     );
 
     const {isSendCourses} = useSelector(({payment}) => payment);
-    const {user, isLoaded} = useSelector(({user}) => user);
+    const {user, courses, isLoaded} = useSelector(({user}) => user);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
-
-        dispatch(fetchCoursesArrayById(cart));
     }, []);
+
+    React.useEffect(() => {
+        dispatch(fetchCoursesArrayById(cart));
+    }, [Object.keys(cart).length]);
 
     let totalPrice = 0;
 
@@ -42,14 +44,19 @@ const Cart = () => {
 
     const createPayment = () => {
         const order = [];
+        const coursesNew = [];
 
         Object.keys(cart).map((key) => order.push(cart[key]._id));
+        Object.keys(courses).map((key) => coursesNew.push({...courses[key]}));
 
         dispatch(
-            sendCreateCoursesPayment({
-                order,
-                refId: localStorage.getItem("refId"),
-            })
+            sendCreateCoursesPayment(
+                {
+                    order,
+                    refId: localStorage.getItem("refId"),
+                },
+                coursesNew
+            )
         );
     };
 
