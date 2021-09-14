@@ -5,7 +5,7 @@ import {Helmet} from "react-helmet";
 import {fetchPaymentCourseExtraLessonsById} from "../redux/actions/payment";
 import {fetchCourseById} from "../redux/actions/courses";
 
-import {PaymentCourseBlock} from "../components/";
+import {PaymentCourseBlock, Loader} from "../components/";
 
 const PaymentCourseExtraLessons = ({
     match: {
@@ -78,7 +78,9 @@ const PaymentCourseExtraLessons = ({
                         </div>
                     </section>
                 </>
-            ) : null}
+            ) : (
+                <Loader />
+            )}
         </>
     );
 };

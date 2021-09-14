@@ -11,7 +11,7 @@ export const sendRegister = (data, functionSuccess) => (dispatch) => {
 	return $api.post(`/register`, data).then(({ data }) => {
 		localStorage.setItem("accessToken", data.accessToken)
 
-		functionSuccess()
+		functionSuccess(data.user)
 
 		dispatch({
 			type: "SET_SEND_REGISTER",

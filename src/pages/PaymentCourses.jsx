@@ -5,7 +5,7 @@ import {Helmet} from "react-helmet";
 import {fetchPaymentCoursesById} from "../redux/actions/payment";
 import {fetchCoursesArrayById} from "../redux/actions/courses";
 
-import {PaymentProgressbar, PaymentCourseBlock} from "../components/";
+import {PaymentProgressbar, PaymentCourseBlock, Loader} from "../components/";
 
 const PaymentCourses = ({
     match: {
@@ -78,8 +78,8 @@ const PaymentCourses = ({
                                         className="payment-form"
                                         id="payment-form"
                                     ></div>
-								</div>
-								
+                                </div>
+
                                 {isLoadedCoursesArrayById ? (
                                     <div className="payment-info">
                                         <h2 className="payment-info__title">
@@ -109,7 +109,9 @@ const PaymentCourses = ({
                         </div>
                     </section>
                 </>
-            ) : null}
+            ) : (
+                <Loader />
+            )}
         </>
     );
 };

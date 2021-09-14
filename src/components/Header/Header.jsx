@@ -33,7 +33,7 @@ const Header = () => {
         document.body.addEventListener("click", handHeaderModalMenu);
         document.body.addEventListener("click", handHeaderUserMenu);
 
-        if (!Object.keys(user).length) {
+        if (!Object.keys(user).length && localStorage.getItem("accessToken")) {
             dispatch(fetchUser());
         }
 

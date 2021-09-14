@@ -4,7 +4,7 @@ import {Helmet} from "react-helmet";
 
 import {fetchPaymentProSubscribeById} from "../redux/actions/payment";
 
-import { PaymentProgressbar } from "../components/";
+import {PaymentProgressbar, Loader} from "../components/";
 
 const PaymentProSubscribe = ({
     match: {
@@ -82,7 +82,9 @@ const PaymentProSubscribe = ({
                         </div>
                     </section>
                 </>
-            ) : null}
+            ) : (
+                <Loader />
+            )}
         </>
     );
 };

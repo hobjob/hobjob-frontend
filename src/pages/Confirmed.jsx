@@ -3,6 +3,8 @@ import {useDispatch} from "react-redux";
 
 import {fetchConfirmedUser} from "../redux/actions/user";
 
+import { Loader } from "../components/";
+
 const Confirmed = ({
     match: {
         params: {hash},
@@ -14,7 +16,11 @@ const Confirmed = ({
         dispatch(fetchConfirmedUser(hash));
     }, []);
 
-    return null;
+    return (
+        <div className="loader-wrapper">
+            <Loader />
+        </div>
+    );
 };
 
 export default Confirmed;

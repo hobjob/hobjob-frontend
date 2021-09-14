@@ -7,15 +7,15 @@ const Loader = () => {
             style={{
                 display: "flex",
                 justifyContent: "center",
-                height: "300px",
+                height: "400px",
                 alignItems: "center",
                 width: "100%",
             }}
         >
             <ContentLoader
                 title="Загрузка"
-                viewBox="0 0 400 150"
-                height={150}
+                viewBox="0 0 400 200"
+                height={200}
                 width="100%"
                 speed={2}
                 backgroundColor="#E6E5E5"

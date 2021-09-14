@@ -32,7 +32,7 @@ const PaymentCoursesLogin = () => {
     }, []);
 
     const onSubmit = ({email, password}) => {
-        const functionSuccess = (courses) => {
+        const functionSuccess = (user) => {
             const order = [];
             Object.keys(cart).map((key) => order.push(cart[key]._id));
 
@@ -42,7 +42,7 @@ const PaymentCoursesLogin = () => {
                         order,
                         refId: localStorage.getItem("refId"),
                     },
-                    courses
+                    user
                 )
             );
         };

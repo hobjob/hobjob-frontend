@@ -11,13 +11,15 @@ export const fetchPaymentCoursesById = (id) => (dispatch) => {
 	})
 }
 
-export const sendCreateCoursesPayment = (data, courses) => (dispatch) => {
+export const sendCreateCoursesPayment = (data, user) => (dispatch) => {
 	dispatch({
 		type: "SET_SEND_COURSES_PAYMENT",
 		payload: true,
 	})
 
 	const { order, refId } = data
+	const { courses } = user
+	
 	let userCoursesArr = Object.keys(courses).map((key) => courses[key].courseId);
 
 	let newOrder = [];
@@ -36,6 +38,7 @@ export const sendCreateCoursesPayment = (data, courses) => (dispatch) => {
 		window.location.href = "/go/training/"
 	} else {
 		$api.post(`/payment/courses`, { order: newOrder, refId: refId }).then(({ data }) => {
+			localStorage.removeItem("cart")
 			window.location.href = `/payment/courses/${data.paymentNumber}`
 		})
 	}
@@ -43,7 +46,6 @@ export const sendCreateCoursesPayment = (data, courses) => (dispatch) => {
 
 export const sendConfirmationCoursesPayment = (paymentNumber) => (dispatch) => {
 	$api.get(`/payment/courses/confirmation/${paymentNumber}`).then(() => {
-		localStorage.removeItem("cart")
 		window.location.href = `/go/training`
 	}).catch(() => {
 		window.location.href = `/go/training`
@@ -91,11 +93,15 @@ export const fetchPaymentProSubscribeById = (id) => (dispatch) => {
 	})
 }
 
-export const sendCreateProSubscribePayment = () => (dispatch) => {
+export const sendCreateProSubscribePayment = ({ pro }) => (dispatch) => {
 	dispatch({
 		type: "SET_SEND_PRO_SUBSCRIBE_PAYMENT",
 		payload: true,
 	})
+
+	if (pro) {
+		window.location.href = `/go/cabinet`
+	}
 
 	$api.get(`/payment/pro`).then(({ data }) => {
 		window.location.href = `/payment/pro/${data.paymentNumber}`

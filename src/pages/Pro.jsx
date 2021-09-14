@@ -27,7 +27,7 @@ const Pro = () => {
     }, []);
 
     const createPayment = () => {
-        dispatch(sendCreateProSubscribePayment());
+        dispatch(sendCreateProSubscribePayment(user));
     };
 
     return (

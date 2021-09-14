@@ -16,8 +16,8 @@ const PaymentProSubscribeRegister = () => {
     }, []);
 
     const onSubmit = ({name, email, password}) => {
-        const functionSuccess = () => {
-            dispatch(sendCreateProSubscribePayment());
+        const functionSuccess = (user) => {
+            dispatch(sendCreateProSubscribePayment(user));
         };
 
         return dispatch(sendRegister({name, email, password}, functionSuccess));

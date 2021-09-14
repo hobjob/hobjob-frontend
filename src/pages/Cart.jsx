@@ -55,7 +55,7 @@ const Cart = () => {
                     order,
                     refId: localStorage.getItem("refId"),
                 },
-                coursesNew
+                {courses: coursesNew}
             )
         );
     };

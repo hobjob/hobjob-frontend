@@ -10,7 +10,9 @@ import {ShopBlock, Loader} from "../";
 const ShopSection = ({title}) => {
     const dispatch = useDispatch();
 
-    const {user, courses, isLoaded} = useSelector(({user}) => user);
+    const [visibleSection, setVisibleSection] = React.useState(true);
+
+    const {user, courses} = useSelector(({user}) => user);
     const {itemsSection, isLoadedSectionCourses} = useSelector(
         ({courses}) => courses
     );
@@ -31,17 +33,22 @@ const ShopSection = ({title}) => {
     }, []);
 
     React.useEffect(() => {
-        if (isLoadedSectionCourses && isLoaded) {
-            Object.keys(itemsSection).map((key) => {
-                if (
-                    courses[itemsSection[key]._id] ||
-                    cart[itemsSection[key]._id]
-                ) {
-                    delete itemsSection[key];
-                }
-            });
+        if (
+            document.querySelectorAll(".shop-block").length === 0 &&
+            isLoadedSectionCourses &&
+            isLoadedMasters &&
+            isLoadedAllCategories
+        ) {
+            setVisibleSection(false);
+        } else {
+            setVisibleSection(true);
         }
-    }, [isLoadedSectionCourses, isLoaded]);
+    }, [
+        document.querySelectorAll(".shop-block").length,
+        isLoadedSectionCourses,
+        isLoadedMasters,
+        isLoadedAllCategories,
+    ]);
 
     const onClickAddCourseCart = (obj) => {
         dispatch(addCourseCart(obj));
@@ -71,7 +78,7 @@ const ShopSection = ({title}) => {
             {isLoadedSectionCourses &&
             isLoadedMasters &&
             isLoadedAllCategories ? (
-                Object.keys(itemsSection).length ? (
+                visibleSection ? (
                     <section className="shop-section">
                         <div className="container">
                             <div className="shop-section-wrapper">
@@ -80,30 +87,36 @@ const ShopSection = ({title}) => {
                                 </h2>
                                 <div className="shop-section-block-wrapper">
                                     {Object.keys(itemsSection).map(
-                                        (key, index) => (
-                                            <ShopBlock
-                                                {...itemsSection[key]}
-                                                onClickAddCourseCart={
-                                                    onClickAddCourseCart
-                                                }
-                                                checkDeclension={checkDeclension(
-                                                    itemsSection[key]
-                                                        .transitTime,
-                                                    ["час", "часа", "часов"]
-                                                )}
-                                                pro={user.pro}
-                                                proPrice={
-                                                    itemsSection[key].price -
-                                                    (itemsSection[key].price /
-                                                        100) *
-                                                        20
-                                                }
-                                                cartItems={cart}
-                                                key={`shop-section-block-${index}`}
-                                                masters={masters}
-                                                categories={categories}
-                                            />
-                                        )
+                                        (key, index) =>
+                                            courses[itemsSection[key]._id] ||
+                                            cart[
+                                                itemsSection[key]._id
+                                            ] ? null : (
+                                                <ShopBlock
+                                                    {...itemsSection[key]}
+                                                    onClickAddCourseCart={
+                                                        onClickAddCourseCart
+                                                    }
+                                                    checkDeclension={checkDeclension(
+                                                        itemsSection[key]
+                                                            .transitTime,
+                                                        ["час", "часа", "часов"]
+                                                    )}
+                                                    pro={user.pro}
+                                                    proPrice={
+                                                        itemsSection[key]
+                                                            .price -
+                                                        (itemsSection[key]
+                                                            .price /
+                                                            100) *
+                                                            20
+                                                    }
+                                                    cartItems={cart}
+                                                    key={`shop-section-block-${index}`}
+                                                    masters={masters}
+                                                    categories={categories}
+                                                />
+                                            )
                                     )}
                                 </div>
 

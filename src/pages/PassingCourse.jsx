@@ -23,6 +23,10 @@ import {
     PassingVideo,
     PassingMaterials,
     PassingTimecodes,
+    PassingCertificate,
+    PassingPro,
+    PassingHashtag,
+    PassingChat,
 } from "../components/";
 
 import Err404 from "./Err404";
@@ -181,6 +185,19 @@ const PassingCourse = ({
                                                 />
                                             </div>
 
+                                            {!courses[courseId].lessons[
+                                                lessonIndex - 1
+                                            ] ? (
+                                                <div className="passing-bottom-block">
+                                                    <PassingChat
+                                                        chatUrl={
+                                                            courses[courseId]
+                                                                .chatUrl
+                                                        }
+                                                    />
+                                                </div>
+                                            ) : null}
+
                                             {(!courses[courseId].lessons[
                                                 lessonIndex + 1
                                             ] &&
@@ -193,153 +210,38 @@ const PassingCourse = ({
                                                 courses[courseId].lessons[
                                                     lessonIndex + 1
                                                 ].extraLesson) ? (
-                                                user.pro ? (
-                                                    <div className="passing-bottom-block">
-                                                        <div className="passing-certificate">
-                                                            <p className="subtitle passing-certificate__subtitle">
-                                                                Сертификат
-                                                            </p>
-                                                            <h4 className="passing-certificate__title">
-                                                                Вы успешно
-                                                                прошли курс «
-                                                                {
-                                                                    courses[
-                                                                        courseId
-                                                                    ].title
-                                                                }
-                                                                »
-                                                            </h4>
-
-                                                            <button
-                                                                className="btn passing-certificate__btn"
-                                                                onClick={
-                                                                    getCertificate
-                                                                }
-                                                            >
-                                                                Получить
-                                                                сертификат
-                                                            </button>
-                                                        </div>
-
-                                                        <div className="passing-hashtag">
-                                                            <h3 className="passing-hashtag__title">
-                                                                Участвуйте в
-                                                                Конкурсе на
-                                                                лучшую работу
-                                                            </h3>
-
-                                                            <p className="passing-hashtag__description">
-                                                                Выложите пост в
-                                                                Инстаграм с
-                                                                фотографией
-                                                                вашей работы и
-                                                                хештегом{" "}
-                                                                <a>{hashtag}</a>{" "}
-                                                                отметьте наш
-                                                                аккаунт
-                                                                <a href="https://www.instagram.com/hobjob.ru">
-                                                                    @hobjob.ru
-                                                                </a>{" "}
-                                                                В конце месяца
-                                                                мы выберем
-                                                                лучшую работу и
-                                                                подарим Pro
-                                                                подписку. Также
-                                                                проверьте, чтобы
-                                                                ваш аккаунт был
-                                                                открыт, иначе мы
-                                                                не сможем
-                                                                оценить работу.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                ) : (
-                                                    <div className="passing-bottom-block">
-                                                    <div className="passing-pro">
-                                                        <h3 className="passing-pro__title">
-                                                            Вы успешно прошли
-                                                            курс «
-                                                            {
+                                                <div className="passing-bottom-block">
+                                                    {user.pro ? (
+                                                        <PassingCertificate
+                                                            title={
                                                                 courses[
                                                                     courseId
                                                                 ].title
                                                             }
-                                                            »
-                                                        </h3>
+                                                            getCertificate={
+                                                                getCertificate
+                                                            }
+                                                        />
+                                                    ) : (
+                                                        <PassingPro
+                                                            title={
+                                                                courses[
+                                                                    courseId
+                                                                ].title
+                                                            }
+                                                            isSendProSubscribe={
+                                                                isSendProSubscribe
+                                                            }
+                                                            createPaymentProSubscribe={
+                                                                createPaymentProSubscribe
+                                                            }
+                                                        />
+                                                    )}
 
-                                                        <p className="passing-pro__description">
-                                                            Что бы, получить
-                                                            доступ к
-                                                            сертификату, нужно
-                                                            офрмить Pro подписку
-                                                        </p>
-
-                                                        <ul className="passing-pro-list">
-                                                            <li className="passing-pro-list__item">
-                                                                - Скидка 20% на
-                                                                все курсы
-                                                            </li>
-                                                            <li className="passing-pro-list__item">
-                                                                - Получение
-                                                                сертификата
-                                                            </li>
-                                                            <li className="passing-pro-list__item">
-                                                                - Дополнительные
-                                                                материалы
-                                                            </li>
-                                                        </ul>
-
-                                                        {isSendProSubscribe ? (
-                                                            <button
-                                                                className="btn disabled passing-pro__btn"
-                                                                disabled
-                                                            >
-                                                                <BtnLoader />
-                                                            </button>
-                                                        ) : (
-                                                            <button
-                                                                className="btn passing-pro__btn"
-                                                                onClick={
-                                                                    createPaymentProSubscribe
-                                                                }
-                                                            >
-                                                                Оформить Pro
-                                                                подписку
-                                                            </button>
-                                                        )}
-                                                    </div><div className="passing-hashtag">
-                                                            <h3 className="passing-hashtag__title">
-                                                                Участвуйте в
-                                                                Конкурсе на
-                                                                лучшую работу
-                                                            </h3>
-
-                                                            <p className="passing-hashtag__description">
-                                                                Выложите пост в
-                                                                Инстаграм с
-                                                                фотографией
-                                                                вашей работы и
-                                                                хештегом{" "}
-                                                                <a>{hashtag}</a>{" "}
-                                                                отметьте наш
-                                                                аккаунт
-                                                                <a href="https://www.instagram.com/hobjob.ru">
-                                                                    @hobjob.ru
-                                                                </a>{" "}
-                                                                В конце месяца
-                                                                мы выберем
-                                                                лучшую работу и
-                                                                подарим Pro
-                                                                подписку. Также
-                                                                проверьте, чтобы
-                                                                ваш аккаунт был
-                                                                открыт, иначе мы
-                                                                не сможем
-                                                                оценить работу.
-                                                            </p>
-                                                        </div>
-													</div>
-                                                )
+                                                    <PassingHashtag
+                                                        hashtag={hashtag}
+                                                    />
+                                                </div>
                                             ) : null}
                                         </div>
                                     </div>
@@ -366,19 +268,6 @@ const PassingCourse = ({
                                                     lessonIndex={lessonIndex}
                                                     lessonNum={lessonNum}
                                                 />
-
-                                                {courses[courseId].lessons[
-                                                    lessonIndex + 1
-                                                ] ? (
-                                                    <Link
-                                                        to={`/go/passing/${courseId}/${
-                                                            lessonIndex + 2
-                                                        }`}
-                                                        className="passing-top-next"
-                                                    >
-                                                        К следующему уроку →
-                                                    </Link>
-                                                ) : null}
                                             </div>
 
                                             <div className="passing-cover">
