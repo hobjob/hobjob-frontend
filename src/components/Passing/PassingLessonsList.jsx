@@ -6,7 +6,7 @@ const PassingCoursesList = ({lessons, lessonActive, courseId}) => {
     const [isExtraLessons, setIsExtraLessons] = React.useState(false);
 
     React.useEffect(() => {
-        lessons.map((lesson, index) => {
+        lessons.map((lesson) => {
             if (lesson.extraLesson) {
                 setIsExtraLessons(true);
             }

@@ -52,8 +52,7 @@ const Cart = () => {
         dispatch(
             sendCreateCoursesPayment(
                 {
-                    order,
-                    refId: localStorage.getItem("refId"),
+                    order
                 },
                 {courses: coursesNew}
             )

@@ -3,7 +3,7 @@ import React from "react";
 const PassingChat = ({chatUrl}) => {
     return (
         <div className="passing-chat">
-            <h3 className="passing-chat__title">Чат участников курса</h3>
+            <h3 className="passing-chat__title">Чат учеников курса</h3>
 
             <p className="passing-chat__description">
                 В чате вы можете общаться с единомышленниками, делиться своими

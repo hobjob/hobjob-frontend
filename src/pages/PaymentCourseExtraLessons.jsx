@@ -5,7 +5,7 @@ import {Helmet} from "react-helmet";
 import {fetchPaymentCourseExtraLessonsById} from "../redux/actions/payment";
 import {fetchCourseById} from "../redux/actions/courses";
 
-import {PaymentCourseBlock, Loader} from "../components/";
+import {PaymentCourseBlock, PaymentProgressbar, Loader} from "../components/";
 
 const PaymentCourseExtraLessons = ({
     match: {
@@ -60,10 +60,14 @@ const PaymentCourseExtraLessons = ({
                     <section className="payment">
                         <div className="container">
                             <div className="payment-wrapper">
-                                <div
-                                    className="payment-form"
-                                    id="payment-form"
-                                ></div>
+                                <div className="payment-form-wrapper">
+                                    <PaymentProgressbar number={2} />
+                                    <div
+                                        className="payment-form"
+                                        id="payment-form"
+                                    ></div>
+								</div>
+								
                                 {isLoadedCourseById ? (
                                     <div className="payment-info">
                                         <h2 className="payment-info__title">

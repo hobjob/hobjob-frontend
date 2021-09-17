@@ -17,7 +17,7 @@ export const sendCreateCoursesPayment = (data, user) => (dispatch) => {
 		payload: true,
 	})
 
-	const { order, refId } = data
+	const { order } = data
 	const { courses } = user
 	
 	let userCoursesArr = Object.keys(courses).map((key) => courses[key].courseId);
@@ -37,7 +37,7 @@ export const sendCreateCoursesPayment = (data, user) => (dispatch) => {
 	if (!newOrder.length) {
 		window.location.href = "/go/training/"
 	} else {
-		$api.post(`/payment/courses`, { order: newOrder, refId: refId }).then(({ data }) => {
+		$api.post(`/payment/courses`, { order: newOrder }).then(({ data }) => {
 			localStorage.removeItem("cart")
 			window.location.href = `/payment/courses/${data.paymentNumber}`
 		})

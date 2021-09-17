@@ -1,6 +1,12 @@
 import React from "react";
 
-const MasterCoursesListItem = ({image, title, buyCount, buyCountTitle}) => {
+const MasterCoursesListItem = ({
+    image,
+    title,
+    buyCount,
+    buyCountTitle,
+    buyCountExtraLessons,
+}) => {
     return (
         <div className="master-info-list-courses-item">
             <div className="master-info-list-courses-col">
@@ -20,7 +26,7 @@ const MasterCoursesListItem = ({image, title, buyCount, buyCountTitle}) => {
             <div className="master-info-list-courses-col">
                 <div className="master-info-list-courses-item-count">
                     <span className="master-info-list-courses-item-count__title">
-                        {buyCount} {buyCountTitle}
+                        {buyCount} {buyCountTitle}{", "} {buyCountExtraLessons} {"доп. мат."}
                     </span>
                 </div>
             </div>

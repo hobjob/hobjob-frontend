@@ -41,14 +41,19 @@ const PaymentCoursesRegister = () => {
                 sendCreateCoursesPayment(
                     {
                         order,
-                        refId: localStorage.getItem("refId"),
                     },
                     user
                 )
             );
         };
 
-        return dispatch(sendRegister({name, email, password}, functionSuccess));
+        return dispatch(
+            sendRegister(
+                {name, email, password},
+                JSON.parse(localStorage.getItem("ref")),
+                functionSuccess
+            )
+        );
     };
 
     return (

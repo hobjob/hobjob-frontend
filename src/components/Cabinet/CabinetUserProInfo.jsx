@@ -20,7 +20,7 @@ const CabinetUserProInfo = () => {
     };
 
     const createPayment = () => {
-        dispatch(sendCreateProSubscribePayment());
+        dispatch(sendCreateProSubscribePayment({pro}));
     };
 
     return (

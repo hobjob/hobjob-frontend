@@ -14,7 +14,13 @@ const Register = () => {
             window.location.href = "/go/training/";
 		};
 		
-        return dispatch(sendRegister({name, email, password}, functionSuccess));
+        return dispatch(
+            sendRegister(
+                {name, email, password},
+                JSON.parse(localStorage.getItem("ref")),
+                functionSuccess
+            )
+        );
     };
 
     React.useEffect(() => {

@@ -40,7 +40,6 @@ const PaymentCoursesLogin = () => {
                 sendCreateCoursesPayment(
                     {
                         order,
-                        refId: localStorage.getItem("refId"),
                     },
                     user
                 )

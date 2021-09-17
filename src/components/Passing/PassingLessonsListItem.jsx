@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 const PassingLessonsListItem = ({
     image,
     title,
-    extraLesson,
     active,
     courseId,
     num,
@@ -26,7 +25,7 @@ const PassingLessonsListItem = ({
                     ></div>
                 </div>
                 <p className="passing-lessons-list-block-item__title">
-                    {title} {extraLesson && "(Дополнительные материалы)"}
+                    {title}
                 </p>
             </Link>
         </>

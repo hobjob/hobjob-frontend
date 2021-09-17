@@ -2,13 +2,13 @@ import { SubmissionError } from 'redux-form'
 
 import $api from '../../http/';
 
-export const sendRegister = (data, functionSuccess) => (dispatch) => {
+export const sendRegister = (data, ref, functionSuccess) => (dispatch) => {
 	dispatch({
 		type: "SET_SEND_REGISTER",
 		payload: true
 	})
 
-	return $api.post(`/register`, data).then(({ data }) => {
+	return $api.post(`/register`, { ...data, ref}).then(({ data }) => {
 		localStorage.setItem("accessToken", data.accessToken)
 
 		functionSuccess(data.user)

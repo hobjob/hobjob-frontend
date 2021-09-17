@@ -2,6 +2,7 @@ import React from "react";
 import {Helmet} from "react-helmet";
 import {useSelector} from "react-redux";
 import queryString from "query-string";
+import moment from "moment";
 
 import {
     HomeMainSection,
@@ -20,25 +21,21 @@ const Home = ({
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
-    }, []);
 
-    React.useEffect(() => {
         const {ref} = queryString.parse(search, {
             arrayFormat: "comma",
         });
 
-        if (isLoaded && ref) {
-            if (ref !== user._id) {
-                localStorage.setItem("refId", ref);
-            } else {
-                localStorage.setItem("refId", "");
-            }
-        } else if (ref) {
-            localStorage.setItem("refId", ref);
-        } else {
-            localStorage.setItem("refId", "");
+        if (ref) {
+            localStorage.setItem(
+                "ref",
+                JSON.stringify({
+                    refId: ref,
+                    dateCreate: moment().format("DD.MM.YYYY, HH:mm"),
+                })
+            );
         }
-    }, [isLoaded]);
+    }, []);
 
     return (
         <>
