@@ -9,7 +9,7 @@ const MagazineBlockBigLoader = () => {
                 speed={2}
                 width="100%"
                 height={400}
-                style={{borderRadius: "5px",}}
+                style={{borderRadius: "15px",}}
                 backgroundColor="#f3f3f3"
                 foregroundColor="#ecebeb"
             >

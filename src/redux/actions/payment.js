@@ -8,6 +8,8 @@ export const fetchPaymentCoursesById = (id) => (dispatch) => {
 
 	$api.get(`/payment/courses/${id}`).then(({ data }) => {
 		dispatch(setCoursesPayment(data))
+	}).catch(() => {
+		window.location.href = `/go/training`
 	})
 }
 
@@ -60,6 +62,8 @@ export const fetchPaymentCourseExtraLessonsById = (id) => (dispatch) => {
 
 	$api.get(`/payment/courses/extra-lessons/${id}`).then(({ data }) => {
 		dispatch(setCourseExtraLessonsPayment(data))
+	}).catch(() => {
+		window.location.href = `/go/training`
 	})
 }
 
@@ -90,6 +94,8 @@ export const fetchPaymentProSubscribeById = (id) => (dispatch) => {
 
 	$api.get(`/payment/pro/${id}`).then(({ data }) => {
 		dispatch(setProSubscribePayment(data))
+	}).catch(() => {
+		window.location.href = `/go/training`
 	})
 }
 

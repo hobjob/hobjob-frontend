@@ -26,6 +26,8 @@ export { default as RepeatEmailForm } from "./RepeatEmail/RepeatEmailForm"
 
 // Header
 export { default as Header } from "./Header/Header"
+export { default as HeaderMenu } from "./Header/HeaderMenu"
+export { default as HeaderMenuCart } from "./Header/HeaderMenuCart"
 export { default as HeaderModalMenu } from "./Header/HeaderModalMenu"
 
 // Home
@@ -127,6 +129,7 @@ export { default as CabinetUserProInfo } from "./Cabinet/CabinetUserProInfo"
 // Referrals
 export { default as ReferralsBlockLink } from "./Referrals/ReferralsBlockLink"
 export { default as ReferralsBlockBalance } from "./Referrals/ReferralsBlockBalance"
+export { default as ReferralsBlockForm } from "./Referrals/ReferralsBlockForm"
 export { default as ReferralsPartners } from "./Referrals/ReferralsPartners"
 export { default as ReferralsPartnersItem } from "./Referrals/ReferralsPartnersItem"
 

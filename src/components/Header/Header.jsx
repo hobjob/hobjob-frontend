@@ -3,17 +3,17 @@ import {Link, NavLink} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 
 import {sendLogout} from "../../redux/actions/logout";
-import {fetchUser} from "../../redux/actions/user";
+import {fetchUserInfo} from "../../redux/actions/user";
 import {fetchMasters} from "../../redux/actions/masters";
 import {fetchCategories} from "../../redux/actions/categories";
 import {removeCourseCart} from "../../redux/actions/cart";
 
-import {HeaderModalMenu} from "../";
+import {HeaderMenu, HeaderMenuCart, HeaderModalMenu} from "../";
 
-const Header = () => {
+const Header = React.memo(() => {
     const dispatch = useDispatch();
 
-    const {user, courses, isLoaded} = useSelector(({user}) => user);
+    const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
     const masters = useSelector(({masters}) => masters.items);
     const categories = useSelector(({categories}) => categories.items);
     const {cart} = useSelector(({cart}) => cart);
@@ -33,8 +33,11 @@ const Header = () => {
         document.body.addEventListener("click", handHeaderModalMenu);
         document.body.addEventListener("click", handHeaderUserMenu);
 
-        if (!Object.keys(user).length && localStorage.getItem("accessToken")) {
-            dispatch(fetchUser());
+        if (
+            !Object.keys(userInfo).length &&
+            localStorage.getItem("accessToken")
+        ) {
+            dispatch(fetchUserInfo());
         }
 
         if (!Object.keys(masters).length) {
@@ -47,14 +50,14 @@ const Header = () => {
     }, []);
 
     React.useEffect(() => {
-        if (isLoaded) {
+        if (isLoadedUserInfo) {
             Object.keys(cart).map((key) => {
-				if (courses[key]) {
+                if (userInfo.courses[key]) {
                     dispatch(removeCourseCart(key));
                 }
             });
         }
-    }, [isLoaded]);
+    }, [isLoadedUserInfo]);
 
     const toggleUserMenu = () => {
         setHeaderUserMenuAnimateClose(true);
@@ -144,56 +147,118 @@ const Header = () => {
                                 alt="HobJob"
                                 className="header-logo__img"
                             />
-                        </Link>
+						</Link>
+						
+                        <HeaderMenu />
 
-                        <nav className="header-nav">
-                            <NavLink
-                                to="/shop"
-                                className="header-nav__link"
-                                activeClassName="header-nav__link active"
-                            >
-                                Магазин курсов
-                            </NavLink>
-                            <NavLink
-                                to="/pro"
-                                className="header-nav__link"
-                                activeClassName="header-nav__link active"
-                            >
-                                Pro аккаунт
-                            </NavLink>
-                            <NavLink
-                                to="/about"
-                                className="header-nav__link"
-                                activeClassName="header-nav__link active"
-                            >
-                                О HobJob
-                            </NavLink>
-                            {/* <NavLink
-                                to="/masters-about"
-                                className="header-nav__link"
-                                activeClassName="header-nav__link active"
-                            >
-                                Для мастеров
-                            </NavLink> */}
-                            <NavLink
-                                to="/magazine"
-                                className="header-nav__link"
-                                activeClassName="header-nav__link active"
-                            >
-                                Журнал
-                            </NavLink>
-                        </nav>
+                        <nav className="header-left">
+							<HeaderMenuCart number={Object.keys(cart).length}/>
 
-                        {!isLoaded ? (
-                            <nav className="header-left">
-                                <NavLink
-                                    to="/cart"
-                                    className="header-nav__link header-nav-cart__link"
-                                    activeClassName="header-nav__link header-nav-cart__link active"
-                                >
-                                    Корзина ({Object.keys(cart).length})
-                                </NavLink>
+                            {isLoadedUserInfo ? (
+                                <>
+                                    {document.documentElement.clientWidth >
+                                    1200 ? (
+                                        <div className="header-user">
+                                            <div
+                                                onClick={toggleUserMenu}
+                                                ref={headerUserMenuRef}
+                                                className={`header-user-avatar ${
+                                                    headerUserMenu
+                                                        ? "active"
+                                                        : ""
+                                                }`}
+                                                style={{
+                                                    backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar}")`,
+                                                }}
+                                            ></div>
+                                            {headerUserMenu ? (
+                                                <div
+                                                    className={`header-user-menu ${
+                                                        headerUserMenuAnimateClose
+                                                            ? "close"
+                                                            : ""
+                                                    }`}
+                                                >
+                                                    <NavLink
+                                                        to="/go/training"
+                                                        className="header-user-menu__link"
+                                                    >
+                                                        Мое обучение
+                                                    </NavLink>
 
+                                                    <NavLink
+                                                        to="/go/cabinet"
+                                                        className="header-user-menu__link"
+                                                    >
+                                                        Мой профиль
+                                                    </NavLink>
+
+                                                    <NavLink
+                                                        to="/go/referrals"
+                                                        className="header-user-menu__link"
+                                                    >
+                                                        Пригласи друга
+                                                    </NavLink>
+
+                                                    {userInfo.master ===
+                                                    "confirmed" ? (
+                                                        <NavLink
+                                                            to="/go/master"
+                                                            className="header-user-menu__link"
+                                                        >
+                                                            Для мастера
+                                                        </NavLink>
+                                                    ) : null}
+
+                                                    <span
+                                                        onClick={clickLogout}
+                                                        className="header-user-menu__link"
+                                                    >
+                                                        Выйти
+                                                    </span>
+                                                </div>
+                                            ) : null}
+                                        </div>
+                                    ) : (
+                                        <div
+                                            className="header-user"
+                                            onClick={onClickModalMenu}
+                                        >
+                                            <div
+                                                className="header-user-avatar"
+                                                style={{
+                                                    backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar}")`,
+                                                }}
+                                            ></div>
+                                        </div>
+                                    )}
+                                    <div
+                                        className="header-menu-button"
+                                        onClick={onClickModalMenu}
+                                    >
+                                        <svg
+                                            width="25"
+                                            height="16"
+                                            viewBox="0 0 25 16"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                d="M24.4792 0H0.52085C0.23335 0 0 0.23335 0 0.52085C0 0.80835 0.23335 1.0417 0.52085 1.0417H24.4792C24.7667 1.0417 25 0.80835 25 0.52085C25 0.23335 24.7667 0 24.4792 0Z"
+                                                fill="black"
+                                            />
+                                            <path
+                                                d="M24.4792 7.29166H0.52085C0.23335 7.29166 0 7.52501 0 7.81251C0 8.10001 0.23335 8.33336 0.52085 8.33336H24.4792C24.7667 8.33336 25 8.10001 25 7.81251C25 7.52501 24.7667 7.29166 24.4792 7.29166Z"
+                                                fill="black"
+                                            />
+                                            <path
+                                                d="M24.4792 14.5833H0.52085C0.23335 14.5833 0 14.8166 0 15.1041C0 15.3916 0.23335 15.625 0.52085 15.625H24.4792C24.7667 15.625 25 15.3916 25 15.1041C25 14.8166 24.7667 14.5833 24.4792 14.5833Z"
+                                                fill="black"
+                                            />
+                                        </svg>
+                                    </div>
+                                </>
+                            ) : (
                                 <a
                                     href="/go/login"
                                     className="header-login__link"
@@ -212,146 +277,13 @@ const Header = () => {
                                         />
                                     </svg>
                                 </a>
-
-                                <div
-                                    className="header-menu-button"
-                                    onClick={onClickModalMenu}
-                                >
-                                    <svg
-                                        width="25"
-                                        height="16"
-                                        viewBox="0 0 25 16"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M24.4792 0H0.52085C0.23335 0 0 0.23335 0 0.52085C0 0.80835 0.23335 1.0417 0.52085 1.0417H24.4792C24.7667 1.0417 25 0.80835 25 0.52085C25 0.23335 24.7667 0 24.4792 0Z"
-                                            fill="black"
-                                        />
-                                        <path
-                                            d="M24.4792 7.29166H0.52085C0.23335 7.29166 0 7.52501 0 7.81251C0 8.10001 0.23335 8.33336 0.52085 8.33336H24.4792C24.7667 8.33336 25 8.10001 25 7.81251C25 7.52501 24.7667 7.29166 24.4792 7.29166Z"
-                                            fill="black"
-                                        />
-                                        <path
-                                            d="M24.4792 14.5833H0.52085C0.23335 14.5833 0 14.8166 0 15.1041C0 15.3916 0.23335 15.625 0.52085 15.625H24.4792C24.7667 15.625 25 15.3916 25 15.1041C25 14.8166 24.7667 14.5833 24.4792 14.5833Z"
-                                            fill="black"
-                                        />
-                                    </svg>
-                                </div>
-                            </nav>
-                        ) : (
-                            <nav className="header-left">
-                                <NavLink
-                                    to="/cart"
-                                    className="header-nav__link header-nav-cart__link"
-                                    activeClassName="header-nav__link header-nav-cart__link active"
-                                >
-                                    Корзина ({Object.keys(cart).length})
-                                </NavLink>
-                                {document.documentElement.clientWidth > 1200 ? (
-                                    <div className="header-user">
-                                        <div
-                                            onClick={toggleUserMenu}
-                                            ref={headerUserMenuRef}
-                                            className={`header-user-avatar ${
-                                                headerUserMenu ? "active" : ""
-                                            }`}
-                                            style={{
-                                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${user.avatar}")`,
-                                            }}
-                                        ></div>
-                                        {headerUserMenu ? (
-                                            <div
-                                                className={`header-user-menu ${
-                                                    headerUserMenuAnimateClose
-                                                        ? "close"
-                                                        : ""
-                                                }`}
-                                            >
-                                                <NavLink
-                                                    to="/go/training"
-                                                    className="header-user-menu__link"
-                                                >
-                                                    Мое обучение
-                                                </NavLink>
-
-                                                <NavLink
-                                                    to="/go/cabinet"
-                                                    className="header-user-menu__link"
-                                                >
-                                                    Мой профиль
-                                                </NavLink>
-
-                                                <NavLink
-                                                    to="/go/referrals"
-                                                    className="header-user-menu__link"
-                                                >
-                                                    Пригласи друга
-                                                </NavLink>
-
-                                                {user.master === "confirmed" ? (
-                                                    <NavLink
-                                                        to="/go/master"
-                                                        className="header-user-menu__link"
-                                                    >
-                                                        Для мастера
-                                                    </NavLink>
-                                                ) : null}
-
-                                                <span
-                                                    onClick={clickLogout}
-                                                    className="header-user-menu__link"
-                                                >
-                                                    Выйти
-                                                </span>
-                                            </div>
-                                        ) : null}
-                                    </div>
-                                ) : (
-                                    <div
-                                        className="header-user"
-                                        onClick={onClickModalMenu}
-                                    >
-                                        <div
-                                            className="header-user-avatar"
-                                            style={{
-                                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${user.avatar}")`,
-                                            }}
-                                        ></div>
-                                    </div>
-                                )}
-                                <div
-                                    className="header-menu-button"
-                                    onClick={onClickModalMenu}
-                                >
-                                    <svg
-                                        width="25"
-                                        height="16"
-                                        viewBox="0 0 25 16"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M24.4792 0H0.52085C0.23335 0 0 0.23335 0 0.52085C0 0.80835 0.23335 1.0417 0.52085 1.0417H24.4792C24.7667 1.0417 25 0.80835 25 0.52085C25 0.23335 24.7667 0 24.4792 0Z"
-                                            fill="black"
-                                        />
-                                        <path
-                                            d="M24.4792 7.29166H0.52085C0.23335 7.29166 0 7.52501 0 7.81251C0 8.10001 0.23335 8.33336 0.52085 8.33336H24.4792C24.7667 8.33336 25 8.10001 25 7.81251C25 7.52501 24.7667 7.29166 24.4792 7.29166Z"
-                                            fill="black"
-                                        />
-                                        <path
-                                            d="M24.4792 14.5833H0.52085C0.23335 14.5833 0 14.8166 0 15.1041C0 15.3916 0.23335 15.625 0.52085 15.625H24.4792C24.7667 15.625 25 15.3916 25 15.1041C25 14.8166 24.7667 14.5833 24.4792 14.5833Z"
-                                            fill="black"
-                                        />
-                                    </svg>
-                                </div>
-                            </nav>
-                        )}
+                            )}
+                        </nav>
                     </div>
                 </div>
             </header>
         </>
     );
-};
+});
 
 export default Header;

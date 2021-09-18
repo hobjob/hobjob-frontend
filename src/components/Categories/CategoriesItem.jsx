@@ -1,13 +1,11 @@
 import React from "react";
 
-const CategoriesItem = ({transfer, title, image, checkDeclension}) => {
+const CategoriesItem = ({transfer, title, image, subtitle}) => {
     return (
         <a href={`/shop/?category=${transfer}`} className="categories-item">
             <div className="categories-item-text">
                 <h3 className="categories-item__title">{title}</h3>
-                <span className="categories-item__subtitle">
-                    {checkDeclension}
-                </span>
+                <span className="categories-item__subtitle">{subtitle}</span>
             </div>
 
             <div className="categories-item-img">

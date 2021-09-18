@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {setCoursesFiltersTimes} from "../../../redux/actions/courses";
 
-const ShopFiltersBlockTimes = () => {
+const ShopFiltersBlockTimes = React.memo(() => {
     const dispatch = useDispatch();
 
     const {filters} = useSelector(({courses}) => courses);
@@ -96,6 +96,6 @@ const ShopFiltersBlockTimes = () => {
             </div>
         </div>
     );
-};
+});
 
 export default ShopFiltersBlockTimes;

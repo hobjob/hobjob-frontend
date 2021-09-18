@@ -5,7 +5,7 @@ import {setCoursesFiltersCategories} from "../../../redux/actions/courses";
 
 import {CategoriesBtnLoader} from "../../";
 
-const ShopFiltersCategories = () => {
+const ShopFiltersCategories = React.memo(() => {
     const dispatch = useDispatch();
 
     const {filters} = useSelector(({courses}) => courses);
@@ -50,6 +50,6 @@ const ShopFiltersCategories = () => {
                       ))}
         </div>
     );
-};
+});
 
 export default ShopFiltersCategories;

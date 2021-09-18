@@ -1,6 +1,8 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 
+import {checkDeclension} from "../../Functions/checkDeclension";
+
 import {fetchCourses} from "../../redux/actions/courses";
 
 import {CategoriesItem, CategoriesItemLoader} from "../";
@@ -19,25 +21,6 @@ const CategoriesSection = () => {
         }
     }, []);
 
-    //склонение ["курс", "курса", "курсов"]
-    const checkDeclension = (num, title) => {
-        let result;
-
-        if (num % 100 >= 5 && num % 100 <= 20) {
-            result = num + " " + title[2];
-        } else {
-            if (num % 10 === 1) {
-                result = num + " " + title[0];
-            } else if (num % 10 >= 2 && num % 10 <= 4) {
-                result = num + " " + title[1];
-            } else {
-                result = num + " " + title[2];
-            }
-        }
-
-        return result;
-    };
-
     return (
         <section className="categories">
             <div className="container">
@@ -52,14 +35,16 @@ const CategoriesSection = () => {
                                   <CategoriesItem
                                       {...items[key]}
                                       key={`categories-items-${index}`}
-                                      checkDeclension={checkDeclension(
-                                          courses.filter(
-                                              (keyGoods) =>
-                                                  keyGoods.category ===
-                                                  items[key].transfer
-                                          ).length,
-                                          ["курс", "курса", "курсов"]
-                                      )}
+                                      subtitle={
+                                          checkDeclension(
+                                              courses.filter(
+                                                  (keyGoods) =>
+                                                      keyGoods.category ===
+                                                      items[key].transfer
+                                              ).length,
+                                              ["курс", "курса", "курсов"]
+                                          ).title
+                                      }
                                   />
                               ))
                             : Array(6)

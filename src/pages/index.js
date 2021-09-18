@@ -83,5 +83,8 @@ export { default as Policy } from "./Policy"
 // PublicOffer
 export { default as PublicOffer } from "./PublicOffer"
 
+// ReferralsPolicy
+export { default as ReferralsPolicy } from "./ReferralsPolicy"
+
 // Regulations
 export { default as Regulations } from "./Regulations"

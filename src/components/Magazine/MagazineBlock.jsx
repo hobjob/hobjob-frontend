@@ -1,6 +1,5 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import NumberFormat from "react-number-format";
 
 import moment from "moment";
 import "moment/locale/ru";
@@ -54,12 +53,7 @@ const MagazineBlock = ({
                         </svg>
 
                         <span className="magazine-block-text-top-views__number">
-                            <NumberFormat
-                                value={views}
-                                displayType={"text"}
-                                thousandSeparator={" "}
-                                renderText={(value) => value}
-                            />
+                            {views}
                         </span>
                     </div>
 

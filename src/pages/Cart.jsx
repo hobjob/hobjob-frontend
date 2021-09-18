@@ -4,6 +4,8 @@ import {useDispatch, useSelector} from "react-redux";
 import NumberFormat from "react-number-format";
 import {Helmet} from "react-helmet";
 
+import {checkDeclension} from "../Functions/checkDeclension";
+
 import {CartBlock, ShopSection, Loader} from "../components/";
 
 import {removeCourseCart} from "../redux/actions/cart";
@@ -26,7 +28,7 @@ const Cart = () => {
     );
 
     const {isSendCourses} = useSelector(({payment}) => payment);
-    const {user, courses, isLoaded} = useSelector(({user}) => user);
+    const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -47,35 +49,18 @@ const Cart = () => {
         const coursesNew = [];
 
         Object.keys(cart).map((key) => order.push(cart[key]._id));
-        Object.keys(courses).map((key) => coursesNew.push({...courses[key]}));
+        Object.keys(userInfo.courses).map((key) =>
+            coursesNew.push({...userInfo.courses[key]})
+        );
 
         dispatch(
             sendCreateCoursesPayment(
                 {
-                    order
+                    order,
                 },
                 {courses: coursesNew}
             )
         );
-    };
-
-    //склонение ["час", "часа", "часов"]
-    const checkDeclension = (num, title) => {
-        let result;
-
-        if (num % 100 >= 5 && num % 100 <= 20) {
-            result = num + " " + title[2];
-        } else {
-            if (num % 10 === 1) {
-                result = num + " " + title[0];
-            } else if (num % 10 >= 2 && num % 10 <= 4) {
-                result = num + " " + title[1];
-            } else {
-                result = num + " " + title[2];
-            }
-        }
-
-        return result;
     };
 
     return (
@@ -105,15 +90,21 @@ const Cart = () => {
                                                 <CartBlock
                                                     {...itemsArrayById[key]}
                                                     removeCourse={removeCourse}
-                                                    checkDeclension={checkDeclension(
-                                                        itemsArrayById[key]
-                                                            .transitTime,
-                                                        ["час", "часа", "часов"]
-                                                    )}
+                                                    transitTime={
+                                                        checkDeclension(
+                                                            itemsArrayById[key]
+                                                                .transitTime,
+                                                            [
+                                                                "час",
+                                                                "часа",
+                                                                "часов",
+                                                            ]
+                                                        ).title
+                                                    }
                                                     key={`cart-block-${index}`}
                                                     masters={masters}
                                                     categories={categories}
-                                                    pro={user.pro}
+                                                    pro={userInfo.pro}
                                                 />
                                             )
                                         )}
@@ -128,7 +119,7 @@ const Cart = () => {
                                                 {Object.keys(
                                                     itemsArrayById
                                                 ).map((key) => {
-                                                    if (user.pro) {
+                                                    if (userInfo.pro) {
                                                         totalPrice +=
                                                             itemsArrayById[key]
                                                                 .price -
@@ -158,7 +149,7 @@ const Cart = () => {
                                         <div className="cart-total-btn">
                                             {localStorage.getItem(
                                                 "accessToken"
-                                            ) && isLoaded ? (
+                                            ) && isLoadedUserInfo ? (
                                                 <button
                                                     className={`btn-arrow cart-total__btn`}
                                                     onClick={createPayment}

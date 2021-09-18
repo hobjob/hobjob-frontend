@@ -9,7 +9,7 @@ const HeaderModalMenu = ({
     clickLogout,
 }) => {
     const {cart} = useSelector(({cart}) => cart);
-    const {isLoaded, user} = useSelector(({user}) => user);
+    const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
 
     return (
         <div
@@ -108,7 +108,7 @@ const HeaderModalMenu = ({
                     >
                         Корзина ({Object.keys(cart).length})
                     </NavLink>
-                    {!isLoaded ? (
+                    {!isLoadedUserInfo ? (
                         <div className="header-modal-menu-nav-bottom">
                             <a
                                 href="/go/login"
@@ -156,7 +156,7 @@ const HeaderModalMenu = ({
                                 Пригласи друга
                             </NavLink>
 
-                            {user.master === "confirmed" ? (
+                            {userInfo.master === "confirmed" ? (
                                 <NavLink
                                     to="/go/master"
                                     className="header-modal-menu-nav__link"

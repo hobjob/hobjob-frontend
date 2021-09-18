@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 import NumberFormat from "react-number-format";
 import {Helmet} from "react-helmet";
 
+import { checkDeclension } from "../Functions/checkDeclension";
+
 import {fetchStatistics} from "../redux/actions/statistics";
 
 import {MastersAboutTabItem} from "../components/";
@@ -56,25 +58,6 @@ const MastersAbout = () => {
             description: `Курсы HobJob нацелены на изучения конкретного навыка или на создание конкретного проекта. В курсах вы узнаете много полезной и передовой информации от профессионала своей области.`,
         },
     ];
-
-    //склонение ["Мастер", "Мастера", "Мастеров"]
-    const checkDeclension = (num, title) => {
-        let result;
-
-        if (num % 100 >= 5 && num % 100 <= 20) {
-            result = title[2];
-        } else {
-            if (num % 10 === 1) {
-                result = title[0];
-            } else if (num % 10 >= 2 && num % 10 <= 4) {
-                result = title[1];
-            } else {
-                result = title[2];
-            }
-        }
-
-        return result;
-    };
 
     return (
         <>
@@ -140,14 +123,16 @@ const MastersAbout = () => {
                                             />
                                         </h4>
                                         <span className="masters-about-statistics-item__subtitle">
-                                            {checkDeclension(
-                                                statistics.masters,
-                                                [
-                                                    "Мастер",
-                                                    "Мастера",
-                                                    "Мастеров",
-                                                ]
-                                            )}{" "}
+                                            {
+                                                checkDeclension(
+                                                    statistics.masters,
+                                                    [
+                                                        "Мастер",
+                                                        "Мастера",
+                                                        "Мастеров",
+                                                    ]
+                                                ).text
+                                            }{" "}
                                             уже с нами!
                                         </span>
                                     </div>

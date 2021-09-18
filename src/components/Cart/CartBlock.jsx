@@ -13,7 +13,7 @@ const CartBlock = React.memo(
         price,
         proPrice,
         pro,
-        checkDeclension,
+        transitTime,
         discountNotPrice,
         removeCourse,
         masters,
@@ -62,7 +62,7 @@ const CartBlock = React.memo(
                         </Link>
                         <div className="cart-block-content-text-tags">
                             <span className="cart-block-content-text__time">
-                                {checkDeclension}
+                                {transitTime}
                             </span>
                             <span className="cart-block-content-text__category">
                                 {categories[category].title}
@@ -84,7 +84,10 @@ const CartBlock = React.memo(
                                         <p className="cart-block-content-text__price">
                                             <NumberFormat
                                                 value={
-                                                    price - (price / 100) * 20
+                                                    price -
+                                                    (price / 100) *
+                                                        process.env
+                                                            .REACT_APP_PAYMENT_PERCENT_PRO
                                                 }
                                                 displayType={"text"}
                                                 thousandSeparator={" "}

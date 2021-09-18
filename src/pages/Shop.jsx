@@ -4,6 +4,8 @@ import {useDispatch, useSelector} from "react-redux";
 import queryString from "query-string";
 import {Helmet} from "react-helmet";
 
+import {checkDeclension} from "../Functions/checkDeclension";
+
 import {
     fetchCourses,
     fetchAddPaginationCourses,
@@ -19,7 +21,7 @@ import {
     Loader,
 } from "../components/";
 
-const Shop = ({
+const Shop = React.memo(({
     history: {
         location: {search},
     },
@@ -27,7 +29,7 @@ const Shop = ({
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const {user, courses} = useSelector(({user}) => user);
+    const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
     const {
         items,
         totalCount,
@@ -146,25 +148,6 @@ const Shop = ({
         dispatch(fetchAddPaginationCourses(search, page + 1));
     };
 
-    //склонение ["час", "часа", "часов"]
-    const checkDeclension = (num, title) => {
-        let result;
-
-        if (num % 100 >= 5 && num % 100 <= 20) {
-            result = num + " " + title[2];
-        } else {
-            if (num % 10 === 1) {
-                result = num + " " + title[0];
-            } else if (num % 10 >= 2 && num % 10 <= 4) {
-                result = num + " " + title[1];
-            } else {
-                result = num + " " + title[2];
-            }
-        }
-
-        return result;
-    };
-
     return (
         <>
             <Helmet>
@@ -196,22 +179,30 @@ const Shop = ({
                                                 onClickAddCourseCart={
                                                     onClickAddCourseCart
                                                 }
-                                                checkDeclension={checkDeclension(
-                                                    item.transitTime,
-                                                    ["час", "часа", "часов"]
-                                                )}
-                                                pro={user.pro}
+                                                transitTime={
+                                                    checkDeclension(
+                                                        item.transitTime,
+                                                        ["час", "часа", "часов"]
+                                                    ).title
+                                                }
+                                                pro={userInfo.pro}
                                                 proPrice={
                                                     item.price -
-                                                    (item.price / 100) * 20
+                                                    (item.price / 100) *
+                                                        process.env
+                                                            .REACT_APP_PAYMENT_PERCENT_PRO
                                                 }
                                                 cartItems={cart}
                                                 key={`shop-block-${index}`}
                                                 masters={masters}
                                                 categories={categories}
                                                 isBuy={
-                                                    courses[item._id]
-                                                        ? true
+                                                    isLoadedUserInfo
+                                                        ? userInfo.courses[
+                                                              item._id
+                                                          ]
+                                                            ? true
+                                                            : false
                                                         : false
                                                 }
                                             />
@@ -263,6 +254,6 @@ const Shop = ({
             </section>
         </>
     );
-};
+});
 
 export default Shop;

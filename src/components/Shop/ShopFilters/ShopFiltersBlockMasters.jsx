@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {setCoursesFiltersMasters} from "../../../redux/actions/courses";
 
-const ShopFiltersBlockMasters = () => {
+const ShopFiltersBlockMasters = React.memo(() => {
     const dispatch = useDispatch();
 
     const {filters} = useSelector(({courses}) => courses);
@@ -52,6 +52,6 @@ const ShopFiltersBlockMasters = () => {
             </div>
         </div>
     );
-};
+});
 
 export default ShopFiltersBlockMasters;

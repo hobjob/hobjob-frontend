@@ -1,6 +1,5 @@
 import React from "react";
 import {Helmet} from "react-helmet";
-import {useSelector} from "react-redux";
 import queryString from "query-string";
 import moment from "moment";
 
@@ -17,8 +16,6 @@ const Home = ({
         location: {search},
     },
 }) => {
-    const {user, isLoaded} = useSelector(({user}) => user);
-
     React.useEffect(() => {
         window.scrollTo(0, 0);
 

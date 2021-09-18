@@ -1,6 +1,7 @@
 import React from "react";
 import {Helmet} from "react-helmet";
 import {useDispatch, useSelector} from "react-redux";
+import NumberFormat from "react-number-format";
 
 import {sendCreateProSubscribePayment} from "../redux/actions/payment";
 
@@ -11,7 +12,7 @@ const Pro = () => {
 
     const [visibleButton, setVisibleButton] = React.useState(false);
 
-    const {user, isLoaded} = useSelector(({user}) => user);
+    const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
     const {isSendProSubscribe} = useSelector(({payment}) => payment);
 
     React.useEffect(() => {
@@ -27,7 +28,7 @@ const Pro = () => {
     }, []);
 
     const createPayment = () => {
-        dispatch(sendCreateProSubscribePayment(user));
+        dispatch(sendCreateProSubscribePayment(userInfo));
     };
 
     return (
@@ -38,8 +39,17 @@ const Pro = () => {
             <section className="pro">
                 <div className="container">
                     <div className="pro-wrapper">
-                        {localStorage.getItem("accessToken") && isLoaded ? (
-                            user.pro ? null : isSendProSubscribe ? (
+                        <button
+                            className={`btn-small-round pro__btn ${
+                                visibleButton ? "active" : ""
+                            }`}
+                            onClick={createPayment}
+                        >
+                            Вступить
+                        </button>
+                        {localStorage.getItem("accessToken") &&
+                        isLoadedUserInfo ? (
+                            userInfo.pro ? null : isSendProSubscribe ? (
                                 <button
                                     className={`btn-small-round disabled pro__btn ${
                                         visibleButton ? "active" : ""
@@ -85,15 +95,24 @@ const Pro = () => {
                                 </p>
                                 <div className="pro-main-text-price">
                                     <p className="pro-main-text__price">
-                                        3 500 ₽
+                                        <NumberFormat
+                                            value={
+                                                process.env
+                                                    .REACT_APP_PAYMENT_PRO_PRICE
+                                            }
+                                            displayType={"text"}
+                                            thousandSeparator={" "}
+                                            renderText={(value) => value}
+                                        />
+                                        ₽
                                     </p>
                                     <p className="pro-main-text__subprice">
                                         5 000 ₽
                                     </p>
                                 </div>
                                 {localStorage.getItem("accessToken") &&
-                                isLoaded ? (
-                                    user.pro ? (
+                                isLoadedUserInfo ? (
+                                    userInfo.pro ? (
                                         <button className="btn disabled pro-main-text__btn">
                                             Спасибо, вы уже с нами
                                         </button>

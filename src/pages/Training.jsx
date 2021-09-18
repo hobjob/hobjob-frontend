@@ -1,6 +1,10 @@
 import React from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
+
+import { checkDeclension } from "../Functions/checkDeclension";
+
+import {fetchUserCourses} from "../redux/actions/user";
 
 import {
     Loader,
@@ -13,33 +17,21 @@ import {
 import Err404 from "./Err404";
 
 const Training = () => {
-    const {user, courses, isLoaded} = useSelector(({user}) => user);
+	const dispatch = useDispatch()
+    const {userInfo, courses, isLoadedUserInfo, isLoadedUserCourses} = useSelector(
+        ({user}) => user
+    );
     const masters = useSelector(({masters}) => masters.items);
     const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
-    //склонение ["урок", "урока", "уроков"]
-    const checkDeclension = (num, title) => {
-        let result;
-
-        if (num % 100 >= 5 && num % 100 <= 20) {
-            result = num + " " + title[2];
-        } else {
-            if (num % 10 === 1) {
-                result = num + " " + title[0];
-            } else if (num % 10 >= 2 && num % 10 <= 4) {
-                result = num + " " + title[1];
-            } else {
-                result = num + " " + title[2];
-            }
-        }
-
-        return result;
-    };
-
+		window.scrollTo(0, 0);
+		
+		if (!Object.keys(courses).length) {
+			dispatch(fetchUserCourses());
+		}
+	}, []);
+	
     return (
         <>
             <Helmet>
@@ -47,8 +39,8 @@ const Training = () => {
             </Helmet>
 
             {localStorage.getItem("accessToken") ? (
-                isLoaded && isLoadedMasters ? (
-                    user.confirmed ? (
+                isLoadedUserInfo && isLoadedUserCourses && isLoadedMasters ? (
+                    userInfo.confirmed ? (
                         <>
                             <section className="training">
                                 <div className="container">
@@ -73,16 +65,20 @@ const Training = () => {
                                                                 {...courses[
                                                                     key
                                                                 ]}
-                                                                completedLessons={checkDeclension(
-                                                                    courses[key]
-                                                                        .completedLessons
-                                                                        .length,
-                                                                    [
-                                                                        "урок",
-                                                                        "урока",
-                                                                        "уроков",
-                                                                    ]
-                                                                )}
+                                                                completedLessons={
+                                                                    checkDeclension(
+                                                                        courses[
+                                                                            key
+                                                                        ]
+                                                                            .completedLessons
+                                                                            .length,
+                                                                        [
+                                                                            "урок",
+                                                                            "урока",
+                                                                            "уроков",
+                                                                        ]
+                                                                    ).title
+                                                                }
                                                                 masters={
                                                                     masters
                                                                 }

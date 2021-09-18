@@ -19,7 +19,7 @@ import Err404 from "./Err404";
 const Cabinet = () => {
     const dispatch = useDispatch();
 
-    const {user, isLoaded} = useSelector(({user}) => user);
+    const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
 
     const [masterInfoMessage, setMasterInfoMessage] = React.useState(false);
 
@@ -43,8 +43,8 @@ const Cabinet = () => {
     return (
         <>
             {localStorage.getItem("accessToken") ? (
-                isLoaded ? (
-                    user.confirmed ? (
+                isLoadedUserInfo ? (
+                    userInfo.confirmed ? (
                         <>
                             <Helmet>
                                 <title>Мой профиль - HobJob</title>
@@ -56,7 +56,8 @@ const Cabinet = () => {
                                             "close-master-info-message"
                                         ) ||
                                         masterInfoMessage ||
-                                        user.master !== "confirmed" ? null : (
+                                        userInfo.master !==
+                                            "confirmed" ? null : (
                                             <CabinetMessage
                                                 message={
                                                     "Вы не можете поменять свои личные данные, так как являетесь мастером HobJob. Если вы хотите изменить данные напишите на почту поддержки"
@@ -67,7 +68,7 @@ const Cabinet = () => {
                                             />
                                         )}
 
-                                        <CabinetCardUserInfo {...user} />
+                                        <CabinetCardUserInfo {...userInfo} />
 
                                         <div className="cabinet-block-wrapper">
                                             <div className="cabinet-block">
@@ -87,7 +88,7 @@ const Cabinet = () => {
                                                     onSubmit={
                                                         onSubmitCabinetUserInfoForm
                                                     }
-                                                    {...user}
+                                                    {...userInfo}
                                                 />
                                             </div>
                                             <div className="cabinet-block">

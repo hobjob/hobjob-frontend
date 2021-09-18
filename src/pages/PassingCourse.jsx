@@ -5,6 +5,8 @@ import NumberFormat from "react-number-format";
 import {Helmet} from "react-helmet";
 import moment from "moment";
 
+import { fetchUserCourses } from "../redux/actions/user";
+
 import {
     fetchPassingCourseLessonMaterial,
     fetchCertificateCourse,
@@ -41,7 +43,7 @@ const PassingCourse = ({
 
     const [hashtag, setHashtag] = React.useState("");
 
-    const {user, courses, isLoaded} = useSelector(({user}) => user);
+    const {userInfo, courses, isLoadedUserCourses, isLoadedUserInfo} = useSelector(({user}) => user);
     const {isSendCourseExtraLessons, isSendProSubscribe} = useSelector(
         ({payment}) => payment
     );
@@ -52,16 +54,20 @@ const PassingCourse = ({
     const lessonIndex = lessonNum - 1;
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
+		window.scrollTo(0, 0);
+		
+		if (!Object.keys(courses).length) {
+            dispatch(fetchUserCourses());
+        }
 
-        if (isLoaded) {
+        if (isLoadedUserCourses && courses[courseId]) {
             setHashtag(
                 `#${courses[courseId].title
                     .replace(/\s+/g, "")
                     .toLowerCase()}${moment().format("MM.YYYY")}`
             );
         }
-    }, [courseId, lessonNum, isLoaded]);
+    }, [courseId, lessonNum, isLoadedUserCourses]);
 
     const setTime = (seconds) => {
         window.scrollTo(0, 0);
@@ -93,10 +99,11 @@ const PassingCourse = ({
     return (
         <>
             {localStorage.getItem("accessToken") ? (
-                isLoaded ? (
+                isLoadedUserCourses && isLoadedUserInfo ? (
                     courses[courseId] ? (
                         (courses[courseId].lessons[lessonIndex].extraLesson &&
-                            (user.pro || courses[courseId].extraLessonsBuy)) ||
+                            (userInfo.pro ||
+                                courses[courseId].extraLessonsBuy)) ||
                         !courses[courseId].lessons[lessonIndex].extraLesson ? (
                             <>
                                 <Helmet>
@@ -211,7 +218,7 @@ const PassingCourse = ({
                                                     lessonIndex + 1
                                                 ].extraLesson) ? (
                                                 <div className="passing-bottom-block">
-                                                    {user.pro ? (
+                                                    {userInfo.pro ? (
                                                         <PassingCertificate
                                                             title={
                                                                 courses[

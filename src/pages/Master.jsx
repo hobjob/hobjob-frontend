@@ -1,19 +1,32 @@
 import React from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
+
+import {fetchUserMasterCourses} from "../redux/actions/user";
 
 import {MasterCoursesList, MasterBalance, Loader} from "../components/";
 
 import Err404 from "./Err404";
 
 const Master = () => {
-    const {user, isLoaded} = useSelector(({user}) => user);
+    const dispatch = useDispatch();
+    const {userInfo, isLoadedUserInfo, masterCourses} = useSelector(
+        ({user}) => user
+    );
+
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+
+        if (!masterCourses.length) {
+            dispatch(fetchUserMasterCourses());
+        }
+    }, []);
 
     return (
         <>
             {localStorage.getItem("accessToken") ? (
-                isLoaded ? (
-                    user.master === "confirmed" ? (
+                isLoadedUserInfo ? (
+                    userInfo.master === "confirmed" ? (
                         <>
                             <Helmet>
                                 <title>Для мастера - HobJob</title>
@@ -23,7 +36,7 @@ const Master = () => {
                                     <div className="master-wrapper">
                                         <div className="master-text">
                                             <h2 className="title master-text__title">
-                                                Здравствуйте, {user.name}
+                                                Здравствуйте, {userInfo.name}
                                             </h2>
                                             <p className="master-text__description">
                                                 Здесь будут отображаться продажи
@@ -32,7 +45,7 @@ const Master = () => {
                                         </div>
                                         <div className="master-info">
                                             <MasterCoursesList />
-                                            <MasterBalance {...user} />
+                                            <MasterBalance {...userInfo} />
                                         </div>
                                     </div>
                                 </div>

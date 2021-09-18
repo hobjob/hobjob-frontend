@@ -2,7 +2,9 @@ import React from "react";
 import {useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import queryString from "query-string";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
+
+import {abbreviateNumber} from "../Functions/abbreviateNumber";
 
 import {
     fetchPosts,
@@ -85,7 +87,7 @@ const Magazine = ({
 
     const onClickaddPaginationPagePosts = () => {
         dispatch(fetchAddPaginationPosts(search, page + 1));
-    };
+	};
 
     return (
         <>
@@ -114,6 +116,9 @@ const Magazine = ({
                                             {...items[0]}
                                             masters={masters}
                                             categories={categories}
+                                            views={abbreviateNumber(
+                                                items[0].views
+                                            )}
                                         />
                                     ) : null}
 
@@ -126,6 +131,9 @@ const Magazine = ({
                                                         masters={masters}
                                                         categories={categories}
                                                         key={`magazine-block-${index}`}
+                                                        views={abbreviateNumber(
+                                                            item.views
+                                                        )}
                                                     />
                                                 ) : null
                                             ) : (
@@ -134,6 +142,9 @@ const Magazine = ({
                                                     masters={masters}
                                                     categories={categories}
                                                     key={`magazine-block-${index}`}
+                                                    views={abbreviateNumber(
+                                                        item.views
+                                                    )}
                                                 />
                                             )
                                         )}

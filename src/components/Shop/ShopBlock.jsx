@@ -11,10 +11,10 @@ const ShopBlock = React.memo(
         category,
         percentSale,
         price,
+        transitTime,
         discountNotPrice,
         onClickAddCourseCart,
         cartItems,
-        checkDeclension,
         masters,
         categories,
         pro,
@@ -66,7 +66,7 @@ const ShopBlock = React.memo(
                         </Link>
                         <div className="shop-block-top-text-tags">
                             <span className="shop-block-top-text__time">
-                                {checkDeclension}
+                                {transitTime}
                             </span>
 
                             <span className="shop-block-top-text__category">

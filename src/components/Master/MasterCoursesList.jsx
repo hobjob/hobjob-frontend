@@ -1,29 +1,13 @@
 import React from "react";
 import {useSelector} from "react-redux";
+import NumberFormat from "react-number-format";
+
+import {checkDeclension} from "../../Functions/checkDeclension";
 
 import {MasterCoursesListItem} from "../";
 
 const MasterCoursesList = () => {
     const {masterCourses} = useSelector(({user}) => user);
-
-    //склонение ["копия", "копии", "копий"]
-    const checkDeclension = (num, title) => {
-        let result;
-
-        if (num % 100 >= 5 && num % 100 <= 20) {
-            result = num + " " + title[2];
-        } else {
-            if (num % 10 === 1) {
-                result = num + " " + title[0];
-            } else if (num % 10 >= 2 && num % 10 <= 4) {
-                result = num + " " + title[1];
-            } else {
-                result = num + " " + title[2];
-            }
-        }
-
-        return result;
-    };
 
     return (
         <div className="master-info-list-courses">
@@ -44,11 +28,34 @@ const MasterCoursesList = () => {
                     <MasterCoursesListItem
                         {...item}
                         key={`master-info-list-courses-item-${index}`}
-                        buyCount={checkDeclension(item.buyCount, [
-                            "копия",
-                            "копии",
-                            "копий",
-                        ])}
+                        buyCount={
+                            <>
+                                <NumberFormat
+                                    value={item.buyCount}
+                                    displayType={"text"}
+                                    thousandSeparator={" "}
+                                    renderText={(value) => value}
+                                />{" "}
+                                {
+                                    checkDeclension(item.buyCount, [
+                                        "копия",
+                                        "копии",
+                                        "копий",
+                                    ]).text
+                                }
+                            </>
+                        }
+                        buyCountExtraLessons={
+                            <>
+                                <NumberFormat
+                                    value={item.buyCountExtraLessons}
+                                    displayType={"text"}
+                                    thousandSeparator={" "}
+                                    renderText={(value) => value}
+                                />{" "}
+                                {"доп. мат."}
+                            </>
+                        }
                     />
                 ))}
             </div>

@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 
 import {ShopFiltersSearch, ShopFilters} from "../../";
 
-const ShopFiltersTop = () => {
+const ShopFiltersTop = React.memo(() => {
     const [openFilters, setOpenFilters] = React.useState(false);
     const [filtersCount, setFiltersCount] = React.useState(0);
 
@@ -50,6 +50,6 @@ const ShopFiltersTop = () => {
             {openFilters ? <ShopFilters /> : null}
         </>
     );
-};
+});
 
 export default ShopFiltersTop;

@@ -1,35 +1,53 @@
 const initialState = {
-	user: {},
+	userInfo: {},
 	courses: {},
 	referrals: [],
 	masterCourses: [],
-	isLoaded: false,
+
+	isLoadedUserInfo: false,
+	isLoadedUserCourses: false,
+	isLoadedReferrals: false,
+	isLoadedMasterCourses: false,
 
 	isSendUpdateUserInfo: false,
 	isSendUpdateUserPassword: false,
 }
 
 const user = (state = initialState, action) => {
-	if (action.type === "SET_USER") {
-		const newObj = {}
-		const referrals = action.payload.referrals
-		const masterCourses = action.payload.masterCourses
+	if (action.type === "SET_USER_INFO") {
+		return {
+			...state,
+			userInfo: action.payload,
+			isLoadedUserInfo: true
+		}
+	}
 
-		action.payload.courses.map(item => {
+	if (action.type === "SET_USER_COURSES") {
+		const newObj = {}
+		action.payload.map(item => {
 			newObj[item._id] = item
 		})
 
-		delete action.payload.courses
-		delete action.payload.referrals
-		delete action.payload.masterCourses
-
 		return {
 			...state,
-			user: action.payload,
 			courses: newObj,
-			referrals,
-			masterCourses,
-			isLoaded: true
+			isLoadedUserCourses: true
+		}
+	}
+
+	if (action.type === "SET_USER_REFERRALS") {
+		return {
+			...state,
+			referrals: action.payload,
+			isLoadedReferrals: true
+		}
+	}
+
+	if (action.type === "SET_USER_MASTER_COURSES") {
+		return {
+			...state,
+			masterCourses: action.payload,
+			isLoadedMasterCourses: true
 		}
 	}
 

@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {setCoursesFiltersSearch} from "../../../redux/actions/courses";
 
-const ShopFiltersSearch = () => {
+const ShopFiltersSearch = React.memo(() => {
     const dispatch = useDispatch();
 
 	const { filters } = useSelector(({ courses }) => courses);
@@ -50,6 +50,6 @@ const ShopFiltersSearch = () => {
             </div>
         </div>
     );
-};
+});
 
 export default ShopFiltersSearch;

@@ -3,6 +3,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 import {Link} from "react-router-dom";
 
+import {checkDeclension} from "../Functions/checkDeclension";
+import {abbreviateNumber} from "../Functions/abbreviateNumber";
+
 import {fetchMasterById} from "../redux/actions/masters";
 import {addCourseCart} from "../redux/actions/cart";
 
@@ -40,25 +43,6 @@ const MasterCard = ({
         dispatch(addCourseCart(obj));
     };
 
-    //склонение ["час", "часа", "часов"]
-    const checkDeclension = (num, title) => {
-        let result;
-
-        if (num % 100 >= 5 && num % 100 <= 20) {
-            result = num + " " + title[2];
-        } else {
-            if (num % 10 === 1) {
-                result = num + " " + title[0];
-            } else if (num % 10 >= 2 && num % 10 <= 4) {
-                result = num + " " + title[1];
-            } else {
-                result = num + " " + title[2];
-            }
-        }
-
-        return result;
-    };
-
     return (
         <>
             {isLoadedById && isLoadedAllCategories ? (
@@ -92,14 +76,16 @@ const MasterCard = ({
                                                             onClickAddCourseCart={
                                                                 onClickAddCourseCart
                                                             }
-                                                            checkDeclension={checkDeclension(
-                                                                item.transitTime,
-                                                                [
-                                                                    "час",
-                                                                    "часа",
-                                                                    "часов",
-                                                                ]
-                                                            )}
+                                                            transitTime={
+                                                                checkDeclension(
+                                                                    item.transitTime,
+                                                                    [
+                                                                        "час",
+                                                                        "часа",
+                                                                        "часов",
+                                                                    ]
+                                                                ).title
+                                                            }
                                                             cartItems={cart}
                                                             key={`shop-master-card-block-${index}`}
                                                             masters={{
@@ -155,6 +141,10 @@ const MasterCard = ({
                                                             categories={
                                                                 categories
                                                             }
+                                                            views={abbreviateNumber(
+                                                                itemById
+                                                                    .posts[0].views
+                                                            )}
                                                         />
                                                     ) : null}
 
@@ -174,6 +164,9 @@ const MasterCard = ({
                                                                             categories={
                                                                                 categories
                                                                             }
+                                                                            views={abbreviateNumber(
+                                                                                item.views
+                                                                            )}
                                                                             key={`master-card-magazine-block-${index}`}
                                                                         />
                                                                     ) : null
@@ -184,6 +177,9 @@ const MasterCard = ({
                                                                             [itemById._id]:
                                                                                 itemById,
                                                                         }}
+                                                                        views={abbreviateNumber(
+                                                                            item.views
+                                                                        )}
                                                                         categories={
                                                                             categories
                                                                         }

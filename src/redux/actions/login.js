@@ -12,11 +12,6 @@ export const sendLogin = (data, functionSuccess) => (dispatch) => {
 		localStorage.setItem("accessToken", data.accessToken)
 
 		functionSuccess(data.user)
-
-		dispatch({
-			type: "SET_SEND_LOGIN",
-			payload: false
-		})
 	}).catch(({ response }) => {
 		dispatch({
 			type: "SET_SEND_LOGIN",

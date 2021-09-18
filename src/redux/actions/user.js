@@ -2,9 +2,27 @@ import { SubmissionError } from 'redux-form'
 
 import $api from '../../http/';
 
-export const fetchUser = () => (dispatch) => {
-	$api.get("/me").then(({ data }) => {
-		dispatch(setUser(data))
+export const fetchUserInfo = () => (dispatch) => {
+	$api.get("/my/info").then(({ data }) => {
+		dispatch(setUserInfo(data))
+	})
+}
+
+export const fetchUserCourses = () => (dispatch) => {
+	$api.get("/my/courses").then(({ data }) => {
+		dispatch(setUserCourses(data))
+	})
+}
+
+export const fetchUserReferrals = () => (dispatch) => {
+	$api.get("/my/referrals").then(({ data }) => {
+		dispatch(setUserReferrals(data))
+	})
+}
+
+export const fetchUserMasterCourses = () => (dispatch) => {
+	$api.get("/my/master-courses").then(({ data }) => {
+		dispatch(setUserMasterCourses(data))
 	})
 }
 
@@ -14,13 +32,13 @@ export const fetchUpdateUser = (data) => (dispatch) => {
 		payload: true
 	})
 
-	$api.put("/me/info", data).then(({ data }) => {
+	$api.put("/my/info", data).then(({ data }) => {
 		dispatch({
 			type: "SET_SEND_UPDATE_USER_INFO",
 			payload: false
 		})
 
-		dispatch(setUser(data))
+		dispatch(setUserInfo(data))
 	})
 }
 
@@ -30,7 +48,7 @@ export const fetchUpdateUserPassword = (data) => (dispatch) => {
 		payload: true
 	})
 
-	return $api.put("/me/password", data).then(({ data }) => {
+	return $api.put("/my/password", data).then(() => {
 		window.location.reload()
 	}).catch(({ response }) => {
 		dispatch({
@@ -47,16 +65,29 @@ export const fetchUpdateUserPassword = (data) => (dispatch) => {
 }
 
 export const fetchConfirmedUser = (hash) => (dispatch) => {
-	$api.get(`/confirmed/${hash}`).then(({ data }) => {
-		dispatch(setUser(data))
-
+	$api.get(`/confirmed/${hash}`).then(() => {
 		window.location.href = "/go/training"
 	}).catch(() => {
 		window.location.href = "/go/training"
 	})
 }
 
-const setUser = (user) => ({
-	type: "SET_USER",
-	payload: user
+const setUserInfo = (info) => ({
+	type: "SET_USER_INFO",
+	payload: info
+})
+
+const setUserCourses = (courses) => ({
+	type: "SET_USER_COURSES",
+	payload: courses
+})
+
+const setUserReferrals = (referrals) => ({
+	type: "SET_USER_REFERRALS",
+	payload: referrals
+})
+
+const setUserMasterCourses = (courses) => ({
+	type: "SET_USER_MASTER_COURSES",
+	payload: courses
 })

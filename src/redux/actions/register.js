@@ -12,11 +12,6 @@ export const sendRegister = (data, ref, functionSuccess) => (dispatch) => {
 		localStorage.setItem("accessToken", data.accessToken)
 
 		functionSuccess(data.user)
-
-		dispatch({
-			type: "SET_SEND_REGISTER",
-			payload: false
-		})
 	}).catch(({ response }) => {
 		dispatch({
 			type: "SET_SEND_REGISTER",

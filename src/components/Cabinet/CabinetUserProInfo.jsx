@@ -11,7 +11,7 @@ const CabinetUserProInfo = () => {
     const dispatch = useDispatch();
 
     const {
-        user: {pro, registrationPro, autoPayment},
+        userInfo: {pro, registrationPro, autoPayment},
     } = useSelector(({user}) => user);
     const {isSendProSubscribe} = useSelector(({payment}) => payment);
 

@@ -26,7 +26,7 @@ const MasterCoursesListItem = ({
             <div className="master-info-list-courses-col">
                 <div className="master-info-list-courses-item-count">
                     <span className="master-info-list-courses-item-count__title">
-                        {buyCount} {buyCountTitle}{", "} {buyCountExtraLessons} {"доп. мат."}
+                        {buyCount} {", "} {buyCountExtraLessons}
                     </span>
                 </div>
             </div>

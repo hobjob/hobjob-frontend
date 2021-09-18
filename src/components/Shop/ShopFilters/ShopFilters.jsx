@@ -6,7 +6,7 @@ import {
     ShopFiltersBlockTimes,
 } from "../../";
 
-const ShopFilters = () => {
+const ShopFilters = React.memo(() => {
     return (
         <div className="shop-filters">
             <ShopFiltersBlockSale />
@@ -14,6 +14,6 @@ const ShopFilters = () => {
             <ShopFiltersBlockTimes />
         </div>
     );
-};
+});
 
 export default ShopFilters;

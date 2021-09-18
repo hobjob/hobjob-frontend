@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import { Header, Footer } from './components/';
 
-import { Home, Cart, Shop, CoursePage, Magazine, MagazinePostPage, MasterCard, MastersAbout, Master, Pro, About, Err404, Login, Register, RepeatEmail, PasswordRecoveryEmail, PasswordRecoveryNewPassword, Confirmed, Training, PassingCourse, Cabinet, Referrals, PaymentCoursesLogin, PaymentCoursesRegister, PaymentCourses, PaymentCoursesConfirmation, PaymentCourseExtraLessons, PaymentCourseExtraLessonsConfirmation, PaymentProSubscribeLogin, PaymentProSubscribeRegister, PaymentProSubscribe, PaymentProSubscribeConfirmation, Policy, PublicOffer, Regulations } from './pages/';
+import { Home, Cart, Shop, CoursePage, Magazine, MagazinePostPage, MasterCard, MastersAbout, Master, Pro, About, Err404, Login, Register, RepeatEmail, PasswordRecoveryEmail, PasswordRecoveryNewPassword, Confirmed, Training, PassingCourse, Cabinet, Referrals, PaymentCoursesLogin, PaymentCoursesRegister, PaymentCourses, PaymentCoursesConfirmation, PaymentCourseExtraLessons, PaymentCourseExtraLessonsConfirmation, PaymentProSubscribeLogin, PaymentProSubscribeRegister, PaymentProSubscribe, PaymentProSubscribeConfirmation, Policy, PublicOffer, ReferralsPolicy, Regulations } from './pages/';
 
 dotenv.config()
 
@@ -65,6 +65,7 @@ const App = () => {
 					<Route path="/go/passing/:courseId/:lessonNum" render={(props) => <PassingCourse {...props} />} exact />
 					<Route path="/go/cabinet" render={() => <Cabinet />} exact />
 					<Route path="/go/referrals" render={() => <Referrals />} exact />
+					<Route path="/go/referrals/policy" render={() => <ReferralsPolicy />} exact />
 					<Route path="/go/master" render={() => <Master />} exact />
 
 					<Route render={() => <Err404 />} exact />

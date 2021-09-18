@@ -3,6 +3,8 @@ import {useHistory, Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 
+import { checkDeclension } from "../Functions/checkDeclension";
+
 import {fetchCourseById} from "../redux/actions/courses";
 import {addCourseCart} from "../redux/actions/cart";
 
@@ -40,7 +42,7 @@ const CoursePage = ({
     );
     const masters = useSelector(({masters}) => masters.items);
     const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
-    const {user, courses} = useSelector(({user}) => user);
+    const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
 
     const [visibleButton, setVisibleButton] = React.useState(false);
     const [addState, setAddState] = React.useState(false);
@@ -73,25 +75,6 @@ const CoursePage = ({
         history.push("/cart");
     };
 
-    //склонение ["час", "часа", "часов"]
-    const checkDeclension = (num, title) => {
-        let result;
-
-        if (num % 100 >= 5 && num % 100 <= 20) {
-            result = num + " " + title[2];
-        } else {
-            if (num % 10 === 1) {
-                result = num + " " + title[0];
-            } else if (num % 10 >= 2 && num % 10 <= 4) {
-                result = num + " " + title[1];
-            } else {
-                result = num + " " + title[2];
-            }
-        }
-
-        return result;
-    };
-
     return (
         <>
             {isLoadedCourseById && isLoadedMasters && isLoadedCategories ? (
@@ -100,7 +83,7 @@ const CoursePage = ({
                         <title>{itemById.title} - HobJob</title>
                     </Helmet>
 
-                    {courses[id] ? (
+                    {isLoadedUserInfo && userInfo.courses[id] ? (
                         <button
                             className={`btn-small-round disabled course-page__btn ${
                                 visibleButton ? "active" : ""
@@ -133,18 +116,30 @@ const CoursePage = ({
 
                     <CoursePageMain
                         {...itemById}
-                        checkDeclension={checkDeclension(itemById.transitTime, [
-                            "час",
-                            "часа",
-                            "часов",
-                        ])}
-                        pro={user.pro}
-                        proPrice={itemById.price - (itemById.price / 100) * 20}
+                        transitTime={
+                            checkDeclension(itemById.transitTime, [
+                                "час",
+                                "часа",
+                                "часов",
+                            ]).title
+                        }
+                        pro={userInfo.pro}
+                        proPrice={
+                            itemById.price -
+                            (itemById.price / 100) *
+                                process.env.REACT_APP_PAYMENT_PERCENT_PRO
+                        }
                         addCart={addCart}
                         masters={masters}
                         categories={categories}
                         addState={addState}
-                        isBuy={courses[id]}
+                        isBuy={
+                            isLoadedUserInfo
+                                ? userInfo.courses[id]
+                                    ? true
+                                    : false
+                                : false
+                        }
                     />
 
                     {itemById.page.map((item, index) => (

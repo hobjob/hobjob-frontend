@@ -11,7 +11,7 @@ const CoursePageMain = ({
     price,
     percentSale,
     discountNotPrice,
-    checkDeclension,
+    transitTime,
     masterId,
     masters,
     categories,
@@ -28,7 +28,7 @@ const CoursePageMain = ({
                     <div className="course-page-main-text">
                         <div className="course-page-main-text-subinfo">
                             <a
-                                href=""
+                                href={`/shop/?category=${category}`}
                                 className="course-page-main-text-subinfo__category"
                             >
                                 {categories[category]
@@ -36,7 +36,7 @@ const CoursePageMain = ({
                                     : null}
                             </a>
                             <span className="course-page-main-text-subinfo__time">
-                                Длительность курса {checkDeclension}
+                                Длительность курса {transitTime}
                             </span>
                         </div>
                         <h2 className="course-page__title course-page-main-text__title">
@@ -45,7 +45,7 @@ const CoursePageMain = ({
                         <p className="course-page-main-text__description">
                             {description}
                         </p>
-                        <a
+                        <Link
                             href={`/master/${masterId}`}
                             className="course-page-main-text-master"
                         >
@@ -63,7 +63,7 @@ const CoursePageMain = ({
                                     </>
                                 ) : null}
                             </h4>
-                        </a>
+                        </Link>
 
                         {!percentSale ? (
                             pro ? (
