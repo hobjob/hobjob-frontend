@@ -7,6 +7,7 @@ const ShopBlock = React.memo(
         _id,
         image,
         title,
+        master,
         masterId,
         category,
         percentSale,
@@ -15,8 +16,6 @@ const ShopBlock = React.memo(
         discountNotPrice,
         onClickAddCourseCart,
         cartItems,
-        masters,
-        categories,
         pro,
         proPrice,
         isBuy,
@@ -57,10 +56,9 @@ const ShopBlock = React.memo(
                             to={`/master/${masterId}`}
                             className="shop-block-top-text__auth"
                         >
-                            {masters[masterId] ? (
+                            {master ? (
                                 <>
-                                    {masters[masterId].name}{" "}
-                                    {masters[masterId].surname}
+                                    {master.name} {master.surname}
                                 </>
                             ) : null}
                         </Link>
@@ -70,9 +68,7 @@ const ShopBlock = React.memo(
                             </span>
 
                             <span className="shop-block-top-text__category">
-                                {categories[category]
-                                    ? categories[category].title
-                                    : null}
+                                {category ? category.title : null}
                             </span>
                         </div>
                     </div>

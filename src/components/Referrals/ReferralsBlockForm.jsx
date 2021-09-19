@@ -8,7 +8,9 @@ import {RenderInput, BtnLoader} from "../";
 import validate from "./validate";
 
 let ReferralsBlockForm = ({handleSubmit}) => {
-	const { isSendRequestPaymentReferrals } = useSelector(({ payment }) => payment);
+	const {isSendPaymentOutputReferrals} = useSelector(
+        ({payment_output}) => payment_output
+    );
 	
     const cardMask = createTextMask({
         pattern: "9999 9999 9999 9999",
@@ -35,7 +37,7 @@ let ReferralsBlockForm = ({handleSubmit}) => {
                 </div>
             </div>
             <div className="referrals-info-block-content-form-bottom">
-                {isSendRequestPaymentReferrals ? (
+                {isSendPaymentOutputReferrals ? (
                     <button
                         className="btn disabled referrals-info-block-content-form__btn"
                         disabled

@@ -122,19 +122,6 @@ export const sendConfirmationProSubscribePayment = (paymentNumber) => (dispatch)
 	})
 }
 
-export const sendRequestPaymentReferrals = (data, functionSuccess) => (dispatch) => {
-	dispatch({
-		type: "SET_SEND_REQUEST_PAYMENT_REFERRALS",
-		payload: true,
-	})
-
-	$api.post(`/payment-output/referrals`, data).then(({ data }) => {
-		dispatch(setRequestPaymentNumberReferrals(data))
-
-		functionSuccess()
-	})
-}
-
 const setCoursesPayment = (payment) => ({
 	type: "SET_COURSES_PAYMENT",
 	payload: payment
@@ -148,9 +135,4 @@ const setCourseExtraLessonsPayment = (payment) => ({
 const setProSubscribePayment = (payment) => ({
 	type: "SET_PRO_SUBSCRIBE_PAYMENT",
 	payload: payment
-})
-
-const setRequestPaymentNumberReferrals = (paymentNumber) => ({
-	type: "SET_REQUEST_PAYMENT_NUMBER_REFERRALS",
-	payload: paymentNumber
 })

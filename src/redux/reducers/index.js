@@ -14,6 +14,7 @@ import repeat_email from './repeat_email';
 import user from './user';
 import passing from './passing';
 import payment from './payment';
+import payment_output from './payment_output';
 
 const rootReducer = combineReducers({
 	courses,
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
 	user,
 	passing,
 	payment,
+	payment_output,
 	form: formReducer
 });
 

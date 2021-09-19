@@ -68,8 +68,14 @@ const ShopSection = ({title}) => {
                                         }
                                         cartItems={cart}
                                         key={`shop-section-block-${index}`}
-                                        masters={masters}
-                                        categories={categories}
+                                        master={
+                                            masters[itemsSection[key].masterId]
+                                        }
+                                        category={
+                                            categories[
+                                                itemsSection[key].category
+                                            ]
+                                        }
                                     />
                                 ))}
                             </div>

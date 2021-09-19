@@ -2,7 +2,7 @@ import React from "react";
 import {Link, NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
 
-const HeaderModalMenu = ({
+const HeaderModalMenu = React.memo(({
     HeaderModalMenuRef,
     modalMenuAnimationState,
     onClickCloseModalMenu,
@@ -257,6 +257,6 @@ const HeaderModalMenu = ({
             </div>
         </div>
     );
-};
+});
 
 export default HeaderModalMenu;

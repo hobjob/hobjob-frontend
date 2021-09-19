@@ -1,4 +1,8 @@
-console.log(window.location.search.replace('?', '?'))
+import queryString from "query-string";
+
+const parseQuery = queryString.parse(window.location.search.replace('?', '?'), {
+	arrayFormat: "comma",
+});
 
 const initialState = {
 	isLoadedAllCoursesFirst: false,
@@ -24,11 +28,42 @@ const initialState = {
 
 	filters: {
 		categories: {},
-		search: "",
-		sale: null,
+		search: parseQuery.q ? parseQuery.q : "",
+		sale: parseQuery.sale ? parseQuery.sale : null,
 		masters: {},
 		times: {}
 	},
+}
+
+if (parseQuery.category) {
+	if (typeof parseQuery.category === "object") {
+		parseQuery.category.map(
+			(item) => (initialState.filters.categories[item] = item)
+		);
+	} else {
+		initialState.filters.categories[parseQuery.category] =
+			parseQuery.category;
+	}
+}
+
+if (parseQuery.masters) {
+	if (typeof parseQuery.masters === "object") {
+		parseQuery.masters.map(
+			(item) => (initialState.filters.masters[item] = item)
+		);
+	} else {
+		initialState.filters.masters[parseQuery.masters] = parseQuery.masters;
+	}
+}
+
+if (parseQuery.times) {
+	if (typeof parseQuery.times === "object") {
+		parseQuery.times.map(
+			(item) => (initialState.filters.times[item] = item)
+		);
+	} else {
+		initialState.filters.times[parseQuery.times] = parseQuery.times;
+	}
 }
 
 const courses = (state = initialState, action) => {

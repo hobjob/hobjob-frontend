@@ -2,7 +2,7 @@ import React from "react";
 import {useDispatch} from "react-redux";
 import NumberFormat from "react-number-format";
 
-import {sendRequestPaymentReferrals} from "../../redux/actions/payment";
+import {sendPaymentOutputReferrals} from "../../redux/actions/payment_output";
 
 import {ReferralsBlockForm, ReferralsBlockSuccess} from "../";
 
@@ -16,7 +16,7 @@ const ReferralBlockBalance = ({refBalance}) => {
             setIndexPayment(2);
         };
 
-        dispatch(sendRequestPaymentReferrals(data, functionSuccess));
+        dispatch(sendPaymentOutputReferrals(data, functionSuccess));
     };
 
     return (

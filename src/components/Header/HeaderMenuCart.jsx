@@ -1,9 +1,9 @@
 import React from "react";
-// import {useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {NavLink} from "react-router-dom";
 
-const HeaderMenuCart = ({number}) => {
-    // const {cart} = useSelector(({cart}) => cart);
+const HeaderMenuCart = React.memo(() => {
+    const {cart} = useSelector(({cart}) => cart);
 
     return (
         <NavLink
@@ -11,9 +11,9 @@ const HeaderMenuCart = ({number}) => {
             className="header-nav__link header-nav-cart__link"
             activeClassName="header-nav__link header-nav-cart__link active"
         >
-            Корзина ({number})
+            Корзина ({Object.keys(cart).length})
         </NavLink>
     );
-};
+});
 
 export default HeaderMenuCart;

@@ -152,7 +152,7 @@ const Header = React.memo(() => {
                         <HeaderMenu />
 
                         <nav className="header-left">
-                            <HeaderMenuCart number={Object.keys(cart).length} />
+                            <HeaderMenuCart />
 
                             {isLoadedUserInfo ? (
                                 <>
