@@ -55,7 +55,9 @@ const Shop = React.memo(({
             sale: null,
             masters: {},
             times: {},
-        };
+		};
+		
+		// console.log(search);
 
         const parseQuery = queryString.parse(search, {
             arrayFormat: "comma",

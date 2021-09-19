@@ -16,11 +16,13 @@ const Master = () => {
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
+    }, []);
 
-        if (!masterCourses.length) {
+    React.useEffect(() => {
+        if (!masterCourses.length && isLoadedUserInfo) {
             dispatch(fetchUserMasterCourses());
         }
-    }, []);
+    }, [isLoadedUserInfo]);
 
     return (
         <>

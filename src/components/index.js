@@ -68,6 +68,7 @@ export { default as CoursePageContest } from "./CoursePage/CoursePageContest"
 export { default as CoursePageChat } from "./CoursePage/CoursePageChat"
 export { default as CoursePageWork } from "./CoursePage/CoursePageWork"
 export { default as CoursePageFaq } from "./CoursePage/CoursePageFaq"
+export { default as CoursePageEducation } from "./CoursePage/CoursePageEducation"
 
 // About
 export { default as AboutSection } from "./About/AboutSection"
@@ -130,6 +131,7 @@ export { default as CabinetUserProInfo } from "./Cabinet/CabinetUserProInfo"
 export { default as ReferralsBlockLink } from "./Referrals/ReferralsBlockLink"
 export { default as ReferralsBlockBalance } from "./Referrals/ReferralsBlockBalance"
 export { default as ReferralsBlockForm } from "./Referrals/ReferralsBlockForm"
+export { default as ReferralsBlockSuccess } from "./Referrals/ReferralsBlockSuccess"
 export { default as ReferralsPartners } from "./Referrals/ReferralsPartners"
 export { default as ReferralsPartnersItem } from "./Referrals/ReferralsPartnersItem"
 

@@ -2,7 +2,7 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 
-import { checkDeclension } from "../Functions/checkDeclension";
+import {checkDeclension} from "../Functions/checkDeclension";
 
 import {fetchUserCourses} from "../redux/actions/user";
 
@@ -17,21 +17,22 @@ import {
 import Err404 from "./Err404";
 
 const Training = () => {
-	const dispatch = useDispatch()
-    const {userInfo, courses, isLoadedUserInfo, isLoadedUserCourses} = useSelector(
-        ({user}) => user
-    );
+    const dispatch = useDispatch();
+    const {userInfo, courses, isLoadedUserInfo, isLoadedUserCourses} =
+        useSelector(({user}) => user);
     const masters = useSelector(({masters}) => masters.items);
     const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
 
     React.useEffect(() => {
-		window.scrollTo(0, 0);
-		
-		if (!Object.keys(courses).length) {
-			dispatch(fetchUserCourses());
-		}
-	}, []);
-	
+        window.scrollTo(0, 0);
+    }, []);
+
+    React.useEffect(() => {
+        if (!Object.keys(courses).length && isLoadedUserInfo) {
+            dispatch(fetchUserCourses());
+        }
+    }, [isLoadedUserInfo]);
+
     return (
         <>
             <Helmet>
@@ -101,9 +102,7 @@ const Training = () => {
                         <NotEmailConfirmed />
                     )
                 ) : (
-                    <div className="loader-wrapper">
-                        <Loader />
-                    </div>
+                    <Loader />
                 )
             ) : (
                 <Err404 />

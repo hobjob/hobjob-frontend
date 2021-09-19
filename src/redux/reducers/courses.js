@@ -1,3 +1,5 @@
+console.log(window.location.search.replace('?', '?'))
+
 const initialState = {
 	isLoadedAllCoursesFirst: false,
 	isLoadedAllCourses: false,

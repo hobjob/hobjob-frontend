@@ -42,12 +42,6 @@
 		+borderRadiusBlock
 		+boxShadow
 
-		&-track
-			width: 100%
-			position: absolute
-			display: flex
-			+transition
-
 		&-link
 			width: 60%
 
@@ -125,6 +119,14 @@
 							top: 50%
 							transform: translateY(-50%)
 
+		&-track
+			width: 100%
+			height: calc( 100% - 70px )
+
+			position: absolute
+			display: flex
+			+transition
+
 		&-balance
 			width: 38%
 
@@ -133,6 +135,10 @@
 			margin-right: 70px
 
 			&-balance
+				display: flex
+				flex-direction: column
+				justify-content: space-between
+
 				&__title
 					font-size: 42px
 					margin-bottom: 50px
@@ -169,7 +175,7 @@
 					margin-top: 15px
 					text-align: center
 					font-size: 21px
-					
+
 					& span
 						color: $gray
 

@@ -1,12 +1,15 @@
 import React from "react";
+import {useSelector} from "react-redux";
 import {Field, reduxForm} from "redux-form";
 import {createTextMask} from "redux-form-input-masks";
 
-import { RenderInput, BtnLoader } from "../";
+import {RenderInput, BtnLoader} from "../";
 
 import validate from "./validate";
 
 let ReferralsBlockForm = ({handleSubmit}) => {
+	const { isSendRequestPaymentReferrals } = useSelector(({ payment }) => payment);
+	
     const cardMask = createTextMask({
         pattern: "9999 9999 9999 9999",
         stripMask: false,
@@ -32,9 +35,18 @@ let ReferralsBlockForm = ({handleSubmit}) => {
                 </div>
             </div>
             <div className="referrals-info-block-content-form-bottom">
-                <button className="btn referrals-info-block-content-form__btn">
-                    Отправить заявку
-                </button>
+                {isSendRequestPaymentReferrals ? (
+                    <button
+                        className="btn disabled referrals-info-block-content-form__btn"
+                        disabled
+                    >
+                        <BtnLoader />
+                    </button>
+                ) : (
+                    <button className="btn referrals-info-block-content-form__btn">
+                        Отправить заявку
+                    </button>
+                )}
             </div>
         </form>
     );

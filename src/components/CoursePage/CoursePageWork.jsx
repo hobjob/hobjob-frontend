@@ -40,7 +40,7 @@ const CoursePageWork = ({images, path}) => {
                     <div className="course-page-work-media-wrapper">
                         {images.map((image, index) => (
                             <div
-                                className="course-page-work-img"
+                                className="course-page-work-media-img"
                                 key={`course-page-work-img-${index}`}
                                 style={{
                                     backgroundImage: `url('${process.env.REACT_APP_IMAGE_DOMEN}/uploads/${path}/${image}')`,

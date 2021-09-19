@@ -46,7 +46,7 @@ const CoursePageMain = ({
                             {description}
                         </p>
                         <Link
-                            href={`/master/${masterId}`}
+                            to={`/master/${masterId}`}
                             className="course-page-main-text-master"
                         >
                             <div

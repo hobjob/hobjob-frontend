@@ -22,11 +22,14 @@ const Referral = () => {
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
+    }, []);
 
-        if (!referrals.length) {
+    React.useEffect(() => {
+        if (!referrals.length && isLoadedUserInfo) {
             dispatch(fetchUserReferrals());
         }
-    }, []);
+    }, [isLoadedUserInfo]);
+
     return (
         <>
             <Helmet>

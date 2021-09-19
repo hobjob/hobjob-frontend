@@ -5,6 +5,9 @@ const initialState = {
 	isSendCourses: false,
 	isSendCourseExtraLessons: false,
 	isSendProSubscribe: false,
+
+	isSendRequestPaymentReferrals: false,
+	requestPaymentNumberReferrals: ""
 }
 
 const payment = (state = initialState, action) => {
@@ -57,6 +60,21 @@ const payment = (state = initialState, action) => {
 		return {
 			...state,
 			isSendProSubscribe: action.payload
+		}
+	}
+
+	if (action.type === "SET_SEND_REQUEST_PAYMENT_REFERRALS") {
+		return {
+			...state,
+			isSendRequestPaymentReferrals: action.payload
+		}
+	}
+
+	if (action.type === "SET_REQUEST_PAYMENT_NUMBER_REFERRALS") {
+		return {
+			...state,
+			requestPaymentNumberReferrals: action.payload,
+			isSendRequestPaymentReferrals: false
 		}
 	}
 

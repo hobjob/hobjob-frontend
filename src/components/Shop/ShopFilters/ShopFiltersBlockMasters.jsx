@@ -7,7 +7,7 @@ const ShopFiltersBlockMasters = React.memo(() => {
     const dispatch = useDispatch();
 
     const {filters} = useSelector(({courses}) => courses);
-    const {items, isLoaded} = useSelector(({masters}) => masters);
+    const {items} = useSelector(({masters}) => masters);
 
     const setMasters = (masterId) => {
         dispatch(setCoursesFiltersMasters(masterId));

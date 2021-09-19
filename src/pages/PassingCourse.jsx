@@ -5,7 +5,7 @@ import NumberFormat from "react-number-format";
 import {Helmet} from "react-helmet";
 import moment from "moment";
 
-import { fetchUserCourses } from "../redux/actions/user";
+import {fetchUserCourses} from "../redux/actions/user";
 
 import {
     fetchPassingCourseLessonMaterial,
@@ -43,7 +43,8 @@ const PassingCourse = ({
 
     const [hashtag, setHashtag] = React.useState("");
 
-    const {userInfo, courses, isLoadedUserCourses, isLoadedUserInfo} = useSelector(({user}) => user);
+    const {userInfo, courses, isLoadedUserCourses, isLoadedUserInfo} =
+        useSelector(({user}) => user);
     const {isSendCourseExtraLessons, isSendProSubscribe} = useSelector(
         ({payment}) => payment
     );
@@ -54,9 +55,9 @@ const PassingCourse = ({
     const lessonIndex = lessonNum - 1;
 
     React.useEffect(() => {
-		window.scrollTo(0, 0);
-		
-		if (!Object.keys(courses).length) {
+        window.scrollTo(0, 0);
+
+        if (!Object.keys(courses).length && isLoadedUserInfo) {
             dispatch(fetchUserCourses());
         }
 
@@ -67,7 +68,7 @@ const PassingCourse = ({
                     .toLowerCase()}${moment().format("MM.YYYY")}`
             );
         }
-    }, [courseId, lessonNum, isLoadedUserCourses]);
+    }, [courseId, lessonNum, isLoadedUserCourses, isLoadedUserInfo]);
 
     const setTime = (seconds) => {
         window.scrollTo(0, 0);

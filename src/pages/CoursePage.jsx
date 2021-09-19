@@ -3,7 +3,7 @@ import {useHistory, Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 
-import { checkDeclension } from "../Functions/checkDeclension";
+import {checkDeclension} from "../Functions/checkDeclension";
 
 import {fetchCourseById} from "../redux/actions/courses";
 import {addCourseCart} from "../redux/actions/cart";
@@ -22,6 +22,7 @@ import {
     CoursePageChat,
     CoursePageWork,
     CoursePageFaq,
+    CoursePageEducation,
     AboutSection,
     Loader,
 } from "../components";
@@ -186,6 +187,10 @@ const CoursePage = ({
                                     {...item}
                                     masters={masters}
                                 />
+                            ) : null}
+
+                            {item.type === "education" ? (
+                                <CoursePageEducation />
                             ) : null}
 
                             {item.type === "contest" ? (

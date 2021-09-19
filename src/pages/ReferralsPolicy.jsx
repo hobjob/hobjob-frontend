@@ -1,5 +1,6 @@
 import React from "react";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
+import {Link} from 'react-router-dom';
 
 import {PolicyBlock} from "../components/";
 
@@ -48,6 +49,7 @@ const ReferralsPolicy = () => {
             <section className="policy">
                 <div className="container">
                     <div className="policy-wrapper">
+                        <Link to="/go/referrals" className="policy-back">← Назад</Link>
                         <h2 className="title__mb policy__title">
                             Правила реферальной программы
                         </h2>

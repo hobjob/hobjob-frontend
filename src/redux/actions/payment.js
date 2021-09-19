@@ -21,7 +21,7 @@ export const sendCreateCoursesPayment = (data, user) => (dispatch) => {
 
 	const { order } = data
 	const { courses } = user
-	
+
 	let userCoursesArr = Object.keys(courses).map((key) => courses[key].courseId);
 
 	let newOrder = [];
@@ -109,7 +109,7 @@ export const sendCreateProSubscribePayment = ({ pro }) => (dispatch) => {
 		window.location.href = `/go/cabinet`
 	}
 
-	$api.get(`/payment/pro`).then(({ data }) => {
+	$api.post(`/payment/pro`, {}).then(({ data }) => {
 		window.location.href = `/payment/pro/${data.paymentNumber}`
 	})
 }
@@ -119,6 +119,19 @@ export const sendConfirmationProSubscribePayment = (paymentNumber) => (dispatch)
 		window.location.href = `/go/cabinet`
 	}).catch(() => {
 		window.location.href = `/go/cabinet`
+	})
+}
+
+export const sendRequestPaymentReferrals = (data, functionSuccess) => (dispatch) => {
+	dispatch({
+		type: "SET_SEND_REQUEST_PAYMENT_REFERRALS",
+		payload: true,
+	})
+
+	$api.post(`/payment-output/referrals`, data).then(({ data }) => {
+		dispatch(setRequestPaymentNumberReferrals(data))
+
+		functionSuccess()
 	})
 }
 
@@ -135,4 +148,9 @@ const setCourseExtraLessonsPayment = (payment) => ({
 const setProSubscribePayment = (payment) => ({
 	type: "SET_PRO_SUBSCRIBE_PAYMENT",
 	payload: payment
+})
+
+const setRequestPaymentNumberReferrals = (paymentNumber) => ({
+	type: "SET_REQUEST_PAYMENT_NUMBER_REFERRALS",
+	payload: paymentNumber
 })
