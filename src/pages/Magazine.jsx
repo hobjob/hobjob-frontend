@@ -1,16 +1,12 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import queryString from "query-string";
-import { Helmet } from "react-helmet";
+import {Helmet} from "react-helmet";
 
 import {abbreviateNumber} from "../Functions/abbreviateNumber";
 
-import {
-    fetchPosts,
-    fetchAddPaginationPosts,
-    setPostsFilters,
-} from "../redux/actions/posts";
+import {fetchPosts, fetchAddPaginationPosts} from "../redux/actions/posts";
 
 import {
     MagazineBlockBig,
@@ -29,9 +25,14 @@ const Magazine = ({
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const {items, filters, page, totalCount, isFetchAllPosts, isLoadedAllPostsFirst} = useSelector(
-        ({posts}) => posts
-    );
+    const {
+        items,
+        filters,
+        page,
+        totalCount,
+        isFetchAllPosts,
+        isLoadedAllPostsFirst,
+    } = useSelector(({posts}) => posts);
 
     const masters = useSelector(({masters}) => masters.items);
     const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
@@ -43,27 +44,6 @@ const Magazine = ({
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
-
-        const newFilters = {
-            categories: {},
-        };
-
-        const parseQuery = queryString.parse(search, {
-            arrayFormat: "comma",
-        });
-
-        if (parseQuery.category) {
-            if (typeof parseQuery.category === "object") {
-                parseQuery.category.map(
-                    (item) => (newFilters.categories[item] = item)
-                );
-            } else {
-                newFilters.categories[parseQuery.category] =
-                    parseQuery.category;
-            }
-        }
-
-        dispatch(setPostsFilters(newFilters));
     }, []);
 
     React.useEffect(() => {
@@ -87,7 +67,7 @@ const Magazine = ({
 
     const onClickaddPaginationPagePosts = () => {
         dispatch(fetchAddPaginationPosts(search, page + 1));
-	};
+    };
 
     return (
         <>

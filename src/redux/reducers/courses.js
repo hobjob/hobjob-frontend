@@ -35,6 +35,8 @@ const initialState = {
 	},
 }
 
+console.log(parseQuery)
+
 if (parseQuery.category) {
 	if (typeof parseQuery.category === "object") {
 		parseQuery.category.map(
@@ -44,6 +46,8 @@ if (parseQuery.category) {
 		initialState.filters.categories[parseQuery.category] =
 			parseQuery.category;
 	}
+} else {
+	initialState.filters.categories = {}
 }
 
 if (parseQuery.masters) {
@@ -54,6 +58,8 @@ if (parseQuery.masters) {
 	} else {
 		initialState.filters.masters[parseQuery.masters] = parseQuery.masters;
 	}
+} else {
+	initialState.filters.masters = {}
 }
 
 if (parseQuery.times) {
@@ -64,6 +70,8 @@ if (parseQuery.times) {
 	} else {
 		initialState.filters.times[parseQuery.times] = parseQuery.times;
 	}
+} else {
+	initialState.filters.times = {}
 }
 
 const courses = (state = initialState, action) => {

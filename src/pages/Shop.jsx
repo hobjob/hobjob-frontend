@@ -47,6 +47,10 @@ const Shop = React.memo(
         const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
 
         React.useEffect(() => {
+            window.scrollTo(0, 0);
+        }, []);
+
+        React.useEffect(() => {
             const arrayCategories = [];
             const arrayMasters = [];
             const arrayTimes = [];
@@ -145,9 +149,13 @@ const Shop = React.memo(
                                                     }
                                                     cartItems={cart}
                                                     key={`shop-block-${index}`}
-                                                    master={masters[item.masterId]}
+                                                    master={
+                                                        masters[item.masterId]
+                                                    }
                                                     category={
-                                                        categories[item.category]
+                                                        categories[
+                                                            item.category
+                                                        ]
                                                     }
                                                     isBuy={
                                                         isLoadedUserInfo

@@ -1,3 +1,9 @@
+import queryString from "query-string";
+
+const parseQuery = queryString.parse(window.location.search.replace('?', '?'), {
+	arrayFormat: "comma",
+});
+
 const initialState = {
 	isLoadedAllPostsFirst: false,
 	isLoadedAllPosts: false,
@@ -13,6 +19,17 @@ const initialState = {
 
 	filters: {
 		categories: {}
+	}
+}
+
+if (parseQuery.category) {
+	if (typeof parseQuery.category === "object") {
+		parseQuery.category.map(
+			(item) => (initialState.filters.categories[item] = item)
+		);
+	} else {
+		initialState.filters.categories[parseQuery.category] =
+			parseQuery.category;
 	}
 }
 
