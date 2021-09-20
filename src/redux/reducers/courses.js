@@ -35,8 +35,6 @@ const initialState = {
 	},
 }
 
-console.log(parseQuery)
-
 if (parseQuery.category) {
 	if (typeof parseQuery.category === "object") {
 		parseQuery.category.map(
