@@ -49,8 +49,6 @@ const PassingCourse = ({
         ({payment}) => payment
     );
 
-    const PlayerRef = React.useRef();
-
     // Array of lessons starts at zero
     const lessonIndex = lessonNum - 1;
 
@@ -69,15 +67,6 @@ const PassingCourse = ({
             );
         }
     }, [courseId, lessonNum, isLoadedUserCourses, isLoadedUserInfo]);
-
-    const setTime = (seconds) => {
-        window.scrollTo(0, 0);
-
-        PlayerRef.current.store.dispatch({
-            type: "UPDATE_ASKED_TIME",
-            payload: {askedTime: seconds},
-        });
-    };
 
     const downloadFile = (title, index) => {
         dispatch(
@@ -130,9 +119,12 @@ const PassingCourse = ({
                                             <PassingVideo
                                                 {...courses[courseId]}
                                                 courseId={courseId}
-                                                PlayerRef={PlayerRef}
                                                 lessonNum={lessonNum}
-                                                lessonIndex={lessonIndex}
+                                                image={
+                                                    courses[courseId].lessons[
+                                                        lessonIndex
+                                                    ].image
+                                                }
                                             />
 
                                             <PassingLessonsList
@@ -175,7 +167,6 @@ const PassingCourse = ({
                                                 ) : null}
 
                                                 <PassingTimecodes
-                                                    setTime={setTime}
                                                     isMaterials={
                                                         courses[courseId]
                                                             .lessons[

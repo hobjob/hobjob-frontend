@@ -27,6 +27,7 @@ $api.interceptors.response.use((config) => {
 				if (localStorage.getItem("accessToken")) {
 					$api.post('/logout').then(() => {
 						localStorage.removeItem("accessToken")
+						window.location.reload();
 					})
 				}
 			}

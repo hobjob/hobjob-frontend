@@ -30,3 +30,8 @@ export const fetchCertificateCourse = (courseId) => (dispatch) => {
 		window.location.href = data.url
 	});
 }
+
+export const setTimecodeSeconds = (seconds) => ({
+	type: "SET_TIMECODE_SECONDS",
+	payload: seconds
+})

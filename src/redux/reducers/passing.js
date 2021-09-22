@@ -1,9 +1,9 @@
 const initialState = {
 	materialsIsDownloading: {},
+	timecodeSeconds: 0
 }
 
 const passing = (state = initialState, action) => {
-
 	if (action.type === "PUSH_STATE_MATERIALS_DOWNLOADING") {
 		const newObj = { ...state.materialsIsDownloading, [action.payload.materialNum]: action.payload.state }
 
@@ -20,6 +20,13 @@ const passing = (state = initialState, action) => {
 
 		return {
 			...state
+		}
+	}
+
+	if (action.type === "SET_TIMECODE_SECONDS") {
+		return {
+			...state,
+			timecodeSeconds: action.payload
 		}
 	}
 

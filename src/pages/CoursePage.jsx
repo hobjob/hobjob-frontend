@@ -57,6 +57,12 @@ const CoursePage = ({
     }, [Object.keys(cart).length]);
 
     React.useEffect(() => {
+        if (isLoadedCourseById) {
+            window.scrollTo(0, 0);
+        }
+    }, [isLoadedCourseById]);
+
+    React.useEffect(() => {
         window.scrollTo(0, 0);
 
         window.addEventListener("scroll", () => {
