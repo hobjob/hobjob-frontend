@@ -5,6 +5,7 @@ import NumberFormat from "react-number-format";
 const ShopBlock = React.memo(
     ({
         _id,
+        url,
         image,
         title,
         master,
@@ -39,7 +40,7 @@ const ShopBlock = React.memo(
             <div className="shop-block">
                 <div className="shop-block-top">
                     <Link
-                        to={`/course/${_id}`}
+                        to={`/course/${url}`}
                         className="shop-block-top-cover"
                         style={{
                             backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
@@ -47,10 +48,10 @@ const ShopBlock = React.memo(
                     ></Link>
                     <div className="shop-block-top-text">
                         <Link
-                            to={`/course/${_id}`}
+                            to={`/course/${url}`}
                             className="shop-block-top-text__title"
                         >
-                            <h4>{title}</h4>
+                            {title}
                         </Link>
                         <Link
                             to={`/master/${masterId}`}

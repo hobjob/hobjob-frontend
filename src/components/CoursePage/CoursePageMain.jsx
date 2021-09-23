@@ -1,10 +1,10 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import NumberFormat from "react-number-format";
+import ReactPlayer from "react-player";
 
 const CoursePageMain = ({
-    image,
-    videoTrailer,
+    videoTrailerUrl,
     category,
     title,
     description,
@@ -156,16 +156,12 @@ const CoursePageMain = ({
                         )}
                     </div>
                     <div className="course-page-main-video">
-                        <video
-                            controls
-                            playsInline
-                            poster={`${process.env.REACT_APP_IMAGE_DOMEN}/${image}`}
-                        >
-                            <source
-                                src={`${process.env.REACT_APP_IMAGE_DOMEN}/${videoTrailer}`}
-                                type="video/mp4"
-                            />
-                        </video>
+                        <ReactPlayer
+                            url={videoTrailerUrl}
+                            width="100%"
+                            height="100%"
+                            style={{borderRadius: "15px", overflow: "hidden"}}
+                        />
                     </div>
                 </div>
             </div>

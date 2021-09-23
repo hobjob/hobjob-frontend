@@ -14,6 +14,9 @@ const initialState = {
 	isLoadedCourseById: false,
 	itemById: {},
 
+	isLoadedCourseByUrl: false,
+	itemByUrl: {},
+
 	isLoadedCoursesArrayById: false,
 	itemsArrayById: {},
 
@@ -133,6 +136,14 @@ const courses = (state = initialState, action) => {
 			...state,
 			itemById: action.payload,
 			isLoadedCourseById: true,
+		}
+	}
+
+	if (action.type === "SET_COURSE_BY_URL") {
+		return {
+			...state,
+			itemByUrl: action.payload,
+			isLoadedCourseByUrl: true,
 		}
 	}
 
@@ -264,6 +275,13 @@ const courses = (state = initialState, action) => {
 		return {
 			...state,
 			isLoadedCourseById: action.payload,
+		}
+	}
+
+	if (action.type === "SET_LOADED_COURSE_BY_URL") {
+		return {
+			...state,
+			isLoadedCourseByUrl: action.payload,
 		}
 	}
 

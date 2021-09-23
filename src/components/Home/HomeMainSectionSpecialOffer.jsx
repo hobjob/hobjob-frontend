@@ -6,10 +6,10 @@ const HomeMainSectionSpecialOffer = ({
     image,
     masters,
     masterId,
-    _id,
+    url,
 }) => {
     return (
-        <Link to={`/course/${_id}`} className="main-special-offer-shop-block">
+        <Link to={`/course/${url}`} className="main-special-offer-shop-block">
             <div className="main-special-offer-shop-block-left">
                 <div
                     className="main-special-offer-shop-block-left-cover"

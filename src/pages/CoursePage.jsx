@@ -5,7 +5,7 @@ import {Helmet} from "react-helmet";
 
 import {checkDeclension} from "../Functions/checkDeclension";
 
-import {fetchCourseById} from "../redux/actions/courses";
+import {fetchCourseByUrl} from "../redux/actions/courses";
 import {addCourseCart} from "../redux/actions/cart";
 
 import {
@@ -27,15 +27,19 @@ import {
     Loader,
 } from "../components";
 
+import {Err404} from '../pages';
+
 const CoursePage = ({
     match: {
-        params: {id},
+        params: {url},
     },
 }) => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const {itemById, isLoadedCourseById} = useSelector(({courses}) => courses);
+    const {itemByUrl, isLoadedCourseByUrl} = useSelector(
+        ({courses}) => courses
+    );
     const {cart} = useSelector(({cart}) => cart);
     const categories = useSelector(({categories}) => categories.items);
     const isLoadedCategories = useSelector(
@@ -49,18 +53,12 @@ const CoursePage = ({
     const [addState, setAddState] = React.useState(false);
 
     React.useEffect(() => {
-        if (cart[id]) {
+        if (cart[itemByUrl._id]) {
             setAddState(true);
         } else {
             setAddState(false);
         }
     }, [Object.keys(cart).length]);
-
-    React.useEffect(() => {
-        if (isLoadedCourseById) {
-            window.scrollTo(0, 0);
-        }
-    }, [isLoadedCourseById]);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -73,153 +71,159 @@ const CoursePage = ({
             }
         });
 
-        dispatch(fetchCourseById(id));
+        dispatch(fetchCourseByUrl(url));
     }, []);
 
     const addCart = () => {
-        dispatch(addCourseCart({_id: id}));
+        dispatch(addCourseCart({_id: itemByUrl._id}));
 
         history.push("/cart");
     };
 
     return (
         <>
-            {isLoadedCourseById && isLoadedMasters && isLoadedCategories ? (
-                <>
-                    <Helmet>
-                        <title>{itemById.title} - HobJob</title>
-                    </Helmet>
+            {isLoadedCourseByUrl && isLoadedMasters && isLoadedCategories ? (
+                Object.keys(itemByUrl).length ? (
+                    <>
+                        <Helmet>
+                            <title>{itemByUrl.title} - HobJob</title>
+                        </Helmet>
 
-                    {isLoadedUserInfo && userInfo.courses[id] ? (
-                        <button
-                            className={`btn-small-round disabled course-page__btn ${
-                                visibleButton ? "active" : ""
-                            }`}
-                        >
-                            Приобретен
-                        </button>
-                    ) : addState ? (
-                        <Link
-                            to="/cart/"
-                            className={`btn-small-round-regular course-page__btn ${
-                                visibleButton ? "active" : ""
-                            }`}
-                        >
-                            Перейти в корзину
-                        </Link>
-                    ) : (
-                        <button
-                            className={`btn-small-round course-page__btn ${
-                                visibleButton ? "active" : ""
-                            }`}
-                            onClick={addCart}
-                        >
-                            Добавить в корзину{" "}
-                            {document.documentElement.clientWidth > 500
-                                ? ""
-                                : ` за ${itemById.price}₽`}
-                        </button>
-                    )}
+                        {isLoadedUserInfo && userInfo.courses[itemByUrl._id] ? (
+                            <button
+                                className={`btn-small-round disabled course-page__btn ${
+                                    visibleButton ? "active" : ""
+                                }`}
+                            >
+                                Приобретен
+                            </button>
+                        ) : addState ? (
+                            <Link
+                                to="/cart/"
+                                className={`btn-small-round-regular course-page__btn ${
+                                    visibleButton ? "active" : ""
+                                }`}
+                            >
+                                Перейти в корзину
+                            </Link>
+                        ) : (
+                            <button
+                                className={`btn-small-round course-page__btn ${
+                                    visibleButton ? "active" : ""
+                                }`}
+                                onClick={addCart}
+                            >
+                                Добавить в корзину{" "}
+                                {document.documentElement.clientWidth > 500
+                                    ? ""
+                                    : ` за ${itemByUrl.price}₽`}
+                            </button>
+                        )}
 
-                    <CoursePageMain
-                        {...itemById}
-                        transitTime={
-                            checkDeclension(itemById.transitTime, [
-                                "час",
-                                "часа",
-                                "часов",
-                            ]).title
-                        }
-                        pro={userInfo.pro}
-                        proPrice={
-                            itemById.price -
-                            (itemById.price / 100) *
-                                process.env.REACT_APP_PAYMENT_PERCENT_PRO
-                        }
-                        addCart={addCart}
-                        masters={masters}
-                        categories={categories}
-                        addState={addState}
-                        isBuy={
-                            isLoadedUserInfo
-                                ? userInfo.courses[id]
-                                    ? true
+                        <CoursePageMain
+                            {...itemByUrl}
+                            transitTime={
+                                checkDeclension(itemByUrl.transitTime, [
+                                    "час",
+                                    "часа",
+                                    "часов",
+                                ]).title
+                            }
+                            pro={userInfo.pro}
+                            proPrice={
+                                itemByUrl.price -
+                                (itemByUrl.price / 100) *
+                                    process.env.REACT_APP_PAYMENT_PERCENT_PRO
+                            }
+                            addCart={addCart}
+                            masters={masters}
+                            categories={categories}
+                            addState={addState}
+                            isBuy={
+                                isLoadedUserInfo
+                                    ? userInfo.courses[itemByUrl._id]
+                                        ? true
+                                        : false
                                     : false
-                                : false
-                        }
-                    />
+                            }
+                        />
 
-                    {itemById.page.map((item, index) => (
-                        <div key={`course-page-${item.type}-${index}`}>
-                            {item.type === "about" ? (
-                                <CoursePageAbout
-                                    {...item}
-                                    path={itemById.path}
-                                />
-                            ) : null}
-                            {item.type === "for" ? (
-                                <CoursePageFor {...item} />
-                            ) : null}
-                            {item.type === "skills" ? (
-                                <CoursePageSkills
-                                    {...item}
-                                    path={itemById.path}
-                                />
-                            ) : null}
-                            {item.type === "result" ? (
-                                <CoursePageResult
-                                    {...item}
-                                    path={itemById.path}
-                                />
-                            ) : null}
-                            {item.type === "programm" ? (
-                                <CoursePageProgramm {...item} />
-                            ) : null}
+                        {itemByUrl.page.map((item, index) => (
+                            <div key={`course-page-${item.type}-${index}`}>
+                                {item.type === "about" ? (
+                                    <CoursePageAbout
+                                        {...item}
+                                        path={itemByUrl.path}
+                                    />
+                                ) : null}
+                                {item.type === "for" ? (
+                                    <CoursePageFor {...item} />
+                                ) : null}
+                                {item.type === "skills" ? (
+                                    <CoursePageSkills
+                                        {...item}
+                                        path={itemByUrl.path}
+                                    />
+                                ) : null}
+                                {item.type === "result" ? (
+                                    <CoursePageResult
+                                        {...item}
+                                        path={itemByUrl.path}
+                                    />
+                                ) : null}
+                                {item.type === "programm" ? (
+                                    <CoursePageProgramm {...item} />
+                                ) : null}
 
-                            {item.type === "middle-icon" ? (
-                                <CoursePageMiddleIcon
-                                    {...item}
-                                    path={itemById.path}
-                                />
-                            ) : null}
+                                {item.type === "middle-icon" ? (
+                                    <CoursePageMiddleIcon
+                                        {...item}
+                                        path={itemByUrl.path}
+                                    />
+                                ) : null}
 
-                            {item.type === "materials" ? (
-                                <CoursePageMaterials {...item} />
-                            ) : null}
+                                {item.type === "materials" ? (
+                                    <CoursePageMaterials {...item} />
+                                ) : null}
 
-                            {item.type === "master" ? (
-                                <CoursePageMaster
-                                    {...itemById}
-                                    {...item}
-                                    masters={masters}
-                                />
-                            ) : null}
+                                {item.type === "master" ? (
+                                    <CoursePageMaster
+                                        {...itemByUrl}
+                                        {...item}
+                                        masters={masters}
+                                    />
+                                ) : null}
 
-                            {item.type === "education" ? (
-                                <CoursePageEducation />
-                            ) : null}
+                                {item.type === "education" ? (
+                                    <CoursePageEducation />
+                                ) : null}
 
-                            {item.type === "contest" ? (
-                                <CoursePageContest />
-                            ) : null}
+                                {item.type === "contest" ? (
+                                    <CoursePageContest />
+                                ) : null}
 
-                            {item.type === "chat" ? <CoursePageChat /> : null}
+                                {item.type === "chat" ? (
+                                    <CoursePageChat />
+                                ) : null}
 
-                            {item.type === "work" ? (
-                                <CoursePageWork
-                                    {...item}
-                                    path={itemById.path}
-                                />
-                            ) : null}
+                                {item.type === "work" ? (
+                                    <CoursePageWork
+                                        {...item}
+                                        path={itemByUrl.path}
+                                    />
+                                ) : null}
 
-                            {item.type === "faq" ? (
-                                <CoursePageFaq {...item} />
-                            ) : null}
-                        </div>
-                    ))}
+                                {item.type === "faq" ? (
+                                    <CoursePageFaq {...item} />
+                                ) : null}
+                            </div>
+                        ))}
 
-                    <AboutSection />
-                </>
+                        <AboutSection />
+                    </>
+                ) : (
+                    <Err404 />
+                )
             ) : (
                 <Loader />
             )}

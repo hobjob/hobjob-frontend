@@ -59,7 +59,7 @@ export const fetchCoursesSection = () => (dispatch) => {
 		payload: false,
 	})
 
-	$api.get(`/courses?sort=buyCountWeek&order=desc&limit=4`).then(({ data }) => {
+	$api.get(`/courses?sort=buyCountWeek&order=desc`).then(({ data }) => {
 		dispatch(setCoursesSection(data))
 	})
 }
@@ -81,6 +81,17 @@ export const fetchCourseById = (id) => (dispatch) => {
 	})
 }
 
+export const fetchCourseByUrl = (url) => (dispatch) => {
+	dispatch({
+		type: "SET_LOADED_COURSE_BY_URL",
+		payload: false,
+	})
+
+	$api.get(`/courses?url=${url}`).then(({ data }) => {
+		dispatch(setCourseByUrl(data[0] ? data[0] : {}))
+	})
+}
+
 const setCourses = (items) => ({
 	type: "SET_COURSES",
 	payload: items
@@ -97,7 +108,7 @@ const setAddPaginationCourses = (items) => ({
 })
 
 
-const setCoursesSection = (items) => ({
+export const setCoursesSection = (items) => ({
 	type: "SET_COURSES_SECTION",
 	payload: items
 })
@@ -109,6 +120,11 @@ const setCoursesBuyCountWeek = (item) => ({
 
 const setCourseById = (item) => ({
 	type: "SET_COURSE_BY_ID",
+	payload: item
+})
+
+const setCourseByUrl = (item) => ({
+	type: "SET_COURSE_BY_URL",
 	payload: item
 })
 

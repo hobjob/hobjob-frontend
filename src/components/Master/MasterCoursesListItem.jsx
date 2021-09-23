@@ -4,7 +4,6 @@ const MasterCoursesListItem = ({
     image,
     title,
     buyCount,
-    buyCountTitle,
     buyCountExtraLessons,
 }) => {
     return (
@@ -26,7 +25,7 @@ const MasterCoursesListItem = ({
             <div className="master-info-list-courses-col">
                 <div className="master-info-list-courses-item-count">
                     <span className="master-info-list-courses-item-count__title">
-                        {buyCount} {", "} {buyCountExtraLessons}
+                        {buyCount}{", "} {buyCountExtraLessons}
                     </span>
                 </div>
             </div>

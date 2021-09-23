@@ -269,7 +269,6 @@
 
 		&-list-courses
 			width: 60%
-			+openAnimation
 
 			&-col
 				width: 40%
@@ -282,6 +281,7 @@
 				padding-bottom: 25px
 				margin-bottom: 25px
 				border-bottom: 1px solid $borderGray
+				+openAnimation
 
 				&__title
 					display: block
@@ -299,6 +299,7 @@
 				padding-bottom: 25px
 				margin-bottom: 25px
 				border-bottom: 1px solid $borderGray
+				+openAnimation
 
 				&:last-child
 					margin-bottom: 0
@@ -337,14 +338,10 @@
 			+borderRadiusBlock
 			+boxShadow
 
-			&__title
-				font-size: 42px
-				margin-bottom: 50px
-
 			&__subtitle
 				color: $gray
 				font-size: 21px
 				margin-bottom: 25px
-
-			&__btn
-				width: 100%
+				
+			&__title
+				font-size: 42px

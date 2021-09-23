@@ -20,7 +20,7 @@ const App = () => {
 					<Route path="/cart" render={() => <Cart />} exact />
 					<Route path="/shop" render={(props) => <Shop {...props} />} exact />
 
-					<Route path="/course/:id" render={(props) => <CoursePage {...props} />} exact />
+					<Route path="/course/:url" render={(props) => <CoursePage {...props} />} exact />
 
 					<Route path="/magazine" render={(props) => <Magazine {...props} />} exact />
 					<Route path="/magazine/post/:id" render={(props) => <MagazinePostPage {...props} />} exact />

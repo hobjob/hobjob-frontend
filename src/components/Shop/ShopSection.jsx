@@ -1,17 +1,20 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 import {checkDeclension} from "../../Functions/checkDeclension";
 
-import {fetchCoursesSection} from "../../redux/actions/courses";
+import {
+    fetchCoursesSection,
+    setCoursesSection,
+} from "../../redux/actions/courses";
 import {addCourseCart} from "../../redux/actions/cart";
 import {ShopBlock, Loader} from "../";
 
 const ShopSection = ({title}) => {
     const dispatch = useDispatch();
 
-    const {userInfo} = useSelector(({user}) => user);
+    const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
     const {itemsSection, isLoadedSectionCourses} = useSelector(
         ({courses}) => courses
     );
@@ -26,7 +29,21 @@ const ShopSection = ({title}) => {
     );
 
     React.useEffect(() => {
-        if (!itemsSection.length) {
+        if (isLoadedUserInfo && isLoadedSectionCourses) {
+            const newObj = [];
+
+            Object.keys(itemsSection).map((key) => {
+                if (!userInfo.courses[key]) {
+                    newObj.push(itemsSection[key]);
+                }
+            });
+
+            dispatch(setCoursesSection(newObj));
+        }
+    }, [isLoadedUserInfo, isLoadedSectionCourses]);
+
+    React.useEffect(() => {
+        if (!Object.keys(itemsSection).length) {
             dispatch(fetchCoursesSection());
         }
     }, []);
@@ -47,37 +64,43 @@ const ShopSection = ({title}) => {
                                 {title}
                             </h2>
                             <div className="shop-section-block-wrapper">
-                                {Object.keys(itemsSection).map((key, index) => (
-                                    <ShopBlock
-                                        {...itemsSection[key]}
-                                        onClickAddCourseCart={
-                                            onClickAddCourseCart
-                                        }
-                                        transitTime={
-                                            checkDeclension(
-                                                itemsSection[key].transitTime,
-                                                ["час", "часа", "часов"]
-                                            ).title
-                                        }
-                                        pro={userInfo.pro}
-                                        proPrice={
-                                            itemsSection[key].price -
-                                            (itemsSection[key].price / 100) *
-                                                process.env
-                                                    .REACT_APP_PAYMENT_PERCENT_PRO
-                                        }
-                                        cartItems={cart}
-                                        key={`shop-section-block-${index}`}
-                                        master={
-                                            masters[itemsSection[key].masterId]
-                                        }
-                                        category={
-                                            categories[
-                                                itemsSection[key].category
-                                            ]
-                                        }
-                                    />
-                                ))}
+                                {Object.keys(itemsSection)
+                                    .map((key, index) => (
+                                        <ShopBlock
+                                            {...itemsSection[key]}
+                                            onClickAddCourseCart={
+                                                onClickAddCourseCart
+                                            }
+                                            transitTime={
+                                                checkDeclension(
+                                                    itemsSection[key]
+                                                        .transitTime,
+                                                    ["час", "часа", "часов"]
+                                                ).title
+                                            }
+                                            pro={userInfo.pro}
+                                            proPrice={
+                                                itemsSection[key].price -
+                                                (itemsSection[key].price /
+                                                    100) *
+                                                    process.env
+                                                        .REACT_APP_PAYMENT_PERCENT_PRO
+                                            }
+                                            cartItems={cart}
+                                            key={`shop-section-block-${index}`}
+                                            master={
+                                                masters[
+                                                    itemsSection[key].masterId
+                                                ]
+                                            }
+                                            category={
+                                                categories[
+                                                    itemsSection[key].category
+                                                ]
+                                            }
+                                        />
+                                    ))
+                                    .slice(0, 4)}
                             </div>
 
                             <div className="shop-section-btn">

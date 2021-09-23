@@ -4,7 +4,8 @@ import NumberFormat from "react-number-format";
 
 const CartBlock = React.memo(
     ({
-        _id,
+		_id,
+		url,
         image,
         title,
         masterId,
@@ -26,7 +27,7 @@ const CartBlock = React.memo(
         return (
             <div className="cart-block">
                 <Link
-                    to={`/course/${_id}`}
+                    to={`/course/${url}`}
                     className="cart-block-content-cover-media"
                     style={{
                         backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
@@ -35,7 +36,7 @@ const CartBlock = React.memo(
 
                 <div className="cart-block-content">
                     <Link
-                        to={`/course/${_id}`}
+                        to={`/course/${url}`}
                         className="cart-block-content-cover"
                         style={{
                             backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
@@ -44,7 +45,7 @@ const CartBlock = React.memo(
 
                     <div className="cart-block-content-text">
                         <Link
-                            to={`/course/${_id}`}
+                            to={`/course/${url}`}
                             className="cart-block-content-text__title"
                         >
                             <h4>{title}</h4>

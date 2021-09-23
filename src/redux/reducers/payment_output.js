@@ -1,6 +1,6 @@
 const initialState = {
 	isSendPaymentOutputReferrals: false,
-	paymentOutputNumberReferrals: ""
+	paymentOutputNumberReferrals: "",
 }
 
 const payment_output = (state = initialState, action) => {
@@ -14,8 +14,7 @@ const payment_output = (state = initialState, action) => {
 	if (action.type === "SET_PAYMENT_OUTPUT_NUMBER_REFERRALS") {
 		return {
 			...state,
-			paymentOutputNumberReferrals: action.payload,
-			isSendPaymentOutputReferrals: false
+			paymentOutputNumberReferrals: action.payload
 		}
 	}
 

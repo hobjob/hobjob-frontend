@@ -14,7 +14,6 @@ const MasterBalance = ({masterBalance}) => {
                 />
                 ₽
             </h3>
-            <button className="btn master-info-balance__btn">Вывести</button>
         </div>
     );
 };
