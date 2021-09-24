@@ -9,92 +9,94 @@
 		border-top: 1px solid $borderGray
 
 	&-block
-		&-top
-			display: flex
-			justify-content: space-between
+		display: flex
+		justify-content: space-between
 
-			&-right
+
+		&-logos
+			&-logo
+				&__img
+					display: block
+					user-select: none
+					pointer-events: none
+					width: 65px
+
+		&-contact
+			&-email
+				margin-bottom: 20px
+				padding-bottom: 20px
+
+				border-bottom: 1px solid $borderGray
+
+				&:last-child
+					margin-bottom: 0
+					padding-bottom: 0
+
+					border: none
+
+				&__subtitle
+					font-size: 16px
+					margin-bottom: 10px
+
+				&__email
+					font-size: 22px
+
+			&-social
 				display: flex
+				align-items: center
 
-		&-bottom
-			display: flex
-			justify-content: space-between
+				margin-top: 50px
 
-			margin-top: 75px
+				&__link
+					width: 50px
+					height: 50px
+
+					display: flex
+					justify-content: center
+					align-items: center
+
+					background-color: rgba(221, 158, 94, 0.05)
+					border-radius: 50%
+
+					margin-right: 25px
+
+					&:last-child
+						margin-right: 0
+
+		&-nav
+			&__link
+				display: block
+				margin-bottom: 15px
+				+transition
+
+				&:last-child
+					margin-right: 0
+
+				&.active
+					color: $mainColor
+
+				&:hover
+					color: $mainColor
+
+		&-subinfo
+			margin-top: 50px
 
 			padding-top: 15px
 			border-top: 1px solid $borderGray
 
-			&__link
-				margin-left: 25px
-				font-size: 15px
-				color: $gray
-				+transition
+			&-block
+				&__link
+					margin-left: 25px
+					font-size: 15px
+					color: $gray
+					+transition
 
-				&:hover
-					color: $black
+					&:hover
+						color: $black
 
-				&:first-child
-					margin-left: 0
+					&:first-child
+						margin-left: 0
 
-			&__span
-				color: $gray
-				font-size: 15px
-
-		&-bottom-bottom
-			margin-top: 25px
-			
-			&__span
-				color: $gray
-				font-size: 15px
-				margin-right: 10px
-
-	&-logo
-		&__img
-			display: block
-			user-select: none
-			pointer-events: none
-			width: 65px
-
-	&-nav
-		&__link
-			display: block
-			margin-bottom: 15px
-			+transition
-
-			&:last-child
-				margin-right: 0
-
-			&.active
-				color: $mainColor
-
-			&:hover
-				color: $mainColor
-
-	&-contact
-		margin-right: 150px
-
-	&__email
-		font-size: 24px
-
-	&-social
-		display: flex
-		align-items: center
-
-		margin-top: 50px
-
-		&__link
-			width: 50px
-			height: 50px
-
-			display: flex
-			justify-content: center
-			align-items: center
-
-			background-color: rgba(221, 158, 94, 0.05)
-			border-radius: 50%
-
-			margin-right: 25px
-
-			&:last-child
-				margin-right: 0
+				&__span
+					color: $gray
+					font-size: 15px

@@ -13,6 +13,10 @@
 
 		&-filters
 			cursor: pointer
+			+transition
+
+			&:active
+				+transformScale
 
 			&__title
 				user-select: none
@@ -101,6 +105,9 @@
 		+GilroyRegular
 		+transition
 		+openAnimation
+
+		&:active
+			+transformScale
 
 		&:hover
 			background-color: $mainColor

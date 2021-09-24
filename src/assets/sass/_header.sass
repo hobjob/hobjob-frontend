@@ -12,6 +12,9 @@
 		&__img
 			user-select: none
 			width: 65px
+			+transition
+			&:active
+				+transformScale
 
 	&-nav
 		&__link
@@ -72,7 +75,7 @@
 
 			background-color: $white
 			animation: openHeaderMenu .2s
-			
+
 			+boxShadow
 			+borderRadiusBlock
 
