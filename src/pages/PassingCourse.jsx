@@ -83,14 +83,15 @@ const PassingCourse = ({
     };
 
     const createPaymentProSubscribe = () => {
-        dispatch(sendCreateProSubscribePayment());
+        dispatch(sendCreateProSubscribePayment({pro: userInfo.pro}));
     };
 
     return (
         <>
             {localStorage.getItem("accessToken") ? (
                 isLoadedUserCourses && isLoadedUserInfo ? (
-                    courses[courseId] ? (
+                    courses[courseId] &&
+                    courses[courseId].lessons[lessonIndex] ? (
                         (courses[courseId].lessons[lessonIndex].extraLesson &&
                             (userInfo.pro ||
                                 courses[courseId].extraLessonsBuy)) ||

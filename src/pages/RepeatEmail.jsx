@@ -6,6 +6,8 @@ import {sendRepeatEmail} from "../redux/actions/repeat_email";
 
 import {RepeatEmailForm} from "../components/";
 
+import Logo from "../assets/images/logo.svg";
+
 const RepeatEmail = () => {
     const dispatch = useDispatch();
 
@@ -28,7 +30,7 @@ const RepeatEmail = () => {
                         <div className="reglog-wrapper">
                             <div className="reglog-logo">
                                 <img
-                                    src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/logo.svg`}
+                                    src={Logo}
                                     alt="HobJob"
                                     className="reglog-logo__img"
                                 />

@@ -9,6 +9,8 @@ import {
     PasswordRecoveryEmailSuccess,
 } from "../components/";
 
+import Logo from "../assets/images/logo.svg";
+
 const PasswordRecoveryEmail = () => {
     const dispatch = useDispatch();
 
@@ -35,7 +37,7 @@ const PasswordRecoveryEmail = () => {
                         <div className="reglog-wrapper">
                             <a href="/" className="reglog-logo">
                                 <img
-                                    src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/logo.svg`}
+                                    src={Logo}
                                     alt="HobJob"
                                     className="reglog-logo__img"
                                 />

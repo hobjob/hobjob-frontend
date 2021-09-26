@@ -158,6 +158,7 @@ const CoursePageMain = ({
                     <div className="course-page-main-video">
                         <ReactPlayer
                             url={videoTrailerUrl}
+                            controls={true}
                             width="100%"
                             height="100%"
                             style={{borderRadius: "15px", overflow: "hidden"}}

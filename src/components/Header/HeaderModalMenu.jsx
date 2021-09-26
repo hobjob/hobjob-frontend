@@ -2,6 +2,8 @@ import React from "react";
 import {Link, NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
 
+import Logo from "../../assets/images/logo.svg";
+
 const HeaderModalMenu = React.memo(({
     HeaderModalMenuRef,
     modalMenuAnimationState,
@@ -54,7 +56,7 @@ const HeaderModalMenu = React.memo(({
                     onClick={onClickCloseModalMenu}
                 >
                     <img
-                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/logo.svg`}
+                        src={Logo}
                         alt="HobJob"
                         className="header-modal-menu-logo__img"
                     />

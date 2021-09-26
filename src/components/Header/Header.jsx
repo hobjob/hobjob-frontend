@@ -10,6 +10,8 @@ import {removeCourseCart} from "../../redux/actions/cart";
 
 import {HeaderMenu, HeaderMenuCart, HeaderModalMenu} from "../";
 
+import Logo from "../../assets/images/logo.svg";
+
 const Header = React.memo(() => {
     const dispatch = useDispatch();
 
@@ -143,7 +145,7 @@ const Header = React.memo(() => {
                     <div className="header-wrapper">
                         <Link to="/" className="header-logo__link">
                             <img
-                                src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/logo.svg`}
+                                src={Logo}
                                 alt="HobJob"
                                 className="header-logo__img"
                             />

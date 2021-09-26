@@ -1,6 +1,8 @@
 import React from "react";
 import {Link, NavLink} from "react-router-dom";
 
+import Logo from '../../assets/images/logo.svg';
+
 const Footer = () => {
     return (
         <footer className="footer">
@@ -13,7 +15,7 @@ const Footer = () => {
                                 className="footer-block-logos-logo__link"
                             >
                                 <img
-                                    src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/logo.svg`}
+                                    src={Logo}
                                     alt="HobJob"
                                     className="footer-block-logos-logo__img"
                                 />

@@ -32,6 +32,7 @@ const MasterCard = ({
     const isLoadedAllCategories = useSelector(
         ({categories}) => categories.isLoadedAllCategories
     );
+    const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -86,14 +87,33 @@ const MasterCard = ({
                                                                     ]
                                                                 ).title
                                                             }
+                                                            pro={userInfo.pro}
+                                                            proPrice={
+                                                                item.price -
+                                                                (item.price /
+                                                                    100) *
+                                                                    process.env
+                                                                        .REACT_APP_PAYMENT_PERCENT_PRO
+                                                            }
                                                             cartItems={cart}
                                                             key={`shop-master-card-block-${index}`}
-                                                            masters={{
-                                                                [itemById._id]:
-                                                                    itemById,
-                                                            }}
-                                                            categories={
-                                                                categories
+                                                            master={itemById}
+                                                            category={
+                                                                categories[
+                                                                    item
+                                                                        .category
+                                                                ]
+                                                            }
+                                                            isBuy={
+                                                                isLoadedUserInfo
+                                                                    ? userInfo
+                                                                          .courses[
+                                                                          item
+                                                                              ._id
+                                                                      ]
+                                                                        ? true
+                                                                        : false
+                                                                    : false
                                                             }
                                                         />
                                                     )
@@ -143,7 +163,8 @@ const MasterCard = ({
                                                             }
                                                             views={abbreviateNumber(
                                                                 itemById
-                                                                    .posts[0].views
+                                                                    .posts[0]
+                                                                    .views
                                                             )}
                                                         />
                                                     ) : null}
