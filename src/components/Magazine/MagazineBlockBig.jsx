@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 import moment from "moment";
 import "moment/locale/ru";
 
+import Logo from "../../assets/images/logo.svg";
+
 const MagazineBlockBig = ({
     _id,
     image,
@@ -78,20 +80,33 @@ const MagazineBlockBig = ({
                     dangerouslySetInnerHTML={{__html: description}}
                 ></p>
 
-                <Link
-                    to={`/master/${masterId}`}
-                    className="magazine-block-big-text-auth"
-                >
-                    <div
-                        className="magazine-block-big-text-auth-avatar"
-                        style={{
-                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${masters[masterId].avatar}")`,
-                        }}
-                    ></div>
-                    <span className="magazine-block-big-text-auth__name">
-                        {masters[masterId].name} {masters[masterId].surname}
-                    </span>
-                </Link>
+                {masterId !== "" && masters[masterId] ? (
+                    <Link
+                        to={`/master/${masterId}`}
+                        className="magazine-block-big-text-auth"
+                    >
+                        <div
+                            className="magazine-block-big-text-auth-avatar"
+                            style={{
+                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${masters[masterId].avatar}")`,
+                            }}
+                        ></div>
+                        <span className="magazine-block-big-text-auth__name">
+                            {masters[masterId].name} {masters[masterId].surname}
+                        </span>
+                    </Link>
+                ) : (
+                    <Link to="/" className="magazine-block-big-text-auth">
+                        <img
+                            src={Logo}
+                            alt=""
+                            className="magazine-block-big-text-auth__img"
+                        />
+                        <span className="magazine-block-big-text-auth__name">
+                            Редактор HobJob
+                        </span>
+                    </Link>
+                )}
             </div>
         </div>
     );

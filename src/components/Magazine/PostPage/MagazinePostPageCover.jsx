@@ -5,6 +5,8 @@ import NumberFormat from "react-number-format";
 import moment from "moment";
 import "moment/locale/ru";
 
+import Logo from "../../../assets/images/logo.svg";
+
 const MagazinePostPageCover = ({
     title,
     description,
@@ -59,20 +61,37 @@ const MagazinePostPageCover = ({
                         {categories[category].title}
                     </Link>
 
-                    <Link
-                        to={`/master/${masterId}`}
-                        className="magazine-post-page-cover-text-top-auth"
-                    >
-                        <div
-                            className="magazine-post-page-cover-text-top-auth-avatar"
-                            style={{
-                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${masters[masterId].avatar}")`,
-                            }}
-                        ></div>
-                        <span className="magazine-post-page-cover-text-top-auth__name">
-                            {masters[masterId].name} {masters[masterId].surname}
-                        </span>
-                    </Link>
+                    {masterId !== "" && masters[masterId] ? (
+                        <Link
+                            to={`/master/${masterId}`}
+                            className="magazine-post-page-cover-text-top-auth"
+                        >
+                            <div
+                                className="magazine-post-page-cover-text-top-auth-avatar"
+                                style={{
+                                    backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${masters[masterId].avatar}")`,
+                                }}
+                            ></div>
+                            <span className="magazine-post-page-cover-text-top-auth__name">
+                                {masters[masterId].name}{" "}
+                                {masters[masterId].surname}
+                            </span>
+                        </Link>
+                    ) : (
+                        <Link
+                            to="/"
+                            className="magazine-post-page-cover-text-top-auth"
+                        >
+                            <img
+                                src={Logo}
+                                alt=""
+                                className="magazine-post-page-cover-text-top-auth__img"
+                            />
+                            <span className="magazine-post-page-cover-text-top-auth__name">
+                                Редактор HobJob
+                            </span>
+                        </Link>
+                    )}
                 </div>
                 <h2 className="magazine-post-page-cover-text__title">
                     {title}

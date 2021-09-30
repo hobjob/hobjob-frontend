@@ -4,8 +4,10 @@ const MagazinePostPageBlock = ({title, description, image}) => {
     return (
         <div className="magazine-post-page-block">
             <div className="magazine-post-page-block-text">
-                <h3 className="magazine-post-page-block-text__title">
-                    {title}
+                <h3
+                    className="magazine-post-page-block-text__title"
+                    dangerouslySetInnerHTML={{__html: title}}
+                >
                 </h3>
                 {description.map((item, index) => (
                     <p
@@ -15,12 +17,14 @@ const MagazinePostPageBlock = ({title, description, image}) => {
                     ></p>
                 ))}
             </div>
-            <div
-                className="magazine-post-page-block__img"
-                style={{
-                    backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
-                }}
-            ></div>
+            {image !== "" ? (
+                <div
+                    className="magazine-post-page-block__img"
+                    style={{
+                        backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
+                    }}
+                ></div>
+            ) : null}
         </div>
     );
 };

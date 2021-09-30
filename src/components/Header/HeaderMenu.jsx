@@ -16,7 +16,7 @@ const HeaderMenu = React.memo(() => {
                 className="header-nav__link"
                 activeClassName="header-nav__link active"
             >
-                Pro аккаунт
+                Pro подписка
             </NavLink>
             <NavLink
                 to="/about"

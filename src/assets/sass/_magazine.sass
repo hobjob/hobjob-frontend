@@ -123,6 +123,11 @@
 					&__name
 						font-size: 18px
 
+					&__img
+						width: 40px
+						height: 40px
+						margin-right: 15px
+
 	&-block-wrapper
 		margin-top: 75px
 
@@ -188,6 +193,12 @@
 
 			&__title
 				font-size: 32px
+
+				overflow: hidden
+				display: -webkit-box
+				-webkit-line-clamp: 1
+				-webkit-box-orient: vertical
+
 				+Lora
 
 			&__description
@@ -213,6 +224,11 @@
 
 				&__name
 					font-size: 18px
+
+				&__img
+					width: 40px
+					height: 40px
+					margin-right: 15px
 
 	&-not-found
 		margin: 150px 0
@@ -286,6 +302,11 @@
 					&__name
 						font-size: 18px
 
+					&__img
+						width: 40px
+						height: 40px
+						margin-right: 15px
+
 			&__title
 				font-size: 36px
 
@@ -311,9 +332,15 @@
 				font-size: 36px
 				margin-bottom: 50px
 
+				& > a
+					color: $mainColor
+
 			&__description
 				font-size: 21px
 				margin-bottom: 25px
+
+				& > a
+					color: $mainColor
 
 		&__img
 			width: 100%

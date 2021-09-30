@@ -19,7 +19,7 @@ const HomeMainSection = () => {
     const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
 
     React.useEffect(() => {
-        if (!Object.keys(itemBuyCountWeek).length) {
+        if (itemBuyCountWeek && !Object.keys(itemBuyCountWeek).length) {
             dispatch(fetchCourseBuyCountWeek());
 		}
     }, []);

@@ -61,9 +61,7 @@ const PassingCourse = ({
 
         if (isLoadedUserCourses && courses[courseId]) {
             setHashtag(
-                `#${courses[courseId].title
-                    .replace(/\s+/g, "")
-                    .toLowerCase()}${moment().format("MM.YYYY")}`
+                `#${courses[courseId].hashtag}${moment().format("MM.YYYY")}`
             );
         }
     }, [courseId, lessonNum, isLoadedUserCourses, isLoadedUserInfo]);
@@ -198,15 +196,12 @@ const PassingCourse = ({
                                                 </div>
                                             ) : null}
 
-                                            {(!courses[courseId].lessons[
+                                            {!courses[courseId].lessons[
+                                                lessonIndex
+                                            ].extraLesson &&
+                                            (!courses[courseId].lessons[
                                                 lessonIndex + 1
-                                            ] &&
-                                                !courses[courseId].lessons[
-                                                    lessonIndex
-                                                ].extraLesson) ||
-                                            (courses[courseId].lessons[
-                                                lessonIndex + 1
-                                            ] &&
+                                            ] ||
                                                 courses[courseId].lessons[
                                                     lessonIndex + 1
                                                 ].extraLesson) ? (

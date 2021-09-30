@@ -219,6 +219,7 @@
 							margin-bottom: 0
 
 					&-item
+						width: 75%
 						cursor: pointer
 						display: flex
 						align-items: center
@@ -235,8 +236,12 @@
 								fill: $mainColor
 
 						&__title
-							margin-left: 15px
+							margin-left: 10px
 							color: $mainColor
+
+							overflow: hidden
+							text-overflow: ellipsis
+							white-space: nowrap
 
 				&-timecodes
 					width: 25%
