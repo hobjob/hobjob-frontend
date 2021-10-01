@@ -5,7 +5,7 @@ import {setTimecodeSeconds} from "../../redux/actions/passing";
 
 import {PassingTimecodesItem} from "../";
 
-const PassingTimecodes = ({timecodes, setTime, isMaterials}) => {
+const PassingTimecodes = ({timecodes, isMaterials}) => {
     const dispatch = useDispatch();
 
     const onClickTimecode = (timecode) => {

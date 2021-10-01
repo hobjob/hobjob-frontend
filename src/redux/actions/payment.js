@@ -46,14 +46,6 @@ export const sendCreateCoursesPayment = (data, user) => (dispatch) => {
 	}
 }
 
-export const sendConfirmationCoursesPayment = (paymentNumber) => (dispatch) => {
-	$api.get(`/payment/courses/confirmation/${paymentNumber}`).then(() => {
-		window.location.href = `/go/training`
-	}).catch(() => {
-		window.location.href = `/go/training`
-	})
-}
-
 export const fetchPaymentCourseExtraLessonsById = (id) => (dispatch) => {
 	dispatch({
 		type: "SET_LOADED_PAYMENT",
@@ -75,14 +67,6 @@ export const sendCreateCourseExtraLessonsPayment = (data) => (dispatch) => {
 
 	$api.post(`/payment/courses/extra-lessons`, data).then(({ data }) => {
 		window.location.href = `/payment/courses/extra-lessons/${data.paymentNumber}`
-	})
-}
-
-export const sendConfirmationCourseExtraLessonsPayment = (paymentNumber) => (dispatch) => {
-	$api.get(`/payment/courses/extra-lessons/confirmation/${paymentNumber}`).then(({ data }) => {
-		window.location.href = `/go/passing/${data}/1`
-	}).catch(() => {
-		window.location.href = `/go/training`
 	})
 }
 
@@ -111,14 +95,6 @@ export const sendCreateProSubscribePayment = ({ pro }) => (dispatch) => {
 
 	$api.post(`/payment/pro`, {}).then(({ data }) => {
 		window.location.href = `/payment/pro/${data.paymentNumber}`
-	})
-}
-
-export const sendConfirmationProSubscribePayment = (paymentNumber) => (dispatch) => {
-	$api.get(`/payment/pro/confirmation/${paymentNumber}`).then(() => {
-		window.location.href = `/go/cabinet`
-	}).catch(() => {
-		window.location.href = `/go/cabinet`
 	})
 }
 

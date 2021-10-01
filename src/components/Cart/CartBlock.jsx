@@ -20,7 +20,9 @@ const CartBlock = React.memo(
         masters,
         categories,
     }) => {
-        const onClickRemoveCourse = () => {
+		const onClickRemoveCourse = () => {
+			window.scrollTo(0, 0)
+			
             removeCourse(_id);
         };
 

@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import NumberFormat from "react-number-format";
+import {animateScroll as scroll} from "react-scroll";
 
 const ShopBlock = React.memo(
     ({
@@ -34,7 +35,11 @@ const ShopBlock = React.memo(
         const onClickAdd = () => {
             onClickAddCourseCart({_id});
             setAddState(true);
-        };
+		};
+		
+		const onClickScrollTop = () => {
+			scroll.scrollToTop({duration: 500});
+		}
 
         return (
             <div className="shop-block">
@@ -147,12 +152,18 @@ const ShopBlock = React.memo(
                             Приобретен
                         </button>
                     ) : addState ? (
-                        <Link
-                            to="/cart"
-                            className="btn-regular shop-block-bottom__btn"
-                        >
-                            Перейти в корзину
-                        </Link>
+                        window.location.pathname !== "/cart" ? (
+                            <Link
+                                to="/cart"
+                                className="btn-regular shop-block-bottom__btn"
+                            >
+                                Перейти в корзину
+                            </Link>
+                        ) : (
+                            <button onClick={onClickScrollTop} className="btn-regular shop-block-bottom__btn">
+                                Перейти в корзину
+                            </button>
+                        )
                     ) : (
                         <button
                             className="btn shop-block-bottom__btn"
