@@ -39,14 +39,6 @@ const Pro = () => {
             <section className="pro">
                 <div className="container">
                     <div className="pro-wrapper">
-                        <button
-                            className={`btn-small-round pro__btn ${
-                                visibleButton ? "active" : ""
-                            }`}
-                            onClick={createPayment}
-                        >
-                            Вступить
-                        </button>
                         {localStorage.getItem("accessToken") &&
                         isLoadedUserInfo ? (
                             userInfo.pro ? null : isSendProSubscribe ? (
@@ -65,7 +57,7 @@ const Pro = () => {
                                     }`}
                                     onClick={createPayment}
                                 >
-                                    Вступить
+                                    Оформить Pro подписку
                                 </button>
                             )
                         ) : (
@@ -75,7 +67,7 @@ const Pro = () => {
                                     visibleButton ? "active" : ""
                                 }`}
                             >
-                                Вступить
+                                Оформить Pro подписку
                             </a>
                         )}
                         <div className="pro-main">
@@ -86,8 +78,8 @@ const Pro = () => {
                                 </h2>
                                 <p className="description__mb pro-main-text__description">
                                     Сделав свой аккаунт Pro, вы получите скрытые
-                                    возможности нашей платормы, которые погмогут
-                                    вам развиваться каждый день
+                                    возможности нашей платформы, которые
+                                    погмогут вам развиваться каждый день
                                 </p>
 
                                 <p className="pro-main-text__subtitle">
@@ -128,7 +120,7 @@ const Pro = () => {
                                             className="btn pro-main-text__btn"
                                             onClick={createPayment}
                                         >
-                                            Вступить
+                                            Оформить Pro подписку
                                         </button>
                                     )
                                 ) : (
@@ -136,7 +128,7 @@ const Pro = () => {
                                         href="/payment/pro/login"
                                         className="btn pro-main-text__btn"
                                     >
-                                        Вступить
+                                        Оформить Pro подписку
                                     </a>
                                 )}
                             </div>
@@ -163,7 +155,7 @@ const Pro = () => {
 
                                     <div className="pro-about-item-text">
                                         <h3 className="pro-about-item-text__title">
-                                            Скидка 20%
+                                            Скидку 20%
                                         </h3>
                                         <p className="pro-about-item-text__description">
                                             У владельцев PRO версии есть скидка
@@ -180,7 +172,7 @@ const Pro = () => {
 
                                     <div className="pro-about-item-text">
                                         <h3 className="pro-about-item-text__title">
-                                            Получение сертификата
+                                            Сертификаты
                                         </h3>
                                         <p className="pro-about-item-text__description">
                                             Получение сертификата о прохождении

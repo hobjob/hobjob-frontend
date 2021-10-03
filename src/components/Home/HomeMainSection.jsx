@@ -1,29 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-
-import {fetchCourseBuyCountWeek} from "../../redux/actions/courses";
-
-import {
-    HomeMainSectionSpecialOffer,
-    HomeMainSectionSpecialOfferLoader,
-} from "../";
 
 const HomeMainSection = () => {
-    const dispatch = useDispatch();
-
-    const {itemBuyCountWeek, isLoadedBuyCountWeek} = useSelector(
-        ({courses}) => courses
-    );
-    const masters = useSelector(({masters}) => masters.items);
-    const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
-
-    React.useEffect(() => {
-        if (itemBuyCountWeek && !Object.keys(itemBuyCountWeek).length) {
-            dispatch(fetchCourseBuyCountWeek());
-		}
-    }, []);
-
     return (
         <section className="main">
             <div className="container">
@@ -50,16 +28,14 @@ const HomeMainSection = () => {
                         </Link>
                     </div>
 
-                    {isLoadedBuyCountWeek && isLoadedMasters ? (
-                        itemBuyCountWeek ? (
-                            <HomeMainSectionSpecialOffer
-                                {...itemBuyCountWeek}
-                                masters={masters}
+                    <div className="main-video">
+                        <video className="main-video__video" autoPlay playsInline loop muted>
+                            <source
+                                src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/main-video.mp4`}
+                                type="video/mp4"
                             />
-                        ) : null
-                    ) : (
-                        <HomeMainSectionSpecialOfferLoader />
-                    )}
+                        </video>
+                    </div>
                 </div>
             </div>
         </section>

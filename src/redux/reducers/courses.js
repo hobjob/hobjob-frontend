@@ -26,15 +26,11 @@ const initialState = {
 	isLoadedSectionCourses: false,
 	itemsSection: [],
 
-	isLoadedBuyCountWeek: false,
-	itemBuyCountWeek: {},
-
 	filters: {
 		categories: {},
 		search: parseQuery.q ? parseQuery.q : "",
 		sale: parseQuery.sale ? parseQuery.sale : null,
 		masters: {},
-		times: {}
 	},
 }
 
@@ -61,18 +57,6 @@ if (parseQuery.masters) {
 	}
 } else {
 	initialState.filters.masters = {}
-}
-
-if (parseQuery.times) {
-	if (typeof parseQuery.times === "object") {
-		parseQuery.times.map(
-			(item) => (initialState.filters.times[item] = item)
-		);
-	} else {
-		initialState.filters.times[parseQuery.times] = parseQuery.times;
-	}
-} else {
-	initialState.filters.times = {}
 }
 
 const courses = (state = initialState, action) => {
@@ -112,22 +96,16 @@ const courses = (state = initialState, action) => {
 	if (action.type === "SET_COURSES_SECTION") {
 		const newObj = {}
 
-		action.payload.map((item) => {
-			newObj[item._id] = item
+		action.payload.items.map((item) => {
+			if (!action.payload.cart[item._id] || (action.payload.userInfo && !action.payload.userInfo.courses[item._id])) {
+				newObj[item._id] = item
+			}
 		})
 
 		return {
 			...state,
 			itemsSection: newObj,
 			isLoadedSectionCourses: true,
-		}
-	}
-
-	if (action.type === "SET_COURSES_BUY_COUNT_WEEK") {
-		return {
-			...state,
-			itemBuyCountWeek: action.payload,
-			isLoadedBuyCountWeek: true,
 		}
 	}
 
@@ -223,27 +201,6 @@ const courses = (state = initialState, action) => {
 				...state.filters,
 				masters: {
 					...state.filters.masters,
-					[action.payload]: action.payload
-				}
-			},
-		}
-	}
-
-	if (action.type === "SET_COURSES_FILTERS_TIMES") {
-		if (state.filters.times[action.payload]) {
-			delete state.filters.times[action.payload];
-
-			return {
-				...state,
-			}
-		}
-
-		return {
-			...state,
-			filters: {
-				...state.filters,
-				times: {
-					...state.filters.times,
 					[action.payload]: action.payload
 				}
 			},

@@ -3,9 +3,9 @@ import React from "react";
 const ShopNotFound = () => {
     return (
         <div className="shop-not-found">
-			<h3 className="shop-not-found__title">
-				Курсы не найдены
-			</h3>
+            <h3 className="shop-not-found__title">
+                Курсы находятся в разработке
+            </h3>
         </div>
     );
 };

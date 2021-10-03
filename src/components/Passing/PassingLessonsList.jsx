@@ -2,7 +2,7 @@ import React from "react";
 
 import {PassingLessonsListItem} from "../";
 
-const PassingCoursesList = ({lessons, lessonActive, courseId}) => {
+const PassingCoursesList = ({title, lessons, lessonActive, courseId}) => {
     const [isExtraLessons, setIsExtraLessons] = React.useState(false);
 
     React.useEffect(() => {
@@ -21,7 +21,7 @@ const PassingCoursesList = ({lessons, lessonActive, courseId}) => {
                 }`}
             >
                 <p className="subtitle passing-lessons-list-block__subtitle">
-                    Шитьё мишек изо льна
+                    {title}
                 </p>
                 <div className="passing-lessons-list-block-items-wrapper">
                     {lessons.map((lesson, index) =>

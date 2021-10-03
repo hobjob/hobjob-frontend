@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 import {Link} from "react-router-dom";
 
-import {checkDeclension} from "../Functions/checkDeclension";
 import {abbreviateNumber} from "../Functions/abbreviateNumber";
 
 import {fetchMasterById} from "../redux/actions/masters";
@@ -76,16 +75,6 @@ const MasterCard = ({
                                                             {...item}
                                                             onClickAddCourseCart={
                                                                 onClickAddCourseCart
-                                                            }
-                                                            transitTime={
-                                                                checkDeclension(
-                                                                    item.transitTime,
-                                                                    [
-                                                                        "час",
-                                                                        "часа",
-                                                                        "часов",
-                                                                    ]
-                                                                ).title
                                                             }
                                                             pro={userInfo.pro}
                                                             proPrice={

@@ -11,7 +11,6 @@ const CoursePageMain = ({
     price,
     percentSale,
     discountNotPrice,
-    transitTime,
     masterId,
     masters,
     categories,
@@ -35,9 +34,6 @@ const CoursePageMain = ({
                                     ? categories[category].title
                                     : null}
                             </a>
-                            <span className="course-page-main-text-subinfo__time">
-                                Длительность курса {transitTime}
-                            </span>
                         </div>
                         <h2 className="course-page__title course-page-main-text__title">
                             {title}
@@ -159,9 +155,8 @@ const CoursePageMain = ({
                         <ReactPlayer
                             url={videoTrailerUrl}
                             controls={true}
-                            width="100%"
-                            height="100%"
-                            style={{borderRadius: "15px", overflow: "hidden"}}
+							width="100%"
+							height="100%"
                         />
                     </div>
                 </div>

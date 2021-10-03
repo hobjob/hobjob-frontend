@@ -1,5 +1,7 @@
 import React from "react";
 
+import {Tab} from "../";
+
 const CoursePageFaq = ({items}) => {
     return (
         <section className="course-page-faq">
@@ -11,17 +13,7 @@ const CoursePageFaq = ({items}) => {
                 </div>
                 <div className="course-page-faq-items-wrapper">
                     {items.map((item, index) => (
-                        <div
-                            className="course-page-faq-item"
-                            key={`course-page-faq-item-${index}`}
-                        >
-                            <h3 className="course-page-faq-item__title">
-                                {item.title}
-                            </h3>
-                            <p className="course-page-faq-item__description">
-                                {item.description}
-                            </p>
-                        </div>
+                        <Tab key={`course-page-faq-item-${index}`} {...item} />
                     ))}
                 </div>
             </div>

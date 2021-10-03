@@ -3,7 +3,6 @@ import React from "react";
 import {
     ShopFiltersBlockSale,
     ShopFiltersBlockMasters,
-    ShopFiltersBlockTimes,
 } from "../../";
 
 const ShopFilters = React.memo(() => {
@@ -11,7 +10,6 @@ const ShopFilters = React.memo(() => {
         <div className="shop-filters">
             <ShopFiltersBlockSale />
             <ShopFiltersBlockMasters />
-            <ShopFiltersBlockTimes />
         </div>
     );
 });

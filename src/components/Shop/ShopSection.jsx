@@ -2,12 +2,7 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
-import {checkDeclension} from "../../Functions/checkDeclension";
-
-import {
-    fetchCoursesSection,
-    setCoursesSection,
-} from "../../redux/actions/courses";
+import {fetchCoursesSection} from "../../redux/actions/courses";
 import {addCourseCart} from "../../redux/actions/cart";
 import {ShopBlock, Loader} from "../";
 
@@ -29,24 +24,12 @@ const ShopSection = ({title}) => {
     );
 
     React.useEffect(() => {
-        if (isLoadedUserInfo && isLoadedSectionCourses) {
-            const newObj = [];
-
-            Object.keys(itemsSection).map((key) => {
-                if (!userInfo.courses[key]) {
-                    newObj.push(itemsSection[key]);
-                }
-            });
-
-            dispatch(setCoursesSection(newObj));
+        if (isLoadedUserInfo) {
+            dispatch(fetchCoursesSection(cart, userInfo));
+        } else {
+            dispatch(fetchCoursesSection(cart));
         }
-    }, [isLoadedUserInfo, isLoadedSectionCourses]);
-
-	React.useEffect(() => {
-        if (!Object.keys(itemsSection).length && !isLoadedSectionCourses) {
-            dispatch(fetchCoursesSection());
-        }
-    }, []);
+    }, [isLoadedUserInfo, Object.keys(cart).length]);
 
     const onClickAddCourseCart = (obj) => {
         dispatch(addCourseCart(obj));
@@ -72,13 +55,6 @@ const ShopSection = ({title}) => {
                                                 onClickAddCourseCart={
                                                     onClickAddCourseCart
                                                 }
-                                                transitTime={
-                                                    checkDeclension(
-                                                        itemsSection[key]
-                                                            .transitTime,
-                                                        ["час", "часа", "часов"]
-                                                    ).title
-                                                }
                                                 pro={userInfo.pro}
                                                 proPrice={
                                                     itemsSection[key].price -
@@ -87,7 +63,6 @@ const ShopSection = ({title}) => {
                                                         process.env
                                                             .REACT_APP_PAYMENT_PERCENT_PRO
                                                 }
-                                                cartItems={cart}
                                                 key={`shop-section-block-${index}`}
                                                 master={
                                                     masters[

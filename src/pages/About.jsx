@@ -165,10 +165,8 @@ const About = () => {
                                             который вы не найдёте в интернете
                                         </h3>
                                         <p className="about-services-item-text__description">
-                                            Все курсы тщательно отобраны,
-                                            качественно проработаны и записанны
-                                            в студиях профессиональными
-                                            видеографами
+                                            Все курсы тщательно отобраны и
+                                            качественно проработаны
                                         </p>
                                     </div>
                                 </div>
@@ -182,14 +180,38 @@ const About = () => {
 
                                     <div className="about-services-item-text">
                                         <h3 className="about-services-item-text__title">
-                                            Мастер передаёт вам передовые знания
-                                            в его области
+                                            Мастер передает свои уникальные
+                                            знания
                                         </h3>
                                         <p className="about-services-item-text__description">
-                                            Мы отобрали лучших мастеров своего
-                                            дела и поэтому вам не нужно тратить
-                                            время для поиска информации. Просто
-                                            учитесь у них и всё.
+                                            На платформе представлены лучшие
+                                            мастера своего дела. Вам не нужно
+                                            тратить время для поиска информации
+                                            в интернете, можно удобно учиться и
+                                            творить в одном месте
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="about-services-item">
+                                    <img
+                                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/social-about-hb.svg`}
+                                        alt=""
+                                        className="about-services-item__img"
+                                    />
+
+                                    <div className="about-services-item-text">
+                                        <h3 className="about-services-item-text__title">
+                                            Уникальное сообщество творческих
+                                            людей
+                                        </h3>
+                                        <p className="about-services-item-text__description">
+                                            Уникальное сообщество творческих
+                                            людей Учитесь, общайтесь и делитесь
+                                            опытом вместе с нами. Удобная
+                                            платформа и отдельный для каждого
+                                            курса чат в Telegram вам в этом
+                                            помогут.
                                         </p>
                                     </div>
                                 </div>

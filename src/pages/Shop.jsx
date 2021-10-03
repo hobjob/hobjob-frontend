@@ -4,8 +4,6 @@ import {useDispatch, useSelector} from "react-redux";
 import queryString from "query-string";
 import {Helmet} from "react-helmet";
 
-import {checkDeclension} from "../Functions/checkDeclension";
-
 import {
     fetchCourses,
     fetchAddPaginationCourses,
@@ -53,7 +51,6 @@ const Shop = React.memo(
         React.useEffect(() => {
             const arrayCategories = [];
             const arrayMasters = [];
-            const arrayTimes = [];
 
             Object.keys(filters.categories).map((key) => {
                 arrayCategories.push(filters.categories[key]);
@@ -61,19 +58,14 @@ const Shop = React.memo(
 
             Object.keys(filters.masters).map((key) => {
                 arrayMasters.push(filters.masters[key]);
-            });
-
-            Object.keys(filters.times).map((key) => {
-                arrayTimes.push(filters.times[key]);
-            });
-
+			});
+			
             const query = queryString.stringify(
                 {
                     q: filters.search,
                     category: arrayCategories,
                     sale: filters.sale,
                     masters: arrayMasters,
-                    times: arrayTimes,
                 },
                 {arrayFormat: "comma", skipNull: true, skipEmptyString: true}
             );
@@ -86,7 +78,6 @@ const Shop = React.memo(
             filters.search,
             filters.sale,
             Object.keys(filters.masters).length,
-            Object.keys(filters.times).length,
         ]);
 
         const onClickAddCourseCart = (id) => {
@@ -129,16 +120,6 @@ const Shop = React.memo(
                                                     {...item}
                                                     onClickAddCourseCart={
                                                         onClickAddCourseCart
-                                                    }
-                                                    transitTime={
-                                                        checkDeclension(
-                                                            item.transitTime,
-                                                            [
-                                                                "час",
-                                                                "часа",
-                                                                "часов",
-                                                            ]
-                                                        ).title
                                                     }
                                                     pro={userInfo.pro}
                                                     proPrice={

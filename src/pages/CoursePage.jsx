@@ -3,8 +3,6 @@ import {useHistory, Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 
-import {checkDeclension} from "../Functions/checkDeclension";
-
 import {fetchCourseByUrl} from "../redux/actions/courses";
 import {addCourseCart} from "../redux/actions/cart";
 
@@ -122,13 +120,6 @@ const CoursePage = ({
 
                         <CoursePageMain
                             {...itemByUrl}
-                            transitTime={
-                                checkDeclension(itemByUrl.transitTime, [
-                                    "час",
-                                    "часа",
-                                    "часов",
-                                ]).title
-                            }
                             pro={userInfo.pro}
                             proPrice={
                                 itemByUrl.price -

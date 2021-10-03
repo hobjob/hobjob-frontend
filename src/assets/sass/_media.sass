@@ -18,9 +18,16 @@
 			&__title
 				font-size: 54px
 
-		&-special-offer-shop-block
-			margin-top: 75px
-			width: 75%
+		&-video
+			width: 100%
+
+			display: flex
+			justify-content: center
+
+			margin-top: 100px
+
+			&__video
+				width: 75%
 
 @media screen and ( max-width: 1200px )
 	// header
@@ -185,6 +192,7 @@
 
 			&-video
 				width: 100%
+				height: 300px
 
 		&-result
 			&-wrapper
@@ -418,6 +426,10 @@
 	// interface
 	.title__mb
 		margin-bottom: 50px
+
+	.tab
+		&-bottom
+			width: 100%
 
 	// cookie
 	.cookie
@@ -898,17 +910,6 @@
 		margin-left: 50px
 
 @media screen and ( max-width: 700px )
-	// main
-	.main
-		&-special-offer-shop
-			&-block
-				width: 100%
-
-				&-left
-					&-cover
-						width: 100px
-						height: 100px
-
 	// shop
 	.shop
 		&-block
@@ -944,11 +945,21 @@
 		font-size: 32px
 
 @media screen and ( max-width: 600px )
+	// interface
+	.tab
+		&-top
+			&__title
+				font-size: 21px
+
 	// main
 	.main
 		&-text
 			&__title
 				font-size: 38px
+
+		&-video
+			&__video
+				width: 100%
 
 	// cart
 	.cart
@@ -1062,17 +1073,6 @@
 		&-text
 			&__title
 				font-size: 32px
-
-		&-special-offer-shop
-			&-block
-				padding: 35px
-				flex-direction: column
-				+boxShadow
-				+borderRadius
-
-				&-right
-					margin: 25px 0 0 0
-					text-align: center
 
 	// categories
 	.categories

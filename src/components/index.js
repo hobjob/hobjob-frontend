@@ -5,6 +5,7 @@ export { default as RenderInput } from "./All/RenderInput"
 export { default as RenderSelect } from "./All/RenderSelect"
 export { default as FileInput } from "./All/FileInput"
 export { default as BtnLoader } from "./All/BtnLoader"
+export { default as Tab } from "./All/Tab"
 
 // Login
 export { default as LoginForm } from "./Login/LoginForm"
@@ -32,8 +33,6 @@ export { default as HeaderModalMenu } from "./Header/HeaderModalMenu"
 
 // Home
 export { default as HomeMainSection } from "./Home/HomeMainSection"
-export { default as HomeMainSectionSpecialOffer } from "./Home/HomeMainSectionSpecialOffer"
-export { default as HomeMainSectionSpecialOfferLoader } from "./Home/HomeMainSectionSpecialOfferLoader"
 
 // Categories
 export { default as CategoriesSection } from "./Categories/CategoriesSection"
@@ -52,7 +51,6 @@ export { default as ShopFilters } from "./Shop/ShopFilters/ShopFilters"
 export { default as ShopFiltersCategories } from "./Shop/ShopFilters/ShopFiltersCategories"
 export { default as ShopFiltersBlockSale } from "./Shop/ShopFilters/ShopFiltersBlockSale"
 export { default as ShopFiltersBlockMasters } from "./Shop/ShopFilters/ShopFiltersBlockMasters"
-export { default as ShopFiltersBlockTimes } from "./Shop/ShopFilters/ShopFiltersBlockTimes"
 
 // CoursePage
 export { default as CoursePageMain } from "./CoursePage/CoursePageMain"

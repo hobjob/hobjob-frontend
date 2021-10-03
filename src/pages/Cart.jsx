@@ -4,8 +4,6 @@ import {useDispatch, useSelector} from "react-redux";
 import NumberFormat from "react-number-format";
 import {Helmet} from "react-helmet";
 
-import {checkDeclension} from "../Functions/checkDeclension";
-
 import {CartBlock, ShopSection, Loader} from "../components/";
 
 import {removeCourseCart} from "../redux/actions/cart";
@@ -90,17 +88,6 @@ const Cart = () => {
                                                 <CartBlock
                                                     {...itemsArrayById[key]}
                                                     removeCourse={removeCourse}
-                                                    transitTime={
-                                                        checkDeclension(
-                                                            itemsArrayById[key]
-                                                                .transitTime,
-                                                            [
-                                                                "час",
-                                                                "часа",
-                                                                "часов",
-                                                            ]
-                                                        ).title
-                                                    }
                                                     key={`cart-block-${index}`}
                                                     masters={masters}
                                                     categories={categories}

@@ -1,9 +1,10 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import NumberFormat from "react-number-format";
 import {Helmet} from "react-helmet";
 import moment from "moment";
+import {animateScroll as scroll} from "react-scroll";
 
 import {fetchUserCourses} from "../redux/actions/user";
 
@@ -53,7 +54,7 @@ const PassingCourse = ({
     const lessonIndex = lessonNum - 1;
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
+        scroll.scrollToTop({duration: 500});
 
         if (!Object.keys(courses).length && isLoadedUserInfo) {
             dispatch(fetchUserCourses());
@@ -132,6 +133,7 @@ const PassingCourse = ({
                                                 }
                                                 courseId={courseId}
                                                 lessonActive={lessonNum}
+                                                {...courses[courseId]}
                                             />
 
                                             <div className="passing-lesson-info">

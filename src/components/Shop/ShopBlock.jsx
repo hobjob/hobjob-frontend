@@ -14,10 +14,9 @@ const ShopBlock = React.memo(
         category,
         percentSale,
         price,
-        transitTime,
         discountNotPrice,
         onClickAddCourseCart,
-        cartItems,
+        cartItems = {},
         pro,
         proPrice,
         isBuy,
@@ -34,12 +33,17 @@ const ShopBlock = React.memo(
 
         const onClickAdd = () => {
             onClickAddCourseCart({_id});
+
+			if (window.location.pathname === "/") {
+				window.location.href = "/cart"
+			}
+
             setAddState(true);
-		};
-		
-		const onClickScrollTop = () => {
-			scroll.scrollToTop({duration: 500});
-		}
+        };
+
+        const onClickScrollTop = () => {
+            scroll.scrollToTop({duration: 500});
+        };
 
         return (
             <div className="shop-block">
@@ -69,10 +73,6 @@ const ShopBlock = React.memo(
                             ) : null}
                         </Link>
                         <div className="shop-block-top-text-tags">
-                            <span className="shop-block-top-text__time">
-                                {transitTime}
-                            </span>
-
                             <span className="shop-block-top-text__category">
                                 {category ? category.title : null}
                             </span>
@@ -160,7 +160,10 @@ const ShopBlock = React.memo(
                                 Перейти в корзину
                             </Link>
                         ) : (
-                            <button onClick={onClickScrollTop} className="btn-regular shop-block-bottom__btn">
+                            <button
+                                onClick={onClickScrollTop}
+                                className="btn-regular shop-block-bottom__btn"
+                            >
                                 Перейти в корзину
                             </button>
                         )

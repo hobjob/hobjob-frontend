@@ -14,7 +14,6 @@ const CartBlock = React.memo(
         price,
         proPrice,
         pro,
-        transitTime,
         discountNotPrice,
         removeCourse,
         masters,
@@ -64,9 +63,6 @@ const CartBlock = React.memo(
                             ) : null}
                         </Link>
                         <div className="cart-block-content-text-tags">
-                            <span className="cart-block-content-text__time">
-                                {transitTime}
-                            </span>
                             <span className="cart-block-content-text__category">
                                 {categories[category].title}
                             </span>

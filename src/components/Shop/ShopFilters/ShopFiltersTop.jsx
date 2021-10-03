@@ -13,7 +13,6 @@ const ShopFiltersTop = React.memo(() => {
         let count = 0;
 
         count += Object.keys(filters.masters).length;
-        count += Object.keys(filters.times).length;
 
         if (filters.sale !== null) {
             count += 1;
@@ -23,7 +22,6 @@ const ShopFiltersTop = React.memo(() => {
     }, [
         Object.keys(filters.masters).length,
         filters.sale,
-        Object.keys(filters.times).length,
     ]);
 
     const onClickOpenFilters = () => {

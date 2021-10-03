@@ -53,20 +53,14 @@ export const fetchAddPaginationCourses = (query = null, page) => (dispatch) => {
 	})
 }
 
-export const fetchCoursesSection = () => (dispatch) => {
+export const fetchCoursesSection = (cart, userInfo = null) => (dispatch) => {
 	dispatch({
 		type: "SET_LOADED_COURSES_SECTION",
 		payload: false,
 	})
 
 	$api.get(`/courses?sort=buyCountWeek&order=desc`).then(({ data }) => {
-		dispatch(setCoursesSection(data))
-	})
-}
-
-export const fetchCourseBuyCountWeek = () => (dispatch) => {
-	$api.get(`/courses?sort=buyCountWeek&order=desc`).then(({ data }) => {
-		dispatch(setCoursesBuyCountWeek(data[0]))
+		dispatch(setCoursesSection(data, cart, userInfo))
 	})
 }
 
@@ -108,14 +102,9 @@ const setAddPaginationCourses = (items) => ({
 })
 
 
-export const setCoursesSection = (items) => ({
+const setCoursesSection = (items, cart, userInfo) => ({
 	type: "SET_COURSES_SECTION",
-	payload: items
-})
-
-const setCoursesBuyCountWeek = (item) => ({
-	type: "SET_COURSES_BUY_COUNT_WEEK",
-	payload: item
+	payload: { items, cart, userInfo }
 })
 
 const setCourseById = (item) => ({
@@ -146,11 +135,6 @@ export const setCoursesFiltersSale = (status) => ({
 export const setCoursesFiltersMasters = (masterId) => ({
 	type: "SET_COURSES_FILTERS_MASTERS",
 	payload: masterId
-})
-
-export const setCoursesFiltersTimes = (times) => ({
-	type: "SET_COURSES_FILTERS_TIMES",
-	payload: times
 })
 
 export const setCoursesFilters = (filters) => ({

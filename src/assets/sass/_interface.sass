@@ -554,3 +554,31 @@ select, option
 	&-img
 		&__img
 			width: 350px
+
+// tab
+.tab
+	cursor: pointer
+
+	margin-bottom: 50px
+	padding-bottom: 50px
+	border-bottom: 1px solid $borderGray
+
+	&-top
+		display: flex
+		justify-content: space-between
+		align-items: center
+
+		&__title
+			font-size: 28px
+			width: 75%
+			user-select: none
+
+		&-svg
+			+transition
+
+			&.active
+				transform: rotate(-45deg)
+
+	&-bottom
+		margin-top: 50px
+		width: 75%
