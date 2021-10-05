@@ -13,8 +13,6 @@ import {
     NotEmailConfirmed,
 } from "../components/";
 
-import Err404 from "./Err404";
-
 const Referral = () => {
     const dispatch = useDispatch();
     const {userInfo, isLoadedUserInfo, referrals, isLoadedReferrals} =
@@ -110,7 +108,7 @@ const Referral = () => {
                     </div>
                 )
             ) : (
-                <Err404 />
+                (window.location.href = "/go/login")
             )}
         </>
     );

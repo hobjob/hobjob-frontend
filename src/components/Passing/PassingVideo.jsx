@@ -21,50 +21,61 @@ const PassingVideo = ({courseId, lessonNum, image}) => {
     }, [timecodeSeconds]);
 
     const handlerError = (e, data) => {
-		setPlay(false);
-		
+        setPlay(false);
+
         const seconds = VideoRef.current.getSecondsLoaded();
 
         if (data && data.type == "networkError") {
-            $api.get(`/refresh`)
-                .then(({data}) => {
-                    localStorage.setItem("accessToken", data.accessToken);
+            try {
+                $api.get(`/refresh`)
+                    .then(({data}) => {
+                        localStorage.setItem("accessToken", data.accessToken);
 
-                    setPlay(true);
+                        setPlay(true);
 
-                    VideoRef.current.seekTo(seconds, "seconds");
-                })
-                .catch(() => {
-                    $api.post("/logout").then(() => {
-                        localStorage.removeItem("accessToken");
-                        window.location.reload();
+                        VideoRef.current.seekTo(seconds, "seconds");
+                    })
+                    .catch(() => {
+                        $api.post("/logout").then(() => {
+                            localStorage.removeItem("accessToken");
+                            window.location.reload();
+                        });
                     });
-                });
+            } catch (e) {
+                window.location.reload();
+            }
         }
+    };
+
+    const handlerPause = () => {
+        setPlay(false);
+    };
+
+    const handlerPlay = () => {
+        setPlay(true);
     };
 
     return (
         <div className="passing-video">
             <ReactPlayer
                 playing={play}
-                config={{
-                    file: {
-                        attributes: {
-                            poster: `${process.env.REACT_APP_IMAGE_DOMEN}/${image}`,
-                        },
-                    },
-                }}
+                controls
+                playsinline
                 onError={handlerError}
+                onPause={handlerPause}
+                onPlay={handlerPlay}
                 ref={VideoRef}
                 url={`${
                     process.env.REACT_APP_API_DOMEN
                 }/courses/${courseId}/video/${lessonNum}/${localStorage.getItem(
                     "accessToken"
                 )}/index.m3u8`}
-                playsinline
-                controls
                 width="100%"
                 height="auto"
+                style={{
+                    borderRadius: "25px",
+                    overflow: "hidden",
+                }}
             />
         </div>
     );

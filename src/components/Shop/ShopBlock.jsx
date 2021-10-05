@@ -34,15 +34,11 @@ const ShopBlock = React.memo(
         const onClickAdd = () => {
             onClickAddCourseCart({_id});
 
-			if (window.location.pathname === "/") {
-				window.location.href = "/cart"
-			}
+            if (window.location.pathname === "/") {
+                window.location.href = "/cart";
+            }
 
             setAddState(true);
-        };
-
-        const onClickScrollTop = () => {
-            scroll.scrollToTop({duration: 500});
         };
 
         return (
@@ -152,21 +148,12 @@ const ShopBlock = React.memo(
                             Приобретен
                         </button>
                     ) : addState ? (
-                        window.location.pathname !== "/cart" ? (
-                            <Link
-                                to="/cart"
-                                className="btn-regular shop-block-bottom__btn"
-                            >
-                                Перейти в корзину
-                            </Link>
-                        ) : (
-                            <button
-                                onClick={onClickScrollTop}
-                                className="btn-regular shop-block-bottom__btn"
-                            >
-                                Перейти в корзину
-                            </button>
-                        )
+                        <Link
+                            to="/cart"
+                            className="btn-regular shop-block-bottom__btn"
+                        >
+                            Перейти в корзину
+                        </Link>
                     ) : (
                         <button
                             className="btn shop-block-bottom__btn"

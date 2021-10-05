@@ -24,8 +24,10 @@ const ShopSection = ({title}) => {
     );
 
     React.useEffect(() => {
-        if (isLoadedUserInfo) {
-            dispatch(fetchCoursesSection(cart, userInfo));
+        if (localStorage.getItem("accessToken")) {
+            if (isLoadedUserInfo) {
+                dispatch(fetchCoursesSection(cart, userInfo));
+            }
         } else {
             dispatch(fetchCoursesSection(cart));
         }

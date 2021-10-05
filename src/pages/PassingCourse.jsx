@@ -32,8 +32,6 @@ import {
     PassingChat,
 } from "../components/";
 
-import Err404 from "./Err404";
-
 const PassingCourse = ({
     match: {
         params: {courseId, lessonNum},
@@ -120,11 +118,6 @@ const PassingCourse = ({
                                                 {...courses[courseId]}
                                                 courseId={courseId}
                                                 lessonNum={lessonNum}
-                                                image={
-                                                    courses[courseId].lessons[
-                                                        lessonIndex
-                                                    ].image
-                                                }
                                             />
 
                                             <PassingLessonsList
@@ -411,7 +404,7 @@ const PassingCourse = ({
                     </div>
                 )
             ) : (
-                <Err404 />
+                (window.location.href = "/go/login")
             )}
         </>
     );

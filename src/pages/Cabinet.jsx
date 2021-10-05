@@ -14,8 +14,6 @@ import {
     NotEmailConfirmed,
 } from "../components/";
 
-import Err404 from "./Err404";
-
 const Cabinet = () => {
     const dispatch = useDispatch();
 
@@ -128,7 +126,7 @@ const Cabinet = () => {
                     </div>
                 )
             ) : (
-                <Err404 />
+                (window.location.href = "/go/login")
             )}
         </>
     );

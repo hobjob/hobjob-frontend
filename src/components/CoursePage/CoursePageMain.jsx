@@ -152,12 +152,14 @@ const CoursePageMain = ({
                         )}
                     </div>
                     <div className="course-page-main-video">
-                        <ReactPlayer
-                            url={videoTrailerUrl}
-                            controls={true}
-							width="100%"
-							height="100%"
-                        />
+                        <div className="course-page-main-video-wrapper">
+                            <ReactPlayer
+                                url={`${process.env.REACT_APP_IMAGE_DOMEN}/${videoTrailerUrl}`}
+                                controls={true}
+                                width="100%"
+                                height="100%"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

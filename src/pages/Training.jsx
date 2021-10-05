@@ -14,10 +14,9 @@ import {
     NotEmailConfirmed,
 } from "../components/";
 
-import Err404 from "./Err404";
-
 const Training = () => {
     const dispatch = useDispatch();
+
     const {userInfo, courses, isLoadedUserInfo, isLoadedUserCourses} =
         useSelector(({user}) => user);
     const masters = useSelector(({masters}) => masters.items);
@@ -105,7 +104,7 @@ const Training = () => {
                     <Loader />
                 )
             ) : (
-                <Err404 />
+                (window.location.href = "/go/login")
             )}
         </>
     );

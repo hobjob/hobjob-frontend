@@ -62,7 +62,7 @@ const Master = () => {
                     </div>
                 )
             ) : (
-                <Err404 />
+                (window.location.href = "/go/login")
             )}
         </>
     );
