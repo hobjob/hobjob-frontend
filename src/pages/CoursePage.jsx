@@ -21,7 +21,9 @@ import {
     CoursePageWork,
     CoursePageFaq,
     CoursePageEducation,
-    AboutSection,
+	AboutSection,
+	ShopSection,
+	ReferralsSection,
     Loader,
 } from "../components";
 
@@ -208,7 +210,11 @@ const CoursePage = ({
                                     <CoursePageFaq {...item} />
                                 ) : null}
                             </div>
-                        ))}
+						))}
+						
+						<ReferralsSection />
+
+                        <ShopSection title="Вам может понравиться" />
 
                         <AboutSection />
                     </>

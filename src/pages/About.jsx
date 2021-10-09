@@ -7,7 +7,7 @@ import {abbreviateNumber} from "../Functions/abbreviateNumber";
 
 import {fetchStatistics} from "../redux/actions/statistics";
 
-import {CategoriesSection, ShopSection} from "../components/";
+import {CategoriesSection, ShopSection, ReferralsSection} from "../components/";
 
 const About = () => {
     const dispatch = useDispatch();
@@ -98,7 +98,7 @@ const About = () => {
                                             }
                                         </span>
                                     </div>
-                                    <div className="about-section-statistics-item">
+                                    {/* <div className="about-section-statistics-item">
                                         <h4 className="about-section-statistics-item__title">
                                             {isLoaded
                                                 ? abbreviateNumber(
@@ -122,7 +122,7 @@ const About = () => {
                                                 ).text
                                             }
                                         </span>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
@@ -222,6 +222,8 @@ const About = () => {
             </section>
 
             <CategoriesSection />
+
+            <ReferralsSection />
 
             <ShopSection title="Учитесь на практике" />
         </>

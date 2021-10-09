@@ -64,7 +64,7 @@
 
 				&__name
 					font-size: 21px
-
+	
 			&-price
 				margin-top: 50px
 
@@ -73,11 +73,28 @@
 					font-size: 21px
 					margin-bottom: 5px
 					color: $gray
-					text-decoration: line-through
+
+					& span
+						text-decoration: line-through
 
 				&__price
-					display: block
-					font-size: 28px
+					display: flex
+					align-items: center
+
+					font-size: 32px
+
+				&-present
+					margin-left: 15px
+
+					display: flex
+					align-items: center
+
+					&__title
+						display: inline-block
+						font-size: 18px
+
+					& svg
+						margin-left: 10px
 
 			&__btn
 				margin-top: 25px
@@ -85,7 +102,7 @@
 
 		&-video
 			width: 45%
-			
+
 			&-wrapper
 				position: relative
 				padding-bottom: 56.25% // 16:9

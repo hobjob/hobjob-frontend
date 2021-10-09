@@ -54,6 +54,7 @@ export { default as ShopFiltersBlockMasters } from "./Shop/ShopFilters/ShopFilte
 
 // CoursePage
 export { default as CoursePageMain } from "./CoursePage/CoursePageMain"
+export { default as CoursePageMainPresent } from "./CoursePage/CoursePageMainPresent"
 export { default as CoursePageAbout } from "./CoursePage/CoursePageAbout"
 export { default as CoursePageFor } from "./CoursePage/CoursePageFor"
 export { default as CoursePageSkills } from "./CoursePage/CoursePageSkills"
@@ -126,6 +127,7 @@ export { default as CabinetUserPassword } from "./Cabinet/CabinetUserPassword"
 export { default as CabinetUserProInfo } from "./Cabinet/CabinetUserProInfo"
 
 // Referrals
+export { default as ReferralsSection } from "./Referrals/ReferralsSection"
 export { default as ReferralsBlockLink } from "./Referrals/ReferralsBlockLink"
 export { default as ReferralsBlockBalance } from "./Referrals/ReferralsBlockBalance"
 export { default as ReferralsBlockForm } from "./Referrals/ReferralsBlockForm"

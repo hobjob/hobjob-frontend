@@ -102,7 +102,7 @@ const AboutSection = () => {
                                     }
                                 </span>
                             </div>
-                            <div className="about-section-statistics-item">
+                            {/* <div className="about-section-statistics-item">
                                 <h4 className="about-section-statistics-item__title">
                                     {isLoaded
                                         ? abbreviateNumber(statistics.students)
@@ -121,7 +121,7 @@ const AboutSection = () => {
                                         ]).text
                                     }
                                 </span>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

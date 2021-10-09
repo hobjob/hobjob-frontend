@@ -8,7 +8,8 @@ import {
     ShopSection,
     CategoriesSection,
     AboutSection,
-    MastersSection,
+	MastersSection,
+	ReferralsSection
 } from "../components/";
 
 const Home = ({
@@ -46,6 +47,8 @@ const Home = ({
 
             <CategoriesSection />
 
+			<ReferralsSection />
+			
             <AboutSection />
 
             {/* <MastersSection /> */}

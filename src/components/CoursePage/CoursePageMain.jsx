@@ -3,6 +3,8 @@ import {Link} from "react-router-dom";
 import NumberFormat from "react-number-format";
 import ReactPlayer from "react-player";
 
+import {CoursePageMainPresent} from "../";
+
 const CoursePageMain = ({
     videoTrailerUrl,
     category,
@@ -17,6 +19,7 @@ const CoursePageMain = ({
     addCart,
     pro,
     proPrice,
+    present,
     isBuy,
     addState,
 }) => {
@@ -61,75 +64,98 @@ const CoursePageMain = ({
                             </h4>
                         </Link>
 
-                        {!percentSale ? (
-                            pro ? (
-                                <div className="course-page-main-text-price">
-                                    <p className="course-page-main-text-price__subprice">
-                                        <NumberFormat
-                                            value={price}
-                                            displayType={"text"}
-                                            thousandSeparator={" "}
-                                            renderText={(value) => value}
-                                        />
-                                        ₽
-                                    </p>
-                                    <p className="course-page-main-text-price__price">
-                                        <NumberFormat
-                                            value={proPrice}
-                                            displayType={"text"}
-                                            thousandSeparator={" "}
-                                            renderText={(value) => value}
-                                        />
-                                        ₽
-                                    </p>
-                                </div>
+                        <div className="course-page-main-text-price-wrapper">
+                            {!percentSale ? (
+                                pro ? (
+                                    <div className="course-page-main-text-price">
+                                        <p className="course-page-main-text-price__subprice">
+                                            <span>
+                                                <NumberFormat
+                                                    value={price}
+                                                    displayType={"text"}
+                                                    thousandSeparator={" "}
+                                                    renderText={(value) =>
+                                                        value
+                                                    }
+                                                />
+                                            </span>
+                                            ₽ (-20%)
+                                        </p>
+                                        <p className="course-page-main-text-price__price">
+                                            <NumberFormat
+                                                value={proPrice}
+                                                displayType={"text"}
+                                                thousandSeparator={" "}
+                                                renderText={(value) => value}
+                                            />
+                                            ₽
+                                            <CoursePageMainPresent
+                                                present={present}
+                                            />
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div className="course-page-main-text-price">
+                                        <p className="course-page-main-text-price__price">
+                                            <NumberFormat
+                                                value={price}
+                                                displayType={"text"}
+                                                thousandSeparator={" "}
+                                                renderText={(value) => value}
+                                            />
+                                            ₽
+                                            <CoursePageMainPresent
+                                                present={present}
+                                            />
+                                        </p>
+                                    </div>
+                                )
                             ) : (
                                 <div className="course-page-main-text-price">
-                                    <p className="course-page-main-text-price__price">
-                                        <NumberFormat
-                                            value={price}
-                                            displayType={"text"}
-                                            thousandSeparator={" "}
-                                            renderText={(value) => value}
-                                        />
-                                        ₽
+                                    <p className="course-page-main-text-price__subprice">
+                                        <span>
+                                            <NumberFormat
+                                                value={discountNotPrice}
+                                                displayType={"text"}
+                                                thousandSeparator={" "}
+                                                renderText={(value) => value}
+                                            />
+                                        </span>
+                                        ₽{" "}
+                                        {pro
+                                            ? `(-${percentSale + 20}%)`
+                                            : `(-${percentSale}%)`}
                                     </p>
+                                    {pro ? (
+                                        <p className="course-page-main-text-price__price">
+                                            <NumberFormat
+                                                value={proPrice}
+                                                displayType={"text"}
+                                                thousandSeparator={" "}
+                                                renderText={(value) => value}
+                                            />
+                                            ₽
+                                            <CoursePageMainPresent
+                                                present={present}
+                                            />
+                                        </p>
+                                    ) : (
+                                        <p className="course-page-main-text-price__price">
+                                            <NumberFormat
+                                                value={price}
+                                                displayType={"text"}
+                                                thousandSeparator={" "}
+                                                renderText={(value) => value}
+                                            />
+                                            ₽
+                                            <CoursePageMainPresent
+                                                present={present}
+                                            />
+                                        </p>
+                                    )}
                                 </div>
-                            )
-                        ) : (
-                            <div className="course-page-main-text-price">
-                                <p className="course-page-main-text-price__subprice">
-                                    <NumberFormat
-                                        value={discountNotPrice}
-                                        displayType={"text"}
-                                        thousandSeparator={" "}
-                                        renderText={(value) => value}
-                                    />
-                                    ₽
-                                </p>
-                                {pro ? (
-                                    <p className="course-page-main-text-price__price">
-                                        <NumberFormat
-                                            value={proPrice}
-                                            displayType={"text"}
-                                            thousandSeparator={" "}
-                                            renderText={(value) => value}
-                                        />
-                                        ₽
-                                    </p>
-                                ) : (
-                                    <p className="course-page-main-text-price__price">
-                                        <NumberFormat
-                                            value={price}
-                                            displayType={"text"}
-                                            thousandSeparator={" "}
-                                            renderText={(value) => value}
-                                        />
-                                        ₽
-                                    </p>
-                                )}
-                            </div>
-                        )}
+                            )}
+                        </div>
 
                         {isBuy ? (
                             <button className="btn disabled course-page-main-text__btn buy-btn">

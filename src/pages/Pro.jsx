@@ -159,7 +159,8 @@ const Pro = () => {
                                         </h3>
                                         <p className="pro-about-item-text__description">
                                             У владельцев Pro версии есть скидка
-                                            20% на все курсы
+                                            20% на все курсы (действует со всеми
+                                            акциями)
                                         </p>
                                     </div>
                                 </div>
