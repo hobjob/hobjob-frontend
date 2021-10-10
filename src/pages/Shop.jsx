@@ -96,7 +96,7 @@ const Shop = React.memo(
                 <section className="shop">
                     <div className="container">
                         <div className="shop-wrapper">
-                            <h2 className="title__mb shop__title">
+                            <h2 className="title shop__title">
                                 Магазин курсов
                                 <span>
                                     (
@@ -104,6 +104,10 @@ const Shop = React.memo(
                                     )
                                 </span>
                             </h2>
+
+                            <p className="description shop__description">
+                                Новые курсы добавляются каждый месяц
+                            </p>
 
                             <ShopFiltersTop />
 

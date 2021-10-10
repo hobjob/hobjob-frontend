@@ -43,13 +43,16 @@ const Home = ({
 
             <HomeMainSection />
 
-            <ShopSection title="Учитесь на практике" />
+            <ShopSection
+                title="Учитесь на практике"
+                description="Обучайтесь у лучших профессионалов своего дела и раскройте самые сокровенные секреты творческого мира"
+            />
 
             <CategoriesSection />
 
-			<ReferralsSection />
-			
-            <AboutSection />
+            <ReferralsSection />
+
+            <AboutSection buttonVisible />
 
             {/* <MastersSection /> */}
         </>

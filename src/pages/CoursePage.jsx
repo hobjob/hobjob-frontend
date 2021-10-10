@@ -21,13 +21,13 @@ import {
     CoursePageWork,
     CoursePageFaq,
     CoursePageEducation,
-	AboutSection,
-	ShopSection,
-	ReferralsSection,
+    AboutSection,
+    ShopSection,
+    ReferralsSection,
     Loader,
 } from "../components";
 
-import {Err404} from '../pages';
+import {Err404} from "../pages";
 
 const CoursePage = ({
     match: {
@@ -70,9 +70,13 @@ const CoursePage = ({
                 setVisibleButton(false);
             }
         });
+    }, []);
+
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
 
         dispatch(fetchCourseByUrl(url));
-    }, []);
+    }, [url]);
 
     const addCart = () => {
         dispatch(addCourseCart({_id: itemByUrl._id}));
@@ -205,18 +209,25 @@ const CoursePage = ({
                                         path={itemByUrl.path}
                                     />
                                 ) : null}
+                            </div>
+                        ))}
 
+                        <ReferralsSection />
+
+                        <ShopSection
+                            title="Вам может понравиться"
+                            description="Новые курсы добавляются каждый месяц"
+                        />
+
+                        <AboutSection buttonVisible />
+
+                        {itemByUrl.page.map((item, index) => (
+                            <div key={`course-page-${item.type}-${index}`}>
                                 {item.type === "faq" ? (
                                     <CoursePageFaq {...item} />
                                 ) : null}
                             </div>
-						))}
-						
-						<ReferralsSection />
-
-                        <ShopSection title="Вам может понравиться" />
-
-                        <AboutSection />
+                        ))}
                     </>
                 ) : (
                     <Err404 />

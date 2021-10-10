@@ -6,7 +6,7 @@ import {fetchCoursesSection} from "../../redux/actions/courses";
 import {addCourseCart} from "../../redux/actions/cart";
 import {ShopBlock, Loader} from "../";
 
-const ShopSection = ({title}) => {
+const ShopSection = ({title, description}) => {
     const dispatch = useDispatch();
 
     const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
@@ -46,9 +46,12 @@ const ShopSection = ({title}) => {
                     <section className="shop-section">
                         <div className="container">
                             <div className="shop-section-wrapper">
-                                <h2 className="title__mb shop-section__title">
+                                <h2 className="title shop-section__title">
                                     {title}
                                 </h2>
+                                <p className="description shop-section__description">
+                                    {description}
+                                </p>
                                 <div className="shop-section-block-wrapper">
                                     {Object.keys(itemsSection)
                                         .map((key, index) => (
@@ -82,7 +85,6 @@ const ShopSection = ({title}) => {
                                         ))
                                         .slice(0, 4)}
                                 </div>
-
                                 <div className="shop-section-btn">
                                     <Link
                                         to="/shop"

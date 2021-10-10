@@ -79,7 +79,7 @@ const CoursePageMain = ({
                                                     }
                                                 />
                                             </span>
-                                            ₽ (-20%)
+                                            ₽
                                         </p>
                                         <p className="course-page-main-text-price__price">
                                             <NumberFormat
@@ -121,10 +121,7 @@ const CoursePageMain = ({
                                                 renderText={(value) => value}
                                             />
                                         </span>
-                                        ₽{" "}
-                                        {pro
-                                            ? `(-${percentSale + 20}%)`
-                                            : `(-${percentSale}%)`}
+                                        ₽
                                     </p>
                                     {pro ? (
                                         <p className="course-page-main-text-price__price">

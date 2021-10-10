@@ -70,8 +70,8 @@ const MasterCardInfo = ({
                                 className="master-card-info-text-title-social__link"
                             >
                                 <svg
-                                    width="20"
-                                    height="23"
+                                    width="28"
+                                    height="31"
                                     viewBox="0 0 23 23"
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg"

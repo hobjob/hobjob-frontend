@@ -8,8 +8,11 @@ const HomeMainSection = () => {
                 <div className="main-wrapper">
                     <div className="circle main-circle"></div>
                     <div className="main-text">
-                        <h1 className="main-text__title">
+                        <span className="main-text__subtitle">
                             Научитесь создавать шедевры своими руками
+                        </span>
+                        <h1 className="main-text__title">
+                            HobJob - сообщество творческих людей
                         </h1>
                         <Link to="/shop" className="btn-arrow main-text__btn">
                             Перейти в магазин курсов
@@ -29,7 +32,13 @@ const HomeMainSection = () => {
                     </div>
 
                     <div className="main-video">
-                        <video className="main-video__video" autoPlay playsInline loop muted>
+                        <video
+                            className="main-video__video"
+                            autoPlay
+                            playsInline
+                            loop
+                            muted
+                        >
                             <source
                                 src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/main-video.mp4`}
                                 type="video/mp4"

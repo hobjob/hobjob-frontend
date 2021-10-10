@@ -46,7 +46,10 @@ const Err404 = () => {
                 </div>
             </section>
 
-            <ShopSection title="Вам может понравиться" />
+            <ShopSection
+                title="Вам может понравиться"
+                description="Новые курсы добавляются каждый месяц"
+            />
         </>
     );
 };

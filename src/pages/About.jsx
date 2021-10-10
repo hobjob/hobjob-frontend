@@ -7,7 +7,12 @@ import {abbreviateNumber} from "../Functions/abbreviateNumber";
 
 import {fetchStatistics} from "../redux/actions/statistics";
 
-import {CategoriesSection, ShopSection, ReferralsSection} from "../components/";
+import {
+    CategoriesSection,
+    ShopSection,
+    ReferralsSection,
+    AboutSection,
+} from "../components/";
 
 const About = () => {
     const dispatch = useDispatch();
@@ -27,105 +32,10 @@ const About = () => {
             <Helmet>
                 <title>О нас - HobJob</title>
             </Helmet>
+            <AboutSection />
             <section className="about">
                 <div className="container">
                     <div className="about-wrapper">
-                        <div className="about-main">
-                            <div className="about-section-left">
-                                <h2 className="title about-section__title">
-                                    Что такое HobJob?
-                                </h2>
-                            </div>
-                            <div className="about-section-right">
-                                <div className="about-section-text">
-                                    <p
-                                        className="
-                                    description__mb
-                                    about-section__description
-                                "
-                                    >
-                                        HobJob - это платформа, на которой
-                                        представлены курсы мастеров своего дела.
-                                        Они учат тому, что умеют лучше всего -
-                                        творить.
-                                    </p>
-                                </div>
-
-                                <div className="about-section-statistics">
-                                    <div className="about-section-statistics-item">
-                                        <h4 className="about-section-statistics-item__title">
-                                            {isLoaded
-                                                ? abbreviateNumber(
-                                                      statistics.masters
-                                                  )
-                                                : "-"}
-                                        </h4>
-                                        <span
-                                            className="
-                                        about-section-statistics-item__subtitle
-                                    "
-                                        >
-                                            {
-                                                checkDeclension(
-                                                    statistics.masters,
-                                                    [
-                                                        "Мастер",
-                                                        "Мастера",
-                                                        "Мастеров",
-                                                    ]
-                                                ).text
-                                            }
-                                        </span>
-                                    </div>
-                                    <div className="about-section-statistics-item">
-                                        <h4 className="about-section-statistics-item__title">
-                                            {isLoaded
-                                                ? abbreviateNumber(
-                                                      statistics.courses
-                                                  )
-                                                : "-"}
-                                        </h4>
-                                        <span
-                                            className="
-                                        about-section-statistics-item__subtitle
-                                    "
-                                        >
-                                            {
-                                                checkDeclension(
-                                                    statistics.courses,
-                                                    ["Курс", "Курса", "Курсов"]
-                                                ).text
-                                            }
-                                        </span>
-                                    </div>
-                                    {/* <div className="about-section-statistics-item">
-                                        <h4 className="about-section-statistics-item__title">
-                                            {isLoaded
-                                                ? abbreviateNumber(
-                                                      statistics.students
-                                                  )
-                                                : "-"}
-                                        </h4>
-                                        <span
-                                            className="
-                                        about-section-statistics-item__subtitle
-                                    "
-                                        >
-                                            {
-                                                checkDeclension(
-                                                    statistics.students,
-                                                    [
-                                                        "Ученик",
-                                                        "Ученика",
-                                                        "Учеников",
-                                                    ]
-                                                ).text
-                                            }
-                                        </span>
-                                    </div> */}
-                                </div>
-                            </div>
-                        </div>
                         <div className="about-services">
                             <h2 className="title__mb about-services__title">
                                 Наши преимущества
@@ -147,7 +57,9 @@ const About = () => {
                                             Команда HobJob сделала удобную
                                             образовательную платформу как для
                                             преподавателей, так и для самих
-                                            учеников
+                                            учеников. Наслаждайтесь обучением из
+                                            дома без установленного расписания и
+                                            ограничения по времени
                                         </p>
                                     </div>
                                 </div>
@@ -165,8 +77,10 @@ const About = () => {
                                             который вы не найдёте в интернете
                                         </h3>
                                         <p className="about-services-item-text__description">
-                                            Все курсы тщательно отобраны и
-                                            качественно проработаны
+                                            Мы составляем свой список мастеров и
+                                            самостоятельно производим каждый
+                                            курс, чтобы обеспечить
+                                            высококачественное онлайн-обучение
                                         </p>
                                     </div>
                                 </div>
@@ -225,7 +139,10 @@ const About = () => {
 
             <ReferralsSection />
 
-            <ShopSection title="Учитесь на практике" />
+            <ShopSection
+                title="Учитесь на практике"
+                description="Обучайтесь у лучших профессионалов своего дела и раскройте самые сокровенные секреты творческого мира"
+            />
         </>
     );
 };

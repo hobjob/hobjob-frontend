@@ -23,7 +23,7 @@ const PassingVideo = ({courseId, lessonNum, image}) => {
     const handlerError = (e, data) => {
         setPlay(false);
 
-        const seconds = VideoRef.current.getSecondsLoaded();
+        const seconds = VideoRef.current && VideoRef.current.getSecondsLoaded();
 
         if (data && data.type == "networkError") {
             try {
