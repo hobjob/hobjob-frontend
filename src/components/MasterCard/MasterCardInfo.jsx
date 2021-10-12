@@ -99,7 +99,7 @@ const MasterCardInfo = ({
 
                 <div className="master-card-info-text-specialty">
                     <span className="master-card-info-text-specialty__subspan">
-                        Специалность:
+                        Специальность:
                     </span>
                     <span className="master-card-info-text-specialty__specialty">
                         {masterCategories.map(

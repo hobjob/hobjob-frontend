@@ -78,7 +78,7 @@
 			padding: 10px 0
 
 			background-color: $white
-			animation: openHeaderMenu .2s
+			+openPopup
 
 			+boxShadow
 			+borderRadiusBlock
@@ -97,27 +97,11 @@
 					color: $gray
 
 			&.close
-				animation: closeHeaderMenu .2s
+				+closePopup
 
 	&-menu-button
 		display: none
 		margin-left: 25px
-
-@keyframes openHeaderMenu
-	0%
-		opacity: 0
-		transform: scale3d(.90, .90, .90)
-	100%
-		transform: scale3d(1, 1, 1)
-		opacity: 1
-
-@keyframes closeHeaderMenu
-	0%
-		transform: scale3d(1, 1, 1)
-		opacity: 1
-	100%
-		opacity: 0
-		transform: scale3d(.90, .90, .90)
 
 // header-modal-menu
 .header-modal-menu

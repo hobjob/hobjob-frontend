@@ -86,23 +86,19 @@ const Header = React.memo(() => {
     };
 
     const onClickModalMenu = () => {
+        document.body.style.overflow = "hidden";
         setModalMenuState(!modalMenuState);
     };
 
     const onClickCloseModalMenu = () => {
         setModalMenuAnimationState(true);
+        document.body.style.overflow = "visible";
 
         setTimeout(() => {
             setModalMenuState(false);
             setModalMenuAnimationState(false);
         }, 200);
     };
-
-    if (modalMenuState === true) {
-        document.body.style.overflow = "hidden";
-    } else {
-        document.body.style.overflow = "visible";
-    }
 
     const handHeaderModalMenu = (e) => {
         if (e.target === HeaderModalMenuRef.current) {
@@ -237,10 +233,10 @@ const Header = React.memo(() => {
                                 </>
                             ) : (
                                 <a
-                                    href="/go/login"
+                                    href="/go/register"
                                     className="header-login__link"
                                 >
-                                    Войти
+                                    Зарегистрироваться
                                     <svg
                                         width="21"
                                         height="10"

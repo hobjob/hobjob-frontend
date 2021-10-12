@@ -1,6 +1,16 @@
 import React from "react";
 
+import {ImageBox} from "../";
+
 const CoursePageSkills = ({items, images, path}) => {
+    const [stateImage, setStateImage] = React.useState(false);
+    const [imageSrc, setImageSrc] = React.useState("");
+
+    const handlerStateImage = (image) => {
+        setImageSrc(image);
+        setStateImage(!stateImage);
+    };
+
     return (
         <>
             <section className="course-page-skills">
@@ -39,11 +49,23 @@ const CoursePageSkills = ({items, images, path}) => {
                                 style={{
                                     backgroundImage: `url('${process.env.REACT_APP_IMAGE_DOMEN}/uploads/${path}/${image}')`,
                                 }}
+                                onClick={() =>
+                                    handlerStateImage(
+                                        `${process.env.REACT_APP_IMAGE_DOMEN}/uploads/${path}/${image}`
+                                    )
+                                }
                             ></div>
                         ))}
                     </div>
                 </div>
             </section>
+
+            {stateImage ? (
+                <ImageBox
+                    image={imageSrc}
+                    closeFunc={() => handlerStateImage(imageSrc)}
+                />
+            ) : null}
         </>
     );
 };

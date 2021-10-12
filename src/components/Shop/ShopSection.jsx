@@ -6,7 +6,7 @@ import {fetchCoursesSection} from "../../redux/actions/courses";
 import {addCourseCart} from "../../redux/actions/cart";
 import {ShopBlock, Loader} from "../";
 
-const ShopSection = ({title, description}) => {
+const ShopSection = ({title, description, url}) => {
     const dispatch = useDispatch();
 
     const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
@@ -26,10 +26,10 @@ const ShopSection = ({title, description}) => {
     React.useEffect(() => {
         if (localStorage.getItem("accessToken")) {
             if (isLoadedUserInfo) {
-                dispatch(fetchCoursesSection(cart, userInfo));
+                dispatch(fetchCoursesSection(cart, userInfo, url));
             }
         } else {
-            dispatch(fetchCoursesSection(cart));
+            dispatch(fetchCoursesSection(cart, null, url));
         }
     }, [isLoadedUserInfo, Object.keys(cart).length]);
 

@@ -939,10 +939,8 @@
 						flex-direction: column
 						align-items: flex-start
 
-					&-present
-						margin-left: 0
-
-						&__title
+						& span
+							margin-left: 0
 							font-size: 16px
 
 	// about-section
@@ -979,11 +977,11 @@
 	// main
 	.main
 		&-text
-			&__subtitle
-				font-size: 18px
-				
 			&__title
 				font-size: 38px
+
+			&__description
+				font-size: 18px
 
 		&-video
 			&__video
@@ -1093,6 +1091,15 @@
 		&-modal-menu
 			&-content
 				width: 100%
+
+		&-login
+			&__link
+				font-size: 16px
+				& svg
+					display: none
+
+		&-menu-button
+			margin-left: 15px
 
 	// main
 	.main

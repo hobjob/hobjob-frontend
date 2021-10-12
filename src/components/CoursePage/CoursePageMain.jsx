@@ -3,8 +3,6 @@ import {Link} from "react-router-dom";
 import NumberFormat from "react-number-format";
 import ReactPlayer from "react-player";
 
-import {CoursePageMainPresent} from "../";
-
 const CoursePageMain = ({
     videoTrailerUrl,
     category,
@@ -88,10 +86,7 @@ const CoursePageMain = ({
                                                 thousandSeparator={" "}
                                                 renderText={(value) => value}
                                             />
-                                            ₽
-                                            <CoursePageMainPresent
-                                                present={present}
-                                            />
+                                            ₽ <span>{present}</span>
                                         </p>
                                     </div>
                                 ) : (
@@ -103,10 +98,7 @@ const CoursePageMain = ({
                                                 thousandSeparator={" "}
                                                 renderText={(value) => value}
                                             />
-                                            ₽
-                                            <CoursePageMainPresent
-                                                present={present}
-                                            />
+                                            ₽ <span>{present}</span>
                                         </p>
                                     </div>
                                 )
@@ -131,10 +123,7 @@ const CoursePageMain = ({
                                                 thousandSeparator={" "}
                                                 renderText={(value) => value}
                                             />
-                                            ₽
-                                            <CoursePageMainPresent
-                                                present={present}
-                                            />
+                                            ₽ <span>{present}</span>
                                         </p>
                                     ) : (
                                         <p className="course-page-main-text-price__price">
@@ -144,10 +133,7 @@ const CoursePageMain = ({
                                                 thousandSeparator={" "}
                                                 renderText={(value) => value}
                                             />
-                                            ₽
-                                            <CoursePageMainPresent
-                                                present={present}
-                                            />
+                                            ₽ <span>{present}</span>
                                         </p>
                                     )}
                                 </div>

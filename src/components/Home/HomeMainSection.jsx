@@ -8,12 +8,12 @@ const HomeMainSection = () => {
                 <div className="main-wrapper">
                     <div className="circle main-circle"></div>
                     <div className="main-text">
-                        <span className="main-text__subtitle">
-                            Научитесь создавать шедевры своими руками
-                        </span>
                         <h1 className="main-text__title">
                             HobJob - сообщество творческих людей
                         </h1>
+                        <p className="main-text__description">
+                            Научитесь создавать шедевры своими руками
+                        </p>
                         <Link to="/shop" className="btn-arrow main-text__btn">
                             Перейти в магазин курсов
                             <svg

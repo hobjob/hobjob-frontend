@@ -6,6 +6,7 @@ export { default as RenderSelect } from "./All/RenderSelect"
 export { default as FileInput } from "./All/FileInput"
 export { default as BtnLoader } from "./All/BtnLoader"
 export { default as Tab } from "./All/Tab"
+export { default as ImageBox } from "./All/ImageBox"
 
 // Login
 export { default as LoginForm } from "./Login/LoginForm"
@@ -54,7 +55,6 @@ export { default as ShopFiltersBlockMasters } from "./Shop/ShopFilters/ShopFilte
 
 // CoursePage
 export { default as CoursePageMain } from "./CoursePage/CoursePageMain"
-export { default as CoursePageMainPresent } from "./CoursePage/CoursePageMainPresent"
 export { default as CoursePageAbout } from "./CoursePage/CoursePageAbout"
 export { default as CoursePageFor } from "./CoursePage/CoursePageFor"
 export { default as CoursePageSkills } from "./CoursePage/CoursePageSkills"

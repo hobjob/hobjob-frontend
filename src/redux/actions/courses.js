@@ -53,14 +53,14 @@ export const fetchAddPaginationCourses = (query = null, page) => (dispatch) => {
 	})
 }
 
-export const fetchCoursesSection = (cart, userInfo = null) => (dispatch) => {
+export const fetchCoursesSection = (cart, userInfo = null, url = "") => (dispatch) => {
 	dispatch({
 		type: "SET_LOADED_COURSES_SECTION",
 		payload: false,
 	})
 
 	$api.get(`/courses?sort=buyCountWeek&order=desc`).then(({ data }) => {
-		dispatch(setCoursesSection(data, cart, userInfo))
+		dispatch(setCoursesSection(data, cart, userInfo, url))
 	})
 }
 
@@ -102,9 +102,9 @@ const setAddPaginationCourses = (items) => ({
 })
 
 
-const setCoursesSection = (items, cart, userInfo) => ({
+const setCoursesSection = (items, cart, userInfo, url) => ({
 	type: "SET_COURSES_SECTION",
-	payload: { items, cart, userInfo }
+	payload: { items, cart, userInfo, url }
 })
 
 const setCourseById = (item) => ({

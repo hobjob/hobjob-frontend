@@ -217,6 +217,7 @@ const CoursePage = ({
                         <ShopSection
                             title="Вам может понравиться"
                             description="Новые курсы добавляются каждый месяц"
+                            url={url}
                         />
 
                         <AboutSection buttonVisible />
