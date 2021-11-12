@@ -89,3 +89,10 @@ export { default as ReferralsPolicy } from "./ReferralsPolicy"
 
 // Regulations
 export { default as Regulations } from "./Regulations"
+
+// EngineeringWorks
+export { default as EngineeringWorks } from "./EngineeringWorks"
+
+// Testing
+export { default as TestingRegister } from "./TestingRegister"
+export { default as TestingLogin } from "./TestingLogin"

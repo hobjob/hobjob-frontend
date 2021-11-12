@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 
 import {fetchConfirmedUser} from "../redux/actions/user";
 
-import { Loader } from "../components/";
+import {Loader} from "../components/";
 
 const Confirmed = ({
     match: {
@@ -16,11 +16,7 @@ const Confirmed = ({
         dispatch(fetchConfirmedUser(hash));
     }, []);
 
-    return (
-        <div className="loader-wrapper">
-            <Loader />
-        </div>
-    );
+    return <Loader />;
 };
 
 export default Confirmed;

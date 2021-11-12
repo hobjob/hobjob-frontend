@@ -1,25 +1,22 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import NumberFormat from "react-number-format";
 import ReactPlayer from "react-player";
 
 const CoursePageMain = ({
+    _id,
     videoTrailerUrl,
     category,
     title,
     description,
-    price,
-    percentSale,
-    discountNotPrice,
     masterId,
     masters,
     categories,
+    addTestingCourse,
     addCart,
-    pro,
-    proPrice,
-    present,
     isBuy,
+    isBuyTesting,
     addState,
+    isLogin,
 }) => {
     return (
         <section className="course-page-main">
@@ -62,102 +59,41 @@ const CoursePageMain = ({
                             </h4>
                         </Link>
 
-                        <div className="course-page-main-text-price-wrapper">
-                            {!percentSale ? (
-                                pro ? (
-                                    <div className="course-page-main-text-price">
-                                        <p className="course-page-main-text-price__subprice">
-                                            <span>
-                                                <NumberFormat
-                                                    value={price}
-                                                    displayType={"text"}
-                                                    thousandSeparator={" "}
-                                                    renderText={(value) =>
-                                                        value
-                                                    }
-                                                />
-                                            </span>
-                                            ₽
-                                        </p>
-                                        <p className="course-page-main-text-price__price">
-                                            <NumberFormat
-                                                value={proPrice}
-                                                displayType={"text"}
-                                                thousandSeparator={" "}
-                                                renderText={(value) => value}
-                                            />
-                                            ₽ <span>{present}</span>
-                                        </p>
-                                    </div>
-                                ) : (
-                                    <div className="course-page-main-text-price">
-                                        <p className="course-page-main-text-price__price">
-                                            <NumberFormat
-                                                value={price}
-                                                displayType={"text"}
-                                                thousandSeparator={" "}
-                                                renderText={(value) => value}
-                                            />
-                                            ₽ <span>{present}</span>
-                                        </p>
-                                    </div>
-                                )
+                        {isBuy && !addState ? (
+                            isBuyTesting ? (
+                                <button
+                                    className="btn course-page-main-text__btn"
+                                    onClick={addCart}
+                                >
+                                    Купить полный доступ
+                                </button>
                             ) : (
-                                <div className="course-page-main-text-price">
-                                    <p className="course-page-main-text-price__subprice">
-                                        <span>
-                                            <NumberFormat
-                                                value={discountNotPrice}
-                                                displayType={"text"}
-                                                thousandSeparator={" "}
-                                                renderText={(value) => value}
-                                            />
-                                        </span>
-                                        ₽
-                                    </p>
-                                    {pro ? (
-                                        <p className="course-page-main-text-price__price">
-                                            <NumberFormat
-                                                value={proPrice}
-                                                displayType={"text"}
-                                                thousandSeparator={" "}
-                                                renderText={(value) => value}
-                                            />
-                                            ₽ <span>{present}</span>
-                                        </p>
-                                    ) : (
-                                        <p className="course-page-main-text-price__price">
-                                            <NumberFormat
-                                                value={price}
-                                                displayType={"text"}
-                                                thousandSeparator={" "}
-                                                renderText={(value) => value}
-                                            />
-                                            ₽ <span>{present}</span>
-                                        </p>
-                                    )}
-                                </div>
-                            )}
-                        </div>
-
-                        {isBuy ? (
-                            <button className="btn disabled course-page-main-text__btn buy-btn">
-                                Приобретен
-                            </button>
+                                <button className="btn disabled course-page-main-text__btn">
+                                    Приобретен
+                                </button>
+                            )
                         ) : addState ? (
                             <Link
                                 to="/cart"
-                                className="btn-regular course-page-main-text__btn buy-btn"
+                                className="btn-regular course-page-main-text__btn"
                             >
                                 Перейти в корзину
                             </Link>
-                        ) : (
+                        ) : isLogin ? (
                             <button
-                                className="btn course-page-main-text__btn buy-btn"
-                                onClick={addCart}
+                                className="btn course-page-main-text__btn"
+                                onClick={addTestingCourse}
                             >
-                                Добавить в корзину
+                                Получить первый урок бесплатно
                             </button>
+                        ) : (
+                            <a
+                                href={`/testing/${_id}/register`}
+                                className="btn course-page-main-text__btn"
+                            >
+                                Зарегистрироваться и получить первый урок
+                                бесплатно
+                            </a>
                         )}
                     </div>
                     <div className="course-page-main-video">

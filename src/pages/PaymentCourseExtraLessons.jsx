@@ -23,7 +23,7 @@ const PaymentCourseExtraLessons = ({
 
     React.useEffect(() => {
         if (isLoaded) {
-            dispatch(fetchCourseById(payment.order[0]));
+            dispatch(fetchCourseById(payment.order[0].courseId));
 
             if (payment.confirmation) {
                 const checkout = new window.YooMoneyCheckoutWidget({

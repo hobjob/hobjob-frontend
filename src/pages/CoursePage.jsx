@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 
 import {fetchCourseByUrl} from "../redux/actions/courses";
+import {assingTestingCourse} from "../redux/actions/testing";
 import {addCourseCart} from "../redux/actions/cart";
 
 import {
@@ -53,12 +54,12 @@ const CoursePage = ({
     const [addState, setAddState] = React.useState(false);
 
     React.useEffect(() => {
-        if (cart[itemByUrl._id]) {
+        if (cart[itemByUrl._id] && isLoadedCourseByUrl) {
             setAddState(true);
         } else {
             setAddState(false);
         }
-    }, [Object.keys(cart).length]);
+    }, [Object.keys(cart).length, isLoadedCourseByUrl]);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -78,6 +79,10 @@ const CoursePage = ({
         dispatch(fetchCourseByUrl(url));
     }, [url]);
 
+    const addTestingCourse = () => {
+        dispatch(assingTestingCourse(itemByUrl._id, userInfo));
+    };
+
     const addCart = () => {
         dispatch(addCourseCart({_id: itemByUrl._id}));
 
@@ -93,14 +98,28 @@ const CoursePage = ({
                             <title>{itemByUrl.title} - HobJob</title>
                         </Helmet>
 
-                        {isLoadedUserInfo && userInfo.courses[itemByUrl._id] ? (
-                            <button
-                                className={`btn-small-round disabled course-page__btn ${
-                                    visibleButton ? "active" : ""
-                                }`}
-                            >
-                                Приобретен
-                            </button>
+                        {isLoadedUserInfo &&
+                        userInfo.courses[itemByUrl._id] &&
+                        !addState ? (
+                            userInfo.courses[itemByUrl._id] &&
+                            userInfo.courses[itemByUrl._id].testing ? (
+                                <button
+                                    className={`btn-small-round course-page__btn ${
+                                        visibleButton ? "active" : ""
+                                    }`}
+                                    onClick={addCart}
+                                >
+                                    Купить полный доступ
+                                </button>
+                            ) : (
+                                <button
+                                    className={`btn-small-round disabled course-page__btn ${
+                                        visibleButton ? "active" : ""
+                                    }`}
+                                >
+                                    Приобретен
+                                </button>
+                            )
                         ) : addState ? (
                             <Link
                                 to="/cart/"
@@ -110,18 +129,26 @@ const CoursePage = ({
                             >
                                 Перейти в корзину
                             </Link>
-                        ) : (
+                        ) : localStorage.getItem("accessToken") &&
+                          isLoadedUserInfo ? (
                             <button
                                 className={`btn-small-round course-page__btn ${
                                     visibleButton ? "active" : ""
                                 }`}
-                                onClick={addCart}
+                                onClick={addTestingCourse}
                             >
-                                Добавить в корзину{" "}
-                                {document.documentElement.clientWidth > 500
-                                    ? ""
-                                    : ` за ${itemByUrl.price}₽`}
+                                Получить первый урок бесплатно
                             </button>
+                        ) : (
+                            <a
+                                href={`/testing/${itemByUrl._id}/register`}
+                                className={`btn-small-round course-page__btn ${
+                                    visibleButton ? "active" : ""
+                                }`}
+                            >
+                                Зарегистрироваться и получить первый урок
+                                бесплатно
+                            </a>
                         )}
 
                         <CoursePageMain
@@ -132,6 +159,13 @@ const CoursePage = ({
                                 (itemByUrl.price / 100) *
                                     process.env.REACT_APP_PAYMENT_PERCENT_PRO
                             }
+                            isLogin={
+                                localStorage.getItem("accessToken") &&
+                                isLoadedUserInfo
+                                    ? true
+                                    : false
+                            }
+                            addTestingCourse={addTestingCourse}
                             addCart={addCart}
                             masters={masters}
                             categories={categories}
@@ -141,6 +175,12 @@ const CoursePage = ({
                                     ? userInfo.courses[itemByUrl._id]
                                         ? true
                                         : false
+                                    : false
+                            }
+                            isBuyTesting={
+                                isLoadedUserInfo
+                                    ? userInfo.courses[itemByUrl._id] &&
+                                      userInfo.courses[itemByUrl._id].testing
                                     : false
                             }
                         />

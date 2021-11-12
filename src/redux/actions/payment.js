@@ -22,16 +22,14 @@ export const sendCreateCoursesPayment = (data, user) => (dispatch) => {
 	const { order } = data
 	const { courses } = user
 
-	let userCoursesArr = Object.keys(courses).map((key) => courses[key].courseId);
-
 	let newOrder = [];
 
 	if (courses.length) {
-		for (let key in order) {
-			if (userCoursesArr.indexOf(order[key]) == -1) {
-				newOrder.push(order[key]);
+		order.map((key, index) => {
+			if ((courses[index] && courses[index].courseId !== key) || (courses[index] && courses[index].testing)) {
+				newOrder.push(key);
 			}
-		}
+		})
 	} else {
 		newOrder = data.order
 	}

@@ -16,11 +16,13 @@ import {
 import {
     sendCreateCourseExtraLessonsPayment,
     sendCreateProSubscribePayment,
+    sendCreateCoursesPayment,
 } from "../redux/actions/payment";
 
 import {
     BtnLoader,
     Loader,
+    PassingModalWindow,
     PassingTopText,
     PassingLessonsList,
     PassingVideo,
@@ -42,11 +44,16 @@ const PassingCourse = ({
 
     const [hashtag, setHashtag] = React.useState("");
 
+    const [stateModalBuyWindow, setStateModalBuyWindow] = React.useState(false);
+
     const {userInfo, courses, isLoadedUserCourses, isLoadedUserInfo} =
         useSelector(({user}) => user);
     const {isSendCourseExtraLessons, isSendProSubscribe} = useSelector(
         ({payment}) => payment
     );
+
+    const masters = useSelector(({masters}) => masters.items);
+    const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
 
     // Array of lessons starts at zero
     const lessonIndex = lessonNum - 1;
@@ -83,172 +90,392 @@ const PassingCourse = ({
         dispatch(sendCreateProSubscribePayment({pro: userInfo.pro}));
     };
 
+    const openModalBuyWindow = () => {
+        setStateModalBuyWindow(true);
+    };
+
+    const closeModalBuyWindow = () => {
+        setStateModalBuyWindow(false);
+    };
+
+    const buyFullAccess = () => {
+        const order = [courseId];
+        const coursesNew = [];
+
+        Object.keys(userInfo.courses).map((key) =>
+            coursesNew.push({...userInfo.courses[key]})
+        );
+
+        dispatch(
+            sendCreateCoursesPayment(
+                {
+                    order,
+                },
+                {courses: coursesNew}
+            )
+        );
+    };
+
     return (
         <>
             {localStorage.getItem("accessToken") ? (
-                isLoadedUserCourses && isLoadedUserInfo ? (
+                isLoadedUserCourses && isLoadedUserInfo && isLoadedMasters ? (
                     courses[courseId] &&
                     courses[courseId].lessons[lessonIndex] ? (
-                        (courses[courseId].lessons[lessonIndex].extraLesson &&
-                            (userInfo.pro ||
-                                courses[courseId].extraLessonsBuy)) ||
-                        !courses[courseId].lessons[lessonIndex].extraLesson ? (
-                            <>
-                                <Helmet>
-                                    <title>
-                                        {
-                                            courses[courseId].lessons[
-                                                lessonIndex
-                                            ].title
-                                        }{" "}
-                                        - HobJob
-                                    </title>
-                                </Helmet>
-                                <section className="passing">
-                                    <div className="container">
-                                        <div className="passing-wrapper">
-                                            <div className="passing-top">
-                                                <PassingTopText
-                                                    {...courses[courseId]}
-                                                    lessonIndex={lessonIndex}
-                                                />
-                                            </div>
+                        <>
+                            {stateModalBuyWindow ? (
+                                <PassingModalWindow
+                                    {...courses[courseId]}
+                                    buyFullAccess={buyFullAccess}
+                                    closeModalBuyWindow={closeModalBuyWindow}
+                                    master={masters[courses[courseId].masterId]}
+                                    pro={userInfo.pro}
+                                />
+                            ) : null}
 
-                                            <PassingVideo
-                                                {...courses[courseId]}
-                                                courseId={courseId}
-                                                lessonNum={lessonNum}
-                                            />
+                            <Helmet>
+                                <title>
+                                    {
+                                        courses[courseId].lessons[lessonIndex]
+                                            .title
+                                    }{" "}
+                                    - HobJob
+                                </title>
+                            </Helmet>
 
-                                            <PassingLessonsList
-                                                lessons={
-                                                    courses[courseId].lessons
-                                                }
-                                                courseId={courseId}
-                                                lessonActive={lessonNum}
-                                                {...courses[courseId]}
-                                            />
-
-                                            <div className="passing-lesson-info">
-                                                <div className="passing-lesson-info-block-text">
-                                                    <h4 className="passing-lesson-info-block-text__title">
-                                                        Описание
-                                                    </h4>
-                                                    <p className="passing-lesson-info-block-text__description">
-                                                        {
-                                                            courses[courseId]
-                                                                .lessons[
+                            {(courses[courseId].lessons[lessonIndex]
+                                .extraLesson &&
+                                (userInfo.pro ||
+                                    courses[courseId].extraLessonsBuy)) ||
+                            !courses[courseId].lessons[lessonIndex]
+                                .extraLesson ? (
+                                courses[courseId].testing ? (
+                                    lessonIndex === 0 ? (
+                                        <section className="passing">
+                                            <div className="container">
+                                                <div className="passing-wrapper">
+                                                    <div className="passing-top">
+                                                        <PassingTopText
+                                                            {...courses[
+                                                                courseId
+                                                            ]}
+                                                            lessonIndex={
                                                                 lessonIndex
-                                                            ].description
+                                                            }
+                                                        />
+                                                    </div>
+
+                                                    <PassingVideo
+                                                        {...courses[courseId]}
+                                                        courseId={courseId}
+                                                        lessonNum={lessonNum}
+                                                    />
+
+                                                    <PassingLessonsList
+                                                        lessons={
+                                                            courses[courseId]
+                                                                .lessons
                                                         }
-                                                    </p>
+                                                        courseId={courseId}
+                                                        lessonActive={lessonNum}
+                                                        isTesting={
+                                                            courses[courseId]
+                                                                .testing
+                                                        }
+                                                        openModalBuyWindow={
+                                                            openModalBuyWindow
+                                                        }
+                                                        {...courses[courseId]}
+                                                    />
+
+                                                    <div className="passing-lesson-info">
+                                                        <div className="passing-lesson-info-block-text">
+                                                            <h4 className="passing-lesson-info-block-text__title">
+                                                                Описание
+                                                            </h4>
+                                                            <p className="passing-lesson-info-block-text__description">
+                                                                {
+                                                                    courses[
+                                                                        courseId
+                                                                    ].lessons[
+                                                                        lessonIndex
+                                                                    ]
+                                                                        .description
+                                                                }
+                                                            </p>
+                                                        </div>
+
+                                                        {courses[courseId]
+                                                            .lessons[
+                                                            lessonIndex
+                                                        ].materials.length ? (
+                                                            <PassingMaterials
+                                                                materials={
+                                                                    courses[
+                                                                        courseId
+                                                                    ].lessons[
+                                                                        lessonIndex
+                                                                    ].materials
+                                                                }
+                                                                downloadFunc={
+                                                                    downloadFile
+                                                                }
+                                                                isTesting={
+                                                                    courses[
+                                                                        courseId
+                                                                    ].testing
+                                                                }
+                                                                openModalBuyWindow={
+                                                                    openModalBuyWindow
+                                                                }
+                                                            />
+                                                        ) : null}
+
+                                                        <PassingTimecodes
+                                                            isMaterials={
+                                                                courses[
+                                                                    courseId
+                                                                ].lessons[
+                                                                    lessonIndex
+                                                                ].materials
+                                                                    .length
+                                                                    ? true
+                                                                    : false
+                                                            }
+                                                            timecodes={
+                                                                courses[
+                                                                    courseId
+                                                                ].lessons[
+                                                                    lessonIndex
+                                                                ].timecodes
+                                                            }
+                                                        />
+                                                    </div>
+
+                                                    {!courses[courseId].lessons[
+                                                        lessonIndex - 1
+                                                    ] &&
+                                                    !courses[courseId]
+                                                        .testing ? (
+                                                        <div className="passing-bottom-block">
+                                                            <PassingChat
+                                                                chatUrl={
+                                                                    courses[
+                                                                        courseId
+                                                                    ].chatUrl
+                                                                }
+                                                            />
+                                                        </div>
+                                                    ) : null}
+
+                                                    {!courses[courseId].lessons[
+                                                        lessonIndex
+                                                    ].extraLesson &&
+                                                    (!courses[courseId].lessons[
+                                                        lessonIndex + 1
+                                                    ] ||
+                                                        courses[courseId]
+                                                            .lessons[
+                                                            lessonIndex + 1
+                                                        ].extraLesson) ? (
+                                                        <div className="passing-bottom-block">
+                                                            {userInfo.pro ? (
+                                                                <PassingCertificate
+                                                                    title={
+                                                                        courses[
+                                                                            courseId
+                                                                        ].title
+                                                                    }
+                                                                    getCertificate={
+                                                                        getCertificate
+                                                                    }
+                                                                />
+                                                            ) : (
+                                                                <PassingPro
+                                                                    title={
+                                                                        courses[
+                                                                            courseId
+                                                                        ].title
+                                                                    }
+                                                                    isSendProSubscribe={
+                                                                        isSendProSubscribe
+                                                                    }
+                                                                    createPaymentProSubscribe={
+                                                                        createPaymentProSubscribe
+                                                                    }
+                                                                />
+                                                            )}
+
+                                                            <PassingHashtag
+                                                                hashtag={
+                                                                    hashtag
+                                                                }
+                                                            />
+                                                        </div>
+                                                    ) : null}
                                                 </div>
-
-                                                {courses[courseId].lessons[
-                                                    lessonIndex
-                                                ].materials.length ? (
-                                                    <PassingMaterials
-                                                        materials={
-                                                            courses[courseId]
-                                                                .lessons[
-                                                                lessonIndex
-                                                            ].materials
-                                                        }
-                                                        downloadFunc={
-                                                            downloadFile
+                                            </div>
+                                        </section>
+                                    ) : (
+                                        history.push("/go/training")
+                                    )
+                                ) : (
+                                    <section className="passing">
+                                        <div className="container">
+                                            <div className="passing-wrapper">
+                                                <div className="passing-top">
+                                                    <PassingTopText
+                                                        {...courses[courseId]}
+                                                        lessonIndex={
+                                                            lessonIndex
                                                         }
                                                     />
+                                                </div>
+
+                                                <PassingVideo
+                                                    {...courses[courseId]}
+                                                    courseId={courseId}
+                                                    lessonNum={lessonNum}
+                                                />
+
+                                                <PassingLessonsList
+                                                    lessons={
+                                                        courses[courseId]
+                                                            .lessons
+                                                    }
+                                                    courseId={courseId}
+                                                    lessonActive={lessonNum}
+                                                    isTesting={
+                                                        courses[courseId]
+                                                            .testing
+                                                    }
+                                                    openModalBuyWindow={
+                                                        openModalBuyWindow
+                                                    }
+                                                    {...courses[courseId]}
+                                                />
+
+                                                <div className="passing-lesson-info">
+                                                    <div className="passing-lesson-info-block-text">
+                                                        <h4 className="passing-lesson-info-block-text__title">
+                                                            Описание
+                                                        </h4>
+                                                        <p className="passing-lesson-info-block-text__description">
+                                                            {
+                                                                courses[
+                                                                    courseId
+                                                                ].lessons[
+                                                                    lessonIndex
+                                                                ].description
+                                                            }
+                                                        </p>
+                                                    </div>
+
+                                                    {courses[courseId].lessons[
+                                                        lessonIndex
+                                                    ].materials.length ? (
+                                                        <PassingMaterials
+                                                            materials={
+                                                                courses[
+                                                                    courseId
+                                                                ].lessons[
+                                                                    lessonIndex
+                                                                ].materials
+                                                            }
+                                                            downloadFunc={
+                                                                downloadFile
+                                                            }
+                                                            isTesting={
+                                                                courses[
+                                                                    courseId
+                                                                ].testing
+                                                            }
+                                                            openModalBuyWindow={
+                                                                openModalBuyWindow
+                                                            }
+                                                        />
+                                                    ) : null}
+
+                                                    <PassingTimecodes
+                                                        isMaterials={
+                                                            courses[courseId]
+                                                                .lessons[
+                                                                lessonIndex
+                                                            ].materials.length
+                                                                ? true
+                                                                : false
+                                                        }
+                                                        timecodes={
+                                                            courses[courseId]
+                                                                .lessons[
+                                                                lessonIndex
+                                                            ].timecodes
+                                                        }
+                                                    />
+                                                </div>
+
+                                                {!courses[courseId].lessons[
+                                                    lessonIndex - 1
+                                                ] &&
+                                                !courses[courseId].testing ? (
+                                                    <div className="passing-bottom-block">
+                                                        <PassingChat
+                                                            chatUrl={
+                                                                courses[
+                                                                    courseId
+                                                                ].chatUrl
+                                                            }
+                                                        />
+                                                    </div>
                                                 ) : null}
 
-                                                <PassingTimecodes
-                                                    isMaterials={
-                                                        courses[courseId]
-                                                            .lessons[
-                                                            lessonIndex
-                                                        ].materials.length
-                                                            ? true
-                                                            : false
-                                                    }
-                                                    timecodes={
-                                                        courses[courseId]
-                                                            .lessons[
-                                                            lessonIndex
-                                                        ].timecodes
-                                                    }
-                                                />
-                                            </div>
-
-                                            {!courses[courseId].lessons[
-                                                lessonIndex - 1
-                                            ] ? (
-                                                <div className="passing-bottom-block">
-                                                    <PassingChat
-                                                        chatUrl={
-                                                            courses[courseId]
-                                                                .chatUrl
-                                                        }
-                                                    />
-                                                </div>
-                                            ) : null}
-
-                                            {!courses[courseId].lessons[
-                                                lessonIndex
-                                            ].extraLesson &&
-                                            (!courses[courseId].lessons[
-                                                lessonIndex + 1
-                                            ] ||
-                                                courses[courseId].lessons[
+                                                {!courses[courseId].lessons[
+                                                    lessonIndex
+                                                ].extraLesson &&
+                                                (!courses[courseId].lessons[
                                                     lessonIndex + 1
-                                                ].extraLesson) ? (
-                                                <div className="passing-bottom-block">
-                                                    {userInfo.pro ? (
-                                                        <PassingCertificate
-                                                            title={
-                                                                courses[
-                                                                    courseId
-                                                                ].title
-                                                            }
-                                                            getCertificate={
-                                                                getCertificate
-                                                            }
-                                                        />
-                                                    ) : (
-                                                        <PassingPro
-                                                            title={
-                                                                courses[
-                                                                    courseId
-                                                                ].title
-                                                            }
-                                                            isSendProSubscribe={
-                                                                isSendProSubscribe
-                                                            }
-                                                            createPaymentProSubscribe={
-                                                                createPaymentProSubscribe
-                                                            }
-                                                        />
-                                                    )}
+                                                ] ||
+                                                    courses[courseId].lessons[
+                                                        lessonIndex + 1
+                                                    ].extraLesson) ? (
+                                                    <div className="passing-bottom-block">
+                                                        {userInfo.pro ? (
+                                                            <PassingCertificate
+                                                                title={
+                                                                    courses[
+                                                                        courseId
+                                                                    ].title
+                                                                }
+                                                                getCertificate={
+                                                                    getCertificate
+                                                                }
+                                                            />
+                                                        ) : (
+                                                            <PassingPro
+                                                                title={
+                                                                    courses[
+                                                                        courseId
+                                                                    ].title
+                                                                }
+                                                                isSendProSubscribe={
+                                                                    isSendProSubscribe
+                                                                }
+                                                                createPaymentProSubscribe={
+                                                                    createPaymentProSubscribe
+                                                                }
+                                                            />
+                                                        )}
 
-                                                    <PassingHashtag
-                                                        hashtag={hashtag}
-                                                    />
-                                                </div>
-                                            ) : null}
+                                                        <PassingHashtag
+                                                            hashtag={hashtag}
+                                                        />
+                                                    </div>
+                                                ) : null}
+                                            </div>
                                         </div>
-                                    </div>
-                                </section>
-                            </>
-                        ) : (
-                            <>
-                                <Helmet>
-                                    <title>
-                                        {
-                                            courses[courseId].lessons[
-                                                lessonIndex
-                                            ].title
-                                        }{" "}
-                                        - HobJob
-                                    </title>
-                                </Helmet>
+                                    </section>
+                                )
+                            ) : (
                                 <section className="passing">
                                     <div className="container">
                                         <div className="passing-wrapper">
@@ -295,6 +522,13 @@ const PassingCourse = ({
                                                 }
                                                 courseId={courseId}
                                                 lessonActive={lessonNum}
+                                                isTesting={
+                                                    courses[courseId].testing
+                                                }
+                                                openModalBuyWindow={
+                                                    openModalBuyWindow
+                                                }
+                                                {...courses[courseId]}
                                             />
 
                                             <div className="passing-lesson-info">
@@ -393,15 +627,13 @@ const PassingCourse = ({
                                         </div>
                                     </div>
                                 </section>
-                            </>
-                        )
+                            )}
+                        </>
                     ) : (
                         history.push("/go/training")
                     )
                 ) : (
-                    <div className="loader-wrapper">
-                        <Loader />
-                    </div>
+                    <Loader />
                 )
             ) : (
                 (window.location.href = "/go/login")

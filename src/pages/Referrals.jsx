@@ -56,9 +56,8 @@ const Referral = () => {
                                                     стоимости покупки. Можно
                                                     пригласить неограниченное
                                                     количество друзей и
-                                                    заработать с
-                                                    каждого купленного ими
-                                                    курса.
+                                                    заработать с каждого
+                                                    купленного ими курса.
                                                 </p>
 
                                                 <Link
@@ -103,9 +102,7 @@ const Referral = () => {
                         <NotEmailConfirmed />
                     )
                 ) : (
-                    <div className="loader-wrapper">
-                        <Loader />
-                    </div>
+                    <Loader />
                 )
             ) : (
                 (window.location.href = "/go/login")

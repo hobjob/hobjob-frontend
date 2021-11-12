@@ -79,6 +79,9 @@ const Training = () => {
                                                                         ]
                                                                     ).title
                                                                 }
+                                                                pro={
+                                                                    userInfo.pro
+                                                                }
                                                                 masters={
                                                                     masters
                                                                 }

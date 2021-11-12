@@ -8,34 +8,39 @@ const PaymentStatus = ({
     },
 }) => {
     React.useEffect(() => {
-        const events = new EventSource(
-            `${process.env.REACT_APP_API_DOMEN}/payment/status/${number}`
-        );
-        events.onmessage = ({data}) => {
-            const {status, type} = JSON.parse(data);
+        // const events = new EventSource(
+        //     `${process.env.REACT_APP_API_DOMEN}/payment/status/${number}`
+        // );
 
-            if (status === "succeeded") {
-                if (
-                    type === "buy-courses" ||
-                    type === "buy-extra-lessons-course"
-                ) {
-                    window.location.href = "/go/training";
-                }
+        // events.onmessage = ({ data }) => {
+        //     const {status, type} = JSON.parse(data);
 
-                if (type === "registration-pro-subscribe") {
-                    window.location.href = "/go/cabinet";
-                }
-            } else {
-                window.location.href = "/payment/error";
-            }
-        };
+        //     if (status === "succeeded") {
+        //         if (
+        //             type === "buy-courses" ||
+        //             type === "buy-extra-lessons-course"
+        //         ) {
+        //             window.location.href = "/go/training";
+        //         }
+
+        //         if (type === "registration-pro-subscribe") {
+        //             window.location.href = "/go/cabinet";
+        //         }
+        //     } else {
+        //         window.location.href = "/payment/error";
+        //     }
+        // };
+
+        // setTimeout(() => {
+        //     window.location.reload();
+        // }, 3000);
+		
+        setTimeout(() => {
+            window.location.href = "/go/training";
+        }, 3000);
     }, []);
 
-    return (
-        <div className="loader-wrapper">
-            <Loader />
-        </div>
-    );
+    return <Loader />;
 };
 
 export default PaymentStatus;

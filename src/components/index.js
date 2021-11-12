@@ -7,6 +7,7 @@ export { default as FileInput } from "./All/FileInput"
 export { default as BtnLoader } from "./All/BtnLoader"
 export { default as Tab } from "./All/Tab"
 export { default as ImageBox } from "./All/ImageBox"
+export { default as ModalWindow } from "./All/ModalWindow"
 
 // Login
 export { default as LoginForm } from "./Login/LoginForm"
@@ -118,6 +119,7 @@ export { default as PassingCertificate } from "./Passing/PassingCertificate"
 export { default as PassingPro } from "./Passing/PassingPro"
 export { default as PassingHashtag } from "./Passing/PassingHashtag"
 export { default as PassingChat } from "./Passing/PassingChat"
+export { default as PassingModalWindow } from "./Passing/PassingModalWindow"
 
 // Cabinet
 export { default as CabinetMessage } from "./Cabinet/CabinetMessage"
@@ -144,3 +146,6 @@ export { default as PolicyBlock } from "./Policy/PolicyBlock"
 
 // Footer
 export { default as Footer } from "./Footer/Footer"
+
+// Testing
+export { default as TestingProgressbar } from "./Testing/TestingProgressbar"

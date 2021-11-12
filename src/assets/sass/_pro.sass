@@ -5,7 +5,7 @@
 
 	&__btn
 		position: fixed
-		z-index: 10
+		z-index: -10
 
 		bottom: 30px
 		right: 30px
@@ -16,6 +16,7 @@
 		+transition
 
 		&.active
+			z-index: 10
 			opacity: 1
 
 	&-main

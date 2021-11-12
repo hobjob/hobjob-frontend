@@ -23,7 +23,7 @@ const ImageBox = ({image, closeFunc}) => {
             setStateCloseAnimation(false);
 
             closeFunc();
-        }, 190);
+        }, 390);
     };
 
     return (

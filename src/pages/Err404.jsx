@@ -1,5 +1,4 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import {Helmet} from "react-helmet";
 
 import { ShopSection } from "../components/";
@@ -21,7 +20,7 @@ const Err404 = () => {
                             <h2 className="title err404-text__title">
                                 Страница не найдена
                             </h2>
-                            <Link to="/" className="btn-arrow err404-text__btn">
+                            <a href="/" className="btn-arrow err404-text__btn">
                                 Перейти на главную страницу
                                 <svg
                                     width="31"
@@ -35,7 +34,7 @@ const Err404 = () => {
                                         fill="#D89350"
                                     />
                                 </svg>
-                            </Link>
+                            </a>
                         </div>
                         <img
                             src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/404.svg`}

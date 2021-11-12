@@ -24,6 +24,7 @@ const user = (state = initialState, action) => {
 
 	if (action.type === "SET_USER_COURSES") {
 		const newObj = {}
+		
 		action.payload.map(item => {
 			newObj[item._id] = item
 		})

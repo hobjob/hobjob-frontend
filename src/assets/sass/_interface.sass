@@ -164,7 +164,34 @@ li
 			background-color: #EBEBEB
 			border: 1px solid #EBEBEB
 
-		& svg
+		& > svg
+			margin-left: 15px
+
+	&__icon
+		display: inline-flex
+		align-items: center
+
+		border: none
+		background-color: $mainColor
+		border: 1px solid $mainColor
+		padding: 20px 30px
+		color: $white
+		cursor: pointer
+		user-select: none
+		text-align: center
+		font-size: 17px
+		+borderRadius
+		+GilroyRegular
+		+transition
+
+		&.disabled
+			user-select: none
+			pointer-events: none
+			border: 1px solid $borderGray
+			background-color: $borderGray
+			color: $gray
+
+		& > svg
 			margin-left: 15px
 
 .btn-regular
@@ -529,13 +556,27 @@ select, option
 .nagibinstudio
 	margin-top: 50px
 
-// loader-wrapper
-.loader-wrapper
-	margin-bottom: 75px
-	+openAnimation
-
+// loader
 .loader-small-wrapper
 	+openAnimation
+
+.ball-pulse
+	display: flex
+	justify-content: center
+	margin: 100px 0 150px 0
+	+openAnimation
+
+	.loader
+		width: 200px
+		height: 200px
+
+	.ball
+		margin: 25% 0 0 25%
+		width: 50%
+		height: 50%
+		background-color: #FFE9D3
+		border-radius: 50%
+		animation: ballPulse 1s ease-in-out infinite
 
 // email-confirmed
 .email-confirmed
@@ -613,10 +654,10 @@ select, option
 
 	background-color: $blackTransparency
 
-	+openAnimation02s
+	+openAnimation04s
 
 	&.close
-		+closeAnimation02s
+		+closeAnimation04s
 
 	&__image
 		width: 90%
@@ -624,16 +665,16 @@ select, option
 		user-select: none
 
 		+borderRadiusBlock
-		+openPopup
+		+openPopup04s
 
 		&.close
-			+closePopup
+			+closePopup04s
 
 	&__close
 		position: absolute
 
 		top: 25px
-		right: 25px
+		right: 15px
 
 		cursor: pointer
 
@@ -652,3 +693,22 @@ select, option
 
 		&:hover
 			background-color: $backgroundGray
+
+// engineering-works
+.engineering-works
+	margin-top: 100px
+
+	&-text
+		&-logo
+			margin-bottom: 75px
+			display: block
+
+			&__img
+				width: 75px
+				user-select: none
+
+		&__title
+			margin-bottom: 25px
+
+		&__description
+			margin-bottom: 100px

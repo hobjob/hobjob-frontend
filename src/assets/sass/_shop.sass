@@ -172,7 +172,7 @@
 					color: $mainColor
 
 				&-tags
-					margin-top: 15px
+					margin-top: 10px
 
 				&__category
 					margin-right: 5px
@@ -185,17 +185,21 @@
 			justify-content: space-between
 			align-items: center
 
-			&__subprice
-				font-size: 21px
-				margin-bottom: 5px
-				color: $gray
-				text-decoration: line-through
+			&__link
+				cursor: pointer
+				color: $mainColor
+				font-size: 15px
+				+transition
 
-			&__price
-				font-size: 24px
+				&:active
+					+transformScale
+
+			&__message
+				color: $gray
+				font-size: 15px
 
 			&__btn
-				padding: 15px 25px
+				padding: 15px 20px
 				font-size: 16px
 
 	&-btn-pagination

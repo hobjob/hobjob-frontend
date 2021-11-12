@@ -12,7 +12,10 @@ const Pro = () => {
 
     const [visibleButton, setVisibleButton] = React.useState(false);
 
-    const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
+    const {
+        userInfo: {pro},
+        isLoadedUserInfo,
+    } = useSelector(({user}) => user);
     const {isSendProSubscribe} = useSelector(({payment}) => payment);
 
     React.useEffect(() => {
@@ -28,7 +31,7 @@ const Pro = () => {
     }, []);
 
     const createPayment = () => {
-        dispatch(sendCreateProSubscribePayment(userInfo));
+        dispatch(sendCreateProSubscribePayment({pro: pro}));
     };
 
     return (
@@ -41,7 +44,7 @@ const Pro = () => {
                     <div className="pro-wrapper">
                         {localStorage.getItem("accessToken") &&
                         isLoadedUserInfo ? (
-                            userInfo.pro ? null : isSendProSubscribe ? (
+                            pro ? null : isSendProSubscribe ? (
                                 <button
                                     className={`btn-small-round disabled pro__btn ${
                                         visibleButton ? "active" : ""
@@ -104,7 +107,7 @@ const Pro = () => {
                                 </div>
                                 {localStorage.getItem("accessToken") &&
                                 isLoadedUserInfo ? (
-                                    userInfo.pro ? (
+                                    pro ? (
                                         <button className="btn disabled pro-main-text__btn">
                                             Спасибо, вы уже с нами
                                         </button>

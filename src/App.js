@@ -4,77 +4,83 @@ import { Route, Switch } from 'react-router-dom';
 
 import { Header, Footer } from './components/';
 
-import { Home, Cart, Shop, CoursePage, Magazine, MagazinePostPage, MasterCard, MastersAbout, Master, Pro, About, Err404, Login, Register, RepeatEmail, PasswordRecoveryEmail, PasswordRecoveryNewPassword, Confirmed, Training, PassingCourse, Cabinet, Referrals, PaymentCoursesLogin, PaymentCoursesRegister, PaymentCourses, PaymentCourseExtraLessons, PaymentProSubscribeLogin, PaymentProSubscribeRegister, PaymentProSubscribe, PaymentStatus, PaymentError, Policy, PublicOffer, ReferralsPolicy, Regulations } from './pages/';
+import { Home, Cart, Shop, CoursePage, Magazine, MagazinePostPage, MasterCard, MastersAbout, Master, Pro, About, Err404, Login, Register, RepeatEmail, PasswordRecoveryEmail, PasswordRecoveryNewPassword, Confirmed, Training, PassingCourse, Cabinet, Referrals, PaymentCoursesLogin, PaymentCoursesRegister, PaymentCourses, PaymentCourseExtraLessons, PaymentProSubscribeLogin, PaymentProSubscribeRegister, PaymentProSubscribe, PaymentStatus, PaymentError, Policy, PublicOffer, ReferralsPolicy, Regulations, EngineeringWorks, TestingRegister, TestingLogin } from './pages/';
 
 dotenv.config()
 
 const App = () => {
 	return (
-		<div className="wrapper">
-			{window.location.pathname.indexOf("/payment") !== -1 || window.location.pathname === "/go/login" || window.location.pathname === "/go/register" || window.location.pathname === "/go/password-recovery" || window.location.pathname === "/go/repeat-email" || window.location.pathname.indexOf("/go/password-recovery") !== -1 || window.location.pathname.indexOf("/go/confirmed") !== -1 ? null : <Header />}
+		<>
+			{false ? <EngineeringWorks /> : <div className="wrapper">
+				{window.location.pathname.indexOf("/payment") !== -1 || window.location.pathname.indexOf("/login") !== -1 || window.location.pathname.indexOf("/register") !== -1 || window.location.pathname === "/go/password-recovery" || window.location.pathname === "/go/repeat-email" || window.location.pathname.indexOf("/go/password-recovery") !== -1 || window.location.pathname.indexOf("/go/confirmed") !== -1 ? null : <Header />}
 
-			<Suspense fallback={() => <></>}>
-				<Switch>
-					<Route path="/" render={(props) => <Home {...props} />} exact />
+				<Suspense fallback={() => <></>}>
+					<Switch>
+						<Route path="/" render={(props) => <Home {...props} />} exact />
 
-					<Route path="/cart" render={() => <Cart />} exact />
-					<Route path="/shop" render={(props) => <Shop {...props} />} exact />
+						<Route path="/cart" render={() => <Cart />} exact />
+						<Route path="/shop" render={(props) => <Shop {...props} />} exact />
 
-					<Route path="/course/:url" render={(props) => <CoursePage {...props} />} exact />
+						<Route path="/course/:url" render={(props) => <CoursePage {...props} />} exact />
 
-					<Route path="/magazine" render={(props) => <Magazine {...props} />} exact />
-					<Route path="/magazine/post/:id" render={(props) => <MagazinePostPage {...props} />} exact />
+						<Route path="/magazine" render={(props) => <Magazine {...props} />} exact />
+						<Route path="/magazine/post/:id" render={(props) => <MagazinePostPage {...props} />} exact />
 
-					<Route path="/master/:id" render={(props) => <MasterCard {...props} />} exact />
-					<Route path="/masters-about" render={() => <MastersAbout />} exact />
-					<Route path="/pro" render={() => <Pro />} exact />
-					<Route path="/about" render={() => <About />} exact />
+						<Route path="/master/:id" render={(props) => <MasterCard {...props} />} exact />
+						<Route path="/masters-about" render={() => <MastersAbout />} exact />
+						<Route path="/pro" render={() => <Pro />} exact />
+						<Route path="/about" render={() => <About />} exact />
 
-					{/* Payment */}
-					<Route path="/payment/courses/login" render={() => <PaymentCoursesLogin />} exact />
-					<Route path="/payment/courses/register" render={() => <PaymentCoursesRegister />} exact />
+						{/* Payment */}
+						<Route path="/payment/courses/login" render={() => <PaymentCoursesLogin />} exact />
+						<Route path="/payment/courses/register" render={() => <PaymentCoursesRegister />} exact />
 
-					<Route path="/payment/courses/:number" render={(props) => <PaymentCourses {...props} />} exact />
+						<Route path="/payment/courses/:number" render={(props) => <PaymentCourses {...props} />} exact />
 
-					<Route path="/payment/courses/extra-lessons/:number" render={(props) => <PaymentCourseExtraLessons {...props} />} exact />
+						<Route path="/payment/courses/extra-lessons/:number" render={(props) => <PaymentCourseExtraLessons {...props} />} exact />
 
-					<Route path="/payment/pro/login" render={() => <PaymentProSubscribeLogin />} exact />
-					<Route path="/payment/pro/register" render={() => <PaymentProSubscribeRegister />} exact />
+						<Route path="/payment/pro/login" render={() => <PaymentProSubscribeLogin />} exact />
+						<Route path="/payment/pro/register" render={() => <PaymentProSubscribeRegister />} exact />
 
-					<Route path="/payment/pro/:number" render={(props) => <PaymentProSubscribe {...props} />} exact />
+						<Route path="/payment/pro/:number" render={(props) => <PaymentProSubscribe {...props} />} exact />
 
-					<Route path="/payment/status/:number" render={(props) => <PaymentStatus {...props} />} exact />
+						<Route path="/payment/status/:number" render={(props) => <PaymentStatus {...props} />} exact />
 
-					<Route path="/payment/error" render={(props) => <PaymentError {...props} />} exact />
+						<Route path="/payment/error" render={() => <PaymentError />} exact />
 
-					<Route path="/policy" render={() => <Policy />} exact />
-					<Route path="/public-offer" render={() => <PublicOffer />} exact />
-					<Route path="/regulations" render={() => <Regulations />} exact />
+						<Route path="/policy" render={() => <Policy />} exact />
+						<Route path="/public-offer" render={() => <PublicOffer />} exact />
+						<Route path="/regulations" render={() => <Regulations />} exact />
 
-					{/* Go */}
-					<Route path="/go/login" render={() => <Login />} exact />
-					<Route path="/go/register" render={(props) => <Register {...props} />} exact />
+						{/* Testing */}
+						<Route path="/testing/:id/register" render={(props) => <TestingRegister {...props} />} exact />
+						<Route path="/testing/:id/login" render={(props) => <TestingLogin {...props} />} exact />
 
-					<Route path="/go/password-recovery" render={() => <PasswordRecoveryEmail />} exact />
-					<Route path="/go/password-recovery/:hash" render={(props) => <PasswordRecoveryNewPassword {...props} />} exact />
+						{/* Go */}
+						<Route path="/go/login" render={() => <Login />} exact />
+						<Route path="/go/register" render={(props) => <Register {...props} />} exact />
 
-					<Route path="/go/repeat-email" render={() => <RepeatEmail />} exact />
+						<Route path="/go/password-recovery" render={() => <PasswordRecoveryEmail />} exact />
+						<Route path="/go/password-recovery/:hash" render={(props) => <PasswordRecoveryNewPassword {...props} />} exact />
 
-					<Route path="/go/confirmed/:hash" render={(props) => <Confirmed {...props} />} exact />
+						<Route path="/go/repeat-email" render={() => <RepeatEmail />} exact />
 
-					<Route path="/go/training" render={() => <Training />} exact />
-					<Route path="/go/passing/:courseId/:lessonNum" render={(props) => <PassingCourse {...props} />} exact />
-					<Route path="/go/cabinet" render={() => <Cabinet />} exact />
-					<Route path="/go/referrals" render={() => <Referrals />} exact />
-					<Route path="/go/referrals/policy" render={() => <ReferralsPolicy />} exact />
-					<Route path="/go/master" render={() => <Master />} exact />
+						<Route path="/go/confirmed/:hash" render={(props) => <Confirmed {...props} />} exact />
 
-					<Route render={() => <Err404 />} exact />
-				</Switch>
-			</Suspense>
+						<Route path="/go/training" render={() => <Training />} exact />
+						<Route path="/go/passing/:courseId/:lessonNum" render={(props) => <PassingCourse {...props} />} exact />
+						<Route path="/go/cabinet" render={() => <Cabinet />} exact />
+						<Route path="/go/referrals" render={() => <Referrals />} exact />
+						<Route path="/go/referrals/policy" render={() => <ReferralsPolicy />} exact />
+						<Route path="/go/master" render={() => <Master />} exact />
 
-			{window.location.pathname.indexOf("/payment") !== -1 || window.location.pathname === "/go/login" || window.location.pathname === "/go/register" || window.location.pathname === "/go/password-recovery" || window.location.pathname === "/go/repeat-email" || window.location.pathname.indexOf("/go/password-recovery") !== -1 || window.location.pathname.indexOf("/go/confirmed") !== -1 ? null : <Footer />}
-		</div>
+						<Route render={() => <Err404 />} exact />
+					</Switch>
+				</Suspense>
+
+				{window.location.pathname.indexOf("/payment") !== -1 || window.location.pathname.indexOf("/login") !== -1 || window.location.pathname.indexOf("/register") !== -1 || window.location.pathname === "/go/password-recovery" || window.location.pathname === "/go/repeat-email" || window.location.pathname.indexOf("/go/password-recovery") !== -1 || window.location.pathname.indexOf("/go/confirmed") !== -1 ? null : <Footer />}
+			</div>}
+		</>
 	)
 }
 

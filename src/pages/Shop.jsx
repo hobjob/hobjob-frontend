@@ -9,6 +9,7 @@ import {
     fetchAddPaginationCourses,
 } from "../redux/actions/courses";
 import {addCourseCart} from "../redux/actions/cart";
+import { sendCreateCoursesPayment } from "../redux/actions/payment";
 
 import {
     ShopFiltersTop,
@@ -58,8 +59,8 @@ const Shop = React.memo(
 
             Object.keys(filters.masters).map((key) => {
                 arrayMasters.push(filters.masters[key]);
-			});
-			
+            });
+
             const query = queryString.stringify(
                 {
                     q: filters.search,
@@ -86,6 +87,24 @@ const Shop = React.memo(
 
         const onClickaddPaginationPageCourses = () => {
             dispatch(fetchAddPaginationCourses(search, page + 1));
+        };
+
+        const buyFullAccess = (courseId) => {
+            const order = [courseId];
+            const coursesNew = [];
+
+            Object.keys(userInfo.courses).map((key) =>
+                coursesNew.push({...userInfo.courses[key]})
+            );
+
+            dispatch(
+                sendCreateCoursesPayment(
+                    {
+                        order,
+                    },
+                    {courses: coursesNew}
+                )
+            );
         };
 
         return (
@@ -122,15 +141,11 @@ const Shop = React.memo(
                                             {items.map((item, index) => (
                                                 <ShopBlock
                                                     {...item}
+                                                    buyFullAccess={
+                                                        buyFullAccess
+                                                    }
                                                     onClickAddCourseCart={
                                                         onClickAddCourseCart
-                                                    }
-                                                    pro={userInfo.pro}
-                                                    proPrice={
-                                                        item.price -
-                                                        (item.price / 100) *
-                                                            process.env
-                                                                .REACT_APP_PAYMENT_PERCENT_PRO
                                                     }
                                                     cartItems={cart}
                                                     key={`shop-block-${index}`}
@@ -149,6 +164,16 @@ const Shop = React.memo(
                                                               ]
                                                                 ? true
                                                                 : false
+                                                            : false
+                                                    }
+                                                    isBuyTesting={
+                                                        isLoadedUserInfo
+                                                            ? userInfo.courses[
+                                                                  item._id
+                                                              ] &&
+                                                              userInfo.courses[
+                                                                  item._id
+                                                              ].testing
                                                             : false
                                                     }
                                                 />

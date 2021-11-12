@@ -7,6 +7,7 @@ import {abbreviateNumber} from "../Functions/abbreviateNumber";
 
 import {fetchMasterById} from "../redux/actions/masters";
 import {addCourseCart} from "../redux/actions/cart";
+import {sendCreateCoursesPayment} from "../redux/actions/payment";
 
 import {Err404} from "../pages/";
 
@@ -43,6 +44,24 @@ const MasterCard = ({
         dispatch(addCourseCart(obj));
     };
 
+    const buyFullAccess = (courseId) => {
+        const order = [courseId];
+        const coursesNew = [];
+
+        Object.keys(userInfo.courses).map((key) =>
+            coursesNew.push({...userInfo.courses[key]})
+        );
+
+        dispatch(
+            sendCreateCoursesPayment(
+                {
+                    order,
+                },
+                {courses: coursesNew}
+            )
+        );
+    };
+
     return (
         <>
             {isLoadedById && isLoadedAllCategories ? (
@@ -73,16 +92,11 @@ const MasterCard = ({
                                                     (item, index) => (
                                                         <ShopBlock
                                                             {...item}
+                                                            buyFullAccess={
+                                                                buyFullAccess
+                                                            }
                                                             onClickAddCourseCart={
                                                                 onClickAddCourseCart
-                                                            }
-                                                            pro={userInfo.pro}
-                                                            proPrice={
-                                                                item.price -
-                                                                (item.price /
-                                                                    100) *
-                                                                    process.env
-                                                                        .REACT_APP_PAYMENT_PERCENT_PRO
                                                             }
                                                             cartItems={cart}
                                                             key={`shop-master-card-block-${index}`}
@@ -102,6 +116,20 @@ const MasterCard = ({
                                                                       ]
                                                                         ? true
                                                                         : false
+                                                                    : false
+                                                            }
+                                                            isBuyTesting={
+                                                                isLoadedUserInfo
+                                                                    ? userInfo
+                                                                          .courses[
+                                                                          item
+                                                                              ._id
+                                                                      ] &&
+                                                                      userInfo
+                                                                          .courses[
+                                                                          item
+                                                                              ._id
+                                                                      ].testing
                                                                     : false
                                                             }
                                                         />

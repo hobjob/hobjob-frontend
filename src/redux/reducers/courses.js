@@ -98,7 +98,7 @@ const courses = (state = initialState, action) => {
 
 		action.payload.items.map((item) => {
 			if (action.payload.userInfo) {
-				if (!action.payload.cart[item._id] && !action.payload.userInfo.courses[item._id] && item.url !== action.payload.url) {
+				if (!action.payload.cart[item._id] && (!action.payload.userInfo.courses[item._id] || (action.payload.userInfo.courses[item._id] && action.payload.userInfo.courses[item._id].testing)) && item.url !== action.payload.url) {
 					newObj[item._id] = item
 				}
 			} else {

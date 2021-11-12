@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 
 import {fetchCoursesSection} from "../../redux/actions/courses";
 import {addCourseCart} from "../../redux/actions/cart";
+import {sendCreateCoursesPayment} from "../../redux/actions/payment";
+
 import {ShopBlock, Loader} from "../";
 
 const ShopSection = ({title, description, url}) => {
@@ -37,6 +39,24 @@ const ShopSection = ({title, description, url}) => {
         dispatch(addCourseCart(obj));
     };
 
+    const buyFullAccess = (courseId) => {
+        const order = [courseId];
+        const coursesNew = [];
+
+        Object.keys(userInfo.courses).map((key) =>
+            coursesNew.push({...userInfo.courses[key]})
+        );
+
+        dispatch(
+            sendCreateCoursesPayment(
+                {
+                    order,
+                },
+                {courses: coursesNew}
+            )
+        );
+    };
+
     return (
         <>
             {isLoadedSectionCourses &&
@@ -57,16 +77,9 @@ const ShopSection = ({title, description, url}) => {
                                         .map((key, index) => (
                                             <ShopBlock
                                                 {...itemsSection[key]}
+                                                buyFullAccess={buyFullAccess}
                                                 onClickAddCourseCart={
                                                     onClickAddCourseCart
-                                                }
-                                                pro={userInfo.pro}
-                                                proPrice={
-                                                    itemsSection[key].price -
-                                                    (itemsSection[key].price /
-                                                        100) *
-                                                        process.env
-                                                            .REACT_APP_PAYMENT_PERCENT_PRO
                                                 }
                                                 key={`shop-section-block-${index}`}
                                                 master={
@@ -80,6 +93,28 @@ const ShopSection = ({title, description, url}) => {
                                                         itemsSection[key]
                                                             .category
                                                     ]
+                                                }
+                                                isBuy={
+                                                    isLoadedUserInfo
+                                                        ? userInfo.courses[
+                                                              itemsSection[key]
+                                                                  ._id
+                                                          ]
+                                                            ? true
+                                                            : false
+                                                        : false
+                                                }
+                                                isBuyTesting={
+                                                    isLoadedUserInfo
+                                                        ? userInfo.courses[
+                                                              itemsSection[key]
+                                                                  ._id
+                                                          ] &&
+                                                          userInfo.courses[
+                                                              itemsSection[key]
+                                                                  ._id
+                                                          ].testing
+                                                        : false
                                                 }
                                             />
                                         ))

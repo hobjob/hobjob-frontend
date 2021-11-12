@@ -14,11 +14,7 @@
 
 	&-video
 		margin-top: 50px
-
-		// overflow: hidden
-
 		+openAnimation
-		// +borderRadiusBlock
 
 		&__title
 			user-select: none
@@ -116,6 +112,7 @@
 					background-color: #E2E2E2
 
 			&-item
+				cursor: pointer
 				display: block
 				width: 200px
 				min-width: 200px
@@ -423,3 +420,77 @@
 		&__btn
 			margin-top: 50px
 			width: 75%
+
+	&-modal-buy-window
+		display: flex
+
+		&-image
+			display: block
+			min-width: 300px
+			height: 300px
+
+			border-radius: 50%
+
+			+backgroundSetting
+
+		&-text
+			margin-left: 50px
+			max-width: 75%
+
+			&__master
+				font-size: 21px
+				color: $mainColor
+
+			&__title
+				margin-top: 10px
+				font-size: 32px
+
+			&__description
+				margin-top: 25px
+				font-size: 21px
+
+			&-timer-wrapper
+				display: inline-block
+				padding: 25px 35px
+
+				background-color: #f7f7f7
+				margin-top: 50px
+
+				+borderRadiusBlock
+
+			&-timer
+				display: inline-flex
+				align-items: center
+				+openAnimation
+
+				&__subtitle
+					font-size: 18px
+					margin-bottom: 35px
+
+				&-item
+					margin-right: 50px
+
+					&:last-child
+						margin-right: 0
+
+					&__title
+						font-size: 36px
+
+					&__subtitle
+						font-size: 24px
+
+			&-price
+				margin-top: 50px
+
+				&__price
+					font-size: 28px
+
+				&__subprice
+					font-size: 21px
+					color: $gray
+					text-decoration: line-through
+
+			&-btn
+				margin-top: 15px
+				&__btn
+					width: 100%

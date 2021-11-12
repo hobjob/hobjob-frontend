@@ -1,7 +1,5 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import NumberFormat from "react-number-format";
-import {animateScroll as scroll} from "react-scroll";
 
 const ShopBlock = React.memo(
     ({
@@ -12,14 +10,11 @@ const ShopBlock = React.memo(
         master,
         masterId,
         category,
-        percentSale,
-        price,
-        discountNotPrice,
         onClickAddCourseCart,
         cartItems = {},
-        pro,
-        proPrice,
         isBuy,
+        isBuyTesting,
+        buyFullAccess,
     }) => {
         const [addState, setAddState] = React.useState(false);
 
@@ -76,92 +71,34 @@ const ShopBlock = React.memo(
                     </div>
                 </div>
                 <div className="shop-block-bottom">
-                    {!percentSale ? (
-                        pro ? (
-                            <div className="shop-block-bottom-price">
-                                <p className="shop-block-bottom__subprice">
-                                    <NumberFormat
-                                        value={price}
-                                        displayType={"text"}
-                                        thousandSeparator={" "}
-                                        renderText={(value) => value}
-                                    />
-                                    ₽
-                                </p>
-                                <p className="shop-block-bottom__price">
-                                    <NumberFormat
-                                        value={proPrice}
-                                        displayType={"text"}
-                                        thousandSeparator={" "}
-                                        renderText={(value) => value}
-                                    />
-                                    ₽
-                                </p>
-                            </div>
-                        ) : (
-                            <p className="shop-block-bottom__price">
-                                <NumberFormat
-                                    value={price}
-                                    displayType={"text"}
-                                    thousandSeparator={" "}
-                                    renderText={(value) => value}
-                                />
-                                ₽
-                            </p>
-                        )
-                    ) : (
-                        <div className="shop-block-bottom-price">
-                            <p className="shop-block-bottom__subprice">
-                                <NumberFormat
-                                    value={discountNotPrice}
-                                    displayType={"text"}
-                                    thousandSeparator={" "}
-                                    renderText={(value) => value}
-                                />
-                                ₽
-                            </p>
-                            {pro ? (
-                                <p className="shop-block-bottom__price">
-                                    <NumberFormat
-                                        value={proPrice}
-                                        displayType={"text"}
-                                        thousandSeparator={" "}
-                                        renderText={(value) => value}
-                                    />
-                                    ₽
-                                </p>
-                            ) : (
-                                <p className="shop-block-bottom__price">
-                                    <NumberFormat
-                                        value={price}
-                                        displayType={"text"}
-                                        thousandSeparator={" "}
-                                        renderText={(value) => value}
-                                    />
-                                    ₽
-                                </p>
-                            )}
-                        </div>
-                    )}
-                    {isBuy ? (
-                        <button className="btn disabled shop-block-bottom__btn">
-                            Приобретен
-                        </button>
-                    ) : addState ? (
-                        <Link
-                            to="/cart"
-                            className="btn-regular shop-block-bottom__btn"
+                    {isBuyTesting ? (
+                        <p
+                            onClick={() => buyFullAccess(_id)}
+                            className="shop-block-bottom__link"
                         >
+                            Купить полный доступ
+                        </p>
+                    ) : isBuy ? (
+                        <p className="shop-block-bottom__message">Приобретен</p>
+                    ) : addState ? (
+                        <Link to="/cart" className="shop-block-bottom__link">
                             Перейти в корзину
                         </Link>
                     ) : (
-                        <button
-                            className="btn shop-block-bottom__btn"
+                        <p
+                            className="shop-block-bottom__link"
                             onClick={onClickAdd}
                         >
                             Добавить в корзину
-                        </button>
+                        </p>
                     )}
+
+                    <Link
+                        to={`/course/${url}`}
+                        className="btn shop-block-bottom__btn"
+                    >
+                        Подробнее
+                    </Link>
                 </div>
             </div>
         );

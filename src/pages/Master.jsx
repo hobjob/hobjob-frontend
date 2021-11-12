@@ -57,9 +57,7 @@ const Master = () => {
                         <Err404 />
                     )
                 ) : (
-                    <div className="loader-wrapper">
-                        <Loader />
-                    </div>
+                    <Loader />
                 )
             ) : (
                 (window.location.href = "/go/login")

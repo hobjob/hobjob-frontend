@@ -29,8 +29,8 @@ const PaymentCourses = ({
         if (isLoaded) {
             const newObj = {};
 
-            payment.order.map((id) => {
-                newObj[id] = {_id: id};
+            payment.order.map((item) => {
+                newObj[item.courseId] = {_id: item.courseId};
             });
 
             dispatch(fetchCoursesArrayById(newObj));

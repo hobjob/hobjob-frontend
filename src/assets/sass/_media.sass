@@ -31,6 +31,11 @@
 				width: 75%
 
 @media screen and ( max-width: 1200px )
+	// modal-window
+	.modal-window
+		&-content
+			width: 95%
+
 	// header
 	.header
 		&-nav
@@ -417,6 +422,19 @@
 				margin: 0
 
 @media screen and ( max-width: 1000px )
+	// passing
+	.passing
+		&-modal-buy-window
+			flex-direction: column
+			align-items: flex-start
+
+			&-image
+				margin-bottom: 50px
+
+			&-text
+				margin-left: 0
+				max-width: 100%
+
 	// pro
 	.pro
 		&-main
@@ -1063,6 +1081,7 @@
 			overflow: auto
 
 		&-info
+			text-align: center
 			padding: 35px
 
 			&-course
@@ -1074,6 +1093,31 @@
 						margin-top: 10px
 						margin-left: 0
 						font-size: 18px
+
+	// modal-window
+	.modal-window
+		&-content
+			margin: 25px 0
+			padding: 25px
+
+	// passing
+	.passing
+		&-modal-buy-window
+			align-items: center
+
+			&-text
+				&-timer-wrapper
+					padding: 15px 25px
+
+				&-timer
+					&-item
+						margin-right: 25px
+
+						&__title
+							font-size: 28px
+
+						&__subtitle
+							font-size: 21px
 
 @media screen and ( max-width: 500px )
 	// interface
@@ -1440,6 +1484,44 @@
 	.nagibinstudio
 		margin-left: 0
 		margin-top: 50px
+
+@media screen and ( max-width: 450px )
+	// modal-window
+	.modal-window
+		&-content
+			padding: 15px
+
+	// passing
+	.passing
+		&-modal-buy-window
+			&-image
+				min-width: 200px
+				height: 200px
+				margin-bottom: 25px
+				
+			&-text
+				&__title
+					font-size: 24px
+
+				&-timer-wrapper
+					padding: 10px 15px
+
+				&-timer
+					&-item
+						margin-right: 15px
+
+						&__title
+							font-size: 24px
+
+						&__subtitle
+							font-size: 18px
+	// reglog
+	.reglog
+		&-block
+			padding: 25px
+
+			&__policy
+				font-size: 12px
 
 @media screen and ( max-width: 400px )
 	// interface

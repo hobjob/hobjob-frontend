@@ -121,9 +121,7 @@ const Cabinet = () => {
                         <NotEmailConfirmed />
                     )
                 ) : (
-                    <div className="loader-wrapper">
-                        <Loader />
-                    </div>
+                    <Loader />
                 )
             ) : (
                 (window.location.href = "/go/login")

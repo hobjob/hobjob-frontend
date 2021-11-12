@@ -2,7 +2,14 @@ import React from "react";
 
 import {PassingLessonsListItem} from "../";
 
-const PassingCoursesList = ({title, lessons, lessonActive, courseId}) => {
+const PassingCoursesList = ({
+    title,
+    lessons,
+    lessonActive,
+    _id,
+    isTesting,
+    openModalBuyWindow,
+}) => {
     const [isExtraLessons, setIsExtraLessons] = React.useState(false);
 
     React.useEffect(() => {
@@ -28,10 +35,13 @@ const PassingCoursesList = ({title, lessons, lessonActive, courseId}) => {
                         !lesson.extraLesson ? (
                             <PassingLessonsListItem
                                 {...lesson}
-                                courseId={courseId}
+                                courseId={_id}
                                 active={
                                     lessonActive == index + 1 ? true : false
                                 }
+                                isTesting={isTesting}
+                                extraLesson={lesson.extraLesson}
+                                openModalBuyWindow={openModalBuyWindow}
                                 num={index + 1}
                                 key={`passing-lessons-list-item-${index}`}
                             />
@@ -50,10 +60,13 @@ const PassingCoursesList = ({title, lessons, lessonActive, courseId}) => {
                             lesson.extraLesson ? (
                                 <PassingLessonsListItem
                                     {...lesson}
-                                    courseId={courseId}
+                                    courseId={_id}
                                     active={
                                         lessonActive == index + 1 ? true : false
                                     }
+                                    extraLesson={lesson.extraLesson}
+                                    isTesting={isTesting}
+                                    openModalBuyWindow={openModalBuyWindow}
                                     num={index + 1}
                                     key={`passing-lessons-list-extra-item-${index}`}
                                 />

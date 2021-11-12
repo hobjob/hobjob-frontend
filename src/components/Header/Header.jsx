@@ -54,7 +54,7 @@ const Header = React.memo(() => {
     React.useEffect(() => {
         if (isLoadedUserInfo) {
             Object.keys(cart).map((key) => {
-                if (userInfo.courses[key]) {
+                if (userInfo.courses[key] && !userInfo.courses[key].testing) {
                     dispatch(removeCourseCart(key));
                 }
             });
@@ -233,10 +233,10 @@ const Header = React.memo(() => {
                                 </>
                             ) : (
                                 <a
-                                    href="/go/register"
+                                    href="/go/login"
                                     className="header-login__link"
                                 >
-                                    Зарегистрироваться
+                                    Войти
                                     <svg
                                         width="21"
                                         height="10"

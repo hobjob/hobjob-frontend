@@ -3,8 +3,8 @@ import {useSelector} from "react-redux";
 
 import {PassingMaterialsItem} from "../";
 
-const PassingMaterials = ({ materials, downloadFunc }) => {
-	const {materialsIsDownloading} = useSelector(({passing}) => passing);
+const PassingMaterials = ({materials, downloadFunc, openModalBuyWindow, isTesting}) => {
+    const {materialsIsDownloading} = useSelector(({passing}) => passing);
 
     return (
         <div className="passing-lesson-info-block-materials">
@@ -19,6 +19,8 @@ const PassingMaterials = ({ materials, downloadFunc }) => {
                         downloadFile={downloadFunc}
                         materialsIsDownloading={materialsIsDownloading}
                         key={`passing-lesson-info-block-materials-item-${index}`}
+                        isTesting={isTesting}
+                        openModalBuyWindow={openModalBuyWindow}
                     />
                 ))}
             </div>

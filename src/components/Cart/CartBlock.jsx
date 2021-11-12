@@ -4,8 +4,8 @@ import NumberFormat from "react-number-format";
 
 const CartBlock = React.memo(
     ({
-		_id,
-		url,
+        _id,
+        url,
         image,
         title,
         masterId,
@@ -19,9 +19,9 @@ const CartBlock = React.memo(
         masters,
         categories,
     }) => {
-		const onClickRemoveCourse = () => {
-			window.scrollTo(0, 0)
-			
+        const onClickRemoveCourse = () => {
+            window.scrollTo(0, 0);
+
             removeCourse(_id);
         };
 
@@ -120,7 +120,12 @@ const CartBlock = React.memo(
                                     {pro ? (
                                         <p className="cart-block-content-text__price">
                                             <NumberFormat
-                                                value={proPrice}
+                                                value={
+                                                    price -
+                                                    (price / 100) *
+                                                        process.env
+                                                            .REACT_APP_PAYMENT_PERCENT_PRO
+                                                }
                                                 displayType={"text"}
                                                 thousandSeparator={" "}
                                                 renderText={(value) => value}
