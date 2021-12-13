@@ -29,7 +29,6 @@ const initialState = {
 	filters: {
 		categories: {},
 		search: parseQuery.q ? parseQuery.q : "",
-		sale: parseQuery.sale ? parseQuery.sale : null,
 		masters: {},
 	},
 }
@@ -98,11 +97,11 @@ const courses = (state = initialState, action) => {
 
 		action.payload.items.map((item) => {
 			if (action.payload.userInfo) {
-				if (!action.payload.cart[item._id] && (!action.payload.userInfo.courses[item._id] || (action.payload.userInfo.courses[item._id] && action.payload.userInfo.courses[item._id].testing)) && item.url !== action.payload.url) {
+				if (!action.payload.userInfo.courses[item._id] && item.url !== action.payload.url) {
 					newObj[item._id] = item
 				}
 			} else {
-				if (!action.payload.cart[item._id] && item.url !== action.payload.url) {
+				if (item.url !== action.payload.url) {
 					newObj[item._id] = item
 				}
 			}
@@ -168,26 +167,6 @@ const courses = (state = initialState, action) => {
 			filters: {
 				...state.filters,
 				search: action.payload
-			},
-		}
-	}
-
-	if (action.type === "SET_COURSES_FILTERS_SALE") {
-		if (action.payload === state.filters.sale) {
-			return {
-				...state,
-				filters: {
-					...state.filters,
-					sale: null
-				},
-			}
-		}
-
-		return {
-			...state,
-			filters: {
-				...state.filters,
-				sale: action.payload
 			},
 		}
 	}

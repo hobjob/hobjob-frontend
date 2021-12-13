@@ -15,16 +15,22 @@ const initialState = {
 
 const user = (state = initialState, action) => {
 	if (action.type === "SET_USER_INFO") {
+		const newObj = {}
+
+		action.payload.courses.map(item => {
+			newObj[item.courseId] = item
+		})
+
 		return {
 			...state,
-			userInfo: action.payload,
+			userInfo: { ...action.payload, courses: newObj },
 			isLoadedUserInfo: true
 		}
 	}
 
 	if (action.type === "SET_USER_COURSES") {
 		const newObj = {}
-		
+
 		action.payload.map(item => {
 			newObj[item._id] = item
 		})

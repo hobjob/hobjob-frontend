@@ -25,12 +25,6 @@ export const fetchPassingCourseLessonMaterial = (courseId, lessonNum, materialNu
 	});
 }
 
-export const fetchCertificateCourse = (courseId) => (dispatch) => {
-	$api.get(`/certificate/${courseId}`).then(({ data }) => {
-		window.location.href = data.url
-	});
-}
-
 export const setTimecodeSeconds = (seconds) => ({
 	type: "SET_TIMECODE_SECONDS",
 	payload: seconds

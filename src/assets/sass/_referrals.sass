@@ -13,7 +13,7 @@
 		align-items: center
 
 		&-text
-			width: 65%
+			width: 60%
 
 			&__title
 				margin-bottom: 50px
@@ -30,12 +30,11 @@
 				width: 350px
 
 	&-info-block-wrapper
-		display: flex
-		justify-content: space-between
-
 		margin-top: 75px
 
 	&-info-block
+		width: 100%
+
 		position: relative
 		overflow: hidden
 		padding: 35px
@@ -43,8 +42,6 @@
 		+boxShadow
 
 		&-link
-			width: 60%
-
 			&__title
 				font-size: 28px
 				margin-bottom: 25px
@@ -119,75 +116,17 @@
 							top: 50%
 							transform: translateY(-50%)
 
-		&-track
-			width: 100%
-			height: calc( 100% - 70px )
-
-			position: absolute
-			display: flex
-			+transition
-
-		&-balance
-			width: 38%
-
-		&-content
-			min-width: calc( 100% - 70px )
-			margin-right: 70px
-
-			&-balance
-				display: flex
-				flex-direction: column
-				justify-content: space-between
-
-				&__title
-					font-size: 42px
-					margin-bottom: 50px
-
-				&__subtitle
-					color: $gray
-					font-size: 21px
-					margin-bottom: 25px
-
-				&__btn
-					width: 100%
-
-			&-form
-				display: flex
-				flex-direction: column
-				justify-content: space-between
-
-				&-input
-					margin-top: 40px
-
-				&__title
-					font-size: 18px
-
-				&__btn
-					width: 100%
-
-			&-success
-				display: flex
-				flex-direction: column
-				align-items: center
-				justify-content: center
-
-				&__title
-					margin-top: 15px
-					text-align: center
-					font-size: 21px
-
-					& span
-						color: $gray
-
 	&-partners
-		margin: 75px 0
+		margin-top: 75px
+
+		width: 100%
 
 		&__title
 			font-size: 24px
 			margin-bottom: 75px
 
 		&-col
-			width: 25%
+			width: 35%
 			overflow: hidden
 
 		&-subinfo
@@ -218,6 +157,7 @@
 
 			&:last-child
 				margin-bottom: 0
+				border: none
 
 			&-partner
 				display: flex
@@ -238,7 +178,7 @@
 					font-size: 18px
 					margin-left: 15px
 
-			&-earnings, &-purchase
+			&-earnings
 				&__title
 					display: block
 					width: auto
@@ -258,7 +198,7 @@
 		align-items: center
 
 	&-text
-		width: 65%
+		width: 60%
 
 		&__title
 			margin-bottom: 50px

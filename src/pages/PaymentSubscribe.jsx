@@ -2,29 +2,31 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 
-import {fetchPaymentCourseExtraLessonsById} from "../redux/actions/payment";
-import {fetchCourseById} from "../redux/actions/courses";
+import {fetchPaymentSubscribeById} from "../redux/actions/payment";
 
-import {PaymentCourseBlock, PaymentProgressbar, Loader} from "../components/";
+import {
+    PaymentProgressbar,
+    PaymentSubscribeBlock,
+    Loader,
+} from "../components/";
 
-const PaymentCourseExtraLessons = ({
+import {subscriptions} from "../subscriptions";
+
+const PaymentProSubscribe = ({
     match: {
         params: {number},
     },
 }) => {
     const dispatch = useDispatch();
 
-    const {itemById, isLoadedCourseById} = useSelector(({courses}) => courses);
     const {payment, isLoaded} = useSelector(({payment}) => payment);
 
     React.useEffect(() => {
-        dispatch(fetchPaymentCourseExtraLessonsById(number));
+        dispatch(fetchPaymentSubscribeById(number));
     }, []);
 
     React.useEffect(() => {
         if (isLoaded) {
-            dispatch(fetchCourseById(payment.order[0].courseId));
-
             if (payment.confirmation) {
                 const checkout = new window.YooMoneyCheckoutWidget({
                     confirmation_token: payment.confirmation.confirmation_token,
@@ -53,9 +55,7 @@ const PaymentCourseExtraLessons = ({
             {isLoaded ? (
                 <>
                     <Helmet>
-                        <title>
-                            Покупка (дополнительные материалы) - HobJob
-                        </title>
+                        <title>Оформление подписки - HobJob</title>
                     </Helmet>
                     <section className="payment">
                         <div className="container">
@@ -66,18 +66,31 @@ const PaymentCourseExtraLessons = ({
                                         className="payment-form"
                                         id="payment-form"
                                     ></div>
-								</div>
-								
-                                {isLoadedCourseById ? (
-                                    <div className="payment-info">
-                                        <h2 className="payment-info__title">
-                                            Дополнительные материалы
-                                        </h2>
-                                        <div className="payment-info-course-wrapper">
-                                            <PaymentCourseBlock {...itemById} />
-                                        </div>
+                                </div>
+
+                                <div className="payment-info">
+                                    <h2 className="payment-info__title">
+                                        Ваша подписка
+                                    </h2>
+                                    <div className="payment-info-block-wrapper">
+                                        {payment.typeSubscribe ===
+                                        "test-subscribe" ? (
+                                            <PaymentSubscribeBlock
+                                                {...subscriptions[0]}
+                                            />
+                                        ) : payment.typeSubscribe ===
+                                          "month-subscribe" ? (
+                                            <PaymentSubscribeBlock
+                                                {...subscriptions[1]}
+                                            />
+                                        ) : payment.typeSubscribe ===
+                                          "year-subscribe" ? (
+                                            <PaymentSubscribeBlock
+                                                {...subscriptions[2]}
+                                            />
+                                        ) : null}
                                     </div>
-                                ) : null}
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -89,4 +102,4 @@ const PaymentCourseExtraLessons = ({
     );
 };
 
-export default PaymentCourseExtraLessons;
+export default PaymentProSubscribe;

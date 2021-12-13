@@ -9,21 +9,7 @@ const TrainingBlock = ({
     completedLessons,
     masterId,
     masters,
-    pro,
-    extraLessonsBuy,
 }) => {
-    const [countLessons, setCountLessons] = React.useState(0);
-
-    React.useEffect(() => {
-        if (pro || extraLessonsBuy) {
-            setCountLessons(lessons.length);
-        } else {
-            setCountLessons(
-                lessons.filter((item) => item.extraLesson === false).length
-            );
-        }
-    }, []);
-
     return (
         <Link to={`/go/passing/${_id}/1`} className="training-block">
             <div className="training-block-cover">
@@ -54,8 +40,7 @@ const TrainingBlock = ({
                 <div className="training-block-text-top">
                     <h3 className="training-block-text__title">{title}</h3>
                     <p className="subtitle training-block-text__subtitle">
-                        Пройдено {completedLessons} из{" "}
-                        {lessons ? countLessons : "-"}
+                        Пройдено {completedLessons} из {lessons.length}
                     </p>
                 </div>
                 <div className="training-block-text-bottom">

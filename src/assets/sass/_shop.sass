@@ -40,20 +40,29 @@
 					border-bottom: 2px solid $gray
 
 	&-filters
+		position: absolute
+		right: 0
+
+		width: 30%
+		padding: 25px
+
+		background-color: $white
+
 		display: flex
 		margin-top: 50px
-		+openAnimation
+		+openPopup
+		+boxShadow
+		+borderRadiusBlock
+
+		&.close
+			+closePopup
 
 		&-col
-			width: 45%
-			margin-right: 50px
-			padding-bottom: 50px
-			border-bottom: 1px solid $borderGray
-
-			&:last-child
-				margin-right: 0
+			width: 100%
 
 			&-block
+				padding-right: 10px
+
 				max-height: 250px
 				overflow-y: auto
 
@@ -160,7 +169,7 @@
 
 					overflow: hidden
 					display: -webkit-box
-					-webkit-line-clamp: 2
+					-webkit-line-clamp: 1
 					-webkit-box-orient: vertical
 
 					+Lora
@@ -194,11 +203,8 @@
 				&:active
 					+transformScale
 
-			&__message
-				color: $gray
-				font-size: 15px
-
 			&__btn
+				min-width: 50%
 				padding: 15px 20px
 				font-size: 16px
 

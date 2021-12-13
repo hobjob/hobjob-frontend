@@ -8,15 +8,14 @@ const ReferralsSection = () => {
                 <div className="referrals-section-wrapper">
                     <div className="referrals-section-text">
                         <h2 className="title referrals-section-text__title">
-                            Получите 18% от стоимости курса
+                            Приглашайте друзей и получайте бесплатные месяцы
+                            подписки HobJob
                         </h2>
                         <p className="referrals-section-text__description">
-                            Поделитесь ссылкой на курс в социальных сетях. Ваши
-                            друзья по ней перейдут, зарегистрируются и купят
-                            курс, а вы получите 18% от стоимости покупки. Можно
-                            пригласить неограниченное количество друзей и
-                            заработать с каждого купленного ими
-                            курса.
+                            Поделитесь бесплатной неделей Hobjob со своими
+                            друзьями и получите бесплатный месяц за каждого
+                            друга, как только он совершит свой первый полный
+                            платеж.
                         </p>
 
                         {localStorage.getItem("accessToken") ? (

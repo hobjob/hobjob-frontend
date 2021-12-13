@@ -6,13 +6,7 @@ import {checkDeclension} from "../Functions/checkDeclension";
 
 import {fetchUserCourses} from "../redux/actions/user";
 
-import {
-    Loader,
-    TrainingNull,
-    TrainingBlock,
-    ShopSection,
-    NotEmailConfirmed,
-} from "../components/";
+import {Loader, TrainingNull, TrainingBlock, ShopSection} from "../components/";
 
 const Training = () => {
     const dispatch = useDispatch();
@@ -40,74 +34,61 @@ const Training = () => {
 
             {localStorage.getItem("accessToken") ? (
                 isLoadedUserInfo && isLoadedUserCourses && isLoadedMasters ? (
-                    userInfo.confirmed ? (
-                        <>
-                            <section className="training">
-                                <div className="container">
-                                    <div className="training-wrapper">
-                                        {Object.keys(courses).length ? (
-                                            <>
-                                                <h2 className="title__mb training__title">
-                                                    Мое обучение
-                                                    <span>
-                                                        (
-                                                        {
-                                                            Object.keys(courses)
-                                                                .length
-                                                        }
-                                                        )
-                                                    </span>
-                                                </h2>
-                                                <div className="training-block-wrapper">
-                                                    {Object.keys(courses).map(
-                                                        (key, index) => (
-                                                            <TrainingBlock
-                                                                {...courses[
-                                                                    key
-                                                                ]}
-                                                                completedLessons={
-                                                                    checkDeclension(
-                                                                        courses[
-                                                                            key
-                                                                        ]
-                                                                            .completedLessons
-                                                                            .length,
-                                                                        [
-                                                                            "урок",
-                                                                            "урока",
-                                                                            "уроков",
-                                                                        ]
-                                                                    ).title
-                                                                }
-                                                                pro={
-                                                                    userInfo.pro
-                                                                }
-                                                                masters={
-                                                                    masters
-                                                                }
-                                                                key={`training-block-${index}`}
-                                                            />
-                                                        )
-                                                    )}
-                                                </div>
-                                            </>
-                                        ) : (
-                                            <TrainingNull />
-                                        )}
-                                    </div>
+                    <>
+                        <section className="training">
+                            <div className="container">
+                                <div className="training-wrapper">
+                                    {Object.keys(courses).length ? (
+                                        <>
+                                            <h2 className="title__mb training__title">
+                                                Мое обучение
+                                                <span>
+                                                    (
+                                                    {
+                                                        Object.keys(courses)
+                                                            .length
+                                                    }
+                                                    )
+                                                </span>
+                                            </h2>
+                                            <div className="training-block-wrapper">
+                                                {Object.keys(courses).map(
+                                                    (key, index) => (
+                                                        <TrainingBlock
+                                                            {...courses[key]}
+                                                            completedLessons={
+                                                                checkDeclension(
+                                                                    courses[key]
+                                                                        .completedLessons
+                                                                        .length,
+                                                                    [
+                                                                        "урок",
+                                                                        "урока",
+                                                                        "уроков",
+                                                                    ]
+                                                                ).title
+                                                            }
+                                                            masters={masters}
+                                                            key={`training-block-${index}`}
+                                                        />
+                                                    )
+                                                )}
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <TrainingNull />
+                                    )}
                                 </div>
-                            </section>
+                            </div>
+                        </section>
 
-                            <ShopSection
-                                title="Учитесь на практике"
-                                description="Обучайтесь у лучших профессионалов
+                        <ShopSection
+                            title="Учитесь на практике"
+                            description="Обучайтесь у лучших профессионалов
                             своего дела и раскройте самые сокровенные секреты
                             творческого мира"
-                            />
-                        </>
-                    ) : (
-                        <NotEmailConfirmed />
-                    )
+                        />
+                    </>
                 ) : (
                     <Loader />
                 )

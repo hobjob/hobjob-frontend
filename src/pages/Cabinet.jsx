@@ -10,11 +10,13 @@ import {
     CabinetCardUserInfo,
     CabinetUserInfoForm,
     CabinetUserPassword,
-    CabinetUserProInfo,
-    NotEmailConfirmed,
+    CabinetUserSubscribeInfo,
+    PaymentSubscribeProlongation,
 } from "../components/";
 
 const Cabinet = () => {
+    const {hash} = window.location;
+
     const dispatch = useDispatch();
 
     const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
@@ -24,6 +26,22 @@ const Cabinet = () => {
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    React.useEffect(() => {
+        if (isLoadedUserInfo) {
+            if (hash !== "") {
+                const id = hash.replace("#", "");
+
+                const element = document.getElementById(id);
+                if (element) {
+                    window.scrollTo(
+                        0,
+                        element.getBoundingClientRect().top - 100
+                    );
+                }
+            }
+        }
+    }, [isLoadedUserInfo]);
 
     const onSubmitCabinetUserInfoForm = (data) => {
         dispatch(fetchUpdateUser(data));
@@ -42,13 +60,13 @@ const Cabinet = () => {
         <>
             {localStorage.getItem("accessToken") ? (
                 isLoadedUserInfo ? (
-                    userInfo.confirmed ? (
-                        <>
-                            <Helmet>
-                                <title>Мой профиль - HobJob</title>
-                            </Helmet>
-                            <section className="cabinet">
-                                <div className="container">
+                    <>
+                        <Helmet>
+                            <title>Мой профиль - HobJob</title>
+                        </Helmet>
+                        <section className="cabinet">
+                            <div className="container">
+                                {userInfo.subscribe.working ? (
                                     <div className="cabinet-wrapper">
                                         {localStorage.getItem(
                                             "close-master-info-message"
@@ -76,9 +94,7 @@ const Cabinet = () => {
                                                     </h3>
                                                     <p className="cabinet-block-text__subtitle">
                                                         Просьба заполнять
-                                                        реальные данные - они
-                                                        будут отбражаться на
-                                                        сертификатах
+                                                        реальные данные
                                                     </p>
                                                 </div>
 
@@ -103,23 +119,26 @@ const Cabinet = () => {
                                                 />
                                             </div>
 
-                                            <div className="cabinet-block">
+                                            <div
+                                                className="cabinet-block"
+                                                id="subscribe"
+                                            >
                                                 <div className="cabinet-block-text">
                                                     <h3 className="cabinet-block-text__title">
-                                                        Pro подписка
+                                                        Моя подписка
                                                     </h3>
                                                 </div>
 
-                                                <CabinetUserProInfo />
+                                                <CabinetUserSubscribeInfo />
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </section>
-                        </>
-                    ) : (
-                        <NotEmailConfirmed />
-                    )
+                                ) : (
+                                    <PaymentSubscribeProlongation />
+                                )}
+                            </div>
+                        </section>
+                    </>
                 ) : (
                     <Loader />
                 )

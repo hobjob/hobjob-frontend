@@ -9,14 +9,7 @@ const HeaderMenu = React.memo(() => {
                 className="header-nav__link"
                 activeClassName="header-nav__link active"
             >
-                Магазин курсов
-            </NavLink>
-            <NavLink
-                to="/pro"
-                className="header-nav__link"
-                activeClassName="header-nav__link active"
-            >
-                Pro подписка
+                Курсы
             </NavLink>
             <NavLink
                 to="/about"

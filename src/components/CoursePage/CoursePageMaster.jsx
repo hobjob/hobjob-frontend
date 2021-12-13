@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 import {ImageBox} from "../";
 
-const CoursePageMaster = ({masterId, masters, image, path}) => {
+const CoursePageMaster = ({masterId, master, image, path}) => {
     const [stateImage, setStateImage] = React.useState(false);
 
     const handlerStateImage = () => {
@@ -15,13 +15,22 @@ const CoursePageMaster = ({masterId, masters, image, path}) => {
             <section className="course-page-master">
                 <div className="container">
                     <div className="course-page-master-wrapper">
+                        <div
+                            className="course-page-master-img"
+                            style={{
+                                backgroundImage: `url('${process.env.REACT_APP_IMAGE_DOMEN}/${master.avatar}')`,
+                            }}
+                            onClick={handlerStateImage}
+                        ></div>
                         <div className="course-page-master-text">
                             <h2 className="course-page__title course-page-master__title">
                                 О мастере
                             </h2>
-                            <p className="course-page-master__description">
-                                {masters[masterId].masterDescription}
-                            </p>
+                            {master ? (
+                                <p className="course-page-master__description">
+                                    {master.masterDescription}
+                                </p>
+                            ) : null}
                             <Link
                                 to={`/master/${masterId}`}
                                 className="btn course-page-master__btn"
@@ -29,19 +38,6 @@ const CoursePageMaster = ({masterId, masters, image, path}) => {
                                 Перейти на страницу мастера
                             </Link>
                         </div>
-                        <div
-                            className="course-page-master-img"
-                            style={{
-                                backgroundImage: `url('${process.env.REACT_APP_IMAGE_DOMEN}/uploads/${path}/${image}')`,
-                            }}
-                            onClick={handlerStateImage}
-                        ></div>
-                        <Link
-                            to={`/master/${masterId}`}
-                            className="btn course-page-master-media__btn"
-                        >
-                            Перейти на страницу мастера
-                        </Link>
                     </div>
                 </div>
             </section>

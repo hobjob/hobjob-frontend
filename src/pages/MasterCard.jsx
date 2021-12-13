@@ -6,8 +6,7 @@ import {Link} from "react-router-dom";
 import {abbreviateNumber} from "../Functions/abbreviateNumber";
 
 import {fetchMasterById} from "../redux/actions/masters";
-import {addCourseCart} from "../redux/actions/cart";
-import {sendCreateCoursesPayment} from "../redux/actions/payment";
+import {addUserCourse} from "../redux/actions/user";
 
 import {Err404} from "../pages/";
 
@@ -26,7 +25,6 @@ const MasterCard = ({
 }) => {
     const dispatch = useDispatch();
 
-    const {cart} = useSelector(({cart}) => cart);
     const {itemById, isLoadedById} = useSelector(({masters}) => masters);
     const categories = useSelector(({categories}) => categories.items);
     const isLoadedAllCategories = useSelector(
@@ -40,26 +38,8 @@ const MasterCard = ({
         dispatch(fetchMasterById(id));
     }, []);
 
-    const onClickAddCourseCart = (obj) => {
-        dispatch(addCourseCart(obj));
-    };
-
-    const buyFullAccess = (courseId) => {
-        const order = [courseId];
-        const coursesNew = [];
-
-        Object.keys(userInfo.courses).map((key) =>
-            coursesNew.push({...userInfo.courses[key]})
-        );
-
-        dispatch(
-            sendCreateCoursesPayment(
-                {
-                    order,
-                },
-                {courses: coursesNew}
-            )
-        );
+    const onClickAddCourse = (id) => {
+        dispatch(addUserCourse(id));
     };
 
     return (
@@ -92,13 +72,6 @@ const MasterCard = ({
                                                     (item, index) => (
                                                         <ShopBlock
                                                             {...item}
-                                                            buyFullAccess={
-                                                                buyFullAccess
-                                                            }
-                                                            onClickAddCourseCart={
-                                                                onClickAddCourseCart
-                                                            }
-                                                            cartItems={cart}
                                                             key={`shop-master-card-block-${index}`}
                                                             master={itemById}
                                                             category={
@@ -107,30 +80,23 @@ const MasterCard = ({
                                                                         .category
                                                                 ]
                                                             }
-                                                            isBuy={
-                                                                isLoadedUserInfo
-                                                                    ? userInfo
-                                                                          .courses[
-                                                                          item
-                                                                              ._id
-                                                                      ]
-                                                                        ? true
-                                                                        : false
+                                                            onClickAddCourse={
+                                                                onClickAddCourse
+                                                            }
+                                                            isAdd={
+                                                                userInfo.courses &&
+                                                                userInfo
+                                                                    .courses[
+                                                                    item._id
+                                                                ]
+                                                                    ? true
                                                                     : false
                                                             }
-                                                            isBuyTesting={
+                                                            isLogin={
+                                                                localStorage.getItem(
+                                                                    "accessToken"
+                                                                ) &&
                                                                 isLoadedUserInfo
-                                                                    ? userInfo
-                                                                          .courses[
-                                                                          item
-                                                                              ._id
-                                                                      ] &&
-                                                                      userInfo
-                                                                          .courses[
-                                                                          item
-                                                                              ._id
-                                                                      ].testing
-                                                                    : false
                                                             }
                                                         />
                                                     )

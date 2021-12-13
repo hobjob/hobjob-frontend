@@ -8,8 +8,7 @@ import {
     fetchCourses,
     fetchAddPaginationCourses,
 } from "../redux/actions/courses";
-import {addCourseCart} from "../redux/actions/cart";
-import { sendCreateCoursesPayment } from "../redux/actions/payment";
+import {addUserCourse} from "../redux/actions/user";
 
 import {
     ShopFiltersTop,
@@ -28,7 +27,6 @@ const Shop = React.memo(
         const dispatch = useDispatch();
         const history = useHistory();
 
-        const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
         const {
             items,
             totalCount,
@@ -37,13 +35,16 @@ const Shop = React.memo(
             isFetchAllCourses,
             filters,
         } = useSelector(({courses}) => courses);
+
         const categories = useSelector(({categories}) => categories.items);
         const isLoadedAllCategories = useSelector(
             ({categories}) => categories.isLoadedAllCategories
         );
-        const {cart} = useSelector(({cart}) => cart);
+
         const masters = useSelector(({masters}) => masters.items);
         const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
+
+        const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
 
         React.useEffect(() => {
             window.scrollTo(0, 0);
@@ -81,42 +82,24 @@ const Shop = React.memo(
             Object.keys(filters.masters).length,
         ]);
 
-        const onClickAddCourseCart = (id) => {
-            dispatch(addCourseCart(id));
-        };
-
         const onClickaddPaginationPageCourses = () => {
             dispatch(fetchAddPaginationCourses(search, page + 1));
         };
 
-        const buyFullAccess = (courseId) => {
-            const order = [courseId];
-            const coursesNew = [];
-
-            Object.keys(userInfo.courses).map((key) =>
-                coursesNew.push({...userInfo.courses[key]})
-            );
-
-            dispatch(
-                sendCreateCoursesPayment(
-                    {
-                        order,
-                    },
-                    {courses: coursesNew}
-                )
-            );
+        const onClickAddCourse = (id) => {
+            dispatch(addUserCourse(id));
         };
 
         return (
             <>
                 <Helmet>
-                    <title>Магазин курсов - HobJob</title>
+                    <title>Курсы - HobJob</title>
                 </Helmet>
                 <section className="shop">
                     <div className="container">
                         <div className="shop-wrapper">
                             <h2 className="title shop__title">
-                                Магазин курсов
+                                Курсы
                                 <span>
                                     (
                                     {isLoadedAllCoursesFirst ? totalCount : "-"}
@@ -141,13 +124,6 @@ const Shop = React.memo(
                                             {items.map((item, index) => (
                                                 <ShopBlock
                                                     {...item}
-                                                    buyFullAccess={
-                                                        buyFullAccess
-                                                    }
-                                                    onClickAddCourseCart={
-                                                        onClickAddCourseCart
-                                                    }
-                                                    cartItems={cart}
                                                     key={`shop-block-${index}`}
                                                     master={
                                                         masters[item.masterId]
@@ -157,24 +133,21 @@ const Shop = React.memo(
                                                             item.category
                                                         ]
                                                     }
-                                                    isBuy={
-                                                        isLoadedUserInfo
-                                                            ? userInfo.courses[
-                                                                  item._id
-                                                              ]
-                                                                ? true
-                                                                : false
+                                                    onClickAddCourse={
+                                                        onClickAddCourse
+                                                    }
+                                                    isAdd={
+                                                        userInfo.courses &&
+                                                        userInfo.courses[
+                                                            item._id
+                                                        ]
+                                                            ? true
                                                             : false
                                                     }
-                                                    isBuyTesting={
-                                                        isLoadedUserInfo
-                                                            ? userInfo.courses[
-                                                                  item._id
-                                                              ] &&
-                                                              userInfo.courses[
-                                                                  item._id
-                                                              ].testing
-                                                            : false
+                                                    isLogin={
+                                                        localStorage.getItem(
+                                                            "accessToken"
+                                                        ) && isLoadedUserInfo
                                                     }
                                                 />
                                             ))}

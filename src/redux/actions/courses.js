@@ -21,17 +21,6 @@ export const fetchCourses = (query = null, page) => (dispatch) => {
 	})
 }
 
-export const fetchCoursesArrayById = (arrayId) => (dispatch) => {
-	dispatch({
-		type: "SET_LOADED_COURSES_ARRAY_BY_ID",
-		payload: false,
-	})
-
-	$api.get(`/courses?_id=${Object.keys(arrayId).map(id => arrayId[id]._id)}`).then(({ data }) => {
-		dispatch(setCoursesArrayById(data))
-	})
-}
-
 export const fetchAddPaginationCourses = (query = null, page) => (dispatch) => {
 	dispatch({
 		type: "SET_LOADED_COURSES",
@@ -53,14 +42,14 @@ export const fetchAddPaginationCourses = (query = null, page) => (dispatch) => {
 	})
 }
 
-export const fetchCoursesSection = (cart, userInfo = null, url = "") => (dispatch) => {
+export const fetchCoursesSection = (userInfo = null, url = "") => (dispatch) => {
 	dispatch({
 		type: "SET_LOADED_COURSES_SECTION",
 		payload: false,
 	})
 
 	$api.get(`/courses?sort=buyCountWeek&order=desc`).then(({ data }) => {
-		dispatch(setCoursesSection(data, cart, userInfo, url))
+		dispatch(setCoursesSection(data, userInfo, url))
 	})
 }
 
@@ -91,20 +80,15 @@ const setCourses = (items) => ({
 	payload: items
 })
 
-const setCoursesArrayById = (items) => ({
-	type: "SET_COURSES_ARRAY_BY_ID",
-	payload: items
-})
-
 const setAddPaginationCourses = (items) => ({
 	type: "SET_ADD_PAGINATION_COURSES",
 	payload: items
 })
 
 
-const setCoursesSection = (items, cart, userInfo, url) => ({
+const setCoursesSection = (items, userInfo, url) => ({
 	type: "SET_COURSES_SECTION",
-	payload: { items, cart, userInfo, url }
+	payload: { items, userInfo, url }
 })
 
 const setCourseById = (item) => ({
@@ -125,11 +109,6 @@ export const setCoursesFiltersCategories = (category) => ({
 export const setCoursesFiltersSearch = (q) => ({
 	type: "SET_COURSES_FILTERS_SEARCH",
 	payload: q
-})
-
-export const setCoursesFiltersSale = (status) => ({
-	type: "SET_COURSES_FILTERS_SALE",
-	payload: status
 })
 
 export const setCoursesFiltersMasters = (masterId) => ({

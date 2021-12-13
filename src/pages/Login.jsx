@@ -12,12 +12,8 @@ import Logo from "../assets/images/logo.svg";
 const Login = () => {
     const dispatch = useDispatch();
 
-	const onSubmit = ({ email, password }) => {
-		const functionSuccess = () => {
-			window.location.href = "/go/training/"
-		}
-
-        return dispatch(sendLogin({email, password}, functionSuccess));
+    const onSubmit = ({email, password}) => {
+        return dispatch(sendLogin({email, password}));
     };
 
     React.useEffect(() => {
@@ -41,7 +37,9 @@ const Login = () => {
                                 />
                             </a>
 
-                            <LoginForm onSubmit={onSubmit} />
+                            <div className="reglog-block-wrapper">
+                                <LoginForm onSubmit={onSubmit} />
+                            </div>
 
                             <div className="reglog-bottom">
                                 <Link

@@ -30,6 +30,23 @@
 			&__video
 				width: 75%
 
+@media screen and ( max-width: 1250px )
+	// cabinet-subscribe-disable
+	.cabinet-subscribe-disable
+		&-wrapper
+			flex-direction: column
+
+		&-text
+			text-align: center
+			width: 100%
+			order: 2
+
+		&-image
+			margin-bottom: 25px
+
+			width: 200px
+			order: 1
+
 @media screen and ( max-width: 1200px )
 	// modal-window
 	.modal-window
@@ -41,14 +58,16 @@
 		&-nav
 			display: none
 
-			&-cart__link
-				display: none
-
 		&-menu-button
 			display: block
 
 		&-user-menu
 			display: none
+
+	// shop
+	.shop
+		&-filters
+			width: 50%
 
 	// magazine
 	.magazine
@@ -70,7 +89,7 @@
 			flex-direction: column
 
 			&-block
-				&-text, &-materials, &-timecodes, &-pro, &-middle, &-buy-extra-lessons, &-timecodes.long
+				&-text, &-materials, &-timecodes, &-middle, &-timecodes.long
 					width: 100%
 
 				&-middle
@@ -85,11 +104,13 @@
 		&-hashtag
 			margin-top: 25px
 
-		&-certificate
-			margin-top: 50px
-
-		&-certificate, &-hashtag, &-pro, &-chat
+		&-hashtag, &-chat
 			width: 100%
+
+	// reglog
+	.reglog
+		&-block-wrapper
+			width: 75%
 
 	// payment
 	.payment
@@ -100,75 +121,62 @@
 
 		&-login-wrapper
 			width: 100%
-			margin-bottom: 50px
+			order: 2
 
 		&-form-wrapper
 			width: 100%
 
 		&-form
+			width: 100%
+
+		&-progressbar
+			display: none
+
+		&-info
 			margin-bottom: 50px
+			width: 100%
+			order: 1
+
+			&-block-wrapper
+				display: flex
+				overflow-y: auto
+
+			&-block
+				min-width: 80%
+				padding: 10px 15px
+
+				margin-right: 15px
+				margin-bottom: 0
+
+				&:last-child
+					margin-right: 0
+
+				&-text
+					&__title
+						font-size: 21px
+
+					&__description
+						font-size: 18px
+
+	// payment-prolongation
+	.payment-prolongation
+		&-wrapper
 			width: 100%
 
 		&-info
-			width: 100%
+			&-block-wrapper
+				display: flex
+				overflow-y: auto
 
 	// course-page
 	.course-page
 		&-main
-			margin: 50px 0
 
 			&-text
 				width: 55%
 
-			&-video
+			&-image
 				width: 40%
-
-		&-about
-			margin: 50px 0
-
-		&-for
-			margin: 50px 0
-
-			&-items-wrapper
-				flex-direction: column
-
-			&-item
-				width: 70%
-				margin-bottom: 75px
-
-		&-skills
-			margin: 50px 0
-
-		&-result
-			margin: 50px 0
-
-		&-programm
-			margin: 50px 0 0 0
-
-		&-materials
-			margin: 50px 0
-
-		&-master
-			margin: 50px 0
-
-		&-education
-			&-block-wrapper
-				flex-direction: column
-
-			&-block
-				width: 100%
-
-		&-contest
-			margin: 50px 0
-
-		&-chat
-			margin: 50px 0
-
-		&-work
-			margin: 50px 0
-
-		&-faq
-			margin: 50px 0
 
 @media screen and ( max-width: 1100px )
 	// circle
@@ -186,76 +194,43 @@
 	// course-page
 	.course-page
 		&-main
+			margin: 50px 0
 			&-wrapper
 				flex-direction: column
 
 			&-text
+				padding: 0
 				width: 100%
 				margin-bottom: 50px
 
 				&__btn
 					width: 100%
 
+			&-image
+				height: 500px
+				width: 100%
+
+		&-lessons
+			margin: 50px 0
+
+			&-wrapper
+				flex-direction: column
+
 			&-video
 				width: 100%
-
-		&-result
-			&-wrapper
-				flex-direction: column
-
-			&-block
-				width: 100%
-				margin-bottom: 50px
-
-			&-img
-				height: 500px
-
-		&-materials
-			&-wrapper
-				flex-direction: column
-
-			&-title
-				width: 100%
-				margin-bottom: 100px
-
-			&-items-wrapper
-				width: 100%
-
-		&-contest
-			&-wrapper
-				flex-direction: column
-
-			&-img
-				width: 200px
-				order: 1
-				margin-bottom: 50px
-
-			&-text
-				width: 100%
 				order: 2
 
-		&-chat
-			&-wrapper
-				flex-direction: column
-
-			&-img
-				width: 200px
+			&-list
+				width: 100%
 				order: 1
+
 				margin-bottom: 50px
 
-			&-text
-				width: 100%
-				order: 2
+		&-about
+			margin: 50px 0
 
-		&-faq
-			&-item
-				flex-direction: column
-
-				&__description, &__title
-					width: 100%
-
-				&__title
-					margin-bottom: 25px
+		&-master
+			margin: 50px 0
 
 	// categories
 	.categories
@@ -293,16 +268,6 @@
 			margin-bottom: 50px
 			&__img
 				height: 350px
-
-	// pro
-	.pro
-		&-main
-			&-text
-				max-width: 75%
-
-			&__img
-				width: 200px
-				height: 200px
 
 	// masters-about
 	.masters-about
@@ -346,18 +311,6 @@
 
 			&-text
 				width: 100%
-
-		&-info
-			&-block-wrapper
-				flex-direction: column
-
-			&-block-link
-				width: 100%
-
-			&-block-balance
-				width: 100%
-				height: 300px
-				margin-top: 25px
 
 	// referrals-section
 	.referrals-section
@@ -404,14 +357,6 @@
 			width: 150px
 			order: 1
 
-	// email
-	.email-confirmed
-		&-text
-			max-width: 100%
-
-		&-img
-			display: none
-
 	// footer
 	.footer
 		&-block
@@ -434,15 +379,6 @@
 			&-text
 				margin-left: 0
 				max-width: 100%
-
-	// pro
-	.pro
-		&-main
-			&-text
-				max-width: 100%
-
-			&__img
-				display: none
 
 @media screen and ( max-width: 900px )
 	// interface
@@ -469,12 +405,7 @@
 		margin: 50px 0
 
 		&-filters
-			flex-direction: column
-
-			&-col
-				width: 100%
-				margin-bottom: 25px
-				padding-bottom: 25px
+			width: 75%
 
 		&-btn-wrapper
 			flex-wrap: nowrap
@@ -507,81 +438,24 @@
 				width: 100%
 				order: 2
 
-		&-for
-			&-item
-				width: 100%
-
-		&-skills
-			&-wrapper
-				flex-direction: column
-
-			&-title
-				width: 100%
-				margin-bottom: 100px
-
-			&-items-wrapper
-				width: 100%
-
-			&-images-wrapper
-				justify-content: flex-start
-				overflow-x: scroll
-
-			&-img
-				min-width: 250px
-				height: 250px
-				margin-right: 25px
-
-				&:last-child
-					margin-right: 0
-
-		&-programm
-			&-item
-				flex-direction: column
-
-				&-title
-					width: 100%
-					margin-bottom: 50px
-
-				&-ul
-					width: 100%
-
 		&-master
 			&-wrapper
+				padding: 35px
+
 				flex-direction: column
+				align-items: center
 
 			&-text
 				width: 100%
-				margin-bottom: 50px
 
 			&__description
-				margin-bottom: 0
+				margin-bottom: 50px
 
 			&__btn
-				display: none
+				width: 100%
 
 			&-img
-				width: 100%
-				height: 500px
-
-			&-media
-				&__btn
-					display: block
-
-		&-contest
-			&-text
-				width: 100%
-
-		&-chat
-			&-text
-				width: 100%
-
-		&-work
-			&-cols-wrapper
-				display: none
-
-			&-media
-				&-wrapper
-					display: flex
+				margin: 0 0 50px 0
 
 	// magazine
 	.magazine
@@ -611,71 +485,6 @@
 
 			&-arrow
 				display: none
-
-	// cart
-	.cart
-		margin: 50px 0
-
-		&-block
-			position: relative
-			flex-direction: column
-			align-items: flex-start
-
-			&-content
-				flex-direction: column
-
-				&-cover
-					display: none
-
-				&-cover-media
-					display: block
-					width: 100%
-					height: 250px
-					+backgroundSetting
-					+borderRadius
-
-				&-text
-					width: 100%
-					margin: 25px 0 0 0
-
-			&-close
-				position: absolute
-
-				top: 15px
-				right: 15px
-
-				width: 50px
-				height: 50px
-
-				display: flex
-				justify-content: center
-				align-items: center
-
-				background-color: $white
-				border-radius: 50%
-				+boxShadow
-
-				& > svg
-					width: 35px
-					height: 35px
-					stroke: $red
-
-	// pro
-	.pro
-		margin: 50px 0
-
-		&-about-item
-			flex-direction: column
-
-			margin-bottom: 50px
-			padding-bottom: 50px
-
-			&-text
-				width: 100%
-				margin-top: 50px
-
-				&__description
-					max-width: 100%
 
 	// about
 	.about-section
@@ -961,6 +770,11 @@
 							margin-left: 0
 							font-size: 16px
 
+	// reglog
+	.reglog
+		&-block-wrapper
+			width: 100%
+
 	// about-section
 	.about-section
 		&-right
@@ -974,11 +788,6 @@
 		&-statistics
 			&-item
 				width: calc(50% - 50px)
-
-	// reglog
-	.reglog
-		&-block
-			width: 95%
 
 @media screen and ( max-width: 650px )
 	// interface
@@ -1005,22 +814,38 @@
 			&__video
 				width: 100%
 
-	// cart
-	.cart
-		&-total
-			flex-direction: column
-
-			&__subtitle, &__title
-				font-size: 24px
-
-			&__btn
-				margin-top: 25px
-
 	// reglog
 	.reglog
 		&-block
 			&__title
 				font-size: 24px
+
+	// payment
+	.payment
+		&-info
+			&-block
+				min-width: 70%
+				flex-direction: column
+				text-align: center
+
+				&-text
+					order: 2
+
+				&-icon
+					order: 1
+					margin-bottom: 15px
+
+	// payment-prolongation
+	.payment-prolongation
+		&-wrapper
+			padding: 35px
+
+		&-info
+			&__title
+				font-size: 24px
+
+			&__description
+				font-size: 18px
 
 	// magazine-post-page
 	.magazine-post-page
@@ -1037,16 +862,6 @@
 			&-text
 				&__title
 					font-size: 24px
-
-	// pro
-	.pro
-		&-main
-			&-text
-				&__title
-					font-size: 28px
-
-				&__btn
-					width: 100%
 
 	// about
 	.about
@@ -1076,23 +891,7 @@
 	// payment
 	.payment
 		&-progressbar
-			width: 90%
-			justify-content: flex-start
-			overflow: auto
-
-		&-info
-			text-align: center
-			padding: 35px
-
-			&-course
-				&-block
-					flex-direction: column
-
-					&__title
-						text-align: center
-						margin-top: 10px
-						margin-left: 0
-						font-size: 18px
+			width: 100%
 
 	// modal-window
 	.modal-window
@@ -1118,6 +917,24 @@
 
 						&__subtitle
 							font-size: 21px
+
+	// cabinet-subscribe-disable
+	.cabinet-subscribe-disable
+		&-text
+			&-btn
+				flex-direction: column
+
+				&__btn
+					width: 100%
+
+					&:first-child
+						margin-bottom: 15px
+
+	// course-page
+	.course-page
+		&-main
+			&-image
+				height: 300px
 
 @media screen and ( max-width: 500px )
 	// interface
@@ -1202,10 +1019,10 @@
 			transform: translateX(-50%)
 
 		&__title
-			font-size: 32px
+			font-size: 28px
 
 		&__title__mb
-			font-size: 32px
+			font-size: 28px
 			margin-bottom: 50px
 
 		&-main
@@ -1222,74 +1039,28 @@
 				&__btn
 					display: none
 
-		&-skills
-			&-item
+		&-lessons
+			&-list
 				&__title
-					font-size: 21px
-
-		&-programm
-			&-item
-				&__title
-					font-size: 24px
-
-		&-materials
-			&-item
-				&__title
-					font-size: 21px
+					font-size: 28px
 
 		&-master
-			&__description
-				font-size: 21px
-
-		&-contest
-			&-img
-				width: 100px
+			&-wrapper
+				padding: 25px
 
 			&__description
 				font-size: 21px
-
-		&-chat
-			&-img
-				width: 100px
-
-			&__description
-				font-size: 21px
-
-		&-faq
-			&-item
-				&__title
-					font-size: 24px
-
-				&__description
-					font-size: 21px
-
-	// pro
-	.pro
-		&__btn
-			width: 95%
-			left: 50%
-			bottom: 10px
-			transform: translateX(-50%)
-
-	// cart
-	.cart
-		&-block
-			&-content
-				&-text
-					&__title
-						font-size: 28px
-
-		&-empty__title
-			font-size: 24px
 
 	// reglog
 	.reglog
 		&-block
-			width: 100%
 			padding: 35px
 
 	// shop
 	.shop
+		&-filters
+			width: 100%
+
 		&-top
 			&-filters
 				&__title
@@ -1299,6 +1070,19 @@
 		margin: 50px 0
 
 	// referrals
+	.referrals
+		margin: 25px 0
+		
+		&-info-block-wrapper
+			margin-top: 50px
+
+		&-info-block
+			padding: 25px
+
+		&-partners
+			&__title
+				margin-bottom: 50px
+
 	.referrals-section
 		margin: 50px 0
 
@@ -1341,18 +1125,6 @@
 				&__subtitle
 					font-size: 18px
 
-			&-pro
-				&-info
-					&-item
-						&__title
-							font-size: 18px
-
-						&__description
-							font-size: 16px
-
-				&__btn
-					width: 100%
-
 	// referrals
 	.referrals
 		&-info-block-link
@@ -1361,12 +1133,6 @@
 
 			&__subtitle
 				font-size: 18px
-
-	// payment
-	.payment
-		&-info
-			&__title
-				font-size: 28px
 
 	// training
 	.training
@@ -1396,33 +1162,6 @@
 						margin-bottom: 25px
 						font-size: 24px
 
-				&-pro
-					padding: 25px
-
-					&__title
-						font-size: 24px
-
-					&__description
-						font-size: 18px
-
-					&-list
-						margin: 0
-
-						&__item
-							font-size: 18px
-
-					&__btn
-						width: 100%
-
-				&-buy-extra-lessons
-					padding: 25px
-
-					&__title
-						font-size: 24px
-
-					&__btn
-						width: 100%
-
 		&-hashtag
 			padding: 25px
 
@@ -1431,34 +1170,6 @@
 
 			&__description
 				font-size: 18px
-
-		&-certificate
-			padding: 25px
-
-			&__title
-				font-size: 24px
-
-			&__description
-				font-size: 18px
-
-			&__btn
-				width: 100%
-
-		&-pro
-			margin-top: 50px
-			padding: 25px
-
-			&__title
-				font-size: 24px
-
-			&__description
-				font-size: 18px
-
-			&-list
-				margin-left: 0
-
-			&__btn
-				width: 100%
 
 		&-chat
 			margin-top: 50px
@@ -1498,7 +1209,7 @@
 				min-width: 200px
 				height: 200px
 				margin-bottom: 25px
-				
+
 			&-text
 				&__title
 					font-size: 24px

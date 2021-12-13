@@ -4,28 +4,37 @@ import {useSelector} from "react-redux";
 import {ShopFiltersSearch, ShopFilters} from "../../";
 
 const ShopFiltersTop = React.memo(() => {
-    const [openFilters, setOpenFilters] = React.useState(false);
-    const [filtersCount, setFiltersCount] = React.useState(0);
+    const [stateFilters, setStateFilters] = React.useState(false);
+    const [stateFiltersAnimationClose, setStateFiltersAnimationClose] =
+        React.useState(false);
+
+    const FiltersRef = React.useRef();
 
     const {filters} = useSelector(({courses}) => courses);
 
     React.useEffect(() => {
-        let count = 0;
+        document.body.addEventListener("click", handStateFilters);
+    }, []);
 
-        count += Object.keys(filters.masters).length;
+    const onClickStateFilters = () => {
+        setStateFiltersAnimationClose(true);
 
-        if (filters.sale !== null) {
-            count += 1;
+        setTimeout(() => {
+            setStateFiltersAnimationClose(false);
+            setStateFilters(!stateFilters);
+        }, 190);
+    };
+
+    const handStateFilters = (e) => {
+        if (e.target !== FiltersRef.current) {
+            console.log(1);
+            setStateFiltersAnimationClose(true);
+
+            setTimeout(() => {
+                setStateFiltersAnimationClose(false);
+                setStateFilters(false);
+            }, 190);
         }
-
-        setFiltersCount(count);
-    }, [
-        Object.keys(filters.masters).length,
-        filters.sale,
-    ]);
-
-    const onClickOpenFilters = () => {
-        setOpenFilters(!openFilters);
     };
 
     return (
@@ -35,17 +44,22 @@ const ShopFiltersTop = React.memo(() => {
 
                 <div className="shop-top-filters">
                     <span
+                        ref={FiltersRef}
+                        onClick={onClickStateFilters}
                         className={`shop-top-filters__title ${
-                            openFilters ? "active" : ""
+                            stateFilters ? "active" : ""
                         }`}
-                        onClick={onClickOpenFilters}
                     >
-                        Фильтры ({filtersCount})
+                        Фильтры ({Object.keys(filters.masters).length})
                     </span>
                 </div>
             </div>
 
-            {openFilters ? <ShopFilters /> : null}
+            {stateFilters ? (
+                <ShopFilters
+                    stateFiltersAnimationClose={stateFiltersAnimationClose}
+                />
+            ) : null}
         </>
     );
 });

@@ -149,14 +149,7 @@ const Footer = () => {
                                 className="footer-block-nav__link"
                                 activeClassName="footer-block-nav__link active"
                             >
-                                Магазин курсов
-                            </NavLink>
-                            <NavLink
-                                to="/pro"
-                                className="footer-block-nav__link"
-                                activeClassName="footer-block-nav__link active"
-                            >
-                                Pro аккаунт
+                                Курсы
                             </NavLink>
                             <NavLink
                                 to="/about"

@@ -1,17 +1,19 @@
 import React from "react";
 
-import {
-    ShopFiltersBlockSale,
-    ShopFiltersBlockMasters,
-} from "../../";
+import {ShopFiltersBlockMasters} from "../../";
 
-const ShopFilters = React.memo(() => {
-    return (
-        <div className="shop-filters">
-            <ShopFiltersBlockSale />
-            <ShopFiltersBlockMasters />
-        </div>
-    );
-});
+const ShopFilters = React.memo(
+    ({stateFiltersAnimationClose}) => {
+        return (
+            <div
+                className={`shop-filters ${
+                    stateFiltersAnimationClose ? "close" : ""
+                }`}
+            >
+                <ShopFiltersBlockMasters />
+            </div>
+        );
+    }
+);
 
 export default ShopFilters;

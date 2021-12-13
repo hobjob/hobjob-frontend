@@ -20,11 +20,6 @@ const PaymentProgressbar = ({number}) => {
                 }`}
             >
                 <span className="payment-progressbar-item__number">2</span>
-                <span className="payment-progressbar-item__title">Оплата</span>
-            </div>
-            <div className="payment-progressbar-line"></div>
-            <div className="payment-progressbar-item">
-                <span className="payment-progressbar-item__number">3</span>
                 <span className="payment-progressbar-item__title">
                     Новые навыки
                 </span>

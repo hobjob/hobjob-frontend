@@ -21,16 +21,9 @@ export { default as PasswordRecoveryEmailSuccess } from "./PasswordRecovery/Pass
 export { default as PasswordRecoveryNewPasswordForm } from "./PasswordRecovery/PasswordRecoveryNewPasswordForm"
 export { default as PasswordRecoveryNewPasswordError } from "./PasswordRecovery/PasswordRecoveryNewPasswordError"
 
-// EmailConfirmed
-export { default as NotEmailConfirmed } from "./EmailConfirmed/NotEmailConfirmed"
-
-// RepeatEmail
-export { default as RepeatEmailForm } from "./RepeatEmail/RepeatEmailForm"
-
 // Header
 export { default as Header } from "./Header/Header"
 export { default as HeaderMenu } from "./Header/HeaderMenu"
-export { default as HeaderMenuCart } from "./Header/HeaderMenuCart"
 export { default as HeaderModalMenu } from "./Header/HeaderModalMenu"
 
 // Home
@@ -51,25 +44,14 @@ export { default as ShopFiltersSearch } from "./Shop/ShopFilters/ShopFiltersSear
 export { default as ShopFiltersTop } from "./Shop/ShopFilters/ShopFiltersTop"
 export { default as ShopFilters } from "./Shop/ShopFilters/ShopFilters"
 export { default as ShopFiltersCategories } from "./Shop/ShopFilters/ShopFiltersCategories"
-export { default as ShopFiltersBlockSale } from "./Shop/ShopFilters/ShopFiltersBlockSale"
 export { default as ShopFiltersBlockMasters } from "./Shop/ShopFilters/ShopFiltersBlockMasters"
 
 // CoursePage
 export { default as CoursePageMain } from "./CoursePage/CoursePageMain"
+export { default as CoursePageLessons } from "./CoursePage/CoursePageLessons"
+export { default as CoursePageLessonsVideo } from "./CoursePage/CoursePageLessonsVideo"
 export { default as CoursePageAbout } from "./CoursePage/CoursePageAbout"
-export { default as CoursePageFor } from "./CoursePage/CoursePageFor"
-export { default as CoursePageSkills } from "./CoursePage/CoursePageSkills"
-export { default as CoursePageResult } from "./CoursePage/CoursePageResult"
-export { default as CoursePageProgramm } from "./CoursePage/CoursePageProgramm"
-export { default as CoursePageMiddleIcon } from "./CoursePage/CoursePageMiddleIcon"
-export { default as CoursePageMaterials } from "./CoursePage/CoursePageMaterials"
 export { default as CoursePageMaster } from "./CoursePage/CoursePageMaster"
-export { default as CoursePageContest } from "./CoursePage/CoursePageContest"
-export { default as CoursePageChat } from "./CoursePage/CoursePageChat"
-export { default as CoursePageWork } from "./CoursePage/CoursePageWork"
-export { default as CoursePageFaq } from "./CoursePage/CoursePageFaq"
-export { default as CoursePageEducation } from "./CoursePage/CoursePageEducation"
-
 // About
 export { default as AboutSection } from "./About/AboutSection"
 
@@ -84,9 +66,6 @@ export { default as MasterCardInfo } from "./MasterCard/MasterCardInfo"
 export { default as MasterCoursesList } from "./Master/MasterCoursesList"
 export { default as MasterCoursesListItem } from "./Master/MasterCoursesListItem"
 export { default as MasterBalance } from "./Master/MasterBalance"
-
-// Cart
-export { default as CartBlock } from "./Cart/CartBlock"
 
 // Magazine
 export { default as MagazineBlockBig } from "./Magazine/MagazineBlockBig"
@@ -115,31 +94,28 @@ export { default as PassingMaterials } from "./Passing/PassingMaterials"
 export { default as PassingMaterialsItem } from "./Passing/PassingMaterialsItem"
 export { default as PassingTimecodes } from "./Passing/PassingTimecodes"
 export { default as PassingTimecodesItem } from "./Passing/PassingTimecodesItem"
-export { default as PassingCertificate } from "./Passing/PassingCertificate"
-export { default as PassingPro } from "./Passing/PassingPro"
 export { default as PassingHashtag } from "./Passing/PassingHashtag"
 export { default as PassingChat } from "./Passing/PassingChat"
-export { default as PassingModalWindow } from "./Passing/PassingModalWindow"
 
 // Cabinet
 export { default as CabinetMessage } from "./Cabinet/CabinetMessage"
 export { default as CabinetCardUserInfo } from "./Cabinet/CabinetCardUserInfo"
 export { default as CabinetUserInfoForm } from "./Cabinet/CabinetUserInfoForm"
 export { default as CabinetUserPassword } from "./Cabinet/CabinetUserPassword"
-export { default as CabinetUserProInfo } from "./Cabinet/CabinetUserProInfo"
+export { default as CabinetUserSubscribeInfo } from "./Cabinet/CabinetUserSubscribeInfo"
+export { default as CabinetUserSubscribeInfoFormSelect } from "./Cabinet/CabinetUserSubscribeInfoFormSelect"
 
 // Referrals
 export { default as ReferralsSection } from "./Referrals/ReferralsSection"
 export { default as ReferralsBlockLink } from "./Referrals/ReferralsBlockLink"
-export { default as ReferralsBlockBalance } from "./Referrals/ReferralsBlockBalance"
-export { default as ReferralsBlockForm } from "./Referrals/ReferralsBlockForm"
-export { default as ReferralsBlockSuccess } from "./Referrals/ReferralsBlockSuccess"
 export { default as ReferralsPartners } from "./Referrals/ReferralsPartners"
 export { default as ReferralsPartnersItem } from "./Referrals/ReferralsPartnersItem"
 
 // Payment
-export { default as PaymentCourseBlock } from "./Payment/PaymentCourseBlock"
 export { default as PaymentProgressbar } from "./Payment/PaymentProgressbar"
+export { default as PaymentSubscribeProlongation } from "./Payment/PaymentSubscribeProlongation"
+// PaymentSubscribe
+export { default as PaymentSubscribeBlock } from "./Payment/PaymentSubscribe/PaymentSubscribeBlock"
 
 // Policy
 export { default as PolicyBlock } from "./Policy/PolicyBlock"

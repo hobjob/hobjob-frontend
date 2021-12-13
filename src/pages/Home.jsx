@@ -8,8 +8,8 @@ import {
     ShopSection,
     CategoriesSection,
     AboutSection,
-	MastersSection,
-	ReferralsSection
+    MastersSection,
+    ReferralsSection,
 } from "../components/";
 
 const Home = ({
@@ -25,13 +25,7 @@ const Home = ({
         });
 
         if (ref) {
-            localStorage.setItem(
-                "ref",
-                JSON.stringify({
-                    refId: ref,
-                    dateCreate: moment().format("DD.MM.YYYY, HH:mm"),
-                })
-            );
+            localStorage.setItem("ref", ref);
         }
     }, []);
 

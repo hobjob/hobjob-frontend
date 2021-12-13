@@ -1,6 +1,6 @@
 import React from "react";
 
-const ReferralsPartnersItem = ({partner, course, earnings}) => {
+const ReferralsPartnersItem = ({name, surname, avatar}) => {
     return (
         <div className="referrals-partners-item">
             <div className="referrals-partners-col">
@@ -8,11 +8,13 @@ const ReferralsPartnersItem = ({partner, course, earnings}) => {
                     <div
                         className="referrals-partners-item-partner-avatar"
                         style={{
-                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${partner.avatar}")`,
+                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${avatar}")`,
                         }}
                     ></div>
                     <h5 className="referrals-partners-item-partner__name">
-                        {partner.name} {partner.surname}
+                        {name !== "" ?<>
+                            {name} {surname}
+                        </> : "Имя не указано"}
                     </h5>
                 </div>
             </div>
@@ -20,15 +22,7 @@ const ReferralsPartnersItem = ({partner, course, earnings}) => {
             <div className="referrals-partners-col">
                 <div className="referrals-partners-item-earnings">
                     <span className="referrals-partners-item-earnings__title">
-                        {earnings}₽
-                    </span>
-                </div>
-            </div>
-
-            <div className="referrals-partners-col">
-                <div className="referrals-partners-item-purchase">
-                    <span className="referrals-partners-item-purchase__title">
-                        {course.title}
+                        +1 месяц
                     </span>
                 </div>
             </div>

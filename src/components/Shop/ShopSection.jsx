@@ -3,8 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {fetchCoursesSection} from "../../redux/actions/courses";
-import {addCourseCart} from "../../redux/actions/cart";
-import {sendCreateCoursesPayment} from "../../redux/actions/payment";
+import {addUserCourse} from "../../redux/actions/user";
 
 import {ShopBlock, Loader} from "../";
 
@@ -15,7 +14,6 @@ const ShopSection = ({title, description, url}) => {
     const {itemsSection, isLoadedSectionCourses} = useSelector(
         ({courses}) => courses
     );
-    const {cart} = useSelector(({cart}) => cart);
 
     const masters = useSelector(({masters}) => masters.items);
     const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
@@ -28,33 +26,15 @@ const ShopSection = ({title, description, url}) => {
     React.useEffect(() => {
         if (localStorage.getItem("accessToken")) {
             if (isLoadedUserInfo) {
-                dispatch(fetchCoursesSection(cart, userInfo, url));
+                dispatch(fetchCoursesSection(userInfo, url));
             }
         } else {
-            dispatch(fetchCoursesSection(cart, null, url));
+            dispatch(fetchCoursesSection(null, url));
         }
-    }, [isLoadedUserInfo, Object.keys(cart).length]);
+    }, [isLoadedUserInfo]);
 
-    const onClickAddCourseCart = (obj) => {
-        dispatch(addCourseCart(obj));
-    };
-
-    const buyFullAccess = (courseId) => {
-        const order = [courseId];
-        const coursesNew = [];
-
-        Object.keys(userInfo.courses).map((key) =>
-            coursesNew.push({...userInfo.courses[key]})
-        );
-
-        dispatch(
-            sendCreateCoursesPayment(
-                {
-                    order,
-                },
-                {courses: coursesNew}
-            )
-        );
+    const onClickAddCourse = (id) => {
+        dispatch(addUserCourse(id));
     };
 
     return (
@@ -77,10 +57,6 @@ const ShopSection = ({title, description, url}) => {
                                         .map((key, index) => (
                                             <ShopBlock
                                                 {...itemsSection[key]}
-                                                buyFullAccess={buyFullAccess}
-                                                onClickAddCourseCart={
-                                                    onClickAddCourseCart
-                                                }
                                                 key={`shop-section-block-${index}`}
                                                 master={
                                                     masters[
@@ -94,27 +70,21 @@ const ShopSection = ({title, description, url}) => {
                                                             .category
                                                     ]
                                                 }
-                                                isBuy={
-                                                    isLoadedUserInfo
-                                                        ? userInfo.courses[
-                                                              itemsSection[key]
-                                                                  ._id
-                                                          ]
-                                                            ? true
-                                                            : false
+                                                onClickAddCourse={
+                                                    onClickAddCourse
+                                                }
+                                                isAdd={
+                                                    userInfo.courses &&
+                                                    userInfo.courses[
+                                                        itemsSection[key]._id
+                                                    ]
+                                                        ? true
                                                         : false
                                                 }
-                                                isBuyTesting={
-                                                    isLoadedUserInfo
-                                                        ? userInfo.courses[
-                                                              itemsSection[key]
-                                                                  ._id
-                                                          ] &&
-                                                          userInfo.courses[
-                                                              itemsSection[key]
-                                                                  ._id
-                                                          ].testing
-                                                        : false
+                                                isLogin={
+                                                    localStorage.getItem(
+                                                        "accessToken"
+                                                    ) && isLoadedUserInfo
                                                 }
                                             />
                                         ))

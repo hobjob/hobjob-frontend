@@ -18,7 +18,7 @@ a
 
 // title
 h1,h2,h3,h4,h5,h6
-	line-height: 1.3em
+	line-height: 1.2em
 	font-weight: 400
 	+Lora
 
@@ -292,6 +292,8 @@ li
 		+transition
 
 .btn-small-round
+	display: inline-block
+	
 	border: none
 	text-align: center
 	border-radius: 100px
@@ -514,9 +516,6 @@ input:-webkit-autofill:active
 		margin-left: 15px
 
 // select
-select, option
-  -webkit-appearance: none
-
 .select
 	width: 100%
 	position: relative
@@ -577,30 +576,7 @@ select, option
 		background-color: #FFE9D3
 		border-radius: 50%
 		animation: ballPulse 1s ease-in-out infinite
-
-// email-confirmed
-.email-confirmed
-	margin: 75px 0 100px 0
-	+openAnimation
-
-	&-wrapper
-		display: flex
-		justify-content: space-between
-
-	&-text
-		max-width: 50%
-
-		&__title
-			margin-bottom: 50px
-
-		&__description
-			& a
-				color: $mainColor
-
-	&-img
-		&__img
-			width: 350px
-
+		
 // tab
 .tab
 	cursor: pointer

@@ -5,7 +5,7 @@ import {FileInput} from "../";
 
 import {fetchUpdateUser} from "../../redux/actions/user";
 
-const CabinetCardUserInfo = ({pro, avatar, name, surname, email, master}) => {
+const CabinetCardUserInfo = ({avatar, name, surname, email, master}) => {
     const dispatch = useDispatch();
 
     const [messageAvatate, setMessageAvatar] = React.useState("");
@@ -84,7 +84,7 @@ const CabinetCardUserInfo = ({pro, avatar, name, surname, email, master}) => {
 
                 <div className="cabinet-card-user-info-text">
                     <h2 className="cabinet-card-user-info-text__name">
-                        {name} {surname} {pro ? <span>(Pro)</span> : null}
+                        {name} {surname}
                     </h2>
                     <p className="subtitle cabinet-card-user-info-text__email">
                         {email}

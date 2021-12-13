@@ -5,8 +5,9 @@
 	justify-content: center
 
 	min-height: 100vh
-	padding: 75px 0
+	padding: 50px 0
 	background-color: $backgroundGray
+	+openAnimation
 
 	&-wrapper
 		display: flex
@@ -15,6 +16,7 @@
 		flex-wrap: wrap
 
 	&-login-wrapper
+		width: 50%
 		display: flex
 		flex-direction: column
 		align-items: center
@@ -83,13 +85,10 @@
 
 	&-info
 		width: 40%
-		padding: 35px
-		background-color: $white
-		+borderRadiusBlock
 		+openAnimation
 
 		&__title
-			font-size: 36px
+			font-size: 28px
 			margin-bottom: 50px
 
 			& span
@@ -98,42 +97,89 @@
 				font-size: 28px
 				color: $gray
 
-		&-course
-			&-block
-				display: flex
-				align-items: center
+		&-block
+			display: flex
+			justify-content: space-between
+			align-items: center
 
-				padding-bottom: 25px
-				margin-bottom: 25px
-				border-bottom: 1px solid $borderGray
+			user-select: none
+			cursor: pointer
+			padding: 20px 25px
+			background-color: $white
+			border: 2px solid $white
 
-				&:last-child
-					margin-bottom: 0
-					padding-bottom: 0
-					border: none
+			margin-bottom: 25px
 
-				&-img
-					display: block
-					min-width: 75px
-					min-height: 75px
-					border-radius: 50%
+			+borderRadiusBlock
+			+transition
 
-					+backgroundSetting
+			&:last-child
+				margin-bottom: 0
 
+			&:active
+				+transformScale
+
+			&.active
+				border: 2px solid $mainColor
+
+			&-text
 				&__title
+					font-size: 24px
+					margin-bottom: 5px
+
+				&__description
 					font-size: 21px
-					margin-left: 25px
 
-		&-list
-			list-style: none
+			&-icon
+				& > svg
+					stroke: $gray
+					+transition
 
-			&__item
-				font-size: 21px
-				margin-bottom: 10px
+				&.active > svg
+					stroke: $mainColor
+					+transition
+
+// payment-prolongation
+.payment-prolongation
+	display: flex
+	align-items: center
+	justify-content: center
+
+	&-wrapper
+		width: 50%
+		padding: 50px
+		display: flex
+		align-items: center
+		justify-content: center
+		background-color: $backgroundGray
+
+		+borderRadiusBlock
+
+	&-info
+		width: 100%
+
+		&__title
+			font-size: 28px
+			margin-bottom: 25px
+
+			& span
+				white-space: nowrap
+				padding-left: 15px
+				font-size: 28px
+				color: $gray
+
+		&__description
+			font-size: 21px
+			margin-bottom: 50px
+
+		&__btn
+			width: 100%
+			margin-top: 25px
 
 // payment-error
 .payment-error
 	margin-top: 100px
+	+openAnimation
 
 	&-text
 		&-logo

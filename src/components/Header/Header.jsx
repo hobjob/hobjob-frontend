@@ -6,9 +6,8 @@ import {sendLogout} from "../../redux/actions/logout";
 import {fetchUserInfo} from "../../redux/actions/user";
 import {fetchMasters} from "../../redux/actions/masters";
 import {fetchCategories} from "../../redux/actions/categories";
-import {removeCourseCart} from "../../redux/actions/cart";
 
-import {HeaderMenu, HeaderMenuCart, HeaderModalMenu} from "../";
+import {HeaderMenu, HeaderModalMenu} from "../";
 
 import Logo from "../../assets/images/logo.svg";
 
@@ -18,7 +17,6 @@ const Header = React.memo(() => {
     const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
     const masters = useSelector(({masters}) => masters.items);
     const categories = useSelector(({categories}) => categories.items);
-    const {cart} = useSelector(({cart}) => cart);
 
     const [modalMenuState, setModalMenuState] = React.useState(false);
     const [modalMenuAnimationState, setModalMenuAnimationState] =
@@ -50,16 +48,6 @@ const Header = React.memo(() => {
             dispatch(fetchCategories());
         }
     }, []);
-
-    React.useEffect(() => {
-        if (isLoadedUserInfo) {
-            Object.keys(cart).map((key) => {
-                if (userInfo.courses[key] && !userInfo.courses[key].testing) {
-                    dispatch(removeCourseCart(key));
-                }
-            });
-        }
-    }, [isLoadedUserInfo]);
 
     const toggleUserMenu = () => {
         setHeaderUserMenuAnimateClose(true);
@@ -150,8 +138,6 @@ const Header = React.memo(() => {
                         <HeaderMenu />
 
                         <nav className="header-left">
-                            <HeaderMenuCart />
-
                             {isLoadedUserInfo ? (
                                 <>
                                     {document.documentElement.clientWidth >

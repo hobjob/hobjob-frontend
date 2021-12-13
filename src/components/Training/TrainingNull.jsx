@@ -9,11 +9,11 @@ const TrainingNull = () => {
                     Не знаете с чего начать?
                 </h2>
                 <p className="description__mb training-null-text__description">
-                    Перейдите в магазин курсов и подберите для себя то, что вам
+                    Перейдите в курсы и подберите для себя то, что вам
                     понравится
                 </p>
                 <Link to="/shop" className="btn training-null-text__btn">
-                    Перейти в магазин курсов
+                    Перейти в курсы
                 </Link>
             </div>
             <div className="training-null-img">

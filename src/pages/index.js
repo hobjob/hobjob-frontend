@@ -1,24 +1,12 @@
 // Login
 export { default as Login } from "./Login"
 
-// Register
-export { default as Register } from "./Register"
-
 // PasswordRecovery
 export { default as PasswordRecoveryEmail } from "./PasswordRecoveryEmail"
 export { default as PasswordRecoveryNewPassword } from "./PasswordRecoveryNewPassword"
 
-// RepeatEmail
-export { default as RepeatEmail } from "./RepeatEmail"
-
-// Confirmed
-export { default as Confirmed } from "./Confirmed"
-
 // Home
 export { default as Home } from "./Home"
-
-// Cart
-export { default as Cart } from "./Cart"
 
 // Shop
 export { default as Shop } from "./Shop"
@@ -40,9 +28,6 @@ export { default as MastersAbout } from "./MastersAbout"
 // Master
 export { default as Master } from "./Master"
 
-// Pro
-export { default as Pro } from "./Pro"
-
 // About
 export { default as About } from "./About"
 
@@ -57,22 +42,14 @@ export { default as PassingCourse } from "./PassingCourse"
 
 // Cabinet
 export { default as Cabinet } from "./Cabinet"
+export { default as CabinetSubscribeDisable } from "./CabinetSubscribeDisable"
 
 // Referrals
 export { default as Referrals } from "./Referrals"
 
-// PaymentCourses
-export { default as PaymentCoursesLogin } from "./PaymentCoursesLogin"
-export { default as PaymentCoursesRegister } from "./PaymentCoursesRegister"
-export { default as PaymentCourses } from "./PaymentCourses"
-
 // PaymentProSubscribe
-export { default as PaymentProSubscribeLogin } from "./PaymentProSubscribeLogin"
-export { default as PaymentProSubscribeRegister } from "./PaymentProSubscribeRegister"
-export { default as PaymentProSubscribe } from "./PaymentProSubscribe"
-
-// PaymentCourseExtraLessons
-export { default as PaymentCourseExtraLessons } from "./PaymentCourseExtraLessons"
+export { default as PaymentSubscribeRegister } from "./PaymentSubscribeRegister"
+export { default as PaymentSubscribe } from "./PaymentSubscribe"
 
 // Payment
 export { default as PaymentStatus } from "./PaymentStatus"
@@ -92,7 +69,3 @@ export { default as Regulations } from "./Regulations"
 
 // EngineeringWorks
 export { default as EngineeringWorks } from "./EngineeringWorks"
-
-// Testing
-export { default as TestingRegister } from "./TestingRegister"
-export { default as TestingLogin } from "./TestingLogin"

@@ -43,6 +43,6 @@ npm start
 
 ## По всем вопросам
 
--   [Telegram](https://t.me/arseniynagibin)
--   [Вконтакте](https://vk.com/arseniynagibin)
+-   [Telegram](https://t.me/nagibinarseniy)
+-   [Вконтакте](https://vk.com/nagibinarseniy)
 -   nagibin.ars@gmail.com

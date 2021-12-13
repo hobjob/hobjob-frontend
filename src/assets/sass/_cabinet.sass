@@ -90,6 +90,7 @@
 		&:last-child
 			border: none
 			margin: 0
+			padding-bottom: 0
 
 		&-text
 			width: 40%
@@ -111,8 +112,8 @@
 
 			&-btn
 				width: 100%
-				
-		&-pro
+
+		&-subscribe
 			&-info
 				&-item
 					display: flex
@@ -138,5 +139,47 @@
 							cursor: pointer
 							color: $gray
 
+				&-item-select
+					padding: 20px 25px
+					background-color: $backgroundGray
+					margin-bottom: 50px
+
+					+borderRadiusBlock
+
 			&__btn
 				width: 75%
+
+// cabinet-subscribe-disable
+.cabinet-subscribe-disable
+	margin: 75px 0
+	+openAnimation
+	
+	&-wrapper
+		display: flex
+		align-items: center
+		justify-content: space-between
+
+	&-text
+		width: 45%
+
+		&__title
+			margin-bottom: 25px
+
+		&__description
+			margin-bottom: 50px
+
+		&-btn
+			display: flex
+			justify-content: space-between
+
+			width: 100%
+
+			&__btn
+				width: 49%
+
+	&-image
+		width: 30%
+
+		&__image
+			user-select: none
+			width: 100%

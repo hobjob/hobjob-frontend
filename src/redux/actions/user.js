@@ -64,10 +64,8 @@ export const fetchUpdateUserPassword = (data) => (dispatch) => {
 	})
 }
 
-export const fetchConfirmedUser = (hash) => (dispatch) => {
-	$api.get(`/confirmed/${hash}`).then(() => {
-		window.location.href = "/go/training"
-	}).catch(() => {
+export const addUserCourse = (courseId) => (dispatch) => {
+	$api.put("/my/courses", { courseId }).then(() => {
 		window.location.href = "/go/training"
 	})
 }

@@ -10,7 +10,6 @@ const HeaderModalMenu = React.memo(({
     onClickCloseModalMenu,
     clickLogout,
 }) => {
-    const {cart} = useSelector(({cart}) => cart);
     const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
 
     return (
@@ -68,15 +67,7 @@ const HeaderModalMenu = React.memo(({
                         activeClassName="header-modal-menu-nav__link active"
                         onClick={onClickCloseModalMenu}
                     >
-                        Магазин курсов
-                    </NavLink>
-                    <NavLink
-                        to="/pro"
-                        className="header-modal-menu-nav__link"
-                        activeClassName="header-modal-menu-nav__link active"
-                        onClick={onClickCloseModalMenu}
-                    >
-                        Pro аккаунт
+                        Курсы
                     </NavLink>
                     <NavLink
                         to="/about"
@@ -101,14 +92,6 @@ const HeaderModalMenu = React.memo(({
                         onClick={onClickCloseModalMenu}
                     >
                         Журнал
-                    </NavLink>
-                    <NavLink
-                        to="/cart"
-                        className="header-modal-menu-nav__link"
-                        activeClassName="header-modal-menu-nav__link active"
-                        onClick={onClickCloseModalMenu}
-                    >
-                        Корзина ({Object.keys(cart).length})
                     </NavLink>
                     {!isLoadedUserInfo ? (
                         <div className="header-modal-menu-nav-bottom">

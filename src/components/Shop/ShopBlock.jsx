@@ -10,31 +10,11 @@ const ShopBlock = React.memo(
         master,
         masterId,
         category,
-        onClickAddCourseCart,
-        cartItems = {},
-        isBuy,
-        isBuyTesting,
-        buyFullAccess,
+        isAdd,
+        isLogin,
+        onClickAddCourse,
     }) => {
         const [addState, setAddState] = React.useState(false);
-
-        React.useEffect(() => {
-            if (cartItems[_id]) {
-                setAddState(true);
-            } else {
-                setAddState(false);
-            }
-        }, [cartItems]);
-
-        const onClickAdd = () => {
-            onClickAddCourseCart({_id});
-
-            if (window.location.pathname === "/") {
-                window.location.href = "/cart";
-            }
-
-            setAddState(true);
-        };
 
         return (
             <div className="shop-block">
@@ -71,34 +51,34 @@ const ShopBlock = React.memo(
                     </div>
                 </div>
                 <div className="shop-block-bottom">
-                    {isBuyTesting ? (
-                        <p
-                            onClick={() => buyFullAccess(_id)}
-                            className="shop-block-bottom__link"
-                        >
-                            Купить полный доступ
-                        </p>
-                    ) : isBuy ? (
-                        <p className="shop-block-bottom__message">Приобретен</p>
-                    ) : addState ? (
-                        <Link to="/cart" className="shop-block-bottom__link">
-                            Перейти в корзину
-                        </Link>
-                    ) : (
-                        <p
-                            className="shop-block-bottom__link"
-                            onClick={onClickAdd}
-                        >
-                            Добавить в корзину
-                        </p>
-                    )}
-
                     <Link
                         to={`/course/${url}`}
-                        className="btn shop-block-bottom__btn"
+                        className="shop-block-bottom__link"
                     >
                         Подробнее
                     </Link>
+
+                    {isLogin ? (
+                        isAdd ? (
+                            <button className="btn disabled shop-block-bottom__btn">
+                                Добавлен
+                            </button>
+                        ) : (
+                            <button
+                                className="btn shop-block-bottom__btn"
+                                onClick={() => onClickAddCourse(_id)}
+                            >
+                                Добавить
+                            </button>
+                        )
+                    ) : (
+                        <a
+                            href="/go/register"
+                            className="btn shop-block-bottom__btn"
+                        >
+                            Оформить подписку
+                        </a>
+                    )}
                 </div>
             </div>
         );
