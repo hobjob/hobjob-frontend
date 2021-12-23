@@ -1,7 +1,7 @@
 import React from "react";
 import {Link, NavLink} from "react-router-dom";
 
-import Logo from '../../assets/images/logo.svg';
+import Logo from "../../assets/images/logo.svg";
 
 const Footer = () => {
     return (
@@ -158,13 +158,13 @@ const Footer = () => {
                             >
                                 О HobJob
                             </NavLink>
-                            {/* <NavLink
-                                    to="/masters-about"
-                                    className="footer-block-nav__link"
-                                    activeClassName="footer-block-nav__link active"
-                                >
-                                    Для мастеров
-                                </NavLink> */}
+                            <NavLink
+                                to="/masters-about"
+                                className="footer-block-nav__link"
+                                activeClassName="footer-block-nav__link active"
+                            >
+                                Для мастеров
+                            </NavLink>
                             <NavLink
                                 to="/magazine"
                                 className="footer-block-nav__link"

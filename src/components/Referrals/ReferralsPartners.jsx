@@ -9,7 +9,7 @@ const ReferralsPartners = () => {
     return (
         <div className="referrals-partners">
             <h4 className="referrals-partners__title">
-                Ваши реферальные партнеры
+                Последние реферальные партнеры
             </h4>
             <div className="referrals-partners-subinfo">
                 <div className="referrals-partners-col">

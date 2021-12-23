@@ -18,13 +18,13 @@ const HeaderMenu = React.memo(() => {
             >
                 О HobJob
             </NavLink>
-            {/* <NavLink
+            <NavLink
 				to="/masters-about"
 				className="header-nav__link"
 				activeClassName="header-nav__link active"
 			>
 				Для мастеров
-			</NavLink> */}
+			</NavLink>
             <NavLink
                 to="/magazine"
                 className="header-nav__link"

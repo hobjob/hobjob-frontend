@@ -16,6 +16,10 @@
 		margin-top: 50px
 		+openAnimation
 
+		& video
+			overflow: hidden
+			+borderRadiusBlock
+
 		&__title
 			user-select: none
 			position: absolute
@@ -72,10 +76,7 @@
 		overflow-y: auto
 
 		&-block
-			width: 45%
-
-			&.long
-				width: 100%
+			width: 100%
 
 			&__subtitle
 				margin-bottom: 15px
@@ -302,113 +303,39 @@
 		justify-content: space-between
 		align-items: flex-start
 
-	&-hashtag
-		margin-top: 100px
-		width: 50%
+		&-chat
+			margin-top: 100px
+			width: 48%
 
-		padding: 35px
-		+borderRadiusBlock
-		+boxShadow
-
-		&__description
-			font-size: 21px
-
-			& > a
-				color: $mainColor
-
-		&__title
-			font-size: 28px
-			margin-bottom: 50px
-
-	&-chat
-		margin-top: 100px
-		width: 50%
-
-		padding: 35px
-		+borderRadiusBlock
-		+boxShadow
-
-		&__title
-			font-size: 28px
-			margin-bottom: 25px
-
-		&__description
-			font-size: 21px
-
-		&__btn
-			margin-top: 50px
-			width: 75%
-
-	&-modal-buy-window
-		display: flex
-
-		&-image
-			display: block
-			min-width: 300px
-			height: 300px
-
-			border-radius: 50%
-
-			+backgroundSetting
-
-		&-text
-			margin-left: 50px
-			max-width: 75%
-
-			&__master
-				font-size: 21px
-				color: $mainColor
+			padding: 35px
+			+borderRadiusBlock
+			+boxShadow
 
 			&__title
-				margin-top: 10px
-				font-size: 32px
+				font-size: 28px
+				margin-bottom: 25px
 
 			&__description
-				margin-top: 25px
 				font-size: 21px
 
-			&-timer-wrapper
-				display: inline-block
-				padding: 25px 35px
-
-				background-color: #f7f7f7
+			&__btn
 				margin-top: 50px
+				width: 100%
 
-				+borderRadiusBlock
+		&-hashtag
+			margin-top: 100px
+			width: 50%
 
-			&-timer
-				display: inline-flex
-				align-items: center
-				+openAnimation
+			padding: 35px
+			+borderRadiusBlock
+			+boxShadow
 
-				&__subtitle
-					font-size: 18px
-					margin-bottom: 35px
+			&__description
+				font-size: 21px
 
-				&-item
-					margin-right: 50px
+				& > a
+					color: $mainColor
 
-					&:last-child
-						margin-right: 0
-
-					&__title
-						font-size: 36px
-
-					&__subtitle
-						font-size: 24px
-
-			&-price
-				margin-top: 50px
-
-				&__price
-					font-size: 28px
-
-				&__subprice
-					font-size: 21px
-					color: $gray
-					text-decoration: line-through
-
-			&-btn
-				margin-top: 15px
-				&__btn
-					width: 100%
+			&__title
+				font-size: 28px
+				margin-bottom: 50px

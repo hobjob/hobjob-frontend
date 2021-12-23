@@ -1,14 +1,19 @@
 import React from "react";
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import {animateScroll as scroll} from "react-scroll";
 import ReactPlayer from "react-player";
 
+import {updateCountViewingDuration} from "../../redux/actions/user";
+
 import $api from "../../http/";
 
-const PassingVideo = ({courseId, lessonNum, image}) => {
+const PassingVideo = ({courseId, lessonNum, lessonIndex}) => {
+    const dispatch = useDispatch();
+
     const {timecodeSeconds} = useSelector(({passing}) => passing);
 
     const [play, setPlay] = React.useState(true);
+    const [duration, setDuration] = React.useState(0);
 
     const VideoRef = React.useRef();
 
@@ -48,11 +53,17 @@ const PassingVideo = ({courseId, lessonNum, image}) => {
     };
 
     const handlerPause = () => {
+        dispatch(updateCountViewingDuration(courseId, lessonIndex, duration));
+
         setPlay(false);
     };
 
     const handlerPlay = () => {
         setPlay(true);
+    };
+
+    const handlerDuration = ({playedSeconds}) => {
+        setDuration(Math.floor(playedSeconds));
     };
 
     return (
@@ -64,6 +75,7 @@ const PassingVideo = ({courseId, lessonNum, image}) => {
                 onError={handlerError}
                 onPause={handlerPause}
                 onPlay={handlerPlay}
+                onProgress={handlerDuration}
                 ref={VideoRef}
                 url={`${
                     process.env.REACT_APP_API_DOMEN
@@ -72,10 +84,6 @@ const PassingVideo = ({courseId, lessonNum, image}) => {
                 )}/index.m3u8`}
                 width="100%"
                 height="auto"
-                style={{
-                    borderRadius: "25px",
-                    overflow: "hidden",
-                }}
             />
         </div>
     );

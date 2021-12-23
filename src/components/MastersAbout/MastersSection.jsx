@@ -1,9 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
-import NumberFormat from "react-number-format";
 
 import { checkDeclension } from "../../Functions/checkDeclension";
+import {abbreviateNumber} from "../../Functions/abbreviateNumber";
 
 const MastersSection = () => {
     const {statistics, isLoaded} = useSelector(({statistics}) => statistics);
@@ -16,7 +16,7 @@ const MastersSection = () => {
                     <div className="master-section-left">
                         <div className="master-section-text">
                             <h2 className="title master-section-text__title">
-                                Как стать Мастером в HobJob ?
+                                Как стать Мастером в HobJob?
                             </h2>
                             <p
                                 className="
@@ -50,41 +50,35 @@ const MastersSection = () => {
                         <div className="master-section-statistics">
                             <div className="master-section-statistics-item">
                                 <h4 className="master-section-statistics-item__title">
-                                    {isLoaded ? (
-                                        <NumberFormat
-                                            value={statistics.masters}
-                                            displayType={"text"}
-                                            thousandSeparator={" "}
-                                            renderText={(value) => value}
-                                        />
-                                    ) : (
-                                        "-"
-                                    )}
+                                    {isLoaded
+                                        ? abbreviateNumber(statistics.masters)
+                                        : "-"}
                                 </h4>
                                 <span className="master-section-statistics-item__subtitle">
-                                    {checkDeclension(statistics.masters, [
-                                        "Мастер",
-                                        "Мастера",
-                                        "Мастеров",
-                                    ]).text}{" "}
+                                    {
+                                        checkDeclension(statistics.masters, [
+                                            "Мастер",
+                                            "Мастера",
+                                            "Мастеров",
+                                        ]).text
+                                    }{" "}
                                     уже с нами!
                                 </span>
                             </div>
                             <div className="master-section-statistics-item">
                                 <h4 className="master-section-statistics-item__title">
-                                    {isLoaded ? (
-                                        <NumberFormat
-                                            value={statistics.payouts}
-                                            displayType={"text"}
-                                            thousandSeparator={" "}
-                                            renderText={(value) => value}
-                                        />
-                                    ) : (
-                                        "-"
-                                    )}
+                                    {isLoaded
+                                        ? abbreviateNumber(statistics.courses)
+                                        : "-"}
                                 </h4>
                                 <span className="master-section-statistics-item__subtitle">
-                                    Выплат
+                                    {
+                                        checkDeclension(statistics.courses, [
+                                            "Курс",
+                                            "Курса",
+                                            "Курсов",
+                                        ]).text
+                                    }
                                 </span>
                             </div>
                         </div>

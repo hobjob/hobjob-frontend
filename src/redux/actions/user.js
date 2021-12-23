@@ -64,10 +64,14 @@ export const fetchUpdateUserPassword = (data) => (dispatch) => {
 	})
 }
 
-export const addUserCourse = (courseId) => (dispatch) => {
+export const addUserCourse = (courseId) => () => {
 	$api.put("/my/courses", { courseId }).then(() => {
 		window.location.href = "/go/training"
 	})
+}
+
+export const updateCountViewingDuration = (courseId, lessonIndex, seconds) => (dispatch) => {
+	$api.put("/my/courses/lesson/duration", { courseId, lessonIndex, seconds })
 }
 
 const setUserInfo = (info) => ({

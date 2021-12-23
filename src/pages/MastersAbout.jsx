@@ -1,10 +1,10 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-import NumberFormat from "react-number-format";
 import {Helmet} from "react-helmet";
 
-import { checkDeclension } from "../Functions/checkDeclension";
+import {checkDeclension} from "../Functions/checkDeclension";
+import {abbreviateNumber} from "../Functions/abbreviateNumber";
 
 import {fetchStatistics} from "../redux/actions/statistics";
 
@@ -15,7 +15,7 @@ const MastersAbout = () => {
 
     const [visibleButton, setVisibleButton] = React.useState(false);
 
-    const {statistics} = useSelector(({statistics}) => statistics);
+    const {statistics, isLoaded} = useSelector(({statistics}) => statistics);
 
     const MastersAboutWrapper = React.useRef();
 
@@ -115,12 +115,11 @@ const MastersAbout = () => {
                                 <div className="masters-about-statistics">
                                     <div className="masters-about-statistics-item">
                                         <h4 className="masters-about-statistics-item__title">
-                                            <NumberFormat
-                                                value={statistics.masters}
-                                                displayType={"text"}
-                                                thousandSeparator={" "}
-                                                renderText={(value) => value}
-                                            />
+                                            {isLoaded
+                                                ? abbreviateNumber(
+                                                      statistics.masters
+                                                  )
+                                                : "-"}
                                         </h4>
                                         <span className="masters-about-statistics-item__subtitle">
                                             {
@@ -138,15 +137,19 @@ const MastersAbout = () => {
                                     </div>
                                     <div className="masters-about-statistics-item">
                                         <h4 className="masters-about-statistics-item__title">
-                                            <NumberFormat
-                                                value={statistics.payouts}
-                                                displayType={"text"}
-                                                thousandSeparator={" "}
-                                                renderText={(value) => value}
-                                            />
+                                            {isLoaded
+                                                ? abbreviateNumber(
+                                                      statistics.courses
+                                                  )
+                                                : "-"}
                                         </h4>
                                         <span className="masters-about-statistics-item__subtitle">
-                                            Выплат
+                                            {
+                                                checkDeclension(
+                                                    statistics.courses,
+                                                    ["Курс", "Курса", "Курсов"]
+                                                ).text
+                                            }
                                         </span>
                                     </div>
                                 </div>

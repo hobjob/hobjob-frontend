@@ -77,14 +77,14 @@ const HeaderModalMenu = React.memo(({
                     >
                         О HobJob
                     </NavLink>
-                    {/* <NavLink
+                    <NavLink
                         to="/masters-about"
                         className="header-modal-menu-nav__link"
                         activeClassName="header-modal-menu-nav__link active"
                         onClick={onClickCloseModalMenu}
                     >
                         Для мастеров
-                    </NavLink> */}
+                    </NavLink>
                     <NavLink
                         to="/magazine"
                         className="header-modal-menu-nav__link"

@@ -15,7 +15,7 @@ const HomeMainSection = () => {
                             Научитесь создавать шедевры своими руками
                         </p>
                         <Link to="/shop" className="btn-arrow main-text__btn">
-                            Перейти в магазин курсов
+                            Перейти в курсы
                             <svg
                                 width="31"
                                 height="12"

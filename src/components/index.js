@@ -49,6 +49,7 @@ export { default as ShopFiltersBlockMasters } from "./Shop/ShopFilters/ShopFilte
 // CoursePage
 export { default as CoursePageMain } from "./CoursePage/CoursePageMain"
 export { default as CoursePageLessons } from "./CoursePage/CoursePageLessons"
+export { default as CoursePageLessonsItem } from "./CoursePage/CoursePageLessonsItem"
 export { default as CoursePageLessonsVideo } from "./CoursePage/CoursePageLessonsVideo"
 export { default as CoursePageAbout } from "./CoursePage/CoursePageAbout"
 export { default as CoursePageMaster } from "./CoursePage/CoursePageMaster"
