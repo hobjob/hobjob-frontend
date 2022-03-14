@@ -22,18 +22,6 @@ export { default as MagazinePostPage } from "./MagazinePostPage"
 // MasterCard
 export { default as MasterCard } from "./MasterCard"
 
-// MastersAbout
-export { default as MastersAbout } from "./MastersAbout"
-
-// Master
-export { default as Master } from "./Master"
-
-// About
-export { default as About } from "./About"
-
-// Err404
-export { default as Err404 } from "./Err404"
-
 // Training
 export { default as Training } from "./Training"
 

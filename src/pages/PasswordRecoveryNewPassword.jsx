@@ -49,13 +49,15 @@ const PasswordRecoveryNewPassword = ({
                                 />
                             </a>
 
-                            {newPasswordStatus === "error" ? (
-                                <PasswordRecoveryNewPasswordError />
-                            ) : (
-                                <PasswordRecoveryNewPasswordForm
-                                    onSubmit={onSubmit}
-                                />
-                            )}
+                            <div className="reglog-block-wrapper">
+                                {newPasswordStatus === "error" ? (
+                                    <PasswordRecoveryNewPasswordError />
+                                ) : (
+                                    <PasswordRecoveryNewPasswordForm
+                                        onSubmit={onSubmit}
+                                    />
+                                )}
+                            </div>
                         </div>
                     </div>
                 </section>

@@ -4,8 +4,6 @@ import {Helmet} from "react-helmet";
 
 import {fetchPostsById} from "../redux/actions/posts";
 
-import {Err404} from "../pages/";
-
 import {
     MagazinePostPageCover,
     MagazinePostPageBlock,
@@ -72,7 +70,7 @@ const MagazinePostPage = ({
                         </section>
                     </>
                 ) : (
-                    <Err404 />
+                    (window.location.href = "/")
                 )
             ) : (
                 <Loader />

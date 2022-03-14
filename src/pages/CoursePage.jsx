@@ -8,14 +8,10 @@ import {addUserCourse} from "../redux/actions/user";
 import {
     CoursePageMain,
     CoursePageLessons,
-    CoursePageAbout,
     CoursePageMaster,
-    AboutSection,
     ShopSection,
     Loader,
 } from "../components";
-
-import {Err404} from "../pages";
 
 const CoursePage = ({
     match: {
@@ -126,17 +122,6 @@ const CoursePage = ({
 
                         <CoursePageLessons {...itemByUrl} />
 
-                        {itemByUrl.page.map((item, index) => (
-                            <div key={`course-page-${item.type}-${index}`}>
-                                {item.type === "about" ? (
-                                    <CoursePageAbout
-                                        {...item}
-                                        path={itemByUrl.path}
-                                    />
-                                ) : null}
-                            </div>
-                        ))}
-
                         <CoursePageMaster
                             {...itemByUrl}
                             master={masters[itemByUrl.masterId]}
@@ -147,11 +132,9 @@ const CoursePage = ({
                             description="Новые курсы добавляются каждый месяц"
                             url={url}
                         />
-
-                        <AboutSection buttonVisible />
                     </>
                 ) : (
-                    <Err404 />
+                    (window.location.href = "/")
                 )
             ) : (
                 <Loader />

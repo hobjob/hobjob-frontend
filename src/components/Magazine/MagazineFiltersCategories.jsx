@@ -3,13 +3,11 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {setPostsFiltersCategories} from "../../redux/actions/posts";
 
-import {CategoriesBtnLoader} from "../";
-
 const MagazineFiltersCategories = () => {
     const dispatch = useDispatch();
 
     const {filters} = useSelector(({posts}) => posts);
-    const {items, isLoadedAllCategories} = useSelector(
+    const {items} = useSelector(
         ({categories}) => categories
     );
 
@@ -28,27 +26,17 @@ const MagazineFiltersCategories = () => {
                 Все категории
             </button>
 
-            {isLoadedAllCategories
-                ? Object.keys(items).map((key, index) => (
-                      <button
-                          className={`magazine__btn ${
-                              filters.categories[items[key].transfer]
-                                  ? "active"
-                                  : ""
-                          }`}
-                          key={`magazine-btn-filters-${index}`}
-                          onClick={() => onClickCategory(items[key].transfer)}
-                      >
-                          {items[key].title}
-                      </button>
-                  ))
-                : Array(5)
-                      .fill(0)
-                      .map((_, index) => (
-                          <CategoriesBtnLoader
-                              key={`magazine-categories-filters-btn-loader-${index}`}
-                          />
-                      ))}
+            {Object.keys(items).map((key, index) => (
+                <button
+                    className={`magazine__btn ${
+                        filters.categories[items[key].transfer] ? "active" : ""
+                    }`}
+                    key={`magazine-btn-filters-${index}`}
+                    onClick={() => onClickCategory(items[key].transfer)}
+                >
+                    {items[key].title}
+                </button>
+            ))}
         </div>
     );
 };

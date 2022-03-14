@@ -5,7 +5,7 @@ import {checkDeclension} from "../../Functions/checkDeclension";
 
 import {fetchCourses} from "../../redux/actions/courses";
 
-import {CategoriesItem, CategoriesItemLoader} from "../";
+import {Loader, CategoriesItem} from "../";
 
 const CategoriesSection = () => {
     const dispatch = useDispatch();
@@ -30,30 +30,26 @@ const CategoriesSection = () => {
                     </h2>
 
                     <div className="categories-items-wrapper">
-                        {isLoadedAllCategories
-                            ? Object.keys(items).map((key, index) => (
-                                  <CategoriesItem
-                                      {...items[key]}
-                                      key={`categories-items-${index}`}
-                                      subtitle={
-                                          checkDeclension(
-                                              courses.filter(
-                                                  (keyGoods) =>
-                                                      keyGoods.category ===
-                                                      items[key].transfer
-                                              ).length,
-                                              ["курс", "курса", "курсов"]
-                                          ).title
-                                      }
-                                  />
-                              ))
-                            : Array(6)
-                                  .fill(0)
-                                  .map((_, index) => (
-                                      <CategoriesItemLoader
-                                          key={`categories-item-loader-${index}`}
-                                      />
-                                  ))}
+                        {isLoadedAllCategories ? (
+                            Object.keys(items).map((key, index) => (
+                                <CategoriesItem
+                                    {...items[key]}
+                                    key={`categories-items-${index}`}
+                                    subtitle={
+                                        checkDeclension(
+                                            courses.filter(
+                                                (keyGoods) =>
+                                                    keyGoods.category ===
+                                                    items[key].transfer
+                                            ).length,
+                                            ["курс", "курса", "курсов"]
+                                        ).title
+                                    }
+                                />
+                            ))
+                        ) : (
+                            <Loader />
+                        )}
                     </div>
                 </div>
             </div>

@@ -11,20 +11,12 @@ const HeaderMenu = React.memo(() => {
             >
                 Курсы
             </NavLink>
-            <NavLink
-                to="/about"
+            <a
+                href={`${process.env.REACT_APP_DOMEN_MASTERS_SERVICES}`}
                 className="header-nav__link"
-                activeClassName="header-nav__link active"
             >
-                О HobJob
-            </NavLink>
-            <NavLink
-				to="/masters-about"
-				className="header-nav__link"
-				activeClassName="header-nav__link active"
-			>
-				Для мастеров
-			</NavLink>
+                Для мастеров
+            </a>
             <NavLink
                 to="/magazine"
                 className="header-nav__link"

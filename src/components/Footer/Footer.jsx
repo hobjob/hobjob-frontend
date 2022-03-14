@@ -151,20 +151,13 @@ const Footer = () => {
                             >
                                 Курсы
                             </NavLink>
-                            <NavLink
-                                to="/about"
+
+                            <a
+                                href={`${process.env.REACT_APP_DOMEN_MASTERS_SERVICES}`}
                                 className="footer-block-nav__link"
-                                activeClassName="footer-block-nav__link active"
-                            >
-                                О HobJob
-                            </NavLink>
-                            <NavLink
-                                to="/masters-about"
-                                className="footer-block-nav__link"
-                                activeClassName="footer-block-nav__link active"
                             >
                                 Для мастеров
-                            </NavLink>
+                            </a>
                             <NavLink
                                 to="/magazine"
                                 className="footer-block-nav__link"

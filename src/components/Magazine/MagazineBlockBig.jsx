@@ -23,10 +23,14 @@ const MagazineBlockBig = ({
             <Link
                 to={`/magazine/post/${_id}`}
                 className="magazine-block-big-cover"
-                style={{
-                    backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
-                }}
-            ></Link>
+            >
+                <div
+                    className="magazine-block-big-cover-image"
+                    style={{
+                        backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
+                    }}
+                ></div>
+            </Link>
 
             <div className="magazine-block-big-text">
                 <div className="magazine-block-big-text-top">

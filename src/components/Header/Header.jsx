@@ -184,16 +184,6 @@ const Header = React.memo(() => {
                                                         Пригласи друга
                                                     </NavLink>
 
-                                                    {userInfo.master ===
-                                                    "confirmed" ? (
-                                                        <NavLink
-                                                            to="/go/master"
-                                                            className="header-user-menu__link"
-                                                        >
-                                                            Для мастера
-                                                        </NavLink>
-                                                    ) : null}
-
                                                     <span
                                                         onClick={clickLogout}
                                                         className="header-user-menu__link"
@@ -222,7 +212,7 @@ const Header = React.memo(() => {
                                     href="/go/login"
                                     className="header-login__link"
                                 >
-                                    Войти
+                                    Войти в личный кабинет
                                     <svg
                                         width="21"
                                         height="10"

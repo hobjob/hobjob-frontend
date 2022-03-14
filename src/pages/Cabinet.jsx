@@ -6,7 +6,6 @@ import {fetchUpdateUser, fetchUpdateUserPassword} from "../redux/actions/user";
 
 import {
     Loader,
-    CabinetMessage,
     CabinetCardUserInfo,
     CabinetUserInfoForm,
     CabinetUserPassword,
@@ -32,7 +31,8 @@ const Cabinet = () => {
             if (hash !== "") {
                 const id = hash.replace("#", "");
 
-                const element = document.getElementById(id);
+				const element = document.getElementById(id);
+				
                 if (element) {
                     window.scrollTo(
                         0,
@@ -68,22 +68,6 @@ const Cabinet = () => {
                             <div className="container">
                                 {userInfo.subscribe.working ? (
                                     <div className="cabinet-wrapper">
-                                        {localStorage.getItem(
-                                            "close-master-info-message"
-                                        ) ||
-                                        masterInfoMessage ||
-                                        userInfo.master !==
-                                            "confirmed" ? null : (
-                                            <CabinetMessage
-                                                message={
-                                                    "Вы не можете поменять свои личные данные, так как являетесь мастером HobJob. Если вы хотите изменить данные напишите на почту поддержки"
-                                                }
-                                                closeFunc={
-                                                    closeMasterInfoMessage
-                                                }
-                                            />
-                                        )}
-
                                         <CabinetCardUserInfo {...userInfo} />
 
                                         <div className="cabinet-block-wrapper">

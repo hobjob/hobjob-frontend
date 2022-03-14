@@ -179,10 +179,6 @@
 				width: 40%
 
 @media screen and ( max-width: 1100px )
-	// circle
-	.circle
-		display: none
-
 	// shop
 	.shop
 		&-btn-wrapper
@@ -226,9 +222,6 @@
 
 				margin-bottom: 50px
 
-		&-about
-			margin: 50px 0
-
 		&-master
 			margin: 50px 0
 
@@ -237,15 +230,6 @@
 		&-item
 			margin: 0
 			width: 100%
-
-	// about-section
-	.about-section
-		&-wrapper
-			flex-direction: column
-
-		&-right
-			width: 75%
-			margin-top: 50px
 
 	// master-section
 	.master-section
@@ -269,28 +253,6 @@
 			&__img
 				height: 350px
 
-	// masters-about
-	.masters-about
-		&-main
-			flex-direction: column
-
-		&-left
-			width: 100%
-
-		&-right
-			width: 100%
-			margin-top: 50px
-
-		&-bottom
-			flex-direction: column
-
-			&-left
-				width: 100%
-
-			&-right
-				width: 100%
-				margin-top: 50px
-
 	// cabinet
 	.cabinet
 		&-block
@@ -311,51 +273,6 @@
 
 			&-text
 				width: 100%
-
-	// referrals-section
-	.referrals-section
-		&-text
-			width: 100%
-
-		&-img
-			display: none
-
-	// master
-	.master
-		&-card
-			margin-top: 50px
-
-			&-info
-				flex-direction: column
-				align-items: center
-
-				&-text
-					margin: 50px 0 0 0
-					text-align: center
-					max-width: 100%
-
-					&-title
-						flex-direction: column
-
-						&-social
-							margin: 25px 0
-
-					&-specialty
-						&__specialty
-							font-size: 18px
-	// err404
-	.err404
-		&-wrapper
-			flex-direction: column
-
-		&-text
-			text-align: center
-			margin-top: 50px
-			order: 2
-
-		&__img
-			width: 150px
-			order: 1
 
 	// footer
 	.footer
@@ -382,14 +299,8 @@
 		&__title
 			font-size: 18px
 
-	// main
-	.main
-		margin: 50px 0
-
 	// shop
 	.shop
-		margin: 50px 0
-
 		&-filters
 			width: 75%
 
@@ -411,19 +322,6 @@
 
 	// course-page 
 	.course-page
-		&-about
-			&-wrapper
-				flex-direction: column
-
-			&-text
-				margin-bottom: 50px
-				width: 100%
-				order: 1
-
-			&-img
-				width: 100%
-				order: 2
-
 		&-master
 			&-wrapper
 				padding: 35px
@@ -445,8 +343,6 @@
 
 	// magazine
 	.magazine
-		margin: 50px 0
-
 		&-filters-categories
 			max-width: 100%
 			flex-wrap: nowrap
@@ -472,58 +368,8 @@
 			&-arrow
 				display: none
 
-	// about
-	.about-section
-		&-right
-			width: 100%
-
-	.about
-		margin: 50px 0
-
-		&-services-items-wrapper
-			margin-top: 100px
-
-		&-services-item
-			flex-direction: column
-
-			margin-bottom: 50px
-			padding-bottom: 50px
-
-			&-text
-				width: 100%
-				margin-top: 50px
-
-				&__description
-					max-width: 100%
-
-	// masters-about
-	.masters-about
-		margin: 50px 0
-
-		&-services-items-wrapper
-			margin-top: 100px
-
-		&-services-item
-			flex-direction: column
-
-			margin-bottom: 50px
-			padding-bottom: 50px
-
-			&-text
-				width: 100%
-				margin-top: 50px
-
-				&__description
-					max-width: 100%
-
-		&-faq-tab
-			&-bottom
-				width: 100%
-
 	// cabinet
 	.cabinet
-		margin: 50px 0
-
 		&-card-user-info
 			flex-direction: column
 			text-align: center
@@ -532,7 +378,7 @@
 				margin: 50px 0 0 0
 
 		&-block
-			margin: 75px 0
+			margin: 25px 0
 			padding-bottom: 50px
 
 			&-form
@@ -540,8 +386,6 @@
 
 	// training
 	.training
-		margin: 50px 0
-
 		&-block
 			flex-direction: column
 			padding-bottom: 25px
@@ -569,8 +413,6 @@
 
 	// passing
 	.passing
-		margin: 50px 0
-
 		&-top
 			flex-direction: column
 
@@ -608,8 +450,6 @@
 
 	// policy
 	.policy
-		margin: 50px 0
-
 		&-wrapper
 			width: 100%
 
@@ -680,37 +520,6 @@
 				&:last-child
 					margin-bottom: 0
 
-	// master
-	.master
-		&-info
-			flex-direction: column
-			margin: 50px 0
-
-			&-balance
-				width: 100%
-				order: 1
-
-			&-list-courses
-				margin-top: 50px
-				width: 100%
-				order: 2
-
-				&-subinfo, &-item
-					flex-direction: column
-					border: none
-					padding: 35px
-					background-color: $white
-					+boxShadow
-
-				&-col
-					display: flex
-					justify-content: center
-					margin-bottom: 25px
-					width: 100%
-
-					&:last-child
-						margin-bottom: 0
-
 @media screen and ( max-width: 750px )
 	// footer
 	.footer
@@ -761,11 +570,6 @@
 		&-block-wrapper
 			width: 100%
 
-	// about-section
-	.about-section
-		&-right
-			width: 100%
-
 	// master-section
 	.master-section
 		&-text
@@ -774,11 +578,6 @@
 		&-statistics
 			&-item
 				width: calc(50% - 50px)
-
-@media screen and ( max-width: 650px )
-	// interface
-	.title, .title__mb
-		font-size: 32px
 
 @media screen and ( max-width: 600px )
 	// interface
@@ -849,31 +648,6 @@
 				&__title
 					font-size: 24px
 
-	// about
-	.about
-		&-services-item
-			&-text
-				&__title
-					font-size: 24px
-
-				&__description
-					font-size: 21px
-
-	// masters-about
-	.masters-about
-		&-services-item
-			&-text
-				&__title
-					font-size: 24px
-
-				&__description
-					font-size: 21px
-
-		&-faq-tab
-			&-top
-				&__title
-					font-size: 21px
-
 	// payment
 	.payment
 		&-progressbar
@@ -905,13 +679,7 @@
 
 @media screen and ( max-width: 500px )
 	// interface
-	.title, .title__mb
-		font-size: 32px
-
 	.description, .description__mt, .description__mb
-		font-size: 21px
-
-	.btn-arrow
 		font-size: 21px
 
 	// header
@@ -941,17 +709,6 @@
 	.categories
 		margin: 50px 0
 
-	// about-section
-	.about-section
-		margin: 50px 0
-
-		&-statistics
-			margin-top: 75px
-
-			&-item
-				width: 100%
-				margin: 0 0 25px 0
-
 	// master-section
 	.master-section
 		margin: 50px 0
@@ -963,19 +720,6 @@
 				width: 100%
 				text-align: center
 				margin: 0 0 25px 0
-
-	// masters-about
-	.masters-about
-		&-statistics
-			margin-top: 75px
-
-			&-item
-				text-align: center
-				width: 100%
-				margin: 0 0 25px 0
-
-		&__btn
-			min-width: 200px
 
 	// course-page
 	.course-page
@@ -1039,7 +783,7 @@
 	// referrals
 	.referrals
 		margin: 25px 0
-		
+
 		&-info-block-wrapper
 			margin-top: 50px
 
@@ -1050,8 +794,12 @@
 			&__title
 				margin-bottom: 50px
 
-	.referrals-section
-		margin: 50px 0
+		&-info-block-link
+			&__title
+				font-size: 21px
+
+			&__subtitle
+				font-size: 18px
 
 	// magazine
 	.magazine
@@ -1091,15 +839,6 @@
 
 				&__subtitle
 					font-size: 18px
-
-	// referrals
-	.referrals
-		&-info-block-link
-			&__title
-				font-size: 21px
-
-			&__subtitle
-				font-size: 18px
 
 	// training
 	.training
@@ -1176,13 +915,6 @@
 				font-size: 12px
 
 @media screen and ( max-width: 400px )
-	// interface
-	.title, .title__mb
-		font-size: 28px
-
-	.btn-arrow
-		font-size: 18px
-
 	// header
 	.header
 		&-modal-menu

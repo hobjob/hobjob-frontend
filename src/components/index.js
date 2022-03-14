@@ -32,8 +32,6 @@ export { default as HomeMainSection } from "./Home/HomeMainSection"
 // Categories
 export { default as CategoriesSection } from "./Categories/CategoriesSection"
 export { default as CategoriesItem } from "./Categories/CategoriesItem"
-export { default as CategoriesItemLoader } from "./Categories/CategoriesItemLoader"
-export { default as CategoriesBtnLoader } from "./Categories/CategoriesBtnLoader"
 
 // Shop
 export { default as ShopBlock } from "./Shop/ShopBlock"
@@ -51,28 +49,14 @@ export { default as CoursePageMain } from "./CoursePage/CoursePageMain"
 export { default as CoursePageLessons } from "./CoursePage/CoursePageLessons"
 export { default as CoursePageLessonsItem } from "./CoursePage/CoursePageLessonsItem"
 export { default as CoursePageLessonsVideo } from "./CoursePage/CoursePageLessonsVideo"
-export { default as CoursePageAbout } from "./CoursePage/CoursePageAbout"
 export { default as CoursePageMaster } from "./CoursePage/CoursePageMaster"
-// About
-export { default as AboutSection } from "./About/AboutSection"
-
-// Masters About
-export { default as MastersSection } from "./MastersAbout/MastersSection"
-export { default as MastersAboutTabItem } from "./MastersAbout/MastersAboutTabItem"
 
 // MasterCard
 export { default as MasterCardInfo } from "./MasterCard/MasterCardInfo"
 
-// Master
-export { default as MasterCoursesList } from "./Master/MasterCoursesList"
-export { default as MasterCoursesListItem } from "./Master/MasterCoursesListItem"
-export { default as MasterBalance } from "./Master/MasterBalance"
-
 // Magazine
 export { default as MagazineBlockBig } from "./Magazine/MagazineBlockBig"
 export { default as MagazineBlock } from "./Magazine/MagazineBlock"
-export { default as MagazineBlockBigLoader } from "./Magazine/MagazineBlockBigLoader"
-export { default as MagazineBlockLoader } from "./Magazine/MagazineBlockLoader"
 export { default as MagazineNotFound } from "./Magazine/MagazineNotFound"
 // Magazine Filters
 export { default as MagazineFiltersCategories } from "./Magazine/MagazineFiltersCategories"
@@ -99,7 +83,6 @@ export { default as PassingHashtag } from "./Passing/PassingHashtag"
 export { default as PassingChat } from "./Passing/PassingChat"
 
 // Cabinet
-export { default as CabinetMessage } from "./Cabinet/CabinetMessage"
 export { default as CabinetCardUserInfo } from "./Cabinet/CabinetCardUserInfo"
 export { default as CabinetUserInfoForm } from "./Cabinet/CabinetUserInfoForm"
 export { default as CabinetUserPassword } from "./Cabinet/CabinetUserPassword"
@@ -107,7 +90,6 @@ export { default as CabinetUserSubscribeInfo } from "./Cabinet/CabinetUserSubscr
 export { default as CabinetUserSubscribeInfoFormSelect } from "./Cabinet/CabinetUserSubscribeInfoFormSelect"
 
 // Referrals
-export { default as ReferralsSection } from "./Referrals/ReferralsSection"
 export { default as ReferralsBlockLink } from "./Referrals/ReferralsBlockLink"
 export { default as ReferralsPartners } from "./Referrals/ReferralsPartners"
 export { default as ReferralsPartnersItem } from "./Referrals/ReferralsPartnersItem"
@@ -123,6 +105,3 @@ export { default as PolicyBlock } from "./Policy/PolicyBlock"
 
 // Footer
 export { default as Footer } from "./Footer/Footer"
-
-// Testing
-export { default as TestingProgressbar } from "./Testing/TestingProgressbar"

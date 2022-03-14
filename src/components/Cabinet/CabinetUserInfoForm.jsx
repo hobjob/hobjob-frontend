@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 import {Field, reduxForm, formValueSelector} from "redux-form";
 import {createTextMask} from "redux-form-input-masks";
 
-import {RenderInput, RenderSelect, BtnLoader} from "../";
+import {RenderInput, BtnLoader} from "../";
 
 import {validateInfo as validate} from "./validateInfo";
 
@@ -48,7 +48,7 @@ let CabinetUserInfoForm = ({
         };
     });
 
-    React.useEffect(() => {
+	React.useEffect(() => {
         initialize({
             name: name,
             surname: surname,
@@ -112,14 +112,6 @@ let CabinetUserInfoForm = ({
                     type="text"
                     name="city"
                     label="Город"
-                />
-            </div>
-            <div className="cabinet-block-form-input">
-                <Field
-                    component={RenderSelect}
-                    name="sex"
-                    label="Пол"
-                    choise={["Не указан", "Мужской", "Женский"]}
                 />
             </div>
             {isSendUpdateUserInfo ? (

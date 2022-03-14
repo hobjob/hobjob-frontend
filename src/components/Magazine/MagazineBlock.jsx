@@ -20,13 +20,14 @@ const MagazineBlock = ({
 }) => {
     return (
         <div className="magazine-block">
-            <Link
-                to={`/magazine/post/${_id}`}
-                className="magazine-block-cover"
-                style={{
-                    backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
-                }}
-            ></Link>
+            <Link to={`/magazine/post/${_id}`} className="magazine-block-cover">
+                <div
+                    className="magazine-block-cover-image"
+                    style={{
+                        backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
+                    }}
+                ></div>
+            </Link>
 
             <div className="magazine-block-text">
                 <div className="magazine-block-text-top">

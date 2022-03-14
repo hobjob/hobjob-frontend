@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import { Header, Footer } from './components/';
 
-import { Home, Shop, CoursePage, Magazine, MagazinePostPage, MasterCard, MastersAbout, Master, About, Err404, Login, PasswordRecoveryEmail, PasswordRecoveryNewPassword, Training, PassingCourse, Cabinet, Referrals, PaymentSubscribeRegister, PaymentSubscribe, PaymentStatus, PaymentError, Policy, PublicOffer, ReferralsPolicy, Regulations, EngineeringWorks, CabinetSubscribeDisable } from './pages/';
+import { Home, Shop, CoursePage, Magazine, MagazinePostPage, MasterCard, Login, PasswordRecoveryEmail, PasswordRecoveryNewPassword, Training, PassingCourse, Cabinet, Referrals, PaymentSubscribeRegister, PaymentSubscribe, PaymentStatus, PaymentError, Policy, PublicOffer, ReferralsPolicy, Regulations, EngineeringWorks, CabinetSubscribeDisable } from './pages/';
 
 dotenv.config()
 
@@ -26,8 +26,6 @@ const App = () => {
 						<Route path="/magazine/post/:id" render={(props) => <MagazinePostPage {...props} />} exact />
 
 						<Route path="/master/:id" render={(props) => <MasterCard {...props} />} exact />
-						<Route path="/masters-about" render={() => <MastersAbout />} exact />
-						<Route path="/about" render={() => <About />} exact />
 
 						{/* Payment */}
 						<Route path="/payment/subscribe/:number" render={(props) => <PaymentSubscribe {...props} />} exact />
@@ -55,9 +53,8 @@ const App = () => {
 
 						<Route path="/go/referrals" render={() => <Referrals />} exact />
 						<Route path="/go/referrals/policy" render={() => <ReferralsPolicy />} exact />
-						<Route path="/go/master" render={() => <Master />} exact />
 
-						<Route render={() => <Err404 />} exact />
+						<Route render={() => window.location.href = "/"} exact />
 					</Switch>
 				</Suspense>
 

@@ -41,14 +41,17 @@ const PasswordRecoveryEmail = () => {
                                     alt="HobJob"
                                     className="reglog-logo__img"
                                 />
-                            </a>
-                            {emailStatus === "success" ? (
-                                <PasswordRecoveryEmailSuccess />
-                            ) : (
-                                <PasswordRecoveryEmailForm
-                                    onSubmit={onSubmit}
-                                />
-                            )}
+							</a>
+							
+                            <div className="reglog-block-wrapper">
+                                {emailStatus === "success" ? (
+                                    <PasswordRecoveryEmailSuccess />
+                                ) : (
+                                    <PasswordRecoveryEmailForm
+                                        onSubmit={onSubmit}
+                                    />
+                                )}
+                            </div>
                         </div>
                     </div>
                 </section>

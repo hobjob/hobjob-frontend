@@ -7,9 +7,7 @@ import {
     HomeMainSection,
     ShopSection,
     CategoriesSection,
-    AboutSection,
     MastersSection,
-    ReferralsSection,
 } from "../components/";
 
 const Home = ({
@@ -43,10 +41,6 @@ const Home = ({
             />
 
             <CategoriesSection />
-
-            <ReferralsSection />
-
-            <AboutSection buttonVisible />
 
             {/* <MastersSection /> */}
         </>

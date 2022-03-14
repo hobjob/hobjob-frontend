@@ -9,7 +9,7 @@ body
 	overflow-x: hidden
 	overflow-y: scroll
 	font-size: 17px
-	+GilroyRegular
+	+SfRegular
 
 // link
 a
@@ -17,13 +17,13 @@ a
 	color: $black
 
 // title
-h1,h2,h3,h4,h5,h6
+h1, h2, h3, h4, h5, h6
 	line-height: 1.2em
 	font-weight: 400
-	+Lora
+	+PtSerif
 
 .title
-	font-size: 48px
+	font-size: 58px
 
 	& span
 		white-space: nowrap
@@ -32,8 +32,8 @@ h1,h2,h3,h4,h5,h6
 		color: $gray
 
 .title__mb
-	font-size: 48px
-	margin-bottom: 100px
+	font-size: 58px
+	margin-bottom: 75px
 
 	& span
 		white-space: nowrap
@@ -84,39 +84,15 @@ li
 // container
 .container
 	position: relative
-	width: 90%
-	max-width: 1300px
+	width: 95%
+	max-width: 1550px
 
 	margin: 0 auto
 
 // btn
-.btn-arrow
-	cursor: pointer
-	border: none
-	background-color: transparent
-	display: inline-flex
-	align-items: center
-	font-size: 24px
-	color: $mainColor
-	white-space: nowrap
-	+Lora
-	+transition
-
-	&:active
-		+transformScale
-
-	& svg
-		margin-left: 15px
-		+transition
-
-	&:hover svg
-		+rotate
-
-	&.disabled
-		opacity: 0.5
-
 .btn
-	display: inline-block
+	display: inline-flex
+	justify-content: center
 	border: none
 	background-color: $mainColor
 	border: 1px solid $mainColor
@@ -127,7 +103,7 @@ li
 	text-align: center
 	font-size: 17px
 	+borderRadius
-	+GilroyRegular
+	+SfRegular
 	+transition
 
 	&:hover
@@ -145,6 +121,7 @@ li
 
 	&__gray
 		display: inline-flex
+		justify-content: center
 		align-items: center
 
 		border: none
@@ -157,7 +134,7 @@ li
 		text-align: center
 		font-size: 17px
 		+borderRadius
-		+GilroyRegular
+		+SfRegular
 		+transition
 
 		&:hover
@@ -181,7 +158,7 @@ li
 		text-align: center
 		font-size: 17px
 		+borderRadius
-		+GilroyRegular
+		+SfRegular
 		+transition
 
 		&.disabled
@@ -195,7 +172,9 @@ li
 			margin-left: 15px
 
 .btn-regular
-	display: inline-block
+	display: inline-flex
+	justify-content: center
+
 	border: 1px solid $mainColor
 	background-color: transparent
 	padding: 20px 30px
@@ -205,7 +184,7 @@ li
 	text-align: center
 	font-size: 17px
 	+borderRadius
-	+GilroyRegular
+	+SfRegular
 	+transition
 
 	&:active
@@ -217,7 +196,9 @@ li
 		border: 1px solid $borderGray
 
 	&__gray
-		display: inline-block
+		display: inline-flex
+		justify-content: center
+
 		border: 1px solid $gray
 		background-color: transparent
 		padding: 20px 30px
@@ -226,7 +207,7 @@ li
 		user-select: none
 		font-size: 17px
 		+borderRadius
-		+GilroyRegular
+		+SfRegular
 		+transition
 
 .btn-small
@@ -243,7 +224,7 @@ li
 	line-height: 1.4em
 
 	+borderRadius
-	+GilroyRegular
+	+SfRegular
 	+transition
 
 	&:active
@@ -267,7 +248,7 @@ li
 	line-height: 1.4em
 
 	+borderRadius
-	+GilroyRegular
+	+SfRegular
 	+transition
 
 	&:active
@@ -288,12 +269,13 @@ li
 		line-height: 1.4em
 
 		+borderRadius
-		+GilroyRegular
+		+SfRegular
 		+transition
 
 .btn-small-round
-	display: inline-block
-	
+	display: inline-flex
+	justify-content: center
+
 	border: none
 	text-align: center
 	border-radius: 100px
@@ -307,7 +289,7 @@ li
 	cursor: pointer
 	line-height: 1.4em
 
-	+GilroyRegular
+	+SfRegular
 	+transition
 
 	&:active
@@ -338,7 +320,7 @@ li
 	cursor: pointer
 	line-height: 1.4em
 
-	+GilroyRegular
+	+SfRegular
 	+transition
 
 	&:active
@@ -377,7 +359,7 @@ input:-webkit-autofill:active
 		border-bottom: 1px solid $gray
 		line-height: 1.4em
 		+transition
-		+GilroyRegular
+		+SfRegular
 
 		&:focus ~ label,
 		&:valid ~ label
@@ -533,7 +515,7 @@ input:-webkit-autofill:active
 		border-bottom: 1px solid $gray
 		line-height: 1.4em
 		+transition
-		+GilroyRegular
+		+SfRegular
 
 		&.error
 			border-bottom: 1px solid $red
@@ -543,13 +525,6 @@ input:-webkit-autofill:active
 		font-size: 14px
 		pointer-events: none
 		+transition
-
-// circle
-.circle
-	position: absolute
-	border-radius: 50%
-	z-index: -1
-	background-color: rgba(221, 158, 94, 0.05)
 
 // nagibinstudio
 .nagibinstudio
@@ -576,7 +551,7 @@ input:-webkit-autofill:active
 		background-color: #FFE9D3
 		border-radius: 50%
 		animation: ballPulse 1s ease-in-out infinite
-		
+
 // tab
 .tab
 	cursor: pointer

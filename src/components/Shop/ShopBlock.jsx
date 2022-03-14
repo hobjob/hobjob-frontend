@@ -76,7 +76,7 @@ const ShopBlock = React.memo(
                             href="/go/register"
                             className="btn shop-block-bottom__btn"
                         >
-                            Оформить подписку
+                            Добавить
                         </a>
                     )}
                 </div>
