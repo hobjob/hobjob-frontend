@@ -76,10 +76,6 @@ const Cabinet = () => {
                                                     <h3 className="cabinet-block-text__title">
                                                         О себе
                                                     </h3>
-                                                    <p className="cabinet-block-text__subtitle">
-                                                        Просьба заполнять
-                                                        реальные данные
-                                                    </p>
                                                 </div>
 
                                                 <CabinetUserInfoForm

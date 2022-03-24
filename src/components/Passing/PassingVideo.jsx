@@ -10,20 +10,10 @@ import $api from "../../http/";
 const PassingVideo = ({courseId, lessonNum, lessonIndex}) => {
     const dispatch = useDispatch();
 
-    const {timecodeSeconds} = useSelector(({passing}) => passing);
-
     const [play, setPlay] = React.useState(true);
     const [duration, setDuration] = React.useState(0);
 
     const VideoRef = React.useRef();
-
-    React.useEffect(() => {
-        if (timecodeSeconds !== 0) {
-            VideoRef.current.seekTo(timecodeSeconds, "seconds");
-
-            scroll.scrollToTop({duration: 500});
-        }
-    }, [timecodeSeconds]);
 
     const handlerError = (e, data) => {
         setPlay(false);

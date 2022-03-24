@@ -1,6 +1,5 @@
 const initialState = {
 	materialsIsDownloading: {},
-	timecodeSeconds: 0
 }
 
 const passing = (state = initialState, action) => {
@@ -20,13 +19,6 @@ const passing = (state = initialState, action) => {
 
 		return {
 			...state
-		}
-	}
-
-	if (action.type === "SET_TIMECODE_SECONDS") {
-		return {
-			...state,
-			timecodeSeconds: action.payload
 		}
 	}
 

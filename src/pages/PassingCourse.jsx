@@ -17,7 +17,6 @@ import {
     PassingLessonsList,
     PassingVideo,
     PassingMaterials,
-    PassingTimecodes,
     PassingHashtag,
     PassingChat,
 } from "../components/";
@@ -129,21 +128,6 @@ const PassingCourse = ({
                                                     downloadFunc={downloadFile}
                                                 />
                                             ) : null}
-
-                                            <PassingTimecodes
-                                                isMaterials={
-                                                    courses[courseId].lessons[
-                                                        lessonIndex
-                                                    ].materials.length
-                                                        ? true
-                                                        : false
-                                                }
-                                                timecodes={
-                                                    courses[courseId].lessons[
-                                                        lessonIndex
-                                                    ].timecodes
-                                                }
-                                            />
                                         </div>
 
                                         <div className="passing-bottom-block">
@@ -153,7 +137,7 @@ const PassingCourse = ({
                                                 }
                                             />
 
-                                            <PassingHashtag hashtag={hashtag} />
+                                            {/* <PassingHashtag hashtag={hashtag} /> */}
                                         </div>
                                     </div>
                                 </div>

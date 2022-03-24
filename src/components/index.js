@@ -77,8 +77,6 @@ export { default as PassingLessonsListItem } from "./Passing/PassingLessonsListI
 export { default as PassingVideo } from "./Passing/PassingVideo"
 export { default as PassingMaterials } from "./Passing/PassingMaterials"
 export { default as PassingMaterialsItem } from "./Passing/PassingMaterialsItem"
-export { default as PassingTimecodes } from "./Passing/PassingTimecodes"
-export { default as PassingTimecodesItem } from "./Passing/PassingTimecodesItem"
 export { default as PassingHashtag } from "./Passing/PassingHashtag"
 export { default as PassingChat } from "./Passing/PassingChat"
 

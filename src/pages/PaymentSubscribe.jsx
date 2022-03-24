@@ -12,7 +12,7 @@ import {
 
 import {subscriptions} from "../subscriptions";
 
-const PaymentProSubscribe = ({
+const PaymentSubscribe = ({
     match: {
         params: {number},
     },
@@ -61,7 +61,7 @@ const PaymentProSubscribe = ({
                         <div className="container">
                             <div className="payment-wrapper">
                                 <div className="payment-form-wrapper">
-                                    <PaymentProgressbar number={2} />
+                                    <PaymentProgressbar number={1} />
                                     <div
                                         className="payment-form"
                                         id="payment-form"
@@ -102,4 +102,4 @@ const PaymentProSubscribe = ({
     );
 };
 
-export default PaymentProSubscribe;
+export default PaymentSubscribe;

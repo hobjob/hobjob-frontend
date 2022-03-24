@@ -54,22 +54,41 @@ const PaymentSubscribeProlongation = () => {
                         подписку, чтобы пользоваться HobJob
                     </p>
                     <div className="payment-prolongation-info-block-wrapper">
-                        {subscriptions.map((item, index) =>
-                            item.type !== "test-subscribe" ? (
-                                <PaymentSubscribeBlock
-                                    {...item}
-                                    handlerTypeSubscribe={handlerTypeSubscribe}
-                                    active={
-                                        stateSubscribe.index === index
-                                            ? true
-                                            : false
-                                    }
-                                    index={index}
-                                    change={true}
-                                    key={`payment-prolongation-info-block-${index}`}
-                                />
-                            ) : null
-                        )}
+                        {userInfo.subscribe.passedPeriodTesting
+                            ? subscriptions.map((item, index) =>
+                                  item.type !== "test-subscribe" ? (
+                                      <PaymentSubscribeBlock
+                                          {...item}
+                                          handlerTypeSubscribe={
+                                              handlerTypeSubscribe
+                                          }
+                                          active={
+                                              stateSubscribe.index === index
+                                                  ? true
+                                                  : false
+                                          }
+                                          index={index}
+                                          change={true}
+                                          key={`payment-prolongation-info-block-${index}`}
+                                      />
+                                  ) : null
+                              )
+                            : subscriptions.map((item, index) => (
+                                  <PaymentSubscribeBlock
+                                      {...item}
+                                      handlerTypeSubscribe={
+                                          handlerTypeSubscribe
+                                      }
+                                      active={
+                                          stateSubscribe.index === index
+                                              ? true
+                                              : false
+                                      }
+                                      index={index}
+                                      change={true}
+                                      key={`payment-prolongation-info-block-${index}`}
+                                  />
+                              ))}
                     </div>
 
                     <button

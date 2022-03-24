@@ -24,8 +24,3 @@ export const fetchPassingCourseLessonMaterial = (courseId, lessonNum, materialNu
 		})
 	});
 }
-
-export const setTimecodeSeconds = (seconds) => ({
-	type: "SET_TIMECODE_SECONDS",
-	payload: seconds
-})

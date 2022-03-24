@@ -6,7 +6,13 @@ import {checkDeclension} from "../Functions/checkDeclension";
 
 import {fetchUserCourses} from "../redux/actions/user";
 
-import {Loader, TrainingNull, TrainingBlock, ShopSection} from "../components/";
+import {
+    Loader,
+    TrainingNull,
+    TrainingBlock,
+    ShopSection,
+    PaymentSubscribeProlongation,
+} from "../components/";
 
 const Training = () => {
     const dispatch = useDispatch();
@@ -37,48 +43,58 @@ const Training = () => {
                     <>
                         <section className="training">
                             <div className="container">
-                                <div className="training-wrapper">
-                                    {Object.keys(courses).length ? (
-                                        <>
-                                            <h2 className="title__mb training__title">
-                                                Мое обучение
-                                                <span>
-                                                    (
-                                                    {
-                                                        Object.keys(courses)
-                                                            .length
-                                                    }
-                                                    )
-                                                </span>
-                                            </h2>
-                                            <div className="training-block-wrapper">
-                                                {Object.keys(courses).map(
-                                                    (key, index) => (
-                                                        <TrainingBlock
-                                                            {...courses[key]}
-                                                            completedLessons={
-                                                                checkDeclension(
-                                                                    courses[key]
-                                                                        .completedLessons
-                                                                        .length,
-                                                                    [
-                                                                        "урок",
-                                                                        "урока",
-                                                                        "уроков",
-                                                                    ]
-                                                                ).title
-                                                            }
-                                                            masters={masters}
-                                                            key={`training-block-${index}`}
-                                                        />
-                                                    )
-                                                )}
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <TrainingNull />
-                                    )}
-                                </div>
+                                {userInfo.subscribe.working ? (
+                                    <div className="training-wrapper">
+                                        {Object.keys(courses).length ? (
+                                            <>
+                                                <h2 className="title__mb training__title">
+                                                    Мое обучение
+                                                    <span>
+                                                        (
+                                                        {
+                                                            Object.keys(courses)
+                                                                .length
+                                                        }
+                                                        )
+                                                    </span>
+                                                </h2>
+                                                <div className="training-block-wrapper">
+                                                    {Object.keys(courses).map(
+                                                        (key, index) => (
+                                                            <TrainingBlock
+                                                                {...courses[
+                                                                    key
+                                                                ]}
+                                                                completedLessons={
+                                                                    checkDeclension(
+                                                                        courses[
+                                                                            key
+                                                                        ]
+                                                                            .completedLessons
+                                                                            .length,
+                                                                        [
+                                                                            "урок",
+                                                                            "урока",
+                                                                            "уроков",
+                                                                        ]
+                                                                    ).title
+                                                                }
+                                                                masters={
+                                                                    masters
+                                                                }
+                                                                key={`training-block-${index}`}
+                                                            />
+                                                        )
+                                                    )}
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <TrainingNull />
+                                        )}
+                                    </div>
+                                ) : (
+                                    <PaymentSubscribeProlongation />
+                                )}
                             </div>
                         </section>
 
