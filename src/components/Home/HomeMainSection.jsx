@@ -8,13 +8,13 @@ const HomeMainSection = () => {
                 <div className="main-wrapper">
                     <div className="main-text">
                         <h1 className="main-text__title">
-                            HobJob - сообщество творческих людей
+                            HobJob - платформа с курсами для творческих людей
                         </h1>
                         <p className="main-text__description">
                             Научитесь создавать шедевры своими руками
                         </p>
                         <Link to="/shop" className="btn main-text__btn">
-                           Подобрать подходящий курс
+                            Подобрать подходящий курс
                         </Link>
                     </div>
 

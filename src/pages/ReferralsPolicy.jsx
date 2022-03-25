@@ -19,7 +19,7 @@ const ReferralsPolicy = () => {
                 },
                 {
                     type: "text",
-                    text: "2. Давать рекламу по брендовым запросам HobJob.",
+                    text: "2. Давать рекламу по поисковым запросам HobJob",
                 },
                 {
                     type: "text",

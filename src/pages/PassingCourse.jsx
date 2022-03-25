@@ -18,7 +18,6 @@ import {
     PassingVideo,
     PassingMaterials,
     PassingHashtag,
-    PassingChat,
 } from "../components/";
 
 const PassingCourse = ({
@@ -131,12 +130,6 @@ const PassingCourse = ({
                                         </div>
 
                                         <div className="passing-bottom-block">
-                                            <PassingChat
-                                                chatUrl={
-                                                    courses[courseId].chatUrl
-                                                }
-                                            />
-
                                             {/* <PassingHashtag hashtag={hashtag} /> */}
                                         </div>
                                     </div>

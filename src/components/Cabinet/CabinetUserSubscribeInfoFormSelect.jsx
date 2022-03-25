@@ -25,7 +25,7 @@ const CabinetUserSubscribeInfoFormSelect = ({
                                 className="select__option"
                                 key={`select__option-${index}`}
                             >
-                                {item.title}
+                                {item.title} ({item.description})
                             </option>
                         ) : null
                     )}

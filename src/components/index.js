@@ -78,7 +78,6 @@ export { default as PassingVideo } from "./Passing/PassingVideo"
 export { default as PassingMaterials } from "./Passing/PassingMaterials"
 export { default as PassingMaterialsItem } from "./Passing/PassingMaterialsItem"
 export { default as PassingHashtag } from "./Passing/PassingHashtag"
-export { default as PassingChat } from "./Passing/PassingChat"
 
 // Cabinet
 export { default as CabinetCardUserInfo } from "./Cabinet/CabinetCardUserInfo"
