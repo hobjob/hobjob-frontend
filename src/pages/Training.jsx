@@ -47,7 +47,7 @@ const Training = () => {
                                     <div className="training-wrapper">
                                         {Object.keys(courses).length ? (
                                             <>
-                                                <h2 className="title__mb training__title">
+                                                <h2 className="title training__title">
                                                     Мое обучение
                                                     <span>
                                                         (

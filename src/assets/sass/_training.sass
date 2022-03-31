@@ -3,6 +3,9 @@
 	margin: 50px 0
 	+openAnimation
 
+	&__title
+		margin-bottom: 50px
+
 	&-block-wrapper
 		display: flex
 		flex-wrap: wrap
@@ -10,14 +13,16 @@
 	&-block
 		width: 100%
 		display: flex
-		margin-bottom: 50px
-		padding-bottom: 50px
-		border-bottom: 1px solid $borderGray
+		min-height: 200px
+		margin-bottom: 15px
+		padding: 15px
+		background-color: $backgroundGray
+
 		+openAnimation
+		+borderRadiusBlock
 
 		&:last-child
 			margin-bottom: 0
-			border: none
 
 		&:hover &-cover
 			&-placeholder
@@ -31,7 +36,7 @@
 			position: relative
 			overflow: hidden
 			min-width: 250px
-			height: 200px
+			height: 250px
 			+borderRadius
 
 			&-placeholder
@@ -67,6 +72,11 @@
 			&__title
 				font-size: 36px
 				margin-bottom: 25px
+
+				overflow: hidden
+				display: -webkit-box
+				-webkit-line-clamp: 1
+				-webkit-box-orient: vertical
 
 			&__auth
 				font-size: 21px

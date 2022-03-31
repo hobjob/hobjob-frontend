@@ -5,7 +5,6 @@ export { default as RenderInput } from "./All/RenderInput"
 export { default as RenderSelect } from "./All/RenderSelect"
 export { default as FileInput } from "./All/FileInput"
 export { default as BtnLoader } from "./All/BtnLoader"
-export { default as Tab } from "./All/Tab"
 export { default as ImageBox } from "./All/ImageBox"
 export { default as ModalWindow } from "./All/ModalWindow"
 

@@ -22,14 +22,16 @@ const initialState = {
 	}
 }
 
-if (parseQuery.category) {
-	if (typeof parseQuery.category === "object") {
-		parseQuery.category.map(
-			(item) => (initialState.filters.categories[item] = item)
-		);
-	} else {
-		initialState.filters.categories[parseQuery.category] =
-			parseQuery.category;
+if (document.location.pathname === "/magazine/") {
+	if (parseQuery.category) {
+		if (typeof parseQuery.category === "object") {
+			parseQuery.category.map(
+				(item) => (initialState.filters.categories[item] = item)
+			);
+		} else {
+			initialState.filters.categories[parseQuery.category] =
+				parseQuery.category;
+		}
 	}
 }
 

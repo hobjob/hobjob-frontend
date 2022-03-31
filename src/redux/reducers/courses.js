@@ -33,29 +33,27 @@ const initialState = {
 	},
 }
 
-if (parseQuery.category) {
-	if (typeof parseQuery.category === "object") {
-		parseQuery.category.map(
-			(item) => (initialState.filters.categories[item] = item)
-		);
-	} else {
-		initialState.filters.categories[parseQuery.category] =
-			parseQuery.category;
+if (document.location.pathname === "/shop/") {
+	if (parseQuery.category) {
+		if (typeof parseQuery.category === "object") {
+			parseQuery.category.map(
+				(item) => (initialState.filters.categories[item] = item)
+			);
+		} else {
+			initialState.filters.categories[parseQuery.category] =
+				parseQuery.category;
+		}
 	}
-} else {
-	initialState.filters.categories = {}
-}
 
-if (parseQuery.masters) {
-	if (typeof parseQuery.masters === "object") {
-		parseQuery.masters.map(
-			(item) => (initialState.filters.masters[item] = item)
-		);
-	} else {
-		initialState.filters.masters[parseQuery.masters] = parseQuery.masters;
+	if (parseQuery.masters) {
+		if (typeof parseQuery.masters === "object") {
+			parseQuery.masters.map(
+				(item) => (initialState.filters.masters[item] = item)
+			);
+		} else {
+			initialState.filters.masters[parseQuery.masters] = parseQuery.masters;
+		}
 	}
-} else {
-	initialState.filters.masters = {}
 }
 
 const courses = (state = initialState, action) => {

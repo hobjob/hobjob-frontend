@@ -74,7 +74,7 @@ const CoursePageMain = ({
                                 href="/go/register"
                                 className="btn course-page-main-text__btn"
                             >
-                                Оформите пробную подписку
+                                Оформить пробную подписку
                             </a>
                         )}
                     </div>
