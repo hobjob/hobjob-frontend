@@ -1,5 +1,7 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import MainVideo from '../../assets/videos/main-video.mp4'
 
 const HomeMainSection = () => {
     return (
@@ -14,7 +16,7 @@ const HomeMainSection = () => {
                             Научитесь создавать шедевры своими руками
                         </p>
                         <Link to="/shop" className="btn main-text__btn">
-                            Подобрать подходящий курс
+                            Смотреть курсы
                         </Link>
                     </div>
 
@@ -26,10 +28,7 @@ const HomeMainSection = () => {
                             loop
                             muted
                         >
-                            <source
-                                src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/main-video.mp4`}
-                                type="video/mp4"
-                            />
+                            <source src={MainVideo} type="video/mp4" />
                         </video>
                     </div>
                 </div>

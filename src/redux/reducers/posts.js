@@ -22,7 +22,7 @@ const initialState = {
 	}
 }
 
-if (document.location.pathname === "/magazine/") {
+if (document.location.pathname === "/magazine/" || document.location.pathname === "/magazine") {
 	if (parseQuery.category) {
 		if (typeof parseQuery.category === "object") {
 			parseQuery.category.map(

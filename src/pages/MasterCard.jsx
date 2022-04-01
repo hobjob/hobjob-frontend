@@ -58,11 +58,11 @@ const MasterCard = ({
 
                                     {itemById.courses &&
                                     itemById.courses.length ? (
-                                        <div className="master-card-course">
+                                        <div className="master-card-courses">
                                             <h2 className="title__mb master-card-course__title">
                                                 Курсы
                                             </h2>
-                                            <div className="master-card-course-block-wrapper">
+                                            <div className="master-card-courses-block-wrapper">
                                                 {itemById.courses.map(
                                                     (item, index) => (
                                                         <ShopBlock
@@ -97,13 +97,13 @@ const MasterCard = ({
                                                     )
                                                 )}
                                             </div>
-                                            <div className="master-card-course-btn">
-                                                <Link
-                                                    to={`/shop?masters=${itemById._id}`}
-                                                    className="btn__gray master-card-course__btn"
+                                            <div className="master-card-courses-btn">
+                                                <a
+                                                    href={`/shop?masters=${itemById._id}`}
+                                                    className="btn__gray master-card-courses__btn"
                                                 >
                                                     Показать еще
-                                                </Link>
+                                                </a>
                                             </div>
                                         </div>
                                     ) : null}
@@ -111,7 +111,7 @@ const MasterCard = ({
                                     {itemById.posts && itemById.posts.length ? (
                                         <div className="master-card-magazine">
                                             <h2 className="title__mb master-card-magazine__title">
-                                                Журнал
+                                                Последние посты мастера
                                             </h2>
 
                                             <div className="master-card-magazine-block-wrapper">
@@ -176,6 +176,15 @@ const MasterCard = ({
                                                         )}
                                                     </div>
                                                 </>
+                                            </div>
+
+                                            <div className="master-card-magazine-btn">
+                                                <Link
+                                                    to="/magazine"
+                                                    className="btn__gray master-card-magazine__btn"
+                                                >
+                                                    Показать еще
+                                                </Link>
                                             </div>
                                         </div>
                                     ) : null}

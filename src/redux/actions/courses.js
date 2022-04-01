@@ -48,7 +48,7 @@ export const fetchCoursesSection = (userInfo = null, url = "") => (dispatch) => 
 		payload: false,
 	})
 
-	$api.get(`/courses?sort=buyCountWeek&order=desc`).then(({ data }) => {
+	$api.get(`/courses`).then(({ data }) => {
 		dispatch(setCoursesSection(data, userInfo, url))
 	})
 }

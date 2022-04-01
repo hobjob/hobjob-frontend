@@ -66,7 +66,6 @@ const Shop = React.memo(
                 {
                     q: filters.search,
                     category: arrayCategories,
-                    sale: filters.sale,
                     masters: arrayMasters,
                 },
                 {arrayFormat: "comma", skipNull: true, skipEmptyString: true}
@@ -78,7 +77,6 @@ const Shop = React.memo(
         }, [
             Object.keys(filters.categories).length,
             filters.search,
-            filters.sale,
             Object.keys(filters.masters).length,
         ]);
 

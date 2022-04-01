@@ -7,11 +7,10 @@ const MagazinePostPageBlock = ({title, description, image}) => {
                 <h3
                     className="magazine-post-page-block-text__title"
                     dangerouslySetInnerHTML={{__html: title}}
-                >
-                </h3>
+                ></h3>
                 {description.map((item, index) => (
                     <p
-                        className="magazine-post-page-block-text__description"
+                        className="description magazine-post-page-block-text__description"
                         key={`magazine-post-page-block-text__description-${index}`}
                         dangerouslySetInnerHTML={{__html: item}}
                     ></p>

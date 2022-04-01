@@ -33,7 +33,7 @@ const initialState = {
 	},
 }
 
-if (document.location.pathname === "/shop/") {
+if (document.location.pathname === "/shop/" || document.location.pathname === "/shop") {
 	if (parseQuery.category) {
 		if (typeof parseQuery.category === "object") {
 			parseQuery.category.map(

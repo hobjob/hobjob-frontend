@@ -8,27 +8,12 @@
 @media screen and ( max-width: 1300px )
 	// main
 	.main
-		&-wrapper
-			flex-direction: column
-			align-items: flex-start
-			justify-content: center
-
 		&-text
-
-			width: 75%
 			&__title
 				font-size: 54px
 
 		&-video
 			width: 100%
-
-			display: flex
-			justify-content: center
-
-			margin-top: 50px
-
-			&__video
-				width: 75%
 
 @media screen and ( max-width: 1250px )
 	// cabinet-subscribe-disable
@@ -179,6 +164,11 @@
 				width: 40%
 
 @media screen and ( max-width: 1100px )
+	// main
+	.main
+		&-text
+			width: 100%
+
 	// shop
 	.shop
 		&-btn-wrapper
@@ -230,14 +220,6 @@
 		&-item
 			margin-right: 0
 			width: 100%
-
-	// master-section
-	.master-section
-		&-text
-			width: 75%
-
-		&-right
-			display: none
 
 	// magazine-post-page
 	.magazine-post-page
@@ -295,6 +277,22 @@
 		&__title
 			font-size: 18px
 
+	// master-card
+	.master-card
+		&-info
+			flex-direction: column
+
+			&-avatar
+				min-width: 175px
+				height: 175px
+
+			&-text
+				text-align: center
+				max-width: 100%
+
+				margin-top: 25px
+				margin-left: 0
+
 	// shop
 	.shop
 		&-filters
@@ -343,14 +341,15 @@
 			max-width: 100%
 			flex-wrap: nowrap
 			overflow-x: scroll
-			margin-bottom: 50px
+			margin-bottom: 0
 
 		&-block-wrapper
-			margin-top: 50px
+			margin-top: 25px
 
 		&-block
 			width: 100%
-			margin: 0 0 50px 0
+			margin: 0 0 25px 0
+			padding-bottom: 25px
 
 			&-cover
 				height: 350px
@@ -474,12 +473,6 @@
 			&-line
 				display: none
 
-@media screen and ( max-width: 820px )
-	// main
-	.main
-		&-text
-			width: 100%
-
 @media screen and ( max-width: 800px )
 	// interface
 	.title, .title__mb
@@ -490,6 +483,21 @@
 		&-modal-menu
 			&-content
 				width: 75%
+
+	// master-card
+	.master-card
+		&-courses
+			margin-top: 25px
+
+	// main
+	.main
+		&-text
+			&__title
+				font-size: 48px
+
+			&__btn
+				width: 100%
+
 	// referrals
 	.referrals
 		&-partners
@@ -561,15 +569,6 @@
 	.reglog
 		&-block-wrapper
 			width: 100%
-
-	// master-section
-	.master-section
-		&-text
-			width: 100%
-
-		&-statistics
-			&-item
-				width: calc(50% - 50px)
 
 @media screen and ( max-width: 600px )
 	// main
@@ -665,13 +664,19 @@
 
 @media screen and ( max-width: 500px )
 	// interface
+	.title, .title__mb
+		font-size: 32px
+
 	.description, .description__mt, .description__mb
-		font-size: 21px
+		font-size: 18px
 
 	.input
 		&-file-block
 			&__btn
 				min-width: 100%
+
+	.btn__gray
+		width: 100%
 
 	// header
 	.header
@@ -690,15 +695,13 @@
 
 	// main
 	.main
-		margin: 50px 0
-
 		&-text
-			&__title
-				font-size: 32px
+			&__btn
+				margin-top: 25px
 
 	// categories
 	.categories
-		margin: 50px 0
+		margin: 25px 0
 
 		&-item
 			padding: 20px 15px
@@ -712,18 +715,6 @@
 			&__img
 				width: 50px
 
-	// master-section
-	.master-section
-		margin: 50px 0
-
-		&-statistics
-			margin-top: 75px
-
-			&-item
-				width: 100%
-				text-align: center
-				margin: 0 0 25px 0
-
 	// course-page
 	.course-page
 		&__btn
@@ -733,11 +724,7 @@
 			transform: translateX(-50%)
 
 		&__title
-			font-size: 28px
-
-		&__title__mb
-			font-size: 28px
-			margin-bottom: 50px
+			font-size: 32px
 
 		&-main
 			&-text
@@ -760,7 +747,10 @@
 
 		&-master
 			&-wrapper
-				padding: 25px
+				padding: 20px 15px
+
+			&__title
+				margin-bottom: 25px
 
 			&__description
 				font-size: 21px
@@ -772,7 +762,13 @@
 
 	// shop
 	.shop
+		margin: 25px 0
+
+		&__description
+			margin-bottom: 50px
+
 		&-filters
+			margin-top: 25px
 			width: 100%
 
 		&-top
@@ -780,8 +776,21 @@
 				&__title
 					font-size: 21px
 
+		&-btn-wrapper
+			margin-top: 25px
+
+		&-block-wrapper
+			margin-top: 25px
+
+		&-block
+			margin-bottom: 50px
+
+	// shop-section
 	.shop-section
-		margin: 50px 0
+		margin: 25px 0
+
+		&__description
+			margin-bottom: 25px
 
 	// referrals
 	.referrals
@@ -806,6 +815,8 @@
 
 	// magazine
 	.magazine
+		margin: 25px 0
+
 		&-block
 			&-cover
 				height: 200px
@@ -813,6 +824,26 @@
 			&-text
 				&__title
 					font-size: 28px
+
+	// magazine-post-page
+	.magazine-post-page
+		margin: 25px 0
+
+		&-cover
+			&-img
+				margin-top: 25px
+
+		&-block-wrapper
+			margin-top: 50px
+
+		&-block
+			&:last-child
+				margin-bottom: 25px
+
+			&-text
+				&__title
+					font-size: 32px
+					margin-bottom: 25px
 
 	// cabinet
 	.cabinet
@@ -918,4 +949,4 @@
 	.main
 		&-text
 			&__title
-				font-size: 28px
+				font-size: 32px

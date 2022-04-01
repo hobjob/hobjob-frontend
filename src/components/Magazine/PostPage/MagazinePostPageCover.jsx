@@ -63,7 +63,7 @@ const MagazinePostPageCover = ({
                     {title}
                 </h2>
                 <p
-                    className="magazine-post-page-cover-text__description"
+                    className="description magazine-post-page-cover-text__description"
                     dangerouslySetInnerHTML={{__html: description}}
                 ></p>
             </div>

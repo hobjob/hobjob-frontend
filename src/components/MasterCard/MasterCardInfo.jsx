@@ -1,11 +1,6 @@
 import React from "react";
 
-const MasterCardInfo = ({
-    avatar,
-    name,
-    surname,
-    masterDescription,
-}) => {
+const MasterCardInfo = ({avatar, name, surname, masterDescription}) => {
     return (
         <div className="master-card-info">
             <div
@@ -15,11 +10,11 @@ const MasterCardInfo = ({
                 }}
             ></div>
             <div className="master-card-info-text">
-                <div className="master-card-info-text-title">
-                    <h2 className="title master-card-info-text__title">
-                        {name} {surname}
-                    </h2>
-                </div>
+                <span className="master-card-info-text__subtitle">мастер HobJob</span>
+
+                <h2 className="title master-card-info-text__title">
+                    {name} {surname}
+                </h2>
                 <p className="description master-card-info-text__description">
                     {masterDescription}
                 </p>
