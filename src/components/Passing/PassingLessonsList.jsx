@@ -13,7 +13,7 @@ const PassingCoursesList = ({
     return (
         <div className="passing-lessons-list">
             <div className="passing-lessons-list-block">
-                <p className="subtitle passing-lessons-list-block__subtitle">
+                <p className="passing-lessons-list-block__subtitle">
                     {title}
                 </p>
                 <div className="passing-lessons-list-block-items-wrapper">

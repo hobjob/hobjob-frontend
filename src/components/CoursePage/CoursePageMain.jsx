@@ -28,10 +28,10 @@ const CoursePageMain = ({
                                     : null}
                             </a>
                         </div>
-                        <h2 className="course-page__title course-page-main-text__title">
+                        <h2 className="course-page-main-text__title">
                             {title}
                         </h2>
-                        <p className="course-page-main-text__description">
+                        <p className="description course-page-main-text__description">
                             {description}
                         </p>
 

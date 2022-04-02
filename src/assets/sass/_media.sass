@@ -33,11 +33,6 @@
 			order: 1
 
 @media screen and ( max-width: 1200px )
-	// modal-window
-	.modal-window
-		&-content
-			width: 95%
-
 	// header
 	.header
 		&-nav
@@ -156,7 +151,6 @@
 	// course-page
 	.course-page
 		&-main
-
 			&-text
 				width: 55%
 
@@ -181,6 +175,7 @@
 	.course-page
 		&-main
 			margin: 50px 0
+
 			&-wrapper
 				flex-direction: column
 
@@ -552,19 +547,6 @@
 				&-cover
 					height: 300px
 
-	// course-page
-	.course-page
-		&-main
-			&-text
-				&-price
-					&__price
-						flex-direction: column
-						align-items: flex-start
-
-						& span
-							margin-left: 0
-							font-size: 16px
-
 	// reglog
 	.reglog
 		&-block-wrapper
@@ -638,12 +620,6 @@
 		&-progressbar
 			width: 100%
 
-	// modal-window
-	.modal-window
-		&-content
-			margin: 25px 0
-			padding: 25px
-
 	// cabinet-subscribe-disable
 	.cabinet-subscribe-disable
 		&-text
@@ -667,6 +643,9 @@
 	.title, .title__mb
 		font-size: 32px
 
+		& span
+			font-size: 21px
+
 	.description, .description__mt, .description__mb
 		font-size: 18px
 
@@ -683,10 +662,17 @@
 		&-modal-menu
 			&-content
 				width: 100%
+				padding: 25px
+
+			&-nav
+				&-bottom
+					margin-top: 35px
+					padding-top: 35px
 
 		&-login
 			&__link
 				font-size: 16px
+
 				& svg
 					display: none
 
@@ -727,20 +713,23 @@
 			font-size: 32px
 
 		&-main
+			margin: 25px 0
+
 			&-text
-				&__description
-					font-size: 21px
+				margin-bottom: 25px
+
+				&__title
+					font-size: 36px
 
 				&-master
-					display: none
-
-				&__price
 					display: none
 
 				&__btn
 					display: none
 
 		&-lessons
+			margin: 25px 0
+
 			&-list
 				&__title
 					font-size: 28px
@@ -750,10 +739,8 @@
 				padding: 20px 15px
 
 			&__title
+				font-size: 36px
 				margin-bottom: 25px
-
-			&__description
-				font-size: 21px
 
 	// reglog
 	.reglog
@@ -765,7 +752,7 @@
 		margin: 25px 0
 
 		&__description
-			margin-bottom: 50px
+			margin-bottom: 25px
 
 		&-filters
 			margin-top: 25px
@@ -804,6 +791,7 @@
 
 		&-partners
 			&__title
+				font-size: 24px
 				margin-bottom: 50px
 
 		&-info-block-link
@@ -816,6 +804,9 @@
 	// magazine
 	.magazine
 		margin: 25px 0
+
+		&-filters-categories
+			margin-top: 25px
 
 		&-block
 			&-cover
@@ -876,6 +867,11 @@
 
 	// training
 	.training
+		margin: 25px 0
+
+		&__title
+			margin-bottom: 25px
+		
 		&-block
 			&-cover
 				height: 200px
@@ -887,6 +883,8 @@
 
     // passing
 	.passing
+		margin: 25px 0
+		
 		&-top
 			&-text
 				&__title
@@ -894,6 +892,14 @@
 
 		&-video
 			margin-top: 15px
+		
+		&-lessons-list
+			&-block
+				&__subtitle
+					font-size: 18px
+
+				&-item
+					margin-right: 10px
 
 		&-lesson-info
 			&-block
@@ -916,8 +922,19 @@
 	.footer
 		&-block
 			&-logos
-				align-items: flex-start
 				flex-direction: column
+
+			&-contact
+				margin-top: 35px
+
+				&-email-wrapper
+					text-align: center
+
+				&-social
+					justify-content: center
+
+			&-subinfo
+				margin-top: 35px
 
 	// nagibinstudio
 	.nagibinstudio
@@ -925,11 +942,6 @@
 		margin-top: 50px
 
 @media screen and ( max-width: 450px )
-	// modal-window
-	.modal-window
-		&-content
-			padding: 15px
-
 	// reglog
 	.reglog
 		&-block
@@ -939,12 +951,6 @@
 				font-size: 12px
 
 @media screen and ( max-width: 400px )
-	// header
-	.header
-		&-modal-menu
-			&-content
-				padding: 25px
-
 	// main
 	.main
 		&-text

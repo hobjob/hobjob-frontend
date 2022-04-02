@@ -23,11 +23,11 @@ const CoursePageMaster = ({masterId, master, image, path}) => {
                             onClick={handlerStateImage}
                         ></div>
                         <div className="course-page-master-text">
-                            <h2 className="course-page__title course-page-master__title">
+                            <h2 className="course-page-master__title">
                                 О мастере
                             </h2>
                             {master ? (
-                                <p className="course-page-master__description">
+                                <p className="description course-page-master__description">
                                     {master.masterDescription}
                                 </p>
                             ) : null}

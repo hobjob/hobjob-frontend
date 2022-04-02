@@ -78,7 +78,7 @@ const Magazine = ({
                     <div className="magazine-wrapper">
                         {isLoadedAllCategories && isLoadedMasters ? (
                             <>
-                                <h2 className="title__mb magazine__title">
+                                <h2 className="title magazine__title">
                                     Журнал
                                     <span>
                                         (

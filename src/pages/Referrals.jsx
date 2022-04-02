@@ -41,7 +41,7 @@ const Referrals = () => {
                                                 бесплатные месяцы подписки
                                                 HobJob
                                             </h2>
-                                            <p className="referrals-top-text__description">
+                                            <p className="description referrals-top-text__description">
                                                 Поделитесь бесплатной неделей
                                                 Hobjob со своими друзьями и
                                                 получите бесплатный месяц за

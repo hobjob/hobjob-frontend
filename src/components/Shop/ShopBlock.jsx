@@ -14,18 +14,19 @@ const ShopBlock = React.memo(
         isLogin,
         onClickAddCourse,
     }) => {
-        const [addState, setAddState] = React.useState(false);
-
         return (
             <div className="shop-block">
                 <div className="shop-block-top">
-                    <Link
-                        to={`/course/${url}`}
-                        className="shop-block-top-cover"
-                        style={{
-                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
-                        }}
-                    ></Link>
+                    <div className="shop-block-top-cover-wrapper">
+                        <Link
+                            to={`/course/${url}`}
+                            className="shop-block-top-cover"
+                            style={{
+                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
+                            }}
+                        ></Link>
+                    </div>
+
                     <div className="shop-block-top-text">
                         <Link
                             to={`/course/${url}`}
