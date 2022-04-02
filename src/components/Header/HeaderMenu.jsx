@@ -11,19 +11,20 @@ const HeaderMenu = React.memo(() => {
             >
                 Курсы
             </NavLink>
-            <a
-                href={`${process.env.REACT_APP_DOMEN_MASTERS_SERVICES}`}
-                className="header-nav__link"
-            >
-                Для мастеров
-            </a>
             <NavLink
                 to="/magazine"
                 className="header-nav__link"
                 activeClassName="header-nav__link active"
             >
                 Журнал
-            </NavLink>
+			</NavLink>
+			
+            <a
+                href={`${process.env.REACT_APP_DOMEN_MASTERS_SERVICES}`}
+                className="header-nav__link bg"
+            >
+                Для мастеров
+            </a>
         </nav>
     );
 });

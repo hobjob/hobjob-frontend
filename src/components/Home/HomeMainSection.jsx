@@ -19,7 +19,6 @@ const HomeMainSection = () => {
                             Смотреть курсы
                         </Link>
                     </div>
-
                     <div className="main-video">
                         <video
                             className="main-video__video"

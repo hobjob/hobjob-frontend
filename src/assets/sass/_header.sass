@@ -20,19 +20,31 @@
 
 	&-nav
 		&__link
-			font-size: 18px
 			margin-right: 35px
 			+transition
 
 			&:last-child
 				margin-right: 0
 
-			&.active
-				color: $mainColor
-
+			&:active
+				+transformScale
+				
 			&:hover
 				color: $mainColor
 
+			&.active
+				color: $mainColor
+
+			&.bg
+				border-radius: 100px
+				padding: 15px 25px
+				background-color: #F3F3F3
+
+				&:hover
+					color: $black
+					background-color: #F7F7F7
+
+			
 	&-left
 		display: flex
 		align-items: center
