@@ -26,7 +26,7 @@ const CategoriesSection = () => {
             <div className="container">
                 <div className="categories-wrapper">
                     <h2 className="title__mb categories__title">
-                        Чему мы учим
+                        Направления
                     </h2>
 
                     <div className="categories-items-wrapper">

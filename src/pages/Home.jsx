@@ -30,7 +30,7 @@ const Home = ({
     return (
         <>
             <Helmet>
-                <title>Главная - HobJob</title>
+                <title>HobJob - курсы для творческих людей</title>
             </Helmet>
 
             <HomeMainSection />

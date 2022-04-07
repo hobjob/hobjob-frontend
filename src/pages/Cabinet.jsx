@@ -20,8 +20,6 @@ const Cabinet = () => {
 
     const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
 
-    const [masterInfoMessage, setMasterInfoMessage] = React.useState(false);
-
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -49,11 +47,6 @@ const Cabinet = () => {
 
     const onSubmitCabinetUserPassword = (data) => {
         return dispatch(fetchUpdateUserPassword(data));
-    };
-
-    const closeMasterInfoMessage = () => {
-        localStorage.setItem("close-master-info-message", true);
-        setMasterInfoMessage(true);
     };
 
     return (
