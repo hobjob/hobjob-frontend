@@ -11,7 +11,7 @@ export const fetchCourses = (query = null, page) => (dispatch) => {
 		payload: true,
 	})
 
-	$api.get(`/courses?limit=8&page=${page}&${query !== null ? query : ""}`).then((response) => {
+	$api.get(`/courses?limit=8${page ? `&page=${page}` : ""}&${query !== null ? query : ""}`).then((response) => {
 		dispatch(setCourses(response))
 
 		dispatch({
