@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useHistory} from "react-router-dom";
+import {Redirect, useHistory} from "react-router-dom";
 import NumberFormat from "react-number-format";
 import {Helmet} from "react-helmet";
 import moment from "moment";
@@ -137,7 +137,7 @@ const PassingCourse = ({
                             </section>
                         </>
                     ) : (
-                        history.push("/go/training")
+                        <Redirect to="/go/training" />
                     )
                 ) : (
                     <Loader />

@@ -70,13 +70,6 @@ const HeaderModalMenu = React.memo(
                         >
                             Курсы
                         </NavLink>
-                        <a
-                            href={`${process.env.REACT_APP_DOMEN_MASTERS_SERVICES}`}
-                            className="header-modal-menu-nav__link"
-                            onClick={onClickCloseModalMenu}
-                        >
-                            Для мастеров
-                        </a>
                         <NavLink
                             to="/magazine"
                             className="header-modal-menu-nav__link"
@@ -85,6 +78,13 @@ const HeaderModalMenu = React.memo(
                         >
                             Журнал
                         </NavLink>
+                        <a
+                            href={`${process.env.REACT_APP_DOMEN_MASTERS_SERVICES}`}
+                            className="header-modal-menu-nav__link"
+                            onClick={onClickCloseModalMenu}
+                        >
+                            Стать мастером
+                        </a>
                         {!isLoadedUserInfo ? (
                             <div className="header-modal-menu-nav-bottom">
                                 <a

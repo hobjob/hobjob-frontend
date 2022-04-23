@@ -17,13 +17,13 @@ const HeaderMenu = React.memo(() => {
                 activeClassName="header-nav__link active"
             >
                 Журнал
-			</NavLink>
-			
+            </NavLink>
+
             <a
                 href={`${process.env.REACT_APP_DOMEN_MASTERS_SERVICES}`}
                 className="header-nav__link bg"
             >
-                Для мастеров
+                Стать мастером
             </a>
         </nav>
     );
