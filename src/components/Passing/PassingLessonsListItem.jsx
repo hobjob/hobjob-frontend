@@ -1,24 +1,14 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-const PassingLessonsListItem = ({
-    image,
-    title,
-    active,
-    courseId,
-    num,
-    isTesting,
-    openModalBuyWindow,
-    extraLesson,
-}) => {
+const PassingLessonsListItem = ({image, title, active, courseId, num}) => {
     return (
         <>
-            {isTesting && !extraLesson && num !== 1 ? (
+            {active ? (
                 <div
                     className={`passing-lessons-list-block-item ${
                         active ? "active" : ""
                     }`}
-                    onClick={active ? () => {} : openModalBuyWindow}
                 >
                     <div className="passing-lessons-list-block-item-cover">
                         <div

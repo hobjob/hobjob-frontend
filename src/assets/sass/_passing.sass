@@ -162,7 +162,7 @@
 
 					&__title
 						font-size: 36px
-						margin-bottom: 35px
+						margin-bottom: 25px
 
 					&__description
 						font-size: 21px
@@ -171,7 +171,7 @@
 					width: 45%
 
 					&__title
-						font-size: 24px
+						font-size: 36px
 						margin-bottom: 25px
 
 					&-items-wrapper
@@ -207,23 +207,24 @@
 						justify-content: space-between
 						align-items: center
 
-						margin-bottom: 15px
-						padding-bottom: 15px
-
-						border-bottom: 1px solid $borderGray
+						margin-bottom: 10px
 
 						&:last-child
 							margin-bottom: 0
 
 					&-item
-						width: 75%
+						width: 100%
 						cursor: pointer
 						display: flex
 						align-items: center
 
+						padding: 15px 20px
+						background-color: $backgroundGray
+
+						+borderRadiusBlock
+
 						&:last-child
 							border: none
-							padding-bottom: 0
 
 						&-icon
 							display: flex
@@ -233,6 +234,7 @@
 								fill: $mainColor
 
 						&__title
+							font-size: 21px
 							margin-left: 10px
 							color: $mainColor
 
