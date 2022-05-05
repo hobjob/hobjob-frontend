@@ -52,21 +52,14 @@ const ShopBlock = React.memo(
                     </div>
                 </div>
                 <div className="shop-block-bottom">
-                    <Link
-                        to={`/course/${url}`}
-                        className="shop-block-bottom__link"
-                    >
-                        Подробнее
-                    </Link>
-
                     {isLogin ? (
                         isAdd ? (
-                            <button className="btn disabled shop-block-bottom__btn">
+                            <button className="shop-block-bottom__link disabled">
                                 Добавлен
                             </button>
                         ) : (
                             <button
-                                className="btn shop-block-bottom__btn"
+                                className="shop-block-bottom__link"
                                 onClick={() => onClickAddCourse(_id)}
                             >
                                 Добавить
@@ -75,11 +68,18 @@ const ShopBlock = React.memo(
                     ) : (
                         <a
                             href="/go/register"
-                            className="btn shop-block-bottom__btn"
+                            className="shop-block-bottom__link"
                         >
                             Добавить
                         </a>
-                    )}
+					)}
+					
+                    <Link
+                        to={`/course/${url}`}
+                        className="btn shop-block-bottom__btn"
+                    >
+                        Смотреть
+                    </Link>
                 </div>
             </div>
         );

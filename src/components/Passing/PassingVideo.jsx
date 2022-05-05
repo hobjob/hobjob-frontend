@@ -1,6 +1,5 @@
 import React from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {animateScroll as scroll} from "react-scroll";
+import {useDispatch} from "react-redux";
 import ReactPlayer from "react-player";
 
 import {updateCountViewingDuration} from "../../redux/actions/user";

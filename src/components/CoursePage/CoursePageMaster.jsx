@@ -1,15 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {ImageBox} from "../";
-
-const CoursePageMaster = ({masterId, master, image, path}) => {
-    const [stateImage, setStateImage] = React.useState(false);
-
-    const handlerStateImage = () => {
-        setStateImage(!stateImage);
-    };
-
+const CoursePageMaster = ({masterId, master}) => {
     return (
         <>
             <section className="course-page-master">
@@ -20,7 +12,6 @@ const CoursePageMaster = ({masterId, master, image, path}) => {
                             style={{
                                 backgroundImage: `url('${process.env.REACT_APP_IMAGE_DOMEN}/${master.avatar}')`,
                             }}
-                            onClick={handlerStateImage}
                         ></div>
                         <div className="course-page-master-text">
                             <h2 className="course-page-master__title">
@@ -41,12 +32,6 @@ const CoursePageMaster = ({masterId, master, image, path}) => {
                     </div>
                 </div>
             </section>
-            {stateImage ? (
-                <ImageBox
-                    image={`${process.env.REACT_APP_IMAGE_DOMEN}/uploads/${path}/${image}`}
-                    closeFunc={handlerStateImage}
-                />
-            ) : null}
         </>
     );
 };

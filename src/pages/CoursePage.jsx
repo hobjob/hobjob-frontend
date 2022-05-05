@@ -68,8 +68,8 @@ const CoursePage = ({
         }
     }, [url, isLoadedUserInfo, isLoadedCourseByUrl]);
 
-    const onClickAddCourse = () => {
-        dispatch(addUserCourse(itemByUrl._id));
+    const onClickAddCourse = (redirect) => {
+        dispatch(addUserCourse(itemByUrl._id, redirect));
     };
 
     return (
@@ -97,7 +97,7 @@ const CoursePage = ({
                                     }`}
                                     onClick={onClickAddCourse}
                                 >
-                                    Добавить в мои курсы
+                                    Добавить в мое обучение
                                 </button>
                             )
                         ) : (
@@ -107,7 +107,7 @@ const CoursePage = ({
                                     visibleButton ? "active" : ""
                                 }`}
                             >
-                                Оформить пробную подписку
+                                Открыть все уроки за 1 ₽
                             </a>
                         )}
 
@@ -120,7 +120,12 @@ const CoursePage = ({
                             onClickAddCourse={onClickAddCourse}
                         />
 
-                        <CoursePageLessons {...itemByUrl} />
+                        <CoursePageLessons
+                            {...itemByUrl}
+                            isLogin={isLogin}
+                            onClickAddCourse={onClickAddCourse}
+                            isAdd={isAdd}
+                        />
 
                         <CoursePageMaster
                             {...itemByUrl}

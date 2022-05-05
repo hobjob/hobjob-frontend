@@ -8,10 +8,10 @@ const HeaderModalMenu = React.memo(
     ({
         HeaderModalMenuRef,
         modalMenuAnimationState,
-        onClickCloseModalMenu,
+        closeModalMenu,
         clickLogout,
     }) => {
-        const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
+        const {isLoadedUserInfo} = useSelector(({user}) => user);
 
         return (
             <div
@@ -23,7 +23,7 @@ const HeaderModalMenu = React.memo(
                 <div className="header-modal-menu-content">
                     <div
                         className="header-modal-menu-close"
-                        onClick={onClickCloseModalMenu}
+                        onClick={closeModalMenu}
                     >
                         <svg
                             width="39"
@@ -53,7 +53,7 @@ const HeaderModalMenu = React.memo(
                     <Link
                         to="/"
                         className="header-modal-menu-logo__link"
-                        onClick={onClickCloseModalMenu}
+                        onClick={closeModalMenu}
                     >
                         <img
                             src={Logo}
@@ -66,7 +66,7 @@ const HeaderModalMenu = React.memo(
                             to="/shop"
                             className="header-modal-menu-nav__link"
                             activeClassName="header-modal-menu-nav__link active"
-                            onClick={onClickCloseModalMenu}
+                            onClick={closeModalMenu}
                         >
                             Курсы
                         </NavLink>
@@ -74,14 +74,14 @@ const HeaderModalMenu = React.memo(
                             to="/magazine"
                             className="header-modal-menu-nav__link"
                             activeClassName="header-modal-menu-nav__link active"
-                            onClick={onClickCloseModalMenu}
+                            onClick={closeModalMenu}
                         >
                             Журнал
                         </NavLink>
                         <a
                             href={`${process.env.REACT_APP_DOMEN_MASTERS_SERVICES}`}
                             className="header-modal-menu-nav__link"
-                            onClick={onClickCloseModalMenu}
+                            onClick={closeModalMenu}
                         >
                             Стать мастером
                         </a>
@@ -91,7 +91,7 @@ const HeaderModalMenu = React.memo(
                                     href="/go/login"
                                     className="header-modal-menu-nav__link"
                                     activeClassName="header-modal-menu-nav__link active"
-                                    onClick={onClickCloseModalMenu}
+                                    onClick={closeModalMenu}
                                 >
                                     Войти
                                 </a>
@@ -99,7 +99,7 @@ const HeaderModalMenu = React.memo(
                                     href="/go/register"
                                     className="header-modal-menu-nav__link"
                                     activeClassName="header-modal-menu-nav__link active"
-                                    onClick={onClickCloseModalMenu}
+                                    onClick={closeModalMenu}
                                 >
                                     Зарегистрироваться
                                 </a>
@@ -110,7 +110,7 @@ const HeaderModalMenu = React.memo(
                                     to="/go/training"
                                     className="header-modal-menu-nav__link"
                                     activeClassName="header-modal-menu-nav__link active"
-                                    onClick={onClickCloseModalMenu}
+                                    onClick={closeModalMenu}
                                 >
                                     Мое обучение
                                 </NavLink>
@@ -119,7 +119,7 @@ const HeaderModalMenu = React.memo(
                                     to="/go/cabinet"
                                     className="header-modal-menu-nav__link"
                                     activeClassName="header-modal-menu-nav__link active"
-                                    onClick={onClickCloseModalMenu}
+                                    onClick={closeModalMenu}
                                 >
                                     Мой профиль
                                 </NavLink>
@@ -128,7 +128,7 @@ const HeaderModalMenu = React.memo(
                                     to="/go/referrals"
                                     className="header-modal-menu-nav__link"
                                     activeClassName="header-modal-menu-nav__link active"
-                                    onClick={onClickCloseModalMenu}
+                                    onClick={closeModalMenu}
                                 >
                                     Пригласи друга
                                 </NavLink>

@@ -95,7 +95,7 @@ const PaymentSubscribeProlongation = () => {
                         className="btn payment-prolongation-info__btn"
                         onClick={createPayment}
                     >
-                        Оформить подписку
+                        Продлить подписку
                     </button>
                 </div>
             </div>

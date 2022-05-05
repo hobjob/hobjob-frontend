@@ -1,8 +1,19 @@
 import React from "react";
 import ReactPlayer from "react-player";
 
-const CoursePageLessonsVideo = ({courseId}) => {
+const CoursePageLessonsVideo = ({courseId, videoPlaecholder}) => {
     const [play, setPlay] = React.useState(true);
+    const [isFirst, setIsFirst] = React.useState(true);
+
+    React.useEffect(() => {
+        if (isFirst) {
+            setIsFirst(false);
+        } else if (videoPlaecholder) {
+            setPlay(false);
+        } else {
+            setPlay(true);
+        }
+    }, [videoPlaecholder]);
 
     const VideoRef = React.useRef();
 

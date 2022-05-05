@@ -19,14 +19,14 @@ const CoursePageMain = ({
                 <div className="course-page-main-wrapper">
                     <div className="course-page-main-text">
                         <div className="course-page-main-text-subinfo">
-                            <a
-                                href={`/shop/?category=${category}`}
-                                className="course-page-main-text-subinfo__category"
-                            >
-                                {categories[category]
-                                    ? categories[category].title
-                                    : null}
-                            </a>
+                            {categories[category] ? (
+                                <a
+                                    href={`/shop/?category=${categories[category].transfer}`}
+                                    className="course-page-main-text-subinfo__category"
+                                >
+                                    {categories[category].title}
+                                </a>
+                            ) : null}
                         </div>
                         <h2 className="course-page-main-text__title">
                             {title}
@@ -66,7 +66,7 @@ const CoursePageMain = ({
                                     className="btn course-page-main-text__btn"
                                     onClick={onClickAddCourse}
                                 >
-                                    Добавить в мои курсы
+                                    Добавить в мое обучение
                                 </button>
                             )
                         ) : (
@@ -74,7 +74,7 @@ const CoursePageMain = ({
                                 href="/go/register"
                                 className="btn course-page-main-text__btn"
                             >
-                                Оформить пробную подписку
+                                Открыть все уроки за 1 ₽
                             </a>
                         )}
                     </div>

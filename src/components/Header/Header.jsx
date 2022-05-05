@@ -49,23 +49,22 @@ const Header = React.memo(() => {
         }
     }, []);
 
-    const toggleUserMenu = () => {
+    const openUserMenu = () => {
+        setHeaderUserMenu(true);
+    };
+
+    const closeUserMenu = () => {
         setHeaderUserMenuAnimateClose(true);
 
         setTimeout(() => {
             setHeaderUserMenuAnimateClose(false);
-            setHeaderUserMenu(!headerUserMenu);
-        }, 190);
+            setHeaderUserMenu(false);
+        }, 200);
     };
 
     const handHeaderUserMenu = (e) => {
         if (e.target !== headerUserMenuRef.current) {
-            setHeaderUserMenuAnimateClose(true);
-
-            setTimeout(() => {
-                setHeaderUserMenuAnimateClose(false);
-                setHeaderUserMenu(false);
-            }, 190);
+            closeUserMenu();
         }
     };
 
@@ -73,12 +72,12 @@ const Header = React.memo(() => {
         dispatch(sendLogout());
     };
 
-    const onClickModalMenu = () => {
+    const openModalMenu = () => {
         document.body.style.overflow = "hidden";
-        setModalMenuState(!modalMenuState);
+        setModalMenuState(true);
     };
 
-    const onClickCloseModalMenu = () => {
+    const closeModalMenu = () => {
         setModalMenuAnimationState(true);
         document.body.style.overflow = "visible";
 
@@ -90,7 +89,7 @@ const Header = React.memo(() => {
 
     const handHeaderModalMenu = (e) => {
         if (e.target === HeaderModalMenuRef.current) {
-            onClickCloseModalMenu();
+            closeModalMenu();
         }
     };
 
@@ -104,7 +103,7 @@ const Header = React.memo(() => {
             {modalMenuState ? (
                 <HeaderModalMenu
                     HeaderModalMenuRef={HeaderModalMenuRef}
-                    onClickCloseModalMenu={onClickCloseModalMenu}
+                    closeModalMenu={closeModalMenu}
                     modalMenuAnimationState={modalMenuAnimationState}
                     clickLogout={clickLogout}
                 />
@@ -127,86 +126,84 @@ const Header = React.memo(() => {
             <header className="header">
                 <div className="container">
                     <div className="header-wrapper">
-                        <Link to="/" className="header-logo__link">
-                            <img
-                                src={Logo}
-                                alt="HobJob"
-                                className="header-logo__img"
-                            />
-                        </Link>
+                        <div className="header-right-block">
+                            <Link to="/" className="header-logo__link">
+                                <img
+                                    src={Logo}
+                                    alt="HobJob"
+                                    className="header-logo__img"
+                                />
+                            </Link>
 
-                        <HeaderMenu />
+                            <HeaderMenu />
+                        </div>
 
-                        <nav className="header-left">
+                        <nav className="header-left-block">
                             {isLoadedUserInfo ? (
-                                <>
+                                <div className="header-user">
+                                    <div className="header-user-nav">
+                                        <NavLink
+                                            to="/go/training"
+                                            className="header-user-nav__link"
+                                            activeClassName="header-user-nav__link active"
+                                        >
+                                            Мое обучение
+                                        </NavLink>
+                                    </div>
+
                                     {document.documentElement.clientWidth >
-                                    1200 ? (
-                                        <div className="header-user">
-                                            <div
-                                                onClick={toggleUserMenu}
-                                                ref={headerUserMenuRef}
-                                                className={`header-user-avatar ${
-                                                    headerUserMenu
-                                                        ? "active"
-                                                        : ""
-                                                }`}
-                                                style={{
-                                                    backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar}")`,
-                                                }}
-                                            ></div>
-                                            {headerUserMenu ? (
-                                                <div
-                                                    className={`header-user-menu ${
-                                                        headerUserMenuAnimateClose
-                                                            ? "close"
-                                                            : ""
-                                                    }`}
-                                                >
-                                                    <NavLink
-                                                        to="/go/training"
-                                                        className="header-user-menu__link"
-                                                    >
-                                                        Мое обучение
-                                                    </NavLink>
-
-                                                    <NavLink
-                                                        to="/go/cabinet"
-                                                        className="header-user-menu__link"
-                                                    >
-                                                        Мой профиль
-                                                    </NavLink>
-
-                                                    <NavLink
-                                                        to="/go/referrals"
-                                                        className="header-user-menu__link"
-                                                    >
-                                                        Пригласи друга
-                                                    </NavLink>
-
-                                                    <span
-                                                        onClick={clickLogout}
-                                                        className="header-user-menu__link"
-                                                    >
-                                                        Выйти
-                                                    </span>
-                                                </div>
-                                            ) : null}
-                                        </div>
+                                    1400 ? (
+                                        <div
+                                            onClick={openUserMenu}
+                                            ref={headerUserMenuRef}
+                                            className={`header-user-avatar ${
+                                                headerUserMenu ? "active" : ""
+                                            }`}
+                                            style={{
+                                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar}")`,
+                                            }}
+                                        ></div>
                                     ) : (
                                         <div
-                                            className="header-user"
-                                            onClick={onClickModalMenu}
-                                        >
-                                            <div
-                                                className="header-user-avatar"
-                                                style={{
-                                                    backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar}")`,
-                                                }}
-                                            ></div>
-                                        </div>
+                                            className="header-user-avatar"
+                                            style={{
+                                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar}")`,
+                                            }}
+                                            onClick={openModalMenu}
+                                        ></div>
                                     )}
-                                </>
+
+                                    {headerUserMenu ? (
+                                        <div
+                                            className={`header-user-menu ${
+                                                headerUserMenuAnimateClose
+                                                    ? "close"
+                                                    : ""
+                                            }`}
+                                        >
+                                            <NavLink
+                                                to="/go/cabinet"
+                                                className="header-user-menu__link"
+                                            >
+                                                Мой профиль
+                                            </NavLink>
+
+                                            <NavLink
+                                                to="/go/referrals"
+                                                className="header-user-menu__link"
+                                            >
+                                                Пригласи друга
+                                            </NavLink>
+
+                                            <span
+                                                onClick={clickLogout}
+                                                className="header-user-menu__link"
+                                            >
+                                                Выйти
+                                            </span>
+                                        </div>
+                                    ) : null}
+                                </div>
                             ) : (
                                 <a
                                     href="/go/login"
@@ -230,7 +227,7 @@ const Header = React.memo(() => {
 
                             <div
                                 className="header-menu-button"
-                                onClick={onClickModalMenu}
+                                onClick={openModalMenu}
                             >
                                 <svg
                                     width="25"

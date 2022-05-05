@@ -1,7 +1,6 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Redirect, useHistory} from "react-router-dom";
-import NumberFormat from "react-number-format";
+import {Redirect} from "react-router-dom";
 import {Helmet} from "react-helmet";
 import moment from "moment";
 import {animateScroll as scroll} from "react-scroll";
@@ -25,7 +24,6 @@ const PassingCourse = ({
         params: {courseId, lessonNum},
     },
 }) => {
-    const history = useHistory();
     const dispatch = useDispatch();
 
     const [hashtag, setHashtag] = React.useState("");

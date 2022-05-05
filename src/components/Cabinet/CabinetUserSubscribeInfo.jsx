@@ -13,11 +13,12 @@ const CabinetUserSubscribeInfo = () => {
     const dispatch = useDispatch();
 
     const {
-        userInfo: {subscribe, nextTypeSubscribe, autoPayment},
+        userInfo: {subscribe, payment},
     } = useSelector(({user}) => user);
 
-    const changeAutoPayment = () => {
-        dispatch(fetchUpdateUser({autoPayment: !autoPayment}));
+	const changeAutoPayment = () => {
+		console.log(payment.auto);
+        dispatch(fetchUpdateUser({autoPayment: !payment.auto}));
     };
 
     const changeNextTypeSubscribe = ({target: {value}}) => {
@@ -29,7 +30,7 @@ const CabinetUserSubscribeInfo = () => {
         <div className="cabinet-block-form">
             <CabinetUserSubscribeInfoFormSelect
                 changeNextTypeSubscribe={changeNextTypeSubscribe}
-                nextTypeSubscribe={nextTypeSubscribe}
+                nextTypeSubscribe={subscribe.nextTypeSubscribe}
             />
 
             <div className="cabinet-block-subscribe-info-item">
@@ -67,7 +68,7 @@ const CabinetUserSubscribeInfo = () => {
                     Подписка
                 </h4>
                 <p className="cabinet-block-subscribe-info-item__description">
-                    {autoPayment ? (
+                    {payment.auto ? (
                         <Link
                             to="/go/cabinet/subscribe/disable"
                             className="btn-small-round"

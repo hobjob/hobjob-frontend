@@ -64,8 +64,18 @@ export const fetchUpdateUserPassword = (data) => (dispatch) => {
 	})
 }
 
-export const addUserCourse = (courseId) => () => {
+export const addUserCourse = (courseId, redirect) => () => {
 	$api.put("/my/courses", { courseId }).then(() => {
+		if (redirect) {
+			window.location.href = redirect
+		} else {
+			window.location.href = "/go/training"
+		}
+	})
+}
+
+export const hiddenUserCourse = (courseId) => (dispatch) => {
+	$api.delete(`/my/courses/${courseId}`).then(() => {
 		window.location.href = "/go/training"
 	})
 }

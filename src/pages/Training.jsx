@@ -4,7 +4,7 @@ import {Helmet} from "react-helmet";
 
 import {checkDeclension} from "../Functions/checkDeclension";
 
-import {fetchUserCourses} from "../redux/actions/user";
+import {fetchUserCourses, hiddenUserCourse} from "../redux/actions/user";
 
 import {
     Loader,
@@ -31,6 +31,10 @@ const Training = () => {
             dispatch(fetchUserCourses());
         }
     }, [isLoadedUserInfo]);
+
+    const onClickHiddenUserCourse = (courseId) => {
+        dispatch(hiddenUserCourse(courseId));
+    };
 
     return (
         <>
@@ -81,6 +85,9 @@ const Training = () => {
                                                                 }
                                                                 masters={
                                                                     masters
+                                                                }
+                                                                onClickHiddenUserCourse={
+                                                                    onClickHiddenUserCourse
                                                                 }
                                                                 key={`training-block-${index}`}
                                                             />

@@ -115,7 +115,6 @@ li
 		+transformScale
 
 	&.disabled
-		user-select: none
 		pointer-events: none
 		border: 1px solid $borderGray
 		background-color: $borderGray
@@ -178,7 +177,6 @@ li
 		border: 1px solid $mainColor
 
 	&.disabled
-		user-select: none
 		pointer-events: none
 		color: $gray
 		border: 1px solid $borderGray
@@ -269,6 +267,7 @@ li
 	border: none
 	text-align: center
 	border-radius: 100px
+	user-select: none
 
 	padding: 13px 23px
 	font-size: 17px
@@ -289,7 +288,6 @@ li
 		background-color: #e2ab74
 
 	&.disabled
-		user-select: none
 		pointer-events: none
 		border: 1px solid $borderGray
 		background-color: $borderGray
@@ -299,6 +297,7 @@ li
 	border: none
 	text-align: center
 	border-radius: 100px
+	user-select: none
 
 	padding: 13px 23px
 	font-size: 17px
@@ -321,7 +320,6 @@ li
 		color: $white
 
 	&.disabled
-		user-select: none
 		pointer-events: none
 		border: 1px solid $borderGray
 		color: $gray
@@ -616,66 +614,6 @@ input[type="file"]
 		background-color: #FFE9D3
 		border-radius: 50%
 		animation: ballPulse 1s ease-in-out infinite
-
-// image-box
-.image-box
-	display: flex
-	justify-content: center
-	align-items: flex-start
-
-	overflow-y: auto
-
-	padding: 25px 0
-
-	position: fixed
-	top: 0
-	left: 0
-	width: 100%
-	height: 100%
-
-	z-index: 10
-
-	background-color: $blackTransparency
-
-	+openAnimation04s
-
-	&.close
-		+closeAnimation04s
-
-	&__image
-		width: 90%
-
-		user-select: none
-
-		+borderRadiusBlock
-		+openPopup04s
-
-		&.close
-			+closePopup04s
-
-	&__close
-		position: absolute
-
-		top: 25px
-		right: 15px
-
-		cursor: pointer
-
-		display: flex
-		justify-content: center
-		align-items: center
-
-		width: 50px
-		height: 50px
-
-		background-color: #fff
-
-		border-radius: 50%
-
-		+transition
-
-		&:hover
-			background-color: $backgroundGray
 
 // engineering-works
 .engineering-works

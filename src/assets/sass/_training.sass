@@ -11,18 +11,25 @@
 		flex-wrap: wrap
 
 	&-block
+		position: relative
+
 		width: 100%
-		display: flex
 		min-height: 200px
+
 		margin-bottom: 15px
 		padding: 15px
+
 		background-color: $backgroundGray
 
 		+openAnimation
 		+borderRadiusBlock
+		+transition
 
 		&:last-child
 			margin-bottom: 0
+
+		&:hover
+			+transformScale
 
 		&:hover &-cover
 			&-placeholder
@@ -32,12 +39,20 @@
 				opacity: 1
 				transform: translate(-50%, -50%) scale3d(1, 1, 1)
 
+		&:hover &__hidden
+			color: $white
+			background-color: $red
+
+		&-left
+			display: flex
+			width: 100%
+
 		&-cover
 			position: relative
 			overflow: hidden
 			min-width: 250px
 			height: 250px
-			+borderRadius
+			+borderRadiusBlock
 
 			&-placeholder
 				position: absolute
@@ -81,6 +96,25 @@
 			&__auth
 				font-size: 21px
 				color: $mainColor
+
+		&__hidden
+			z-index: 2
+			position: absolute
+			right: 15px
+			top: 15px
+
+			user-select: none
+			cursor: pointer
+			text-align: center
+			display: inline-block
+			font-size: 16px
+			padding: 5px 10px
+			border-radius: 100px
+			color: $black
+			+transition
+
+			&:active
+				+transformScale
 
 	&-null
 		display: flex

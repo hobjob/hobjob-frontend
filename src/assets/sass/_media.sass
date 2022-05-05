@@ -1,5 +1,16 @@
 // media
 @media screen and ( max-width: 1400px )
+	// header
+	.header
+		&-nav
+			display: none
+
+		&-menu-button
+			display: block
+
+		&-user-menu
+			display: none
+
 	// shop
 	.shop
 		&-block
@@ -182,7 +193,7 @@
 	// course-page
 	.course-page
 		&-main
-			margin: 50px 0
+			margin: 25px 0
 
 			&-wrapper
 				flex-direction: column
@@ -213,7 +224,7 @@
 				width: 100%
 				order: 1
 
-				margin-bottom: 50px
+				margin-bottom: 25px
 
 		&-master
 			margin: 50px 0
@@ -315,7 +326,12 @@
 
 	// course-page 
 	.course-page
+		&-lessons
+			margin: 25px 0
+
 		&-master
+			margin: 25px 0
+
 			&-wrapper
 				padding: 35px
 
@@ -384,8 +400,10 @@
 	// training
 	.training
 		&-block
-			flex-direction: column
 			padding-bottom: 25px
+
+			&-left
+				flex-direction: column
 
 			&-cover
 				width: 100%
@@ -407,6 +425,13 @@
 
 				&-bottom
 					margin-top: 50px
+
+			&__hidden
+				width: 80px
+				top: 30px
+				left: 30px
+				color: $white
+				background-color: $red
 
 	// passing
 	.passing
@@ -479,6 +504,10 @@
 
 	// header
 	.header
+		&-user
+			&-nav
+				display: none
+
 		&-modal-menu
 			&-content
 				width: 75%
@@ -541,6 +570,15 @@
 		margin-left: 50px
 
 @media screen and ( max-width: 700px )
+	// course-page
+	.course-page
+		&-lessons
+			&-video
+				&-plaecholder
+					&__description, &__link
+						max-width: 100%
+						font-size: 28px
+
 	// shop
 	.shop
 		&-block
@@ -549,7 +587,7 @@
 
 			&-top
 				&-cover
-					height: 300px
+					height: 250px
 
 	// reglog
 	.reglog
@@ -673,17 +711,10 @@
 		&-modal-menu
 			&-content
 				width: 100%
-				padding: 25px
-
-			&-nav
-				&-bottom
-					margin-top: 35px
-					padding-top: 35px
 
 		&-login
 			&__link
 				font-size: 16px
-
 				& svg
 					display: none
 
@@ -744,6 +775,12 @@
 		&-lessons
 			margin: 25px 0
 
+			&-video
+				&-plaecholder
+					&__description, &__link
+						max-width: 100%
+						font-size: 21px
+
 			&-list
 				&__title
 					font-size: 28px
@@ -769,6 +806,7 @@
 			margin-bottom: 25px
 
 		&-filters
+			padding: 15px
 			width: 100%
 
 		&-top
@@ -884,7 +922,7 @@
 
 		&__title
 			margin-bottom: 25px
-		
+
 		&-block
 			&-cover
 				height: 200px
@@ -897,7 +935,7 @@
     // passing
 	.passing
 		margin: 25px 0
-		
+
 		&-top
 			&-text
 				&__title
@@ -905,7 +943,7 @@
 
 		&-video
 			margin-top: 15px
-		
+
 		&-lessons-list
 			&-block
 				&__subtitle
@@ -923,7 +961,7 @@
 
 				&-materials
 					margin-top: 25px
-					
+
 					&__title
 						font-size: 32px
 
@@ -970,6 +1008,12 @@
 				font-size: 12px
 
 @media screen and ( max-width: 400px )
+	// header
+	.header
+		&-modal-menu
+			&-content
+				padding: 25px
+
 	// main
 	.main
 		&-text

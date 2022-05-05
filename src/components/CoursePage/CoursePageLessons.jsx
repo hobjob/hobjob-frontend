@@ -4,15 +4,55 @@ import {CoursePageLessonsVideo, CoursePageLessonsItem} from "../";
 
 import {checkDeclension} from "../../Functions/checkDeclension";
 
-const CoursePageLessons = ({lessons, _id}) => {
+const CoursePageLessons = ({lessons, _id, isLogin, onClickAddCourse, isAdd}) => {
+    const [videoPlaecholder, setVideoPlaecholder] = React.useState(false);
+    const [videoPlaecholderAnimateClose, setVideoPlaecholderAnimateClose] =
+        React.useState(false);
+
+    const openVideoPlaecholder = () => {
+        setVideoPlaecholder(true);
+    };
+
+    const closeVideoPlaecholder = () => {
+        setVideoPlaecholderAnimateClose(true);
+
+        setTimeout(() => {
+            setVideoPlaecholderAnimateClose(false);
+            setVideoPlaecholder(false);
+        }, 200);
+    };
+
     return (
         <section className="course-page-lessons">
             <div className="container">
                 <div className="course-page-lessons-wrapper">
-                    <div className="course-page-lessons-video">
+                    <div
+                        className={`course-page-lessons-video ${
+                            videoPlaecholder ? "disabled" : ""
+                        }`}
+                    >
+                        {videoPlaecholder ? (
+                            <div
+                                className={`course-page-lessons-video-plaecholder ${
+                                    videoPlaecholderAnimateClose ? "close" : ""
+                                }`}
+                            >
+                                <p className="course-page-lessons-video-plaecholder__description">
+                                    Для того чтобы продолжить просмотр других
+                                    уроков, оформите подписку
+                                </p>
+                                <a
+                                    href=""
+                                    className="course-page-lessons-video-plaecholder__link"
+                                >
+                                    Открыть все уроки за 1 ₽
+                                </a>
+                            </div>
+                        ) : null}
+
                         <CoursePageLessonsVideo
                             courseId={_id}
-                            image={lessons[0].image}
+                            videoPlaecholder={videoPlaecholder}
                         />
                     </div>
                     <div className="course-page-lessons-list">
@@ -23,23 +63,26 @@ const CoursePageLessons = ({lessons, _id}) => {
                         {lessons.map((lesson, index) => (
                             <CoursePageLessonsItem
                                 key={`course-page-lessons-list-item-${index}`}
-                                index={index}
-                                hours={
-                                    checkDeclension(
-                                        parseFloat(
-                                            lesson.video.duration.split(":")[0]
-                                        ),
-                                        ["час", "часа", "часов"]
-                                    )
-                                }
-                                minutes={
-                                    checkDeclension(
-                                        parseFloat(
-                                            lesson.video.duration.split(":")[1]
-                                        ),
-                                        ["минута", "минуты", "минут"]
-                                    )
-                                }
+                                active={index === 0}
+                                num={index + 1}
+                                hours={checkDeclension(
+                                    parseFloat(
+                                        lesson.video.duration.split(":")[0]
+                                    ),
+                                    ["час", "часа", "часов"]
+                                )}
+                                openVideoPlaecholder={openVideoPlaecholder}
+                                closeVideoPlaecholder={closeVideoPlaecholder}
+                                onClickAddCourse={onClickAddCourse}
+                                minutes={checkDeclension(
+                                    parseFloat(
+                                        lesson.video.duration.split(":")[1]
+                                    ),
+                                    ["минута", "минуты", "минут"]
+                                )}
+                                courseId={_id}
+                                isLogin={isLogin}
+                                isAdd={isAdd}
                                 {...lesson}
                             />
                         ))}

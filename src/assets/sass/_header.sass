@@ -15,40 +15,39 @@
 			user-select: none
 			width: 65px
 			+transition
-			&:active
-				+transformScale
-
-	&-nav
-		&__link
-			display: inline-block
-			margin-right: 35px
-			+transition
-
-			&:last-child
-				margin-right: 0
 
 			&:active
 				+transformScale
-				
-			&:hover
-				color: $mainColor
 
-			&.active
-				color: $mainColor
-
-			&.bg
-				border-radius: 100px
-				padding: 15px 25px
-				background-color: #F3F3F3
-
-				&:hover
-					color: $black
-					background-color: #F7F7F7
-
-			
-	&-left
+	&-right-block, &-left-block
 		display: flex
 		align-items: center
+
+	&-nav
+		margin-left: 75px
+
+		&__link
+			display: inline-block
+
+			border-radius: 100px
+			padding: 15px 30px
+			background-color: $backgroundGray
+
+			margin: 0 5px
+			+transition
+
+			&.active
+				background-color: $mainColor
+				color: $white
+
+				&:hover
+					background-color: $mainColor
+
+			&:active
+				+transformScale
+
+			&:hover
+				background-color: #F6F6F6
 
 	&-login
 		&__link
@@ -58,6 +57,7 @@
 
 			color: $mainColor
 			+transition
+
 			&:active
 				+transformScale
 
@@ -71,13 +71,47 @@
 	&-user
 		display: flex
 		align-items: center
-
-		cursor: pointer
 		+openAnimation
 
+		&-nav
+			display: flex
+			margin-right: 25px
+
+			&__link
+				height: 100%
+
+				display: inline-block
+				cursor: pointer
+				user-select: none
+
+				border-radius: 100px
+				padding: 15px 30px
+				background-color: $backgroundGray
+
+				margin-right: 10px
+
+				+transition
+
+				&:last-child
+					margin-right: 0
+
+				&:active
+					+transformScale
+
+				&:hover
+					background-color: #F7F7F7
+
+				&.active
+					background-color: $mainColor
+					color: $white
+
+					&:hover
+						background-color: $mainColor
+
 		&-avatar
-			width: 50px
-			height: 50px
+			cursor: pointer
+			width: 55px
+			height: 55px
 			border-radius: 50%
 			+backgroundSetting
 			+transition
@@ -89,7 +123,7 @@
 			z-index: 10
 			width: 250px
 			position: absolute
-			top: 90px
+			top: 100px
 			right: 0
 
 			padding: 10px 0
@@ -101,6 +135,7 @@
 			+borderRadiusBlock
 
 			&__link
+				cursor: pointer
 				user-select: none
 				display: block
 				padding: 15px 20px
@@ -111,6 +146,11 @@
 					color: $black
 
 				&.active
+					color: $mainColor
+
+				&.disabled
+					cursor: auto
+					pointer-events: none
 					color: $gray
 
 			&.close

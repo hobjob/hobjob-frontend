@@ -16,7 +16,7 @@ const HomeMainSection = () => {
                             Научитесь создавать шедевры своими руками
                         </p>
                         <Link to="/shop" className="btn main-text__btn">
-                            Смотреть курсы
+                            Смотреть все курсы
                         </Link>
                     </div>
 

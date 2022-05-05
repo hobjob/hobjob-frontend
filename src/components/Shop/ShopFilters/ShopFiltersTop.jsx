@@ -16,23 +16,22 @@ const ShopFiltersTop = React.memo(() => {
         document.body.addEventListener("click", handStateFilters);
     }, []);
 
-    const onClickStateFilters = () => {
+    const openStateFilters = () => {
+        setStateFilters(true);
+    };
+
+    const closeStateFilters = () => {
         setStateFiltersAnimationClose(true);
 
         setTimeout(() => {
             setStateFiltersAnimationClose(false);
-            setStateFilters(!stateFilters);
-        }, 190);
+            setStateFilters(false);
+        }, 200);
     };
 
     const handStateFilters = (e) => {
-        if (e.target !== FiltersRef.current) {
-            setStateFiltersAnimationClose(true);
-
-            setTimeout(() => {
-                setStateFiltersAnimationClose(false);
-                setStateFilters(false);
-            }, 190);
+        if (FiltersRef.current && !e.composedPath().includes(FiltersRef.current)) {
+            closeStateFilters();
         }
     };
 
@@ -44,7 +43,7 @@ const ShopFiltersTop = React.memo(() => {
                 <div className="shop-top-filters">
                     <span
                         ref={FiltersRef}
-                        onClick={onClickStateFilters}
+                        onClick={openStateFilters}
                         className={`shop-top-filters__title ${
                             stateFilters ? "active" : ""
                         }`}

@@ -2,8 +2,22 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 
 const HeaderMenu = React.memo(() => {
+    const checkActive = (match, location) => {
+        if (!location) return false;
+        const {pathname} = location;
+
+        return pathname === "/";
+    };
     return (
         <nav className="header-nav">
+            <NavLink
+                to="/"
+                className="header-nav__link"
+                activeClassName="header-nav__link active"
+                isActive={checkActive}
+            >
+                Главная
+            </NavLink>
             <NavLink
                 to="/shop"
                 className="header-nav__link"

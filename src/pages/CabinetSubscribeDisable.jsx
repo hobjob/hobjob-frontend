@@ -14,7 +14,7 @@ const CabinetSubscribeDisable = () => {
     const [daysSubscribe, setDaysSubscribe] = React.useState(0);
 
     const {
-        userInfo: {subscribe, autoPayment},
+        userInfo: {subscribe, payment},
         isLoadedUserInfo,
     } = useSelector(({user}) => user);
 
@@ -35,7 +35,7 @@ const CabinetSubscribeDisable = () => {
     }, [isLoadedUserInfo]);
 
     const changeAutoPayment = () => {
-        dispatch(fetchUpdateUser({autoPayment: !autoPayment}));
+        dispatch(fetchUpdateUser({autoPayment: !payment.auto}));
 
         history.push("/go/cabinet#subscribe");
     };
