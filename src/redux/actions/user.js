@@ -74,9 +74,9 @@ export const addUserCourse = (courseId, redirect) => () => {
 	})
 }
 
-export const hiddenUserCourse = (courseId) => (dispatch) => {
+export const hiddenUserCourse = (courseId) => () => {
 	$api.delete(`/my/courses/${courseId}`).then(() => {
-		window.location.href = "/go/training"
+		window.location.href = window.location.href
 	})
 }
 

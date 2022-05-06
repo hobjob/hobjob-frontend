@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {fetchCoursesSection} from "../../redux/actions/courses";
-import {addUserCourse} from "../../redux/actions/user";
+import {addUserCourse, hiddenUserCourse} from "../../redux/actions/user";
 
 import {ShopBlock, Loader} from "../";
 
@@ -35,6 +35,10 @@ const ShopSection = ({title, description, url}) => {
 
     const onClickAddCourse = (id) => {
         dispatch(addUserCourse(id));
+    };
+
+    const onClickHiddenCourse = (id) => {
+        dispatch(hiddenUserCourse(id));
     };
 
     return (
@@ -72,6 +76,9 @@ const ShopSection = ({title, description, url}) => {
                                                 }
                                                 onClickAddCourse={
                                                     onClickAddCourse
+                                                }
+                                                onClickHiddenCourse={
+                                                    onClickHiddenCourse
                                                 }
                                                 isAdd={
                                                     userInfo.courses &&

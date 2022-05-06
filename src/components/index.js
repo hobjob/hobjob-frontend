@@ -74,7 +74,7 @@ export { default as PassingLessonsListItem } from "./Passing/PassingLessonsListI
 export { default as PassingVideo } from "./Passing/PassingVideo"
 export { default as PassingMaterials } from "./Passing/PassingMaterials"
 export { default as PassingMaterialsItem } from "./Passing/PassingMaterialsItem"
-export { default as PassingHashtag } from "./Passing/PassingHashtag"
+export { default as PassingMaster } from "./Passing/PassingMaster"
 
 // Cabinet
 export { default as CabinetCardUserInfo } from "./Cabinet/CabinetCardUserInfo"
@@ -90,9 +90,9 @@ export { default as ReferralsPartnersItem } from "./Referrals/ReferralsPartnersI
 
 // Payment
 export { default as PaymentProgressbar } from "./Payment/PaymentProgressbar"
-export { default as PaymentSubscribeProlongation } from "./Payment/PaymentSubscribeProlongation"
 // PaymentSubscribe
-export { default as PaymentSubscribeBlock } from "./Payment/PaymentSubscribe/PaymentSubscribeBlock"
+export { default as PaymentSubscribeRegisterBlock } from "./Payment/PaymentSubscribe/PaymentSubscribeRegisterBlock"
+export { default as PaymentSubscribeProlongation } from "./Payment/PaymentSubscribe/PaymentSubscribeProlongation"
 
 // Policy
 export { default as PolicyBlock } from "./Policy/PolicyBlock"

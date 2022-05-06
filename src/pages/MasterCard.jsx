@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 import {abbreviateNumber} from "../Functions/abbreviateNumber";
 
 import {fetchMasterById} from "../redux/actions/masters";
-import {addUserCourse} from "../redux/actions/user";
+import {addUserCourse, hiddenUserCourse} from "../redux/actions/user";
 
 import {
     MasterCardInfo,
@@ -31,13 +31,17 @@ const MasterCard = ({
     const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
-
+		window.scrollTo(0, 0);
+		
         dispatch(fetchMasterById(id));
     }, []);
 
     const onClickAddCourse = (id) => {
         dispatch(addUserCourse(id));
+    };
+
+    const onClickHiddenCourse = (id) => {
+        dispatch(hiddenUserCourse(id));
     };
 
     return (
@@ -77,6 +81,9 @@ const MasterCard = ({
                                                             }
                                                             onClickAddCourse={
                                                                 onClickAddCourse
+                                                            }
+                                                            onClickHiddenCourse={
+                                                                onClickHiddenCourse
                                                             }
                                                             isAdd={
                                                                 userInfo.courses &&

@@ -12,6 +12,7 @@ const CoursePageMain = ({
     isLogin,
     isAdd,
     onClickAddCourse,
+    onClickHiddenCourse,
 }) => {
     return (
         <section className="course-page-main">
@@ -58,8 +59,11 @@ const CoursePageMain = ({
 
                         {isLogin ? (
                             isAdd ? (
-                                <button className="btn disabled course-page-main-text__btn">
-                                    Добавлен
+                                <button
+                                    className="btn-delete course-page-main-text__btn"
+                                    onClick={onClickHiddenCourse}
+                                >
+                                    Удалить из моего обучения
                                 </button>
                             ) : (
                                 <button

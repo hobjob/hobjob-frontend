@@ -60,7 +60,7 @@ const TrainingBlock = ({
                 className="training-block__hidden"
                 onClick={() => onClickHiddenUserCourse(_id)}
             >
-                Скрыть
+                Удалить
             </span>
         </div>
     );

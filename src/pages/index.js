@@ -36,7 +36,7 @@ export { default as CabinetSubscribeDisable } from "./CabinetSubscribeDisable"
 export { default as Referrals } from "./Referrals"
 
 // PaymentProSubscribe
-export { default as PaymentSubscribeRegister } from "./PaymentSubscribeRegister"
+export { default as Register } from "./Register"
 export { default as PaymentSubscribe } from "./PaymentSubscribe"
 
 // Payment

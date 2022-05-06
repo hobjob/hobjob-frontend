@@ -16,7 +16,7 @@ import {
     PassingLessonsList,
     PassingVideo,
     PassingMaterials,
-    PassingHashtag,
+    PassingMaster,
 } from "../components/";
 
 const PassingCourse = ({
@@ -26,12 +26,11 @@ const PassingCourse = ({
 }) => {
     const dispatch = useDispatch();
 
-    const [hashtag, setHashtag] = React.useState("");
-
     const {userInfo, courses, isLoadedUserCourses, isLoadedUserInfo} =
         useSelector(({user}) => user);
 
     const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
+    const masters = useSelector(({masters}) => masters.items);
 
     // Array of lessons starts at zero
     const lessonIndex = lessonNum - 1;
@@ -41,12 +40,6 @@ const PassingCourse = ({
 
         if (!Object.keys(courses).length && isLoadedUserInfo) {
             dispatch(fetchUserCourses());
-        }
-
-        if (isLoadedUserCourses && courses[courseId]) {
-            setHashtag(
-                `#${courses[courseId].hashtag}${moment().format("MM.YYYY")}`
-            );
         }
     }, [courseId, lessonNum, isLoadedUserCourses, isLoadedUserInfo]);
 
@@ -128,7 +121,9 @@ const PassingCourse = ({
                                         </div>
 
                                         <div className="passing-bottom-block">
-                                            {/* <PassingHashtag hashtag={hashtag} /> */}
+                                            <PassingMaster
+                                                {...masters[courses[courseId].masterId]}
+                                            />
                                         </div>
                                     </div>
                                 </div>

@@ -15,12 +15,12 @@ const PassingVideo = ({courseId, lessonNum, lessonIndex}) => {
     const VideoRef = React.useRef();
 
     const handlerError = (e, data) => {
-        setPlay(false);
-
         const seconds = VideoRef.current && VideoRef.current.getSecondsLoaded();
 
         if (data && data.type == "networkError") {
             try {
+				setPlay(false);
+				
                 $api.get(`/refresh`)
                     .then(({data}) => {
                         localStorage.setItem("accessToken", data.accessToken);

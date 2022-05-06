@@ -6,8 +6,6 @@ const passing = (state = initialState, action) => {
 	if (action.type === "PUSH_STATE_MATERIALS_DOWNLOADING") {
 		const newObj = { ...state.materialsIsDownloading, [action.payload.materialNum]: action.payload.state }
 
-		console.log(newObj)
-
 		return {
 			...state,
 			materialsIsDownloading: newObj

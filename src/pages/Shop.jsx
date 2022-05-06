@@ -8,7 +8,7 @@ import {
     fetchCourses,
     fetchAddPaginationCourses,
 } from "../redux/actions/courses";
-import {addUserCourse} from "../redux/actions/user";
+import {addUserCourse, hiddenUserCourse} from "../redux/actions/user";
 
 import {
     ShopFiltersTop,
@@ -86,6 +86,10 @@ const Shop = React.memo(
 
         const onClickAddCourse = (id) => {
             dispatch(addUserCourse(id));
+		};
+		
+		const onClickHiddenCourse = (id) => {
+            dispatch(hiddenUserCourse(id));
         };
 
         return (
@@ -139,6 +143,9 @@ const Shop = React.memo(
                                                                 }
                                                                 onClickAddCourse={
                                                                     onClickAddCourse
+                                                                }
+                                                                onClickHiddenCourse={
+                                                                    onClickHiddenCourse
                                                                 }
                                                                 isAdd={
                                                                     userInfo.courses &&

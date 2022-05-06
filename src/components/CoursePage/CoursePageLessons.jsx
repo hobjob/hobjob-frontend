@@ -4,7 +4,13 @@ import {CoursePageLessonsVideo, CoursePageLessonsItem} from "../";
 
 import {checkDeclension} from "../../Functions/checkDeclension";
 
-const CoursePageLessons = ({lessons, _id, isLogin, onClickAddCourse, isAdd}) => {
+const CoursePageLessons = ({
+    lessons,
+    _id,
+    isLogin,
+    onClickAddCourse,
+    isAdd,
+}) => {
     const [videoPlaecholder, setVideoPlaecholder] = React.useState(false);
     const [videoPlaecholderAnimateClose, setVideoPlaecholderAnimateClose] =
         React.useState(false);
@@ -42,7 +48,7 @@ const CoursePageLessons = ({lessons, _id, isLogin, onClickAddCourse, isAdd}) => 
                                     уроков, оформите подписку
                                 </p>
                                 <a
-                                    href=""
+                                    href="/go/register"
                                     className="course-page-lessons-video-plaecholder__link"
                                 >
                                     Открыть все уроки за 1 ₽

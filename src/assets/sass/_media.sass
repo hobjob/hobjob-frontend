@@ -89,12 +89,7 @@
 					margin-top: 50px
 
 		&-bottom-block
-			flex-direction: column
-
-			&-hashtag
-				margin-top: 25px
-
-			&-hashtag
+			&-master
 				width: 100%
 
 	// reglog
@@ -110,7 +105,7 @@
 			flex-direction: column
 
 		&-login-wrapper
-			width: 100%
+			width: 75%
 			order: 2
 
 		&-form-wrapper
@@ -122,41 +117,25 @@
 		&-progressbar
 			display: none
 
-		&-info
-			margin-bottom: 50px
+		&-subscribe-block-prolongation
 			width: 100%
-			order: 1
+			flex-direction: column
 
-			&-block-wrapper
-				display: flex
-				overflow-y: auto
+			&-text
+				margin-right: 0px
 
-			&-block
-				min-width: 80%
-				padding: 10px 15px
-
-				margin-right: 15px
-				margin-bottom: 0
-
-				&:last-child
-					margin-right: 0
-
-				&-text
-					&__title
-						font-size: 21px
-
-					&__description
-						font-size: 18px
-
-	// payment-prolongation
-	.payment-prolongation
-		&-wrapper
+		&-subscribe-checkbox-block-wrapper
 			width: 100%
 
-		&-info
-			&-block-wrapper
-				display: flex
-				overflow-y: auto
+			&.prolongation
+				margin-top: 25px
+
+		&-subscribe-block-wrapper
+			width: 75%
+			margin-bottom: 25px
+
+		&-subscribe-block
+			width: 100%
 
 	// course-page
 	.course-page
@@ -463,6 +442,19 @@
 					&-cover
 						height: 100px
 
+		&-bottom-block
+			&-master
+				flex-direction: column
+				align-items: center
+
+				&-image
+					margin-right: 0
+					margin-bottom: 25px
+
+					width: 200px
+					min-width: 200px
+					height: 200px
+
 	// referrals
 	.referrals
 		&-top
@@ -493,6 +485,19 @@
 
 	// payment
 	.payment
+		padding: 25px 0
+
+		&-login-wrapper
+			width: 100%
+
+		&-subscribe-checkbox
+			margin: 0 10px
+			width: 40px
+			height: 25px
+
+		&-subscribe-block-wrapper
+			width: 100%
+
 		&-progressbar
 			&-line
 				display: none
@@ -594,6 +599,18 @@
 		&-block-wrapper
 			width: 100%
 
+	// payment
+	.payment
+		&-subscribe-block-prolongation
+			padding: 15px
+
+			&-text
+				&__title
+					font-size: 28px
+					
+				&__description
+					font-size: 18px
+
 @media screen and ( max-width: 600px )
 	// main
 	.main
@@ -613,33 +630,6 @@
 		&-block
 			&__title
 				font-size: 24px
-
-	// payment
-	.payment
-		&-info
-			&-block
-				min-width: 70%
-				flex-direction: column
-				text-align: center
-
-				&-text
-					order: 2
-
-				&-icon
-					order: 1
-					margin-bottom: 15px
-
-	// payment-prolongation
-	.payment-prolongation
-		&-wrapper
-			padding: 35px
-
-		&-info
-			&__title
-				font-size: 24px
-
-			&__description
-				font-size: 18px
 
 	// magazine-post-page
 	.magazine-post-page
@@ -821,7 +811,7 @@
 			margin-top: 25px
 
 		&-block
-			margin-bottom: 50px
+			margin-bottom: 25px
 
 	// shop-section
 	.shop-section
@@ -966,14 +956,53 @@
 						font-size: 32px
 
 		&-bottom-block
-			&-hashtag
-				padding: 25px
+			padding-top: 15px
+			margin-top: 15px
+
+			&-master
+				padding: 15px
+
+				&-text
+					&__title
+						font-size: 24px
+
+					&__description
+						font-size: 18px
+
+					&__link
+						font-size: 18px
+
+	// payment
+	.payment
+		&-subscribe-checkbox-block
+			width: 100%
+			padding: 10px
+
+			&-text
+				&__title
+					font-size: 14px
+
+				&__subtitle
+					font-size: 14px
+					
+		&-subscribe-block-wrapper
+			margin-bottom: 15px
+
+		&-subscribe-block
+			&-text
+				padding: 15px
 
 				&__title
-					font-size: 24px
+					font-size: 32px
 
-				&__description
-					font-size: 18px
+				&-list
+					margin-top: 15px
+
+					&__item
+						font-size: 14px
+
+			&-image
+				padding-bottom: 15px
 
 	// footer
 	.footer

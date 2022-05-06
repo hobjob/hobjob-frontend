@@ -36,6 +36,10 @@
 			margin: 0 5px
 			+transition
 
+			&:hover
+				background-color: $mainColor
+				color: $white
+
 			&.active
 				background-color: $mainColor
 				color: $white
@@ -45,9 +49,6 @@
 
 			&:active
 				+transformScale
-
-			&:hover
-				background-color: #F6F6F6
 
 	&-login
 		&__link
@@ -99,7 +100,8 @@
 					+transformScale
 
 				&:hover
-					background-color: #F7F7F7
+					background-color: $mainColor
+					color: $white
 
 				&.active
 					background-color: $mainColor

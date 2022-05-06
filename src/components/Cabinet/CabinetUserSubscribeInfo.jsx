@@ -7,8 +7,6 @@ import {fetchUpdateUser} from "../../redux/actions/user";
 
 import {CabinetUserSubscribeInfoFormSelect} from "../";
 
-import {subscriptions} from "../../subscriptions";
-
 const CabinetUserSubscribeInfo = () => {
     const dispatch = useDispatch();
 
@@ -16,15 +14,13 @@ const CabinetUserSubscribeInfo = () => {
         userInfo: {subscribe, payment},
     } = useSelector(({user}) => user);
 
-	const changeAutoPayment = () => {
-		console.log(payment.auto);
+    const changeAutoPayment = () => {
         dispatch(fetchUpdateUser({autoPayment: !payment.auto}));
     };
 
     const changeNextTypeSubscribe = ({target: {value}}) => {
         dispatch(fetchUpdateUser({nextTypeSubscribe: value}));
     };
-	
 
     return (
         <div className="cabinet-block-form">
@@ -38,7 +34,16 @@ const CabinetUserSubscribeInfo = () => {
                     Текущая подписка
                 </h4>
                 <p className="cabinet-block-subscribe-info-item__description">
-                    {subscriptions.map((item) =>
+                    {[
+                        {
+                            title: "Месячная подписка",
+                            type: "month-subscribe",
+                        },
+                        {
+                            title: "Годовая подписка",
+                            type: "year-subscribe",
+                        },
+                    ].map((item) =>
                         item.type === subscribe.typeSubscribe
                             ? item.title
                             : null

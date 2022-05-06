@@ -13,15 +13,11 @@ export const fetchPaymentSubscribeById = (id) => (dispatch) => {
 	})
 }
 
-export const sendCreateSubscribePayment = (working, typeSubscribe) => (dispatch) => {
+export const sendCreateSubscribePayment = (typeSubscribe) => (dispatch) => {
 	dispatch({
 		type: "SET_SEND_SUBSCRIBE_PAYMENT",
 		payload: true,
 	})
-
-	if (working) {
-		window.location.href = `/go/cabinet`
-	}
 
 	$api.post(`/payment/subscribe`, { typeSubscribe }).then(({ data }) => {
 		window.location.href = `/payment/subscribe/${data.paymentNumber}`

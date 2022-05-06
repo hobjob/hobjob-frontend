@@ -1,7 +1,5 @@
 import React from "react";
 
-import {subscriptions} from "../../subscriptions";
-
 const CabinetUserSubscribeInfoFormSelect = ({
     changeNextTypeSubscribe,
     nextTypeSubscribe,
@@ -18,14 +16,23 @@ const CabinetUserSubscribeInfoFormSelect = ({
                     className="select__field"
                     defaultValue={nextTypeSubscribe}
                 >
-                    {subscriptions.map((item, index) =>
+                    {[
+                        {
+                            title: "Месячная подписка (490 ₽ / мес.)",
+                            type: "month-subscribe",
+                        },
+                        {
+                            title: "Годовая подписка (3 490 ₽ / год)",
+                            type: "year-subscribe",
+                        },
+                    ].map((item, index) =>
                         item.type !== "test-subscribe" ? (
                             <option
                                 value={item.type}
                                 className="select__option"
                                 key={`select__option-${index}`}
                             >
-                                {item.title} ({item.description})
+                                {item.title}
                             </option>
                         ) : null
                     )}

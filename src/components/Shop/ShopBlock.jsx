@@ -10,14 +10,27 @@ const ShopBlock = React.memo(
         master,
         masterId,
         category,
+        HobJobProduction,
         isAdd,
         isLogin,
         onClickAddCourse,
+        onClickHiddenCourse,
     }) => {
         return (
             <div className="shop-block">
                 <div className="shop-block-top">
                     <div className="shop-block-top-cover-wrapper">
+                        <Link
+                            to={`/course/${url}`}
+                            className="shop-block-top-cover-hobjob-production"
+                        >
+                            <img
+                                src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/hobjob-production.svg`}
+                                alt=""
+                                className="shop-block-top-cover-hobjob-production__image"
+                            />
+                        </Link>
+
                         <Link
                             to={`/course/${url}`}
                             className="shop-block-top-cover"
@@ -54,8 +67,11 @@ const ShopBlock = React.memo(
                 <div className="shop-block-bottom">
                     {isLogin ? (
                         isAdd ? (
-                            <button className="shop-block-bottom__link disabled">
-                                Добавлен
+                            <button
+                                className="shop-block-bottom__link delete"
+                                onClick={() => onClickHiddenCourse(_id)}
+                            >
+                                Удалить
                             </button>
                         ) : (
                             <button
@@ -72,8 +88,8 @@ const ShopBlock = React.memo(
                         >
                             Добавить
                         </a>
-					)}
-					
+                    )}
+
                     <Link
                         to={`/course/${url}`}
                         className="btn shop-block-bottom__btn"

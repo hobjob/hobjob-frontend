@@ -6,11 +6,9 @@ import {fetchPaymentSubscribeById} from "../redux/actions/payment";
 
 import {
     PaymentProgressbar,
-    PaymentSubscribeBlock,
+    PaymentSubscribeRegisterBlock,
     Loader,
 } from "../components/";
-
-import {subscriptions} from "../subscriptions";
 
 const PaymentSubscribe = ({
     match: {
@@ -62,34 +60,24 @@ const PaymentSubscribe = ({
                             <div className="payment-wrapper">
                                 <div className="payment-form-wrapper">
                                     <PaymentProgressbar number={1} />
+									
                                     <div
                                         className="payment-form"
                                         id="payment-form"
                                     ></div>
                                 </div>
 
-                                <div className="payment-info">
-                                    <h2 className="payment-info__title">
-                                        Ваша подписка
-                                    </h2>
-                                    <div className="payment-info-block-wrapper">
-                                        {payment.typeSubscribe ===
-                                        "test-subscribe" ? (
-                                            <PaymentSubscribeBlock
-                                                {...subscriptions[0]}
-                                            />
-                                        ) : payment.typeSubscribe ===
-                                          "month-subscribe" ? (
-                                            <PaymentSubscribeBlock
-                                                {...subscriptions[1]}
-                                            />
-                                        ) : payment.typeSubscribe ===
-                                          "year-subscribe" ? (
-                                            <PaymentSubscribeBlock
-                                                {...subscriptions[2]}
-                                            />
-                                        ) : null}
-                                    </div>
+                                <div className="payment-subscribe-block-wrapper">
+                                    <PaymentSubscribeRegisterBlock
+                                        isYearSubscribe={
+                                            payment.nextTypeSubscribe ===
+                                            "year-subscribe"
+                                        }
+                                        isPrologation={
+                                            payment.nextTypeSubscribe === ""
+                                        }
+                                        typeSubscribe={payment.typeSubscribe}
+                                    />
                                 </div>
                             </div>
                         </div>

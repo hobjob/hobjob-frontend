@@ -18,7 +18,6 @@ const CoursePageLessonsVideo = ({courseId, videoPlaecholder}) => {
     const VideoRef = React.useRef();
 
     const handlerError = (e, data) => {
-        setPlay(false);
 
         const seconds = VideoRef.current && VideoRef.current.getSecondsLoaded();
     };

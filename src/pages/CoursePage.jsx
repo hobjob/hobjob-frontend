@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 
 import {fetchCourseByUrl} from "../redux/actions/courses";
-import {addUserCourse} from "../redux/actions/user";
+import {addUserCourse, hiddenUserCourse} from "../redux/actions/user";
 
 import {
     CoursePageMain,
@@ -69,7 +69,16 @@ const CoursePage = ({
     }, [url, isLoadedUserInfo, isLoadedCourseByUrl]);
 
     const onClickAddCourse = (redirect) => {
-        dispatch(addUserCourse(itemByUrl._id, redirect));
+        dispatch(
+            addUserCourse(
+                itemByUrl._id,
+                typeof redirect === "string" ? redirect : null
+            )
+        );
+    };
+
+    const onClickHiddenCourse = () => {
+        dispatch(hiddenUserCourse(itemByUrl._id));
     };
 
     return (
@@ -84,11 +93,12 @@ const CoursePage = ({
                         {isLogin ? (
                             isAdd ? (
                                 <button
-                                    className={`btn-small-round disabled course-page__btn ${
+                                    className={`btn-small-round-delete course-page__btn ${
                                         visibleButton ? "active" : ""
                                     }`}
+                                    onClick={onClickHiddenCourse}
                                 >
-                                    Добавлен
+                                    Удалить из моего обучения
                                 </button>
                             ) : (
                                 <button
@@ -118,6 +128,7 @@ const CoursePage = ({
                             master={masters[itemByUrl.masterId]}
                             categories={categories}
                             onClickAddCourse={onClickAddCourse}
+                            onClickHiddenCourse={onClickHiddenCourse}
                         />
 
                         <CoursePageLessons
