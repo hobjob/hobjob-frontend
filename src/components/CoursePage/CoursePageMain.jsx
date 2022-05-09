@@ -7,7 +7,8 @@ const CoursePageMain = ({
     description,
     masterId,
     master,
-    categories,
+	categories,
+	HobJobProduction,
     image,
     isLogin,
     isAdd,
@@ -20,6 +21,16 @@ const CoursePageMain = ({
                 <div className="course-page-main-wrapper">
                     <div className="course-page-main-text">
                         <div className="course-page-main-text-subinfo">
+                            {HobJobProduction ? (
+                                <div className="course-page-main-text-subinfo-hobjob-production">
+                                    <img
+                                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/hobjob-production.svg`}
+                                        alt=""
+                                        className="course-page-main-text-subinfo-hobjob-production__image"
+                                    />
+                                </div>
+                            ) : null}
+
                             {categories[category] ? (
                                 <a
                                     href={`/shop/?category=${categories[category].transfer}`}

@@ -174,7 +174,7 @@ const PaymentSubscribeProlongation = () => {
 
                                 <div className="payment-subscribe-block-image">
                                     <img
-                                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/payment-subscribe-block-image.png`}
+                                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/payment-subscribe-block-image.jpg`}
                                         alt=""
                                         className="payment-subscribe-block-image__image"
                                     />

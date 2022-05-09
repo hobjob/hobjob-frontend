@@ -43,7 +43,7 @@ const Referrals = () => {
                                             </h2>
                                             <p className="description referrals-top-text__description">
                                                 Поделитесь бесплатной неделей
-                                                Hobjob со своими друзьями и
+                                                HobJob со своими друзьями и
                                                 получите бесплатный месяц за
                                                 каждого друга, как только он
                                                 совершит свой первый полный
@@ -71,7 +71,7 @@ const Referrals = () => {
                                     <ReferralsBlockLink {...userInfo} />
                                 </div>
 
-                                <ReferralsPartners />
+                                <ReferralsPartners referrals={referrals} />
                             </div>
                         </div>
                     </section>

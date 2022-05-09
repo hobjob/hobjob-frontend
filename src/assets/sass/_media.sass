@@ -122,7 +122,11 @@
 			flex-direction: column
 
 			&-text
+				width: 100%
 				margin-right: 0px
+
+			&-block
+				width: 100%
 
 		&-subscribe-checkbox-block-wrapper
 			width: 100%
@@ -539,10 +543,6 @@
 
 			&-item
 				flex-direction: column
-				border: none
-				padding: 35px
-				background-color: $white
-				+boxShadow
 
 			&-col
 				display: flex
@@ -594,6 +594,9 @@
 				&-cover
 					height: 250px
 
+			&-bottom
+				&__link
+
 	// reglog
 	.reglog
 		&-block-wrapper
@@ -607,9 +610,9 @@
 			&-text
 				&__title
 					font-size: 28px
-					
+
 				&__description
-					font-size: 18px
+					font-size: 21px
 
 @media screen and ( max-width: 600px )
 	// main
@@ -811,7 +814,10 @@
 			margin-top: 25px
 
 		&-block
-			margin-bottom: 25px
+			margin-bottom: 35px
+
+			&-bottom
+				margin-top: 25px
 
 	// shop-section
 	.shop-section
@@ -825,7 +831,7 @@
 		margin: 25px 0
 
 		&-info-block-wrapper
-			margin-top: 50px
+			margin-top: 25px
 
 		&-info-block
 			padding: 25px
@@ -833,7 +839,7 @@
 		&-partners
 			&__title
 				font-size: 24px
-				margin-bottom: 50px
+				margin-bottom: 25px
 
 		&-info-block-link
 			&__title
@@ -977,6 +983,7 @@
 		&-subscribe-checkbox-block
 			width: 100%
 			padding: 10px
+			margin-bottom: 5px
 
 			&-text
 				&__title
@@ -984,7 +991,7 @@
 
 				&__subtitle
 					font-size: 14px
-					
+
 		&-subscribe-block-wrapper
 			margin-bottom: 15px
 
@@ -1000,6 +1007,10 @@
 
 					&__item
 						font-size: 14px
+
+						& svg
+							margin-right: 3px
+							width: 10px
 
 			&-image
 				padding-bottom: 15px

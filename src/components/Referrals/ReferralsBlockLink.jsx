@@ -1,6 +1,6 @@
 import React from "react";
 
-const ReferralBlockLink = ({_id}) => {
+const ReferralsBlockLink = ({_id}) => {
     const [stateCopy, setStateCopy] = React.useState(false);
 
     const inputCopyLinkRef = React.useRef();
@@ -20,12 +20,13 @@ const ReferralBlockLink = ({_id}) => {
             <p className="referrals-info-block-link__subtitle">
                 Это уникальная ссылка для вашего аккаунта, с помощью неё мы
                 фиксируем ваших партнеров в системе
-            </p>
+			</p>
+			
             <div className="referrals-info-block-link-copy">
                 <input
                     ref={inputCopyLinkRef}
                     className="referrals-info-block-link-copy__link"
-                    value={`https://hobjob.ru?ref=${_id}`}
+                    value={`hobjob.ru?ref=${_id}`}
                     readOnly
                 />
                 <div className="referrals-info-block-link-copy-subtitle">
@@ -66,4 +67,4 @@ const ReferralBlockLink = ({_id}) => {
     );
 };
 
-export default ReferralBlockLink;
+export default ReferralsBlockLink;

@@ -17,7 +17,12 @@ a
 	color: $black
 
 // title
-h1, h2, h3, h4, h5, h6
+h1
+	line-height: 1.2em
+	font-weight: 400
+	+PtSerif
+
+h2, h3, h4, h5, h6
 	line-height: 1.3em
 	font-weight: 400
 	+PtSerif
@@ -172,9 +177,8 @@ li
 		+transformScale
 
 	&:hover
-		background-color: $mainColor
-		color: $white
-		border: 1px solid $mainColor
+		color: #e2ab74
+		border: 1px solid #e2ab74
 
 	&.disabled
 		pointer-events: none
@@ -263,6 +267,10 @@ li
 
 	&:active
 		+transformScale
+
+	&:hover
+		color: #e2ab74
+		border: 1px solid #e2ab74
 
 	&__gray
 		border: none
@@ -367,8 +375,8 @@ li
 		+transformScale
 
 	&:hover
-		background-color: #e2ab74
-		color: $white
+		color: #e2ab74
+		border: 1px solid #e2ab74
 
 	&.disabled
 		pointer-events: none

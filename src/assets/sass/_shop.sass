@@ -196,18 +196,18 @@
 				margin-top: 25px
 
 				&__title
+					display: block
 					font-size: 28px
 
 					overflow: hidden
-					display: -webkit-box
-					-webkit-line-clamp: 1
-					-webkit-box-orient: vertical
+					white-space: nowrap
+					text-overflow: ellipsis
 
 					+PtSerif
 
 				&__auth
 					display: block
-					margin-top: 35px
+					margin-top: 25px
 					font-size: 21px
 					color: $mainColor
 
@@ -219,30 +219,23 @@
 					color: $gray
 
 		&-bottom
-			margin-top: 50px
+			margin-top: 35px
 
 			display: flex
 			justify-content: space-between
 			align-items: center
 
 			&__link
-				user-select: none
-				border: none
-				background-color: transparent
-
-				cursor: pointer
-				color: $mainColor
-				font-size: 15px
-				+transition
-
-				&:active
-					+transformScale
+				min-width: 49%
+				padding: 15px 20px
+				font-size: 16px
 
 				&.delete
+					border: 1px solid $red
 					color: $red
 
 			&__btn
-				min-width: 50%
+				min-width: 49%
 				padding: 15px 20px
 				font-size: 16px
 

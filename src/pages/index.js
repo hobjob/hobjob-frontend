@@ -35,6 +35,9 @@ export { default as CabinetSubscribeDisable } from "./CabinetSubscribeDisable"
 // Referrals
 export { default as Referrals } from "./Referrals"
 
+// ReferralsPolicy
+export { default as ReferralsPolicy } from "./ReferralsPolicy"
+
 // PaymentProSubscribe
 export { default as Register } from "./Register"
 export { default as PaymentSubscribe } from "./PaymentSubscribe"
@@ -48,9 +51,6 @@ export { default as Policy } from "./Policy"
 
 // PublicOffer
 export { default as PublicOffer } from "./PublicOffer"
-
-// ReferralsPolicy
-export { default as ReferralsPolicy } from "./ReferralsPolicy"
 
 // Regulations
 export { default as Regulations } from "./Regulations"

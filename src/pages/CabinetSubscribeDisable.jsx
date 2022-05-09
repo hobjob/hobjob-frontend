@@ -61,7 +61,7 @@ const CabinetSubscribeDisable = () => {
                         </p>
                         <div className="cabinet-subscribe-disable-text-btn">
                             <Link
-                                to="/shop"
+                                to="/go/training"
                                 className="btn cabinet-subscribe-disable-text-btn__btn"
                             >
                                 Продолжить обучение

@@ -1,11 +1,8 @@
 import React from "react";
-import {useSelector} from "react-redux";
 
 import {ReferralsPartnersItem} from "../";
 
-const ReferralsPartners = () => {
-    const {referrals} = useSelector(({user}) => user);
-
+const ReferralsPartners = ({referrals}) => {
     return (
         <div className="referrals-partners">
             <h4 className="referrals-partners__title">
