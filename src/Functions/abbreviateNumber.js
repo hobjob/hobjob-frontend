@@ -1,5 +1,5 @@
 export const abbreviateNumber = (num) => {
-	var sizes = ["", "к", "м"];
+	var sizes = ["", " к", " м"];
 	if (num < 1000) return num;
 	var i = parseInt(Math.floor(Math.log(num) / Math.log(1000)));
 	return (

@@ -22,7 +22,7 @@ const ReferralsPartnersItem = ({name, surname, avatar}) => {
             <div className="referrals-partners-col">
                 <div className="referrals-partners-item-earnings">
                     <span className="referrals-partners-item-earnings__title">
-                        +1 месяц
+                        + 1 месяц
                     </span>
                 </div>
             </div>

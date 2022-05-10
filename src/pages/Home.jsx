@@ -1,14 +1,8 @@
 import React from "react";
 import {Helmet} from "react-helmet";
 import queryString from "query-string";
-import moment from "moment";
 
-import {
-    HomeMainSection,
-    ShopSection,
-    CategoriesSection,
-    MastersSection,
-} from "../components/";
+import {HomeMainSection, ShopSection, CategoriesSection} from "../components/";
 
 const Home = ({
     history: {
@@ -41,8 +35,6 @@ const Home = ({
             />
 
             <CategoriesSection />
-
-            {/* <MastersSection /> */}
         </>
     );
 };

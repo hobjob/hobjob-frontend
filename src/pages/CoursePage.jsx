@@ -1,6 +1,7 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
+import queryString from "query-string";
 
 import {fetchCourseByUrl} from "../redux/actions/courses";
 import {addUserCourse, hiddenUserCourse} from "../redux/actions/user";
@@ -16,6 +17,9 @@ import {
 const CoursePage = ({
     match: {
         params: {url},
+    },
+    history: {
+        location: {search},
     },
 }) => {
     const dispatch = useDispatch();
@@ -46,6 +50,14 @@ const CoursePage = ({
                 setVisibleButton(false);
             }
         });
+
+        const {ref} = queryString.parse(search, {
+            arrayFormat: "comma",
+        });
+
+        if (ref) {
+            localStorage.setItem("ref", ref);
+        }
     }, []);
 
     React.useEffect(() => {
