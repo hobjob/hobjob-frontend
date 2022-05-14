@@ -38,7 +38,7 @@ const RenderInput = ({
                             }`}
                             onClick={setStatePasswordFunc}
                         >
-                            Удалить
+                            Скрыть
                         </span>{" "}
                         <span
                             className={`input-state__visible ${

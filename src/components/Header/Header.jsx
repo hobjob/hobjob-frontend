@@ -59,7 +59,7 @@ const Header = React.memo(() => {
         setTimeout(() => {
             setHeaderUserMenuAnimateClose(false);
             setHeaderUserMenu(false);
-        }, 200);
+        }, 180);
     };
 
     const handHeaderUserMenu = (e) => {
@@ -84,7 +84,7 @@ const Header = React.memo(() => {
         setTimeout(() => {
             setModalMenuState(false);
             setModalMenuAnimationState(false);
-        }, 200);
+        }, 180);
     };
 
     const handHeaderModalMenu = (e) => {

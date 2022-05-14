@@ -1,20 +1,21 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import ReactPlayer from "react-player";
 
 import {updateCountViewingDuration} from "../../redux/actions/user";
 
 import $api from "../../http/";
 
-const PassingVideo = ({courseId, lessonNum, lessonIndex}) => {
+import {VideoPlayer} from '../';
+
+const PassingVideo = ({courseId, lessonNum, lessonIndex, image}) => {
     const dispatch = useDispatch();
 
-    const [play, setPlay] = React.useState(true);
+    const [play, setPlay] = React.useState(false);
     const [duration, setDuration] = React.useState(0);
 
     const VideoRef = React.useRef();
 
-    const handlerError = (e, data) => {
+    const callbackError = (e, data) => {
         const seconds = VideoRef.current && VideoRef.current.getSecondsLoaded();
 
         if (data && data.type == "networkError") {
@@ -41,38 +42,31 @@ const PassingVideo = ({courseId, lessonNum, lessonIndex}) => {
         }
     };
 
-    const handlerPause = () => {
+    const callbackPause = () => {
         dispatch(updateCountViewingDuration(courseId, lessonIndex, duration));
 
         setPlay(false);
     };
 
-    const handlerPlay = () => {
-        setPlay(true);
-    };
-
-    const handlerDuration = ({playedSeconds}) => {
+    const callbackDuration = ({playedSeconds}) => {
         setDuration(Math.floor(playedSeconds));
     };
 
     return (
         <div className="passing-video">
-            <ReactPlayer
-                playing={play}
-                controls
-                playsinline
-                onError={handlerError}
-                onPause={handlerPause}
-                onPlay={handlerPlay}
-                onProgress={handlerDuration}
-                ref={VideoRef}
+            <VideoPlayer
                 url={`${
                     process.env.REACT_APP_API_DOMEN
                 }/courses/${courseId}/video/${lessonNum}/${localStorage.getItem(
                     "accessToken"
-                )}/index.m3u8`}
-                width="100%"
-                height="auto"
+                )}/playlist.m3u8`}
+                image={`${process.env.REACT_APP_IMAGE_DOMEN}/${image}`}
+                play={play}
+                setPlay={setPlay}
+                VideoRef={VideoRef}
+                callbackError={callbackError}
+                callbackPause={callbackPause}
+                callbackDuration={callbackDuration}
             />
         </div>
     );

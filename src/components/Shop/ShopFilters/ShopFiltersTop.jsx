@@ -26,7 +26,7 @@ const ShopFiltersTop = React.memo(() => {
         setTimeout(() => {
             setStateFiltersAnimationClose(false);
             setStateFilters(false);
-        }, 200);
+        }, 180);
     };
 
     const handStateFilters = (e) => {

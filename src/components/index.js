@@ -5,6 +5,7 @@ export { default as RenderInput } from "./All/RenderInput"
 export { default as RenderSelect } from "./All/RenderSelect"
 export { default as FileInput } from "./All/FileInput"
 export { default as BtnLoader } from "./All/BtnLoader"
+export { default as VideoPlayer } from "./All/VideoPlayer"
 
 // Login
 export { default as LoginForm } from "./Login/LoginForm"

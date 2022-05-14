@@ -1,13 +1,15 @@
 import React from "react";
-import ReactPlayer from "react-player";
+import {VideoPlayer} from "../";
 
-const CoursePageLessonsVideo = ({courseId, videoPlaecholder}) => {
-    const [play, setPlay] = React.useState(true);
-    const [isFirst, setIsFirst] = React.useState(true);
+const CoursePageLessonsVideo = ({courseId, image, videoPlaecholder}) => {
+    const [play, setPlay] = React.useState(false);
+    const [isFirstPlay, setIsFirstPlay] = React.useState(true);
+
+    const VideoRef = React.useRef();
 
     React.useEffect(() => {
-        if (isFirst) {
-            setIsFirst(false);
+        if (isFirstPlay) {
+            setIsFirstPlay(false);
         } else if (videoPlaecholder) {
             setPlay(false);
         } else {
@@ -15,34 +17,16 @@ const CoursePageLessonsVideo = ({courseId, videoPlaecholder}) => {
         }
     }, [videoPlaecholder]);
 
-    const VideoRef = React.useRef();
-
-    const handlerError = (e, data) => {
-
-        const seconds = VideoRef.current && VideoRef.current.getSecondsLoaded();
-    };
-
-    const handlerPause = () => {
-        setPlay(false);
-    };
-
-    const handlerPlay = () => {
-        setPlay(true);
-    };
-
     return (
-        <ReactPlayer
-            playing={play}
-            controls
-            playsinline
-            onError={handlerError}
-            onPause={handlerPause}
-            onPlay={handlerPlay}
-            ref={VideoRef}
-            url={`${process.env.REACT_APP_API_DOMEN}/courses/first/${courseId}/video/index.m3u8`}
-            width="100%"
-            height="100%"
-        />
+        <>
+            <VideoPlayer
+                url={`${process.env.REACT_APP_API_DOMEN}/courses/first/${courseId}/video/playlist.m3u8`}
+                image={`${process.env.REACT_APP_IMAGE_DOMEN}/${image}`}
+                play={play}
+                setPlay={setPlay}
+                VideoRef={VideoRef}
+            />
+        </>
     );
 };
 

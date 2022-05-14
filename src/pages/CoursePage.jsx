@@ -43,13 +43,7 @@ const CoursePage = ({
     React.useEffect(() => {
         window.scrollTo(0, 0);
 
-        window.addEventListener("scroll", () => {
-            if (Math.floor(window.pageYOffset) > 200) {
-                setVisibleButton(true);
-            } else {
-                setVisibleButton(false);
-            }
-        });
+        window.addEventListener("scroll", handlerScroll);
 
         const {ref} = queryString.parse(search, {
             arrayFormat: "comma",
@@ -58,6 +52,12 @@ const CoursePage = ({
         if (ref) {
             localStorage.setItem("ref", ref);
         }
+    }, []);
+
+    React.useEffect(() => {
+        return () => {
+            window.removeEventListener("scroll", handlerScroll);
+        };
     }, []);
 
     React.useEffect(() => {
@@ -79,6 +79,14 @@ const CoursePage = ({
             }
         }
     }, [url, isLoadedUserInfo, isLoadedCourseByUrl]);
+
+    const handlerScroll = () => {
+        if (Math.floor(window.pageYOffset) > 200) {
+            setVisibleButton(true);
+        } else {
+            setVisibleButton(false);
+        }
+    };
 
     const onClickAddCourse = (redirect) => {
         dispatch(

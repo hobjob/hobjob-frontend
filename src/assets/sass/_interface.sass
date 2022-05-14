@@ -692,3 +692,105 @@ input[type="file"]
 
 		&__description
 			margin-bottom: 100px
+
+// video-player
+.video-player
+	position: relative
+	width: 100%
+
+	&:hover &-content-quality
+		opacity: 1
+		z-index: 2
+
+	&:hover &-content-quality-select
+		opacity: 1
+		z-index: 2
+
+	&-content
+		& video
+			overflow: hidden
+
+			+borderRadiusBlock
+			+transition
+
+		&-quality
+			opacity: 0
+
+			cursor: pointer
+
+			background-color: $backgroundGray
+			padding: 5px 10px
+
+			z-index: -1
+
+			position: absolute
+
+			top: 10px
+			left: 10px
+
+			+borderRadiusBlock
+			+transition
+
+			&:active
+				transform: scale(0.90)
+
+			&__title
+				display: flex
+				align-items: center
+
+				user-select: none
+
+				& span
+					font-size: 13px
+					margin-left: 5px
+
+					background-color: $mainColor
+					color: $white
+					padding: 0 5px
+
+					border-radius: 100px
+
+		&-quality-select
+			opacity: 0
+
+			cursor: pointer
+
+			background-color: $backgroundGray
+			padding: 5px 15px
+
+			z-index: -1
+
+			position: absolute
+
+			top: 50px
+			left: 10px
+
+			width: 150px
+
+			+openPopup
+			+borderRadiusBlock
+			+transition
+
+			&.close
+				+closePopup
+
+			&-item
+				cursor: pointer
+				padding: 5px 0
+
+				&:hover &__title
+					color: $gray
+
+				&__title
+					user-select: none
+					+transition
+
+					& span
+						font-size: 13px
+						margin-left: 5px
+
+						background-color: $mainColor
+						color: $white
+						padding: 0 5px
+
+						border-radius: 100px

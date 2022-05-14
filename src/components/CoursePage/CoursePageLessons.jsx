@@ -25,7 +25,7 @@ const CoursePageLessons = ({
         setTimeout(() => {
             setVideoPlaecholderAnimateClose(false);
             setVideoPlaecholder(false);
-        }, 200);
+        }, 180);
     };
 
     return (
@@ -59,6 +59,7 @@ const CoursePageLessons = ({
                         <CoursePageLessonsVideo
                             courseId={_id}
                             videoPlaecholder={videoPlaecholder}
+                            image={lessons[0].image}
                         />
                     </div>
                     <div className="course-page-lessons-list">

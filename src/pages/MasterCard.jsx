@@ -51,7 +51,7 @@ const MasterCard = ({
                     <>
                         <Helmet>
                             <title>
-                                {itemById.name} {itemById.surname} (мастер) -
+                                {itemById.name} {itemById.surname} -
                                 HobJob
                             </title>
                         </Helmet>

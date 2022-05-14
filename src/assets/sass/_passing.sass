@@ -15,16 +15,7 @@
 	&-video
 		margin-top: 50px
 		+openAnimation
-
-		& video
-			overflow: hidden
-			+borderRadiusBlock
-
-		&__title
-			user-select: none
-			position: absolute
-			color: $gray
-
+		
 	&-cover
 		margin-top: 50px
 
@@ -122,6 +113,9 @@
 				user-select: none
 
 				+transition
+
+				&:hover
+					opacity: 0.5
 
 				&:last-child
 					margin-right: 0

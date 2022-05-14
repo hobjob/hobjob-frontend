@@ -78,6 +78,11 @@ const PassingCourse = ({
 
                                         <PassingVideo
                                             {...courses[courseId]}
+                                            image={
+                                                courses[courseId].lessons[
+                                                    lessonIndex
+                                                ].image
+                                            }
                                             courseId={courseId}
                                             lessonNum={lessonNum}
                                             lessonIndex={lessonIndex}
@@ -122,7 +127,9 @@ const PassingCourse = ({
 
                                         <div className="passing-bottom-block">
                                             <PassingMaster
-                                                {...masters[courses[courseId].masterId]}
+                                                {...masters[
+                                                    courses[courseId].masterId
+                                                ]}
                                             />
                                         </div>
                                     </div>
