@@ -138,16 +138,15 @@ const Magazine = ({
                                                     )
                                                 )}
                                             </div>
-                                            {items.length >=
-                                            totalCount ? null : (
-                                                <>
+                                            {items.length >= totalCount ? null : (
+                                                <div className="magazine-btn-pagination">
                                                     <button
-                                                        className="btn__gray"
+                                                        className="magazine-btn-pagination__btn btn__gray"
                                                         onClick={
                                                             onClickaddPaginationPagePosts
                                                         }
                                                     >
-                                                        Загрузить ещё
+                                                        Загрузить еще
                                                         <svg
                                                             width="16"
                                                             height="17"
@@ -170,7 +169,7 @@ const Magazine = ({
                                                             />
                                                         </svg>
                                                     </button>
-                                                </>
+                                                </div>
                                             )}
                                         </>
                                     ) : (

@@ -18,10 +18,10 @@ const ReferralsBlockLink = ({_id}) => {
                 Ваша реферальная ссылка
             </h3>
             <p className="referrals-info-block-link__subtitle">
-                Это уникальная ссылка для вашего аккаунта, с помощью неё мы
+                Это уникальная ссылка для вашего аккаунта, с помощью нее мы
                 фиксируем ваших партнеров в системе
-			</p>
-			
+            </p>
+
             <div className="referrals-info-block-link-copy">
                 <input
                     ref={inputCopyLinkRef}

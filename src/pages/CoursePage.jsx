@@ -2,6 +2,7 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 import queryString from "query-string";
+import {Redirect} from "react-router-dom";
 
 import {fetchCourseByUrl} from "../redux/actions/courses";
 import {addUserCourse, hiddenUserCourse} from "../redux/actions/user";
@@ -170,7 +171,7 @@ const CoursePage = ({
                         />
                     </>
                 ) : (
-                    (window.location.href = "/")
+                    <Redirect to="/shop" />
                 )
             ) : (
                 <Loader />

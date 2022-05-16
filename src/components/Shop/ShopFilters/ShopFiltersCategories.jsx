@@ -23,9 +23,9 @@ const ShopFiltersCategories = React.memo(() => {
                 }`}
                 onClick={() => onClickCategory("all")}
             >
-                Все категории
-			</button>
-			
+                Все направления
+            </button>
+
             {Object.keys(items).map((key, index) => (
                 <button
                     className={`shop__btn ${

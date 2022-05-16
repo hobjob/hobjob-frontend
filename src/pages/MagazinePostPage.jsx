@@ -1,6 +1,7 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
+import {Redirect} from "react-router-dom";
 
 import {fetchPostsById} from "../redux/actions/posts";
 
@@ -36,41 +37,37 @@ const MagazinePostPage = ({
     return (
         <>
             {isLoadedByIdPosts && isLoadedAllCategories && isLoadedMasters ? (
-                itemById ? (
+                Object.keys(itemById).length ? (
                     <>
                         <Helmet>
                             <title>{itemById.title} - HobJob</title>
-                        </Helmet>
+						</Helmet>
+						
                         <section className="magazine-post-page">
-                            <div className="container">
-                                <div className="magazine-post-page-wrapper">
-                                    <MagazinePostPageCover
-                                        {...itemById}
-                                        categories={categories}
-                                        masters={masters}
+                            <MagazinePostPageCover
+                                {...itemById}
+                                categories={categories}
+                                masters={masters}
+							/>
+							
+                            <div className="magazine-post-page-block-wrapper">
+                                {itemById.content.map((block, index) => (
+                                    <MagazinePostPageBlock
+                                        {...block}
+                                        key={`magazine-post-page-block-${index}`}
                                     />
-
-                                    <div className="magazine-post-page-block-wrapper">
-                                        {itemById.content.map(
-                                            (block, index) => (
-                                                <MagazinePostPageBlock
-                                                    {...block}
-                                                    key={`magazine-post-page-block-${index}`}
-                                                />
-                                            )
-                                        )}
-                                    </div>
-                                </div>
-                                {itemById.next ? (
-                                    <MagazinePostPageNext {...itemById.next} />
-                                ) : (
-                                    <MagazinePostPageEnd />
-                                )}
-                            </div>
+                                ))}
+							</div>
+							
+                            {itemById.next ? (
+                                <MagazinePostPageNext {...itemById.next} />
+                            ) : (
+                                <MagazinePostPageEnd />
+                            )}
                         </section>
                     </>
                 ) : (
-                    (window.location.href = "/")
+                    <Redirect to="/magazine" />
                 )
             ) : (
                 <Loader />

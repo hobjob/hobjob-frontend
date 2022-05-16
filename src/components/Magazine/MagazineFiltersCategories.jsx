@@ -23,7 +23,7 @@ const MagazineFiltersCategories = () => {
                 }`}
                 onClick={() => onClickCategory("all")}
             >
-                Все категории
+                Все направления
             </button>
 
             {Object.keys(items).map((key, index) => (

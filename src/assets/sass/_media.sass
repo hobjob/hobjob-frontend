@@ -218,20 +218,6 @@
 			margin-right: 0
 			width: 100%
 
-	// magazine-post-page
-	.magazine-post-page
-		&-wrapper
-			max-width: 100%
-
-		&-cover
-			&-img
-				height: 350px
-
-		&-block
-			margin-bottom: 50px
-			&__img
-				height: 350px
-
 	// cabinet
 	.cabinet
 		&-block
@@ -349,11 +335,15 @@
 			margin: 0 0 25px 0
 			padding-bottom: 25px
 
-			&-cover
-				height: 350px
+			&-top
+				&-cover
+					height: 350px
 
 	// magazine-post-page
 	.magazine-post-page
+		&-text-wrapper
+			max-width: 95%
+
 		&-next
 			&-text
 				max-width: 100%
@@ -646,6 +636,7 @@
 
 		&-next
 			padding: 25px
+
 			&-text
 				&__title
 					font-size: 24px
@@ -819,6 +810,10 @@
 			&-bottom
 				margin-top: 25px
 
+		&-btn-pagination
+			&__btn
+				width: 100%
+
 	// shop-section
 	.shop-section
 		margin: 25px 0
@@ -856,32 +851,46 @@
 			margin-top: 25px
 
 		&-block
-			&-cover
-				height: 200px
+			&-top
+				&-cover
+					height: 200px
 
-			&-text
-				&__title
-					font-size: 28px
+				&-text
+					&__title
+						font-size: 28px
+
+		&-btn-pagination
+			&__btn
+				width: 100%
 
 	// magazine-post-page
 	.magazine-post-page
 		margin: 25px 0
 
 		&-cover
-			&-img
+			&__img
 				margin-top: 25px
 
 		&-block-wrapper
 			margin-top: 50px
 
 		&-block
+			margin-bottom: 25px
+
 			&:last-child
 				margin-bottom: 25px
 
 			&-text
 				&__title
 					font-size: 32px
-					margin-bottom: 25px
+					margin-bottom: 15px
+
+					& > p
+						font-size: 21px
+						margin-bottom: 15px
+
+			&__img
+				margin-top: 25px
 
 	// cabinet
 	.cabinet

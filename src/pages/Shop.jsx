@@ -166,16 +166,15 @@ const Shop = React.memo(
                                                         )
                                                     )}
                                                 </div>
-                                                {items.length >=
-                                                totalCount ? null : (
+                                                {items.length >= totalCount ? null : (
                                                     <div className="shop-btn-pagination">
                                                         <button
-                                                            className="btn__gray"
+                                                            className="shop-btn-pagination__btn btn__gray"
                                                             onClick={
                                                                 onClickaddPaginationPageCourses
                                                             }
                                                         >
-                                                            Загрузить ещё
+                                                            Загрузить еще
                                                             <svg
                                                                 width="16"
                                                                 height="17"

@@ -48,7 +48,10 @@ const ShopFiltersTop = React.memo(() => {
                             stateFilters ? "active" : ""
                         }`}
                     >
-                        Мастера ({Object.keys(filters.masters).length})
+                        Мастера{" "}
+                        {Object.keys(filters.masters).length
+                            ? `(${Object.keys(filters.masters).length})`
+                            : ""}
                     </span>
                 </div>
             </div>

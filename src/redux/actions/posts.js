@@ -48,13 +48,10 @@ export const fetchPostsById = (id) => (dispatch) => {
 		payload: false,
 	})
 
-	dispatch({
-		type: "SET_LOADED_POSTS_BY_ID",
-		payload: false,
-	})
-
 	$api.get(`/posts/${id}`).then(({ data }) => {
 		dispatch(setPostsById(data))
+	}).catch(() => {
+		dispatch(setPostsById({}))
 	})
 }
 

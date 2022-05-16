@@ -65,6 +65,7 @@ const MagazineBlockBig = ({
                             }}
                         ></div>
                         <span className="magazine-block-big-text-auth__name">
+                            <span>Автор</span>
                             {masters[masterId].name} {masters[masterId].surname}
                         </span>
                     </Link>
@@ -76,7 +77,7 @@ const MagazineBlockBig = ({
                             className="magazine-block-big-text-auth__img"
                         />
                         <span className="magazine-block-big-text-auth__name">
-                            Редактор HobJob
+                            <span>Автор</span> Редактор HobJob
                         </span>
                     </Link>
                 )}

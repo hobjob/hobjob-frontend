@@ -103,9 +103,19 @@
 					-webkit-box-orient: vertical
 
 				&-auth
+					padding: 10px 15px
+
 					margin-top: 50px
-					display: flex
+					display: inline-flex
 					align-items: center
+
+					background-color: $backgroundGray
+
+					+borderRadiusBlock
+					+transition
+
+					&:hover
+						+transformScale
 
 					&-avatar
 						margin-right: 15px
@@ -116,6 +126,10 @@
 
 					&__name
 						font-size: 18px
+
+						& > span
+							display: block
+							color: $gray
 
 					&__img
 						width: 40px
@@ -133,11 +147,12 @@
 
 		margin: 0 15px
 
-		padding-bottom: 50px
+		padding-bottom: 25px
 		margin-bottom: 50px
 
 		display: flex
 		flex-direction: column
+		justify-content: space-between
 
 		border-bottom: 1px solid $borderGray
 		+openAnimation
@@ -145,70 +160,95 @@
 		&:hover &-cover-image
 			transform: scale(1.03)
 
-		&-cover
-			overflow: hidden
-			height: 300px
-			+borderRadiusBlock
-
-			&-image
-				width: 100%
-				height: 100%
-
-				+backgroundSetting
-				+transition
-
-		&-text
-			margin-top: 25px
-
-			&-top
-				display: flex
-				flex-wrap: wrap
-				align-items: center
-				margin-bottom: 15px
-
-				&__category
-					font-size: 21px
-					color: $mainColor
-					margin-bottom: 10px
-
-			&__title
+		&-top
+			&-cover
 				display: block
-				font-size: 32px
-
 				overflow: hidden
-				white-space: nowrap
-				text-overflow: ellipsis
+				height: 300px
+				+borderRadiusBlock
 
-				+PtSerif
+				&-image
+					width: 100%
+					height: 100%
 
-			&__description
-				font-size: 21px
+					+backgroundSetting
+					+transition
+
+			&-text
 				margin-top: 25px
 
-				overflow: hidden
-				display: -webkit-box
-				-webkit-line-clamp: 3
-				-webkit-box-orient: vertical
+				&-top
+					display: flex
+					flex-wrap: wrap
+					align-items: center
+					margin-bottom: 15px
 
-			&-auth
-				margin-top: 50px
-				display: flex
-				align-items: center
+					&__category
+						font-size: 21px
+						color: $mainColor
+						margin-bottom: 10px
 
-				&-avatar
-					margin-right: 15px
-					width: 50px
-					height: 50px
-					border-radius: 50%
-					+backgroundSetting
+				&__title
+					display: block
+					font-size: 32px
 
-				&__name
-					font-size: 18px
+					overflow: hidden
+					white-space: nowrap
+					text-overflow: ellipsis
 
-				&__img
-					width: 40px
-					height: 40px
-					margin-right: 15px
+					+PtSerif
+
+				&__description
+					font-size: 21px
+					margin-top: 25px
+
+					overflow: hidden
+					display: -webkit-box
+					-webkit-line-clamp: 3
+					-webkit-box-orient: vertical
+
+		&-bottom
+			&-text
+				&-auth
+					padding: 10px 15px
+
+					margin-top: 25px
+					display: inline-flex
+					align-items: center
+
+					background-color: $backgroundGray
+
+					+borderRadiusBlock
+					+transition
+
+					&:hover
+						+transformScale
+
+					&-avatar
+						margin-right: 15px
+						width: 50px
+						height: 50px
+						border-radius: 50%
+						+backgroundSetting
+
+					&__name
+						font-size: 18px
+
+						& > span
+							display: block
+							color: $gray
+
+					&__img
+						width: 40px
+						height: 40px
+						margin-right: 15px
+
+	&-btn-pagination
+		display: flex
+		justify-content: center
+
+		&__btn
+			width: 250px
 
 	&-not-found
 		margin: 150px 0
@@ -225,7 +265,7 @@
 	margin: 50px 0
 	+openAnimation
 
-	&-wrapper
+	&-text-wrapper
 		margin: 0 auto
 		max-width: 80%
 
@@ -235,8 +275,6 @@
 				display: flex
 				align-items: center
 				flex-wrap: wrap
-
-				margin-bottom: 25px
 
 				&__date
 					font-size: 21px
@@ -253,20 +291,34 @@
 					margin-bottom: 25px
 
 				&-auth
+					padding: 10px 15px
+					background-color: $backgroundGray
+
 					display: flex
 					align-items: center
 
 					margin-bottom: 25px
+
+					+borderRadiusBlock
+					+transition
+
+					&:hover
+						+transformScale
 
 					&-avatar
 						margin-right: 15px
 						width: 50px
 						height: 50px
 						border-radius: 50%
+
 						+backgroundSetting
 
 					&__name
 						font-size: 21px
+
+						& > span
+							display: block
+							color: $gray
 
 					&__img
 						width: 40px
@@ -279,11 +331,20 @@
 			&__description
 				margin-top: 25px
 
-		&-img
-			margin-top: 50px
-			height: 500px
+		&__img
+			display: block
+			margin: 0 auto
 
-			+backgroundSetting
+			user-select: none
+			pointer-events: none
+
+			width: 95%
+			height: 100%
+
+			margin-top: 50px
+
+			overflow: hidden
+
 			+borderRadiusBlock
 
 	&-block-wrapper
@@ -298,25 +359,55 @@
 		&-text
 			&__title
 				font-size: 42px
-				margin-bottom: 50px
-
-				& > a
-					color: $mainColor
-
-			&__description
 				margin-bottom: 25px
 
+				& > span
+					white-space: nowrap
+					padding-right: 5px
+					font-size: 32px
+					color: $gray
+
 				& > a
+					display: block
+
+					overflow: hidden
+					white-space: nowrap
+					text-overflow: ellipsis
+
+					text-decoration: underline
+					color: $mainColor
+
+				& > p
+					color: $gray
+					font-size: 32px
+
+					margin-bottom: 25px
+
+			&__description
+				& > a
+					text-decoration: underline
 					color: $mainColor
 
 		&__img
-			width: 100%
-			height: 500px
+			display: block
+			margin: 0 auto
 
-			+backgroundSetting
+			user-select: none
+			pointer-events: none
+
+			width: 95%
+			height: 100%
+
+			margin-top: 50px
+
+			overflow: hidden
+
 			+borderRadiusBlock
 
 	&-next
+		margin: 0 auto
+		width: 95%
+
 		display: flex
 		justify-content: space-between
 		align-items: center
@@ -327,7 +418,7 @@
 		+transition
 
 		&:hover
-			transform: scale(1.03)
+			+transformScale
 
 		&-text
 			max-width: 50%
