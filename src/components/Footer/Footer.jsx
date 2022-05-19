@@ -4,6 +4,13 @@ import {Link, NavLink} from "react-router-dom";
 import Logo from "../../assets/images/logo.svg";
 
 const Footer = () => {
+    const checkActive = (match, location) => {
+        if (!location) return false;
+        const {pathname} = location;
+
+        return pathname === "/";
+	};
+	
     return (
         <footer className="footer">
             <div className="container">
@@ -23,7 +30,7 @@ const Footer = () => {
 
                             {/* Hi, we are Nagibin's studio */}
                             <div className="nagibinstudio">
-                                <a href="https://nagibinstudio.ru">
+                                {/* <a href="https://nagibinstudio.ru">
                                     <img
                                         src="https://api.nagibinstudio.ru:5000/all/nagibin-develompent-black.svg"
                                         alt=""
@@ -33,7 +40,7 @@ const Footer = () => {
                                             userSelect: "none",
                                         }}
                                     />
-                                </a>
+                                </a> */}
                             </div>
                         </div>
 
@@ -138,6 +145,15 @@ const Footer = () => {
 
                         <nav className="footer-block-nav">
                             <NavLink
+                                to="/"
+                                className="footer-block-nav__link"
+                                activeClassName="footer-block-nav__link active"
+                                isActive={checkActive}
+                            >
+                                Главная
+                            </NavLink>
+
+                            <NavLink
                                 to="/shop"
                                 className="footer-block-nav__link"
                                 activeClassName="footer-block-nav__link active"
@@ -145,12 +161,6 @@ const Footer = () => {
                                 Курсы
                             </NavLink>
 
-                            <a
-                                href={`${process.env.REACT_APP_DOMEN_MASTERS_SERVICES}`}
-                                className="footer-block-nav__link"
-                            >
-                                Для мастеров
-                            </a>
                             <NavLink
                                 to="/magazine"
                                 className="footer-block-nav__link"
@@ -158,6 +168,13 @@ const Footer = () => {
                             >
                                 Журнал
                             </NavLink>
+
+                            <a
+                                href={`${process.env.REACT_APP_DOMEN_MASTERS_SERVICES}`}
+                                className="footer-block-nav__link"
+                            >
+                                Стать мастером
+                            </a>
                         </nav>
                     </div>
                     <div className="footer-block footer-block-subinfo">

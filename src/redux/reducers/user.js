@@ -2,7 +2,6 @@ const initialState = {
 	userInfo: {},
 	courses: {},
 	referrals: [],
-	masterCourses: [],
 
 	isLoadedUserInfo: false,
 	isLoadedUserCourses: false,
@@ -47,14 +46,6 @@ const user = (state = initialState, action) => {
 			...state,
 			referrals: action.payload,
 			isLoadedReferrals: true
-		}
-	}
-
-	if (action.type === "SET_USER_MASTER_COURSES") {
-		return {
-			...state,
-			masterCourses: action.payload,
-			isLoadedMasterCourses: true
 		}
 	}
 

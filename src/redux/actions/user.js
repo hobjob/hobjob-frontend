@@ -20,12 +20,6 @@ export const fetchUserReferrals = () => (dispatch) => {
 	})
 }
 
-export const fetchUserMasterCourses = () => (dispatch) => {
-	$api.get("/my/master-courses").then(({ data }) => {
-		dispatch(setUserMasterCourses(data))
-	})
-}
-
 export const fetchUpdateUser = (data) => (dispatch) => {
 	dispatch({
 		type: "SET_SEND_UPDATE_USER_INFO",

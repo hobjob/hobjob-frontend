@@ -7,7 +7,8 @@ const HeaderMenu = React.memo(() => {
         const {pathname} = location;
 
         return pathname === "/";
-    };
+	};
+	
     return (
         <nav className="header-nav">
             <NavLink
