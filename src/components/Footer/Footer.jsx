@@ -30,7 +30,7 @@ const Footer = () => {
 
                             {/* Hi, we are Nagibin's studio */}
                             <div className="nagibinstudio">
-                                {/* <a href="https://nagibinstudio.ru">
+                                <a href="https://nagibinstudio.ru">
                                     <img
                                         src="https://api.nagibinstudio.ru:5000/all/nagibin-develompent-black.svg"
                                         alt=""
@@ -40,7 +40,7 @@ const Footer = () => {
                                             userSelect: "none",
                                         }}
                                     />
-                                </a> */}
+                                </a>
                             </div>
                         </div>
 
