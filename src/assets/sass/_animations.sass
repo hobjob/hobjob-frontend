@@ -1,0 +1,44 @@
+// animations
+.rotate
+  animation: rotate 1.5s infinite
+
+// keyframes
+@keyframes open
+	0%
+		opacity: 0
+	100%
+		opacity: 1
+
+@keyframes close
+	0%
+		opacity: 1
+	100%
+		opacity: 0
+
+@keyframes rotate
+	from
+		transform: rotate(-360deg)
+
+@keyframes openPopup
+	0%
+		opacity: 0
+		transform: scale3d(.90, .90, .90)
+	100%
+		transform: scale3d(1, 1, 1)
+		opacity: 1
+
+@keyframes closePopup
+	0%
+		transform: scale3d(1, 1, 1)
+		opacity: 1
+	100%
+		opacity: 0
+		transform: scale3d(.90, .90, .90)
+
+@keyframes ballPulse
+	0%
+		transform: scale(0)
+
+	100%
+		transform: scale(1.0)
+		opacity: 0

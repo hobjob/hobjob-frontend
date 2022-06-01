@@ -1,0 +1,793 @@
+// interface
+*
+	margin: 0
+	padding: 0
+	box-sizing: border-box
+
+body
+	position: relative
+	overflow-x: hidden
+	overflow-y: scroll
+	font-size: 17px
+	+SfRegular
+
+// link
+a
+	text-decoration: none
+	color: $black
+
+// title
+h1
+	line-height: 1.2em
+	font-weight: 400
+	+PtSerif
+
+h2, h3, h4, h5, h6
+	line-height: 1.3em
+	font-weight: 400
+	+PtSerif
+
+.title
+	font-size: 58px
+
+	& span
+		white-space: nowrap
+		padding-left: 15px
+		font-size: 32px
+		color: $gray
+
+.title__mb
+	font-size: 58px
+	margin-bottom: 50px
+
+	& span
+		white-space: nowrap
+		padding-left: 15px
+		font-size: 32px
+		color: $gray
+
+// subtitle
+span
+	line-height: 1.5em
+
+.subtitle
+	display: block
+	color: $gray
+	font-size: 24px
+
+.subtitle__mb
+	display: block
+	color: $gray
+	font-size: 24px
+	margin-bottom: 25px
+
+// p
+p
+	line-height: 1.5em
+
+.description
+	font-size: 24px
+
+.description__mt
+	font-size: 24px
+	margin-top: 50px
+
+.description__mb
+	font-size: 24px
+	margin-bottom: 50px
+
+// li
+li
+	line-height: 1.4em
+
+// wrapper
+.wrapper
+	display: flex
+	flex-direction: column
+	min-height: 100vh
+
+// container
+.container
+	position: relative
+	width: 95%
+	max-width: 1550px
+
+	margin: 0 auto
+
+// btn
+.btn
+	display: inline-flex
+	justify-content: center
+	align-items: center
+
+	border: none
+	background-color: $mainColor
+	border: 1px solid $mainColor
+	padding: 20px 30px
+	color: $white
+	cursor: pointer
+	user-select: none
+	text-align: center
+	font-size: 17px
+	+borderRadius
+	+SfRegular
+	+transition
+
+	&:hover
+		background-color: #e2ab74
+
+	&:active
+		+transformScale
+
+	&.disabled
+		pointer-events: none
+		border: 1px solid $borderGray
+		background-color: $borderGray
+		color: $gray
+
+	&__gray
+		display: inline-flex
+		justify-content: center
+		align-items: center
+
+		border: none
+		background-color: $borderGray
+		border: 1px solid $borderGray
+		padding: 20px 30px
+		color: $black
+		cursor: pointer
+		user-select: none
+		text-align: center
+		font-size: 17px
+		+borderRadius
+		+SfRegular
+		+transition
+
+		&:active
+			+transformScale
+
+		&:hover
+			background-color: #E9E9E9
+			border: 1px solid #E9E9E9
+
+		& > svg
+			margin-left: 15px
+
+	& > svg
+		margin-left: 15px
+
+.btn-regular
+	display: inline-flex
+	justify-content: center
+	align-items: center
+
+	border: 1px solid $mainColor
+	background-color: transparent
+	padding: 20px 30px
+	color: $mainColor
+	cursor: pointer
+	user-select: none
+	text-align: center
+	font-size: 17px
+	+borderRadius
+	+SfRegular
+	+transition
+
+	&:active
+		+transformScale
+
+	&:hover
+		color: #e2ab74
+		border: 1px solid #e2ab74
+
+	&.disabled
+		pointer-events: none
+		color: $gray
+		border: 1px solid $borderGray
+
+	&__gray
+		display: inline-flex
+		justify-content: center
+		align-items: center
+
+		border: 1px solid $gray
+		background-color: transparent
+		padding: 20px 30px
+		color: $gray
+		cursor: pointer
+		user-select: none
+		font-size: 17px
+		+borderRadius
+		+SfRegular
+		+transition
+
+.btn-delete
+	display: inline-flex
+	justify-content: center
+	align-items: center
+
+	border: none
+	background-color: $red
+	padding: 20px 30px
+	color: $white
+	cursor: pointer
+	user-select: none
+	text-align: center
+	font-size: 17px
+	+borderRadius
+	+SfRegular
+	+transition
+
+	&:hover
+		background-color: #FF4949
+
+	&:active
+		+transformScale
+
+.btn-small
+	border: none
+	text-align: center
+
+	padding: 13px 23px
+	font-size: 17px
+
+	background-color: $mainColor
+	color: $white
+
+	cursor: pointer
+	line-height: 1.4em
+
+	+borderRadius
+	+SfRegular
+	+transition
+
+	&:active
+		+transformScale
+
+	&:hover
+		background-color: #e2ab74
+
+.btn-small-regular
+	border: none
+	text-align: center
+
+	padding: 13px 23px
+	font-size: 17px
+
+	background-color: transparent
+	border: 1px solid $mainColor
+	color: $mainColor
+
+	cursor: pointer
+	line-height: 1.4em
+
+	+borderRadius
+	+SfRegular
+	+transition
+
+	&:active
+		+transformScale
+
+	&:hover
+		color: #e2ab74
+		border: 1px solid #e2ab74
+
+	&__gray
+		border: none
+		text-align: center
+
+		padding: 13px 23px
+		font-size: 17px
+
+		background-color: transparent
+		border: 1px solid $gray
+		color: $gray
+
+		cursor: pointer
+		line-height: 1.4em
+
+		+borderRadius
+		+SfRegular
+		+transition
+
+.btn-small-round
+	display: inline-flex
+	justify-content: center
+	align-items: center
+
+	border: none
+	text-align: center
+	border-radius: 100px
+	user-select: none
+
+	padding: 13px 23px
+	font-size: 17px
+
+	background-color: $mainColor
+	color: $white
+
+	cursor: pointer
+	line-height: 1.4em
+
+	+SfRegular
+	+transition
+
+	&:active
+		+transformScale
+
+	&:hover
+		background-color: #e2ab74
+
+	&.disabled
+		pointer-events: none
+		border: 1px solid $borderGray
+		background-color: $borderGray
+		color: $gray
+
+.btn-small-round-delete
+	display: inline-flex
+	justify-content: center
+	align-items: center
+
+	border: none
+	text-align: center
+	border-radius: 100px
+	user-select: none
+
+	padding: 13px 23px
+	font-size: 17px
+
+	background-color: $red
+	color: $white
+
+	cursor: pointer
+	line-height: 1.4em
+
+	+SfRegular
+	+transition
+
+	&:active
+		+transformScale
+
+	&:hover
+		background-color: #FF4949
+
+.btn-small-round-regular
+	border: none
+	text-align: center
+	border-radius: 100px
+	user-select: none
+
+	padding: 13px 23px
+	font-size: 17px
+
+	background-color: $white
+	border: 1px solid $mainColor
+	color: $mainColor
+
+	cursor: pointer
+	line-height: 1.4em
+
+	+SfRegular
+	+transition
+
+	&:active
+		+transformScale
+
+	&:hover
+		color: #e2ab74
+		border: 1px solid #e2ab74
+
+	&.disabled
+		pointer-events: none
+		border: 1px solid $borderGray
+		color: $gray
+
+// input
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active
+	-webkit-box-shadow: 0 0 0 30px white inset !important
+
+.input
+	&__field
+		background-color: transparent
+		resize: none
+		outline: none
+		font-size: 21px
+		padding: 15px 0
+		display: block
+		width: 100%
+		border: none
+		border-bottom: 1px solid $gray
+		line-height: 1.4em
+		+transition
+		+SfRegular
+
+		&:focus ~ label,
+		&:valid ~ label
+			top: -15px
+			font-size: 16px
+
+		&.error
+			border-bottom: 1px solid $red
+
+	&__label
+		color: $gray
+		font-size: 18px
+		position: absolute
+		pointer-events: none
+		top: 10px
+		+transition
+
+		&.error
+			color: $red
+
+		&.active
+			top: -15px
+			font-size: 14px
+
+	&-state
+		position: absolute
+		right: 0
+		top: 50%
+		transform: translateY(-50%)
+
+		height: 18px
+		min-width: 70px
+		overflow: hidden
+
+		&__visible
+			position: absolute
+			right: 0
+			top: 50%
+			transform: translateY(-50%)
+			display: block
+
+			user-select: none
+			cursor: pointer
+			font-size: 15px
+			color: $gray
+			+transition
+
+			&.active
+				top: -100%
+
+		&__hidden
+			position: absolute
+			right: 0
+			top: 100%
+
+			display: block
+
+			user-select: none
+			cursor: pointer
+			font-size: 15px
+			color: $gray
+			+transition
+
+			&.active
+				top: 50%
+				transform: translateY(-50%)
+
+	&__error
+		display: block
+		margin-top: 10px
+		font-size: 15px
+		color: $red
+		+transition
+
+	&__icon
+		position: absolute
+		right: 0
+		top: 50%
+		transform: translateY(-50%)
+		fill: #b8b7b7
+		+transition
+
+.input-file-block
+	cursor: pointer
+
+	&__subtitle
+		display: block
+		color: $gray
+		font-size: 18px
+		margin-bottom: 15px
+
+	&__field
+		opacity: 0
+		position: absolute
+		z-index: -100
+
+	&__label
+		display: flex
+		align-items: center
+
+		cursor: pointer
+
+	&__btn
+		overflow: hidden
+		position: relative
+		min-width: 300px
+		height: 64px
+
+		+transition
+
+		&__text, &__svg
+			+openAnimation
+
+		&-loader
+			&-pleacholder
+				z-index: 1
+				background-color: #E1E1E1
+				height: 100%
+
+				top: 0
+				left: 0
+
+				position: absolute
+
+				+transition
+
+			&__text
+				position: relative
+				z-index: 2
+				+openAnimation
+
+	&__error
+		display: block
+
+		padding: 15px 25px
+		margin-bottom: 25px
+
+		background-color: $backgroundGray
+		+borderRadiusBlock
+		+openAnimation
+
+	&-img
+		min-width: 60px
+		height: 60px
+
+		border-radius: 50%
+		margin-left: 25px
+
+		+backgroundSetting
+
+	&__title
+		display: block
+
+		margin-left: 15px
+		width: 75%
+
+		overflow: hidden
+		white-space: nowrap
+		text-overflow: ellipsis
+
+input[type="file"]
+	opacity: 0
+	position: absolute
+	z-index: -100
+
+// checkbox 
+.checkbox
+	position: absolute
+	z-index: -1
+	opacity: 0
+
+	&__label
+		cursor: pointer
+		display: inline-flex
+		align-items: center
+		user-select: none
+		font-size: 16px
+		+transition
+
+		&.error
+			color: $red
+
+	&__label::before
+		content: ''
+		display: inline-block
+		min-width: 19px
+		height: 19px
+		border: 1px solid $black
+		border-radius: 2px
+		background-repeat: no-repeat
+		background-position: center center
+		background-size: 50% 50%
+		margin-right: 15px
+		+transition
+
+	&__label.error::before
+		border: 1px solid $red
+
+	&:checked+label::before
+		background-image: url('data:image/svg+xml,%3Csvg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cline x1="0.707107" y1="6.55614" x2="8.07553" y2="13.9246" stroke="%23DD9E5E" stroke-width="2"/%3E%3Cline x1="6.6613" y1="13.9245" x2="19.2929" y2="1.2929" stroke="%23DD9E5E" stroke-width="2"/%3E%3C/svg%3E')
+		border: 1px solid $mainColor
+
+	&-img
+		min-width: 40px
+		height: 40px
+
+		+backgroundSetting
+		border-radius: 50%
+
+		margin-left: 15px
+
+// select
+.select
+	width: 100%
+	position: relative
+
+	&__field
+		background-color: transparent
+		color: $black
+		resize: none
+		outline: none
+		font-size: 21px
+		padding: 15px 0
+		display: block
+		width: 100%
+		border: none
+		border-bottom: 1px solid $gray
+		line-height: 1.4em
+		+transition
+		+SfRegular
+
+		&.error
+			border-bottom: 1px solid $red
+
+	&__label
+		color: $gray
+		font-size: 16px
+		pointer-events: none
+		+transition
+
+// nagibinstudio
+.nagibinstudio
+	margin-top: 50px
+	+transition
+
+	&:active
+		+transformScale
+
+// loader
+.ball-pulse
+	display: flex
+	justify-content: center
+	margin: 100px 0 150px 0
+	+openAnimation
+
+	.loader
+		width: 200px
+		height: 200px
+
+	.ball
+		margin: 25% 0 0 25%
+		width: 50%
+		height: 50%
+		background-color: #FFE9D3
+		border-radius: 50%
+		animation: ballPulse 1s ease-in-out infinite
+
+// engineering-works
+.engineering-works
+	margin-top: 100px
+
+	&-text
+		&-logo
+			margin-bottom: 75px
+			display: block
+
+			&__img
+				width: 75px
+				user-select: none
+
+		&__title
+			margin-bottom: 25px
+
+		&__description
+			margin-bottom: 100px
+
+// video-player
+.video-player
+	position: relative
+	width: 100%
+
+	&:hover &-content-quality
+		opacity: 1
+		z-index: 2
+
+	&:hover &-content-quality-select
+		opacity: 1
+		z-index: 2
+
+	&-content
+		& video
+			overflow: hidden
+
+			+borderRadiusBlock
+			+transition
+
+		&-quality
+			opacity: 0
+
+			cursor: pointer
+
+			background-color: $backgroundGray
+			padding: 5px 10px
+
+			z-index: -1
+
+			position: absolute
+
+			top: 10px
+			left: 10px
+
+			+borderRadiusBlock
+			+transition
+
+			&:active
+				transform: scale(0.90)
+
+			&__title
+				display: flex
+				align-items: center
+
+				user-select: none
+
+				& span
+					font-size: 13px
+					margin-left: 5px
+
+					background-color: $mainColor
+					color: $white
+					padding: 0 5px
+
+					border-radius: 100px
+
+		&-quality-select
+			opacity: 0
+
+			cursor: pointer
+
+			background-color: $backgroundGray
+			padding: 5px 15px
+
+			z-index: -1
+
+			position: absolute
+
+			top: 50px
+			left: 10px
+
+			width: 150px
+
+			+openPopup
+			+borderRadiusBlock
+			+transition
+
+			&.close
+				+closePopup
+
+			&-item
+				cursor: pointer
+				padding: 5px 0
+
+				&:hover &__title
+					color: $gray
+
+				&__title
+					user-select: none
+					+transition
+
+					& span
+						font-size: 13px
+						margin-left: 5px
+
+						background-color: $mainColor
+						color: $white
+						padding: 0 5px
+
+						border-radius: 100px

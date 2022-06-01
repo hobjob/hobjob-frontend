@@ -1,0 +1,163 @@
+// cabinet
+.cabinet
+	margin: 50px 0
+	+openAnimation
+
+	&-card-user-info
+		display: flex
+		align-items: center
+		padding-bottom: 25px
+		border-bottom: 1px solid $borderGray
+
+		&-avatar
+			cursor: pointer
+			position: relative
+			overflow: hidden
+
+			width: 200px
+			height: 200px
+			border-radius: 50%
+
+			&:hover &-placeholder
+				background-color: $blackTransparency
+
+			&:hover &-icon
+				opacity: 1
+				transform: translate(-50%, -50%) scale3d(1, 1, 1)
+
+			&-placeholder
+				cursor: pointer
+				position: absolute
+				width: 100%
+				height: 100%
+
+				background-color: rgba(0, 0, 0, 0)
+				+transition
+
+			&-icon
+				position: absolute
+				left: 50%
+				top: 50%
+
+				transform: translate(-50%, -50%) scale3d(.90, .90, .90)
+				opacity: 0
+				+transition
+
+			&-img
+				width: 100%
+				height: 100%
+				+backgroundSetting
+
+		&-text
+			margin-left: 50px
+
+			&__name
+				font-size: 42px
+				margin-bottom: 15px
+
+			&__email
+				font-size: 21px
+				color: $gray
+
+	&-block-wrapper
+		margin-top: 25px
+
+	&-block
+		margin: 50px 0
+		padding-bottom: 100px
+		border-bottom: 1px solid $borderGray
+
+		display: flex
+		justify-content: space-between
+
+		&:last-child
+			border: none
+			padding-bottom: 0
+			margin: 50px 0 0 0
+
+		&-text
+			width: 35%
+
+			&__title
+				font-size: 48px
+
+		&-form
+			width: 55%
+
+			&-input
+				width: 100%
+				margin-bottom: 50px
+
+			&-btn
+				width: 100%
+
+		&-subscribe
+			&-info
+				&-item
+					display: flex
+					justify-content: space-between
+					align-items: center
+
+					padding-bottom: 35px
+					margin-bottom: 35px
+					border-bottom: 1px solid $borderGray
+
+					&:last-child
+						border: none
+						margin-bottom: 0
+						padding-bottom: 0
+
+					&__title
+						font-size: 21px
+
+					&__description
+						font-size: 18px
+
+						& span
+							cursor: pointer
+							color: $gray
+
+				&-item-select
+					padding: 20px 25px
+					background-color: $backgroundGray
+					margin-bottom: 50px
+
+					+borderRadiusBlock
+
+			&__btn
+				width: 75%
+
+// cabinet-subscribe-disable
+.cabinet-subscribe-disable
+	margin: 50px 0
+	+openAnimation
+
+	&-wrapper
+		display: flex
+		align-items: center
+		justify-content: space-between
+
+	&-text
+		width: 60%
+
+		&__title
+			margin-bottom: 25px
+
+		&__description
+			margin-bottom: 50px
+
+		&-btn
+			display: flex
+			justify-content: space-between
+
+			width: 100%
+
+			&__btn
+				width: 49%
+
+	&-image
+		width: 30%
+
+		&__image
+			user-select: none
+			width: 100%

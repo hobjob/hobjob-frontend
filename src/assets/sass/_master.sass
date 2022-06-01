@@ -1,0 +1,73 @@
+// master-card
+.master-card
+	margin: 50px 0
+	+openAnimation
+
+	&-info
+		display: flex
+		align-items: center
+
+		padding-bottom: 50px
+		border-bottom: 1px solid $borderGray
+		+openAnimation
+
+		&-avatar
+			min-width: 250px
+			height: 250px
+
+			border-radius: 50%
+
+			+backgroundSetting
+
+		&-text
+			max-width: 60%
+			margin-left: 75px
+
+			&__subtitle
+				display: inline-block
+				margin-bottom: 15px
+				font-size: 16px
+				padding: 5px 10px
+				border-radius: 100px
+				background-color: $mainColor
+				color: $white
+
+			&__description
+				margin-top: 25px
+
+			&-specialty
+				margin-top: 50px
+
+				&__subspan
+					margin-right: 10px
+					font-size: 18px
+					color: $gray
+
+				&__specialty
+					font-size: 24px
+
+	&-courses
+		margin-top: 75px
+
+		&-block-wrapper
+			display: flex
+			flex-wrap: wrap
+
+		&-btn
+			display: flex
+			justify-content: center
+			align-items: center
+
+		&__btn
+			width: 250px
+
+	&-magazine
+		margin-top: 75px
+
+		&-btn
+			display: flex
+			justify-content: center
+			align-items: center
+
+		&__btn
+			width: 250px

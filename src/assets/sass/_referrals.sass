@@ -1,0 +1,190 @@
+// referrals
+.referrals
+	margin: 50px 0
+	+openAnimation
+
+	&-top-text-wrapper
+		padding-bottom: 50px
+		border-bottom: 1px solid $borderGray
+
+	&-top
+		display: flex
+		justify-content: space-between
+		align-items: center
+
+		&-text
+			width: 60%
+
+			&__title
+				margin-bottom: 25px
+
+			&__btn
+				width: 350px
+				margin-top: 50px
+
+		&-img
+			&__img
+				user-select: none
+				pointer-events: none
+
+				width: 500px
+
+	&-info-block-wrapper
+		margin-top: 50px
+
+	&-info-block
+		width: 100%
+
+		position: relative
+		overflow: hidden
+		padding: 35px
+		+borderRadiusBlock
+		+boxShadow
+
+		&-link
+			&__title
+				font-size: 28px
+				margin-bottom: 25px
+
+			&__subtitle
+				color: $gray
+				font-size: 21px
+				margin-bottom: 50px
+
+			&-copy
+				display: flex
+				align-items: center
+				justify-content: space-between
+				padding-bottom: 10px
+				border-bottom: 1px solid $borderGray
+
+				&__link
+					display: block
+					overflow: hidden
+					cursor: text
+					outline: none
+					background-color: transparent
+					border: none
+					width: 100%
+					text-overflow: ellipsis
+					font-size: 28px
+					color: $black
+					+SfRegular
+
+				&-subtitle
+					display: flex
+					justify-content: flex-end
+					align-items: center
+
+					overflow: hidden
+					position: relative
+					min-width: 150px
+					height: 18px
+
+					&__subtitle
+						position: absolute
+						right: 0
+						top: 50%
+
+						transform: translateY(-50%)
+
+						display: block
+						user-select: none
+						cursor: pointer
+						font-size: 15px
+						color: $gray
+						+transition
+
+						&:hover
+							color: $mainColor
+
+						&.active
+							top: -100%
+
+					&__success
+						position: absolute
+						right: 0
+						top: 100%
+
+						display: block
+						user-select: none
+						font-size: 15px
+						color: $mainColor
+						+transition
+
+						&.active
+							top: 50%
+							transform: translateY(-50%)
+
+	&-partners
+		margin-top: 50px
+
+		width: 100%
+
+		&__title
+			font-size: 32px
+			margin-bottom: 50px
+
+		&-col
+			width: 35%
+			overflow: hidden
+
+		&-subinfo
+			display: flex
+			justify-content: space-between
+			align-items: center
+
+			padding-bottom: 25px
+			margin-bottom: 25px
+			border-bottom: 1px solid $borderGray
+
+			&__title
+				display: block
+				width: auto
+				white-space: nowrap
+				overflow: hidden
+				text-overflow: ellipsis
+				color: $gray
+
+		&-item
+			display: flex
+			justify-content: space-between
+			align-items: center
+
+			margin-bottom: 15px
+			padding: 15px
+
+			background-color: $backgroundGray
+
+			+borderRadiusBlock
+
+			&:last-child
+				margin-bottom: 0
+
+			&-partner
+				display: flex
+				align-items: center
+
+				&-avatar
+					min-width: 50px
+					height: 50px
+					border-radius: 50%
+					+backgroundSetting
+
+				&__name
+					display: block
+					width: auto
+					white-space: nowrap
+					overflow: hidden
+					text-overflow: ellipsis
+					font-size: 18px
+					margin-left: 15px
+
+			&-earnings
+				&__title
+					display: block
+					width: auto
+					white-space: nowrap
+					overflow: hidden
+					text-overflow: ellipsis
+					font-size: 18px

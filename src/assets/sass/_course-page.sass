@@ -1,0 +1,252 @@
+// course-page
+.course-page
+	&__btn
+		position: fixed
+		z-index: -10
+
+		bottom: 30px
+		right: 30px
+
+		min-width: 300px
+
+		opacity: 0
+		+transition
+
+		&.active
+			opacity: 1
+			z-index: 10
+
+	&-main
+		margin: 25px 0 75px 0
+		+openAnimation
+
+		&-wrapper
+			display: flex
+			justify-content: space-between
+
+		&-text
+			padding: 25px 0
+			width: 50%
+
+			&-subinfo
+				display: flex
+				flex-wrap: wrap
+				align-items: center
+
+				font-size: 21px
+
+				&-hobjob-production
+					display: inline-flex
+					justify-content: center
+					align-items: center
+
+					background-color: $backgroundGray
+
+					padding: 6px 10px 3px 10px
+					border-radius: 100px
+
+					margin-right: 25px
+					margin-bottom: 15px
+
+					&__image
+						user-select: none
+						pointer-events: none
+						width: 175px
+
+				&__category
+					display: block
+					color: $mainColor
+					margin-bottom: 15px
+
+			&__title
+				font-size: 48px
+
+			&__description
+				margin-top: 25px
+
+			&-master
+				padding: 15px
+
+				margin-top: 50px
+
+				display: inline-flex
+				align-items: center
+
+				background-color: $backgroundGray
+
+				+borderRadiusBlock
+				+transition
+
+				&:hover
+					+transformScale
+
+				&-avatar
+					width: 50px
+					height: 50px
+					border-radius: 50%
+					margin-right: 15px
+					+backgroundSetting
+
+				&__name
+					font-size: 21px
+
+			&__btn
+				margin-top: 25px
+				width: 100%
+
+		&-image
+			width: 45%
+			min-height: 100%
+
+			+backgroundSetting
+			+borderRadiusBlock
+
+	&-lessons
+		margin: 50px 0
+		+openAnimation
+
+		&-wrapper
+			display: flex
+			justify-content: space-between
+			align-items: flex-start
+
+		&-video
+			display: flex
+			justify-content: center
+			align-items: center
+
+			position: relative
+			width: 50%
+
+			&.disabled video
+				opacity: 0
+				pointer-events: none
+				user-select: none
+
+			&-plaecholder
+				display: flex
+				flex-direction: column
+				justify-content: space-between
+
+				z-index: 10
+
+				position: absolute
+				left: 0
+				top: 0
+
+				padding: 15px 20px
+
+				width: 100%
+				height: 100%
+
+				background-color: $backgroundGray
+
+				+borderRadiusBlock
+				+openPopup
+
+				&.close
+					+closePopup
+
+				&__description
+					max-width: 80%
+					font-size: 36px
+
+				&__link
+					display: block
+					text-decoration: underline
+					font-size: 42px
+					color: $mainColor
+
+		&-list
+			width: 45%
+
+			&__title
+				margin-bottom: 25px
+				font-size: 42px
+
+			&-item
+				user-select: none
+				cursor: pointer
+				display: block
+
+				padding: 20px
+				margin-bottom: 10px
+
+				background-color: $backgroundGray
+
+				+transition
+				+borderRadiusBlock
+
+				&:hover
+					+transformScale
+
+				&:last-child
+					margin-bottom: 0
+
+				&-top
+					display: flex
+					align-items: center
+					justify-content: space-between
+
+					&-left
+						display: flex
+						align-items: center
+
+						&__title
+							font-size: 24px
+							color: $black
+
+							& > span
+								color: $gray
+								font-size: 18px
+								margin-right: 10px
+
+					&-right
+						&__duration
+							color: $gray
+
+							&.active
+								color: $black
+
+				&__description
+					font-size: 21px
+					margin-top: 25px
+
+	&-master
+		margin: 50px 0
+
+		&-wrapper
+			display: flex
+
+			padding: 35px
+			background-color: $backgroundGray
+
+			+borderRadiusBlock
+
+		&__title
+			font-size: 48px
+			margin-bottom: 25px
+
+		&__description
+			margin-bottom: 75px
+
+		&__btn
+			width: 400px
+
+		&-img
+			margin-right: 75px
+
+			width: 250px
+			min-width: 250px
+
+			height: 250px
+
+			border-radius: 50%
+
+			+backgroundSetting
+
+		&-media
+			&__btn
+				display: none
+				width: 100%
+				margin-top: 25px
