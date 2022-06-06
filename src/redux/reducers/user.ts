@@ -5,8 +5,41 @@ import {UserState, UserActions, UserActionTypes} from "../types/user/IUser";
 
 const initialState: UserState = {
     userInfo: {
+        _id: "",
+        email: "",
+        avatar: "",
+        city: "",
+        dateOfBirth: "",
+
+        name: "",
+        surname: "",
+        phone: "",
+
+        subscribe: {
+            working: false,
+            passedPeriodTesting: false,
+
+            typeSubscribe: "",
+            nextTypeSubscribe: "",
+
+            periodInfo: {
+                count: 0,
+                title: "month",
+            },
+
+            registrationSubscribe: "",
+
+            paymentId: "",
+            paymentNumber: "",
+        },
         courses: {},
-    },
+        payment: {
+            auto: false,
+
+            methodId: "",
+        },
+	},
+	
     courses: {},
     referrals: [],
 

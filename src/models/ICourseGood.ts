@@ -1,4 +1,4 @@
-interface CourseGoodLessons {
+export interface CourseGoodLessons {
     title: string;
     video: {
         duration: string;
@@ -17,6 +17,6 @@ export interface CourseGood {
     masterId: string;
     category: string;
     path?: string;
-    lessons?: CourseGoodLessons[];
+    lessons: CourseGoodLessons[];
     HobJobProduction: boolean;
 }

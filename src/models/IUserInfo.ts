@@ -1,3 +1,5 @@
+import moment from "moment";
+
 interface UserInfoSubscribe {
     working: boolean;
     passedPeriodTesting: boolean;
@@ -7,7 +9,7 @@ interface UserInfoSubscribe {
 
     periodInfo: {
         count: number;
-        title: string;
+        title: moment.unitOfTime.DurationConstructor;
     };
 
     registrationSubscribe: string;

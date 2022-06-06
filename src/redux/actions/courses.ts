@@ -7,7 +7,7 @@ import {CoursesActions, CoursesActionTypes} from "../types/courses/ICourses";
 import {CourseGood} from "../../models/ICourseGood";
 import {UserInfoState} from "../../models/IUserInfo";
 
-export const fetchCourses = (query: string | undefined, page: number) => {
+export const fetchCourses = (query?: string, page?: number) => {
     return async (dispatch: Dispatch<CoursesActions>) => {
         dispatch({
             type: CoursesActionTypes.SET_LOADED_COURSES_FIRST,
@@ -37,10 +37,7 @@ export const fetchCourses = (query: string | undefined, page: number) => {
     };
 };
 
-export const fetchAddPaginationCourses = (
-    query: string | undefined,
-    page: number
-) => {
+export const fetchAddPaginationCourses = (query?: string, page?: number) => {
     return async (dispatch: Dispatch<CoursesActions>) => {
         dispatch({
             type: CoursesActionTypes.SET_LOADED_COURSES,
@@ -68,7 +65,10 @@ export const fetchAddPaginationCourses = (
     };
 };
 
-export const fetchCoursesSection = (userInfo: UserInfoState| {} | null , url: string) => {
+export const fetchCoursesSection = (
+    userInfo: UserInfoState | {} | null,
+    url: string
+) => {
     return async (dispatch: Dispatch<CoursesActions>) => {
         const response = await $api.get<CourseGood[]>(`/courses`);
 
@@ -104,10 +104,17 @@ export const fetchCourseByUrl = (url: string) => {
 
         const response = await $api.get<CourseGood[]>(`/courses?url=${url}`);
 
-        dispatch({
-            type: CoursesActionTypes.SET_COURSE_BY_URL,
-            payload: response.data[0],
-        });
+        if (response.data[0]) {
+            dispatch({
+                type: CoursesActionTypes.SET_COURSE_BY_URL,
+                payload: response.data[0],
+            });
+        } else {
+            dispatch({
+                type: CoursesActionTypes.SET_LOADED_COURSE_BY_URL,
+                payload: true,
+            });
+        }
     };
 };
 

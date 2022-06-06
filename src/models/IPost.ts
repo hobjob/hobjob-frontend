@@ -1,11 +1,11 @@
-interface PostNext {
+export interface PostNext {
     _id: string;
     title: string;
 }
 
-interface PostContent {
+export interface PostContent {
     title: string;
-    description: string;
+    description: string[];
     image: string;
 }
 

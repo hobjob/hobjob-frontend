@@ -1,15 +1,6 @@
 import React from "react";
 
-interface RenderInputProps {
-    disabled: boolean;
-    classNameInput: string;
-    input: any;
-    label: string;
-    type: string;
-    meta: any;
-}
-
-const RenderInput: React.FC<RenderInputProps> = ({
+const RenderInput: React.FC<any> = ({
     disabled,
     input,
     label,

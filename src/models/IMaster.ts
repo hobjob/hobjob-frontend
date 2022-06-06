@@ -3,6 +3,5 @@ export interface Master {
     name: string;
     surname: string;
     masterDescription: string;
-    masterCategory: string;
     avatar: string;
 }

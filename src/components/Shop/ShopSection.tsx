@@ -12,7 +12,7 @@ import {ShopBlock, Loader} from "../";
 interface ShopSectionProps {
     title: string;
     description: string;
-    url: string;
+    url?: string;
 }
 
 const ShopSection: React.FC<ShopSectionProps> = ({title, description, url}) => {
@@ -34,10 +34,10 @@ const ShopSection: React.FC<ShopSectionProps> = ({title, description, url}) => {
     React.useEffect(() => {
         if (localStorage.getItem("accessToken")) {
             if (isLoadedUserInfo) {
-                dispatch(fetchCoursesSection(userInfo, url));
+                dispatch(fetchCoursesSection(userInfo, url ? url : ""));
             }
         } else {
-            dispatch(fetchCoursesSection(null, url));
+            dispatch(fetchCoursesSection(null, url ? url : ""));
         }
     }, [isLoadedUserInfo]);
 

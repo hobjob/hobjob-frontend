@@ -22,7 +22,6 @@ const ShopBlock: React.FC<IShopBlock> = ({
     image,
     title,
     master,
-    masterId,
     categoryItem,
     HobJobProduction,
     isAdd,
@@ -65,7 +64,7 @@ const ShopBlock: React.FC<IShopBlock> = ({
                         {title}
                     </Link>
                     <Link
-                        to={`/master/${masterId}`}
+                        to={`/master/${master._id}`}
                         className="shop-block-top-text__auth"
                     >
                         {master ? (

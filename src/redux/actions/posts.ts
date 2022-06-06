@@ -6,7 +6,7 @@ import {PostsActions, PostsActionTypes} from "../types/posts/IPosts";
 
 import {Post} from "../../models/IPost";
 
-export const fetchPosts = (query: string | undefined, page: number) => {
+export const fetchPosts = (query?: string, page?: number) => {
     return async (dispatch: Dispatch<PostsActions>) => {
         dispatch({
             type: PostsActionTypes.SET_LOADED_POSTS_ALL_FIRST,
@@ -35,8 +35,8 @@ export const fetchPosts = (query: string | undefined, page: number) => {
 };
 
 export const fetchAddPaginationPosts = (
-    query: string | undefined,
-    page: number
+    query?: string,
+    page?: number
 ) => {
     return async (dispatch: Dispatch<PostsActions>) => {
         dispatch({

@@ -1,9 +1,9 @@
-interface CoursePassingLessonMaterial {
+export interface CoursePassingLessonMaterial {
     title: string;
     file: string;
 }
 
-interface CoursePassingLesson {
+export interface CoursePassingLesson {
     title: string;
     description: string;
     image: string;

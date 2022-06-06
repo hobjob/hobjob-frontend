@@ -70,8 +70,11 @@ const PassingCourse = ({
                                     <div className="passing-wrapper">
                                         <div className="passing-top">
                                             <PassingTopText
-                                                {...courses[courseId]}
-                                                lessonIndex={lessonIndex}
+                                                title={
+                                                    courses[courseId].lessons[
+                                                        lessonIndex
+                                                    ].title
+                                                }
                                             />
                                         </div>
 

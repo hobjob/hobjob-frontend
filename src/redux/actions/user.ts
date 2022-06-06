@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {SubmissionError} from "redux-form";
+import {Form, SubmissionError} from "redux-form";
 
 import $api from "../../http/";
 
@@ -42,16 +42,7 @@ export const fetchUserReferrals = () => {
     };
 };
 
-export const fetchUpdateUser = (data: {
-    avatar?: File;
-    autoPayment?: boolean;
-    nextTypeSubscribe?: string;
-    name?: string;
-    surname?: string;
-    dateOfBirth?: string;
-    phone?: string;
-    city?: string;
-}) => {
+export const fetchUpdateUser = (data: any) => {
     return async (dispatch: Dispatch<UserActions>) => {
         dispatch({
             type: UserActionTypes.SET_SEND_UPDATE_USER_INFO,

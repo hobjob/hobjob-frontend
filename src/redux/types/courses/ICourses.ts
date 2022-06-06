@@ -14,10 +14,10 @@ export interface CoursesState {
     items: CourseGood[];
 
     isLoadedCourseById: boolean;
-    itemById: CourseGood | {};
+    itemById: CourseGood;
 
     isLoadedCourseByUrl: boolean;
-    itemByUrl: CourseGood | {};
+    itemByUrl: CourseGood;
 
     totalCount: number;
     page: number;
@@ -70,12 +70,12 @@ interface setCoursesSectionAction {
 
 interface setCourseByIdAction {
     type: CoursesActionTypes.SET_COURSE_BY_ID;
-    payload: CourseGood | {};
+    payload: CourseGood;
 }
 
 interface setCourseByUrlAction {
     type: CoursesActionTypes.SET_COURSE_BY_URL;
-    payload: CourseGood | {};
+    payload: CourseGood;
 }
 
 interface setCoursesFiltersCategoriesAction {

@@ -1,13 +1,9 @@
-import {
-    UserInfoState,
-    UserInfo,
-    UserInfoCourse,
-} from "../../../models/IUserInfo";
+import {UserInfoState, UserInfo} from "../../../models/IUserInfo";
 import {CoursePassing} from "../../../models/ICoursePassing";
 import {UserReferral} from "../../../models/IUserReferral";
 
 export interface UserState {
-    userInfo: UserInfoState | {courses: {[key: string]: UserInfoCourse}};
+    userInfo: UserInfoState;
     courses: {[key: string]: CoursePassing} | {};
     referrals: UserReferral[];
 

@@ -41,15 +41,15 @@ const MagazinePostPage = ({
                     <>
                         <Helmet>
                             <title>{itemById.title} - HobJob</title>
-						</Helmet>
-						
+                        </Helmet>
+
                         <section className="magazine-post-page">
                             <MagazinePostPageCover
                                 {...itemById}
-                                categories={categories}
-                                masters={masters}
-							/>
-							
+                                category={categories[itemById.category]}
+                                master={masters[itemById.masterId]}
+                            />
+
                             <div className="magazine-post-page-block-wrapper">
                                 {itemById.content.map((block, index) => (
                                     <MagazinePostPageBlock
@@ -57,8 +57,8 @@ const MagazinePostPage = ({
                                         key={`magazine-post-page-block-${index}`}
                                     />
                                 ))}
-							</div>
-							
+                            </div>
+
                             {itemById.next ? (
                                 <MagazinePostPageNext {...itemById.next} />
                             ) : (

@@ -20,10 +20,32 @@ const initialState: CoursesState = {
     items: [],
 
     isLoadedCourseById: false,
-    itemById: {},
+    itemById: {
+        _id: "",
+        url: "",
+        title: "",
+        description: "",
+        image: "",
+        masterId: "",
+        category: "",
+        path: "",
+        lessons: [],
+        HobJobProduction: false,
+    },
 
     isLoadedCourseByUrl: false,
-    itemByUrl: {},
+    itemByUrl: {
+        _id: "",
+        url: "",
+        title: "",
+        description: "",
+        image: "",
+        masterId: "",
+        category: "",
+        path: "",
+        lessons: [],
+        HobJobProduction: false,
+    },
 
     totalCount: 0,
     page: 1,
@@ -233,4 +255,4 @@ const courses = (
     return state;
 };
 
-export default courses
+export default courses;
