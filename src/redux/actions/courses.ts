@@ -79,22 +79,6 @@ export const fetchCoursesSection = (
     };
 };
 
-export const fetchCourseById = (id: string) => {
-    return async (dispatch: Dispatch<CoursesActions>) => {
-        dispatch({
-            type: CoursesActionTypes.SET_LOADED_COURSE_BY_ID,
-            payload: false,
-        });
-
-        const response = await $api.get<CourseGood>(`/courses/${id}`);
-
-        dispatch({
-            type: CoursesActionTypes.SET_COURSE_BY_ID,
-            payload: response.data,
-        });
-    };
-};
-
 export const fetchCourseByUrl = (url: string) => {
     return async (dispatch: Dispatch<CoursesActions>) => {
         dispatch({
@@ -131,4 +115,9 @@ export const setCoursesFiltersSearch = (q: string) => ({
 export const setCoursesFiltersMasters = (masterId: string) => ({
     type: CoursesActionTypes.SET_COURSES_FILTERS_MASTERS,
     payload: masterId,
+});
+
+export const setLoadedCourseByUrl = (status: boolean) => ({
+    type: CoursesActionTypes.SET_LOADED_COURSE_BY_URL,
+    payload: status,
 });

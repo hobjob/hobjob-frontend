@@ -21,7 +21,20 @@ const initialState: PostsState = {
     page: 1,
 
     isLoadedByIdPosts: false,
-    itemById: {},
+
+    itemById: {
+        _id: "",
+        title: "",
+        description: "",
+        image: "",
+        masterId: "",
+        category: "",
+        content: [],
+        next: {
+            _id: "",
+            title: "",
+        },
+    },
 
     filters: {
         categories: {},

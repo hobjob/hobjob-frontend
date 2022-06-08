@@ -34,10 +34,7 @@ export const fetchPosts = (query?: string, page?: number) => {
     };
 };
 
-export const fetchAddPaginationPosts = (
-    query?: string,
-    page?: number
-) => {
+export const fetchAddPaginationPosts = (query?: string, page?: number) => {
     return async (dispatch: Dispatch<PostsActions>) => {
         dispatch({
             type: PostsActionTypes.SET_LOADED_POSTS_ALL,
@@ -74,14 +71,26 @@ export const fetchPostsById = (id: string) => {
 
         const response = await $api.get<Post>(`/posts/${id}`);
 
-        dispatch({
-            type: PostsActionTypes.SET_POST_BY_ID,
-            payload: response.data,
-        });
+        if (Object.keys(response.data).length) {
+            dispatch({
+                type: PostsActionTypes.SET_POST_BY_ID,
+                payload: response.data,
+            });
+        } else {
+            dispatch({
+                type: PostsActionTypes.SET_LOADED_POST_BY_ID,
+                payload: true,
+            });
+        }
     };
 };
 
 export const setPostsFiltersCategories = (category: string) => ({
     type: PostsActionTypes.SET_POSTS_FILTERS_CATEGORIES,
     payload: category,
+});
+
+export const setLoadedPostById = (status: boolean) => ({
+    type: PostsActionTypes.SET_LOADED_POST_BY_ID,
+    payload: status,
 });

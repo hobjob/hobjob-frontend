@@ -15,7 +15,7 @@ export interface PostsState {
     page: number;
 
     isLoadedByIdPosts: boolean;
-    itemById: Post | {};
+    itemById: Post;
 
     filters: PostsStateFilters;
 }

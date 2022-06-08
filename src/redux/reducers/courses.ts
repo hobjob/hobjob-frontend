@@ -19,20 +19,6 @@ const initialState: CoursesState = {
 
     items: [],
 
-    isLoadedCourseById: false,
-    itemById: {
-        _id: "",
-        url: "",
-        title: "",
-        description: "",
-        image: "",
-        masterId: "",
-        category: "",
-        path: "",
-        lessons: [],
-        HobJobProduction: false,
-    },
-
     isLoadedCourseByUrl: false,
     itemByUrl: {
         _id: "",
@@ -139,14 +125,6 @@ const courses = (
         };
     }
 
-    if (action.type === CoursesActionTypes.SET_COURSE_BY_ID) {
-        return {
-            ...state,
-            itemById: action.payload,
-            isLoadedCourseById: true,
-        };
-    }
-
     if (action.type === CoursesActionTypes.SET_COURSE_BY_URL) {
         return {
             ...state,
@@ -228,13 +206,6 @@ const courses = (
         return {
             ...state,
             isLoadedAllCourses: action.payload,
-        };
-    }
-
-    if (action.type === CoursesActionTypes.SET_LOADED_COURSE_BY_ID) {
-        return {
-            ...state,
-            isLoadedCourseById: action.payload,
         };
     }
 

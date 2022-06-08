@@ -6,9 +6,11 @@ import {Helmet} from "react-helmet";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
-import {abbreviateNumber} from "../Functions/abbreviateNumber";
-
-import {fetchPosts, fetchAddPaginationPosts} from "../redux/actions/posts";
+import {
+    fetchPosts,
+    fetchAddPaginationPosts,
+    setLoadedPostById,
+} from "../redux/actions/posts";
 
 import {
     Loader,
@@ -50,7 +52,9 @@ const Magazine: React.FC<MagazineProps> = ({
     );
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
+		window.scrollTo(0, 0);
+		
+		dispatch(setLoadedPostById(false));
     }, []);
 
     React.useEffect(() => {

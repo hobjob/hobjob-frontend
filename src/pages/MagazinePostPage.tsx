@@ -1,7 +1,9 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
-import {Redirect} from "react-router-dom";
+import {useHistory} from "react-router-dom";
+
+import {useTypedSelector} from "../hooks/useTypedSelector";
 
 import {fetchPostsById} from "../redux/actions/posts";
 
@@ -13,20 +15,27 @@ import {
     Loader,
 } from "../components/";
 
-const MagazinePostPage = ({
+interface MagazinePostPageProps {
+    match: {
+        params: {id: string};
+    };
+}
+
+const MagazinePostPage: React.FC<MagazinePostPageProps> = ({
     match: {
         params: {id},
     },
 }) => {
+    const history = useHistory();
     const dispatch = useDispatch();
 
-    const {itemById, isLoadedByIdPosts} = useSelector(({posts}) => posts);
-    const categories = useSelector(({categories}) => categories.items);
-    const isLoadedAllCategories = useSelector(
+    const {itemById, isLoadedByIdPosts} = useTypedSelector(({posts}) => posts);
+    const categories = useTypedSelector(({categories}) => categories.items);
+    const isLoadedAllCategories = useTypedSelector(
         ({categories}) => categories.isLoadedAllCategories
     );
-    const masters = useSelector(({masters}) => masters.items);
-    const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
+    const masters = useTypedSelector(({masters}) => masters.items);
+    const isLoadedMasters = useTypedSelector(({masters}) => masters.isLoaded);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -37,7 +46,7 @@ const MagazinePostPage = ({
     return (
         <>
             {isLoadedByIdPosts && isLoadedAllCategories && isLoadedMasters ? (
-                Object.keys(itemById).length ? (
+                itemById._id !== "" ? (
                     <>
                         <Helmet>
                             <title>{itemById.title} - HobJob</title>
@@ -67,7 +76,7 @@ const MagazinePostPage = ({
                         </section>
                     </>
                 ) : (
-                    <Redirect to="/magazine" />
+                    history.push("/magazine")
                 )
             ) : (
                 <Loader />

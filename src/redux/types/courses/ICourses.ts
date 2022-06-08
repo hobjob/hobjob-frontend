@@ -13,9 +13,6 @@ export interface CoursesState {
 
     items: CourseGood[];
 
-    isLoadedCourseById: boolean;
-    itemById: CourseGood;
-
     isLoadedCourseByUrl: boolean;
     itemByUrl: CourseGood;
 
@@ -32,14 +29,12 @@ export enum CoursesActionTypes {
     SET_COURSES = "SET_COURSES",
     SET_ADD_PAGINATION_COURSES = "SET_ADD_PAGINATION_COURSES",
     SET_COURSES_SECTION = "SET_COURSES_SECTION",
-    SET_COURSE_BY_ID = "SET_COURSE_BY_ID",
     SET_COURSE_BY_URL = "SET_COURSE_BY_URL",
     SET_COURSES_FILTERS_CATEGORIES = "SET_COURSES_FILTERS_CATEGORIES",
     SET_COURSES_FILTERS_SEARCH = "SET_COURSES_FILTERS_SEARCH",
     SET_COURSES_FILTERS_MASTERS = "SET_COURSES_FILTERS_MASTERS",
     SET_LOADED_COURSES_FIRST = "SET_LOADED_COURSES_FIRST",
     SET_LOADED_COURSES = "SET_LOADED_COURSES",
-    SET_LOADED_COURSE_BY_ID = "SET_LOADED_COURSE_BY_ID",
     SET_LOADED_COURSE_BY_URL = "SET_LOADED_COURSE_BY_URL",
     SET_IS_FETCH_ALL_COURSES = "SET_IS_FETCH_ALL_COURSES",
 }
@@ -66,11 +61,6 @@ interface setCoursesSectionAction {
         userInfo: any;
         url: string;
     };
-}
-
-interface setCourseByIdAction {
-    type: CoursesActionTypes.SET_COURSE_BY_ID;
-    payload: CourseGood;
 }
 
 interface setCourseByUrlAction {
@@ -103,11 +93,6 @@ interface setLoadedCoursesAction {
     payload: boolean;
 }
 
-interface setLoadedCourseByIdAction {
-    type: CoursesActionTypes.SET_LOADED_COURSE_BY_ID;
-    payload: boolean;
-}
-
 interface setLoadedCourseByUrlAction {
     type: CoursesActionTypes.SET_LOADED_COURSE_BY_URL;
     payload: boolean;
@@ -122,13 +107,11 @@ export type CoursesActions =
     | setCoursesAction
     | setAddPaginationCoursesAction
     | setCoursesSectionAction
-    | setCourseByIdAction
     | setCourseByUrlAction
     | setCoursesFiltersCategoriesAction
     | setCoursesFiltersSearchAction
     | setCoursesFiltersMastersAction
     | setLoadedCoursesFitstAction
     | setLoadedCoursesAction
-    | setLoadedCourseByIdAction
     | setLoadedCourseByUrlAction
     | setIsFetchAllCoursesAction;

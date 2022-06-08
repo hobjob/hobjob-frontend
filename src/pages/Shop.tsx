@@ -9,6 +9,7 @@ import {useTypedSelector} from "../hooks/useTypedSelector";
 import {
     fetchCourses,
     fetchAddPaginationCourses,
+    setLoadedCourseByUrl,
 } from "../redux/actions/courses";
 import {addUserCourse, hiddenUserCourse} from "../redux/actions/user";
 
@@ -56,6 +57,8 @@ const Shop: React.FC<IShop> = ({search}) => {
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
+
+        dispatch(setLoadedCourseByUrl(false));
     }, []);
 
     React.useEffect(() => {
