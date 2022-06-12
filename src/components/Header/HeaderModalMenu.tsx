@@ -5,6 +5,7 @@ interface HeaderModalMenuProps {
     HeaderModalMenuRef: React.RefObject<HTMLDivElement>;
     modalMenuAnimationState: boolean;
     isLogin: boolean;
+    userAvatar: string;
 
     closeModalMenu: () => void;
     clickLogout: () => void;
@@ -16,6 +17,7 @@ const HeaderModalMenu: React.FC<HeaderModalMenuProps> = ({
     closeModalMenu,
     clickLogout,
     isLogin,
+    userAvatar,
 }) => {
     return (
         <div
@@ -97,7 +99,7 @@ const HeaderModalMenu: React.FC<HeaderModalMenuProps> = ({
                                     <div
                                         className="header-modal-menu-nav-block-user__link-image"
                                         style={{
-                                            backgroundImage: `url("https://mir-s3-cdn-cf.behance.net/user/115/d1029e476046883.627b15fe7aa4b.jpg")`,
+                                            backgroundImage: `url("${userAvatar}")`,
                                         }}
                                     ></div>
                                 </NavLink>

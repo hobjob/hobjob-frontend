@@ -279,13 +279,13 @@
 	.master-card
 		&-info
 			flex-direction: column
+			align-items: flex-start
 
 			&-avatar
-				min-width: 175px
-				height: 175px
+				min-width: 200px
+				height: 200px
 
 			&-text
-				text-align: center
 				max-width: 100%
 
 				margin-top: 25px
@@ -1104,6 +1104,14 @@
 				font-size: 12px
 
 @media screen and ( max-width: 400px )
+	// interface
+	.title
+		&__blank
+			margin-left: 0 !important
+			margin-top: 10px
+
+			display: inline-block
+
 	// main
 	.main
 		&-text

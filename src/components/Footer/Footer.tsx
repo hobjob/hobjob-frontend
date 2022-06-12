@@ -211,24 +211,36 @@ const Footer: React.FC = () => {
                             </span>
                         </div>
                         <div className="footer-block-subinfo-block">
-                            <Link
+                            <NavLink
                                 to="/regulations"
-                                className="footer-block-subinfo-block__link"
+                                className={({isActive}) =>
+                                    `footer-block-subinfo-block__link ${
+                                        isActive ? "active" : ""
+                                    }`
+                                }
                             >
                                 Правила пользования Платформой
-                            </Link>
-                            <Link
+                            </NavLink>
+                            <NavLink
                                 to="/policy"
-                                className="footer-block-subinfo-block__link"
+                                className={({isActive}) =>
+                                    `footer-block-subinfo-block__link ${
+                                        isActive ? "active" : ""
+                                    }`
+                                }
                             >
                                 Политика конфиденциальности
-                            </Link>
-                            <Link
+                            </NavLink>
+                            <NavLink
                                 to="/public-offer"
-                                className="footer-block-subinfo-block__link"
+                                className={({isActive}) =>
+                                    `footer-block-subinfo-block__link ${
+                                        isActive ? "active" : ""
+                                    }`
+                                }
                             >
                                 Публичная оферта
-                            </Link>
+                            </NavLink>
                         </div>
                     </div>
                 </div>

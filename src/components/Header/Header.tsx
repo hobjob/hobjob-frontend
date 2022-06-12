@@ -35,10 +35,7 @@ const Header: React.FC = () => {
         document.body.addEventListener("click", handHeaderModalMenu);
         document.body.addEventListener("click", handHeaderUserMenu);
 
-        if (
-            !Object.keys(userInfo).length &&
-            localStorage.getItem("accessToken")
-        ) {
+        if (userInfo._id == "" && localStorage.getItem("accessToken")) {
             dispatch(fetchUserInfo());
         }
 
@@ -109,6 +106,7 @@ const Header: React.FC = () => {
                     modalMenuAnimationState={modalMenuAnimationState}
                     clickLogout={clickLogout}
                     isLogin={isLoadedUserInfo}
+                    userAvatar={`${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar}`}
                 />
             ) : null}
 

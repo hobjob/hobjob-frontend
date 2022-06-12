@@ -13,7 +13,7 @@ const TrainingNull: React.FC = () => {
                     понравится
                 </p>
                 <Link to="/course" className="btn training-null-text__btn">
-                    Перейти в курсы
+                    Выбрать курс
                 </Link>
             </div>
             <div className="training-null-img">

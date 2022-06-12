@@ -18,8 +18,8 @@ const MasterCardInfo: React.FC<Master> = ({
             ></div>
             <div className="master-card-info-text">
                 <h2 className="title master-card-info-text__title">
-                    {name} {surname}{" "}
-                    <p className="title__blank">Мастер HobJob</p>
+                    {name} {surname}
+                    <span className="title__blank">Мастер HobJob</span>
                 </h2>
                 <p className="description master-card-info-text__description">
                     {masterDescription}

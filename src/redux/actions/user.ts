@@ -94,20 +94,24 @@ export const fetchUpdateUserPassword = (data: {
     };
 };
 
-export const addUserCourse = (courseId: string, Navigate?: string) => () => {
-    $api.put("/my/courses", {courseId}).then(() => {
-        if (Navigate) {
-            window.location.href = Navigate;
-        } else {
-            window.location.href = "/go/training";
-        }
-    });
+export const addUserCourse = (courseId: string, redirect?: string) => {
+    return async (dispatch: Dispatch<UserActions>) => {
+        $api.put("/my/courses", {courseId}).then(() => {
+            if (redirect) {
+                window.location.href = redirect;
+            } else {
+                window.location.href = "/go/training";
+            }
+        });
+    };
 };
 
 export const hiddenUserCourse = (courseId: string) => {
-    $api.delete(`/my/courses/${courseId}`).then(() => {
-        window.location.href = window.location.href;
-    });
+    return async (dispatch: Dispatch<UserActions>) => {
+        $api.delete(`/my/courses/${courseId}`).then(() => {
+            window.location.href = window.location.href;
+        });
+    };
 };
 
 export const updateCountViewingDuration = (
@@ -115,9 +119,11 @@ export const updateCountViewingDuration = (
     lessonIndex: number,
     seconds: number
 ) => {
-    $api.put("/my/courses/lesson/duration", {
-        courseId,
-        lessonIndex,
-        seconds,
-    });
+    return async (dispatch: Dispatch<UserActions>) => {
+        $api.put("/my/courses/lesson/duration", {
+            courseId,
+            lessonIndex,
+            seconds,
+        });
+    };
 };
