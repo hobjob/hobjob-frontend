@@ -2,20 +2,10 @@ import React from "react";
 
 import {Loader} from "../components/";
 
-interface PaymentStatusProps {
-    match: {
-        params: {number: string};
-    };
-}
-
-const PaymentStatus: React.FC<PaymentStatusProps> = ({
-    match: {
-        params: {number},
-    },
-}) => {
+const PaymentStatus: React.FC= () => {
     React.useEffect(() => {
-		window.scrollTo(0, 0);
-		
+        window.scrollTo(0, 0);
+
         // const events = new EventSource(
         //     `${process.env.REACT_APP_API_DOMEN}/payment/status/${number}`
         // );

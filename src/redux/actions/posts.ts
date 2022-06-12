@@ -2,11 +2,19 @@ import {Dispatch} from "redux";
 
 import $api from "../../http/";
 
-import {PostsActions, PostsActionTypes} from "../types/posts/IPosts";
+import {
+    PostsStateFilters,
+    PostsActions,
+    PostsActionTypes,
+} from "../types/posts/IPosts";
 
 import {Post} from "../../models/IPost";
 
-export const fetchPosts = (query?: string, page?: number) => {
+export const fetchPosts = (params?: {
+    page?: number;
+    limit?: number;
+    categories?: string[];
+}) => {
     return async (dispatch: Dispatch<PostsActions>) => {
         dispatch({
             type: PostsActionTypes.SET_LOADED_POSTS_ALL_FIRST,
@@ -18,9 +26,9 @@ export const fetchPosts = (query?: string, page?: number) => {
             payload: true,
         });
 
-        const response = await $api.get<Post[]>(
-            `/posts?limit=8&page=${page}&${query !== null ? query : ""}`
-        );
+        const response = await $api.get<Post[]>("/posts", {
+            params,
+        });
 
         dispatch({
             type: PostsActionTypes.SET_POSTS,
@@ -34,7 +42,11 @@ export const fetchPosts = (query?: string, page?: number) => {
     };
 };
 
-export const fetchAddPaginationPosts = (query?: string, page?: number) => {
+export const fetchAddPaginationPosts = (params?: {
+    page?: number;
+    limit?: number;
+    categories?: string[];
+}) => {
     return async (dispatch: Dispatch<PostsActions>) => {
         dispatch({
             type: PostsActionTypes.SET_LOADED_POSTS_ALL,
@@ -46,9 +58,7 @@ export const fetchAddPaginationPosts = (query?: string, page?: number) => {
             payload: true,
         });
 
-        const response = await $api.get<Post[]>(
-            `/posts?limit=8&page=${page}&${query !== null ? query : ""}`
-        );
+        const response = await $api.get<Post[]>("/posts", {params});
 
         dispatch({
             type: PostsActionTypes.SET_ADD_PAGINATION_POSTS,
@@ -84,6 +94,11 @@ export const fetchPostsById = (id: string) => {
         }
     };
 };
+
+export const setPostsFilters = (filters: PostsStateFilters) => ({
+    type: PostsActionTypes.SET_POSTS_FILTERS,
+    payload: filters,
+});
 
 export const setPostsFiltersCategories = (category: string) => ({
     type: PostsActionTypes.SET_POSTS_FILTERS_CATEGORIES,

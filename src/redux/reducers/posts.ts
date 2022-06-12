@@ -36,7 +36,8 @@ const initialState: PostsState = {
         },
     },
 
-    filters: {
+	filters: {
+		isParse: false,
         categories: {},
     },
 };
@@ -89,6 +90,13 @@ const posts = (state = initialState, action: PostsActions) => {
         return {
             ...state,
             isLoadedByIdPosts: action.payload,
+        };
+	}
+	
+	if (action.type === PostsActionTypes.SET_POSTS_FILTERS) {
+        return {
+            ...state,
+            filters: action.payload,
         };
     }
 

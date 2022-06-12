@@ -55,8 +55,8 @@ const CoursePageLessons: React.FC<CoursePageLessonsProps> = ({
                                 }`}
                             >
                                 <p className="course-page-lessons-video-plaecholder__description">
-                                    Для того чтобы продолжить просмотр других
-                                    уроков, оформите подписку
+                                    Чтобы продолжить просмотр других уроков,
+                                    оформите подписку
                                 </p>
                                 <a
                                     href="/go/register"

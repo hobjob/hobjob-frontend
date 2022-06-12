@@ -63,14 +63,13 @@ const App: React.FC = () => {
 
                             <Route path="/course" element={<Shop />} />
 
-                            {/* 
-
                             <Route
                                 path="/course/:url"
                                 element={<CoursePage />}
                             />
 
                             <Route path="/magazine" element={<Magazine />} />
+
                             <Route
                                 path="/magazine/post/:id"
                                 element={<MagazinePostPage />}
@@ -90,12 +89,14 @@ const App: React.FC = () => {
                                 path="/payment/status/:number"
                                 element={<PaymentStatus />}
                             />
+
                             <Route
                                 path="/payment/error"
                                 element={<PaymentError />}
                             />
 
                             <Route path="/policy" element={<Policy />} />
+
                             <Route
                                 path="/public-offer"
                                 element={<PublicOffer />}
@@ -122,11 +123,12 @@ const App: React.FC = () => {
                             <Route path="/go/training" element={<Training />} />
 
                             <Route
-                                path="/go/passing/:courseId/:lessonNum"
+                                path="/go/passing/:id/:num"
                                 element={<PassingCourse />}
                             />
 
                             <Route path="/go/cabinet" element={<Cabinet />} />
+
                             <Route
                                 path="/go/cabinet/subscribe/disable"
                                 element={<CabinetSubscribeDisable />}
@@ -136,12 +138,12 @@ const App: React.FC = () => {
                                 path="/go/referrals"
                                 element={<Referrals />}
                             />
+
                             <Route
                                 path="/go/referrals/policy"
                                 element={<ReferralsPolicy />}
                             />
 
-                            */}
                             <Route path="*" element={<Navigate to="/" />} />
                         </Routes>
                     </React.Suspense>

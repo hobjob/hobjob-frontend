@@ -1,6 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
+import {useParams} from "react-router-dom";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
@@ -13,20 +14,9 @@ import {
 
 import Logo from "../assets/images/logo.svg";
 
-interface PasswordRecoveryNewPasswordProps {
-    match: {
-        params: {hash: string};
-    };
-}
-
-const PasswordRecoveryNewPassword: React.FC<
-    PasswordRecoveryNewPasswordProps
-> = ({
-    match: {
-        params: {hash},
-    },
-}) => {
+const PasswordRecoveryNewPassword: React.FC = () => {
     const dispatch = useDispatch();
+    const {hash} = useParams();
 
     const {newPasswordStatus} = useTypedSelector(
         ({password_recovery}) => password_recovery
@@ -34,7 +24,10 @@ const PasswordRecoveryNewPassword: React.FC<
 
     const onSubmit = ({password, password_repeat}: any) => {
         return dispatch(
-            sendPasswordRecoveryNewPassword({password, password_repeat}, hash)
+            sendPasswordRecoveryNewPassword(
+                {password, password_repeat},
+                hash ? hash : ""
+            )
         );
     };
 

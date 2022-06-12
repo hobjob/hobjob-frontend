@@ -1,8 +1,8 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
 import queryString from "query-string";
-import {Navigate} from "react-router-dom";
+import {Navigate, useSearchParams, useParams} from "react-router-dom";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
@@ -17,23 +17,10 @@ import {
     Loader,
 } from "../components";
 
-interface CoursePageProps {
-    match: {
-        params: {url: string};
-    };
-    history: {
-        location: {search: string};
-    };
-}
+const CoursePage: React.FC = () => {
+    const [search] = useSearchParams();
+    const {url} = useParams();
 
-const CoursePage: React.FC<CoursePageProps> = ({
-    match: {
-        params: {url},
-    },
-    history: {
-        location: {search},
-    },
-}) => {
     const dispatch = useDispatch();
 
     const {itemByUrl, isLoadedCourseByUrl} = useTypedSelector(
@@ -57,9 +44,7 @@ const CoursePage: React.FC<CoursePageProps> = ({
 
         window.addEventListener("scroll", handlerScroll);
 
-        const {ref}: {ref?: string} = queryString.parse(search, {
-            arrayFormat: "comma",
-        });
+        const ref = search.get("ref");
 
         if (ref) {
             localStorage.setItem("ref", ref);
@@ -75,7 +60,7 @@ const CoursePage: React.FC<CoursePageProps> = ({
     React.useEffect(() => {
         window.scrollTo(0, 0);
 
-        dispatch(fetchCourseByUrl(url));
+        dispatch(fetchCourseByUrl(url ? url : ""));
     }, [url]);
 
     React.useEffect(() => {

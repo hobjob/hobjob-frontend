@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import {Navigate} from "react-router-dom";
+import {useParams, Navigate} from "react-router-dom";
 import {Helmet} from "react-helmet";
 import {animateScroll as scroll} from "react-scroll";
 
@@ -19,18 +19,12 @@ import {
     PassingMaster,
 } from "../components/";
 
-interface PassingCourseProps {
-    match: {
-        params: {courseId: string; lessonNum: number};
-    };
-}
-
-const PassingCourse: React.FC<PassingCourseProps> = ({
-    match: {
-        params: {courseId, lessonNum},
-    },
-}) => {
+const PassingCourse: React.FC = () => {
     const dispatch = useDispatch();
+    const {id, num} = useParams();
+
+    const courseId = id ? id : "";
+    const lessonNum = num ? parseInt(num) : 1;
 
     const {courses, isLoadedUserCourses, isLoadedUserInfo} = useTypedSelector(
         ({user}) => user

@@ -1,7 +1,10 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import {
+    useNavigate,
+    useSearchParams,
+    createSearchParams,
+} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import queryString from "query-string";
 import {Helmet} from "react-helmet";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
@@ -10,6 +13,7 @@ import {
     fetchPosts,
     fetchAddPaginationPosts,
     setLoadedPostById,
+    setPostsFilters,
 } from "../redux/actions/posts";
 
 import {
@@ -20,19 +24,11 @@ import {
     MagazineNotFound,
 } from "../components/";
 
-interface MagazineProps {
-    history: {
-        location: {search: string};
-    };
-}
-
-const Magazine: React.FC<MagazineProps> = ({
-    history: {
-        location: {search},
-    },
-}) => {
+const Magazine: React.FC = () => {
     const dispatch = useDispatch();
-    const history = useNavigate();
+    const navigate = useNavigate();
+
+    const [query] = useSearchParams();
 
     const {
         items,
@@ -51,31 +47,57 @@ const Magazine: React.FC<MagazineProps> = ({
         ({categories}) => categories.isLoadedAllCategories
     );
 
+    const categoriesArray = Object.keys(filters.categories).map(
+        (category) => category
+    );
+
     React.useEffect(() => {
-		window.scrollTo(0, 0);
-		
-		dispatch(setLoadedPostById(false));
+        window.scrollTo(0, 0);
+
+        const categoriesObject: {[key: string]: string} = {};
+
+        query.getAll("categories").map((category) => {
+            categoriesObject[category] = category;
+        });
+
+        dispatch(
+            setPostsFilters({
+                isParse: true,
+
+                categories: categoriesObject,
+            })
+        );
+
+        dispatch(setLoadedPostById(false));
     }, []);
 
     React.useEffect(() => {
-        const arrayCategories = Object.keys(filters.categories).map(
-            (key) => filters.categories[key]
-        );
+        if (filters.isParse) {
+            navigate({
+                pathname: "/magazine",
+                search: `?${createSearchParams({
+                    categories: categoriesArray,
+                })}`,
+            });
 
-        const query = queryString.stringify(
-            {
-                category: arrayCategories,
-            },
-            {arrayFormat: "comma", skipNull: true, skipEmptyString: true}
-        );
-
-        history(`/magazine/?${query}`);
-
-        dispatch(fetchPosts(query, 1));
-    }, [Object.keys(filters.categories).length]);
+            dispatch(
+                fetchPosts({
+                    limit: 8,
+                    page: 1,
+                    categories: categoriesArray,
+                })
+            );
+        }
+    }, [Object.keys(filters.categories).length, filters.isParse]);
 
     const onClickaddPaginationPagePosts = () => {
-        dispatch(fetchAddPaginationPosts(search, page + 1));
+        dispatch(
+            fetchAddPaginationPosts({
+                limit: 8,
+                page: page+1,
+                categories: categoriesArray,
+            })
+        );
     };
 
     return (

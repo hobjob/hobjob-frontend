@@ -1,6 +1,7 @@
 import {Post} from "../../../models/IPost";
 
-interface PostsStateFilters {
+export interface PostsStateFilters {
+    isParse: boolean;
     categories: {[key: string]: string};
 }
 
@@ -25,6 +26,7 @@ export enum PostsActionTypes {
     SET_ADD_PAGINATION_POSTS = "SET_ADD_PAGINATION_POSTS",
     SET_POST_BY_ID = "SET_POST_BY_ID",
     SET_LOADED_POST_BY_ID = "SET_LOADED_POST_BY_ID",
+    SET_POSTS_FILTERS = "SET_POSTS_FILTERS",
     SET_POSTS_FILTERS_CATEGORIES = "SET_POSTS_FILTERS_CATEGORIES",
     SET_LOADED_POSTS_ALL_FIRST = "SET_LOADED_POSTS_ALL_FIRST",
     SET_LOADED_POSTS_ALL = "SET_LOADED_POSTS_ALL",
@@ -52,6 +54,11 @@ interface setPostById {
 interface setLoadedPostById {
     type: PostsActionTypes.SET_LOADED_POST_BY_ID;
     payload: boolean;
+}
+
+interface setPostsFilters {
+    type: PostsActionTypes.SET_POSTS_FILTERS;
+    payload: PostsStateFilters;
 }
 
 interface setPostsFiltersCategories {
@@ -82,4 +89,5 @@ export type PostsActions =
     | setPostsFiltersCategories
     | setLoadedPostsAllFirst
     | setLoadedPostsAll
-    | setIsFetchAllPosts;
+    | setIsFetchAllPosts
+    | setPostsFilters;

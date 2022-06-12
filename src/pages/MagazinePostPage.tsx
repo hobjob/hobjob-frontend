@@ -1,7 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
-import {useNavigate, Navigate} from "react-router-dom";
+import {useParams, Navigate} from "react-router-dom";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
@@ -15,18 +15,9 @@ import {
     Loader,
 } from "../components/";
 
-interface MagazinePostPageProps {
-    match: {
-        params: {id: string};
-    };
-}
-
-const MagazinePostPage: React.FC<MagazinePostPageProps> = ({
-    match: {
-        params: {id},
-    },
-}) => {
+const MagazinePostPage: React.FC = ({}) => {
     const dispatch = useDispatch();
+    const {id} = useParams();
 
     const {itemById, isLoadedByIdPosts} = useTypedSelector(({posts}) => posts);
     const categories = useTypedSelector(({categories}) => categories.items);
@@ -39,7 +30,7 @@ const MagazinePostPage: React.FC<MagazinePostPageProps> = ({
     React.useEffect(() => {
         window.scrollTo(0, 0);
 
-        dispatch(fetchPostsById(id));
+        dispatch(fetchPostsById(id ? id : ""));
     }, [id]);
 
     return (

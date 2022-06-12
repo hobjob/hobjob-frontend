@@ -1,7 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
-import {Link} from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
@@ -16,18 +16,9 @@ import {
     MagazineBlock,
 } from "../components/";
 
-interface MasterCardProps {
-    match: {
-        params: {id: string};
-    };
-}
-
-const MasterCard: React.FC<MasterCardProps> = ({
-    match: {
-        params: {id},
-    },
-}) => {
+const MasterCard: React.FC = ({}) => {
     const dispatch = useDispatch();
+    const {id} = useParams();
 
     const {itemById, items, isLoaded, isLoadedById} = useTypedSelector(
         ({masters}) => masters
@@ -41,7 +32,7 @@ const MasterCard: React.FC<MasterCardProps> = ({
     React.useEffect(() => {
         window.scrollTo(0, 0);
 
-        dispatch(fetchMasterById(id));
+        dispatch(fetchMasterById(id ? id : ""));
     }, []);
 
     const onClickAddCourse = (id: string) => {

@@ -1,6 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
+import {useParams} from "react-router-dom";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
@@ -12,25 +13,18 @@ import {
     Loader,
 } from "../components/";
 
-interface PaymentSubscribeProps {
-    match: {
-        params: {number: string};
-    };
-}
+interface PaymentSubscribe {}
 
-const PaymentSubscribe: React.FC<PaymentSubscribeProps> = ({
-    match: {
-        params: {number},
-    },
-}) => {
+const PaymentSubscribe: React.FC = () => {
     const dispatch = useDispatch();
+    const {number} = useParams();
 
     const {payment, isLoaded} = useTypedSelector(({payment}) => payment);
 
-	React.useEffect(() => {
-		window.scrollTo(0, 0)
-		
-        dispatch(fetchPaymentSubscribeById(number));
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+
+        dispatch(fetchPaymentSubscribeById(number ? number : ""));
     }, []);
 
     React.useEffect(() => {
