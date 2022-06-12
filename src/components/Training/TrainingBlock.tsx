@@ -5,7 +5,7 @@ import {CoursePassing} from "../../models/ICoursePassing";
 import {Master} from "../../models/IMaster";
 
 interface TrainingBlockProps extends CoursePassing {
-    completedLessons: number;
+    completedLessonsTitle: string;
     master: Master;
 
     onClickHiddenUserCourse: (_id: string) => void;
@@ -16,7 +16,7 @@ const TrainingBlock: React.FC<TrainingBlockProps> = ({
     image,
     title,
     lessons,
-    completedLessons,
+    completedLessonsTitle,
     master,
     onClickHiddenUserCourse,
 }) => {
@@ -51,7 +51,7 @@ const TrainingBlock: React.FC<TrainingBlockProps> = ({
                     <div className="training-block-text-top">
                         <h3 className="training-block-text__title">{title}</h3>
                         <p className="subtitle training-block-text__subtitle">
-                            Пройдено {completedLessons} из {lessons.length}
+                            Пройдено {completedLessonsTitle} из {lessons.length}
                         </p>
                     </div>
                     <div className="training-block-text-bottom">

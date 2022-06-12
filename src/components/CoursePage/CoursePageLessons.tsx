@@ -11,7 +11,7 @@ interface CoursePageLessonsProps {
     _id: string;
     isLogin: boolean;
     isAdd: boolean;
-    onClickAddCourse: (redirect: string) => void;
+    onClickAddCourse: (Navigate: string) => void;
 }
 
 const CoursePageLessons: React.FC<CoursePageLessonsProps> = ({

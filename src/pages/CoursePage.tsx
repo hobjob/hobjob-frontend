@@ -2,7 +2,7 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Helmet} from "react-helmet";
 import queryString from "query-string";
-import {Redirect} from "react-router-dom";
+import {Navigate} from "react-router-dom";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
@@ -101,7 +101,7 @@ const CoursePage: React.FC<CoursePageProps> = ({
     };
 
     const onClickAddCourse = () => {
-        dispatch(addUserCourse(itemByUrl._id, null));
+        dispatch(addUserCourse(itemByUrl._id));
     };
 
     const onClickHiddenCourse = () => {
@@ -176,7 +176,7 @@ const CoursePage: React.FC<CoursePageProps> = ({
                         />
                     </>
                 ) : (
-                    <Redirect to="/course" />
+                    <Navigate to="/course" />
                 )
             ) : (
                 <Loader />

@@ -1,11 +1,11 @@
-import {Master} from "../../../models/IMaster";
+import {Master, MasterById} from "../../../models/IMaster";
 
 export interface MastersState {
     items: {[key: string]: Master};
     isLoaded: boolean;
 
-    itemById: Master | {};
-    isLoadedById: any;
+    itemById: MasterById;
+    isLoadedById: boolean;
 }
 
 export enum MastersActionTypes {
@@ -21,7 +21,7 @@ interface setMastersAction {
 
 interface setMasterByIdAction {
     type: MastersActionTypes.SET_MASTER_BY_ID;
-    payload: Master;
+    payload: MasterById;
 }
 
 interface setLoadedByIdAction {

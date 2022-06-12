@@ -147,8 +147,11 @@ const Header: React.FC = () => {
                                     <div className="header-user-nav">
                                         <NavLink
                                             to="/go/training"
-                                            className="header-user-nav__link"
-                                            activeClassName="header-user-nav__link active"
+                                            className={({isActive}) =>
+                                                `header-user-nav__link ${
+                                                    isActive ? "active" : ""
+                                                }`
+                                            }
                                         >
                                             Мое обучение
                                         </NavLink>

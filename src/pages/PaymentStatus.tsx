@@ -2,12 +2,20 @@ import React from "react";
 
 import {Loader} from "../components/";
 
-const PaymentStatus = ({
+interface PaymentStatusProps {
+    match: {
+        params: {number: string};
+    };
+}
+
+const PaymentStatus: React.FC<PaymentStatusProps> = ({
     match: {
         params: {number},
     },
 }) => {
     React.useEffect(() => {
+		window.scrollTo(0, 0);
+		
         // const events = new EventSource(
         //     `${process.env.REACT_APP_API_DOMEN}/payment/status/${number}`
         // );
@@ -34,7 +42,7 @@ const PaymentStatus = ({
         // setTimeout(() => {
         //     window.location.reload();
         // }, 3000);
-		
+
         setTimeout(() => {
             window.location.href = "/go/training";
         }, 3000);

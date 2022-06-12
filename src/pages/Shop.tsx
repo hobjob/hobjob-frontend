@@ -1,5 +1,9 @@
 import React from "react";
-import {useHistory} from "react-router-dom";
+import {
+    useNavigate,
+    createSearchParams,
+    useSearchParams,
+} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import queryString from "query-string";
 import {Helmet} from "react-helmet";
@@ -10,6 +14,7 @@ import {
     fetchCourses,
     fetchAddPaginationCourses,
     setLoadedCourseByUrl,
+    setCoursesFilters,
 } from "../redux/actions/courses";
 import {addUserCourse, hiddenUserCourse} from "../redux/actions/user";
 
@@ -24,13 +29,11 @@ import {
 import {Master} from "../models/IMaster";
 import {Category} from "../models/ICategory";
 
-interface IShop {
-    search: string;
-}
-
-const Shop: React.FC<IShop> = ({search}) => {
+const Shop: React.FC = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
+    const navigate = useNavigate();
+
+    const [query] = useSearchParams();
 
     const {
         items,
@@ -55,44 +58,80 @@ const Shop: React.FC<IShop> = ({search}) => {
 
     const {userInfo, isLoadedUserInfo} = useTypedSelector(({user}) => user);
 
+    const categoriesArray = Object.keys(filters.categories).map(
+        (category) => category
+    );
+    const mastersArray = Object.keys(filters.masters).map((master) => master);
+
     React.useEffect(() => {
         window.scrollTo(0, 0);
+
+        const categoriesObject: {[key: string]: string} = {};
+        const mastersObject: {[key: string]: string} = {};
+
+        query.getAll("categories").map((category) => {
+            categoriesObject[category] = category;
+        });
+
+        query.getAll("masters").map((master) => {
+            mastersObject[master] = master;
+        });
+
+        dispatch(
+            setCoursesFilters({
+                isParse: true,
+
+                categories: categoriesObject,
+                masters: mastersObject,
+                search: query.getAll("q")[0] ? query.getAll("q")[0] : "",
+            })
+        );
 
         dispatch(setLoadedCourseByUrl(false));
     }, []);
 
     React.useEffect(() => {
-        const arrayCategories: string[] = Object.keys(filters.categories).map(
-            (key) => filters.categories[key]
-        );
-        const arrayMasters: string[] = Object.keys(filters.masters).map(
-            (key) => filters.masters[key]
-        );
+        if (filters.isParse) {
+            navigate({
+                pathname: "/course",
+                search: `?${createSearchParams({
+                    categories: categoriesArray,
+                    masters: mastersArray,
+                    q: filters.search ? [filters.search] : [],
+                })}`,
+            });
 
-        const query: string | undefined = queryString.stringify(
-            {
-                q: filters.search,
-                category: arrayCategories,
-                masters: arrayMasters,
-            },
-            {arrayFormat: "comma", skipNull: true, skipEmptyString: true}
-        );
-
-        history.push(`/course/?${query}`);
-
-        dispatch(fetchCourses(query, 1));
+            dispatch(
+                fetchCourses({
+                    limit: 8,
+                    page: 1,
+                    categories: categoriesArray,
+                    masters: mastersArray,
+                    q: filters.search ? [filters.search] : [],
+                })
+            );
+        }
     }, [
         Object.keys(filters.categories).length,
         filters.search,
         Object.keys(filters.masters).length,
+        filters.isParse,
     ]);
 
     const onClickaddPaginationPageCourses = () => {
-        dispatch(fetchAddPaginationCourses(search, page + 1));
+        dispatch(
+            fetchAddPaginationCourses({
+                limit: 8,
+                page: page+1,
+                categories: categoriesArray,
+                masters: mastersArray,
+                q: filters.search ? [filters.search] : [],
+            })
+        );
     };
 
     const onClickAddCourse = (_id: string) => {
-        dispatch(addUserCourse(_id, null));
+        dispatch(addUserCourse(_id));
     };
 
     const onClickHiddenCourse = (_id: string) => {
@@ -104,6 +143,7 @@ const Shop: React.FC<IShop> = ({search}) => {
             <Helmet>
                 <title>Курсы - HobJob</title>
             </Helmet>
+
             <section className="shop">
                 <div className="container">
                     <div className="shop-wrapper">

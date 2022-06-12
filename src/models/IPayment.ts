@@ -1,6 +1,6 @@
 export interface Payment {
     paymentNumber: string;
-    confirmation: {};
+    confirmation: any;
     order: string;
     status: string;
     typeSubscribe: string;

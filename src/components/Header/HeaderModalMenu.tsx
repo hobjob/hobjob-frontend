@@ -6,8 +6,8 @@ import Logo from "../../assets/images/logo.svg";
 interface HeaderModalMenuProps {
     HeaderModalMenuRef: React.RefObject<HTMLDivElement>;
     modalMenuAnimationState: boolean;
-	isLogin: boolean;
-	
+    isLogin: boolean;
+
     closeModalMenu: () => void;
     clickLogout: () => void;
 }
@@ -70,28 +70,38 @@ const HeaderModalMenu: React.FC<HeaderModalMenuProps> = ({
                 <nav className="header-modal-menu-nav">
                     <NavLink
                         to="/"
-                        className="header-modal-menu-nav__link"
-                        activeClassName="header-modal-menu-nav__link active"
+                        className={({isActive}) =>
+                            `header-modal-menu-nav__link ${
+                                isActive ? "active" : ""
+                            }`
+                        }
                         onClick={closeModalMenu}
                     >
                         Главная
                     </NavLink>
                     <NavLink
                         to="/course"
-                        className="header-modal-menu-nav__link"
-                        activeClassName="header-modal-menu-nav__link active"
+                        className={({isActive}) =>
+                            `header-modal-menu-nav__link ${
+                                isActive ? "active" : ""
+                            }`
+                        }
                         onClick={closeModalMenu}
                     >
                         Курсы
                     </NavLink>
                     <NavLink
                         to="/magazine"
-                        className="header-modal-menu-nav__link"
-                        activeClassName="header-modal-menu-nav__link active"
+                        className={({isActive}) =>
+                            `header-modal-menu-nav__link ${
+                                isActive ? "active" : ""
+                            }`
+                        }
                         onClick={closeModalMenu}
                     >
                         Журнал
                     </NavLink>
+
                     <a
                         href={`${process.env.REACT_APP_DOMEN_MASTERS_SERVICES}`}
                         className="header-modal-menu-nav__link"
@@ -120,8 +130,11 @@ const HeaderModalMenu: React.FC<HeaderModalMenuProps> = ({
                         <div className="header-modal-menu-nav-bottom">
                             <NavLink
                                 to="/go/training"
-                                className="header-modal-menu-nav__link"
-                                activeClassName="header-modal-menu-nav__link active"
+                                className={({isActive}) =>
+                                    `header-modal-menu-nav__link ${
+                                        isActive ? "active" : ""
+                                    }`
+                                }
                                 onClick={closeModalMenu}
                             >
                                 Мое обучение
@@ -129,8 +142,11 @@ const HeaderModalMenu: React.FC<HeaderModalMenuProps> = ({
 
                             <NavLink
                                 to="/go/cabinet"
-                                className="header-modal-menu-nav__link"
-                                activeClassName="header-modal-menu-nav__link active"
+                                className={({isActive}) =>
+                                    `header-modal-menu-nav__link ${
+                                        isActive ? "active" : ""
+                                    }`
+                                }
                                 onClick={closeModalMenu}
                             >
                                 Мой профиль
@@ -138,8 +154,11 @@ const HeaderModalMenu: React.FC<HeaderModalMenuProps> = ({
 
                             <NavLink
                                 to="/go/referrals"
-                                className="header-modal-menu-nav__link"
-                                activeClassName="header-modal-menu-nav__link active"
+                                className={({isActive}) =>
+                                    `header-modal-menu-nav__link ${
+                                        isActive ? "active" : ""
+                                    }`
+                                }
                                 onClick={closeModalMenu}
                             >
                                 Пригласи друга

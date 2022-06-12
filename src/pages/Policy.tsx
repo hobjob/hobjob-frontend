@@ -3,7 +3,7 @@ import {Helmet} from "react-helmet";
 
 import {PolicyBlock} from "../components/";
 
-const Policy = () => {
+const Policy: React.FC = () => {
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, []);

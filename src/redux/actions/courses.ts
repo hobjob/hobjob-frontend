@@ -2,12 +2,22 @@ import {Dispatch} from "redux";
 
 import $api from "../../http/";
 
-import {CoursesActions, CoursesActionTypes} from "../types/courses/ICourses";
+import {
+    CoursesStateFilters,
+    CoursesActions,
+    CoursesActionTypes,
+} from "../types/courses/ICourses";
 
 import {CourseGood} from "../../models/ICourseGood";
 import {UserInfoState} from "../../models/IUserInfo";
 
-export const fetchCourses = (query?: string, page?: number) => {
+export const fetchCourses = (params?: {
+    page?: number;
+    limit?: number;
+    categories?: string[];
+    masters?: string[];
+    q: string[];
+}) => {
     return async (dispatch: Dispatch<CoursesActions>) => {
         dispatch({
             type: CoursesActionTypes.SET_LOADED_COURSES_FIRST,
@@ -19,11 +29,9 @@ export const fetchCourses = (query?: string, page?: number) => {
             payload: true,
         });
 
-        const response = await $api.get<CourseGood[]>(
-            `/courses?limit=8${page ? `&page=${page}` : ""}&${
-                query !== null ? query : ""
-            }`
-        );
+        const response = await $api.get<CourseGood[]>("/courses", {
+            params,
+        });
 
         dispatch({
             type: CoursesActionTypes.SET_COURSES,
@@ -37,7 +45,13 @@ export const fetchCourses = (query?: string, page?: number) => {
     };
 };
 
-export const fetchAddPaginationCourses = (query?: string, page?: number) => {
+export const fetchAddPaginationCourses = (params?: {
+    page?: number;
+    limit?: number;
+    categories?: string[];
+    masters?: string[];
+    q: string[];
+}) => {
     return async (dispatch: Dispatch<CoursesActions>) => {
         dispatch({
             type: CoursesActionTypes.SET_LOADED_COURSES,
@@ -49,9 +63,9 @@ export const fetchAddPaginationCourses = (query?: string, page?: number) => {
             payload: true,
         });
 
-        const response = await $api.get<CourseGood[]>(
-            `/courses?limit=8&page=${page}&${query !== null ? query : ""}`
-        );
+        const response = await $api.get<CourseGood[]>("/course", {
+            params,
+        });
 
         dispatch({
             type: CoursesActionTypes.SET_ADD_PAGINATION_COURSES,
@@ -66,7 +80,7 @@ export const fetchAddPaginationCourses = (query?: string, page?: number) => {
 };
 
 export const fetchCoursesSection = (
-    userInfo: UserInfoState | {} | null,
+    userInfo: UserInfoState | null,
     url: string
 ) => {
     return async (dispatch: Dispatch<CoursesActions>) => {
@@ -86,14 +100,20 @@ export const fetchCourseByUrl = (url: string) => {
             payload: false,
         });
 
-        const response = await $api.get<CourseGood[]>(`/courses?url=${url}`);
-
-        if (response.data[0]) {
-            dispatch({
-                type: CoursesActionTypes.SET_COURSE_BY_URL,
-                payload: response.data[0],
+        try {
+            const response = await $api.get<CourseGood[]>("/courses", {
+                params: {url},
             });
-        } else {
+
+            if (response.data[0]) {
+                dispatch({
+                    type: CoursesActionTypes.SET_COURSE_BY_URL,
+                    payload: response.data[0],
+                });
+            } else {
+                throw new Error();
+            }
+        } catch (e) {
             dispatch({
                 type: CoursesActionTypes.SET_LOADED_COURSE_BY_URL,
                 payload: true,
@@ -101,6 +121,11 @@ export const fetchCourseByUrl = (url: string) => {
         }
     };
 };
+
+export const setCoursesFilters = (filters: CoursesStateFilters) => ({
+    type: CoursesActionTypes.SET_COURSES_FILTERS,
+    payload: filters,
+});
 
 export const setCoursesFiltersCategories = (category: string) => ({
     type: CoursesActionTypes.SET_COURSES_FILTERS_CATEGORIES,

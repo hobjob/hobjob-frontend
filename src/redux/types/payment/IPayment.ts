@@ -1,7 +1,7 @@
 import {Payment} from "../../../models/IPayment";
 
 export interface PaymentState {
-    payment: Payment | {};
+    payment: Payment;
     isLoaded: boolean;
 
     isSend: boolean;

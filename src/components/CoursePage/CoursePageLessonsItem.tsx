@@ -18,7 +18,7 @@ interface CoursePageLessonsItemProps extends CourseGoodLessons {
 
     openVideoPlaecholder: () => void;
     closeVideoPlaecholder: () => void;
-    onClickAddCourse: (redirect: string) => void;
+    onClickAddCourse: (Navigate: string) => void;
 
     isLogin: boolean;
     isAdd: boolean;

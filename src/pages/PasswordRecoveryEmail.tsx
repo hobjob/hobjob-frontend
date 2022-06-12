@@ -1,6 +1,8 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
+
+import {useTypedSelector} from "../hooks/useTypedSelector";
 
 import {sendPasswordRecoveryEmail} from "../redux/actions/password_recovery";
 
@@ -11,14 +13,14 @@ import {
 
 import Logo from "../assets/images/logo.svg";
 
-const PasswordRecoveryEmail = () => {
+const PasswordRecoveryEmail: React.FC = () => {
     const dispatch = useDispatch();
 
-    const {emailStatus} = useSelector(
+    const {emailStatus} = useTypedSelector(
         ({password_recovery}) => password_recovery
     );
 
-    const onSubmit = ({email}) => {
+    const onSubmit = ({email}: any) => {
         return dispatch(sendPasswordRecoveryEmail({email}));
     };
 
@@ -41,8 +43,8 @@ const PasswordRecoveryEmail = () => {
                                     alt="HobJob"
                                     className="reglog-logo__img"
                                 />
-							</a>
-							
+                            </a>
+
                             <div className="reglog-block-wrapper">
                                 {emailStatus === "success" ? (
                                     <PasswordRecoveryEmailSuccess />

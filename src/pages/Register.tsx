@@ -10,7 +10,7 @@ import {
     RegisterForm,
 } from "../components/";
 
-const Register = () => {
+const Register: React.FC = () => {
     const dispatch = useDispatch();
 
     const [isYearSubscribe, setIsYearSubscribe] = React.useState(false);
@@ -19,7 +19,7 @@ const Register = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    const onSubmit = ({email, name, password}) => {
+    const onSubmit = ({email, name, password}: any) => {
         return dispatch(
             sendRegister(
                 {
@@ -30,7 +30,7 @@ const Register = () => {
                         ? "year-subscribe"
                         : "month-subscribe",
                 },
-                localStorage.getItem("ref")
+                JSON.parse(localStorage.getItem("ref") || "")
             )
         );
     };

@@ -5,7 +5,14 @@ import {
 } from "../types/payment/IPayment";
 
 const initialState: PaymentState = {
-    payment: {},
+    payment: {
+        paymentNumber: "",
+        confirmation: {},
+        order: "",
+        status: "",
+        typeSubscribe: "",
+        nextTypeSubscribe: "",
+    },
     isLoaded: false,
 
     isSend: false,

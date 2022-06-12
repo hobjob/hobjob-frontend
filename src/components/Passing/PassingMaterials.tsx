@@ -6,7 +6,7 @@ import {CoursePassingLessonMaterial} from "../../models/ICoursePassing";
 
 interface PassingMaterialsProps {
     materials: CoursePassingLessonMaterial[];
-    downloadFunc: () => void;
+    downloadFunc: (title: string, index: number) => void;
 }
 
 const PassingMaterials: React.FC<PassingMaterialsProps> = ({

@@ -1,7 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
-import {useHistory} from "react-router-dom";
+import {useNavigate, Navigate} from "react-router-dom";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
@@ -26,7 +26,6 @@ const MagazinePostPage: React.FC<MagazinePostPageProps> = ({
         params: {id},
     },
 }) => {
-    const history = useHistory();
     const dispatch = useDispatch();
 
     const {itemById, isLoadedByIdPosts} = useTypedSelector(({posts}) => posts);
@@ -76,7 +75,7 @@ const MagazinePostPage: React.FC<MagazinePostPageProps> = ({
                         </section>
                     </>
                 ) : (
-                    history.push("/magazine")
+                    <Navigate to="/magazine" />
                 )
             ) : (
                 <Loader />

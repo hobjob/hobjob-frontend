@@ -1,11 +1,11 @@
 import React from "react";
 
 interface PaymentSubscribeRegisterBlockProps {
-    setYearSubscribe: () => void;
-    isYearSubscribe: boolean;
-    isCheckbox: boolean;
-    isPrologation: boolean;
-    typeSubscribe: string;
+    setYearSubscribe?: () => void;
+    isYearSubscribe?: boolean;
+    isCheckbox?: boolean;
+    isPrologation?: boolean;
+    typeSubscribe?: string;
 }
 
 const PaymentSubscribeRegisterBlock: React.FC<

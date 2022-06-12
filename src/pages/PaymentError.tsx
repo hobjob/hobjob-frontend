@@ -3,7 +3,11 @@ import {Link} from "react-router-dom";
 
 import Logo from "../assets/images/logo.svg";
 
-const PaymentError = () => {
+const PaymentError: React.FC = () => {
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+	}, []);
+	
     return (
         <section className="payment-error">
             <div className="container">
@@ -21,12 +25,10 @@ const PaymentError = () => {
                             Ошибка платежа
                         </h2>
                         <p className="description payment-error-text__description">
-                            Мы уже оформили возврат средств. Произошла техническая ошибка.
+                            Мы уже оформили возврат средств. Произошла
+                            техническая ошибка.
                         </p>
-                        <Link
-                            to="/"
-                            className="btn payment-error-text__btn"
-                        >
+                        <Link to="/" className="btn payment-error-text__btn">
                             Перейти на главную страницу
                         </Link>
                     </div>

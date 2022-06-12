@@ -1,16 +1,18 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
 import {Helmet} from "react-helmet";
+
+import {useTypedSelector} from "../hooks/useTypedSelector";
 
 import {fetchUserReferrals} from "../redux/actions/user";
 
 import {Loader, ReferralsBlockLink, ReferralsPartners} from "../components/";
 
-const Referrals = () => {
+const Referrals: React.FC = () => {
     const dispatch = useDispatch();
     const {userInfo, isLoadedUserInfo, referrals, isLoadedReferrals} =
-        useSelector(({user}) => user);
+        useTypedSelector(({user}) => user);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);

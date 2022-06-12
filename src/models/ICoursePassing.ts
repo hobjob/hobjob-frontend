@@ -26,6 +26,7 @@ export interface CoursePassing {
     description: string;
     masterId: string;
     HobJobProduction: boolean;
+    completedLessons: number[];
 
     lessons: CoursePassingLesson[];
 }

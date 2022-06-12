@@ -1,4 +1,5 @@
 import queryString from "query-string";
+import {createSearchParams} from "react-router-dom";
 
 import {
     CoursesState,
@@ -8,9 +9,9 @@ import {
 
 import {CourseGood} from "../../models/ICourseGood";
 
-const parseQuery = queryString.parse(window.location.search.replace("?", "?"), {
-    arrayFormat: "comma",
-});
+// const parseQuery = queryString.parse(window.location.search.replace("?", "?"), {
+//     arrayFormat: "comma",
+// });
 
 const initialState: CoursesState = {
     isLoadedAllCoursesFirst: false,
@@ -40,42 +41,13 @@ const initialState: CoursesState = {
     itemsSection: {},
 
     filters: {
+        isParse: false,
+
         categories: {},
         search: "",
         masters: {},
     },
 };
-
-if (
-    document.location.pathname === "/course/" ||
-    document.location.pathname === "/course"
-) {
-    if (parseQuery.category) {
-        if (typeof parseQuery.category === "object") {
-            parseQuery.category.map(
-                (item) => (initialState.filters.categories[item] = item)
-            );
-        } else {
-            initialState.filters.categories[parseQuery.category] =
-                parseQuery.category;
-        }
-    }
-
-    if (parseQuery.masters) {
-        if (typeof parseQuery.masters === "object") {
-            parseQuery.masters.map(
-                (item) => (initialState.filters.masters[item] = item)
-            );
-        } else {
-            initialState.filters.masters[parseQuery.masters] =
-                parseQuery.masters;
-        }
-    }
-
-    if (parseQuery.q) {
-        initialState.filters.search = parseQuery.q;
-    }
-}
 
 const courses = (
     state = initialState,
@@ -130,6 +102,13 @@ const courses = (
             ...state,
             itemByUrl: action.payload,
             isLoadedCourseByUrl: true,
+        };
+    }
+
+    if (action.type === CoursesActionTypes.SET_COURSES_FILTERS) {
+        return {
+            ...state,
+            filters: action.payload,
         };
     }
 

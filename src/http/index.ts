@@ -5,7 +5,7 @@ const $api = axios.create({
     baseURL: process.env.REACT_APP_API_DOMEN,
 });
 
-$api.interceptors.request.use((config) => {
+$api.interceptors.request.use((config: any) => {
     config.headers.Authorization = `Bearer ${localStorage.getItem(
         "accessToken"
     )}`;
@@ -13,10 +13,10 @@ $api.interceptors.request.use((config) => {
 });
 
 $api.interceptors.response.use(
-    (config) => {
+    (config: any) => {
         return config;
     },
-    async (error) => {
+    async (error: any) => {
         const originalRequest = error.config;
 
         if (error.response) {

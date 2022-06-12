@@ -69,14 +69,14 @@ export const fetchPostsById = (id: string) => {
             payload: false,
         });
 
-        const response = await $api.get<Post>(`/posts/${id}`);
+        try {
+            const response = await $api.get<Post>(`/posts/${id}`);
 
-        if (Object.keys(response.data).length) {
             dispatch({
                 type: PostsActionTypes.SET_POST_BY_ID,
                 payload: response.data,
             });
-        } else {
+        } catch (e) {
             dispatch({
                 type: PostsActionTypes.SET_LOADED_POST_BY_ID,
                 payload: true,

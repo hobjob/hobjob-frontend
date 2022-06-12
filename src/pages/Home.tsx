@@ -1,26 +1,16 @@
 import React from "react";
 import {Helmet} from "react-helmet";
-import queryString from "query-string";
+import {useSearchParams} from "react-router-dom";
 
 import {HomeMainSection, ShopSection, CategoriesSection} from "../components/";
 
-interface HomeProps {
-    history: {
-        location: {search: string};
-    };
-}
+const Home: React.FC = () => {
+    const [search] = useSearchParams();
 
-const Home: React.FC<HomeProps> = ({
-    history: {
-        location: {search},
-    },
-}) => {
     React.useEffect(() => {
         window.scrollTo(0, 0);
 
-        const {ref}: {ref?: string} = queryString.parse(search, {
-            arrayFormat: "comma",
-        });
+        const ref = search.get("ref");
 
         if (ref) {
             localStorage.setItem("ref", ref);

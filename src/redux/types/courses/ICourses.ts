@@ -1,8 +1,10 @@
 import {CourseGood} from "../../../models/ICourseGood";
 
-interface CoursesStateFilters {
+export interface CoursesStateFilters {
+	isParse: boolean
+
     categories: {[key: string]: string};
-    search: string | string[];
+    search: string;
     masters: {[key: string]: string};
 }
 
@@ -30,6 +32,7 @@ export enum CoursesActionTypes {
     SET_ADD_PAGINATION_COURSES = "SET_ADD_PAGINATION_COURSES",
     SET_COURSES_SECTION = "SET_COURSES_SECTION",
     SET_COURSE_BY_URL = "SET_COURSE_BY_URL",
+    SET_COURSES_FILTERS = "SET_COURSES_FILTERS",
     SET_COURSES_FILTERS_CATEGORIES = "SET_COURSES_FILTERS_CATEGORIES",
     SET_COURSES_FILTERS_SEARCH = "SET_COURSES_FILTERS_SEARCH",
     SET_COURSES_FILTERS_MASTERS = "SET_COURSES_FILTERS_MASTERS",
@@ -68,6 +71,11 @@ interface setCourseByUrlAction {
     payload: CourseGood;
 }
 
+interface setCoursesFiltersAction {
+    type: CoursesActionTypes.SET_COURSES_FILTERS;
+    payload: CoursesStateFilters;
+}
+
 interface setCoursesFiltersCategoriesAction {
     type: CoursesActionTypes.SET_COURSES_FILTERS_CATEGORIES;
     payload: string;
@@ -83,7 +91,7 @@ interface setCoursesFiltersMastersAction {
     payload: string;
 }
 
-interface setLoadedCoursesFitstAction {
+interface setLoadedCoursesFirstAction {
     type: CoursesActionTypes.SET_LOADED_COURSES_FIRST;
     payload: boolean;
 }
@@ -111,7 +119,8 @@ export type CoursesActions =
     | setCoursesFiltersCategoriesAction
     | setCoursesFiltersSearchAction
     | setCoursesFiltersMastersAction
-    | setLoadedCoursesFitstAction
+    | setLoadedCoursesFirstAction
     | setLoadedCoursesAction
     | setLoadedCourseByUrlAction
-    | setIsFetchAllCoursesAction;
+    | setIsFetchAllCoursesAction
+    | setCoursesFiltersAction;

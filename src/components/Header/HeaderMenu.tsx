@@ -2,34 +2,29 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 
 const HeaderMenu: React.FC = () => {
-    const checkActive = (match: any, location: any) => {
-        if (!location) return false;
-        const {pathname} = location;
-
-        return pathname === "/";
-    };
-
     return (
         <nav className="header-nav">
             <NavLink
                 to="/"
-                className="header-nav__link"
-                activeClassName="header-nav__link active"
-                isActive={checkActive}
+                className={({isActive}) =>
+                    `header-nav__link ${isActive ? "active" : ""}`
+                }
             >
                 Главная
             </NavLink>
             <NavLink
                 to="/course"
-                className="header-nav__link"
-                activeClassName="header-nav__link active"
+                className={({isActive}) =>
+                    `header-nav__link ${isActive ? "active" : ""}`
+                }
             >
                 Курсы
             </NavLink>
             <NavLink
                 to="/magazine"
-                className="header-nav__link"
-                activeClassName="header-nav__link active"
+                className={({isActive}) =>
+                    `header-nav__link ${isActive ? "active" : ""}`
+                }
             >
                 Журнал
             </NavLink>

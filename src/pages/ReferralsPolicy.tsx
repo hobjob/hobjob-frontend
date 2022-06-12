@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 import {PolicyBlock} from "../components/";
 
-const ReferralsPolicy = () => {
+const ReferralsPolicy: React.FC = () => {
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, []);

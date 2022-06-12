@@ -12,7 +12,7 @@ export const fetchPaymentSubscribeById = (id: string) => {
             payload: false,
         });
 
-        $api.get(`/payment/subscribe/${id}`)
+        $api.get<Payment>(`/payment/subscribe/${id}`)
             .then(({data}) => {
                 dispatch({
                     type: PaymentActionTypes.SET_PAYMENT,

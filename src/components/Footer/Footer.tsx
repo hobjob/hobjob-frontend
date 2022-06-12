@@ -4,13 +4,6 @@ import {Link, NavLink} from "react-router-dom";
 import Logo from "../../assets/images/logo.svg";
 
 const Footer: React.FC = () => {
-	const checkActive = (match: any, location: any) => {
-        if (!location) return false;
-        const {pathname} = location;
-
-        return pathname === "/";
-    };
-	
     return (
         <footer className="footer">
             <div className="container">
@@ -146,25 +139,33 @@ const Footer: React.FC = () => {
                         <nav className="footer-block-nav">
                             <NavLink
                                 to="/"
-                                className="footer-block-nav__link"
-                                activeClassName="footer-block-nav__link active"
-                                isActive={checkActive}
+                                className={({isActive}) =>
+                                    `footer-block-nav__link ${
+                                        isActive ? "active" : ""
+                                    }`
+                                }
                             >
                                 Главная
                             </NavLink>
 
                             <NavLink
                                 to="/course"
-                                className="footer-block-nav__link"
-                                activeClassName="footer-block-nav__link active"
+                                className={({isActive}) =>
+                                    `footer-block-nav__link ${
+                                        isActive ? "active" : ""
+                                    }`
+                                }
                             >
                                 Курсы
                             </NavLink>
 
                             <NavLink
                                 to="/magazine"
-                                className="footer-block-nav__link"
-                                activeClassName="footer-block-nav__link active"
+                                className={({isActive}) =>
+                                    `footer-block-nav__link ${
+                                        isActive ? "active" : ""
+                                    }`
+                                }
                             >
                                 Журнал
                             </NavLink>

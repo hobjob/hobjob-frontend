@@ -4,7 +4,7 @@ import {UserReferral} from "../../../models/IUserReferral";
 
 export interface UserState {
     userInfo: UserInfoState;
-    courses: {[key: string]: CoursePassing} | {};
+    courses: {[key: string]: CoursePassing};
     referrals: UserReferral[];
 
     isLoadedUserInfo: boolean;

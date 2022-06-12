@@ -1,6 +1,8 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
+
+import {useTypedSelector} from "../hooks/useTypedSelector";
 
 import {checkDeclension} from "../Functions/checkDeclension";
 
@@ -18,9 +20,9 @@ const Training = () => {
     const dispatch = useDispatch();
 
     const {userInfo, courses, isLoadedUserInfo, isLoadedUserCourses} =
-        useSelector(({user}) => user);
-    const masters = useSelector(({masters}) => masters.items);
-    const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
+        useTypedSelector(({user}) => user);
+    const masters = useTypedSelector(({masters}) => masters.items);
+    const isLoadedMasters = useTypedSelector(({masters}) => masters.isLoaded);
 
     React.useEffect(() => {
         window.scrollTo(0, 0);
@@ -32,7 +34,7 @@ const Training = () => {
         }
     }, [isLoadedUserInfo]);
 
-    const onClickHiddenUserCourse = (courseId) => {
+    const onClickHiddenUserCourse = (courseId: string) => {
         dispatch(hiddenUserCourse(courseId));
     };
 
@@ -69,7 +71,7 @@ const Training = () => {
                                                                 {...courses[
                                                                     key
                                                                 ]}
-                                                                completedLessons={
+                                                                completedLessonsTitle={
                                                                     checkDeclension(
                                                                         courses[
                                                                             key
@@ -83,8 +85,13 @@ const Training = () => {
                                                                         ]
                                                                     ).title
                                                                 }
-                                                                masters={
-                                                                    masters
+                                                                master={
+                                                                    masters[
+                                                                        courses[
+                                                                            key
+                                                                        ]
+                                                                            .masterId
+                                                                    ]
                                                                 }
                                                                 onClickHiddenUserCourse={
                                                                     onClickHiddenUserCourse

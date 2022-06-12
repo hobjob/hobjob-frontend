@@ -94,16 +94,15 @@ export const fetchUpdateUserPassword = (data: {
     };
 };
 
-export const addUserCourse =
-    (courseId: string, redirect: string | null) => () => {
-        $api.put("/my/courses", {courseId}).then(() => {
-            if (redirect) {
-                window.location.href = redirect;
-            } else {
-                window.location.href = "/go/training";
-            }
-        });
-    };
+export const addUserCourse = (courseId: string, Navigate?: string) => () => {
+    $api.put("/my/courses", {courseId}).then(() => {
+        if (Navigate) {
+            window.location.href = Navigate;
+        } else {
+            window.location.href = "/go/training";
+        }
+    });
+};
 
 export const hiddenUserCourse = (courseId: string) => {
     $api.delete(`/my/courses/${courseId}`).then(() => {

@@ -1,6 +1,8 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
+
+import {useTypedSelector} from "../hooks/useTypedSelector";
 
 import {fetchPaymentSubscribeById} from "../redux/actions/payment";
 
@@ -10,16 +12,24 @@ import {
     Loader,
 } from "../components/";
 
-const PaymentSubscribe = ({
+interface PaymentSubscribeProps {
+    match: {
+        params: {number: string};
+    };
+}
+
+const PaymentSubscribe: React.FC<PaymentSubscribeProps> = ({
     match: {
         params: {number},
     },
 }) => {
     const dispatch = useDispatch();
 
-    const {payment, isLoaded} = useSelector(({payment}) => payment);
+    const {payment, isLoaded} = useTypedSelector(({payment}) => payment);
 
-    React.useEffect(() => {
+	React.useEffect(() => {
+		window.scrollTo(0, 0)
+		
         dispatch(fetchPaymentSubscribeById(number));
     }, []);
 
@@ -36,7 +46,7 @@ const PaymentSubscribe = ({
                             background: "#F9F9F9",
                         },
                     },
-                    error_callback: function (error) {
+                    error_callback: (error: any) => {
                         console.log(error);
                     },
                 });
@@ -60,7 +70,7 @@ const PaymentSubscribe = ({
                             <div className="payment-wrapper">
                                 <div className="payment-form-wrapper">
                                     <PaymentProgressbar number={1} />
-									
+
                                     <div
                                         className="payment-form"
                                         id="payment-form"
@@ -72,9 +82,13 @@ const PaymentSubscribe = ({
                                         isYearSubscribe={
                                             payment.nextTypeSubscribe ===
                                             "year-subscribe"
+                                                ? true
+                                                : false
                                         }
                                         isPrologation={
                                             payment.nextTypeSubscribe === ""
+                                                ? true
+                                                : false
                                         }
                                         typeSubscribe={payment.typeSubscribe}
                                     />

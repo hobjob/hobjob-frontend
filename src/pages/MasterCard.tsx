@@ -1,9 +1,9 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
 import {Link} from "react-router-dom";
 
-import {abbreviateNumber} from "../Functions/abbreviateNumber";
+import {useTypedSelector} from "../hooks/useTypedSelector";
 
 import {fetchMasterById} from "../redux/actions/masters";
 import {addUserCourse, hiddenUserCourse} from "../redux/actions/user";
@@ -16,43 +16,50 @@ import {
     MagazineBlock,
 } from "../components/";
 
-const MasterCard = ({
+interface MasterCardProps {
+    match: {
+        params: {id: string};
+    };
+}
+
+const MasterCard: React.FC<MasterCardProps> = ({
     match: {
         params: {id},
     },
 }) => {
     const dispatch = useDispatch();
 
-    const {itemById, isLoadedById} = useSelector(({masters}) => masters);
-    const categories = useSelector(({categories}) => categories.items);
-    const isLoadedAllCategories = useSelector(
+    const {itemById, items, isLoaded, isLoadedById} = useTypedSelector(
+        ({masters}) => masters
+    );
+    const categories = useTypedSelector(({categories}) => categories.items);
+    const isLoadedAllCategories = useTypedSelector(
         ({categories}) => categories.isLoadedAllCategories
     );
-    const {userInfo, isLoadedUserInfo} = useSelector(({user}) => user);
+    const {userInfo, isLoadedUserInfo} = useTypedSelector(({user}) => user);
 
     React.useEffect(() => {
-		window.scrollTo(0, 0);
-		
+        window.scrollTo(0, 0);
+
         dispatch(fetchMasterById(id));
     }, []);
 
-    const onClickAddCourse = (id) => {
+    const onClickAddCourse = (id: string) => {
         dispatch(addUserCourse(id));
     };
 
-    const onClickHiddenCourse = (id) => {
+    const onClickHiddenCourse = (id: string) => {
         dispatch(hiddenUserCourse(id));
     };
 
     return (
         <>
-            {isLoadedById && isLoadedAllCategories ? (
-                Object.keys(itemById).length ? (
+            {isLoadedById && isLoadedAllCategories && isLoaded ? (
+                itemById._id !== "" ? (
                     <>
                         <Helmet>
                             <title>
-                                {itemById.name} {itemById.surname} -
-                                HobJob
+                                {itemById.name} {itemById.surname} - HobJob
                             </title>
                         </Helmet>
                         <section className="master-card">
@@ -73,7 +80,7 @@ const MasterCard = ({
                                                             {...item}
                                                             key={`shop-master-card-block-${index}`}
                                                             master={itemById}
-                                                            category={
+                                                            categoryItem={
                                                                 categories[
                                                                     item
                                                                         .category
@@ -99,6 +106,8 @@ const MasterCard = ({
                                                                     "accessToken"
                                                                 ) &&
                                                                 isLoadedUserInfo
+                                                                    ? true
+                                                                    : false
                                                             }
                                                         />
                                                     )
@@ -127,18 +136,18 @@ const MasterCard = ({
                                                         <MagazineBlockBig
                                                             {...itemById
                                                                 .posts[0]}
-                                                            masters={{
-                                                                [itemById._id]:
-                                                                    itemById,
-                                                            }}
-                                                            categories={
-                                                                categories
+                                                            master={
+                                                                items[
+                                                                    itemById._id
+                                                                ]
                                                             }
-                                                            views={abbreviateNumber(
-                                                                itemById
-                                                                    .posts[0]
-                                                                    .views
-                                                            )}
+                                                            category={
+                                                                categories[
+                                                                    itemById
+                                                                        .posts[0]
+                                                                        .category
+                                                                ]
+                                                            }
                                                         />
                                                     ) : null}
 
@@ -151,31 +160,35 @@ const MasterCard = ({
                                                                     0 ? (
                                                                         <MagazineBlock
                                                                             {...item}
-                                                                            masters={{
-                                                                                [itemById._id]:
-                                                                                    itemById,
-                                                                            }}
-                                                                            categories={
-                                                                                categories
+                                                                            master={
+                                                                                items[
+                                                                                    itemById
+                                                                                        ._id
+                                                                                ]
                                                                             }
-                                                                            views={abbreviateNumber(
-                                                                                item.views
-                                                                            )}
+                                                                            category={
+                                                                                categories[
+                                                                                    item
+                                                                                        .category
+                                                                                ]
+                                                                            }
                                                                             key={`master-card-magazine-block-${index}`}
                                                                         />
                                                                     ) : null
                                                                 ) : (
                                                                     <MagazineBlock
                                                                         {...item}
-                                                                        masters={{
-                                                                            [itemById._id]:
-                                                                                itemById,
-                                                                        }}
-                                                                        views={abbreviateNumber(
-                                                                            item.views
-                                                                        )}
-                                                                        categories={
-                                                                            categories
+                                                                        master={
+                                                                            items[
+                                                                                itemById
+                                                                                    ._id
+                                                                            ]
+                                                                        }
+                                                                        category={
+                                                                            categories[
+                                                                                item
+                                                                                    .category
+                                                                            ]
                                                                         }
                                                                         key={`master-card-magazine-block-${index}`}
                                                                     />

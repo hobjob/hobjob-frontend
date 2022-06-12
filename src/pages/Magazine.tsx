@@ -1,5 +1,5 @@
 import React from "react";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import queryString from "query-string";
 import {Helmet} from "react-helmet";
@@ -32,7 +32,7 @@ const Magazine: React.FC<MagazineProps> = ({
     },
 }) => {
     const dispatch = useDispatch();
-    const history = useHistory();
+    const history = useNavigate();
 
     const {
         items,
@@ -69,7 +69,7 @@ const Magazine: React.FC<MagazineProps> = ({
             {arrayFormat: "comma", skipNull: true, skipEmptyString: true}
         );
 
-        history.push(`/magazine/?${query}`);
+        history(`/magazine/?${query}`);
 
         dispatch(fetchPosts(query, 1));
     }, [Object.keys(filters.categories).length]);

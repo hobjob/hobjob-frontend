@@ -9,7 +9,15 @@ const initialState: MastersState = {
     items: {},
     isLoaded: false,
 
-    itemById: {},
+    itemById: {
+        _id: "",
+        name: "",
+        surname: "",
+        masterDescription: "",
+		avatar: "",
+		courses: [],
+		posts: []
+    },
     isLoadedById: false,
 };
 

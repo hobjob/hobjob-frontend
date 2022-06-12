@@ -42,7 +42,7 @@ const ShopSection: React.FC<ShopSectionProps> = ({title, description, url}) => {
     }, [isLoadedUserInfo]);
 
     const onClickAddCourse = (_id: string) => {
-        dispatch(addUserCourse(_id, null));
+        dispatch(addUserCourse(_id));
     };
 
     const onClickHiddenCourse = (_id: string) => {

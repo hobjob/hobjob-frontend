@@ -1,9 +1,10 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {Redirect} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {Navigate} from "react-router-dom";
 import {Helmet} from "react-helmet";
-import moment from "moment";
 import {animateScroll as scroll} from "react-scroll";
+
+import {useTypedSelector} from "../hooks/useTypedSelector";
 
 import {fetchUserCourses} from "../redux/actions/user";
 
@@ -18,18 +19,25 @@ import {
     PassingMaster,
 } from "../components/";
 
-const PassingCourse = ({
+interface PassingCourseProps {
+    match: {
+        params: {courseId: string; lessonNum: number};
+    };
+}
+
+const PassingCourse: React.FC<PassingCourseProps> = ({
     match: {
         params: {courseId, lessonNum},
     },
 }) => {
     const dispatch = useDispatch();
 
-    const {userInfo, courses, isLoadedUserCourses, isLoadedUserInfo} =
-        useSelector(({user}) => user);
+    const {courses, isLoadedUserCourses, isLoadedUserInfo} = useTypedSelector(
+        ({user}) => user
+    );
 
-    const isLoadedMasters = useSelector(({masters}) => masters.isLoaded);
-    const masters = useSelector(({masters}) => masters.items);
+    const isLoadedMasters = useTypedSelector(({masters}) => masters.isLoaded);
+    const masters = useTypedSelector(({masters}) => masters.items);
 
     // Array of lessons starts at zero
     const lessonIndex = lessonNum - 1;
@@ -42,7 +50,7 @@ const PassingCourse = ({
         }
     }, [courseId, lessonNum, isLoadedUserCourses, isLoadedUserInfo]);
 
-    const downloadFile = (title, index) => {
+    const downloadFile = (title: string, index: number) => {
         dispatch(
             fetchPassingCourseLessonMaterial(courseId, lessonNum, index, title)
         );
@@ -52,6 +60,7 @@ const PassingCourse = ({
         <>
             {localStorage.getItem("accessToken") ? (
                 isLoadedUserCourses && isLoadedUserInfo && isLoadedMasters ? (
+                    Object.keys(courses).length &&
                     courses[courseId] &&
                     courses[courseId].lessons[lessonIndex] ? (
                         <>
@@ -91,8 +100,6 @@ const PassingCourse = ({
                                         />
 
                                         <PassingLessonsList
-                                            lessons={courses[courseId].lessons}
-                                            courseId={courseId}
                                             lessonActive={lessonNum}
                                             {...courses[courseId]}
                                         />
@@ -139,7 +146,7 @@ const PassingCourse = ({
                             </section>
                         </>
                     ) : (
-                        <Redirect to="/go/training" />
+                        <Navigate to="/go/training" />
                     )
                 ) : (
                     <Loader />

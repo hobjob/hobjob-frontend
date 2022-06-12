@@ -1,6 +1,8 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
+
+import {useTypedSelector} from "../hooks/useTypedSelector";
 
 import {sendPasswordRecoveryNewPassword} from "../redux/actions/password_recovery";
 
@@ -11,18 +13,26 @@ import {
 
 import Logo from "../assets/images/logo.svg";
 
-const PasswordRecoveryNewPassword = ({
+interface PasswordRecoveryNewPasswordProps {
+    match: {
+        params: {hash: string};
+    };
+}
+
+const PasswordRecoveryNewPassword: React.FC<
+    PasswordRecoveryNewPasswordProps
+> = ({
     match: {
         params: {hash},
     },
 }) => {
     const dispatch = useDispatch();
 
-    const {newPasswordStatus} = useSelector(
+    const {newPasswordStatus} = useTypedSelector(
         ({password_recovery}) => password_recovery
     );
 
-    const onSubmit = ({password, password_repeat}) => {
+    const onSubmit = ({password, password_repeat}: any) => {
         return dispatch(
             sendPasswordRecoveryNewPassword({password, password_repeat}, hash)
         );

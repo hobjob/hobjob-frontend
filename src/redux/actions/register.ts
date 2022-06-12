@@ -9,7 +9,7 @@ import {
 } from "../types/register/IRegister";
 
 export const sendRegister = (
-    data: {name: string; email: string; password: string},
+    data: {name: string; email: string; password: string; nextTypeSubscribe: string},
     ref: string
 ) => {
     return async (dispatch: Dispatch<RegisterActions>) => {

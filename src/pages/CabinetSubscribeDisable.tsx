@@ -1,5 +1,5 @@
 import React from "react";
-import {Link, useHistory} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import moment from "moment";
 
@@ -10,7 +10,7 @@ import {fetchUpdateUser} from "../redux/actions/user";
 import {checkDeclension} from "../Functions/checkDeclension";
 
 const CabinetSubscribeDisable: React.FC = () => {
-    const history = useHistory();
+    const history = useNavigate();
     const dispatch = useDispatch();
 
     const [daysSubscribe, setDaysSubscribe] = React.useState(0);
@@ -39,7 +39,7 @@ const CabinetSubscribeDisable: React.FC = () => {
     const changeAutoPayment = () => {
         dispatch(fetchUpdateUser({autoPayment: !payment.auto}));
 
-        history.push("/go/cabinet#subscribe");
+        history("/go/cabinet#subscribe");
     };
 
     return (
