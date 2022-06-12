@@ -1,16 +1,5 @@
 // media
 @media screen and ( max-width: 1400px )
-	// header
-	.header
-		&-nav
-			display: none
-
-		&-menu-button
-			display: block
-
-		&-user-menu
-			display: none
-
 	// shop
 	.shop
 		&-block
@@ -266,6 +255,26 @@
 		&__title
 			font-size: 18px
 
+	// header
+	.header
+		&-modal-menu
+			&-content
+				padding: 15px
+
+			&-nav
+				&-block
+					&-main
+						&__link
+							font-size: 36px
+
+					&-user
+						&__link
+							font-size: 28px
+
+							&-image
+								min-width: 40px
+								height: 40px
+
 	// master-card
 	.master-card
 		&-info
@@ -517,10 +526,6 @@
 			&-nav
 				display: none
 
-		&-modal-menu
-			&-content
-				width: 75%
-
 	// master-card
 	.master-card
 		&-courses
@@ -575,6 +580,35 @@
 		margin-left: 50px
 
 @media screen and ( max-width: 700px )
+	// header
+	.header
+		&-modal-menu
+			&-content
+				width: 100%
+				height: 100%
+
+			&-nav
+				flex-direction: column
+
+				&-block
+					&-main, &-user
+						width: 100%
+
+					&-main
+						order: 2
+						margin-top: 15px
+
+					&-user
+						order: 1
+
+			&-social
+				&__link
+					min-width: 60px
+					height: 60px
+
+					& svg
+						width: 25px
+
 	// course-page
 	.course-page
 		&-lessons
@@ -701,10 +735,6 @@
 
 	// header
 	.header
-		&-modal-menu
-			&-content
-				width: 100%
-
 		&-login
 			&__link
 				font-size: 16px
@@ -1046,7 +1076,15 @@
 					text-align: center
 
 				&-social
+					margin-top: 35px
 					justify-content: center
+
+					&__link
+						min-width: 35px
+						height: 35px
+
+						& svg
+							width: 18px
 
 			&-subinfo
 				margin-top: 35px
@@ -1066,12 +1104,6 @@
 				font-size: 12px
 
 @media screen and ( max-width: 400px )
-	// header
-	.header
-		&-modal-menu
-			&-content
-				padding: 25px
-
 	// main
 	.main
 		&-text

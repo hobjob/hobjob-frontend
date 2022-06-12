@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Master} from '../../models/IMaster';
+import {Master} from "../../models/IMaster";
 
 const MasterCardInfo: React.FC<Master> = ({
     avatar,
@@ -17,12 +17,9 @@ const MasterCardInfo: React.FC<Master> = ({
                 }}
             ></div>
             <div className="master-card-info-text">
-                <span className="master-card-info-text__subtitle">
-                    мастер HobJob
-                </span>
-
                 <h2 className="title master-card-info-text__title">
-                    {name} {surname}
+                    {name} {surname}{" "}
+                    <p className="title__blank">Мастер HobJob</p>
                 </h2>
                 <p className="description master-card-info-text__description">
                     {masterDescription}

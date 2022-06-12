@@ -181,63 +181,124 @@
 			+closeAnimation
 
 	&-content
-		overflow-y: scroll
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+
+		overflow-y: auto
+		overflow-x: hidden
+
 		position: absolute
 
-		bottom: 0
-		left: 0
+		top: 50%
+		left: 50%
 
-		width: 50%
-		height: 100%
+		transform: translate(-50%, -50%)
 
-		padding: 50px
+		width: 95%
+		height: 95%
+
+		padding: 35px
 
 		background-color: $white
 
-	&-close
-		cursor: pointer
-		position: absolute
-		padding: 10px
-		top: 25px
-		right: 25px
-
-		& svg
-			width: 35px
-
-	&-logo
-		&__img
-			user-select: none
-			width: 75px
+		+borderRadiusBlock
 
 	&-nav
-		margin-top: 75px
+		display: flex
+		justify-content: space-between
 
-		&__link
-			display: block
-			font-size: 24px
-			margin-bottom: 25px
-			+transition
+		&-block
+			&-main
+				display: flex
+				flex-direction: column
+				justify-content: space-between
 
-			&.active
-				color: $mainColor
+				width: 49%
 
-			&:hover
-				color: $mainColor
+				&__link
+					display: block
+					font-size: 48px
 
-		&-bottom
-			margin-top: 50px
-			padding-top: 50px
-			border-top: 1px solid $borderGray
+					padding-bottom: 10px
+					margin-bottom: 10px
+
+					border-bottom: 1px solid $borderGray
+
+					white-space: nowrap
+
+					+transition
+					+PtSerif
+
+					&:last-child
+						margin-bottom: 0
+
+					&.active
+						color: $mainColor
+						margin-left: 5px
+
+					&:hover
+						color: $mainColor
+						margin-left: 5px
+
+			&-user
+				width: 49%
+
+				&__link
+					text-align: center
+
+					display: flex
+					align-items: center
+					justify-content: center
+
+					font-size: 36px
+
+					color: $mainColor
+					border: 1px solid $mainColor
+
+					white-space: nowrap
+
+					padding: 15px 15px
+
+					border-radius: 100px
+
+					margin-bottom: 10px
+
+					+transition
+
+					&:hover
+						background-color: $mainColor
+						color: $white
+
+					&:last-child
+						margin-bottom: 0
+
+					&-image
+						margin-left: 15px
+
+						min-width: 50px
+						height: 50px
+
+						border-radius: 50%
+
+						+backgroundSetting
 
 	&-social
-		display: flex
-		align-items: center
+		margin-top: 35px
 
-		margin-top: 50px
+		&__subtitle
+			display: block
+			font-size: 24px
+			margin-bottom: 15px
+			color: $gray
+
+		&-links-wrapper
+			overflow-x: auto
+			display: flex
 
 		&__link
-			width: 50px
-			height: 50px
+			min-width: 75px
+			height: 75px
 
 			display: flex
 			justify-content: center
@@ -246,7 +307,64 @@
 			background-color: rgba(221, 158, 94, 0.05)
 			border-radius: 50%
 
-			margin-right: 25px
+			margin-right: 15px
+
+			+transition
 
 			&:last-child
 				margin-right: 0
+
+			&:active
+				+transformScale
+
+			& svg
+				width: 30px
+
+	// &-logo
+	// 	&__img
+	// 		user-select: none
+	// 		width: 75px
+
+	// &-nav
+	// 	margin-top: 75px
+
+	// 	&__link
+	// 		display: block
+	// 		font-size: 24px
+	// 		margin-bottom: 25px
+	// 		+transition
+
+	// 		&.active
+	// 			color: $mainColor
+
+	// 		&:hover
+	// 			color: $mainColor
+
+	// 	&-bottom
+	// 		margin-top: 50px
+	// 		padding-top: 50px
+	// 		border-top: 1px solid $borderGray
+
+	// &-social
+	// 	display: flex
+	// 	align-items: center
+	// 	flex-wrap: wrap
+
+	// 	margin-top: 50px
+
+	// 	&__link
+	// 		min-width: 50px
+	// 		height: 50px
+
+	// 		display: flex
+	// 		justify-content: center
+	// 		align-items: center
+
+	// 		background-color: rgba(221, 158, 94, 0.05)
+	// 		border-radius: 50%
+
+	// 		margin-right: 25px
+	// 		margin-bottom: 25px
+
+	// 		&:last-child
+	// 			margin-right: 0

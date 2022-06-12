@@ -28,11 +28,31 @@ h2, h3, h4, h5, h6
 	+PtSerif
 
 .title
+	display: flex
+	align-items: center
+
 	font-size: 58px
 
-	& span
+	&__blank
+		display: inline-block
+		font-size: 18px
+		padding: 5px 10px
+		border-radius: 10px
+		background-color: $mainColor
+		color: $white
+
 		white-space: nowrap
-		padding-left: 15px
+		user-select: none
+
+		margin-left: 15px
+
+		+SfRegular
+
+	& span
+		display: inline-block
+
+		white-space: nowrap
+		margin-left: 15px
 		font-size: 32px
 		color: $gray
 

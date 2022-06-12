@@ -158,7 +158,7 @@ const Header: React.FC = () => {
                                     </div>
 
                                     {document.documentElement.clientWidth >
-                                    1400 ? (
+                                    1200 ? (
                                         <div
                                             onClick={openUserMenu}
                                             ref={headerUserMenuRef}
