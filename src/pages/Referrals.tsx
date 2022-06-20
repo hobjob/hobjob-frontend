@@ -1,6 +1,10 @@
 import React from "react";
 import {useDispatch} from "react-redux";
+<<<<<<< HEAD
 import {Link, Navigate} from "react-router-dom";
+=======
+import {Link} from "react-router-dom";
+>>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
 import {Helmet} from "react-helmet";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
@@ -81,7 +85,11 @@ const Referrals: React.FC = () => {
                     <Loader />
                 )
             ) : (
+<<<<<<< HEAD
                 <Navigate to="/go/login" />
+=======
+                (window.location.href = "/go/login")
+>>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
             )}
         </>
     );

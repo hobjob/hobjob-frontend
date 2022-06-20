@@ -209,8 +209,13 @@ const Header: React.FC = () => {
                                     ) : null}
                                 </div>
                             ) : (
+<<<<<<< HEAD
                                 <Link
                                     to="/go/login"
+=======
+                                <a
+                                    href="/go/login"
+>>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
                                     className="header-login__link"
                                 >
                                     Войти в личный кабинет
@@ -226,7 +231,11 @@ const Header: React.FC = () => {
                                             fill="#D89350"
                                         />
                                     </svg>
+<<<<<<< HEAD
                                 </Link>
+=======
+                                </a>
+>>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
                             )}
 
                             <div

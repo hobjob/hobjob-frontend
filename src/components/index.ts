@@ -26,6 +26,13 @@ export {default as HeaderModalMenu} from "./Header/HeaderModalMenu";
 // Home
 export {default as HomeMainSection} from "./Home/HomeMainSection";
 
+<<<<<<< HEAD
+=======
+// Categories
+export {default as CategoriesSection} from "./Categories/CategoriesSection";
+export {default as CategoriesItem} from "./Categories/CategoriesItem";
+
+>>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
 // Shop
 export {default as ShopBlock} from "./Shop/ShopBlock";
 export {default as ShopSection} from "./Shop/ShopSection";

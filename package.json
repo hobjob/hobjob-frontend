@@ -11,6 +11,10 @@
 		"@types/react": "^18.0.12",
 		"@types/react-dom": "^18.0.5",
 		"axios": "^0.21.4",
+<<<<<<< HEAD
+=======
+		"dotenv": "^8.6.0",
+>>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
 		"file-saver": "^2.0.5",
 		"hls.js": "^1.1.5",
 		"json-server": "^0.16.3",

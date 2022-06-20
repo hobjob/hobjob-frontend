@@ -1,5 +1,8 @@
 import React from "react";
+<<<<<<< HEAD
 import {Link} from "react-router-dom";
+=======
+>>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
 import {Helmet} from "react-helmet";
 
 import {ShopSection} from "../components/";
@@ -21,9 +24,15 @@ const Err404: React.FC = () => {
                             <h2 className="title err404-text__title">
                                 Страница не найдена
                             </h2>
+<<<<<<< HEAD
                             <Link to="/" className="btn err404-text__btn">
                                 Перейти на главную страницу
                             </Link>
+=======
+                            <a href="/" className="btn err404-text__btn">
+                                Перейти на главную страницу
+                            </a>
+>>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
                         </div>
                         <img
                             src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/404.svg`}
