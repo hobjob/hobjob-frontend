@@ -1,0 +1,370 @@
+// header
+.header
+	+openAnimation
+
+	&-wrapper
+		display: flex
+		justify-content: space-between
+		align-items: center
+
+		padding: 25px 0
+		border-bottom: 1px solid $borderGray
+
+	&-logo
+		&__img
+			user-select: none
+			width: 65px
+			+transition
+
+			&:active
+				+transformScale
+
+	&-right-block, &-left-block
+		display: flex
+		align-items: center
+
+	&-nav
+		margin-left: 75px
+
+		&__link
+			display: inline-block
+
+			border-radius: 100px
+			padding: 15px 30px
+			background-color: $backgroundGray
+
+			margin: 0 5px
+			+transition
+
+			&:hover
+				background-color: $mainColor
+				color: $white
+
+			&.active
+				background-color: $mainColor
+				color: $white
+
+				&:hover
+					background-color: $mainColor
+
+			&:active
+				+transformScale
+
+	&-login
+		&__link
+			font-size: 18px
+			display: inline-flex
+			align-items: center
+
+			color: $mainColor
+			+transition
+
+			&:active
+				+transformScale
+
+			& svg
+				margin-left: 15px
+				+transition
+
+			&:hover svg
+				+rotate
+
+	&-user
+		display: flex
+		align-items: center
+		+openAnimation
+
+		&-nav
+			display: flex
+			margin-right: 25px
+
+			&__link
+				height: 100%
+
+				display: inline-block
+				cursor: pointer
+				user-select: none
+
+				border-radius: 100px
+				padding: 15px 30px
+				background-color: $backgroundGray
+
+				margin-right: 10px
+
+				+transition
+
+				&:last-child
+					margin-right: 0
+
+				&:active
+					+transformScale
+
+				&:hover
+					background-color: $mainColor
+					color: $white
+
+				&.active
+					background-color: $mainColor
+					color: $white
+
+					&:hover
+						background-color: $mainColor
+
+		&-avatar
+			cursor: pointer
+			width: 55px
+			height: 55px
+			border-radius: 50%
+			+backgroundSetting
+			+transition
+
+			&.active
+				opacity: .5
+
+		&-menu
+			z-index: 10
+			width: 250px
+			position: absolute
+			top: 100px
+			right: 0
+
+			padding: 10px 0
+
+			background-color: $white
+			+openPopup
+
+			+boxShadow
+			+borderRadiusBlock
+
+			&__link
+				cursor: pointer
+				user-select: none
+				display: block
+				padding: 15px 20px
+				+transition
+
+				&:hover
+					background-color: #FAFAFA
+					color: $black
+
+				&.active
+					color: $mainColor
+
+				&.disabled
+					cursor: auto
+					pointer-events: none
+					color: $gray
+
+			&.close
+				+closePopup
+
+	&-menu-button
+		display: none
+		margin-left: 25px
+
+// header-modal-menu
+.header-modal-menu
+	&-wrapper
+		z-index: 100
+		position: fixed
+
+		top: 0
+		left: 0
+
+		width: 100%
+		height: 100%
+
+		background-color: rgba(0, 0, 0, 0.6)
+		+openAnimation
+
+		&.hidden
+			+closeAnimation
+
+	&-content
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+
+		overflow-y: auto
+		overflow-x: hidden
+
+		position: absolute
+
+		top: 50%
+		left: 50%
+
+		transform: translate(-50%, -50%)
+
+		width: 95%
+		height: 95%
+
+		padding: 35px
+
+		background-color: $white
+
+		+borderRadiusBlock
+
+	&-nav
+		display: flex
+		justify-content: space-between
+
+		&-block
+			&-main
+				display: flex
+				flex-direction: column
+				justify-content: space-between
+
+				width: 49%
+
+				&__link
+					display: block
+					font-size: 48px
+
+					padding-bottom: 10px
+					margin-bottom: 10px
+
+					border-bottom: 1px solid $borderGray
+
+					white-space: nowrap
+
+					+transition
+					+PtSerif
+
+					&:last-child
+						margin-bottom: 0
+
+					&.active
+						color: $mainColor
+						margin-left: 5px
+
+					&:hover
+						color: $mainColor
+						margin-left: 5px
+
+			&-user
+				width: 49%
+
+				&__link
+					text-align: center
+
+					display: flex
+					align-items: center
+					justify-content: center
+
+					font-size: 36px
+
+					color: $mainColor
+					border: 1px solid $mainColor
+
+					white-space: nowrap
+
+					padding: 15px 15px
+
+					border-radius: 100px
+
+					margin-bottom: 10px
+
+					+transition
+
+					&:hover
+						background-color: $mainColor
+						color: $white
+
+					&:last-child
+						margin-bottom: 0
+
+					&-image
+						margin-left: 15px
+
+						min-width: 50px
+						height: 50px
+
+						border-radius: 50%
+
+						+backgroundSetting
+
+	&-social
+		margin-top: 35px
+
+		&__subtitle
+			display: block
+			font-size: 24px
+			margin-bottom: 15px
+			color: $gray
+
+		&-links-wrapper
+			overflow-x: auto
+			display: flex
+
+		&__link
+			min-width: 75px
+			height: 75px
+
+			display: flex
+			justify-content: center
+			align-items: center
+
+			background-color: rgba(221, 158, 94, 0.05)
+			border-radius: 50%
+
+			margin-right: 15px
+
+			+transition
+
+			&:last-child
+				margin-right: 0
+
+			&:active
+				+transformScale
+
+			& svg
+				width: 30px
+
+	// &-logo
+	// 	&__img
+	// 		user-select: none
+	// 		width: 75px
+
+	// &-nav
+	// 	margin-top: 75px
+
+	// 	&__link
+	// 		display: block
+	// 		font-size: 24px
+	// 		margin-bottom: 25px
+	// 		+transition
+
+	// 		&.active
+	// 			color: $mainColor
+
+	// 		&:hover
+	// 			color: $mainColor
+
+	// 	&-bottom
+	// 		margin-top: 50px
+	// 		padding-top: 50px
+	// 		border-top: 1px solid $borderGray
+
+	// &-social
+	// 	display: flex
+	// 	align-items: center
+	// 	flex-wrap: wrap
+
+	// 	margin-top: 50px
+
+	// 	&__link
+	// 		min-width: 50px
+	// 		height: 50px
+
+	// 		display: flex
+	// 		justify-content: center
+	// 		align-items: center
+
+	// 		background-color: rgba(221, 158, 94, 0.05)
+	// 		border-radius: 50%
+
+	// 		margin-right: 25px
+	// 		margin-bottom: 25px
+
+	// 		&:last-child
+	// 			margin-right: 0

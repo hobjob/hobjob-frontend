@@ -1,0 +1,258 @@
+// payment
+.payment
+	display: flex
+	flex-direction: column
+	justify-content: center
+
+	min-height: 100vh
+	padding: 50px 0
+	background-color: $backgroundGray
+	+openAnimation
+
+	&-wrapper
+		display: flex
+		justify-content: space-between
+		align-items: center
+		flex-wrap: wrap
+
+	&-login-wrapper
+		width: 50%
+		display: flex
+		flex-direction: column
+		align-items: center
+		justify-content: center
+
+	&-progressbar
+		margin-bottom: 50px
+
+		width: 100%
+		display: flex
+		align-items: center
+		justify-content: center
+
+		&-item
+			display: flex
+			align-items: center
+
+			margin: 0 15px
+
+			&.active &__number
+				color: $mainColor
+				background-color: $lightMainColor
+
+			&.active &__title
+				color: $black
+
+			&__number
+				user-select: none
+				margin-right: 10px
+
+				border-radius: 50%
+				width: 30px
+				height: 30px
+
+				display: flex
+				justify-content: center
+				align-items: center
+
+				font-size: 15px
+				background-color: $borderGray
+				color: $gray
+
+			&__title
+				white-space: nowrap
+				font-size: 15px
+				user-select: none
+				color: $gray
+
+		&-line
+			width: 10%
+			height: 1px
+
+			background-color: $borderGray
+
+	&-subscribe-checkbox-block-wrapper
+		width: 90%
+
+		&.prolongation
+			width: 100%
+
+	&-subscribe-checkbox-block
+		cursor: pointer
+		display: inline-flex
+
+		padding: 15px 20px
+		margin-bottom: 15px
+
+		background-color: $white
+
+		+borderRadiusBlock
+
+		&-text
+			&__title
+				white-space: nowrap 
+				font-size: 18px
+				user-select: none
+
+			&__subtitle
+				white-space: nowrap 
+				font-size: 18px
+				color: $mainColor
+				user-select: none
+
+	&-subscribe-checkbox
+		position: relative
+
+		width: 50px
+		height: 25px
+
+		margin: 0 15px
+
+		background-color: $backgroundGray
+		border-radius: 100px
+
+		+transition
+
+		&::before
+			top: 50%
+			left: 3px
+
+			transform: translateY(-50%)
+
+			content: ""
+			position: absolute
+			display: block
+
+			width: 20px
+			height: 20px
+			border-radius: 50%
+			background-color: $white
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2)
+
+			+transition
+
+		&.active
+			background-color: $mainColor
+
+		&.active::before
+			left: calc( 100% - 23px )
+
+	&-subscribe-block-prolongation-wrapper
+		display: flex
+		justify-content: center
+
+	&-subscribe-block-prolongation
+		display: flex
+		justify-content: space-between
+		
+		width: 90%
+
+		padding: 35px
+		background-color: $backgroundGray
+
+		+borderRadiusBlock
+
+		&-text
+			width: 45%
+
+			&__title
+				font-size: 36px
+				margin-bottom: 15px
+
+			&__description
+				font-size: 24px
+
+		&-block
+			width: 50%
+
+		&__btn
+			margin-top: 25px
+			width: 100%
+
+	&-subscribe-block-wrapper
+		width: 45%
+
+		display: flex
+		flex-direction: column
+		align-items: center
+
+	&-subscribe-block
+		width: 90%
+		background-color: $white
+		overflow: hidden
+
+		+borderRadiusBlock
+
+		&.prolongation
+			width: 100%
+
+		&-text
+			padding: 35px
+
+			&__title
+				font-size: 42px
+
+			&__subtitle
+				display: block
+				margin-top: 5px
+
+				color: $gray
+				font-size: 18px
+
+			&-list
+				margin-top: 25px
+
+				&__item
+					display: flex
+					align-items: center
+
+					color: $mainColor
+					font-size: 21px
+					margin-bottom: 5px
+
+					&:last-child
+						margin-bottom: 0
+
+					& svg
+						margin-right: 7px
+
+		&-image
+			padding-bottom: 35px
+
+			&__image
+				user-select: none
+				pointer-events: none
+
+				width: 100%
+
+	&-form-wrapper
+		display: flex
+		justify-content: center
+		align-items: center
+		flex-direction: column
+
+		width: 50%
+
+	&-form
+		width: 100%
+		min-height: 200px
+
+// payment-error
+.payment-error
+	margin-top: 100px
+	+openAnimation
+
+	&-text
+		&-logo
+			margin-bottom: 75px
+			display: block
+
+			&__img
+				width: 75px
+				user-select: none
+
+		&__title
+			margin-bottom: 25px
+
+		&__description
+			margin-bottom: 100px

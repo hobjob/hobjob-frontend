@@ -1,0 +1,59 @@
+// mixin
+
+// fonts
+@mixin PtSerif
+	font-family: 'PT Serif', serif
+	
+@mixin SfRegular
+	font-family: "San Francisco Pro Display Regular", sans-serif
+
+// animate
+@mixin transition
+	transition: .3s ease
+
+@mixin rotate
+	transform: rotate(-20deg)
+
+@mixin transformScale
+	transform: scale(0.95)
+
+// background
+@mixin backgroundSetting
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: center center
+
+@mixin borderRadius
+	border-radius: 10px
+
+@mixin borderRadiusBlock
+	border-radius: 25px
+
+// box-shadow
+@mixin boxShadow
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.05)
+
+// animations
+@mixin openAnimation
+	animation: open .5s
+
+@mixin closeAnimation
+	animation: close .5s
+
+@mixin openAnimation04s
+	animation: open .4s
+
+@mixin closeAnimation04s
+	animation: close .4s
+
+@mixin openPopup
+	animation: openPopup .2s
+
+@mixin openPopup04s
+	animation: openPopup .4s
+
+@mixin closePopup
+	animation: closePopup .2s
+
+@mixin closePopup04s
+	animation: closePopup .4s

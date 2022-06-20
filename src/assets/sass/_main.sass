@@ -1,0 +1,61 @@
+// main
+.main
+	margin: 25px 0 50px 0
+
+	+openAnimation
+
+	&-wrapper
+		display: flex
+		justify-content: space-between
+
+	&-text
+		width: 70%
+
+		&__title
+			font-size: 60px
+			margin-bottom: 25px
+
+			& > a
+				white-space: nowrap
+
+				color: $mainColor
+				text-decoration: underline
+
+				+SfRegular
+
+		&-categories
+			display: flex
+			flex-wrap: wrap
+
+			margin-top: 50px
+
+			&__item
+				margin-bottom: 10px
+				margin-right: 10px
+
+				font-size: 24px
+
+				color: $mainColor
+
+				border: 1px solid $mainColor
+				padding: 15px 20px
+				border-radius: 100px
+
+				+transition
+
+				&:active
+					+transformScale
+
+				&:hover
+					background-color: $mainColor
+					color: $white
+
+	&-video
+		width: 25%
+		height: 100%
+
+		border-radius: 50%
+		overflow: hidden
+
+		& video
+			border-radius: 50%
