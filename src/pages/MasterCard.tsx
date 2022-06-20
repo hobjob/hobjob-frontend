@@ -1,11 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
-<<<<<<< HEAD
 import {useParams, Link, Navigate} from "react-router-dom";
-=======
-import {useParams, Link} from "react-router-dom";
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
@@ -208,11 +204,7 @@ const MasterCard: React.FC = ({}) => {
                         </section>
                     </>
                 ) : (
-<<<<<<< HEAD
                     <Navigate to="/" />
-=======
-                    (window.location.href = "/")
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
                 )
             ) : (
                 <Loader />

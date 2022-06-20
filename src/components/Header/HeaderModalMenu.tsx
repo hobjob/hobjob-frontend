@@ -1,9 +1,5 @@
 import React from "react";
-<<<<<<< HEAD
 import {Link, NavLink} from "react-router-dom";
-=======
-import {NavLink} from "react-router-dom";
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
 
 interface HeaderModalMenuProps {
     HeaderModalMenuRef: React.RefObject<HTMLDivElement>;
@@ -128,35 +124,20 @@ const HeaderModalMenu: React.FC<HeaderModalMenuProps> = ({
                             </>
                         ) : (
                             <>
-<<<<<<< HEAD
                                 <Link
                                     to="/go/login"
-=======
-                                <a
-                                    href="/go/login"
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
                                     className="header-modal-menu-nav-block-user__link"
                                     onClick={closeModalMenu}
                                 >
                                     Войти
-<<<<<<< HEAD
                                 </Link>
                                 <Link
                                     to="/go/register"
-=======
-                                </a>
-                                <a
-                                    href="/go/register"
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
                                     className="header-modal-menu-nav-block-user__link"
                                     onClick={closeModalMenu}
                                 >
                                     Зарегистрироваться
-<<<<<<< HEAD
                                 </Link>
-=======
-                                </a>
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
                             </>
                         )}
                     </div>

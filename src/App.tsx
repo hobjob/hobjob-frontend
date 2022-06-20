@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 import React from "react";
 import {Route, Routes, Navigate, useLocation} from "react-router-dom";
-=======
-// import dotenv from "dotenv";
-import React from "react";
-import {Route, Routes, Navigate} from "react-router-dom";
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
 import {compose} from "redux";
 
 import {Header, Footer} from "./components/";
@@ -36,11 +30,6 @@ import {
     CabinetSubscribeDisable,
 } from "./pages/";
 
-<<<<<<< HEAD
-=======
-// dotenv.config();
-
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
 declare global {
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
@@ -49,32 +38,19 @@ declare global {
 }
 
 const App: React.FC = () => {
-<<<<<<< HEAD
     const {pathname} = useLocation();
 
-=======
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
     return (
         <>
             {false ? (
                 <EngineeringWorks />
             ) : (
                 <div className="wrapper">
-<<<<<<< HEAD
                     {pathname.indexOf("/payment") !== -1 ||
                     pathname.indexOf("/login") !== -1 ||
                     pathname.indexOf("/register") !== -1 ||
                     pathname === "/go/password-recovery" ||
                     pathname.indexOf("/go/password-recovery") !== -1 ? null : (
-=======
-                    {window.location.pathname.indexOf("/payment") !== -1 ||
-                    window.location.pathname.indexOf("/login") !== -1 ||
-                    window.location.pathname.indexOf("/register") !== -1 ||
-                    window.location.pathname === "/go/password-recovery" ||
-                    window.location.pathname.indexOf(
-                        "/go/password-recovery"
-                    ) !== -1 ? null : (
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
                         <Header />
                     )}
 
@@ -169,21 +145,11 @@ const App: React.FC = () => {
                         </Routes>
                     </React.Suspense>
 
-<<<<<<< HEAD
                     {pathname.indexOf("/payment") !== -1 ||
                     pathname.indexOf("/login") !== -1 ||
                     pathname.indexOf("/register") !== -1 ||
                     pathname === "/go/password-recovery" ||
                     pathname.indexOf("/go/password-recovery") !== -1 ? null : (
-=======
-                    {window.location.pathname.indexOf("/payment") !== -1 ||
-                    window.location.pathname.indexOf("/login") !== -1 ||
-                    window.location.pathname.indexOf("/register") !== -1 ||
-                    window.location.pathname === "/go/password-recovery" ||
-                    window.location.pathname.indexOf(
-                        "/go/password-recovery"
-                    ) !== -1 ? null : (
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
                         <Footer />
                     )}
                 </div>

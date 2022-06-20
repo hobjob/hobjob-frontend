@@ -1,12 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
-<<<<<<< HEAD
 import {Link, Navigate, useSearchParams, useParams} from "react-router-dom";
-=======
-import queryString from "query-string";
-import {Navigate, useSearchParams, useParams} from "react-router-dom";
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
@@ -127,23 +122,14 @@ const CoursePage: React.FC = () => {
                                 </button>
                             )
                         ) : (
-<<<<<<< HEAD
                             <Link
                                 to="/go/register"
-=======
-                            <a
-                                href="/go/register"
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
                                 className={`btn-small-round course-page__btn ${
                                     visibleButton ? "active" : ""
                                 }`}
                             >
                                 Открыть все уроки за 1 ₽
-<<<<<<< HEAD
                             </Link>
-=======
-                            </a>
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
                         )}
 
                         <CoursePageMain

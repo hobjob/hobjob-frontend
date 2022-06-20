@@ -1,10 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
-<<<<<<< HEAD
 import {Navigate} from 'react-router-dom'
-=======
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
@@ -127,11 +124,7 @@ const Training = () => {
                     <Loader />
                 )
             ) : (
-<<<<<<< HEAD
                 <Navigate to="/go/login" />
-=======
-                (window.location.href = "/go/login")
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
             )}
         </>
     );

@@ -98,21 +98,12 @@ const ShopBlock: React.FC<IShopBlock> = ({
                         </button>
                     )
                 ) : (
-<<<<<<< HEAD
                     <Link
                         to="/go/register"
                         className="btn-regular shop-block-bottom__link"
                     >
                         Добавить
                     </Link>
-=======
-                    <a
-                        href="/go/register"
-                        className="btn-regular shop-block-bottom__link"
-                    >
-                        Добавить
-                    </a>
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
                 )}
 
                 <Link

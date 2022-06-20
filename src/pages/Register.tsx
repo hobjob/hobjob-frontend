@@ -1,11 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-<<<<<<< HEAD
 import { Helmet } from "react-helmet";
 import { Navigate } from "react-router-dom";
-=======
-import {Helmet} from "react-helmet";
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
 
 import {sendRegister} from "../redux/actions/register";
 
@@ -75,11 +71,7 @@ const Register: React.FC = () => {
                     </section>
                 </>
             ) : (
-<<<<<<< HEAD
                 <Navigate to="/" />
-=======
-                (window.location.href = "/")
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
             )}
         </>
     );

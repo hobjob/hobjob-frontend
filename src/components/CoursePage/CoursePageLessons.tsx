@@ -1,8 +1,5 @@
 import React from "react";
-<<<<<<< HEAD
 import {Link} from "react-router-dom";
-=======
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
 
 import {CoursePageLessonsVideo, CoursePageLessonsItem} from "../";
 
@@ -62,21 +59,12 @@ const CoursePageLessons: React.FC<CoursePageLessonsProps> = ({
                                     Чтобы продолжить просмотр других уроков,
                                     оформите подписку
                                 </p>
-<<<<<<< HEAD
                                 <Link
                                     to="/go/register"
                                     className="course-page-lessons-video-plaecholder__link"
                                 >
                                     Открыть все уроки за 1 ₽
                                 </Link>
-=======
-                                <a
-                                    href="/go/register"
-                                    className="course-page-lessons-video-plaecholder__link"
-                                >
-                                    Открыть все уроки за 1 ₽
-                                </a>
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
                             </div>
                         ) : null}
 

@@ -13,21 +13,13 @@ const PaymentError: React.FC = () => {
             <div className="container">
                 <div className="payment-error-wrapper">
                     <div className="payment-error-text">
-<<<<<<< HEAD
                         <Link to="/" className="payment-error-text-logo">
-=======
-                        <a href="/" className="payment-error-text-logo">
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
                             <img
                                 src={Logo}
                                 alt="HobJob"
                                 className="payment-error-text-logo__img"
                             />
-<<<<<<< HEAD
                         </Link>
-=======
-                        </a>
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
 
                         <h2 className="title payment-error-text__title">
                             Ошибка платежа

@@ -146,11 +146,7 @@ const PassingCourse: React.FC = () => {
                     <Loader />
                 )
             ) : (
-<<<<<<< HEAD
                 <Navigate to="/go/login" />
-=======
-                (window.location.href = "/go/login")
->>>>>>> b859d6b516abb382567162db483d6d3f7f4b6de8
             )}
         </>
     );
