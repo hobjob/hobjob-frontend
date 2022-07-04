@@ -30,8 +30,6 @@ const MasterCard: React.FC = ({}) => {
     const {userInfo, isLoadedUserInfo} = useTypedSelector(({user}) => user);
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
-
         dispatch(fetchMasterById(id ? id : ""));
     }, []);
 

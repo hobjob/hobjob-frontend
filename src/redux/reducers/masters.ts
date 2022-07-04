@@ -14,9 +14,15 @@ const initialState: MastersState = {
         name: "",
         surname: "",
         masterDescription: "",
-		avatar: "",
-		courses: [],
-		posts: []
+        avatar: "",
+        socials: {
+            inst: "",
+            vk: "",
+            tiktok: " ",
+            telegram: "",
+        },
+        courses: [],
+        posts: [],
     },
     isLoadedById: false,
 };

@@ -2,11 +2,14 @@ import React from "react";
 
 import {Master} from "../../models/IMaster";
 
+import {MasterCardInfoSocials} from "../";
+
 const MasterCardInfo: React.FC<Master> = ({
     avatar,
     name,
     surname,
     masterDescription,
+    socials,
 }) => {
     return (
         <div className="master-card-info">
@@ -19,11 +22,12 @@ const MasterCardInfo: React.FC<Master> = ({
             <div className="master-card-info-text">
                 <h2 className="title master-card-info-text__title">
                     {name} {surname}
-                    <span className="title__blank">Мастер HobJob</span>
                 </h2>
                 <p className="description master-card-info-text__description">
                     {masterDescription}
                 </p>
+
+                <MasterCardInfoSocials {...socials} />
             </div>
         </div>
     );

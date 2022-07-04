@@ -24,10 +24,6 @@ const Cabinet: React.FC = () => {
     const {userInfo, isLoadedUserInfo} = useTypedSelector(({user}) => user);
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
-    React.useEffect(() => {
         if (isLoadedUserInfo) {
             if (hash !== "") {
                 const id = hash.replace("#", "");
@@ -58,7 +54,7 @@ const Cabinet: React.FC = () => {
                 isLoadedUserInfo ? (
                     <>
                         <Helmet>
-                            <title>Мойs профиль - HobJob</title>
+                            <title>Мой профиль - HobJob</title>
                         </Helmet>
                         <section className="cabinet">
                             <div className="container">

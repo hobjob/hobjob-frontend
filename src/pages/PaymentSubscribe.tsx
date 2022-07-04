@@ -22,8 +22,6 @@ const PaymentSubscribe: React.FC = () => {
     const {payment, isLoaded} = useTypedSelector(({payment}) => payment);
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
-
         dispatch(fetchPaymentSubscribeById(number ? number : ""));
     }, []);
 

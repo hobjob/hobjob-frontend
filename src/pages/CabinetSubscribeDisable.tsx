@@ -21,10 +21,6 @@ const CabinetSubscribeDisable: React.FC = () => {
     } = useTypedSelector(({user}) => user);
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
-    React.useEffect(() => {
         if (isLoadedUserInfo) {
             var a = moment();
             var b = moment(

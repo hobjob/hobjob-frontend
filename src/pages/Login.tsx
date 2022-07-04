@@ -16,10 +16,6 @@ const Login: React.FC = () => {
         return dispatch(sendLogin({email, password}));
     };
 
-    React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     return (
         <>
             <Helmet>
@@ -39,15 +35,6 @@ const Login: React.FC = () => {
 
                             <div className="reglog-block-wrapper">
                                 <LoginForm onSubmit={onSubmit} />
-                            </div>
-
-                            <div className="reglog-bottom">
-                                <Link
-                                    to="/go/password-recovery"
-                                    className="reglog-bottom__link"
-                                >
-                                    Забыли пароль?
-                                </Link>
                             </div>
                         </div>
                     </div>

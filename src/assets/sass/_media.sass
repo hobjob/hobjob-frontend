@@ -152,6 +152,8 @@
 @media screen and ( max-width: 1100px )
 	// main
 	.main
+		margin: 25px 0
+
 		&-wrapper
 			align-items: center
 			flex-direction: column
@@ -159,6 +161,10 @@
 		&-text
 			margin-top: 0
 			width: 100%
+
+			&-categories
+				&__item
+					font-size: 21px
 
 		&-video
 			margin-top: 50px
@@ -522,6 +528,19 @@
 
 	// master-card
 	.master-card
+		&-info
+			padding-bottom: 25px
+
+			&-text
+				&-socials
+					margin-top: 25px
+					
+					&__link
+						margin-right: 15px
+
+						& > svg
+							width: 50px
+
 		&-courses
 			margin-top: 25px
 
@@ -595,13 +614,17 @@
 					&-user
 						order: 1
 
-			&-social
-				&__link
-					min-width: 60px
-					height: 60px
+	// main
+	.main
+		&-text
+			&-categories
+				margin-top: 25px
 
-					& svg
-						width: 25px
+				&__item
+					font-size: 18px
+
+		&-video
+			margin-top: 25px
 
 	// course-page
 	.course-page
@@ -738,13 +761,30 @@
 		&-menu-button
 			margin-left: 15px
 
+		&-modal
+			&-menu
+				&-social
+					&__link
+						margin-right: 15px
+
+						& > svg
+							width: 50px
+
 	// main
 	.main
 		&-text
+			&-categories
+				&__item
+					padding: 10px 15px
+
+					margin-bottom: 5px
+					margin-right: 5px
+
 			&__btn
 				margin-top: 25px
 
 		&-video
+			margin-top: 0
 			width: 100%
 
 	// course-page
@@ -1041,6 +1081,10 @@
 			&-image
 				padding-bottom: 15px
 
+	// master-card
+	.master-card
+		margin: 25px 0
+
 	// footer
 	.footer
 		&-block
@@ -1056,13 +1100,6 @@
 				&-social
 					margin-top: 35px
 					justify-content: center
-
-					&__link
-						min-width: 35px
-						height: 35px
-
-						& svg
-							width: 18px
 
 			&-subinfo
 				margin-top: 35px
@@ -1082,16 +1119,19 @@
 				font-size: 12px
 
 @media screen and ( max-width: 400px )
-	// interface
-	.title
-		&__blank
-			margin-left: 0 !important
-			margin-top: 10px
-
-			display: inline-block
-
 	// main
 	.main
 		&-text
 			&__title
 				font-size: 32px
+
+	// footer
+	.footer
+		&-block
+			&-contact
+				&-social
+					&__link
+						margin-right: 15px
+
+						& > svg
+							width: 40px

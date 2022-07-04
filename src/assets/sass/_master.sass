@@ -25,6 +25,31 @@
 			&__title
 				margin-bottom: 25px
 
+			&-socials
+				margin-top: 35px
+
+				&__subtitle
+					font-size: 21px
+					color: $gray
+					margin-bottom: 15px
+
+				&-links-wrapper
+					display: flex
+					align-items: center
+
+				&__link
+					margin-right: 25px
+					+transition
+
+					& > svg
+						width: 60px
+
+					&:active
+						+transformScale
+
+					&:last-child
+						margin-right: 0
+
 	&-courses
 		margin-top: 75px
 

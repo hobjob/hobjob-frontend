@@ -64,8 +64,6 @@ const Shop: React.FC = () => {
     const mastersArray = Object.keys(filters.masters).map((master) => master);
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
-
         const categoriesObject: {[key: string]: string} = {};
         const mastersObject: {[key: string]: string} = {};
 
@@ -88,6 +86,18 @@ const Shop: React.FC = () => {
         );
 
         dispatch(setLoadedCourseByUrl(false));
+
+        return () => {
+            dispatch(
+                setCoursesFilters({
+                    isParse: false,
+
+                    categories: {},
+                    masters: {},
+                    search: "",
+                })
+            );
+        };
     }, []);
 
     React.useEffect(() => {
@@ -122,7 +132,7 @@ const Shop: React.FC = () => {
         dispatch(
             fetchAddPaginationCourses({
                 limit: 8,
-                page: page+1,
+                page: page + 1,
                 categories: categoriesArray,
                 masters: mastersArray,
                 q: filters.search ? [filters.search] : [],

@@ -1,7 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import { Helmet } from "react-helmet";
-import { Navigate } from "react-router-dom";
+import {Helmet} from "react-helmet";
+import {Navigate} from "react-router-dom";
 
 import {sendRegister} from "../redux/actions/register";
 
@@ -16,10 +16,6 @@ const Register: React.FC = () => {
 
     const [isYearSubscribe, setIsYearSubscribe] = React.useState(false);
 
-    React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     const onSubmit = ({email, name, password}: any) => {
         return dispatch(
             sendRegister(
@@ -31,7 +27,9 @@ const Register: React.FC = () => {
                         ? "year-subscribe"
                         : "month-subscribe",
                 },
-                JSON.parse(localStorage.getItem("ref") || "")
+                localStorage.getItem("ref")
+                    ? JSON.parse(localStorage.getItem("ref") as string)
+                    : ""
             )
         );
     };

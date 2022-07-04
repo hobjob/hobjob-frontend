@@ -39,8 +39,6 @@ const CoursePage: React.FC = () => {
     const [isAdd, setIsAdd] = React.useState(false);
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
-
         window.addEventListener("scroll", handlerScroll);
 
         const ref = search.get("ref");
@@ -57,8 +55,6 @@ const CoursePage: React.FC = () => {
     }, []);
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
-
         dispatch(fetchCourseByUrl(url ? url : ""));
     }, [url]);
 
@@ -85,7 +81,7 @@ const CoursePage: React.FC = () => {
     };
 
     const onClickAddCourse = () => {
-        dispatch(addUserCourse(itemByUrl._id));
+        dispatch(addUserCourse(itemByUrl._id, "/go/training"));
     };
 
     const onClickHiddenCourse = () => {

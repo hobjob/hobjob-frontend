@@ -8,8 +8,6 @@ const Home: React.FC = () => {
     const [search] = useSearchParams();
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
-
         const ref = search.get("ref");
 
         if (ref) {

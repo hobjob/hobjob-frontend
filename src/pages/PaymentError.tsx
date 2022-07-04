@@ -4,10 +4,6 @@ import {Link} from "react-router-dom";
 import Logo from "../assets/images/logo.svg";
 
 const PaymentError: React.FC = () => {
-    React.useEffect(() => {
-        window.scrollTo(0, 0);
-	}, []);
-	
     return (
         <section className="payment-error">
             <div className="container">

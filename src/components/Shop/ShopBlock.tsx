@@ -73,11 +73,9 @@ const ShopBlock: React.FC<IShopBlock> = ({
                             </>
                         ) : null}
                     </Link>
-                    <div className="shop-block-top-text-tags">
-                        <span className="shop-block-top-text__category">
-                            {categoryItem ? categoryItem.title : null}
-                        </span>
-                    </div>
+                    <span className="shop-block-top-text__category">
+                        {categoryItem ? categoryItem.title : null}
+                    </span>
                 </div>
             </div>
             <div className="shop-block-bottom">

@@ -25,10 +25,6 @@ const PasswordRecoveryEmail: React.FC = () => {
         return dispatch(sendPasswordRecoveryEmail({email}));
     };
 
-    React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     return (
         <>
             <Helmet>

@@ -5,10 +5,6 @@ import {Link} from 'react-router-dom';
 import {PolicyBlock} from "../components/";
 
 const ReferralsPolicy: React.FC = () => {
-    React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     const documentContent = [
         {
             title: "Что нельзя делать по реферальной программе",

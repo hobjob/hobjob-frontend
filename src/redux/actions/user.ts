@@ -100,7 +100,7 @@ export const addUserCourse = (courseId: string, redirect?: string) => {
             if (redirect) {
                 window.location.href = redirect;
             } else {
-                window.location.href = "/go/training";
+                window.location.reload();
             }
         });
     };
@@ -109,7 +109,7 @@ export const addUserCourse = (courseId: string, redirect?: string) => {
 export const hiddenUserCourse = (courseId: string) => {
     return async (dispatch: Dispatch<UserActions>) => {
         $api.delete(`/my/courses/${courseId}`).then(() => {
-            window.location.href = window.location.href;
+            window.location.reload();
         });
     };
 };

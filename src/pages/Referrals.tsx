@@ -15,10 +15,6 @@ const Referrals: React.FC = () => {
         useTypedSelector(({user}) => user);
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
-    React.useEffect(() => {
         if (!referrals.length && isLoadedUserInfo) {
             dispatch(fetchUserReferrals());
         }

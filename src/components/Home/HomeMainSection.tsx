@@ -17,21 +17,19 @@ const HomeMainSection: React.FC = () => {
                         <div className="main-wrapper">
                             <div className="main-text">
                                 <h1 className="main-text__title">
-                                    Курсы для творческих людей.
-                                    <br />
-                                    Научитесь создавать шедевры своими руками.{" "}
-                                    <Link to="/course">Начать обучение</Link>
+                                    Курсы для творческих людей. Научитесь
+                                    создавать шедевры своими руками.
                                 </h1>
 
                                 <div className="main-text-categories">
                                     {Object.keys(items).map((key, index) => (
-                                        <a
-                                            href={`/course?categories=${items[key].transfer}`}
+                                        <Link
+                                            to={`/course?categories=${items[key].transfer}`}
                                             className="main-text-categories__item"
                                             key={`main-text-categories__item-${index}`}
                                         >
                                             {items[key].title}
-                                        </a>
+                                        </Link>
                                     ))}
                                 </div>
                             </div>

@@ -4,10 +4,6 @@ import {Helmet} from "react-helmet";
 import {PolicyBlock} from "../components/";
 
 const PublicOffer: React.FC = () => {
-    React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     const documentContent = [
         {
             title: "",

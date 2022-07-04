@@ -53,6 +53,10 @@ let LoginForm: React.FC<
             ) : (
                 <button className="btn reglog-block__btn">Войти</button>
             )}
+
+            <Link to="/go/password-recovery" className="reglog-block__link">
+                Забыли пароль?
+            </Link>
         </form>
     );
 };

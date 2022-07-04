@@ -297,28 +297,18 @@
 			display: flex
 
 		&__link
-			min-width: 75px
-			height: 75px
-
-			display: flex
-			justify-content: center
-			align-items: center
-
-			background-color: rgba(221, 158, 94, 0.05)
-			border-radius: 50%
-
-			margin-right: 15px
+			margin-right: 25px
 
 			+transition
+
+			& > svg
+				width: 70px
 
 			&:last-child
 				margin-right: 0
 
 			&:active
 				+transformScale
-
-			& svg
-				width: 30px
 
 	// &-logo
 	// 	&__img

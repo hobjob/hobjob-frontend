@@ -119,7 +119,7 @@ let CabinetUserInfoForm: React.FC<
                             : "disabled"
                     } cabinet-block-form-btn`}
                 >
-                    Обновить
+                    Сохранить
                 </button>
             )}
         </form>

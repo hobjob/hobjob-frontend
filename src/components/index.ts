@@ -5,6 +5,12 @@ export {default as RenderSelect} from "./All/RenderSelect";
 export {default as FileInput} from "./All/FileInput";
 export {default as BtnLoader} from "./All/BtnLoader";
 export {default as VideoPlayer} from "./All/VideoPlayer";
+// Icons
+export { default as Instagram } from "./All/Icons/Instagram"
+export { default as Telegram } from "./All/Icons/Telegram"
+export { default as TikTok } from "./All/Icons/TikTok"
+export { default as Vk } from "./All/Icons/Vk"
+export { default as Youtube } from "./All/Icons/Youtube"
 
 // Login
 export {default as LoginForm} from "./Login/LoginForm";
@@ -46,6 +52,7 @@ export {default as CoursePageMaster} from "./CoursePage/CoursePageMaster";
 
 // MasterCard
 export {default as MasterCardInfo} from "./MasterCard/MasterCardInfo";
+export {default as MasterCardInfoSocials} from "./MasterCard/MasterCardInfoSocials";
 
 // Magazine
 export {default as MagazineBlockBig} from "./Magazine/MagazineBlockBig";

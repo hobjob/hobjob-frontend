@@ -5,10 +5,6 @@ import {Helmet} from "react-helmet";
 import {ShopSection} from "../components/";
 
 const Err404: React.FC = () => {
-    React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     return (
         <>
             <Helmet>

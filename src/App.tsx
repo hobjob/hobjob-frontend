@@ -40,6 +40,22 @@ declare global {
 const App: React.FC = () => {
     const {pathname} = useLocation();
 
+    React.useEffect(() => {
+        let cords: any = ["scrollX", "scrollY"];
+
+        // Перед закрытием записываем в локалсторадж window.scrollX и window.scrollY как scrollX и scrollY
+        window.addEventListener("unload", (e) =>
+            cords.forEach((cord: any) => (localStorage[cord] = window[cord]))
+        );
+
+        // Прокручиваем страницу к scrollX и scrollY из localStorage (либо 0,0 если там еще ничего нет)
+        window.scroll(...cords.map((cord: any) => localStorage[cord]));
+    }, []);
+
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
     return (
         <>
             {false ? (

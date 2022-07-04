@@ -18,8 +18,6 @@ const PaymentSubscribeProlongation: React.FC = () => {
     );
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
-
         if (
             !Object.keys(userInfo).length &&
             localStorage.getItem("accessToken")

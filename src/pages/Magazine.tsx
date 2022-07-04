@@ -52,8 +52,6 @@ const Magazine: React.FC = () => {
     );
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
-
         const categoriesObject: {[key: string]: string} = {};
 
         query.getAll("categories").map((category) => {
@@ -69,6 +67,16 @@ const Magazine: React.FC = () => {
         );
 
         dispatch(setLoadedPostById(false));
+
+        return () => {
+            dispatch(
+                setPostsFilters({
+                    isParse: true,
+
+                    categories: {},
+                })
+            );
+        };
     }, []);
 
     React.useEffect(() => {
@@ -94,7 +102,7 @@ const Magazine: React.FC = () => {
         dispatch(
             fetchAddPaginationPosts({
                 limit: 8,
-                page: page+1,
+                page: page + 1,
                 categories: categoriesArray,
             })
         );

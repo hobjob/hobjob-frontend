@@ -28,8 +28,6 @@ const MagazinePostPage: React.FC = ({}) => {
     const isLoadedMasters = useTypedSelector(({masters}) => masters.isLoaded);
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
-
         dispatch(fetchPostsById(id ? id : ""));
     }, [id]);
 

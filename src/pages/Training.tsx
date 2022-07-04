@@ -26,10 +26,6 @@ const Training = () => {
     const isLoadedMasters = useTypedSelector(({masters}) => masters.isLoaded);
 
     React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
-    React.useEffect(() => {
         if (!Object.keys(courses).length && isLoadedUserInfo) {
             dispatch(fetchUserCourses());
         }

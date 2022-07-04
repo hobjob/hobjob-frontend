@@ -4,8 +4,6 @@ import {Loader} from "../components/";
 
 const PaymentStatus: React.FC= () => {
     React.useEffect(() => {
-        window.scrollTo(0, 0);
-
         // const events = new EventSource(
         //     `${process.env.REACT_APP_API_DOMEN}/payment/status/${number}`
         // );
