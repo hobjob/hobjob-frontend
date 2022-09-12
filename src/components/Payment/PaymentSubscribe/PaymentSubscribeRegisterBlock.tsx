@@ -151,7 +151,7 @@ const PaymentSubscribeRegisterBlock: React.FC<
                                     strokeLinecap="round"
                                 />
                             </svg>
-                            Новые курсы добавляются каждый день
+                            Новые курсы добавляются каждый месяц
                         </p>
                     </div>
                 </div>
