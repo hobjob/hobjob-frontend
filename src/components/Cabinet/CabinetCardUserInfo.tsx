@@ -5,8 +5,10 @@ import {FileInput} from "../";
 
 import {fetchUpdateUser} from "../../redux/actions/user";
 
+import {Image} from "../../models/IImage";
+
 interface CabinetCardUserInfoProps {
-    avatar: string;
+    avatar: Image;
     name: string;
     surname: string;
     email: string;
@@ -74,7 +76,7 @@ const CabinetCardUserInfo: React.FC<CabinetCardUserInfoProps> = ({
                         <div
                             className="cabinet-card-user-info-avatar-img"
                             style={{
-                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${avatar}")`,
+                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${avatar.size_512}")`,
                             }}
                         ></div>
                     </label>

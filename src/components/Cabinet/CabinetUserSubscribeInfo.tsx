@@ -38,6 +38,10 @@ const CabinetUserSubscribeInfo: React.FC = () => {
                 <p className="cabinet-block-subscribe-info-item__description">
                     {[
                         {
+                            title: "Тестовая подписка",
+                            type: "test-subscribe",
+                        },
+                        {
                             title: "Месячная подписка",
                             type: "month-subscribe",
                         },
@@ -72,13 +76,13 @@ const CabinetUserSubscribeInfo: React.FC = () => {
 
             <div className="cabinet-block-subscribe-info-item">
                 <h4 className="cabinet-block-subscribe-info-item__title">
-                    Подписка
+                    Отменить подписку
                 </h4>
                 <p className="cabinet-block-subscribe-info-item__description">
                     {payment.auto ? (
                         <Link
                             to="/go/cabinet/subscribe/disable"
-                            className="btn-small-round"
+                            className="btn-small-round-gray"
                         >
                             Отменить
                         </Link>

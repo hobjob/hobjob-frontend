@@ -26,7 +26,7 @@ const CabinetUserSubscribeInfoFormSelect: React.FC<
                             type: "month-subscribe",
                         },
                         {
-                            title: "Годовая подписка (3 490 ₽ / год)",
+                            title: "Годовая подписка (3490 ₽ / год)",
                             type: "year-subscribe",
                         },
                     ].map((item, index) =>

@@ -17,7 +17,7 @@ import {
     PaymentSubscribeProlongation,
 } from "../components/";
 
-const Training = () => {
+const Training: React.FC = () => {
     const dispatch = useDispatch();
 
     const {userInfo, courses, isLoadedUserInfo, isLoadedUserCourses} =

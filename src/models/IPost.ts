@@ -1,21 +1,23 @@
+import { Image } from "./IImage";
+
 export interface PostNext {
-    _id: string;
-    title: string;
+	_id: string;
+	title: string;
 }
 
 export interface PostContent {
-    title: string;
-    description: string[];
-    image: string;
+	title: string;
+	description: string[];
+	image: Image;
 }
 
 export interface Post {
-    _id: string;
-    title: string;
-    description: string;
-    image: string;
-    masterId: string;
-    category: string;
-    content: PostContent[];
-    next: PostNext;
+	_id: string;
+	title: string;
+	description: string;
+	image: Image;
+	masterId: string;
+	category: string;
+	content: PostContent[];
+	next: PostNext;
 }

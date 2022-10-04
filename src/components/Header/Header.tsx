@@ -106,7 +106,7 @@ const Header: React.FC = () => {
                     modalMenuAnimationState={modalMenuAnimationState}
                     clickLogout={clickLogout}
                     isLogin={isLoadedUserInfo}
-                    userAvatar={`${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar}`}
+                    userAvatar={`${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar.size_512}`}
                 />
             ) : null}
 
@@ -164,14 +164,14 @@ const Header: React.FC = () => {
                                                 headerUserMenu ? "active" : ""
                                             }`}
                                             style={{
-                                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar}")`,
+                                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar.size_512}")`,
                                             }}
                                         ></div>
                                     ) : (
                                         <div
                                             className="header-user-avatar"
                                             style={{
-                                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar}")`,
+                                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar.size_512}")`,
                                             }}
                                             onClick={openModalMenu}
                                         ></div>

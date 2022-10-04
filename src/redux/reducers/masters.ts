@@ -1,66 +1,72 @@
 import {
-    MastersState,
-    MastersActions,
-    MastersActionTypes,
+	MastersState,
+	MastersActions,
+	MastersActionTypes,
 } from "../types/masters/IMasters";
-import {Master} from "../../models/IMaster";
+import { Master } from "../../models/IMaster";
 
 const initialState: MastersState = {
-    items: {},
-    isLoaded: false,
+	items: {},
+	isLoaded: false,
 
-    itemById: {
-        _id: "",
-        name: "",
-        surname: "",
-        masterDescription: "",
-        avatar: "",
-        socials: {
-            inst: "",
-            vk: "",
-            tiktok: " ",
-            telegram: "",
-        },
-        courses: [],
-        posts: [],
-    },
-    isLoadedById: false,
+	itemById: {
+		_id: "",
+		name: "",
+		surname: "",
+		masterDescription: "",
+		avatar: {
+			size_512: "",
+			size_768: "",
+			size_1024: "",
+			size_1536: "",
+			size_2048: "",
+		},
+		socials: {
+			inst: "",
+			vk: "",
+			tiktok: " ",
+			telegram: "",
+		},
+		courses: [],
+		posts: [],
+	},
+	isLoadedById: false,
 };
 
 const masters = (
-    state = initialState,
-    action: MastersActions
+	state = initialState,
+	action: MastersActions
 ): MastersState => {
-    if (action.type === MastersActionTypes.SET_MASTERS) {
-        const newObj: {[key: string]: Master} = {};
+	if (action.type === MastersActionTypes.SET_MASTERS) {
+		const newObj: { [key: string]: Master } = {};
 
-        action.payload.map((item) => {
-            newObj[item._id] = item;
-        });
+		action.payload.map((item) => {
+			newObj[item._id] = item;
+		});
 
-        return {
-            ...state,
-            items: newObj,
-            isLoaded: true,
-        };
-    }
+		return {
+			...state,
+			items: newObj,
+			isLoaded: true,
+		};
+	}
 
-    if (action.type === MastersActionTypes.SET_MASTER_BY_ID) {
-        return {
-            ...state,
-            itemById: action.payload,
-            isLoadedById: true,
-        };
-    }
+	if (action.type === MastersActionTypes.SET_MASTER_BY_ID) {
+		return {
+			...state,
+			itemById: action.payload,
+			isLoadedById: true,
+		};
+	}
 
-    if (action.type === MastersActionTypes.SET_LOADED_BY_ID) {
-        return {
-            ...state,
-            isLoadedById: action.payload,
-        };
-    }
+	if (action.type === MastersActionTypes.SET_LOADED_BY_ID) {
+		return {
+			...state,
+			isLoadedById: action.payload,
+		};
+	}
 
-    return state;
+	return state;
 };
 
 export default masters;

@@ -1,3 +1,5 @@
+import { Image } from './IImage'
+
 export interface CoursePassingLessonMaterial {
     title: string;
     file: string;
@@ -6,7 +8,7 @@ export interface CoursePassingLessonMaterial {
 export interface CoursePassingLesson {
     title: string;
     description: string;
-    image: string;
+	image: Image;
 
     video: {
         fileNameUser: string;
@@ -22,7 +24,7 @@ export interface CoursePassingLesson {
 export interface CoursePassing {
     _id: string;
     title: string;
-    image: string;
+	image: Image;
     description: string;
     masterId: string;
     HobJobProduction: boolean;

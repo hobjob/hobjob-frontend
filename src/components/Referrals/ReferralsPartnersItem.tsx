@@ -14,7 +14,7 @@ const ReferralsPartnersItem: React.FC<UserReferral> = ({
                     <div
                         className="referrals-partners-item-partner-avatar"
                         style={{
-                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${avatar}")`,
+                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${avatar.size_512}")`,
                         }}
                     ></div>
                     <h5 className="referrals-partners-item-partner__name">

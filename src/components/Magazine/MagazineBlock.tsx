@@ -30,7 +30,7 @@ const MagazineBlock: React.FC<MagazineBlockProps> = ({
                     <div
                         className="magazine-block-top-cover-image"
                         style={{
-                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
+                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_768}")`,
                         }}
                     ></div>
                 </Link>
@@ -68,7 +68,7 @@ const MagazineBlock: React.FC<MagazineBlockProps> = ({
                         <div
                             className="magazine-block-bottom-text-auth-avatar"
                             style={{
-                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${master.avatar}")`,
+                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${master.avatar.size_512}")`,
                             }}
                         ></div>
                         <span className="magazine-block-bottom-text-auth__name">

@@ -15,7 +15,7 @@ const PassingMaster: React.FC<Master> = ({
             <div
                 className="passing-bottom-block-master-image"
                 style={{
-                    backgroundImage: `url('${process.env.REACT_APP_IMAGE_DOMEN}/${avatar}')`,
+                    backgroundImage: `url('${process.env.REACT_APP_IMAGE_DOMEN}/${avatar.size_512}')`,
                 }}
             ></div>
             <div className="passing-bottom-block-master-text">

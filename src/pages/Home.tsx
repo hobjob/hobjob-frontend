@@ -18,7 +18,7 @@ const Home: React.FC = () => {
     return (
         <>
             <Helmet>
-                <title>HobJob - курсы для творческих людей</title>
+                <title>HobJob - Курсы для творческих людей</title>
             </Helmet>
 
             <HomeMainSection />

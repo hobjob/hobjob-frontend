@@ -16,7 +16,7 @@ const CoursePageMaster: React.FC<CoursePageMasterProps> = ({master}) => {
                         <div
                             className="course-page-master-img"
                             style={{
-                                backgroundImage: `url('${process.env.REACT_APP_IMAGE_DOMEN}/${master.avatar}')`,
+                                backgroundImage: `url('${process.env.REACT_APP_IMAGE_DOMEN}/${master.avatar.size_768}')`,
                             }}
                         ></div>
                         <div className="course-page-master-text">

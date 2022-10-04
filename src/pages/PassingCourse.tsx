@@ -86,7 +86,7 @@ const PassingCourse: React.FC = () => {
                                             image={
                                                 courses[courseId].lessons[
                                                     lessonIndex
-                                                ].image
+                                                ].image.size_2048
                                             }
                                             courseId={courseId}
                                             lessonNum={lessonNum}

@@ -16,7 +16,7 @@ const MasterCardInfo: React.FC<Master> = ({
             <div
                 className="master-card-info-avatar"
                 style={{
-                    backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${avatar}")`,
+                    backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${avatar.size_768}")`,
                 }}
             ></div>
             <div className="master-card-info-text">

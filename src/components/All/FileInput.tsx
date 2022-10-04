@@ -17,11 +17,11 @@ const FileInput: React.FC<FileInputProps> = ({
             const size = e.target.files[0].size;
 
             if (type === "image/jpeg" || type === "image/png") {
-                if (size < 2000000) {
+                if (size < 5000000) {
                     submitFile(e.target.files[0]);
                 } else {
                     messageSubmitFile(
-                        "Ваше изображение слишком большое. Максимальный вес 2мб"
+                        "Ваше изображение слишком большое. Максимальный вес 5 МБ"
                     );
                 }
             } else {

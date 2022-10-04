@@ -67,7 +67,7 @@ const CoursePageMain: React.FC<CoursePageMainProps> = ({
                                 <div
                                     className="course-page-main-text-master-avatar"
                                     style={{
-                                        backgroundImage: `url('${process.env.REACT_APP_IMAGE_DOMEN}/${master.avatar}')`,
+                                        backgroundImage: `url('${process.env.REACT_APP_IMAGE_DOMEN}/${master.avatar.size_512}')`,
                                     }}
                                 ></div>
                                 <h4 className="course-page-main-text-master__name">
@@ -108,7 +108,7 @@ const CoursePageMain: React.FC<CoursePageMainProps> = ({
                     <div
                         className="course-page-main-image"
                         style={{
-                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
+                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_1536}")`,
                         }}
                     ></div>
                 </div>

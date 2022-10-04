@@ -156,9 +156,6 @@
 		&:nth-of-type(4n+4)
 			margin-right: 0
 
-		&:hover &-top-cover
-			transform: scale(1.03)
-
 		&-top
 			&-cover-wrapper
 				position: relative
@@ -208,16 +205,50 @@
 
 					+PtSerif
 
-				&__auth
-					display: block
+				&-filters
 					margin-top: 20px
-					font-size: 21px
-					color: $mainColor
 
-				&__category
-					display: block
-					margin-top: 10px
-					color: $gray
+					display: flex
+					align-items: center
+
+					&__category
+						margin-right: 10px
+
+						cursor: pointer
+						display: inline-block
+						border: 1px solid $mainColor
+						padding: 8px 12px
+						color: $mainColor
+						border-radius: 100px
+						font-size: 14px
+
+						overflow: hidden
+						white-space: nowrap
+						text-overflow: ellipsis
+
+						+transition
+
+						&:hover
+							+transformScale
+
+					&__auth
+						display: inline-block
+
+						padding: 8px 12px
+						background-color: $backgroundGray
+						font-size: 14px
+						color: $black
+
+						border-radius: 10px
+
+						overflow: hidden
+						white-space: nowrap
+						text-overflow: ellipsis
+
+						+transition
+
+						&:hover
+							+transformScale
 
 		&-bottom
 			margin-top: 25px
@@ -236,7 +267,7 @@
 					color: $red
 
 			&__btn
-				min-width: 49%
+				min-width: 100%
 				padding: 15px 20px
 				font-size: 16px
 

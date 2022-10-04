@@ -5,7 +5,7 @@ import {CourseGood} from "../../models/ICourseGood";
 import {Master} from "../../models/IMaster";
 import {Category} from "../../models/ICategory";
 
-interface IShopBlock extends CourseGood {
+interface ShopBlockProps extends CourseGood {
     master: Master;
     categoryItem: Category;
 
@@ -16,7 +16,7 @@ interface IShopBlock extends CourseGood {
     onClickHiddenCourse: (_id: string) => void;
 }
 
-const ShopBlock: React.FC<IShopBlock> = ({
+const ShopBlock: React.FC<ShopBlockProps> = ({
     _id,
     url,
     image,
@@ -24,6 +24,7 @@ const ShopBlock: React.FC<IShopBlock> = ({
     master,
     categoryItem,
     HobJobProduction,
+    description,
     isAdd,
     isLogin,
 
@@ -51,7 +52,7 @@ const ShopBlock: React.FC<IShopBlock> = ({
                         to={`/course/${url}`}
                         className="shop-block-top-cover"
                         style={{
-                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
+                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_768}")`,
                         }}
                     ></Link>
                 </div>
@@ -63,23 +64,31 @@ const ShopBlock: React.FC<IShopBlock> = ({
                     >
                         {title}
                     </Link>
-                    <Link
-                        to={`/master/${master._id}`}
-                        className="shop-block-top-text__auth"
-                    >
-                        {master ? (
-                            <>
-                                {master.name} {master.surname}
-                            </>
-                        ) : null}
-                    </Link>
-                    <span className="shop-block-top-text__category">
-                        {categoryItem ? categoryItem.title : null}
-                    </span>
+                    <div className="shop-block-top-text-filters">
+                        <a
+                            href={`/course?categories=${categoryItem.transfer}`}
+                            className="shop-block-top-text-filters__category"
+                        >
+                            {categoryItem ? categoryItem.title : null}
+                        </a>
+                        <Link
+                            to={`/master/${master._id}`}
+                            className="shop-block-top-text-filters__auth"
+                        >
+                            {master ? (
+                                <>
+                                    {master.name} {master.surname}
+                                </>
+                            ) : null}
+                        </Link>
+                    </div>
+                    {/* <p className="shop-block-top-text__description">
+                        {description}
+                    </p> */}
                 </div>
             </div>
             <div className="shop-block-bottom">
-                {isLogin ? (
+                {/* {isLogin ? (
                     isAdd ? (
                         <button
                             className="btn-regular shop-block-bottom__link delete"
@@ -102,7 +111,7 @@ const ShopBlock: React.FC<IShopBlock> = ({
                     >
                         Добавить
                     </Link>
-                )}
+                )} */}
 
                 <Link
                     to={`/course/${url}`}

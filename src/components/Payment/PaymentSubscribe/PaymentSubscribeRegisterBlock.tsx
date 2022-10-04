@@ -58,7 +58,7 @@ const PaymentSubscribeRegisterBlock: React.FC<
                                     Годовая подписка
                                 </h2>
                                 <span className="payment-subscribe-block-text__subtitle">
-                                    3 490 ₽ / год
+                                    3490 ₽ / год
                                 </span>
                             </>
                         ) : (
@@ -78,7 +78,7 @@ const PaymentSubscribeRegisterBlock: React.FC<
                             </h2>
                             <span className="payment-subscribe-block-text__subtitle">
                                 {isYearSubscribe
-                                    ? "после 3 490 ₽ / год"
+                                    ? "после 3490 ₽ / год"
                                     : "после 490 ₽ / мес."}
                             </span>
                         </>

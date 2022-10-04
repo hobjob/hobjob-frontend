@@ -319,6 +319,36 @@ li
 		background-color: $borderGray
 		color: $gray
 
+.btn-small-round-gray
+	display: inline-flex
+	justify-content: center
+	align-items: center
+
+	border: none
+	text-align: center
+	border-radius: 100px
+	user-select: none
+
+	padding: 13px 23px
+	font-size: 17px
+
+	background-color: $borderGray
+	border: 1px solid $borderGray
+	color: $black
+
+	cursor: pointer
+	line-height: 1.4em
+
+	+SfRegular
+	+transition
+
+	&:active
+		+transformScale
+
+	&:hover
+		background-color: #e3e3e3
+		border: 1px solid #e3e3e3
+
 .btn-small-round-delete
 	display: inline-flex
 	justify-content: center

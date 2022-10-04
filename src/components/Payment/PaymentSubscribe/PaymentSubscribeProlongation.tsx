@@ -96,7 +96,7 @@ const PaymentSubscribeProlongation: React.FC = () => {
                                     </h2>
                                     <span className="payment-subscribe-block-text__subtitle">
                                         {isYearSubscribe
-                                            ? "3 490 ₽ / год"
+                                            ? "3490 ₽ / год"
                                             : "490 ₽ / мес."}
                                     </span>
                                     <div className="payment-subscribe-block-text-list">

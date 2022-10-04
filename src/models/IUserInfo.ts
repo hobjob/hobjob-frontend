@@ -1,54 +1,56 @@
 import moment from "moment";
 
+import { Image } from "./IImage";
+
 interface UserInfoSubscribe {
-    working: boolean;
-    passedPeriodTesting: boolean;
+	working: boolean;
+	passedPeriodTesting: boolean;
 
-    typeSubscribe: string;
-    nextTypeSubscribe: string;
+	typeSubscribe: string;
+	nextTypeSubscribe: string;
 
-    periodInfo: {
-        count: number;
-        title: moment.unitOfTime.DurationConstructor;
-    };
+	periodInfo: {
+		count: number;
+		title: moment.unitOfTime.DurationConstructor;
+	};
 
-    registrationSubscribe: string;
+	registrationSubscribe: string;
 
-    paymentId: string;
-    paymentNumber: string;
+	paymentId: string;
+	paymentNumber: string;
 }
 
 export interface UserInfoCourse {
-    courseId: string;
-    completedLessons: {[key: number]: number};
-    dateCreate: string;
+	courseId: string;
+	completedLessons: { [key: number]: number };
+	dateCreate: string;
 
-    lessons: {countViewingDuration: number}[];
+	lessons: { countViewingDuration: number }[];
 
-    visible: boolean;
+	visible: boolean;
 }
 
 interface UserInfoPayment {
-    auto: boolean;
-    methodId: string;
+	auto: boolean;
+	methodId: string;
 }
 
 export interface UserInfo {
-    _id: string;
-    email: string;
-    avatar: string;
-    city: string;
-    dateOfBirth: string;
+	_id: string;
+	email: string;
+	avatar: Image;
+	city: string;
+	dateOfBirth: string;
 
-    name: string;
-    surname: string;
-    phone: string;
+	name: string;
+	surname: string;
+	phone: string;
 
-    subscribe: UserInfoSubscribe;
-    courses: UserInfoCourse[];
-    payment: UserInfoPayment;
+	subscribe: UserInfoSubscribe;
+	courses: UserInfoCourse[];
+	payment: UserInfoPayment;
 }
 
 export interface UserInfoState extends Omit<UserInfo, "courses"> {
-    courses: {[key: string]: UserInfoCourse};
+	courses: { [key: string]: UserInfoCourse };
 }

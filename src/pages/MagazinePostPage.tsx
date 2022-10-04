@@ -41,21 +41,27 @@ const MagazinePostPage: React.FC = ({}) => {
                         </Helmet>
 
                         <section className="magazine-post-page">
-                            <MagazinePostPageCover
-                                {...itemById}
-                                category={categories[itemById.category]}
-                                master={masters[itemById.masterId]}
-                            />
-
-                            <div className="magazine-post-page-block-wrapper">
-                                {itemById.content.map((block, index) => (
-                                    <MagazinePostPageBlock
-                                        {...block}
-                                        key={`magazine-post-page-block-${index}`}
+                            <div className="container">
+                                <div className="magazine-post-page-wrapper">
+                                    <MagazinePostPageCover
+                                        {...itemById}
+                                        category={categories[itemById.category]}
+                                        master={masters[itemById.masterId]}
                                     />
-                                ))}
-                            </div>
 
+                                    <div className="magazine-post-page-block-wrapper">
+                                        {itemById.content.map(
+                                            (block, index) => (
+                                                <MagazinePostPageBlock
+                                                    {...block}
+                                                    key={`magazine-post-page-block-${index}`}
+                                                />
+                                            )
+                                        )}
+                                    </div>
+                                </div>
+							</div>
+							
                             {itemById.next ? (
                                 <MagazinePostPageNext {...itemById.next} />
                             ) : (

@@ -28,7 +28,7 @@ const PassingLessonsListItem: React.FC<PassingLessonsListItemProps> = ({
                         <div
                             className="passing-lessons-list-block-item-cover-img"
                             style={{
-                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
+                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_512}")`,
                             }}
                         ></div>
                     </div>
@@ -47,7 +47,7 @@ const PassingLessonsListItem: React.FC<PassingLessonsListItemProps> = ({
                         <div
                             className="passing-lessons-list-block-item-cover-img"
                             style={{
-                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
+                                backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_512}")`,
                             }}
                         ></div>
                     </div>

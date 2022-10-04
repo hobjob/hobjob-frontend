@@ -43,7 +43,7 @@ const TrainingBlock: React.FC<TrainingBlockProps> = ({
                     <div
                         className="training-block-cover-img"
                         style={{
-                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image}")`,
+                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_768}")`,
                         }}
                     ></div>
                 </div>
