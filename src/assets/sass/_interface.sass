@@ -23,7 +23,7 @@ h1, h2, h3, h4, h5, h6
 	+PtSerif
 
 .title
-	font-size: 58px
+	font-size: 52px
 
 	& span
 		white-space: nowrap
@@ -32,7 +32,7 @@ h1, h2, h3, h4, h5, h6
 		color: $gray
 
 .title__mb
-	font-size: 58px
+	font-size: 52px
 	margin-bottom: 50px
 
 	& span
@@ -816,3 +816,69 @@ input[type="file"]
 						padding: 0 5px
 
 						border-radius: 100px
+
+// category
+.category
+	cursor: pointer
+	display: inline-block
+	border: 1px solid $mainColor
+	padding: 8px 16px
+	color: $mainColor
+	border-radius: 100px
+	font-size: 18px
+
+	overflow: hidden
+	white-space: nowrap
+	text-overflow: ellipsis
+
+	+transition
+	+SfRegular
+
+	&:hover
+		+transformScale
+
+.category-small
+	cursor: pointer
+	display: inline-block
+	border: 1px solid $mainColor
+	padding: 8px 12px
+	color: $mainColor
+	border-radius: 100px
+	font-size: 14px
+
+	overflow: hidden
+	white-space: nowrap
+	text-overflow: ellipsis
+
+	+transition
+
+	&:hover
+		+transformScale
+
+.category-btn
+	white-space: nowrap
+	display: inline-block
+	border: none
+	border: 1px solid $mainColor
+	background-color: transparent
+	padding: 12px 20px
+	color: $mainColor
+	cursor: pointer
+	user-select: none
+	font-size: 18px
+	border-radius: 100px
+
+	+SfRegular
+	+transition
+	+openAnimation
+
+	&:active
+		+transformScale
+
+	&:hover
+		background-color: $mainColor
+		color: $white
+
+	&.active
+		background-color: $mainColor
+		color: $white

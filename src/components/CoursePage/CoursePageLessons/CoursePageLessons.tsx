@@ -1,11 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {CoursePageLessonsVideo, CoursePageLessonsItem} from "../";
+import {CoursePageLessonsVideo, CoursePageLessonsItem} from "../../";
 
-import {checkDeclension} from "../../Functions/checkDeclension";
-
-import {CourseGoodLessons} from "../../models/ICourseGood";
+import {CourseGoodLessons} from "../../../models/ICourseGood";
 
 interface CoursePageLessonsProps {
     lessons: CourseGoodLessons[];
@@ -79,31 +77,25 @@ const CoursePageLessons: React.FC<CoursePageLessonsProps> = ({
                             Уроки в этом курсе
                         </h2>
 
-                        {lessons.map((lesson, index) => (
-                            <CoursePageLessonsItem
-                                key={`course-page-lessons-list-item-${index}`}
-                                num={index + 1}
-                                hours={checkDeclension(
-                                    parseFloat(
-                                        lesson.video.duration.split(":")[0]
-                                    ),
-                                    ["час", "часа", "часов"]
-                                )}
-                                openVideoPlaecholder={openVideoPlaecholder}
-                                closeVideoPlaecholder={closeVideoPlaecholder}
-                                onClickAddCourse={onClickAddCourse}
-                                minutes={checkDeclension(
-                                    parseFloat(
-                                        lesson.video.duration.split(":")[1]
-                                    ),
-                                    ["минута", "минуты", "минут"]
-                                )}
-                                courseId={_id}
-                                isLogin={isLogin}
-                                isAdd={isAdd}
-                                {...lesson}
-                            />
-                        ))}
+                        <div className="course-page-lessons-list-item-shadow"></div>
+
+                        <div className="course-page-lessons-list-item-wrapper">
+                            {lessons.map((lesson, index) => (
+                                <CoursePageLessonsItem
+                                    key={`course-page-lessons-list-item-${index}`}
+                                    num={index + 1}
+                                    openVideoPlaecholder={openVideoPlaecholder}
+                                    closeVideoPlaecholder={
+                                        closeVideoPlaecholder
+                                    }
+                                    onClickAddCourse={onClickAddCourse}
+                                    courseId={_id}
+                                    isLogin={isLogin}
+                                    isAdd={isAdd}
+                                    {...lesson}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {Master} from "../../models/IMaster";
+import {Master} from "../../../models/IMaster";
 
 interface CoursePageMasterProps {
     master: Master;

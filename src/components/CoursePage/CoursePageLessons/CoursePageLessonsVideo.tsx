@@ -1,7 +1,7 @@
 import React from "react";
-import { VideoPlayer } from "../";
+import { VideoPlayer } from "../../";
 
-import {Image} from "../../models/IImage";
+import {Image} from "../../../models/IImage";
 
 interface CoursePageLessonsVideoProps {
     courseId: string;

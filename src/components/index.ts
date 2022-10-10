@@ -44,11 +44,20 @@ export {default as ShopFiltersCategories} from "./Shop/ShopFilters/ShopFiltersCa
 export {default as ShopFiltersBlockMasters} from "./Shop/ShopFilters/ShopFiltersBlockMasters";
 
 // CoursePage
-export {default as CoursePageMain} from "./CoursePage/CoursePageMain";
-export {default as CoursePageLessons} from "./CoursePage/CoursePageLessons";
-export {default as CoursePageLessonsItem} from "./CoursePage/CoursePageLessonsItem";
-export {default as CoursePageLessonsVideo} from "./CoursePage/CoursePageLessonsVideo";
-export {default as CoursePageMaster} from "./CoursePage/CoursePageMaster";
+// CoursePageMain
+export { default as CoursePageMain } from "./CoursePage/CoursePageMain/CoursePageMain";
+// CoursePageLessons
+export { default as CoursePageLessons } from "./CoursePage/CoursePageLessons/CoursePageLessons";
+export { default as CoursePageLessonsItem } from "./CoursePage/CoursePageLessons/CoursePageLessonsItem";
+export { default as CoursePageLessonsVideo } from "./CoursePage/CoursePageLessons/CoursePageLessonsVideo";
+// CoursePageMaster
+export { default as CoursePageMaster } from "./CoursePage/CoursePageMaster/CoursePageMaster";
+// CoursePageSkills
+export { default as CoursePageSkills } from "./CoursePage/CoursePageSkills/CoursePageSkills";
+export { default as CoursePageSkillsItem } from "./CoursePage/CoursePageSkills/CoursePageSkillsItem";
+// CoursePageUseSkills
+export { default as CoursePageUseSkills } from "./CoursePage/CoursePageUseSkills/CoursePageUseSkills";
+export { default as CoursePageUseSkillsItem } from "./CoursePage/CoursePageUseSkills/CoursePageUseSkillsItem";
 
 // MasterCard
 export {default as MasterCardInfo} from "./MasterCard/MasterCardInfo";

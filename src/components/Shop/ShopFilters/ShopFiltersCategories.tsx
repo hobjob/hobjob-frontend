@@ -18,7 +18,7 @@ const ShopFiltersCategories: React.FC = () => {
     return (
         <div className="shop-btn-wrapper">
             <button
-                className={`shop__btn ${
+                className={`category-btn shop__btn ${
                     !Object.keys(filters.categories).length ? "active" : ""
                 }`}
                 onClick={() => onClickCategory("all")}
@@ -28,7 +28,7 @@ const ShopFiltersCategories: React.FC = () => {
 
             {Object.keys(items).map((key, index) => (
                 <button
-                    className={`shop__btn ${
+                    className={`category-btn shop__btn ${
                         filters.categories[items[key].transfer] ? "active" : ""
                     }`}
                     key={`shop-btn-filters-${index}`}

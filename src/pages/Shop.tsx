@@ -174,7 +174,7 @@ const Shop: React.FC = () => {
                                     Новые курсы добавляются каждый месяц
                                 </p>
 
-                                <ShopFiltersTop />
+                                {/* <ShopFiltersTop /> */}
                                 <ShopFiltersCategories />
 
                                 {isLoadedAllCoursesFirst ? (

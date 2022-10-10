@@ -39,7 +39,7 @@ const MagazineBlockBig: React.FC<MagazineBlockBigProps> = ({
                     {category ? (
                         <a
                             href={`/magazine/?category=${category.transfer}`}
-                            className="magazine-block-big-text-top__category"
+                            className="category magazine-block-big-text-top__category"
                         >
                             {category.title}
                         </a>

@@ -60,7 +60,7 @@ const MagazinePostPageCover: React.FC<MagazinePostPageCoverProps> = ({
 
                     <Link
                         to={`/magazine/?category=${category.transfer}`}
-                        className="magazine-post-page-cover-text-top__category"
+                        className="category magazine-post-page-cover-text-top__category"
                     >
                         {category.title}
                     </Link>

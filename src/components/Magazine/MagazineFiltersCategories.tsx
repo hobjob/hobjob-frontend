@@ -18,7 +18,7 @@ const MagazineFiltersCategories: React.FC = () => {
     return (
         <div className="magazine-filters-categories">
             <button
-                className={`magazine__btn ${
+                className={`category-btn magazine__btn ${
                     !Object.keys(filters.categories).length ? "active" : ""
                 }`}
                 onClick={() => onClickCategory("all")}
@@ -28,7 +28,7 @@ const MagazineFiltersCategories: React.FC = () => {
 
             {Object.keys(items).map((key, index) => (
                 <button
-                    className={`magazine__btn ${
+                    className={`category-btn magazine__btn ${
                         filters.categories[items[key].transfer] ? "active" : ""
                     }`}
                     key={`magazine-btn-filters-${index}`}

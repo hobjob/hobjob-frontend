@@ -12,6 +12,8 @@ import {
     CoursePageMain,
     CoursePageLessons,
     CoursePageMaster,
+    CoursePageSkills,
+    CoursePageUseSkills,
     ShopSection,
     Loader,
 } from "../components";
@@ -144,6 +146,10 @@ const CoursePage: React.FC = () => {
                             isLogin={isLogin}
                             isAdd={isAdd}
                         />
+
+                        <CoursePageSkills />
+
+                        <CoursePageUseSkills />
 
                         <CoursePageMaster
                             master={masters[itemByUrl.masterId]}

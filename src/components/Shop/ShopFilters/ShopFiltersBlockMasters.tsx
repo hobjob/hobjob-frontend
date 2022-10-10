@@ -44,7 +44,7 @@ const ShopFiltersBlockMasters: React.FC = () => {
                             </span>
                             <div
                                 style={{
-                                    backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${items[key].avatar}")`,
+                                    backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${items[key].avatar.size_512}")`,
                                 }}
                                 className="checkbox-img"
                             ></div>

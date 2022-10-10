@@ -67,7 +67,7 @@ const ShopBlock: React.FC<ShopBlockProps> = ({
                     <div className="shop-block-top-text-filters">
                         <a
                             href={`/course?categories=${categoryItem.transfer}`}
-                            className="shop-block-top-text-filters__category"
+                            className="category-small shop-block-top-text-filters__category"
                         >
                             {categoryItem ? categoryItem.title : null}
                         </a>

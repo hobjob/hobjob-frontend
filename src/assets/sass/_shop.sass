@@ -7,7 +7,7 @@
 		margin-bottom: 25px
 
 	&__description
-		margin-bottom: 75px
+		margin-bottom: 50px
 
 	&-top
 		display: flex
@@ -106,35 +106,8 @@
 		max-width: 75%
 
 	&__btn
-		display: inline-block
-		border: none
-		border: 1px solid $mainColor
-		background-color: transparent
-		padding: 10px 20px
-		white-space: nowrap
-		color: $mainColor
-		cursor: pointer
-		user-select: none
-		font-size: 17px
-		border-radius: 100px
-
-		margin-right: 10px
-		margin-bottom: 10px
-
-		+SfRegular
-		+transition
-		+openAnimation
-
-		&:active
-			+transformScale
-
-		&:hover
-			background-color: $mainColor
-			color: $white
-
-		&.active
-			background-color: $mainColor
-			color: $white
+		margin-right: 8px
+		margin-bottom: 8px
 
 	&-block-wrapper
 		display: flex
@@ -213,23 +186,6 @@
 
 					&__category
 						margin-right: 10px
-
-						cursor: pointer
-						display: inline-block
-						border: 1px solid $mainColor
-						padding: 8px 12px
-						color: $mainColor
-						border-radius: 100px
-						font-size: 14px
-
-						overflow: hidden
-						white-space: nowrap
-						text-overflow: ellipsis
-
-						+transition
-
-						&:hover
-							+transformScale
 
 					&__auth
 						display: inline-block

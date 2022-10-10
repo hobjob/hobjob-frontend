@@ -1,9 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {CourseGood} from "../../models/ICourseGood";
-import {Category} from "../../models/ICategory";
-import {Master} from "../../models/IMaster";
+import {CourseGood} from "../../../models/ICourseGood";
+import {Category} from "../../../models/ICategory";
+import {Master} from "../../../models/IMaster";
 
 interface CoursePageMainProps extends CourseGood {
     categories: {[key: string]: Category};
@@ -46,7 +46,7 @@ const CoursePageMain: React.FC<CoursePageMainProps> = ({
                             {categories[category] ? (
                                 <a
                                     href={`/course/?category=${categories[category].transfer}`}
-                                    className="course-page-main-text-subinfo__category"
+                                    className="category course-page-main-text-subinfo__category"
                                 >
                                     {categories[category].title}
                                 </a>
