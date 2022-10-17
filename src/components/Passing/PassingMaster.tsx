@@ -11,23 +11,23 @@ const PassingMaster: React.FC<Master> = ({
     surname,
 }) => {
     return (
-        <div className="passing-bottom-block-master">
+        <div className="passing-master">
             <div
-                className="passing-bottom-block-master-image"
+                className="passing-master-image"
                 style={{
                     backgroundImage: `url('${process.env.REACT_APP_IMAGE_DOMEN}/${avatar.size_512}')`,
                 }}
             ></div>
-            <div className="passing-bottom-block-master-text">
-                <h2 className="passing-bottom-block-master-text__title">
+            <div className="passing-master-text">
+                <h2 className="passing-master-text__title">
                     {name} {surname}
                 </h2>
-                <p className="passing-bottom-block-master-text__description">
+                <p className="passing-master-text__description">
                     {masterDescription}
                 </p>
                 <Link
                     to={`/master/${_id}`}
-                    className="passing-bottom-block-master-text__link"
+                    className="passing-master-text__link"
                 >
                     Перейти на страницу мастера
                 </Link>

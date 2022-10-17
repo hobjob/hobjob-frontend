@@ -11,9 +11,13 @@ import {addUserCourse, hiddenUserCourse} from "../redux/actions/user";
 import {
     CoursePageMain,
     CoursePageLessons,
-    CoursePageMaster,
     CoursePageSkills,
     CoursePageUseSkills,
+    CoursePageComparisonCourses,
+	CoursePagePassing,
+	CoursePageTools,
+    CoursePageMaster,
+    CoursePageFaq,
     ShopSection,
     Loader,
 } from "../components";
@@ -147,13 +151,21 @@ const CoursePage: React.FC = () => {
                             isAdd={isAdd}
                         />
 
-                        <CoursePageSkills />
+                        <CoursePageSkills {...itemByUrl} />
 
-                        <CoursePageUseSkills />
+                        <CoursePageUseSkills {...itemByUrl} />
+
+                        <CoursePageComparisonCourses />
+
+                        <CoursePagePassing />
+
+                        <CoursePageTools {...itemByUrl} />
 
                         <CoursePageMaster
                             master={masters[itemByUrl.masterId]}
                         />
+
+                        <CoursePageFaq />
 
                         <ShopSection
                             title="Вам может понравиться"

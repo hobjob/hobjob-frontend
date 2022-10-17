@@ -58,6 +58,15 @@ export { default as CoursePageSkillsItem } from "./CoursePage/CoursePageSkills/C
 // CoursePageUseSkills
 export { default as CoursePageUseSkills } from "./CoursePage/CoursePageUseSkills/CoursePageUseSkills";
 export { default as CoursePageUseSkillsItem } from "./CoursePage/CoursePageUseSkills/CoursePageUseSkillsItem";
+// CoursePageComparisonCourses
+export { default as CoursePageComparisonCourses } from "./CoursePage/CoursePageComparisonCourses/CoursePageComparisonCourses";
+// CoursePagePassing
+export { default as CoursePagePassing } from "./CoursePage/CoursePagePassing/CoursePagePassing";
+// CoursePageFaq
+export { default as CoursePageFaq } from "./CoursePage/CoursePageFaq/CoursePageFaq";
+export { default as CoursePageFaqItem } from "./CoursePage/CoursePageFaq/CoursePageFaqItem";
+// CoursePageTools
+export { default as CoursePageTools } from "./CoursePage/CoursePageTools/CoursePageTools";
 
 // MasterCard
 export {default as MasterCardInfo} from "./MasterCard/MasterCardInfo";

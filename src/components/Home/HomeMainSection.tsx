@@ -35,11 +35,12 @@ const HomeMainSection: React.FC = () => {
                             </div>
 
                             <div className="main-video">
-                                <ReactPlayer
-                                    playing
-                                    playsinline
-                                    loop
-                                    url={`${process.env.REACT_APP_IMAGE_DOMEN}/all/main-video/playlist.m3u8`}
+								<ReactPlayer
+									playing={true}
+									playsinline
+									loop
+									muted
+                                    url={`${process.env.REACT_APP_IMAGE_DOMEN}/all/main-video/index.m3u8`}
                                     width="100%"
                                     height="100%"
                                 />

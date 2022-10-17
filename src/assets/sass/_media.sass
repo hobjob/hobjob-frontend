@@ -24,6 +24,64 @@
 			&__title
 				font-size: 54px
 
+	// course-page
+	.course-page
+		&-skills
+			&-items-wrapper
+				flex-direction: column
+
+			&-item
+				width: 100%
+				margin-bottom: 25px
+
+				&:last-child
+					margin-bottom: 0
+
+		&-use-skills
+			&-wrapper
+				flex-direction: column
+
+			&-block
+				&-title
+					width: 100%
+
+					&-icon
+						display: none
+
+				&-text
+					width: 100%
+
+		&-comparison-courses
+			&-block-wrapper
+				flex-direction: column
+
+			&-block
+				&-offline, &-hobjob
+					width: 100%
+
+				&-offline
+					margin-bottom: 25px
+
+		&-tools
+			&-wrapper
+				flex-direction: column
+
+			&__title
+				width: 100%
+
+			&-items-wrapper
+				width: 100%
+
+		&-faq
+			&-wrapper
+				flex-direction: column
+
+			&__title
+				width: 100%
+
+			&-items-wrapper
+				width: 100%
+
 @media screen and ( max-width: 1250px )
 	// cabinet-subscribe-disable
 	.cabinet-subscribe-disable
@@ -643,6 +701,33 @@
 					&__description, &__link
 						font-size: 32px
 
+		&-skills
+			&-item
+				padding: 20px
+
+				&-top
+					&__number
+						font-size: 24px
+
+					&__title
+						font-size: 32px
+
+		&-comparison-courses
+			&-block
+				&-hobjob, &-offline
+					padding: 20px
+
+					&__title
+						font-size: 32px
+
+				&-hobjob
+					&__btn
+						margin-top: 25px
+
+		&-faq
+			&-item
+				padding: 20px
+
 	// shop
 	.shop
 		&-block
@@ -741,6 +826,9 @@
 		& span
 			font-size: 21px
 
+	.title__mb
+		margin-bottom: 35px
+
 	.description, .description__mt, .description__mb
 		font-size: 18px
 
@@ -823,7 +911,7 @@
 					display: none
 
 		&-lessons
-			margin: 25px 0
+			margin: 35px 0
 
 			&-video
 				&-plaecholder
@@ -847,7 +935,94 @@
 							order: 1
 							margin-bottom: 15px
 
+					&__description
+						font-size: 18px
+
+		&-skills
+			margin: 35px 0
+
+			&-item
+				&-top
+					&__number
+						font-size: 21px
+
+					&__title
+						font-size: 24px
+
+				&__description
+					font-size: 18px
+
+		&-use-skills
+			margin: 35px 0
+
+			&-block
+				&-text
+					&-item
+						padding-bottom: 25px
+						margin-bottom: 25px
+
+						&__title
+							font-size: 24px
+
+						&__description
+							font-size: 18px
+
+		&-comparison-courses
+			margin: 35px 0
+
+			&-block
+				&-offline
+					&__title
+						font-size: 24px
+						margin-bottom: 25px
+
+					&-item
+						width: 100%
+
+						&__description
+							font-size: 15px
+
+							&::before
+								top: 8px
+
+				&-hobjob
+					&__title
+						font-size: 24px
+						margin-bottom: 25px
+
+					&-item
+						&__description
+							font-size: 15px
+
+							& > svg
+								width: 10px
+
+		&-passing
+			margin: 35px 0
+
+		&-tools
+			margin: 35px 0
+
+			&__item
+				font-size: 21px
+				padding-left: 15px
+				padding-bottom: 15px
+
+		&-faq
+			margin: 35px 0
+
+			&-item
+				padding: 20px
+
+				&__title
+					font-size: 24px
+
+				&__description
+					font-size: 18px
+
 		&-master
+			margin: 35px 0
+
 			&-wrapper
 				padding: 20px 15px
 

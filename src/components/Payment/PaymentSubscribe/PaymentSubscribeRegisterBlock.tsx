@@ -1,5 +1,7 @@
 import React from "react";
 
+import PaymentSubscribeBlockImage from "../../../assets/images/payment-subscribe-block-image.jpg";
+
 interface PaymentSubscribeRegisterBlockProps {
     setYearSubscribe?: () => void;
     isYearSubscribe?: boolean;
@@ -42,7 +44,7 @@ const PaymentSubscribeRegisterBlock: React.FC<
                                 Оплата раз в год
                             </p>
                             <p className="payment-subscribe-checkbox-block-text__subtitle">
-                                Сэкономьте 2 390 ₽
+                                Сэкономьте 2390 ₽
                             </p>
                         </div>
                     </div>
@@ -158,7 +160,7 @@ const PaymentSubscribeRegisterBlock: React.FC<
 
                 <div className="payment-subscribe-block-image">
                     <img
-                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/payment-subscribe-block-image.jpg`}
+                        src={PaymentSubscribeBlockImage}
                         alt=""
                         className="payment-subscribe-block-image__image"
                     />

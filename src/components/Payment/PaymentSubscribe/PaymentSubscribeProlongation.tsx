@@ -1,5 +1,7 @@
 import React from "react";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
+
+import PaymentSubscribeBlockImage from "../../../assets/images/payment-subscribe-block-image.jpg";
 
 import {Loader} from "../../";
 
@@ -82,7 +84,7 @@ const PaymentSubscribeProlongation: React.FC = () => {
                                             Оплата раз в год
                                         </p>
                                         <p className="payment-subscribe-checkbox-block-text__subtitle">
-                                            Сэкономьте 2 390 ₽
+                                            Сэкономьте 2390 ₽
                                         </p>
                                     </div>
                                 </div>
@@ -174,7 +176,7 @@ const PaymentSubscribeProlongation: React.FC = () => {
 
                                 <div className="payment-subscribe-block-image">
                                     <img
-                                        src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/payment-subscribe-block-image.jpg`}
+                                        src={PaymentSubscribeBlockImage}
                                         alt=""
                                         className="payment-subscribe-block-image__image"
                                     />

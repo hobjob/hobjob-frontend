@@ -2,25 +2,22 @@ import React from "react";
 
 import {CoursePageSkillsItem} from "../../";
 
-const CoursePageSkills: React.FC = () => {
-    const skills = [
-        {title: "Сажать", subtitle: "Научитесь сажать суккуленты"},
-        {title: "Разберетесь в почве", subtitle: "Узнаете типы почв"},
-        {
-            title: "Получите навык полива",
-            subtitle: "Узнаете типы полива и чем они отличаются",
-        },
-    ];
+import {CourseGoodSkill} from "../../../models/ICourseGood";
 
+interface CoursePageSkillsProps {
+    skills: CourseGoodSkill[];
+}
+
+const CoursePageSkills: React.FC<CoursePageSkillsProps> = ({skills}) => {
     return (
         <section className="course-page-skills">
             <div className="container">
                 <div className="course-page-skills-wrapper">
                     <h2 className="title__mb course-page-skills__title">
-                        Навыки которые вы получите
+                        Вы научитесь
                     </h2>
 
-                    <div className="course-page-skills-item-wrapper">
+                    <div className="course-page-skills-items-wrapper">
                         {skills.map((skill, index) => (
                             <CoursePageSkillsItem
                                 {...skill}

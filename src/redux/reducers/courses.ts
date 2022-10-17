@@ -37,6 +37,9 @@ const initialState: CoursesState = {
 		category: "",
 		path: "",
 		lessons: [],
+		skills: [],
+		useSkills: [],
+		tools: [],
 		HobJobProduction: false,
 	},
 

@@ -8,14 +8,15 @@
 		align-items: flex-start
 		justify-content: space-between
 
+		margin-bottom: 50px
+
 		&-text
 			&__title
-				font-size: 42px
+				font-size: 46px
 
 	&-video
-		margin-top: 50px
 		+openAnimation
-		
+
 	&-cover
 		margin-top: 50px
 
@@ -24,6 +25,7 @@
 
 		height: 600px
 		width: 100%
+
 		+openAnimation
 		+borderRadiusBlock
 
@@ -64,91 +66,91 @@
 		border-bottom: 1px solid $borderGray
 		overflow-y: auto
 
-		&-block
+		&-items-wrapper
+			display: flex
+
+			overflow-y: auto
+			padding-bottom: 25px
 			width: 100%
 
-			&__subtitle
-				font-size: 21px
-				color: $gray
-				margin-bottom: 15px
+			&::-webkit-scrollbar
+				width: 4px
+				height: 7px
+				background-color: #F0F0F0
 
-			&-items-wrapper
-				display: flex
+			&::-webkit-scrollbar-thumb
+				background-color: #E2E2E2
+				border-radius: 3px
 
-				overflow-y: auto
-				padding-bottom: 15px
+			&::-webkit-scrollbar-thumb:hover
+				background-color: #E2E2E2
+
+			&::-ms-scrollbar
+				width: 4px
+				height: 8px
+				background-color: #F0F0F0
+
+			&::-ms-scrollbar-thumb
+				background-color: #E2E2E2
+				border-radius: 3px
+
+			&::-ms-scrollbar-thumb:hover
+				background-color: #E2E2E2
+
+		&-item
+			cursor: pointer
+			display: block
+
+			min-width: 200px
+			width: 200px
+
+			margin-right: 15px
+
+			opacity: 0.3
+			user-select: none
+
+			+transition
+
+			&:hover
+				opacity: 0.5
+
+			&-cover
+				position: relative
 				width: 100%
+				height: 125px
 
-				&::-webkit-scrollbar
-					width: 4px
-					height: 7px
-					background-color: #F0F0F0
+				overflow: hidden
 
-				&::-webkit-scrollbar-thumb
-					background-color: #E2E2E2
-					border-radius: 3px
+				+borderRadius
 
-				&::-webkit-scrollbar-thumb:hover
-					background-color: #E2E2E2
-
-				&::-ms-scrollbar
-					width: 4px
-					height: 8px
-					background-color: #F0F0F0
-
-				&::-ms-scrollbar-thumb
-					background-color: #E2E2E2
-					border-radius: 3px
-
-				&::-ms-scrollbar-thumb:hover
-					background-color: #E2E2E2
-
-			&-item
-				cursor: pointer
-				display: block
-				min-width: 200px
-				margin-right: 15px
-
-				opacity: 0.3
-				user-select: none
-
-				+transition
-
-				&:hover
-					opacity: 0.5
-
-				&:last-child
-					margin-right: 0
-
-				&-cover
-					position: relative
+				&-img
 					width: 100%
-					height: 125px
+					height: 100%
 
-					&-img
-						width: 100%
-						height: 100%
+					user-select: none
 
-						user-select: none
+					+backgroundSetting
 
-						+borderRadius
-						+backgroundSetting
+			&__title
+				margin-top: 10px
+				overflow: hidden
+				text-overflow: ellipsis
+				white-space: nowrap
 
-				&__title
-					margin-top: 10px
-					overflow: hidden
-					text-overflow: ellipsis
-					white-space: nowrap
-
-				&.active
-					opacity: 1
-					user-select: auto
+			&.active
+				opacity: 1
+				user-select: auto
 
 	&-lesson
 		&-info
 			display: flex
 			justify-content: space-between
 			align-items: flex-start
+
+			border-bottom: 1px solid $borderGray
+
+			margin-bottom: 50px
+			padding-bottom: 50px
 
 			&-block
 				&-text
@@ -246,48 +248,40 @@
 					align-items: center
 					height: 250px
 
-	&-bottom-block
-		padding-top: 35px
-		margin-top: 35px
-
-		border-top: 1px solid $borderGray
-
+	&-master
 		display: flex
-		justify-content: space-between
-		align-items: flex-start
 
-		&-master
-			display: flex
+		width: 100%
+		padding: 25px
+		background-color: $backgroundGray
 
-			width: 100%
-			padding: 25px
-			background-color: $backgroundGray
+		+borderRadiusBlock
 
-			+borderRadiusBlock
+		&-image
+			margin-right: 35px
 
-			&-image
-				margin-right: 35px
+			width: 125px
+			min-width: 125px
 
-				width: 125px
-				min-width: 125px
+			height: 125px
 
-				height: 125px
+			border-radius: 50%
 
-				border-radius: 50%
+			+backgroundSetting
 
-				+backgroundSetting
+		&-text
+			width: 70%
 
-			&-text
-				&__title
-					font-size: 32px
+			&__title
+				font-size: 32px
 
-				&__description
-					font-size: 21px
-					margin-top: 25px
+			&__description
+				font-size: 21px
+				margin-top: 25px
 
-				&__link
-					display: block
-					font-size: 21px
-					color: $mainColor
-					text-decoration: underline
-					margin-top: 10px
+			&__link
+				display: block
+				font-size: 21px
+				color: $mainColor
+				text-decoration: underline
+				margin-top: 50px

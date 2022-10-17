@@ -73,6 +73,9 @@ const PassingCourse: React.FC = () => {
                                     <div className="passing-wrapper">
                                         <div className="passing-top">
                                             <PassingTopText
+                                                subtitle={
+                                                    courses[courseId].title
+                                                }
                                                 title={
                                                     courses[courseId].lessons[
                                                         lessonIndex
@@ -128,13 +131,11 @@ const PassingCourse: React.FC = () => {
                                             ) : null}
                                         </div>
 
-                                        <div className="passing-bottom-block">
-                                            <PassingMaster
-                                                {...masters[
-                                                    courses[courseId].masterId
-                                                ]}
-                                            />
-                                        </div>
+                                        <PassingMaster
+                                            {...masters[
+                                                courses[courseId].masterId
+                                            ]}
+                                        />
                                     </div>
                                 </div>
                             </section>

@@ -10,7 +10,9 @@
 		min-width: 300px
 
 		opacity: 0
+
 		+transition
+		+boxShadow
 
 		&.active
 			opacity: 1
@@ -222,7 +224,7 @@
 	&-skills
 		margin: 75px 0
 
-		&-item-wrapper
+		&-items-wrapper
 			display: flex
 			justify-content: space-between
 
@@ -233,7 +235,6 @@
 			flex-direction: column
 			justify-content: space-between
 
-			text-align: center
 
 			padding: 35px
 			background-color: $backgroundGray
@@ -249,14 +250,15 @@
 
 			&-top
 				&__number
-					font-size: 36px
+					font-size: 28px
+					margin-bottom: 5px
 
 				&__title
-					font-size: 42px
+					font-size: 36px
 
-			&__subtitle
-				margin-top: 50px
-				font-size: 18px
+			&__description
+				margin-top: 25px
+				font-size: 21px
 
 	&-use-skills
 		margin: 75px 0
@@ -269,15 +271,12 @@
 			&-title
 				width: 50%
 
-				&-img
+				&-icon
+					width: 400px
 					margin-top: 125px
-					margin-left: -100px
 
-					width: 80%
-					height: 600px
-
-					+backgroundSetting
-					+borderRadiusBlock
+					& > svg
+						width: 100%
 
 			&-text
 				width: 48%
@@ -288,6 +287,9 @@
 
 					border-bottom: 1px solid $borderGray
 
+					&:last-child
+						margin-bottom: 0
+
 					&__title
 						font-size: 36px
 
@@ -295,8 +297,148 @@
 						margin-top: 25px
 						font-size: 21px
 
-				&__link
+	&-comparison-courses
+		margin: 75px 0
+
+		&-block-wrapper
+			display: flex
+			justify-content: space-between
+
+		&-block-offline
+			width: 49%
+			padding: 35px
+			background-color: $backgroundGray
+
+			+borderRadiusBlock
+
+			&__title
+				font-size: 42px
+				margin-bottom: 35px
+
+			&-item
+				width: 85%
+
+				&__description
+					position: relative
+					font-size: 21px
+					margin-bottom: 15px
+
+					margin-left: 25px
+
+					&::before
+						content: ""
+						position: absolute
+
+						width: 6px
+						height: 6px
+
+						display: block
+
+						background-color: $black
+
+						left: -20px
+						top: 13px
+
+						border-radius: 50%
+
+					&:last-child
+						margin-bottom: 0
+
+					& span
+						color: $gray
+						margin-right: 5px
+
+		&-block-hobjob
+			width: 49%
+			padding: 35px
+			background-color: $backgroundGray
+
+			+borderRadiusBlock
+
+			&__title
+				font-size: 42px
+				margin-bottom: 35px
+
+			&-item
+				&__description
+					font-size: 21px
+					color: $mainColor
+					margin-bottom: 5px
+
+					&:last-child
+						margin-bottom: 0
+
+					& > svg
+						width: 17px
+						margin-right: 10px
+
+			&-image
+				margin-top: 35px
+
+				&__image
 					width: 100%
+
+					user-select: none
+					pointer-events: none
+
+					+borderRadiusBlock
+
+			&__btn
+				margin-top: 50px
+				width: 100%
+
+	&-passing
+		margin: 75px 0
+
+		&__title
+			margin-bottom: 100px
+
+		&__img
+			pointer-events: none
+			user-select: none
+
+			width: 100%
+
+	&-tools
+		margin: 75px 0
+
+		&-wrapper
+			display: flex
+			justify-content: space-between
+
+		&__title
+			width: 50%
+
+		&-items-wrapper
+			width: 45%
+
+		&__item
+			position: relative
+
+			font-size: 24px
+
+			padding-left: 25px
+			padding-bottom: 25px
+
+			border-bottom: 1px solid $borderGray
+
+			margin-bottom: 25px
+
+			&::before
+				content: ""
+				position: absolute
+
+				width: 6px
+				height: 6px
+
+				display: block
+
+				background-color: $black
+
+				left: 0
+				top: 13px
+
+				border-radius: 50%
 
 	&-master
 		margin: 50px 0
@@ -331,8 +473,42 @@
 
 			+backgroundSetting
 
-		&-media
-			&__btn
-				display: none
-				width: 100%
-				margin-top: 25px
+	&-faq
+		margin: 75px 0
+
+		&-wrapper
+			display: flex
+			justify-content: space-between
+
+		&__title
+			width: 45%
+
+		&-items-wrapper
+			width: 50%
+
+		&-item
+			padding: 35px
+
+			background-color: $backgroundGray
+
+			margin-bottom: 10px
+
+			+borderRadiusBlock
+
+			+transition
+
+			&:hover
+				color: $white
+				background-color: $mainColor
+
+				+transformScale
+
+			&:last-child
+				margin-bottom: 0
+
+			&__title
+				font-size: 28px
+				margin-bottom: 15px
+
+			&__description
+				font-size: 21px

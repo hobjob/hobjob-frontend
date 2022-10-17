@@ -10,6 +10,20 @@ export interface CourseGoodLessons {
 	image?: Image;
 }
 
+export interface CourseGoodSkill {
+	title: string
+	description: string
+}
+
+export interface CourseGoodUseSkill {
+	title: string
+	description: string
+}
+
+export interface CourseGoodTool {
+	title: string
+}
+
 export interface CourseGood {
 	_id: string;
 	url: string;
@@ -20,5 +34,8 @@ export interface CourseGood {
 	category: string;
 	path?: string;
 	lessons: CourseGoodLessons[];
+	skills: CourseGoodSkill[];
+	useSkills: CourseGoodUseSkill[];
+	tools: CourseGoodTool[];
 	HobJobProduction: boolean;
 }
