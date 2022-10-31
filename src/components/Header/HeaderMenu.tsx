@@ -33,7 +33,7 @@ const HeaderMenu: React.FC = () => {
                 href={`${process.env.REACT_APP_DOMEN_MASTERS_SERVICES}`}
                 className="header-nav__link bg"
             >
-                Стать мастером
+                Выложить курс
             </a>
         </nav>
     );

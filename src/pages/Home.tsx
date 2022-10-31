@@ -2,7 +2,7 @@ import React from "react";
 import {Helmet} from "react-helmet";
 import {useSearchParams} from "react-router-dom";
 
-import {HomeMainSection, ShopSection} from "../components/";
+import {HomeMainSection, ShopSection, HobJobGood} from "../components/";
 
 const Home: React.FC = () => {
     const [search] = useSearchParams();
@@ -27,6 +27,8 @@ const Home: React.FC = () => {
                 title="Учитесь на практике"
                 description="Обучайтесь у лучших профессионалов своего дела и раскройте самые сокровенные секреты творческого мира"
             />
+
+            <HobJobGood />
         </>
     );
 };

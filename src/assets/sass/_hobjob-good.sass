@@ -1,0 +1,29 @@
+// hobjob-good
+.hobjob-good
+	margin: 50px 0
+	
+	&-wrapper
+		display: flex
+		justify-content: space-between
+		align-items: center
+
+	&-text
+		width: 55%
+
+		&__logo
+			user-select: none
+			pointer-events: none
+			
+			width: 250px
+			margin-bottom: 25px
+
+		&__description
+			& > a
+				white-space: nowrap
+				color: $mainColor
+
+		&__btn
+			width: 50%
+
+	&__image
+		width: 40%	

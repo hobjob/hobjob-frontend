@@ -61,7 +61,7 @@ const CoursePageLessons: React.FC<CoursePageLessonsProps> = ({
                                     to="/go/register"
                                     className="course-page-lessons-video-plaecholder__link"
                                 >
-                                    Открыть все уроки за 1 ₽
+                                    Открыть все уроки за 1₽
                                 </Link>
                             </div>
                         ) : null}

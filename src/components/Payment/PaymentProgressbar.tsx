@@ -14,7 +14,7 @@ const PaymentProgressbar: React.FC<PaymentProgressbarProps> = ({number}) => {
             >
                 <span className="payment-progressbar-item__number">1</span>
                 <span className="payment-progressbar-item__title">
-                    Авторизация
+                    Оформление подписки
                 </span>
             </div>
             <div className="payment-progressbar-line"></div>

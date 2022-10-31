@@ -4,6 +4,7 @@ import {Link, NavLink} from "react-router-dom";
 import {Instagram, Vk, TikTok, Telegram, Youtube} from "../";
 
 import Logo from "../../assets/images/logo.svg";
+import LogoNagibin from "../../assets/images/nagibin-develompent.svg";
 
 const Footer: React.FC = () => {
     return (
@@ -25,17 +26,15 @@ const Footer: React.FC = () => {
 
                             {/* Hi, we are Nagibin's studio */}
                             <div className="nagibinstudio">
-                                <a href="https://nagibinstudio.ru">
-                                    <img
-                                        src="https://api.nagibinstudio.ru:5000/all/nagibin-develompent-black.svg"
-                                        alt=""
-                                        className="nagibinstudio__img"
-                                        style={{
-                                            width: "300px",
-                                            userSelect: "none",
-                                        }}
-                                    />
-                                </a>
+                                <img
+                                    src={LogoNagibin}
+                                    alt=""
+                                    className="nagibinstudio__img"
+                                    style={{
+                                        width: "300px",
+                                        userSelect: "none",
+                                    }}
+                                />
                             </div>
                         </div>
 
@@ -139,7 +138,7 @@ const Footer: React.FC = () => {
                                 href={`${process.env.REACT_APP_DOMEN_MASTERS_SERVICES}`}
                                 className="footer-block-nav__link"
                             >
-                                Стать мастером
+                                Выложить курс
                             </a>
                         </nav>
                     </div>

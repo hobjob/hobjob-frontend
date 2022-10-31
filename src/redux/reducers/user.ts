@@ -35,14 +35,13 @@ const initialState: UserState = {
 
 			registrationSubscribe: "",
 
-			paymentId: "",
-			paymentNumber: "",
+			stoppedSubscribe: "",
+			lastDebitStoppedSubscribe: "",
 		},
 		courses: {},
 		payment: {
 			auto: false,
-
-			methodId: "",
+			number: ""
 		},
 	},
 

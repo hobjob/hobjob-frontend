@@ -16,8 +16,8 @@ interface UserInfoSubscribe {
 
 	registrationSubscribe: string;
 
-	paymentId: string;
-	paymentNumber: string;
+	stoppedSubscribe: string;
+	lastDebitStoppedSubscribe: string;
 }
 
 export interface UserInfoCourse {
@@ -32,7 +32,7 @@ export interface UserInfoCourse {
 
 interface UserInfoPayment {
 	auto: boolean;
-	methodId: string;
+	number: string;
 }
 
 export interface UserInfo {

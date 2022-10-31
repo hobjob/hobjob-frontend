@@ -101,7 +101,7 @@ const CoursePageMain: React.FC<CoursePageMainProps> = ({
                                 to="/go/register"
                                 className="btn course-page-main-text__btn"
                             >
-                                Открыть все уроки за 1 ₽
+                                Открыть все уроки за 1₽
                             </Link>
                         )}
                     </div>

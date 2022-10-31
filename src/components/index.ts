@@ -30,7 +30,10 @@ export {default as HeaderMenu} from "./Header/HeaderMenu";
 export {default as HeaderModalMenu} from "./Header/HeaderModalMenu";
 
 // Home
-export {default as HomeMainSection} from "./Home/HomeMainSection";
+export { default as HomeMainSection } from "./Home/HomeMainSection";
+
+// HobJobGood
+export { default as HobJobGood } from "./HobJobGood/HobJobGood";
 
 // Shop
 export {default as ShopBlock} from "./Shop/ShopBlock";

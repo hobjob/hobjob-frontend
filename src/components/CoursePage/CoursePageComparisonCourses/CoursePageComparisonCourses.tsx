@@ -24,7 +24,7 @@ const CoursePageComparisonCourses: React.FC = () => {
                                 </p>
                                 <p className="course-page-comparison-courses-block-offline-item__description">
                                     Стоимость одного мастер-класса в среднем
-                                    1500 ₽
+                                    1500₽
                                 </p>
                                 <p className="course-page-comparison-courses-block-offline-item__description">
                                     Тяжело пройти больше 4 мастер-классов в

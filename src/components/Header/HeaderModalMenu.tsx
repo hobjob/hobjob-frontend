@@ -70,7 +70,7 @@ const HeaderModalMenu: React.FC<HeaderModalMenuProps> = ({
                             className="header-modal-menu-nav-block-main__link"
                             onClick={closeModalMenu}
                         >
-                            Стать мастером
+                            Выложить курс
                         </a>
                     </div>
 

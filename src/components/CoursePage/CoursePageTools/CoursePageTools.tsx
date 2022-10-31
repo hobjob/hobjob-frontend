@@ -12,7 +12,7 @@ const CoursePageTools: React.FC<CoursePageToolsProps> = ({tools}) => {
             <div className="container">
                 <div className="course-page-tools-wrapper">
                     <h2 className="title__mb course-page-tools__title">
-                        Что понадобиться для курса?
+                        Что понадобится для курса?
                     </h2>
 
                     <div className="course-page-tools-items-wrapper">

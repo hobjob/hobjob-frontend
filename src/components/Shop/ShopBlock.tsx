@@ -88,37 +88,30 @@ const ShopBlock: React.FC<ShopBlockProps> = ({
                 </div>
             </div>
             <div className="shop-block-bottom">
-                {/* {isLogin ? (
+                {isLogin ? (
                     isAdd ? (
                         <button
-                            className="btn-regular shop-block-bottom__link delete"
+                            className="btn shop-block-bottom__link delete"
                             onClick={() => onClickHiddenCourse(_id)}
                         >
                             Удалить
                         </button>
                     ) : (
                         <button
-                            className="btn-regular shop-block-bottom__link"
+                            className="btn shop-block-bottom__link"
                             onClick={() => onClickAddCourse(_id)}
                         >
-                            Добавить
+                            Добавить в мое обучение
                         </button>
                     )
                 ) : (
                     <Link
-                        to="/go/register"
-                        className="btn-regular shop-block-bottom__link"
+                        to={`/course/${url}`}
+                        className="btn shop-block-bottom__link"
                     >
-                        Добавить
+                        Смотреть
                     </Link>
-                )} */}
-
-                <Link
-                    to={`/course/${url}`}
-                    className="btn shop-block-bottom__btn"
-                >
-                    Смотреть
-                </Link>
+                )}
             </div>
         </div>
     );
