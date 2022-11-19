@@ -45,7 +45,7 @@ const CoursePageMain: React.FC<CoursePageMainProps> = ({
 
                             {categories[category] ? (
                                 <a
-                                    href={`/course/?category=${categories[category].transfer}`}
+                                    href={`/course/?categories=${categories[category].transfer}`}
                                     className="category course-page-main-text-subinfo__category"
                                 >
                                     {categories[category].title}
@@ -101,7 +101,7 @@ const CoursePageMain: React.FC<CoursePageMainProps> = ({
                                 to="/go/register"
                                 className="btn course-page-main-text__btn"
                             >
-                                Открыть все уроки за 1₽
+                                Начать бесплатно
                             </Link>
                         )}
                     </div>

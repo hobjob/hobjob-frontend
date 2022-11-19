@@ -63,6 +63,11 @@ const PaymentSubscribe: React.FC = () => {
                                 <div className="payment-form-wrapper">
                                     <PaymentProgressbar number={1} />
 
+                                    <p className="payment-form__description">
+                                        Мы спишем 1₽ и вернём его обратно, чтобы
+                                        подтвердить, что вы настоящий человек
+                                    </p>
+
                                     <div
                                         className="payment-form"
                                         id="payment-form"

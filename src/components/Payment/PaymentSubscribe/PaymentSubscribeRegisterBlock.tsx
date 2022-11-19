@@ -77,7 +77,7 @@ const PaymentSubscribeRegisterBlock: React.FC<
                     ) : (
                         <>
                             <h2 className="payment-subscribe-block-text__title">
-                                7 дней за 1₽
+                                7 дней бесплатно
                             </h2>
                             <span className="payment-subscribe-block-text__subtitle">
                                 {isYearSubscribe

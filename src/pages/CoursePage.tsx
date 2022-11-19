@@ -13,10 +13,10 @@ import {
     CoursePageLessons,
     CoursePageSkills,
     CoursePageUseSkills,
-	CoursePageComparisonCourses,
-	HobJobGood,
-	CoursePagePassing,
-	CoursePageTools,
+    CoursePageComparisonCourses,
+    HobJobGood,
+    CoursePagePassing,
+    CoursePageTools,
     CoursePageMaster,
     CoursePageFaq,
     ShopSection,
@@ -131,7 +131,7 @@ const CoursePage: React.FC = () => {
                                     visibleButton ? "active" : ""
                                 }`}
                             >
-                                Открыть все уроки за 1₽
+                                Начать бесплатно
                             </Link>
                         )}
 
@@ -158,8 +158,8 @@ const CoursePage: React.FC = () => {
 
                         <CoursePageComparisonCourses />
 
-						<HobJobGood />
-						
+                        <HobJobGood />
+
                         <CoursePagePassing />
 
                         <CoursePageTools {...itemByUrl} />

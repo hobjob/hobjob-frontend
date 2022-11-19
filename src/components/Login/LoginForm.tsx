@@ -28,7 +28,6 @@ let LoginForm: React.FC<
                     Зарегистрироваться
                 </Link>
             </div>
-
             <div className="input reglog-block-input">
                 <Field
                     component={RenderInput}
@@ -44,19 +43,24 @@ let LoginForm: React.FC<
                     name="password"
                     label="Пароль"
                 />
-            </div>
-
+			</div>
+			
             {isSend ? (
                 <button className="btn reglog-block__btn disabled" disabled>
                     <BtnLoader />
                 </button>
             ) : (
                 <button className="btn reglog-block__btn">Войти</button>
-            )}
-
-            <Link to="/go/password-recovery" className="reglog-block__link">
-                Забыли пароль?
-            </Link>
+			)}
+			
+            <div className="reglog-block-recovery">
+                <Link
+                    to="/go/password-recovery"
+                    className="reglog-block-recovery__link"
+                >
+                    Забыли пароль?
+                </Link>
+            </div>
         </form>
     );
 };

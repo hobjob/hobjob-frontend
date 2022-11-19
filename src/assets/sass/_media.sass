@@ -333,13 +333,6 @@
 				margin: 0
 
 @media screen and ( max-width: 900px )
-	// cookie
-	.cookie
-		width: 95%
-
-		&__title
-			font-size: 18px
-
 	// header
 	.header
 		&-modal-menu
@@ -565,22 +558,6 @@
 		&-wrapper
 			width: 100%
 
-	// footer
-	.footer
-		&-block
-			&-subinfo
-				flex-direction: column
-				align-items: center
-
-				&-block
-					margin-top: 15px
-					text-align: center
-
-				&-block
-					&__link
-						display: block
-						margin: 10px 0 0 0
-
 	// payment
 	.payment
 		padding: 25px 0
@@ -598,7 +575,22 @@
 
 		&-progressbar
 			&-line
-				display: none
+				
+	// footer
+	.footer
+		&-block
+			&-subinfo
+				flex-direction: column
+				align-items: center
+
+				&-block
+					margin-top: 15px
+					text-align: center
+
+				&-block
+					&__link
+						display: block
+						margin: 10px 0 0 0
 
 @media screen and ( max-width: 800px )
 	// interface
@@ -655,6 +647,13 @@
 
 				&:last-child
 					margin-bottom: 0
+
+	// payment
+	.payment
+		&-form
+			&__description
+				width: 100%
+				font-size: 18px
 
 @media screen and ( max-width: 750px )
 	// footer

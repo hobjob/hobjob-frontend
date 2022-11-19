@@ -21,7 +21,6 @@ const CoursePageSkills: React.FC<CoursePageSkillsProps> = ({skills}) => {
                         {skills.map((skill, index) => (
                             <CoursePageSkillsItem
                                 {...skill}
-                                number={index + 1}
                                 key={`course-page-skills-item-${index}`}
                             />
                         ))}
