@@ -1,7 +1,7 @@
 import React from "react";
 import {Link, NavLink} from "react-router-dom";
 
-import {Instagram, Vk, TikTok, Telegram, Youtube} from "../";
+import {Instagram, TikTok, Telegram, Youtube, ReadDzen, ReadVk} from "../";
 
 interface HeaderModalMenuProps {
     HeaderModalMenuRef: React.RefObject<HTMLDivElement>;
@@ -145,42 +145,38 @@ const HeaderModalMenu: React.FC<HeaderModalMenuProps> = ({
                     </div>
                 </nav>
 
-                <div className="header-modal-menu-social">
-                    <p className="header-modal-menu-social__subtitle">
-                        Мы в социальных сетях
-                    </p>
-                    <div className="header-modal-menu-social-links-wrapper">
-                        <a
-                            href="https://vk.com/hobjob"
-                            className="header-modal-menu-social__link"
-                        >
-                            <Vk />
-                        </a>
+                <div className="header-modal-menu-socials">
+					<div className="header-modal-menu-socials-read">
+						<ReadDzen />
 
+						<ReadVk />
+					</div>
+
+                    <div className="header-modal-menu-socials-links-wrapper">
                         <a
-                            href="https://www.instagram.com/hobjob.ru/"
-                            className="header-modal-menu-social__link"
+                            href={process.env.REACT_APP_socialsS_INST}
+                            className="header-modal-menu-socials__link"
                         >
                             <Instagram />
                         </a>
 
                         <a
-                            href="https://www.youtube.com/channel/UCFEZn2Om4MucJT60ApT7y6w"
-                            className="header-modal-menu-social__link"
+                            href={process.env.REACT_APP_socialsS_YOUTUBE}
+                            className="header-modal-menu-socials__link"
                         >
                             <Youtube />
                         </a>
 
                         <a
-                            href="https://vm.tiktok.com/ZSJggxQqj/"
-                            className="header-modal-menu-social__link"
+                            href={process.env.REACT_APP_socialsS_TIKTOK}
+                            className="header-modal-menu-socials__link"
                         >
                             <TikTok />
                         </a>
 
                         <a
-                            href="https://t.me/hobjob"
-                            className="header-modal-menu-social__link"
+                            href={process.env.REACT_APP_socialsS_TELEGRAM}
+                            className="header-modal-menu-socials__link"
                         >
                             <Telegram />
                         </a>

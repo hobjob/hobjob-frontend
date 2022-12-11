@@ -34,6 +34,7 @@ export interface CourseGood {
 	category: string;
 	path?: string;
 	lessons: CourseGoodLessons[];
+	materials: string[];
 	skills: CourseGoodSkill[];
 	useSkills: CourseGoodUseSkill[];
 	tools: CourseGoodTool[];

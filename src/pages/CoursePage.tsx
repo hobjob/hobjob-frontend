@@ -11,6 +11,7 @@ import {addUserCourse, hiddenUserCourse} from "../redux/actions/user";
 import {
     CoursePageMain,
     CoursePageLessons,
+    CoursePageMaterials,
     CoursePageSkills,
     CoursePageUseSkills,
     CoursePageComparisonCourses,
@@ -151,6 +152,15 @@ const CoursePage: React.FC = () => {
                             isLogin={isLogin}
                             isAdd={isAdd}
                         />
+
+                        {itemByUrl.materials.length ? (
+                            <CoursePageMaterials
+                                {...itemByUrl}
+                                onClickAddCourse={onClickAddCourse}
+                                isLogin={isLogin}
+                                isAdd={isAdd}
+                            />
+                        ) : null}
 
                         <CoursePageSkills {...itemByUrl} />
 

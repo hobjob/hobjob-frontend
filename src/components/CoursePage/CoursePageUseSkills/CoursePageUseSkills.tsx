@@ -17,7 +17,7 @@ const CoursePageUseSkills: React.FC<CoursePageUseSkillsProps> = ({
                 <div className="course-page-use-skills-wrapper">
                     <div className="course-page-use-skills-block-title">
                         <h2 className="title__mb course-page-use-skills-block-title__title">
-                            По итогу курса вы сможете
+                            По итогу курса вы сможете:
                         </h2>
 
                         <div className="course-page-use-skills-block-title-icon">

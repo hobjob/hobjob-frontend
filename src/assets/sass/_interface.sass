@@ -104,6 +104,9 @@ li
 	user-select: none
 	text-align: center
 	font-size: 17px
+
+	will-change: transform
+
 	+borderRadius
 	+SfRegular
 	+transition
@@ -134,6 +137,9 @@ li
 		user-select: none
 		text-align: center
 		font-size: 17px
+
+		will-change: transform
+
 		+borderRadius
 		+SfRegular
 		+transition
@@ -164,6 +170,9 @@ li
 	user-select: none
 	text-align: center
 	font-size: 17px
+
+	will-change: transform
+
 	+borderRadius
 	+SfRegular
 	+transition
@@ -209,6 +218,9 @@ li
 	user-select: none
 	text-align: center
 	font-size: 17px
+
+	will-change: transform
+
 	+borderRadius
 	+SfRegular
 	+transition
@@ -231,6 +243,8 @@ li
 
 	cursor: pointer
 	line-height: 1.4em
+
+	will-change: transform
 
 	+borderRadius
 	+SfRegular
@@ -255,6 +269,8 @@ li
 
 	cursor: pointer
 	line-height: 1.4em
+
+	will-change: transform
 
 	+borderRadius
 	+SfRegular
@@ -304,6 +320,8 @@ li
 	cursor: pointer
 	line-height: 1.4em
 
+	will-change: transform
+
 	+SfRegular
 	+transition
 
@@ -339,6 +357,8 @@ li
 	cursor: pointer
 	line-height: 1.4em
 
+	will-change: transform
+
 	+SfRegular
 	+transition
 
@@ -368,6 +388,8 @@ li
 	cursor: pointer
 	line-height: 1.4em
 
+	will-change: transform
+
 	+SfRegular
 	+transition
 
@@ -392,6 +414,8 @@ li
 
 	cursor: pointer
 	line-height: 1.4em
+
+	will-change: transform
 
 	+SfRegular
 	+transition
@@ -672,6 +696,9 @@ input[type="file"]
 // nagibinstudio
 .nagibinstudio
 	margin-top: 50px
+
+	will-change: transform
+
 	+transition
 
 	&:active
@@ -831,6 +858,8 @@ input[type="file"]
 	white-space: nowrap
 	text-overflow: ellipsis
 
+	will-change: transform
+
 	+transition
 	+SfRegular
 
@@ -850,6 +879,8 @@ input[type="file"]
 	white-space: nowrap
 	text-overflow: ellipsis
 
+	will-change: transform
+
 	+transition
 
 	&:hover
@@ -868,6 +899,8 @@ input[type="file"]
 	font-size: 18px
 	border-radius: 100px
 
+	will-change: transform
+
 	+SfRegular
 	+transition
 	+openAnimation
@@ -882,3 +915,36 @@ input[type="file"]
 	&.active
 		background-color: $mainColor
 		color: $white
+
+// socials
+.socials-read
+	&-item
+		margin-right: 15px
+
+		padding: 8px 12px
+
+		background-color: $backgroundGray
+
+		display: inline-flex
+		align-items: center
+
+		font-size: 18px
+
+		border-radius: 15px
+
+		will-change: transform
+
+		+transition
+
+		&:last-child
+			margin-right: 0
+
+		&:active
+			+transformScale
+
+		& > img
+			width: 120px
+			margin-left: 10px
+
+			user-select: none
+			pointer-events: none

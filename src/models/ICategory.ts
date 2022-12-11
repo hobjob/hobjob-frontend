@@ -1,5 +1,4 @@
 export interface Category {
-    title: string;
-    transfer: string;
-    image: string;
+	title: string;
+	transfer: string;
 }

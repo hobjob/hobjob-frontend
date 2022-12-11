@@ -14,6 +14,9 @@
 		&__img
 			user-select: none
 			width: 65px
+			
+			will-change: transform
+
 			+transition
 
 			&:active
@@ -34,6 +37,9 @@
 			background-color: $backgroundGray
 
 			margin: 0 5px
+
+			will-change: transform
+
 			+transition
 
 			&:hover
@@ -57,6 +63,9 @@
 			align-items: center
 
 			color: $mainColor
+
+			will-change: transform
+
 			+transition
 
 			&:active
@@ -90,6 +99,8 @@
 				background-color: $backgroundGray
 
 				margin-right: 10px
+
+				will-change: transform
 
 				+transition
 
@@ -278,14 +289,11 @@
 
 						+backgroundSetting
 
-	&-social
+	&-socials
 		margin-top: 35px
 
-		&__subtitle
-			display: block
-			font-size: 24px
-			margin-bottom: 15px
-			color: $gray
+		&-read
+			margin-bottom: 25px
 
 		&-links-wrapper
 			overflow-x: auto
@@ -294,10 +302,12 @@
 		&__link
 			margin-right: 25px
 
+			will-change: transform
+
 			+transition
 
 			& > svg
-				width: 70px
+				width: 50px
 
 			&:last-child
 				margin-right: 0

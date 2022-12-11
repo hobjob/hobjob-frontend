@@ -5,6 +5,17 @@
 		&-block
 			width: 33.3333%
 
+	// magazine-post-page
+	.magazine-post-page
+		&-cover
+			&-text
+				&-top
+					flex-direction: column
+					align-items: flex-start
+
+					&-info
+						margin-bottom: 25px
+
 @media screen and ( max-width: 1350px )
 	// course-page
 	.course-page
@@ -207,6 +218,21 @@
 			&-image
 				width: 40%
 
+		&-materials
+			&-wrapper
+				flex-direction: column
+				justify-content: flex-start
+
+				min-height: 100%
+
+			&__title
+				width: 100%
+
+			&-items-wrapper
+				margin-top: 25px
+
+				width: 100%
+
 	// hobjob-good
 	.hobjob-good
 		&-wrapper
@@ -298,6 +324,17 @@
 
 				&-item-shadow
 					display: block
+
+		&-materials
+			&-modal
+				width: 80%
+
+				&__description
+					max-width: 100%
+					font-size: 46px
+
+				&__link
+					font-size: 46px
 
 		&-master
 			margin: 50px 0
@@ -392,12 +429,7 @@
 
 	// course-page 
 	.course-page
-		&-lessons
-			margin: 25px 0
-
 		&-master
-			margin: 25px 0
-
 			&-wrapper
 				padding: 35px
 
@@ -438,8 +470,8 @@
 
 	// magazine-post-page
 	.magazine-post-page
-		&-text-wrapper
-			max-width: 95%
+		&-wrapper
+			max-width: 100%
 
 		&-next
 			&-text
@@ -575,10 +607,25 @@
 
 		&-progressbar
 			&-line
-				
+
 	// footer
 	.footer
 		&-block
+			flex-direction: column
+			align-items: center
+
+			&-logos
+				display: flex
+				flex-direction: column
+				align-items: center
+
+				margin-bottom: 50px
+
+			&-contact
+				display: flex
+				flex-direction: column
+				align-items: center
+
 			&-subinfo
 				flex-direction: column
 				align-items: center
@@ -655,28 +702,18 @@
 				width: 100%
 				font-size: 18px
 
-@media screen and ( max-width: 750px )
-	// footer
-	.footer
-		&-block
-			flex-direction: column
-
-			&-logos
-				display: flex
-				align-items: center
-
-			&-contact
-				margin-top: 75px
-
-			&-social
-				margin-top: 25px
-
-	// nagibinstudio
-	.nagibinstudio
-		margin-top: 0
-		margin-left: 50px
-
 @media screen and ( max-width: 700px )
+	// interface
+	.socials-read
+		&-item
+			justify-content: center
+
+			margin-right: 0
+			margin-bottom: 15px
+
+			&:last-child
+				margin-bottom: 0
+
 	// header
 	.header
 		&-modal-menu
@@ -697,6 +734,14 @@
 
 					&-user
 						order: 1
+
+			&-socials
+				&-read
+					width: 100%
+
+					display: flex
+					flex-direction: column
+					align-items: flex-start
 
 	// main
 	.main
@@ -775,6 +820,54 @@
 				&__description
 					font-size: 21px
 
+	// magazine-post-page
+	.magazine-post-page
+		&-cover
+			&-text
+				&-top
+					&-info
+						flex-direction: column
+						align-items: flex-start
+
+						&-auth
+							margin-bottom: 15px
+
+					&-socials
+						display: flex
+						flex-direction: column
+
+	// footer
+	.footer
+		&-block
+			&-contact
+				width: 100%
+
+				&-email-wrapper
+					flex-direction: column
+					align-items: center
+
+					width: 100%
+
+				&-email
+					display: block
+
+					text-align: center
+
+					min-width: 300px
+
+					margin-bottom: 15px
+					margin-right: 0
+
+					&:last-child
+						margin-bottom: 0
+
+				&-socials-read
+					width: 100%
+
+					display: flex
+					flex-direction: column
+					align-items: center
+
 @media screen and ( max-width: 600px )
 	// main
 	.main
@@ -834,6 +927,16 @@
 		&-main
 			&-image
 				height: 300px
+
+		&-materials
+			&-modal
+				width: 98%
+
+				&__description
+					font-size: 42px
+
+				&__link
+					font-size: 42px
 
 @media screen and ( max-width: 500px )
 	// interface
@@ -954,6 +1057,35 @@
 
 					&__description
 						font-size: 18px
+
+		&-materials
+			margin: 35px 0
+
+			&-wrapper
+				padding: 20px
+
+			&-item
+				margin-bottom: 15px
+
+				&__title
+					font-size: 18px
+
+			&-modal-wrapper
+				align-items: flex-start
+
+			&-modal
+				margin-top: 25px
+
+				&__description
+					font-size: 24px
+
+				&__link
+					margin-top: 35px
+					font-size: 24px
+
+				&-close
+					top: auto
+					bottom: 20px
 
 		&-skills
 			margin: 35px 0
@@ -1324,25 +1456,6 @@
 	.master-card
 		margin: 25px 0
 
-	// footer
-	.footer
-		&-block
-			&-logos
-				flex-direction: column
-
-			&-contact
-				margin-top: 35px
-
-				&-email-wrapper
-					text-align: center
-
-				&-social
-					margin-top: 35px
-					justify-content: center
-
-			&-subinfo
-				margin-top: 35px
-
 	// nagibinstudio
 	.nagibinstudio
 		margin-left: 0
@@ -1364,13 +1477,17 @@
 			&__title
 				font-size: 32px
 
-	// footer
-	.footer
-		&-block
-			&-contact
-				&-social
-					&__link
-						margin-right: 15px
+	// hobjob-good
+	.hobjob-good
+		&-text
+			&__title
+				font-size: 30px !important
 
-						& > svg
-							width: 40px
+@media screen and ( max-width: 350px )
+	// course-page
+	.course-page
+		&-lessons
+			&-video
+				&-plaecholder
+					&__description
+						font-size: 18px

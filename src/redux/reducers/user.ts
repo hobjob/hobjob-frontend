@@ -23,7 +23,6 @@ const initialState: UserState = {
 
 		subscribe: {
 			working: false,
-			passedPeriodTesting: false,
 
 			typeSubscribe: "",
 			nextTypeSubscribe: "",

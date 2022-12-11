@@ -79,6 +79,8 @@
 
 					background-color: $backgroundGray
 
+					will-change: transform
+
 					+borderRadiusBlock
 					+transition
 
@@ -181,6 +183,8 @@
 
 					background-color: $backgroundGray
 
+					will-change: transform
+
 					+borderRadiusBlock
 					+transition
 
@@ -237,54 +241,50 @@
 			&-top
 				display: flex
 				align-items: center
-				flex-wrap: wrap
+				justify-content: space-between
 
-				&__date
-					font-size: 21px
-					color: $gray
+				margin-bottom: 50px
 
-					margin-right: 50px
-					margin-bottom: 25px
-
-				&-auth
-					margin-right: 25px
-
-					padding: 10px 15px
-					background-color: $backgroundGray
-
+				&-info
 					display: flex
 					align-items: center
 
-					margin-bottom: 25px
+					&-auth
+						margin-right: 25px
 
-					+borderRadiusBlock
-					+transition
+						padding: 10px 15px
+						background-color: $backgroundGray
 
-					&:hover
-						+transformScale
+						display: flex
+						align-items: center
 
-					&-avatar
-						margin-right: 15px
-						width: 50px
-						height: 50px
-						border-radius: 50%
+						will-change: transform
 
-						+backgroundSetting
+						+borderRadiusBlock
+						+transition
 
-					&__name
-						font-size: 21px
+						&:hover
+							+transformScale
 
-						& > span
-							display: block
-							color: $gray
+						&-avatar
+							margin-right: 15px
+							width: 50px
+							height: 50px
+							border-radius: 50%
 
-					&__img
-						width: 40px
-						height: 40px
-						margin-right: 15px
+							+backgroundSetting
 
-				&__category
-					margin-bottom: 25px
+						&__name
+							font-size: 21px
+
+							& > span
+								display: block
+								color: $gray
+
+						&__img
+							width: 40px
+							height: 40px
+							margin-right: 15px
 
 			&__title
 				font-size: 42px
@@ -314,13 +314,10 @@
 	&-block
 		margin-bottom: 75px
 
-		&:last-child
-			margin-bottom: 50px
-
 		&-text
 			&__title
 				font-size: 42px
-				margin-bottom: 25px
+				margin-bottom: 50px
 
 				& > span
 					white-space: nowrap
@@ -345,6 +342,11 @@
 					margin-bottom: 25px
 
 			&__description
+				margin-bottom: 25px
+
+				&:last-child
+					margin-bottom: 0
+
 				& > a
 					border-bottom: 1px solid $mainColor
 					color: $mainColor
@@ -375,6 +377,9 @@
 
 		padding: 65px 50px
 		background-color: $backgroundGray
+
+		will-change: transform
+
 		+borderRadiusBlock
 		+transition
 

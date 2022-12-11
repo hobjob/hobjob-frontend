@@ -131,7 +131,7 @@ const PaymentSubscribeRegisterBlock: React.FC<
                                     strokeLinecap="round"
                                 />
                             </svg>
-                            Доступ ко всем материалам курсов
+                            Скачать дополнительные материалы курсов
                         </p>
                         <p className="payment-subscribe-block-text-list__item">
                             <svg

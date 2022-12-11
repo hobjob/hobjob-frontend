@@ -1,5 +1,6 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import moment from "moment";
+import {useDispatch} from "react-redux";
 
 import PaymentSubscribeBlockImage from "../../../assets/images/payment-subscribe-block-image.jpg";
 
@@ -19,6 +20,13 @@ const PaymentSubscribeProlongation: React.FC = () => {
         userInfo.subscribe.nextTypeSubscribe === "year-subscribe"
     );
 
+    const isProlongation: boolean =
+        moment(
+            userInfo.subscribe.registrationSubscribe,
+            "DD.MM.YYYY, HH:mm"
+        ).isBefore(moment().subtract(7, "days")) ||
+        userInfo.subscribe.registrationSubscribe !== "";
+
     React.useEffect(() => {
         if (
             !Object.keys(userInfo).length &&
@@ -29,7 +37,7 @@ const PaymentSubscribeProlongation: React.FC = () => {
     }, []);
 
     React.useEffect(() => {
-        if (isLoadedUserInfo && !userInfo.subscribe.passedPeriodTesting) {
+        if (isLoadedUserInfo && !isProlongation) {
             window.location.href = `/payment/subscribe/${userInfo.payment.number}`;
         }
     }, [isLoadedUserInfo]);
@@ -48,7 +56,7 @@ const PaymentSubscribeProlongation: React.FC = () => {
 
     return (
         <>
-            {isLoadedUserInfo && userInfo.subscribe.passedPeriodTesting ? (
+            {isLoadedUserInfo && isProlongation ? (
                 <div className="payment-subscribe-block-prolongation-wrapper">
                     <div className="payment-subscribe-block-prolongation">
                         <div className="payment-subscribe-block-prolongation-text">

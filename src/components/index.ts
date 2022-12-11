@@ -5,12 +5,14 @@ export {default as RenderSelect} from "./All/RenderSelect";
 export {default as FileInput} from "./All/FileInput";
 export {default as BtnLoader} from "./All/BtnLoader";
 export {default as VideoPlayer} from "./All/VideoPlayer";
-// Icons
-export { default as Instagram } from "./All/Icons/Instagram"
-export { default as Telegram } from "./All/Icons/Telegram"
-export { default as TikTok } from "./All/Icons/TikTok"
-export { default as Vk } from "./All/Icons/Vk"
-export { default as Youtube } from "./All/Icons/Youtube"
+// Socials
+export { default as Instagram } from "./All/Socials/Instagram"
+export { default as Telegram } from "./All/Socials/Telegram"
+export { default as TikTok } from "./All/Socials/TikTok"
+export { default as Vk } from "./All/Socials/Vk"
+export { default as Youtube } from "./All/Socials/Youtube"
+export { default as ReadDzen } from "./All/Socials/ReadDzen"
+export { default as ReadVk } from "./All/Socials/ReadVk"
 
 // Login
 export {default as LoginForm} from "./Login/LoginForm";
@@ -53,6 +55,10 @@ export { default as CoursePageMain } from "./CoursePage/CoursePageMain/CoursePag
 export { default as CoursePageLessons } from "./CoursePage/CoursePageLessons/CoursePageLessons";
 export { default as CoursePageLessonsItem } from "./CoursePage/CoursePageLessons/CoursePageLessonsItem";
 export { default as CoursePageLessonsVideo } from "./CoursePage/CoursePageLessons/CoursePageLessonsVideo";
+// CoursePageMaterials
+export { default as CoursePageMaterials } from "./CoursePage/CoursePageMaterials/CoursePageMaterials";
+export { default as CoursePageMaterialsItem } from "./CoursePage/CoursePageMaterials/CoursePageMaterialsItem";
+export { default as CoursePageMaterialsModal } from "./CoursePage/CoursePageMaterials/CoursePageMaterialsModal";
 // CoursePageMaster
 export { default as CoursePageMaster } from "./CoursePage/CoursePageMaster/CoursePageMaster";
 // CoursePageSkills

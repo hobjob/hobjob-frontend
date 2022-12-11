@@ -4,7 +4,6 @@ import { Image } from "./IImage";
 
 interface UserInfoSubscribe {
 	working: boolean;
-	passedPeriodTesting: boolean;
 
 	typeSubscribe: string;
 	nextTypeSubscribe: string;

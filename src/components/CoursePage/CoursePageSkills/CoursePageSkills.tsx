@@ -14,7 +14,7 @@ const CoursePageSkills: React.FC<CoursePageSkillsProps> = ({skills}) => {
             <div className="container">
                 <div className="course-page-skills-wrapper">
                     <h2 className="title__mb course-page-skills__title">
-                        Вы научитесь
+                        Вы научитесь:
                     </h2>
 
                     <div className="course-page-skills-items-wrapper">
