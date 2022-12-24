@@ -24,7 +24,7 @@ const Login: React.FC = () => {
             {!localStorage.getItem("accessToken") ? (
                 <section className="reglog">
                     <div className="container">
-                        <div className="reglog-wrapper">
+                        <div className="reglog-wrapper center">
                             <Link to="/" className="reglog-logo">
                                 <img
                                     src={Logo}
@@ -33,7 +33,7 @@ const Login: React.FC = () => {
                                 />
                             </Link>
 
-                            <div className="reglog-block-wrapper">
+                            <div className="reglog-form-wrapper">
                                 <LoginForm onSubmit={onSubmit} />
                             </div>
                         </div>

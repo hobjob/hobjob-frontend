@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import {useDispatch} from "react-redux";
 
-import PaymentSubscribeBlockImage from "../../../assets/images/payment-subscribe-block-image.jpg";
+import PaymentSubscribeBlockImage from "../../../assets/images/reglog-subscribe-block-image.jpg";
 
 import {Loader} from "../../";
 

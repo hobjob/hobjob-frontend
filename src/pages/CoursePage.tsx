@@ -2,6 +2,7 @@ import React from "react";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
 import {Link, Navigate, useSearchParams, useParams} from "react-router-dom";
+import {Link as LinkScroll} from "react-scroll";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
@@ -14,6 +15,7 @@ import {
     CoursePageMaterials,
     CoursePageSkills,
     CoursePageUseSkills,
+    CoursePagePrice,
     CoursePageComparisonCourses,
     HobJobGood,
     CoursePagePassing,
@@ -126,14 +128,21 @@ const CoursePage: React.FC = () => {
                                 </button>
                             )
                         ) : (
-                            <Link
-                                to="/go/register"
-                                className={`btn-small-round course-page__btn ${
-                                    visibleButton ? "active" : ""
-                                }`}
+                            <LinkScroll
+                                to="price"
+                                spy={true}
+                                smooth={true}
+                                offset={-25}
+                                duration={1000}
                             >
-                                Начать бесплатно
-                            </Link>
+                                <button
+                                    className={`btn-small-round course-page__btn ${
+                                        visibleButton ? "active" : ""
+                                    }`}
+                                >
+                                    Начать обучение
+                                </button>
+                            </LinkScroll>
                         )}
 
                         <CoursePageMain
@@ -165,6 +174,8 @@ const CoursePage: React.FC = () => {
                         <CoursePageSkills {...itemByUrl} />
 
                         <CoursePageUseSkills {...itemByUrl} />
+
+                        <CoursePagePrice />
 
                         <CoursePageComparisonCourses />
 

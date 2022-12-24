@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {Link as LinkScroll} from "react-scroll";
 
 import {CourseGood} from "../../../models/ICourseGood";
 import {Category} from "../../../models/ICategory";
@@ -97,12 +98,17 @@ const CoursePageMain: React.FC<CoursePageMainProps> = ({
                                 </button>
                             )
                         ) : (
-                            <Link
-                                to="/go/register"
-                                className="btn course-page-main-text__btn"
+                            <LinkScroll
+                                to="price"
+                                spy={true}
+                                smooth={true}
+                                offset={-25}
+                                duration={1000}
                             >
-                                Начать бесплатно
-                            </Link>
+                                <button className="btn course-page-main-text__btn">
+                                    Начать обучение
+                                </button>
+                            </LinkScroll>
                         )}
                     </div>
                     <div

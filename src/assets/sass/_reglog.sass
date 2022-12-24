@@ -11,13 +11,18 @@
 
 	&-wrapper
 		display: flex
-		flex-direction: column
 		align-items: center
-		justify-content: center
+
+		&.space-between
+			justify-content: space-between
+
+		&.center
+			flex-direction: column
+			justify-content: center
 
 	&-logo
 		margin-bottom: 50px
-		
+
 		will-change: transform
 
 		+transition
@@ -29,10 +34,59 @@
 			width: 75px
 			user-select: none
 
-	&-block-wrapper
-		width: 50%
+	&-progressbar
+		margin-bottom: 50px
 
-	&-block
+		width: 100%
+		display: flex
+		align-items: center
+		justify-content: center
+
+		&-item
+			display: flex
+			align-items: center
+
+			margin: 0 15px
+
+			&.active &__number
+				color: $mainColor
+				background-color: $lightMainColor
+
+			&.active &__title
+				color: $black
+
+			&__number
+				user-select: none
+				margin-right: 10px
+
+				border-radius: 50%
+				width: 30px
+				height: 30px
+
+				display: flex
+				justify-content: center
+				align-items: center
+
+				font-size: 15px
+				background-color: $borderGray
+				color: $gray
+
+			&__title
+				white-space: nowrap
+				font-size: 15px
+				user-select: none
+				color: $gray
+
+		&-line
+			width: 10%
+			height: 1px
+
+			background-color: $borderGray
+
+	&-form-wrapper
+		width: 48%
+
+	&-form
 		width: 100%
 		padding: 50px
 		background-color: $white
@@ -92,3 +146,135 @@
 				font-size: 18px
 				color: $gray
 				border-bottom: 1px solid $gray
+
+	&-product-wrapper
+		width: 48%
+
+	&-subscribe-block
+		width: 100%
+		background-color: $white
+		overflow: hidden
+
+		+borderRadiusBlock
+
+		&.prolongation
+			width: 100%
+
+		&-text
+			padding: 35px
+
+			&__title
+				font-size: 42px
+
+			&__subtitle
+				display: block
+				margin-top: 10px
+
+				color: $gray
+				font-size: 15px
+
+			&-list
+				margin-top: 25px
+
+				&__item
+					display: flex
+					align-items: center
+
+					color: $mainColor
+					font-size: 21px
+					margin-bottom: 5px
+
+					&:last-child
+						margin-bottom: 0
+
+					& svg
+						margin-right: 7px
+
+				&-hobjob-good
+					display: flex
+					align-items: center
+
+					& svg
+						margin-right: 7px
+
+					&-text
+						display: flex
+						align-items: center
+
+						&__logo
+							user-select: none
+							pointer-events: none
+
+							width: 150px
+
+						&__text
+							margin-left: 7px
+
+							display: flex
+							align-items: center
+
+							color: $mainColor
+							font-size: 21px
+
+		&-image
+			padding-bottom: 35px
+
+			&__image
+				user-select: none
+				pointer-events: none
+
+				width: 100%
+
+	&-buy-block
+		width: 100%
+		background-color: $white
+
+		+borderRadiusBlock
+
+		&-text
+			padding: 35px
+
+			&__subprice
+				font-size: 24px
+				margin-bottom: 10px
+
+				& > span
+					font-size: 21px
+					color: $gray
+
+			&__price
+				font-size: 54px
+
+				& > span
+					font-size: 28px
+
+			&-list
+				margin-top: 25px
+
+				&__item
+					display: flex
+					align-items: center
+
+					color: $mainColor
+					font-size: 21px
+					margin-bottom: 5px
+
+					&:last-child
+						margin-bottom: 0
+
+					& svg
+						margin-right: 7px
+
+			&__btn
+				margin-top: 25px
+				width: 100%
+
+			&__image
+				margin-top: 35px
+
+				user-select: none
+				pointer-events: none
+
+				width: 100%
+
+				+borderRadiusBlock

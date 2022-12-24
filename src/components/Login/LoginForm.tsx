@@ -18,17 +18,17 @@ let LoginForm: React.FC<
     const {isSend} = useTypedSelector(({login}) => login);
 
     return (
-        <form className="reglog-block" onSubmit={handleSubmit}>
-            <div className="reglog-block-title">
-                <h2 className="reglog-block__title">Войти</h2>
+        <form className="reglog-form" onSubmit={handleSubmit}>
+            <div className="reglog-form-title">
+                <h2 className="reglog-form__title">Войти</h2>
                 <Link
                     to={registerLink ? registerLink : "/go/register"}
-                    className="reglog-block__subtitle"
+                    className="reglog-form__subtitle"
                 >
                     Зарегистрироваться
                 </Link>
             </div>
-            <div className="input reglog-block-input">
+            <div className="input reglog-form-input">
                 <Field
                     component={RenderInput}
                     type="text"
@@ -36,7 +36,7 @@ let LoginForm: React.FC<
                     label="Email"
                 />
             </div>
-            <div className="input reglog-block-input">
+            <div className="input reglog-form-input">
                 <Field
                     component={RenderInput}
                     type="password"
@@ -46,17 +46,17 @@ let LoginForm: React.FC<
 			</div>
 			
             {isSend ? (
-                <button className="btn reglog-block__btn disabled" disabled>
+                <button className="btn reglog-form__btn disabled" disabled>
                     <BtnLoader />
                 </button>
             ) : (
-                <button className="btn reglog-block__btn">Войти</button>
+                <button className="btn reglog-form__btn">Войти</button>
 			)}
 			
-            <div className="reglog-block-recovery">
+            <div className="reglog-form-recovery">
                 <Link
                     to="/go/password-recovery"
-                    className="reglog-block-recovery__link"
+                    className="reglog-form-recovery__link"
                 >
                     Забыли пароль?
                 </Link>

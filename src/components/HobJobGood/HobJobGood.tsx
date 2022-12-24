@@ -21,7 +21,7 @@ const HobJobGood: React.FC = () => {
                         <p className="description__mb hobjob-good-text__description">
                             Покупая подписку на HobJob, вы помогаете детям с
                             заболеваниями, так как с каждой ежемесячной подписки
-                            мы отправляем 9 рублей в фонд{" "}
+                            мы отправляем 9₽ в фонд{" "}
                             <a href="https://www.dobryaki.ru/wards">
                                 «Клуб добряков»
                             </a>

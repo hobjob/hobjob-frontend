@@ -8,8 +8,8 @@ import {useTypedSelector} from "../hooks/useTypedSelector";
 import {fetchPaymentSubscribeById} from "../redux/actions/payment";
 
 import {
-    PaymentProgressbar,
-    PaymentSubscribeRegisterBlock,
+    // PaymentProgressbar,
+    // PaymentSubscribeRegisterBlock,
     Loader,
 } from "../components/";
 
@@ -61,7 +61,7 @@ const PaymentSubscribe: React.FC = () => {
                         <div className="container">
                             <div className="payment-wrapper">
                                 <div className="payment-form-wrapper">
-                                    <PaymentProgressbar number={1} />
+                                    {/* <PaymentProgressbar number={1} /> */}
 
                                     {payment.typeSubscribe ===
                                     "test-subscribe" ? (
@@ -79,7 +79,7 @@ const PaymentSubscribe: React.FC = () => {
                                 </div>
 
                                 <div className="payment-subscribe-block-wrapper">
-                                    <PaymentSubscribeRegisterBlock
+                                    {/* <PaymentSubscribeRegisterBlock
                                         isYearSubscribe={
                                             payment.nextTypeSubscribe ===
                                             "year-subscribe"
@@ -92,7 +92,7 @@ const PaymentSubscribe: React.FC = () => {
                                                 : false
                                         }
                                         typeSubscribe={payment.typeSubscribe}
-                                    />
+                                    /> */}
                                 </div>
                             </div>
                         </div>

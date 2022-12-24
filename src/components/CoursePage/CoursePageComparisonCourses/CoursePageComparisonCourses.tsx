@@ -102,7 +102,7 @@ const CoursePageComparisonCourses: React.FC = () => {
                                             strokeLinecap="round"
                                         />
                                     </svg>
-                                    Доступ ко всем курсам за 499 руб в месяц
+                                    Доступ ко всем курсам за 499₽ в месяц
                                 </p>
                                 <p className="course-page-comparison-courses-block-hobjob-item__description">
                                     <svg

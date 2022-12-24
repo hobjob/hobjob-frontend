@@ -18,11 +18,11 @@ let PasswordRecoveryEmailForm: React.FC<
     );
 
     return (
-        <form className="reglog-block" onSubmit={handleSubmit}>
-            <div className="reglog-block-title">
-                <h2 className="reglog-block__title">Восстановить пароль</h2>
+        <form className="reglog-form" onSubmit={handleSubmit}>
+            <div className="reglog-form-title">
+                <h2 className="reglog-form__title">Восстановить пароль</h2>
             </div>
-            <div className="input reglog-block-input">
+            <div className="input reglog-form-input">
                 <Field
                     component={RenderInput}
                     type="email"
@@ -32,11 +32,11 @@ let PasswordRecoveryEmailForm: React.FC<
             </div>
 
             {isSend ? (
-                <button className="btn reglog-block__btn disabled" disabled>
+                <button className="btn reglog-form__btn disabled" disabled>
                     <BtnLoader />
                 </button>
             ) : (
-                <button className="btn reglog-block__btn">
+                <button className="btn reglog-form__btn">
                     Восстановить пароль
                 </button>
             )}

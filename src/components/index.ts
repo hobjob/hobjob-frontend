@@ -14,11 +14,19 @@ export { default as Youtube } from "./All/Socials/Youtube"
 export { default as ReadDzen } from "./All/Socials/ReadDzen"
 export { default as ReadVk } from "./All/Socials/ReadVk"
 
+// Reglog
+// ReglogProgressbar
+export { default as ReglogProgressbar } from "./Reglog/ReglogProgressbar/ReglogProgressbar";
+// ReglogSubscribe
+export { default as ReglogSubscribeBlock } from "./Reglog/ReglogSubscribe/ReglogSubscribeBlock";
+// ReglogBuy
+export { default as ReglogBuyBlock } from "./Reglog/ReglogBuy/ReglogBuyBlock";
+
 // Login
 export {default as LoginForm} from "./Login/LoginForm";
 
 // Register
-export {default as RegisterForm} from "./Register/RegisterForm";
+export { default as RegisterForm } from "./Register/RegisterForm";
 
 // PasswordRecovery
 export {default as PasswordRecoveryEmailForm} from "./PasswordRecovery/PasswordRecoveryEmailForm";
@@ -67,6 +75,14 @@ export { default as CoursePageSkillsItem } from "./CoursePage/CoursePageSkills/C
 // CoursePageUseSkills
 export { default as CoursePageUseSkills } from "./CoursePage/CoursePageUseSkills/CoursePageUseSkills";
 export { default as CoursePageUseSkillsItem } from "./CoursePage/CoursePageUseSkills/CoursePageUseSkillsItem";
+// CoursePagePrice
+export { default as CoursePagePrice } from "./CoursePage/CoursePagePrice/CoursePagePrice";
+export { default as CoursePagePriceSubscribe } from "./CoursePage/CoursePagePrice/CoursePagePriceSubscribe";
+export { default as CoursePagePriceBuy } from "./CoursePage/CoursePagePrice/CoursePagePriceBuy";
+// CoursePagePriceSubscribeRates
+export { default as CoursePagePriceSubscribeRates } from "./CoursePage/CoursePagePrice/CoursePagePriceSubscribeRates/CoursePagePriceSubscribeRates";
+export { default as CoursePagePriceSubscribeRatesBlock } from "./CoursePage/CoursePagePrice/CoursePagePriceSubscribeRates/CoursePagePriceSubscribeRatesBlock";
+export { default as CoursePagePriceSubscribeRatesTimer } from "./CoursePage/CoursePagePrice/CoursePagePriceSubscribeRates/CoursePagePriceSubscribeRatesTimer";
 // CoursePageComparisonCourses
 export { default as CoursePageComparisonCourses } from "./CoursePage/CoursePageComparisonCourses/CoursePageComparisonCourses";
 // CoursePagePassing
@@ -119,9 +135,7 @@ export {default as ReferralsPartners} from "./Referrals/ReferralsPartners";
 export {default as ReferralsPartnersItem} from "./Referrals/ReferralsPartnersItem";
 
 // Payment
-export {default as PaymentProgressbar} from "./Payment/PaymentProgressbar";
 // PaymentSubscribe
-export {default as PaymentSubscribeRegisterBlock} from "./Payment/PaymentSubscribe/PaymentSubscribeRegisterBlock";
 export {default as PaymentSubscribeProlongation} from "./Payment/PaymentSubscribe/PaymentSubscribeProlongation";
 
 // Policy

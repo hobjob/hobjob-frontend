@@ -6,9 +6,10 @@ import {Navigate} from "react-router-dom";
 import {sendRegister} from "../redux/actions/register";
 
 import {
-    PaymentProgressbar,
-    PaymentSubscribeRegisterBlock,
+    ReglogProgressbar,
     RegisterForm,
+    ReglogSubscribeBlock,
+    ReglogBuyBlock,
 } from "../components/";
 
 const Register: React.FC = () => {
@@ -45,24 +46,20 @@ const Register: React.FC = () => {
                     <Helmet>
                         <title>Регистрация - HobJob</title>
                     </Helmet>
-                    <section className="payment">
+                    <section className="reglog">
                         <div className="container">
-                            <div className="payment-wrapper">
-                                <div className="payment-login-wrapper">
-                                    <PaymentProgressbar number={1} />
+                            <div className="reglog-wrapper space-between">
+                                <div className="reglog-form-wrapper">
+                                    <ReglogProgressbar number={1} />
 
                                     <RegisterForm
                                         onSubmit={onSubmit}
                                         loginLink="/go/login"
                                     />
                                 </div>
-
-                                <div className="payment-subscribe-block-wrapper">
-                                    <PaymentSubscribeRegisterBlock
-                                        setYearSubscribe={setYearSubscribe}
-                                        isYearSubscribe={isYearSubscribe}
-                                        isCheckbox={true}
-                                    />
+                                <div className="reglog-product-wrapper">
+                                    {/* <ReglogSubscribeBlock /> */}
+                                    <ReglogBuyBlock />
                                 </div>
                             </div>
                         </div>

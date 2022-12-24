@@ -48,7 +48,7 @@ const PasswordRecoveryNewPassword: React.FC = () => {
                                 />
                             </Link>
 
-                            <div className="reglog-block-wrapper">
+                            <div className="reglog-form-wrapper">
                                 {newPasswordStatus === "error" ? (
                                     <PasswordRecoveryNewPasswordError />
                                 ) : (

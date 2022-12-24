@@ -18,19 +18,19 @@ let RegisterForm: React.FC<
     const {isSend} = useTypedSelector(({register}) => register);
 
     return (
-        <form className="reglog-block" onSubmit={handleSubmit}>
-            <div className="reglog-block-title">
-                <h2 className="reglog-block__title">
+        <form className="reglog-form" onSubmit={handleSubmit}>
+            <div className="reglog-form-title">
+                <h2 className="reglog-form__title">
                     Зарегистрируйтесь в HobJob
                 </h2>
                 <Link
                     to={loginLink ? loginLink : "/go/login"}
-                    className="reglog-block__subtitle"
+                    className="reglog-form__subtitle"
                 >
                     Войти
                 </Link>
             </div>
-            <div className="input reglog-block-input">
+            <div className="input reglog-form-input">
                 <Field
                     component={RenderInput}
                     type="name"
@@ -38,7 +38,7 @@ let RegisterForm: React.FC<
                     label="Имя"
                 />
             </div>
-            <div className="input reglog-block-input">
+            <div className="input reglog-form-input">
                 <Field
                     component={RenderInput}
                     type="text"
@@ -46,7 +46,7 @@ let RegisterForm: React.FC<
                     label="Email"
                 />
             </div>
-            <div className="input reglog-block-input">
+            <div className="input reglog-form-input">
                 <Field
                     component={RenderInput}
                     type="password"
@@ -55,15 +55,15 @@ let RegisterForm: React.FC<
                 />
             </div>
             {isSend ? (
-                <button className="btn reglog-block__btn disabled" disabled>
+                <button className="btn reglog-form__btn disabled" disabled>
                     <BtnLoader />
                 </button>
             ) : (
-                <button className="btn reglog-block__btn">
+                <button className="btn reglog-form__btn">
                     Зарегистрироваться
                 </button>
             )}
-            <span className="reglog-block__policy">
+            <span className="reglog-form__policy">
                 Нажимая на кнопку, я соглашаюсь на обработку{" "}
                 <a href="/policy">персональных данных</a> и с{" "}
                 <a href="/regulations">правилами пользования Платформой</a>
