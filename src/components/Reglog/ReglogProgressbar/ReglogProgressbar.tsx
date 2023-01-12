@@ -14,7 +14,7 @@ const ReglogProgressbar: React.FC<ReglogProgressbarProps> = ({number}) => {
             >
                 <span className="reglog-progressbar-item__number">1</span>
                 <span className="reglog-progressbar-item__title">
-                    Оформление подписки
+                    Регистрация
                 </span>
             </div>
             <div className="reglog-progressbar-line"></div>

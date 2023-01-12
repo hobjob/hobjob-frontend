@@ -4,23 +4,29 @@ import {Link} from "react-router-dom";
 import {Image} from "../../../models/IImage";
 
 interface CoursePagePriceBuyProps {
-    title: string;
+    _id: string;
     image: Image;
 }
 
 const CoursePagePriceBuy: React.FC<CoursePagePriceBuyProps> = ({
+    _id,
     image,
-    title,
 }) => {
     return (
         <div className="course-page-price-blocks-buy">
             <div className="course-page-price-blocks-buy-text">
                 <p className="course-page-price-blocks-buy-text__subprice">
-                    Курс <span>«{title}»</span>
+                    Курс навсегда
                 </p>
-                <h3 className="course-page-price-blocks-buy-text__price">
-                    990₽ <span>навсегда</span>
-                </h3>
+                <div className="course-page-price-blocks-buy-text-price">
+                    <h3 className="course-page-price-blocks-buy-text-price__title">
+                        990₽
+                        <span>1980₽</span>
+                    </h3>
+                    <p className="course-page-price-blocks-buy-text-price__sale">
+                        -50%
+                    </p>
+                </div>
                 <div className="course-page-price-blocks-buy-text-list">
                     <p className="course-page-price-blocks-buy-text-list__item">
                         <svg
@@ -71,7 +77,7 @@ const CoursePagePriceBuy: React.FC<CoursePagePriceBuyProps> = ({
                 </div>
 
                 <Link
-                    to="/"
+                    to={`/go/register?course=${_id}`}
                     className="btn course-page-price-blocks-buy-text__btn"
                 >
                     Купить курс

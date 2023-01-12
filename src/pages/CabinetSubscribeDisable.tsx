@@ -7,7 +7,7 @@ import {useTypedSelector} from "../hooks/useTypedSelector";
 
 import {fetchUpdateUser} from "../redux/actions/user";
 
-import {checkDeclension} from "../Functions/checkDeclension";
+import {checkDeclension} from "../functions/checkDeclension";
 
 const CabinetSubscribeDisable: React.FC = () => {
     const history = useNavigate();
@@ -33,7 +33,7 @@ const CabinetSubscribeDisable: React.FC = () => {
     }, [isLoadedUserInfo]);
 
     const changeAutoPayment = () => {
-        dispatch(fetchUpdateUser({autoPayment: !payment.auto}));
+        // dispatch(fetchUpdateUser({autoPayment: !payment.auto}));
 
         history("/go/cabinet#subscribe");
     };

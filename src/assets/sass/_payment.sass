@@ -22,67 +22,6 @@
 		align-items: center
 		justify-content: center
 
-
-	&-subscribe-checkbox-block
-		cursor: pointer
-		display: inline-flex
-
-		padding: 15px 20px
-		margin-bottom: 15px
-
-		background-color: $white
-
-		+borderRadiusBlock
-
-		&-text
-			&__title
-				white-space: nowrap
-				font-size: 18px
-				user-select: none
-
-			&__subtitle
-				white-space: nowrap
-				font-size: 18px
-				color: $mainColor
-				user-select: none
-
-	&-subscribe-checkbox
-		position: relative
-
-		width: 50px
-		height: 25px
-
-		margin: 0 15px
-
-		background-color: $backgroundGray
-		border-radius: 100px
-
-		+transition
-
-		&::before
-			top: 50%
-			left: 3px
-
-			transform: translateY(-50%)
-
-			content: ""
-			position: absolute
-			display: block
-
-			width: 20px
-			height: 20px
-			border-radius: 50%
-			background-color: $white
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2)
-
-			+transition
-
-		&.active
-			background-color: $mainColor
-
-		&.active::before
-			left: calc( 100% - 23px )
-
 	&-subscribe-block-prolongation-wrapper
 		display: flex
 		justify-content: center

@@ -17,7 +17,7 @@ const CabinetUserSubscribeInfo: React.FC = () => {
     } = useTypedSelector(({user}) => user);
 
     const changeAutoPayment = () => {
-        dispatch(fetchUpdateUser({autoPayment: !payment.auto}));
+        // dispatch(fetchUpdateUser({autoPayment: !payment.auto}));
     };
 
     const changeNextTypeSubscribe = (value: string) => {
@@ -79,7 +79,7 @@ const CabinetUserSubscribeInfo: React.FC = () => {
                     Отменить подписку
                 </h4>
                 <p className="cabinet-block-subscribe-info-item__description">
-                    {payment.auto ? (
+                    {/* {payment.auto ? (
                         <Link
                             to="/go/cabinet/subscribe/disable"
                             className="btn-small-round-gray"
@@ -93,7 +93,7 @@ const CabinetUserSubscribeInfo: React.FC = () => {
                         >
                             Включить
                         </button>
-                    )}
+                    )} */}
                 </p>
             </div>
         </div>

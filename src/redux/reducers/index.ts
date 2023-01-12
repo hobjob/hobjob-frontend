@@ -10,7 +10,8 @@ import login from './login';
 import password_recovery from './password_recovery';
 import user from './user';
 // import passing from './passing';
-import payment from './payment';
+import paymentSubscribe from './payment/paymentSubscribe';
+import paymentCourse from './payment/paymentCourse';
 
 export const rootReducer = combineReducers({
 	courses,
@@ -22,7 +23,8 @@ export const rootReducer = combineReducers({
 	password_recovery,
 	user,
 	// passing,
-	payment,
+	paymentSubscribe,
+	paymentCourse,
 	form: formReducer
 })
 

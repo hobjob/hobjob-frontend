@@ -1,4 +1,4 @@
-import { Image } from "./IImage";
+import { Image } from "../IImage";
 
 export interface UserReferral {
 	name: string;

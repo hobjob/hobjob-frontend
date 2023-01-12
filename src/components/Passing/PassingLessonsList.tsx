@@ -2,7 +2,7 @@ import React from "react";
 
 import {PassingLessonsListItem} from "../";
 
-import {CoursePassingLesson} from "../../models/ICoursePassing";
+import {CoursePassingLesson} from "../../models/Course/ICoursePassing";
 
 interface PassingCoursesListProps {
     title: string;

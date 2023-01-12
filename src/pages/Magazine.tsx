@@ -120,13 +120,6 @@ const Magazine: React.FC = () => {
                             <>
                                 <h2 className="title magazine__title">
                                     Журнал
-                                    <span>
-                                        (
-                                        {isLoadedAllPostsFirst
-                                            ? totalCount
-                                            : "-"}
-                                        )
-                                    </span>
                                 </h2>
 
                                 <MagazineFiltersCategories />

@@ -5,9 +5,11 @@ import {Link} from "react-router-dom";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 
 import {fetchCoursesSection} from "../../redux/actions/courses";
-import {addUserCourse, hiddenUserCourse} from "../../redux/actions/user";
+import {addUserCourse} from "../../redux/actions/user";
 
 import {ShopBlock, Loader} from "../";
+
+import {checkIsAddCourse} from "../../functions/checkIsAddCourse";
 
 interface ShopSectionProps {
     title: string;
@@ -19,7 +21,7 @@ const ShopSection: React.FC<ShopSectionProps> = ({title, description, url}) => {
     const dispatch = useDispatch();
 
     const {userInfo, isLoadedUserInfo} = useTypedSelector(({user}) => user);
-    const {itemsSection, isLoadedSectionCourses} = useTypedSelector(
+    const {coursesSection, isLoadedSectionCourses} = useTypedSelector(
         ({courses}) => courses
     );
 
@@ -45,16 +47,12 @@ const ShopSection: React.FC<ShopSectionProps> = ({title, description, url}) => {
         dispatch(addUserCourse(_id));
     };
 
-    const onClickHiddenCourse = (_id: string) => {
-        dispatch(hiddenUserCourse(_id));
-    };
-
     return (
         <>
             {isLoadedSectionCourses &&
             isLoadedMasters &&
             isLoadedAllCategories ? (
-                Object.keys(itemsSection).length ? (
+                coursesSection.length ? (
                     <section className="shop-section">
                         <div className="container">
                             <div className="shop-section-wrapper">
@@ -64,38 +62,26 @@ const ShopSection: React.FC<ShopSectionProps> = ({title, description, url}) => {
                                 <p className="description shop-section__description">
                                     {description}
                                 </p>
+
                                 <div className="shop-section-block-wrapper">
-                                    {Object.keys(itemsSection)
-                                        .map((key, index) => (
+                                    {coursesSection
+                                        .map((course, index) => (
                                             <ShopBlock
-                                                {...itemsSection[key]}
+                                                {...course}
                                                 key={`shop-section-block-${index}`}
                                                 master={
-                                                    masters[
-                                                        itemsSection[key]
-                                                            .masterId
-                                                    ]
+                                                    masters[course.masterId]
                                                 }
                                                 categoryItem={
-                                                    categories[
-                                                        itemsSection[key]
-                                                            .category
-                                                    ]
+                                                    categories[course.category]
                                                 }
                                                 onClickAddCourse={
                                                     onClickAddCourse
                                                 }
-                                                onClickHiddenCourse={
-                                                    onClickHiddenCourse
-                                                }
-                                                isAdd={
-                                                    userInfo.courses &&
-                                                    userInfo.courses[
-                                                        itemsSection[key]._id
-                                                    ]
-                                                        ? true
-                                                        : false
-                                                }
+                                                isAdd={checkIsAddCourse(
+                                                    userInfo.courses,
+                                                    course._id
+                                                )}
                                                 isLogin={
                                                     localStorage.getItem(
                                                         "accessToken"

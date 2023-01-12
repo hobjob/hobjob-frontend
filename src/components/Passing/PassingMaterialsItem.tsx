@@ -1,6 +1,6 @@
 import React from "react";
 
-import {CoursePassingLessonMaterial} from "../../models/ICoursePassing";
+import {CoursePassingLessonMaterial} from "../../models/Course/ICoursePassing";
 
 interface PassingMaterialsItemProps extends CoursePassingLessonMaterial {
     downloadFile: (title: string, index: number) => void;

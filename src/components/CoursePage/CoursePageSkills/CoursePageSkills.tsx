@@ -2,7 +2,7 @@ import React from "react";
 
 import {CoursePageSkillsItem} from "../../";
 
-import {CourseGoodSkill} from "../../../models/ICourseGood";
+import {CourseGoodSkill} from "../../../models/Course/ICourseGood";
 
 interface CoursePageSkillsProps {
     skills: CourseGoodSkill[];

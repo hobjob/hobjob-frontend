@@ -1,9 +1,10 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
-import {Navigate} from "react-router-dom";
+import {Navigate, useSearchParams} from "react-router-dom";
 
 import {sendRegister} from "../redux/actions/register";
+import {fetchCourseById} from "../redux/actions/courses";
 
 import {
     ReglogProgressbar,
@@ -11,33 +12,46 @@ import {
     ReglogSubscribeBlock,
     ReglogBuyBlock,
 } from "../components/";
+import {rates} from "../subscribeRates";
 
 const Register: React.FC = () => {
     const dispatch = useDispatch();
 
-    const [isYearSubscribe, setIsYearSubscribe] = React.useState(false);
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const courseId = searchParams.get("course");
+
+    const typeSubscribe =
+        searchParams.get("typeSubscribe") === "month" ||
+        searchParams.get("typeSubscribe") === "year" ||
+        searchParams.get("typeSubscribe") === "twoYears"
+            ? searchParams.get("typeSubscribe")
+            : null;
 
     const onSubmit = ({email, name, password}: any) => {
+        const paymentInfo = courseId
+            ? `buy.${courseId}`
+            : `subscribe.${typeSubscribe}`;
+
         return dispatch(
             sendRegister(
                 {
                     email,
                     name,
                     password,
-                    nextTypeSubscribe: isYearSubscribe
-                        ? "year-subscribe"
-                        : "month-subscribe",
+                    paymentInfo,
                 },
                 localStorage.getItem("ref")
                     ? JSON.parse(localStorage.getItem("ref") as string)
-                    : ""
+                    : "",
+                paymentInfo.split(".")[0]
             )
         );
     };
 
-    const setYearSubscribe = () => {
-        setIsYearSubscribe(!isYearSubscribe);
-    };
+    React.useEffect(() => {
+        if (courseId) dispatch(fetchCourseById(courseId ? courseId : ""));
+    }, []);
 
     return (
         <>
@@ -48,7 +62,13 @@ const Register: React.FC = () => {
                     </Helmet>
                     <section className="reglog">
                         <div className="container">
-                            <div className="reglog-wrapper space-between">
+                            <div
+                                className={`reglog-wrapper ${
+                                    courseId || typeSubscribe
+                                        ? "space-between"
+                                        : "center"
+                                } `}
+                            >
                                 <div className="reglog-form-wrapper">
                                     <ReglogProgressbar number={1} />
 
@@ -58,8 +78,13 @@ const Register: React.FC = () => {
                                     />
                                 </div>
                                 <div className="reglog-product-wrapper">
-                                    {/* <ReglogSubscribeBlock /> */}
-                                    <ReglogBuyBlock />
+                                    {courseId ? (
+                                        <ReglogBuyBlock />
+                                    ) : typeSubscribe ? (
+                                        <ReglogSubscribeBlock
+                                            {...rates[typeSubscribe]}
+                                        />
+                                    ) : null}
                                 </div>
                             </div>
                         </div>

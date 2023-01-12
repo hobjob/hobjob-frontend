@@ -30,6 +30,7 @@ let RegisterForm: React.FC<
                     Войти
                 </Link>
             </div>
+
             <div className="input reglog-form-input">
                 <Field
                     component={RenderInput}
@@ -38,6 +39,7 @@ let RegisterForm: React.FC<
                     label="Имя"
                 />
             </div>
+
             <div className="input reglog-form-input">
                 <Field
                     component={RenderInput}
@@ -46,6 +48,7 @@ let RegisterForm: React.FC<
                     label="Email"
                 />
             </div>
+
             <div className="input reglog-form-input">
                 <Field
                     component={RenderInput}
@@ -54,6 +57,7 @@ let RegisterForm: React.FC<
                     label="Пароль"
                 />
             </div>
+
             {isSend ? (
                 <button className="btn reglog-form__btn disabled" disabled>
                     <BtnLoader />
@@ -65,8 +69,8 @@ let RegisterForm: React.FC<
             )}
             <span className="reglog-form__policy">
                 Нажимая на кнопку, я соглашаюсь на обработку{" "}
-                <a href="/policy">персональных данных</a> и с{" "}
-                <a href="/regulations">правилами пользования Платформой</a>
+                <a href="/policy">персональных данных</a> и{" "}
+                <a href="/public-offer">публичной офертой</a>
             </span>
         </form>
     );

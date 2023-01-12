@@ -8,7 +8,7 @@ import {
 } from "../../";
 
 const CoursePagePrice: React.FC = () => {
-    const {itemByUrl} = useTypedSelector(({courses}) => courses);
+    const {courseByUrl} = useTypedSelector(({courses}) => courses);
 
     const [visibleSubscribeRates, setVisibleSubscribeRates] =
         React.useState<boolean>(false);
@@ -63,7 +63,7 @@ const CoursePagePrice: React.FC = () => {
                                 openSubscribeRates={openSubscribeRates}
                             />
 
-                            <CoursePagePriceBuy {...itemByUrl} />
+                            <CoursePagePriceBuy {...courseByUrl} />
                         </div>
                     )}
                 </div>

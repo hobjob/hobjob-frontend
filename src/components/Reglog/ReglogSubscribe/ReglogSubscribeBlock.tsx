@@ -1,20 +1,25 @@
 import React from "react";
 
+import {Rate} from "../../../models/IRate";
+
 import ReglogSubscribeBlockImage from "../../../assets/images/reglog-subscribe-block-image.jpg";
 
-const ReglogSubscribeBlock: React.FC = () => {
+const ReglogSubscribeBlock: React.FC<Rate> = ({subtitle, title}) => {
     return (
-        <div className="reglog-subscribe-block">
-            <div className="reglog-subscribe-block-text">
-                <h2 className="reglog-subscribe-block-text__title">
-                    Месячная подписка
+        <div className="reglog-product-subscribe-block">
+            <div className="reglog-product-subscribe-block-text">
+                <p className="reglog-product-subscribe-block-text__subtitle">
+                    {subtitle}
+                </p>
+                <h2 className="reglog-product-subscribe-block-text__title">
+                    {title}
                 </h2>
-                <span className="reglog-subscribe-block-text__subtitle">
+                {/* <span className="reglog-product-subscribe-block-text__subtitle">
                     499₽ / мес.
-                </span>
+                </span> */}
 
-                <div className="reglog-subscribe-block-text-list">
-                    <p className="reglog-subscribe-block-text-list__item">
+                <div className="reglog-product-subscribe-block-text-list">
+                    <p className="reglog-product-subscribe-block-text-list__item">
                         <svg
                             width="17"
                             height="15"
@@ -37,7 +42,7 @@ const ReglogSubscribeBlock: React.FC = () => {
                         </svg>
                         Доступ ко всем курсам сообщества
                     </p>
-                    <p className="reglog-subscribe-block-text-list__item">
+                    <p className="reglog-product-subscribe-block-text-list__item">
                         <svg
                             width="17"
                             height="15"
@@ -60,7 +65,7 @@ const ReglogSubscribeBlock: React.FC = () => {
                         </svg>
                         Скачать дополнительные материалы курсов
                     </p>
-                    <p className="reglog-subscribe-block-text-list__item">
+                    <p className="reglog-product-subscribe-block-text-list__item">
                         <svg
                             width="17"
                             height="15"
@@ -85,7 +90,7 @@ const ReglogSubscribeBlock: React.FC = () => {
                     </p>
                     <a
                         href="https://www.dobryaki.ru/wards"
-                        className="reglog-subscribe-block-text-list-hobjob-good"
+                        className="reglog-product-subscribe-block-text-list-hobjob-good"
                     >
                         <svg
                             width="17"
@@ -107,13 +112,13 @@ const ReglogSubscribeBlock: React.FC = () => {
                                 strokeLinecap="round"
                             />
                         </svg>
-                        <div className="reglog-subscribe-block-text-list-hobjob-good-text">
+                        <div className="reglog-product-subscribe-block-text-list-hobjob-good-text">
                             <img
                                 src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/hobjob-good.svg`}
                                 alt=""
-                                className="reglog-subscribe-block-text-list-hobjob-good-text__logo"
+                                className="reglog-product-subscribe-block-text-list-hobjob-good-text__logo"
                             />
-                            <p className="reglog-subscribe-block-text-list-hobjob-good-text__text">
+                            <p className="reglog-product-subscribe-block-text-list-hobjob-good-text__text">
                                 Обучаясь, вы помогаете детям
                             </p>
                         </div>
@@ -121,11 +126,11 @@ const ReglogSubscribeBlock: React.FC = () => {
                 </div>
             </div>
 
-            <div className="reglog-subscribe-block-image">
+            <div className="reglog-product-subscribe-block-image">
                 <img
                     src={ReglogSubscribeBlockImage}
                     alt=""
-                    className="reglog-subscribe-block-image__image"
+                    className="reglog-product-subscribe-block-image__image"
                 />
             </div>
         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {CoursePassingLesson} from "../../models/ICoursePassing";
+import {CoursePassingLesson} from "../../models/Course/ICoursePassing";
 
 interface PassingLessonsListItemProps extends CoursePassingLesson {
     active: boolean;

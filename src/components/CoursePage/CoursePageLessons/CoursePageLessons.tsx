@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 import {CoursePageLessonsVideo, CoursePageLessonsItem} from "../../";
 
-import {CourseGoodLessons} from "../../../models/ICourseGood";
+import {CourseGoodLessons} from "../../../models/Course/ICourseGood";
 
 interface CoursePageLessonsProps {
     lessons: CourseGoodLessons[];

@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {CourseGoodLessons} from "../../../models/ICourseGood";
+import {CourseGoodLessons} from "../../../models/Course/ICourseGood";
 
 interface CoursePageLessonsItemProps extends CourseGoodLessons {
     num: number;

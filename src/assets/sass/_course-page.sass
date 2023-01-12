@@ -426,7 +426,7 @@
 
 			+borderRadiusBlock
 			+openPopup
-			
+
 			&.close
 				+closePopup
 
@@ -510,6 +510,7 @@
 						width: 100%
 
 			&-buy
+				position: relative
 				width: 49%
 				background-color: $white
 
@@ -522,18 +523,38 @@
 						font-size: 24px
 						margin-bottom: 10px
 
-						& > span
+					&-price
+						display: flex
+						align-items: flex-end
+
+						&__title
+							font-size: 54px
+
+							& > span
+								font-size: 32px
+								text-decoration: line-through
+								margin-left: 15px
+								color: $gray
+
+						&__sale
+							display: flex
+							justify-content: center
+							align-items: center
+
+							position: absolute
+							right: 20px
+							top: 20px
+
+							width: 70px
+							height: 70px
+
 							font-size: 21px
-							color: $gray
-
-					&__price
-						font-size: 54px
-
-						& > span
-							font-size: 28px
+							color: $white
+							background-color: $mainColor
+							border-radius: 50%
 
 					&-list
-						margin-top: 25px
+						margin-top: 15px
 
 						&__item
 							display: flex

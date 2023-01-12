@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {CourseGood} from "../../models/ICourseGood";
+import {CourseGood} from "../../models/Course/ICourseGood";
 import {Master} from "../../models/IMaster";
 import {Category} from "../../models/ICategory";
 
@@ -13,7 +13,6 @@ interface ShopBlockProps extends CourseGood {
     isLogin: boolean;
 
     onClickAddCourse: (_id: string) => void;
-    onClickHiddenCourse: (_id: string) => void;
 }
 
 const ShopBlock: React.FC<ShopBlockProps> = ({
@@ -24,12 +23,10 @@ const ShopBlock: React.FC<ShopBlockProps> = ({
     master,
     categoryItem,
     HobJobProduction,
-    description,
     isAdd,
     isLogin,
 
     onClickAddCourse,
-    onClickHiddenCourse,
 }) => {
     return (
         <div className="shop-block">
@@ -90,11 +87,8 @@ const ShopBlock: React.FC<ShopBlockProps> = ({
             <div className="shop-block-bottom">
                 {isLogin ? (
                     isAdd ? (
-                        <button
-                            className="btn shop-block-bottom__link delete"
-                            onClick={() => onClickHiddenCourse(_id)}
-                        >
-                            Удалить
+                        <button className="btn disabled shop-block-bottom__link">
+                            Добавлен
                         </button>
                     ) : (
                         <button

@@ -150,16 +150,6 @@ const Footer: React.FC = () => {
                         </div>
                         <div className="footer-block-subinfo-block">
                             <NavLink
-                                to="/regulations"
-                                className={({isActive}) =>
-                                    `footer-block-subinfo-block__link ${
-                                        isActive ? "active" : ""
-                                    }`
-                                }
-                            >
-                                Правила пользования Платформой
-                            </NavLink>
-                            <NavLink
                                 to="/policy"
                                 className={({isActive}) =>
                                     `footer-block-subinfo-block__link ${

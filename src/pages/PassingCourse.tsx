@@ -6,8 +6,6 @@ import {animateScroll as scroll} from "react-scroll";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
-import {fetchUserCourses} from "../redux/actions/user";
-
 import {fetchPassingCourseLessonMaterial} from "../redux/actions/passing";
 
 import {
@@ -26,7 +24,7 @@ const PassingCourse: React.FC = () => {
     const courseId = id ? id : "";
     const lessonNum = num ? parseInt(num) : 1;
 
-    const {courses, isLoadedUserCourses, isLoadedUserInfo} = useTypedSelector(
+    const {isLoadedUserInfo} = useTypedSelector(
         ({user}) => user
     );
 
@@ -39,10 +37,10 @@ const PassingCourse: React.FC = () => {
     React.useEffect(() => {
         scroll.scrollToTop({duration: 500});
 
-        if (!Object.keys(courses).length && isLoadedUserInfo) {
-            dispatch(fetchUserCourses());
-        }
-    }, [courseId, lessonNum, isLoadedUserCourses, isLoadedUserInfo]);
+        // if (!Object.keys(courses).length && isLoadedUserInfo) {
+        //     dispatch(fetchUserCourses());
+        // }
+    }, [courseId, lessonNum,isLoadedUserInfo]);
 
     const downloadFile = (title: string, index: number) => {
         dispatch(
@@ -52,7 +50,7 @@ const PassingCourse: React.FC = () => {
 
     return (
         <>
-            {localStorage.getItem("accessToken") ? (
+            {/* {localStorage.getItem("accessToken") ? (
                 isLoadedUserCourses && isLoadedUserInfo && isLoadedMasters ? (
                     Object.keys(courses).length &&
                     courses[courseId] &&
@@ -148,7 +146,7 @@ const PassingCourse: React.FC = () => {
                 )
             ) : (
                 <Navigate to="/go/login" />
-            )}
+            )} */}
         </>
     );
 };

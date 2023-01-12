@@ -1,31 +1,35 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {CoursePassing} from "../../models/ICoursePassing";
-import {Master} from "../../models/IMaster";
+import {UserInfoCourseBuy} from "../../../models/User/IUserInfo";
+import {Master} from "../../../models/IMaster";
 
-interface TrainingBlockProps extends CoursePassing {
-    completedLessonsTitle: string;
+interface TrainingBlockProps extends UserInfoCourseBuy {
+    completedLessonsTitle1: string;
+    completedLessonsTitle2: string;
     master: Master;
 
     onClickHiddenUserCourse: (_id: string) => void;
 }
 
 const TrainingBlock: React.FC<TrainingBlockProps> = ({
-    _id,
+    courseId,
     image,
     title,
-    lessons,
-    completedLessonsTitle,
+    totalLessons,
+    completedLessonsTitle1,
+    completedLessonsTitle2,
     master,
-    onClickHiddenUserCourse,
 }) => {
     return (
-        <div className="training-block">
-            <Link to={`/go/passing/${_id}/1`} className="training-block-left">
-                <div className="training-block-cover">
-                    <div className="training-block-cover-placeholder"></div>
-                    <div className="training-block-cover-icon">
+        <div className="training-section-block">
+            <Link
+                to={`/go/passing/${courseId}/1`}
+                className="training-section-block-left"
+            >
+                <div className="training-section-block-cover">
+                    <div className="training-section-block-cover-placeholder"></div>
+                    <div className="training-section-block-cover-icon">
                         <svg
                             width="50"
                             height="50"
@@ -41,35 +45,31 @@ const TrainingBlock: React.FC<TrainingBlockProps> = ({
                         </svg>
                     </div>
                     <div
-                        className="training-block-cover-img"
+                        className="training-section-block-cover-img"
                         style={{
                             backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_768}")`,
                         }}
                     ></div>
                 </div>
-                <div className="training-block-text">
-                    <div className="training-block-text-top">
-                        <h3 className="training-block-text__title">{title}</h3>
-                        <p className="subtitle training-block-text__subtitle">
-                            Пройдено {completedLessonsTitle} из {lessons.length}
+                <div className="training-section-block-text">
+                    <div className="training-section-block-text-top">
+                        <h3 className="training-section-block-text__title">
+                            {title}
+                        </h3>
+                        <p className="subtitle training-section-block-text__subtitle">
+                            {completedLessonsTitle1} {completedLessonsTitle2} из{" "}
+                            {totalLessons}
                         </p>
                     </div>
-                    <div className="training-block-text-bottom">
+                    <div className="training-section-block-text-bottom">
                         {master ? (
-                            <p className="training-block-text__auth">
+                            <p className="training-section-block-text__auth">
                                 {master.name} {master.surname}
                             </p>
                         ) : null}
                     </div>
                 </div>
             </Link>
-
-            <span
-                className="training-block__hidden"
-                onClick={() => onClickHiddenUserCourse(_id)}
-            >
-                Удалить
-            </span>
         </div>
     );
 };

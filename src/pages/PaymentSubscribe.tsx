@@ -5,13 +5,10 @@ import {useParams} from "react-router-dom";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
-import {fetchPaymentSubscribeById} from "../redux/actions/payment";
+import {fetchPaymentSubscribeById} from "../redux/actions/payment/paymentSubscribe";
 
-import {
-    // PaymentProgressbar,
-    // PaymentSubscribeRegisterBlock,
-    Loader,
-} from "../components/";
+import {ReglogProgressbar, ReglogSubscribeBlock, Loader} from "../components/";
+import {rates} from "../subscribeRates";
 
 interface PaymentSubscribe {}
 
@@ -19,7 +16,9 @@ const PaymentSubscribe: React.FC = () => {
     const dispatch = useDispatch();
     const {number} = useParams();
 
-    const {payment, isLoaded} = useTypedSelector(({payment}) => payment);
+    const {payment, isLoaded} = useTypedSelector(
+        ({paymentSubscribe}) => paymentSubscribe
+    );
 
     React.useEffect(() => {
         dispatch(fetchPaymentSubscribeById(number ? number : ""));
@@ -43,7 +42,7 @@ const PaymentSubscribe: React.FC = () => {
                     },
                 });
 
-                checkout.render("payment-form");
+                checkout.render("reglog-payment-form");
             } else {
                 window.location.href = "/";
             }
@@ -57,42 +56,22 @@ const PaymentSubscribe: React.FC = () => {
                     <Helmet>
                         <title>Оформление подписки - HobJob</title>
                     </Helmet>
-                    <section className="payment">
+                    <section className="reglog">
                         <div className="container">
-                            <div className="payment-wrapper">
-                                <div className="payment-form-wrapper">
-                                    {/* <PaymentProgressbar number={1} /> */}
-
-                                    {payment.typeSubscribe ===
-                                    "test-subscribe" ? (
-                                        <p className="payment-form__description">
-                                            Мы спишем 1₽ и вернём его обратно,
-                                            чтобы подтвердить, что вы настоящий
-                                            человек
-                                        </p>
-                                    ) : null}
+                            <div className="reglog-wrapper">
+                                <div className="reglog-form-wrapper">
+                                    <ReglogProgressbar number={1} />
 
                                     <div
-                                        className="payment-form"
-                                        id="payment-form"
+                                        className="reglog-payment-form"
+                                        id="reglog-payment-form"
                                     ></div>
                                 </div>
 
-                                <div className="payment-subscribe-block-wrapper">
-                                    {/* <PaymentSubscribeRegisterBlock
-                                        isYearSubscribe={
-                                            payment.nextTypeSubscribe ===
-                                            "year-subscribe"
-                                                ? true
-                                                : false
-                                        }
-                                        isPrologation={
-                                            payment.nextTypeSubscribe === ""
-                                                ? true
-                                                : false
-                                        }
-                                        typeSubscribe={payment.typeSubscribe}
-                                    /> */}
+                                <div className="reglog-product-wrapper">
+                                    <ReglogSubscribeBlock
+                                        {...rates[payment.typeSubscribe]}
+                                    />
                                 </div>
                             </div>
                         </div>

@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {Link as LinkScroll} from "react-scroll";
 
-import {CourseGood} from "../../../models/ICourseGood";
+import {CourseGood} from "../../../models/Course/ICourseGood";
 import {Category} from "../../../models/ICategory";
 import {Master} from "../../../models/IMaster";
 

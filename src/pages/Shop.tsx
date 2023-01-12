@@ -5,7 +5,6 @@ import {
     useSearchParams,
 } from "react-router-dom";
 import {useDispatch} from "react-redux";
-import queryString from "query-string";
 import {Helmet} from "react-helmet";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
@@ -16,7 +15,7 @@ import {
     setLoadedCourseByUrl,
     setCoursesFilters,
 } from "../redux/actions/courses";
-import {addUserCourse, hiddenUserCourse} from "../redux/actions/user";
+import {addUserCourse} from "../redux/actions/user";
 
 import {
     ShopFiltersTop,
@@ -29,6 +28,8 @@ import {
 import {Master} from "../models/IMaster";
 import {Category} from "../models/ICategory";
 
+import {checkIsAddCourse} from "../functions/checkIsAddCourse";
+
 const Shop: React.FC = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -36,7 +37,7 @@ const Shop: React.FC = () => {
     const [query] = useSearchParams();
 
     const {
-        items,
+        courses,
         totalCount,
         page,
         isLoadedAllCoursesFirst,
@@ -144,10 +145,6 @@ const Shop: React.FC = () => {
         dispatch(addUserCourse(_id));
     };
 
-    const onClickHiddenCourse = (_id: string) => {
-        dispatch(hiddenUserCourse(_id));
-    };
-
     return (
         <>
             <Helmet>
@@ -159,16 +156,7 @@ const Shop: React.FC = () => {
                     <div className="shop-wrapper">
                         {isLoadedMasters && isLoadedAllCategories ? (
                             <>
-                                <h2 className="title shop__title">
-                                    Курсы
-                                    <span>
-                                        (
-                                        {isLoadedAllCoursesFirst
-                                            ? totalCount
-                                            : "-"}
-                                        )
-                                    </span>
-                                </h2>
+                                <h2 className="title shop__title">Курсы</h2>
 
                                 <p className="description shop__description">
                                     Новые курсы добавляются каждый месяц
@@ -178,49 +166,46 @@ const Shop: React.FC = () => {
                                 <ShopFiltersCategories />
 
                                 {isLoadedAllCoursesFirst ? (
-                                    items.length ? (
+                                    courses.length ? (
                                         <>
                                             <div className="shop-block-wrapper">
-                                                {items.map((item, index) => (
-                                                    <ShopBlock
-                                                        {...item}
-                                                        key={`shop-block-${index}`}
-                                                        master={
-                                                            masters[
-                                                                item.masterId
-                                                            ]
-                                                        }
-                                                        categoryItem={
-                                                            categories[
-                                                                item.category
-                                                            ]
-                                                        }
-                                                        onClickAddCourse={
-                                                            onClickAddCourse
-                                                        }
-                                                        onClickHiddenCourse={
-                                                            onClickHiddenCourse
-                                                        }
-                                                        isAdd={
-                                                            userInfo.courses &&
-                                                            userInfo.courses[
-                                                                item._id
-                                                            ]
-                                                                ? true
-                                                                : false
-                                                        }
-                                                        isLogin={
-                                                            localStorage.getItem(
-                                                                "accessToken"
-                                                            ) &&
-                                                            isLoadedUserInfo
-                                                                ? true
-                                                                : false
-                                                        }
-                                                    />
-                                                ))}
+                                                {courses.map(
+                                                    (course, index) => (
+                                                        <ShopBlock
+                                                            {...course}
+                                                            key={`shop-block-${index}`}
+                                                            master={
+                                                                masters[
+                                                                    course
+                                                                        .masterId
+                                                                ]
+                                                            }
+                                                            categoryItem={
+                                                                categories[
+                                                                    course
+                                                                        .category
+                                                                ]
+                                                            }
+                                                            onClickAddCourse={
+                                                                onClickAddCourse
+                                                            }
+                                                            isAdd={checkIsAddCourse(
+                                                                userInfo.courses,
+                                                                course._id
+                                                            )}
+                                                            isLogin={
+                                                                localStorage.getItem(
+                                                                    "accessToken"
+                                                                ) &&
+                                                                isLoadedUserInfo
+                                                                    ? true
+                                                                    : false
+                                                            }
+                                                        />
+                                                    )
+                                                )}
                                             </div>
-                                            {items.length >=
+                                            {courses.length >=
                                             totalCount ? null : (
                                                 <div className="shop-btn-pagination">
                                                     <button

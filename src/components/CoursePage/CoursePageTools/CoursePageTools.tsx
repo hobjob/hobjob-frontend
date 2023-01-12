@@ -1,6 +1,6 @@
 import React from "react";
 
-import {CourseGoodTool} from "../../../models/ICourseGood";
+import {CourseGoodTool} from "../../../models/Course/ICourseGood";
 
 interface CoursePageToolsProps {
     tools: CourseGoodTool[];

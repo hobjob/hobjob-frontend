@@ -6,7 +6,7 @@ import {useParams, Link, Navigate} from "react-router-dom";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
 import {fetchMasterById} from "../redux/actions/masters";
-import {addUserCourse, hiddenUserCourse} from "../redux/actions/user";
+import {addUserCourse} from "../redux/actions/user";
 
 import {
     MasterCardInfo,
@@ -15,6 +15,8 @@ import {
     MagazineBlockBig,
     MagazineBlock,
 } from "../components/";
+
+import {checkIsAddCourse} from "../functions/checkIsAddCourse";
 
 const MasterCard: React.FC = ({}) => {
     const dispatch = useDispatch();
@@ -35,10 +37,6 @@ const MasterCard: React.FC = ({}) => {
 
     const onClickAddCourse = (id: string) => {
         dispatch(addUserCourse(id));
-    };
-
-    const onClickHiddenCourse = (id: string) => {
-        dispatch(hiddenUserCourse(id));
     };
 
     return (
@@ -64,32 +62,24 @@ const MasterCard: React.FC = ({}) => {
                                             </h2>
                                             <div className="master-card-courses-block-wrapper">
                                                 {itemById.courses.map(
-                                                    (item, index) => (
+                                                    (course, index) => (
                                                         <ShopBlock
-                                                            {...item}
+                                                            {...course}
                                                             key={`shop-master-card-block-${index}`}
                                                             master={itemById}
                                                             categoryItem={
                                                                 categories[
-                                                                    item
+                                                                    course
                                                                         .category
                                                                 ]
                                                             }
                                                             onClickAddCourse={
                                                                 onClickAddCourse
                                                             }
-                                                            onClickHiddenCourse={
-                                                                onClickHiddenCourse
-                                                            }
-                                                            isAdd={
-                                                                userInfo.courses &&
-                                                                userInfo
-                                                                    .courses[
-                                                                    item._id
-                                                                ]
-                                                                    ? true
-                                                                    : false
-                                                            }
+                                                            isAdd={checkIsAddCourse(
+                                                                userInfo.courses,
+                                                                course._id
+                                                            )}
                                                             isLogin={
                                                                 localStorage.getItem(
                                                                     "accessToken"

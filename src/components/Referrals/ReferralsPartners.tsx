@@ -2,7 +2,7 @@ import React from "react";
 
 import {ReferralsPartnersItem} from "../";
 
-import {UserReferral} from "../../models/IUserReferral";
+import {UserReferral} from "../../models/User/IUserReferral";
 
 interface ReferralsPartnersProps {
     referrals: UserReferral[];

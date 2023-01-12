@@ -2,7 +2,7 @@ import React from "react";
 
 import {PassingMaterialsItem} from "../";
 
-import {CoursePassingLessonMaterial} from "../../models/ICoursePassing";
+import {CoursePassingLessonMaterial} from "../../models/Course/ICoursePassing";
 
 interface PassingMaterialsProps {
     materials: CoursePassingLessonMaterial[];

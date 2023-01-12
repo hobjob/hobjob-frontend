@@ -32,7 +32,7 @@ const CoursePage: React.FC = () => {
 
     const dispatch = useDispatch();
 
-    const {itemByUrl, isLoadedCourseByUrl} = useTypedSelector(
+    const {courseByUrl, isLoadedCourseByUrl} = useTypedSelector(
         ({courses}) => courses
     );
     const categories = useTypedSelector(({categories}) => categories.items);
@@ -76,9 +76,9 @@ const CoursePage: React.FC = () => {
         ) {
             setIsLogin(true);
 
-            if (userInfo.courses && userInfo.courses[itemByUrl._id]) {
-                setIsAdd(true);
-            }
+            // if (userInfo.courses && userInfo.courses[courseByUrl._id]) {
+            //     setIsAdd(true);
+            // }
         }
     }, [url, isLoadedUserInfo, isLoadedCourseByUrl]);
 
@@ -91,20 +91,20 @@ const CoursePage: React.FC = () => {
     };
 
     const onClickAddCourse = () => {
-        dispatch(addUserCourse(itemByUrl._id, "/go/training"));
+        dispatch(addUserCourse(courseByUrl._id, "/go/training"));
     };
 
     const onClickHiddenCourse = () => {
-        dispatch(hiddenUserCourse(itemByUrl._id));
+        dispatch(hiddenUserCourse(courseByUrl._id));
     };
 
     return (
         <>
             {isLoadedCourseByUrl && isLoadedMasters && isLoadedCategories ? (
-                itemByUrl._id !== "" ? (
+                courseByUrl._id !== "" ? (
                     <>
                         <Helmet>
-                            <title>{itemByUrl.title} - HobJob</title>
+                            <title>{courseByUrl.title} - HobJob</title>
                         </Helmet>
 
                         {isLogin ? (
@@ -146,36 +146,38 @@ const CoursePage: React.FC = () => {
                         )}
 
                         <CoursePageMain
-                            {...itemByUrl}
+                            {...courseByUrl}
                             isLogin={isLogin}
                             isAdd={isAdd}
-                            master={masters[itemByUrl.masterId]}
+                            master={masters[courseByUrl.masterId]}
                             categories={categories}
                             onClickAddCourse={onClickAddCourse}
                             onClickHiddenCourse={onClickHiddenCourse}
                         />
 
                         <CoursePageLessons
-                            {...itemByUrl}
+                            {...courseByUrl}
                             onClickAddCourse={onClickAddCourse}
                             isLogin={isLogin}
                             isAdd={isAdd}
                         />
 
-                        {itemByUrl.materials.length ? (
+                        {courseByUrl.materials.length ? (
                             <CoursePageMaterials
-                                {...itemByUrl}
+                                {...courseByUrl}
                                 onClickAddCourse={onClickAddCourse}
                                 isLogin={isLogin}
                                 isAdd={isAdd}
                             />
                         ) : null}
 
-                        <CoursePageSkills {...itemByUrl} />
+                        <CoursePageSkills {...courseByUrl} />
 
-                        <CoursePageUseSkills {...itemByUrl} />
+                        <CoursePageUseSkills {...courseByUrl} />
 
-                        <CoursePagePrice />
+                        {userInfo.subscribe.working ? null : (
+                            <CoursePagePrice />
+                        )}
 
                         <CoursePageComparisonCourses />
 
@@ -183,10 +185,10 @@ const CoursePage: React.FC = () => {
 
                         <CoursePagePassing />
 
-                        <CoursePageTools {...itemByUrl} />
+                        <CoursePageTools {...courseByUrl} />
 
                         <CoursePageMaster
-                            master={masters[itemByUrl.masterId]}
+                            master={masters[courseByUrl.masterId]}
                         />
 
                         <CoursePageFaq />

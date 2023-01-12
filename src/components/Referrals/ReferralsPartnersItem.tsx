@@ -1,6 +1,6 @@
 import React from "react";
 
-import {UserReferral} from "../../models/IUserReferral";
+import {UserReferral} from "../../models/User/IUserReferral";
 
 const ReferralsPartnersItem: React.FC<UserReferral> = ({
     name,

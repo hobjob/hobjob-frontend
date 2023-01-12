@@ -1,6 +1,6 @@
 import React from "react";
 
-import {CourseGoodSkill} from "../../../models/ICourseGood";
+import {CourseGoodSkill} from "../../../models/Course/ICourseGood";
 
 const CoursePageSkillsItem: React.FC<CourseGoodSkill> = ({
     title,

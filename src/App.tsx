@@ -19,13 +19,13 @@ import {
     Cabinet,
     Referrals,
     Register,
+    PaymentCourse,
     PaymentSubscribe,
     PaymentStatus,
     PaymentError,
     Policy,
     PublicOffer,
     ReferralsPolicy,
-    Regulations,
     EngineeringWorks,
     CabinetSubscribeDisable,
 } from "./pages/";
@@ -94,6 +94,11 @@ const App: React.FC = () => {
                             />
 
                             <Route
+                                path="/payment/course/:number"
+                                element={<PaymentCourse />}
+                            />
+
+                            <Route
                                 path="/payment/subscribe/:number"
                                 element={<PaymentSubscribe />}
                             />
@@ -113,10 +118,6 @@ const App: React.FC = () => {
                             <Route
                                 path="/public-offer"
                                 element={<PublicOffer />}
-                            />
-                            <Route
-                                path="/regulations"
-                                element={<Regulations />}
                             />
 
                             <Route path="/go/login" element={<Login />} />

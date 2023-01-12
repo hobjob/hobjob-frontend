@@ -1,4 +1,4 @@
-import { CourseGood } from "./ICourseGood";
+import { CourseGood } from "./Course/ICourseGood";
 import { Post } from "./IPost";
 import { Image } from "./IImage";
 

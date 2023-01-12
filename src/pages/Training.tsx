@@ -1,39 +1,28 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
-import {Navigate} from 'react-router-dom'
+import {Navigate} from "react-router-dom";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
-import {checkDeclension} from "../Functions/checkDeclension";
+import {checkDeclension} from "../functions/checkDeclension";
 
-import {fetchUserCourses, hiddenUserCourse} from "../redux/actions/user";
+import {hiddenUserCourse} from "../redux/actions/user";
 
 import {
     Loader,
     TrainingNull,
-    TrainingBlock,
+    TrainingSubscribe,
     ShopSection,
-    PaymentSubscribeProlongation,
+    // PaymentSubscribeProlongation,
 } from "../components/";
 
 const Training: React.FC = () => {
     const dispatch = useDispatch();
 
-    const {userInfo, courses, isLoadedUserInfo, isLoadedUserCourses} =
-        useTypedSelector(({user}) => user);
+    const {userInfo, isLoadedUserInfo} = useTypedSelector(({user}) => user);
     const masters = useTypedSelector(({masters}) => masters.items);
     const isLoadedMasters = useTypedSelector(({masters}) => masters.isLoaded);
-
-    React.useEffect(() => {
-        if (!Object.keys(courses).length && isLoadedUserInfo) {
-            dispatch(fetchUserCourses());
-        }
-    }, [isLoadedUserInfo]);
-
-    const onClickHiddenUserCourse = (courseId: string) => {
-        dispatch(hiddenUserCourse(courseId));
-    };
 
     return (
         <>
@@ -42,11 +31,22 @@ const Training: React.FC = () => {
             </Helmet>
 
             {localStorage.getItem("accessToken") ? (
-                isLoadedUserInfo && isLoadedUserCourses && isLoadedMasters ? (
+                isLoadedUserInfo && isLoadedMasters ? (
                     <>
                         <section className="training">
                             <div className="container">
-                                {userInfo.subscribe.working ? (
+                                <div className="training-wrapper">
+                                    {userInfo.courses.buy.length ||
+                                    userInfo.courses.subscribe.length ? (
+                                        <>
+                                            <TrainingSubscribe />
+                                        </>
+                                    ) : (
+                                        <TrainingNull />
+                                    )}
+                                </div>
+
+                                {/* {userInfo.subscribe.working ? (
                                     <div className="training-wrapper">
                                         {Object.keys(courses).length ? (
                                             <>
@@ -105,7 +105,7 @@ const Training: React.FC = () => {
                                     </div>
                                 ) : (
                                     <PaymentSubscribeProlongation />
-                                )}
+                                )} */}
                             </div>
                         </section>
 

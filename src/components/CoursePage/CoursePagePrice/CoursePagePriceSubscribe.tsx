@@ -17,7 +17,7 @@ const CoursePagePriceSubscribe: React.FC<CoursePagePriceSubscribeProps> = ({
                     Подписка HobJob
                 </p>
                 <h3 className="course-page-price-blocks-subscribe-text__price">
-                    499₽ <span>в месяц</span>
+                    <span>от</span> 249₽ <span>в месяц</span>
                 </h3>
                 <div className="course-page-price-blocks-subscribe-text-list">
                     <p className="course-page-price-blocks-subscribe-text-list__item">

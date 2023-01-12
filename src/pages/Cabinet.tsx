@@ -21,8 +21,8 @@ const Cabinet: React.FC = () => {
 
     const dispatch = useDispatch();
 
-    const {userInfo, isLoadedUserInfo} = useTypedSelector(({user}) => user);
-
+	const { userInfo, isLoadedUserInfo } = useTypedSelector(({ user }) => user);
+	
     React.useEffect(() => {
         if (isLoadedUserInfo) {
             if (hash !== "") {

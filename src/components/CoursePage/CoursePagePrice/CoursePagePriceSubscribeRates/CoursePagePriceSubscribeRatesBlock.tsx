@@ -1,16 +1,16 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {RateBlock} from "../../../../models/IRateBlock";
+import {Rate} from "../../../../models/IRate";
 
-const CoursePagePriceSubscribeRatesBlock: React.FC<RateBlock> = ({
+const CoursePagePriceSubscribeRatesBlock: React.FC<Rate> = ({
     sale,
     subtitle,
     title,
     price,
     subprice,
-    btnLink,
     subbtn,
+    type,
 }) => {
     return (
         <div className="course-page-price-subscribe-rates-blocks-block">
@@ -47,7 +47,7 @@ const CoursePagePriceSubscribeRatesBlock: React.FC<RateBlock> = ({
 
             <div>
                 <Link
-                    to={btnLink}
+                    to={`/go/register?typeSubscribe=${type}`}
                     className="btn course-page-price-subscribe-rates-blocks-block__btn"
                 >
                     Оформить подписку

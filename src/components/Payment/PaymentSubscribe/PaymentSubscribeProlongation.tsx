@@ -7,7 +7,7 @@ import PaymentSubscribeBlockImage from "../../../assets/images/reglog-subscribe-
 import {Loader} from "../../";
 
 import {fetchUserInfo} from "../../../redux/actions/user";
-import {sendCreateSubscribePayment} from "../../../redux/actions/payment";
+// import {sendCreateSubscribePayment} from "../../../redux/actions/payment";
 
 import {useTypedSelector} from "../../../hooks/useTypedSelector";
 
@@ -38,16 +38,16 @@ const PaymentSubscribeProlongation: React.FC = () => {
 
     React.useEffect(() => {
         if (isLoadedUserInfo && !isProlongation) {
-            window.location.href = `/payment/subscribe/${userInfo.payment.number}`;
+            // window.location.href = `/payment/subscribe/${userInfo.payment.number}`;
         }
     }, [isLoadedUserInfo]);
 
     const createPayment = () => {
-        return dispatch(
-            sendCreateSubscribePayment(
-                isYearSubscribe ? "year-subscribe" : "month-subscribe"
-            )
-        );
+        // return dispatch(
+        //     sendCreateSubscribePayment(
+        //         isYearSubscribe ? "year-subscribe" : "month-subscribe"
+        //     )
+        // );
     };
 
     const setYearSubscribe = () => {
