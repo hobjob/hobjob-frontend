@@ -1,4 +1,9 @@
 import React from "react";
+import {useDispatch} from "react-redux";
+
+import {useTypedSelector} from "../../../../hooks/useTypedSelector";
+
+import {sendCreatePaymentSubscribe} from "../../../../redux/actions/payment/paymentSubscribe";
 
 import {
     CoursePagePriceSubscribeRatesBlock,
@@ -14,6 +19,13 @@ interface CoursePagePriceSubscribeRatesProps {
 const CoursePagePriceSubscribeRates: React.FC<
     CoursePagePriceSubscribeRatesProps
 > = ({closeSubscribeRates}) => {
+    const dispatch = useDispatch();
+
+    const {isLoadedUserInfo} = useTypedSelector(({user}) => user);
+
+    const createPaymentSubscribe = (type: string) => {
+        dispatch(sendCreatePaymentSubscribe(type));
+    };
     return (
         <>
             <div className="course-page-price-subscribe-rates-text">
@@ -37,6 +49,8 @@ const CoursePagePriceSubscribeRates: React.FC<
                 {Object.keys(rates).map((key, index) => (
                     <CoursePagePriceSubscribeRatesBlock
                         {...rates[key]}
+                        isLogin={isLoadedUserInfo}
+                        createPaymentSubscribe={createPaymentSubscribe}
                         key={`course-page-price-subscribe-rates-blocks-block-${index}`}
                     />
                 ))}

@@ -51,7 +51,6 @@ const initialState: UserState = {
 	isLoadedUserInfo: false,
 
 	isLoadedReferrals: false,
-	isLoadedMasterCourses: false,
 
 	isSendUpdateUserInfo: false,
 	isSendUpdateUserPassword: false,

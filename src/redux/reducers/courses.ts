@@ -107,23 +107,6 @@ const courses = (
 	}
 
 	if (action.type === CoursesActionTypes.SET_COURSES_SECTION) {
-		// const newObj: { [key: string]: CourseGood } = {};
-
-		// action.payload.courses.map((course) => {
-		// 	if (action.payload.userInfo) {
-		// 		if (
-		// !action.payload.userInfo.courses[course._id] &&
-		// 			course.url !== action.payload.url
-		// 		) {
-		// 			newObj[course._id] = course;
-		// 		}
-		// 	} else {
-		// 		if (course.url !== action.payload.url) {
-		// 			newObj[course._id] = course;
-		// 		}
-		// 	}
-		// });
-
 		return {
 			...state,
 			coursesSection: action.payload,

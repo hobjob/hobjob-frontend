@@ -30,6 +30,7 @@ const initialState: MastersState = {
 		courses: [],
 		posts: [],
 	},
+	
 	isLoadedById: false,
 };
 

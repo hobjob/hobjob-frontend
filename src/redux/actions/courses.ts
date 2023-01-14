@@ -87,15 +87,24 @@ export const fetchAddPaginationCourses = (
 };
 
 export const fetchCoursesSection = (
-	userInfo: UserInfoState | null,
-	url: string
+	excludeCoursesId: string[]
 ) => {
 	return async (dispatch: Dispatch<CoursesActions>) => {
 		const { data } = await $api.get<CourseGood[]>(`/courses`);
 
+		const newCourses = data
+
+		newCourses.map((course, index) => {
+			excludeCoursesId.map((courseId) => {
+				if (course._id === courseId) {
+					newCourses.splice(index, 1)
+				}
+			})
+		})
+
 		dispatch({
 			type: CoursesActionTypes.SET_COURSES_SECTION,
-			payload: data,
+			payload: newCourses,
 		});
 	};
 };
@@ -112,14 +121,14 @@ export const fetchCourseByUrl = (url: string) => {
 				params: { url },
 			});
 
-			// if (response.data[0]) {
-			// 	dispatch({
-			// 		type: CoursesActionTypes.SET_COURSE_BY_URL,
-			// 		payload: response.data[0],
-			// 	});
-			// } else {
-			// 	throw new Error();
-			// }
+			if (response.data[0]) {
+				dispatch({
+					type: CoursesActionTypes.SET_COURSE_BY_URL,
+					payload: response.data[0],
+				});
+			} else {
+				throw new Error();
+			}
 		} catch (e) {
 			dispatch({
 				type: CoursesActionTypes.SET_LOADED_COURSE_BY_URL,
@@ -137,12 +146,12 @@ export const fetchCourseById = (id: string) => {
 		});
 
 		try {
-			const response = await $api.get<CourseGood>(`/courses/${id}`);
+			const { data } = await $api.get<CourseGood>(`/courses/${id}`);
 
-			// dispatch({
-			// 	type: CoursesActionTypes.SET_COURSE_BY_ID,
-			// 	payload: response.data,
-			// });
+			dispatch({
+				type: CoursesActionTypes.SET_COURSE_BY_ID,
+				payload: data,
+			});
 		} catch (e) {
 			dispatch({
 				type: CoursesActionTypes.SET_LOADED_COURSE_BY_ID,

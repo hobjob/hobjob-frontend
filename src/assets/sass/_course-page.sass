@@ -1,6 +1,8 @@
 // course-page
 .course-page
 	&__btn
+		display: block
+
 		position: fixed
 		z-index: -1
 
@@ -14,9 +16,13 @@
 		+transition
 		+boxShadow
 
-		&.active
+		&.visible
 			opacity: 1
 			z-index: 15
+
+		&.active
+			opacity: 0 !important
+			z-index: -1
 
 	&-main
 		margin: 25px 0 75px 0
@@ -155,6 +161,7 @@
 					font-size: 40px
 
 				&__link
+					cursor: pointer
 					display: inline-block
 					border-bottom: 3px solid $mainColor
 					font-size: 48px
@@ -293,6 +300,7 @@
 
 			&__link
 				margin-top: 100px
+				cursor: pointer
 				display: inline-block
 				border-bottom: 3px solid $mainColor
 				font-size: 54px
@@ -502,6 +510,7 @@
 
 				&-image
 					padding-bottom: 35px
+					width: 100%
 
 					&__image
 						user-select: none
@@ -509,16 +518,27 @@
 
 						width: 100%
 
+				&-image-media
+					display: none
+					width: 45%
+					height: auto
+
+					+backgroundSetting
+					+borderRadiusBlock
+
 			&-buy
 				position: relative
 				width: 49%
+				padding: 35px
 				background-color: $white
+
+				display: flex
+				flex-direction: column
+				justify-content: space-between
 
 				+borderRadiusBlock
 
 				&-text
-					padding: 35px
-
 					&__subprice
 						font-size: 24px
 						margin-bottom: 10px
@@ -574,15 +594,24 @@
 						margin-top: 25px
 						width: 100%
 
-					&__image
-						margin-top: 35px
+				&-image
+					padding-top: 35px
+					width: 100%
 
+					&__image
 						user-select: none
 						pointer-events: none
 
 						width: 100%
-
 						+borderRadiusBlock
+
+				&-image-media
+					display: none
+					width: 45%
+					height: auto
+
+					+backgroundSetting
+					+borderRadiusBlock
 
 		&-subscribe-rates
 			padding: 35px 35px 50px 35px
@@ -684,35 +713,40 @@
 						background-color: $mainColor
 						border-radius: 50%
 
-					&__subtitle
-						font-size: 21px
-						margin-bottom: 10px
-
-					&__title
-						font-size: 32px
+					&-top-text
 						margin-bottom: 50px
 
-					&__price
-						font-size: 58px
-						margin-bottom: 5px
+						&__subtitle
+							font-size: 21px
+							margin-bottom: 10px
 
-						& > span
+						&__title
 							font-size: 32px
-							color: $gray
-							text-decoration: line-through
 
-					&__subprice
-						font-size: 21px
+					&-middle-text
 						margin-bottom: 50px
 
-					&__btn
-						width: 100%
-						margin-bottom: 10px
+						&__price
+							font-size: 58px
+							margin-bottom: 5px
 
-					&__subbtn
-						font-size: 15px
-						text-align: center
-						color: $gray
+							& > span
+								font-size: 32px
+								color: $gray
+								text-decoration: line-through
+
+						&__subprice
+							font-size: 21px
+
+					&-bottom-text
+						&__btn
+							width: 100%
+							margin-bottom: 10px
+
+						&__subbtn
+							font-size: 15px
+							text-align: center
+							color: $gray
 
 	&-comparison-courses
 		margin: 75px 0

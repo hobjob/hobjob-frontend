@@ -34,7 +34,7 @@ export const sendCreatePaymentCourse = (
 			payload: true,
 		});
 
-		$api.post(`/payment/course`, courseId).then(({ data }) => {
+		$api.post(`/payment/course`, { courseId }).then(({ data }) => {
 			window.location.href = `/payment/course/${data.paymentNumber}`;
 		});
 	};

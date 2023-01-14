@@ -6,7 +6,10 @@ import {animateScroll as scroll} from "react-scroll";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
-import {fetchPassingCourseLessonMaterial} from "../redux/actions/passing";
+import {
+    fetchPassingCourseById,
+    fetchPassingCourseLessonMaterial,
+} from "../redux/actions/passing";
 
 import {
     Loader,
@@ -24,9 +27,8 @@ const PassingCourse: React.FC = () => {
     const courseId = id ? id : "";
     const lessonNum = num ? parseInt(num) : 1;
 
-    const {isLoadedUserInfo} = useTypedSelector(
-        ({user}) => user
-    );
+    const {isLoadedUserInfo} = useTypedSelector(({user}) => user);
+    const {course, isLoadedCourse} = useTypedSelector(({passing}) => passing);
 
     const isLoadedMasters = useTypedSelector(({masters}) => masters.isLoaded);
     const masters = useTypedSelector(({masters}) => masters.items);
@@ -37,10 +39,10 @@ const PassingCourse: React.FC = () => {
     React.useEffect(() => {
         scroll.scrollToTop({duration: 500});
 
-        // if (!Object.keys(courses).length && isLoadedUserInfo) {
-        //     dispatch(fetchUserCourses());
-        // }
-    }, [courseId, lessonNum,isLoadedUserInfo]);
+        if (isLoadedUserInfo) {
+            dispatch(fetchPassingCourseById(courseId));
+        }
+    }, [courseId, lessonNum, isLoadedUserInfo]);
 
     const downloadFile = (title: string, index: number) => {
         dispatch(
@@ -50,103 +52,87 @@ const PassingCourse: React.FC = () => {
 
     return (
         <>
-            {/* {localStorage.getItem("accessToken") ? (
-                isLoadedUserCourses && isLoadedUserInfo && isLoadedMasters ? (
-                    Object.keys(courses).length &&
-                    courses[courseId] &&
-                    courses[courseId].lessons[lessonIndex] ? (
-                        <>
-                            <Helmet>
-                                <title>
-                                    {
-                                        courses[courseId].lessons[lessonIndex]
-                                            .title
-                                    }{" "}
-                                    - HobJob
-                                </title>
-                            </Helmet>
+            {localStorage.getItem("accessToken") ? (
+                isLoadedCourse && isLoadedUserInfo && isLoadedMasters ? (
+                    <>
+                        <Helmet>
+                            <title>
+                                {course.lessons[lessonIndex].title} -
+                                HobJob
+                            </title>
+                        </Helmet>
 
-                            <section className="passing">
-                                <div className="container">
-                                    <div className="passing-wrapper">
-                                        <div className="passing-top">
-                                            <PassingTopText
-                                                subtitle={
-                                                    courses[courseId].title
-                                                }
-                                                title={
-                                                    courses[courseId].lessons[
-                                                        lessonIndex
-                                                    ].title
-                                                }
-                                            />
-                                        </div>
-
-                                        <PassingVideo
-                                            {...courses[courseId]}
-                                            image={
-                                                courses[courseId].lessons[
+                        <section className="passing">
+                            <div className="container">
+                                <div className="passing-wrapper">
+                                    <div className="passing-top">
+                                        <PassingTopText
+                                            subtitle={course.title}
+                                            title={
+                                                course.lessons[
                                                     lessonIndex
-                                                ].image.size_2048
+                                                ].title
                                             }
-                                            courseId={courseId}
-                                            lessonNum={lessonNum}
-                                            lessonIndex={lessonIndex}
-                                        />
-
-                                        <PassingLessonsList
-                                            lessonActive={lessonNum}
-                                            {...courses[courseId]}
-                                        />
-
-                                        <div className="passing-lesson-info">
-                                            <div className="passing-lesson-info-block-text">
-                                                <h4 className="passing-lesson-info-block-text__title">
-                                                    Описание
-                                                </h4>
-                                                <p className="passing-lesson-info-block-text__description">
-                                                    {
-                                                        courses[courseId]
-                                                            .lessons[
-                                                            lessonIndex
-                                                        ].description
-                                                    }
-                                                </p>
-                                            </div>
-
-                                            {courses[courseId].lessons[
-                                                lessonIndex
-                                            ].materials.length ? (
-                                                <PassingMaterials
-                                                    materials={
-                                                        courses[courseId]
-                                                            .lessons[
-                                                            lessonIndex
-                                                        ].materials
-                                                    }
-                                                    downloadFunc={downloadFile}
-                                                />
-                                            ) : null}
-                                        </div>
-
-                                        <PassingMaster
-                                            {...masters[
-                                                courses[courseId].masterId
-                                            ]}
                                         />
                                     </div>
+
+                                    <PassingVideo
+                                        {...course}
+                                        image={
+                                            course.lessons[
+                                                lessonIndex
+                                            ].image.size_2048
+                                        }
+                                        courseId={courseId}
+                                        lessonNum={lessonNum}
+                                        lessonIndex={lessonIndex}
+                                    />
+
+                                    <PassingLessonsList
+                                        lessonActive={lessonNum}
+                                        {...course}
+                                    />
+
+                                    <div className="passing-lesson-info">
+                                        <div className="passing-lesson-info-block-text">
+                                            <h4 className="passing-lesson-info-block-text__title">
+                                                Описание
+                                            </h4>
+                                            <p className="passing-lesson-info-block-text__description">
+                                                {
+                                                    course.lessons[
+                                                        lessonIndex
+                                                    ].description
+                                                }
+                                            </p>
+                                        </div>
+
+                                        {course.lessons[lessonIndex]
+                                            .materials.length ? (
+                                            <PassingMaterials
+                                                materials={
+                                                    course.lessons[
+                                                        lessonIndex
+                                                    ].materials
+                                                }
+                                                downloadFunc={downloadFile}
+                                            />
+                                        ) : null}
+                                    </div>
+
+                                    <PassingMaster
+                                        {...masters[course.masterId]}
+                                    />
                                 </div>
-                            </section>
-                        </>
-                    ) : (
-                        <Navigate to="/go/training" />
-                    )
+                            </div>
+                        </section>
+                    </>
                 ) : (
                     <Loader />
                 )
             ) : (
                 <Navigate to="/go/login" />
-            )} */}
+            )}
         </>
     );
 };

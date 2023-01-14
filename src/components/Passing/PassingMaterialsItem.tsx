@@ -1,8 +1,8 @@
 import React from "react";
 
-import {CoursePassingLessonMaterial} from "../../models/Course/ICoursePassing";
+import {PassingCourseLessonMaterial} from "../../models/Passing/IPassing";
 
-interface PassingMaterialsItemProps extends CoursePassingLessonMaterial {
+interface PassingMaterialsItemProps extends PassingCourseLessonMaterial {
     downloadFile: (title: string, index: number) => void;
     index: number;
 }

@@ -1,5 +1,4 @@
 import { UserInfoState, UserInfo } from "../../../models/User/IUserInfo";
-import { CoursePassing } from "../../../models/Course/ICoursePassing";
 import { UserReferral } from "../../../models/User/IUserReferral";
 
 export interface UserState {
@@ -8,7 +7,6 @@ export interface UserState {
 
 	isLoadedUserInfo: boolean;
 	isLoadedReferrals: boolean;
-	isLoadedMasterCourses: boolean;
 
 	isSendUpdateUserInfo: boolean;
 	isSendUpdateUserPassword: boolean;

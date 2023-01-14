@@ -3,7 +3,14 @@ import {Link} from "react-router-dom";
 
 import {Rate} from "../../../../models/IRate";
 
-const CoursePagePriceSubscribeRatesBlock: React.FC<Rate> = ({
+interface CoursePagePriceSubscribeRatesBlockProps extends Rate {
+    isLogin: boolean;
+    createPaymentSubscribe: (type: string) => void;
+}
+
+const CoursePagePriceSubscribeRatesBlock: React.FC<
+    CoursePagePriceSubscribeRatesBlockProps
+> = ({
     sale,
     subtitle,
     title,
@@ -11,6 +18,8 @@ const CoursePagePriceSubscribeRatesBlock: React.FC<Rate> = ({
     subprice,
     subbtn,
     type,
+    isLogin,
+    createPaymentSubscribe,
 }) => {
     return (
         <div className="course-page-price-subscribe-rates-blocks-block">
@@ -20,17 +29,17 @@ const CoursePagePriceSubscribeRatesBlock: React.FC<Rate> = ({
                 </p>
             ) : null}
 
-            <div>
-                <p className="course-page-price-subscribe-rates-blocks-block__subtitle">
+            <div className="course-page-price-subscribe-rates-blocks-block-top-text">
+                <p className="course-page-price-subscribe-rates-blocks-block-top-text__subtitle">
                     {subtitle}
                 </p>
-                <h3 className="course-page-price-subscribe-rates-blocks-block__title">
+                <h3 className="course-page-price-subscribe-rates-blocks-block-top-text__title">
                     {title}
                 </h3>
             </div>
 
-            <div>
-                <h3 className="course-page-price-subscribe-rates-blocks-block__price">
+            <div className="course-page-price-subscribe-rates-blocks-block-middle-text">
+                <h3 className="course-page-price-subscribe-rates-blocks-block-middle-text__price">
                     {sale ? (
                         <>
                             {Math.floor(price - (price / 100) * sale)}₽{" "}
@@ -40,20 +49,29 @@ const CoursePagePriceSubscribeRatesBlock: React.FC<Rate> = ({
                         <>{price}₽</>
                     )}
                 </h3>
-                <p className="course-page-price-subscribe-rates-blocks-block__subprice">
+                <p className="course-page-price-subscribe-rates-blocks-block-middle-text__subprice">
                     {subprice}
                 </p>
             </div>
 
-            <div>
-                <Link
-                    to={`/go/register?typeSubscribe=${type}`}
-                    className="btn course-page-price-subscribe-rates-blocks-block__btn"
-                >
-                    Оформить подписку
-                </Link>
+            <div className="course-page-price-subscribe-rates-blocks-block-bottom-text">
+                {isLogin ? (
+                    <button
+                        className="btn course-page-price-subscribe-rates-blocks-block-bottom-text__btn"
+                        onClick={() => createPaymentSubscribe(type)}
+                    >
+                        Оформить подписку
+                    </button>
+                ) : (
+                    <Link
+                        to={`/go/register?typeSubscribe=${type}`}
+                        className="btn  course-page-price-subscribe-rates-blocks-block-bottom-text__btn"
+                    >
+                        Оформить подписку
+                    </Link>
+                )}
 
-                <p className="course-page-price-subscribe-rates-blocks-block__subbtn">
+                <p className="course-page-price-subscribe-rates-blocks-block-bottom-text__subbtn">
                     {subbtn}
                 </p>
             </div>

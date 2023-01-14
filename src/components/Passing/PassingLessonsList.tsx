@@ -2,11 +2,11 @@ import React from "react";
 
 import {PassingLessonsListItem} from "../";
 
-import {CoursePassingLesson} from "../../models/Course/ICoursePassing";
+import {PassingCourseLesson} from "../../models/Passing/IPassing";
 
 interface PassingCoursesListProps {
     title: string;
-    lessons: CoursePassingLesson[];
+    lessons: PassingCourseLesson[];
     lessonActive: number;
     _id: string;
 }

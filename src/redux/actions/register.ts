@@ -9,9 +9,9 @@ import {
 } from "../types/register/IRegister";
 
 export const sendRegister = (
-	data: { name: string; email: string; password: string; paymentInfo: string },
+	data: { name: string; email: string; password: string; paymentInfo?: string },
 	ref: string,
-	typePayment: string
+	typePayment?: string
 ) => {
 	return async (dispatch: Dispatch<RegisterActions>) => {
 		dispatch({
@@ -24,7 +24,11 @@ export const sendRegister = (
 			.then(({ data }) => {
 				localStorage.setItem("accessToken", data.accessToken);
 
-				window.location.href = typePayment === "buy" ? `/payment/course/${data.paymentNumber}` : `/payment/subscribe/${data.paymentNumber}`;
+				if (data.paymentNumber) {
+					window.location.href = typePayment === "buy" ? `/payment/course/${data.paymentNumber}` : `/payment/subscribe/${data.paymentNumber}`;
+				} else {
+					window.location.href = "/go/training"
+				}
 			})
 			.catch(({ response }) => {
 				dispatch({

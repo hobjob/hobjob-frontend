@@ -1,13 +1,13 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
-import {Link, Navigate, useSearchParams, useParams} from "react-router-dom";
+import {Navigate, useSearchParams, useParams} from "react-router-dom";
 import {Link as LinkScroll} from "react-scroll";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
 import {fetchCourseByUrl} from "../redux/actions/courses";
-import {addUserCourse, hiddenUserCourse} from "../redux/actions/user";
+import {addUserCourse} from "../redux/actions/user";
 
 import {
     CoursePageMain,
@@ -25,6 +25,8 @@ import {
     ShopSection,
     Loader,
 } from "../components";
+
+import {checkIsAddCourse} from "../functions/checkIsAddCourse";
 
 const CoursePage: React.FC = () => {
     const [search] = useSearchParams();
@@ -76,9 +78,7 @@ const CoursePage: React.FC = () => {
         ) {
             setIsLogin(true);
 
-            // if (userInfo.courses && userInfo.courses[courseByUrl._id]) {
-            //     setIsAdd(true);
-            // }
+            setIsAdd(checkIsAddCourse(userInfo.courses, courseByUrl._id));
         }
     }, [url, isLoadedUserInfo, isLoadedCourseByUrl]);
 
@@ -91,11 +91,7 @@ const CoursePage: React.FC = () => {
     };
 
     const onClickAddCourse = () => {
-        dispatch(addUserCourse(courseByUrl._id, "/go/training"));
-    };
-
-    const onClickHiddenCourse = () => {
-        dispatch(hiddenUserCourse(courseByUrl._id));
+        dispatch(addUserCourse(courseByUrl._id));
     };
 
     return (
@@ -110,14 +106,27 @@ const CoursePage: React.FC = () => {
                         {isLogin ? (
                             isAdd ? (
                                 <button
-                                    className={`btn-small-round-delete course-page__btn ${
+                                    className={`btn-small-round disabled course-page__btn ${
                                         visibleButton ? "active" : ""
                                     }`}
-                                    onClick={onClickHiddenCourse}
                                 >
-                                    Удалить из моего обучения
+                                    <svg
+                                        width="14"
+                                        height="13"
+                                        viewBox="0 0 14 13"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M1.44632 6.0186C1.79012 6.50143 2.22771 6.89948 2.59784 7.36158C3.55556 8.55726 4.36875 9.86064 5.23006 11.1246C5.25198 11.1568 5.76023 11.8699 5.79835 11.8034C5.96582 11.5113 6.09668 11.1775 6.23676 10.8715C6.66638 9.93305 7.1304 9.0248 7.65259 8.13343C8.54438 6.61116 9.43319 5.0821 10.4156 3.61607C10.8657 2.94443 11.395 2.35225 11.8904 1.71673C12.1063 1.43977 12.3942 1.14453 12.5389 0.82259"
+                                            stroke="#000000"
+                                            strokeWidth="1.3"
+                                            strokeLinecap="round"
+                                        />
+                                    </svg>
+                                    Добавлен
                                 </button>
-                            ) : (
+                            ) : userInfo.subscribe.working ? (
                                 <button
                                     className={`btn-small-round course-page__btn ${
                                         visibleButton ? "active" : ""
@@ -126,22 +135,32 @@ const CoursePage: React.FC = () => {
                                 >
                                     Добавить в мое обучение
                                 </button>
+                            ) : (
+                                <LinkScroll
+                                    to="price"
+                                    spy={true}
+                                    smooth={true}
+                                    offset={-50}
+                                    duration={1000}
+                                    className={`btn-small-round course-page__btn ${
+                                        visibleButton ? "visible" : ""
+                                    }`}
+                                >
+                                    Начать обучение
+                                </LinkScroll>
                             )
                         ) : (
                             <LinkScroll
                                 to="price"
                                 spy={true}
                                 smooth={true}
-                                offset={-25}
+                                offset={-50}
                                 duration={1000}
+                                className={`btn-small-round course-page__btn ${
+                                    visibleButton ? "visible" : ""
+                                }`}
                             >
-                                <button
-                                    className={`btn-small-round course-page__btn ${
-                                        visibleButton ? "active" : ""
-                                    }`}
-                                >
-                                    Начать обучение
-                                </button>
+                                Начать обучение
                             </LinkScroll>
                         )}
 
@@ -149,10 +168,10 @@ const CoursePage: React.FC = () => {
                             {...courseByUrl}
                             isLogin={isLogin}
                             isAdd={isAdd}
+                            isSubscribe={userInfo.subscribe.working}
                             master={masters[courseByUrl.masterId]}
                             categories={categories}
                             onClickAddCourse={onClickAddCourse}
-                            onClickHiddenCourse={onClickHiddenCourse}
                         />
 
                         <CoursePageLessons
@@ -160,6 +179,7 @@ const CoursePage: React.FC = () => {
                             onClickAddCourse={onClickAddCourse}
                             isLogin={isLogin}
                             isAdd={isAdd}
+                            isSubscribe={userInfo.subscribe.working}
                         />
 
                         {courseByUrl.materials.length ? (
@@ -168,6 +188,7 @@ const CoursePage: React.FC = () => {
                                 onClickAddCourse={onClickAddCourse}
                                 isLogin={isLogin}
                                 isAdd={isAdd}
+                                isSubscribe={userInfo.subscribe.working}
                             />
                         ) : null}
 
@@ -175,7 +196,7 @@ const CoursePage: React.FC = () => {
 
                         <CoursePageUseSkills {...courseByUrl} />
 
-                        {userInfo.subscribe.working ? null : (
+                        {userInfo.subscribe.working || isAdd ? null : (
                             <CoursePagePrice />
                         )}
 
@@ -196,7 +217,7 @@ const CoursePage: React.FC = () => {
                         <ShopSection
                             title="Вам может понравиться"
                             description="Новые курсы добавляются каждый месяц"
-                            url={url}
+                            currentCourseId={courseByUrl._id}
                         />
                     </>
                 ) : (

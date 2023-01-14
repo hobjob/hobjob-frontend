@@ -14,10 +14,14 @@ import {checkIsAddCourse} from "../../functions/checkIsAddCourse";
 interface ShopSectionProps {
     title: string;
     description: string;
-    url?: string;
+    currentCourseId?: string;
 }
 
-const ShopSection: React.FC<ShopSectionProps> = ({title, description, url}) => {
+const ShopSection: React.FC<ShopSectionProps> = ({
+    title,
+    description,
+    currentCourseId,
+}) => {
     const dispatch = useDispatch();
 
     const {userInfo, isLoadedUserInfo} = useTypedSelector(({user}) => user);
@@ -36,10 +40,19 @@ const ShopSection: React.FC<ShopSectionProps> = ({title, description, url}) => {
     React.useEffect(() => {
         if (localStorage.getItem("accessToken")) {
             if (isLoadedUserInfo) {
-                dispatch(fetchCoursesSection(userInfo, url ? url : ""));
+                const excludeCoursesId = [
+                    ...userInfo.courses.buy.map((course) => course.courseId),
+                    ...userInfo.courses.subscribe.map(
+                        (course) => course.courseId
+                    ),
+                ];
+
+                if (currentCourseId) excludeCoursesId.push(currentCourseId);
+
+                dispatch(fetchCoursesSection(excludeCoursesId));
             }
         } else {
-            dispatch(fetchCoursesSection(null, url ? url : ""));
+            dispatch(fetchCoursesSection([]));
         }
     }, [isLoadedUserInfo]);
 
@@ -78,16 +91,19 @@ const ShopSection: React.FC<ShopSectionProps> = ({title, description, url}) => {
                                                 onClickAddCourse={
                                                     onClickAddCourse
                                                 }
-                                                isAdd={checkIsAddCourse(
-                                                    userInfo.courses,
-                                                    course._id
-                                                )}
                                                 isLogin={
                                                     localStorage.getItem(
                                                         "accessToken"
                                                     ) && isLoadedUserInfo
                                                         ? true
                                                         : false
+                                                }
+                                                isAdd={checkIsAddCourse(
+                                                    userInfo.courses,
+                                                    course._id
+                                                )}
+                                                isSubscribe={
+                                                    userInfo.subscribe.working
                                                 }
                                             />
                                         ))

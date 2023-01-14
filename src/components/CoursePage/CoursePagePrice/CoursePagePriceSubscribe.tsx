@@ -1,7 +1,7 @@
 import React from "react";
-import {Link} from "react-router-dom";
 
 import CoursePageSubscribeBlockImage from "../../../assets/images/subscribe-block-image.jpg";
+import CoursePageSubscribeBlockImageMedia from "../../../assets/images/subscribe-block-image-media.jpg";
 
 interface CoursePagePriceSubscribeProps {
     openSubscribeRates: () => void;
@@ -41,7 +41,7 @@ const CoursePagePriceSubscribe: React.FC<CoursePagePriceSubscribeProps> = ({
                                 strokeLinecap="round"
                             />
                         </svg>
-                        Доступ ко всем курсам сообщества
+                        Доступ ко всем курсам
                     </p>
                     <p className="course-page-price-blocks-subscribe-text-list__item">
                         <svg
@@ -64,7 +64,7 @@ const CoursePagePriceSubscribe: React.FC<CoursePagePriceSubscribeProps> = ({
                                 strokeLinecap="round"
                             />
                         </svg>
-                        Скачать дополнительные материалы курсов
+                        Скачать дополнительные материалы
                     </p>
                     <p className="course-page-price-blocks-subscribe-text-list__item">
                         <svg
@@ -136,11 +136,18 @@ const CoursePagePriceSubscribe: React.FC<CoursePagePriceSubscribeProps> = ({
 
             <div className="course-page-price-blocks-subscribe-image">
                 <img
-                    src={CoursePageSubscribeBlockImage}
                     alt=""
                     className="course-page-price-blocks-subscribe-image__image"
+                    src={CoursePageSubscribeBlockImage}
                 />
             </div>
+
+            <div
+                className="course-page-price-blocks-subscribe-image-media"
+                style={{
+                    backgroundImage: `url(${CoursePageSubscribeBlockImageMedia})`,
+                }}
+            ></div>
         </div>
     );
 };

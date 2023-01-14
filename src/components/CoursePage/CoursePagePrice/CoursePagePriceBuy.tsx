@@ -1,5 +1,10 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
+
+import {useTypedSelector} from "../../../hooks/useTypedSelector";
+
+import {sendCreatePaymentCourse} from "../../../redux/actions/payment/paymentCourse";
 
 import {Image} from "../../../models/IImage";
 
@@ -12,6 +17,14 @@ const CoursePagePriceBuy: React.FC<CoursePagePriceBuyProps> = ({
     _id,
     image,
 }) => {
+    const dispatch = useDispatch();
+
+    const {isLoadedUserInfo} = useTypedSelector(({user}) => user);
+
+    const createPaymentCourse = () => {
+        dispatch(sendCreatePaymentCourse(_id));
+    };
+
     return (
         <div className="course-page-price-blocks-buy">
             <div className="course-page-price-blocks-buy-text">
@@ -76,19 +89,37 @@ const CoursePagePriceBuy: React.FC<CoursePagePriceBuyProps> = ({
                     </p>
                 </div>
 
-                <Link
-                    to={`/go/register?course=${_id}`}
-                    className="btn course-page-price-blocks-buy-text__btn"
-                >
-                    Купить курс
-                </Link>
+                {isLoadedUserInfo ? (
+                    <button
+                        className="btn course-page-price-blocks-buy-text__btn"
+                        onClick={createPaymentCourse}
+                    >
+                        Купить курс
+                    </button>
+                ) : (
+                    <Link
+                        to={`/go/register?course=${_id}`}
+                        className="btn course-page-price-blocks-buy-text__btn"
+                    >
+                        Купить курс
+                    </Link>
+                )}
+            </div>
 
+            <div className="course-page-price-blocks-buy-image">
                 <img
-                    src={`${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_1024}`}
                     alt=""
-                    className="course-page-price-blocks-buy-text__image"
+                    className="course-page-price-blocks-buy-image__image"
+                    src={`${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_1024}`}
                 />
             </div>
+
+            <div
+                className="course-page-price-blocks-buy-image-media"
+                style={{
+                    backgroundImage: `url(${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_1024})`,
+                }}
+            ></div>
         </div>
     );
 };

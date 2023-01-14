@@ -76,10 +76,6 @@ const MasterCard: React.FC = ({}) => {
                                                             onClickAddCourse={
                                                                 onClickAddCourse
                                                             }
-                                                            isAdd={checkIsAddCourse(
-                                                                userInfo.courses,
-                                                                course._id
-                                                            )}
                                                             isLogin={
                                                                 localStorage.getItem(
                                                                     "accessToken"
@@ -87,6 +83,15 @@ const MasterCard: React.FC = ({}) => {
                                                                 isLoadedUserInfo
                                                                     ? true
                                                                     : false
+                                                            }
+                                                            isAdd={checkIsAddCourse(
+                                                                userInfo.courses,
+                                                                course._id
+                                                            )}
+                                                            isSubscribe={
+                                                                userInfo
+                                                                    .subscribe
+                                                                    .working
                                                             }
                                                         />
                                                     )

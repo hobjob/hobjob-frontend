@@ -117,11 +117,14 @@ li
 	&:active
 		+transformScale
 
+	& > svg
+		margin-right: 5px
+
 	&.disabled
 		pointer-events: none
 		border: 1px solid $borderGray
 		background-color: $borderGray
-		color: $gray
+		color: $black
 
 	&__gray
 		display: inline-flex
@@ -152,10 +155,7 @@ li
 			border: 1px solid #E9E9E9
 
 		& > svg
-			margin-left: 15px
-
-	& > svg
-		margin-left: 15px
+			margin-right: 5px
 
 .btn-regular
 	display: inline-flex
@@ -331,11 +331,14 @@ li
 	&:hover
 		background-color: #e2ab74
 
+	& > svg
+		margin-right: 5px
+
 	&.disabled
 		pointer-events: none
 		border: 1px solid $borderGray
 		background-color: $borderGray
-		color: $gray
+		color: $black
 
 .btn-small-round-gray
 	display: inline-flex

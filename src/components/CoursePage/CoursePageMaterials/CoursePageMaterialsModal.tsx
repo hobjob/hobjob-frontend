@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link as LinkScroll} from "react-scroll";
 
 interface CoursePageMaterialsModalProps {
     isActiveCloseModalAnimation: boolean;
@@ -36,14 +36,19 @@ const CoursePageMaterialsModal: React.FC<CoursePageMaterialsModalProps> = ({
             >
                 <p className="course-page-materials-modal__description">
                     Чтобы скачать материалы курса, зарегистрируйтесь и оформите
-                    бесплатную пробную неделю
+                    подписку или купите этот курс навсегда
                 </p>
-                <Link
-                    to="/go/register"
+                <LinkScroll
+                    to="price"
+                    spy={true}
+                    smooth={true}
+                    offset={-50}
+                    duration={1000}
                     className="course-page-materials-modal__link"
+                    onClick={closeModal}
                 >
-                    Начать бесплатно
-                </Link>
+                    Начать обучение
+                </LinkScroll>
                 <div
                     className="course-page-materials-modal-close"
                     onClick={closeModal}

@@ -1,9 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {CoursePassingLesson} from "../../models/Course/ICoursePassing";
+import {PassingCourseLesson} from "../../models/Passing/IPassing";
 
-interface PassingLessonsListItemProps extends CoursePassingLesson {
+interface PassingLessonsListItemProps extends PassingCourseLesson {
     active: boolean;
     courseId: string;
     num: number;

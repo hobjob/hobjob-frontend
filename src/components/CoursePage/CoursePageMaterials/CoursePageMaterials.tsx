@@ -9,6 +9,7 @@ interface CoursePageMaterialsProps {
 
     isLogin: boolean;
     isAdd: boolean;
+    isSubscribe: boolean;
 
     onClickAddCourse: (Navigate: string) => void;
 }
@@ -16,7 +17,8 @@ interface CoursePageMaterialsProps {
 const CoursePageMaterials: React.FC<CoursePageMaterialsProps> = ({
     materials,
     isLogin,
-    isAdd,
+	isAdd,
+	isSubscribe,
     _id,
     onClickAddCourse,
 }) => {
@@ -62,6 +64,7 @@ const CoursePageMaterials: React.FC<CoursePageMaterialsProps> = ({
                                     title={material}
                                     isLogin={isLogin}
                                     isAdd={isAdd}
+                                    isSubscribe={isSubscribe}
                                     courseId={_id}
                                     onClickAddCourse={onClickAddCourse}
                                     key={`course-page-materials-item-${index}`}

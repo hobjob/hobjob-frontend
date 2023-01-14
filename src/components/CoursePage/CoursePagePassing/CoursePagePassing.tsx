@@ -19,6 +19,7 @@ const CoursePagePassing: React.FC = () => {
 
                     <img
                         className="course-page-passing__img"
+                        alt=""
                         src={CoursePagePassingImage}
                     />
                 </picture>

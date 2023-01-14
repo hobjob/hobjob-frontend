@@ -9,7 +9,7 @@ import register from './register';
 import login from './login';
 import password_recovery from './password_recovery';
 import user from './user';
-// import passing from './passing';
+import passing from './passing';
 import paymentSubscribe from './payment/paymentSubscribe';
 import paymentCourse from './payment/paymentCourse';
 
@@ -22,7 +22,7 @@ export const rootReducer = combineReducers({
 	login,
 	password_recovery,
 	user,
-	// passing,
+	passing,
 	paymentSubscribe,
 	paymentCourse,
 	form: formReducer

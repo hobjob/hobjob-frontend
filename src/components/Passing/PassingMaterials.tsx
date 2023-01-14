@@ -2,10 +2,10 @@ import React from "react";
 
 import {PassingMaterialsItem} from "../";
 
-import {CoursePassingLessonMaterial} from "../../models/Course/ICoursePassing";
+import {PassingCourseLessonMaterial} from "../../models/Passing/IPassing";
 
 interface PassingMaterialsProps {
-    materials: CoursePassingLessonMaterial[];
+    materials: PassingCourseLessonMaterial[];
     downloadFunc: (title: string, index: number) => void;
 }
 

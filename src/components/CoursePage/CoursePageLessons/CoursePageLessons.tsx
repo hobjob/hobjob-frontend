@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {Link as LinkScroll} from "react-scroll";
 
 import {CoursePageLessonsVideo, CoursePageLessonsItem} from "../../";
 
@@ -10,6 +11,7 @@ interface CoursePageLessonsProps {
     _id: string;
     isLogin: boolean;
     isAdd: boolean;
+    isSubscribe: boolean;
     onClickAddCourse: (Navigate: string) => void;
 }
 
@@ -18,6 +20,7 @@ const CoursePageLessons: React.FC<CoursePageLessonsProps> = ({
     _id,
     isLogin,
     isAdd,
+    isSubscribe,
     onClickAddCourse,
 }) => {
     const [videoPlaecholder, setVideoPlaecholder] =
@@ -55,15 +58,19 @@ const CoursePageLessons: React.FC<CoursePageLessonsProps> = ({
                             >
                                 <p className="course-page-lessons-video-plaecholder__description">
                                     Чтобы продолжить просмотр других уроков,
-                                    зарегистрируйтесь и оформите бесплатную
-                                    пробную неделю
+                                    зарегистрируйтесь и оформите подписку или
+                                    купите этот курс навсегда
                                 </p>
-                                <Link
-                                    to="/go/register"
+                                <LinkScroll
+                                    to="price"
+                                    spy={true}
+                                    smooth={true}
+                                    offset={-50}
+                                    duration={1000}
                                     className="course-page-lessons-video-plaecholder__link"
                                 >
-                                    Начать бесплатно
-                                </Link>
+                                    Начать обучение
+                                </LinkScroll>
                             </div>
                         ) : null}
 
@@ -93,6 +100,7 @@ const CoursePageLessons: React.FC<CoursePageLessonsProps> = ({
                                     courseId={_id}
                                     isLogin={isLogin}
                                     isAdd={isAdd}
+                                    isSubscribe={isSubscribe}
                                     {...lesson}
                                 />
                             ))}

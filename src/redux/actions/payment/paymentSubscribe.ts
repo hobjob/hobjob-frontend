@@ -26,7 +26,7 @@ export const fetchPaymentSubscribeById = (id: string) => {
 };
 
 export const sendCreatePaymentSubscribe = (
-	typeSubscribe: "year-subscribe" | "month-subscribe"
+	typeSubscribe: string
 ) => {
 	return async (dispatch: Dispatch<PaymentSubscribeActions>) => {
 		dispatch({

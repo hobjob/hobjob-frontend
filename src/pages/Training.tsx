@@ -5,14 +5,11 @@ import {Navigate} from "react-router-dom";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
-import {checkDeclension} from "../functions/checkDeclension";
-
-import {hiddenUserCourse} from "../redux/actions/user";
-
 import {
     Loader,
     TrainingNull,
     TrainingSubscribe,
+    TrainingBuy,
     ShopSection,
     // PaymentSubscribeProlongation,
 } from "../components/";
@@ -39,7 +36,14 @@ const Training: React.FC = () => {
                                     {userInfo.courses.buy.length ||
                                     userInfo.courses.subscribe.length ? (
                                         <>
-                                            <TrainingSubscribe />
+                                            {userInfo.courses.subscribe
+                                                .length ? (
+                                                <TrainingSubscribe />
+												) : null}
+												
+                                            {userInfo.courses.buy.length ? (
+                                                <TrainingBuy />
+                                            ) : null}
                                         </>
                                     ) : (
                                         <TrainingNull />

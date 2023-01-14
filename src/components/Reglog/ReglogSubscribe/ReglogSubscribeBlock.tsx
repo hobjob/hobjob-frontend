@@ -40,7 +40,7 @@ const ReglogSubscribeBlock: React.FC<Rate> = ({subtitle, title}) => {
                                 strokeLinecap="round"
                             />
                         </svg>
-                        Доступ ко всем курсам сообщества
+                        Доступ ко всем курсам
                     </p>
                     <p className="reglog-product-subscribe-block-text-list__item">
                         <svg
@@ -63,7 +63,7 @@ const ReglogSubscribeBlock: React.FC<Rate> = ({subtitle, title}) => {
                                 strokeLinecap="round"
                             />
                         </svg>
-                        Скачать дополнительные материалы курсов
+                        Скачать дополнительные материалы
                     </p>
                     <p className="reglog-product-subscribe-block-text-list__item">
                         <svg

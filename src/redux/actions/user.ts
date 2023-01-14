@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import { Form, SubmissionError } from "redux-form";
+import { SubmissionError } from "redux-form";
 
 import $api from "../../http/";
 
@@ -7,7 +7,6 @@ import { UserActions, UserActionTypes } from "../types/user/IUser";
 
 import { UserInfo } from "../../models/User/IUserInfo";
 import { UserReferral } from "../../models/User/IUserReferral";
-import { CoursePassing } from "../../models/Course/ICoursePassing";
 
 export const fetchUserInfo = () => {
 	return async (dispatch: Dispatch<UserActions>) => {
@@ -83,14 +82,10 @@ export const fetchUpdateUserPassword = (data: {
 	};
 };
 
-export const addUserCourse = (courseId: string, redirect?: string) => {
+export const addUserCourse = (courseId: string) => {
 	return async (dispatch: Dispatch<UserActions>) => {
 		$api.put("/my/courses", { courseId }).then(() => {
-			if (redirect) {
-				window.location.href = redirect;
-			} else {
-				window.location.reload();
-			}
+			window.location.href = "/go/training";
 		});
 	};
 };

@@ -13,6 +13,7 @@ interface CoursePageLessonsItemProps extends CourseGoodLessons {
 
     isLogin: boolean;
     isAdd: boolean;
+    isSubscribe: boolean;
 }
 
 const CoursePageLessonsItem: React.FC<CoursePageLessonsItemProps> = ({
@@ -22,6 +23,7 @@ const CoursePageLessonsItem: React.FC<CoursePageLessonsItemProps> = ({
     description,
     isLogin,
     isAdd,
+    isSubscribe,
 
     openVideoPlaecholder,
     closeVideoPlaecholder,
@@ -48,11 +50,32 @@ const CoursePageLessonsItem: React.FC<CoursePageLessonsItemProps> = ({
                             </p>
                         ) : null}
                     </Link>
-                ) : (
+                ) : isSubscribe ? (
                     <div
                         className="course-page-lessons-list-item"
                         onClick={() =>
                             onClickAddCourse(`/go/passing/${courseId}/${num}`)
+                        }
+                    >
+                        <div className="course-page-lessons-list-item-top">
+                            <h4 className="course-page-lessons-list-item-top__title">
+                                <span>{num}.</span>
+                                {title}
+                            </h4>
+                        </div>
+                        {description ? (
+                            <p className="course-page-lessons-list-item__description">
+                                {description}
+                            </p>
+                        ) : null}
+                    </div>
+                ) : (
+                    <div
+                        className="course-page-lessons-list-item"
+                        onClick={
+                            num === 1
+                                ? closeVideoPlaecholder
+                                : openVideoPlaecholder
                         }
                     >
                         <div className="course-page-lessons-list-item-top">

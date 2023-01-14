@@ -29,9 +29,12 @@ const Register: React.FC = () => {
             : null;
 
     const onSubmit = ({email, name, password}: any) => {
-        const paymentInfo = courseId
-            ? `buy.${courseId}`
-            : `subscribe.${typeSubscribe}`;
+        const paymentInfo =
+            !courseId && !typeSubscribe
+                ? undefined
+                : courseId
+                ? `buy.${courseId}`
+                : `subscribe.${typeSubscribe}`;
 
         return dispatch(
             sendRegister(
@@ -42,9 +45,9 @@ const Register: React.FC = () => {
                     paymentInfo,
                 },
                 localStorage.getItem("ref")
-                    ? JSON.parse(localStorage.getItem("ref") as string)
+                    ? (localStorage.getItem("ref") as string)
                     : "",
-                paymentInfo.split(".")[0]
+                paymentInfo && paymentInfo.split(".")[0]
             )
         );
     };
