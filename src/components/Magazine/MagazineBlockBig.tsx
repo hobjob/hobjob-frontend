@@ -16,7 +16,7 @@ const MagazineBlockBig: React.FC<MagazineBlockBigProps> = ({
     _id,
     image,
     title,
-    description,
+    content,
     category,
     master,
 }) => {
@@ -54,7 +54,9 @@ const MagazineBlockBig: React.FC<MagazineBlockBigProps> = ({
 
                 <p
                     className="magazine-block-big-text__description"
-                    dangerouslySetInnerHTML={{__html: description}}
+                    dangerouslySetInnerHTML={{
+                        __html: content[0].description[0],
+                    }}
                 ></p>
 
                 {master ? (

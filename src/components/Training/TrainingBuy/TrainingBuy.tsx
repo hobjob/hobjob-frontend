@@ -20,33 +20,35 @@ const TrainingSubscribe: React.FC = () => {
     };
 
     return (
-        <div className="training-section">
-            <h3 className="title__mb training-section__title">
-                Курсы купленные навсегда
-            </h3>
+        <div className="training-section-wrapper">
+            <div className="training-section">
+                <h3 className="title__mb training-section__title">
+                    Курсы купленные навсегда
+                </h3>
 
-            {userInfo.courses.buy.map((course, index) => (
-                <TrainingBuyBlock
-                    {...course}
-                    master={masters[course.masterId]}
-                    onClickHiddenUserCourse={onClickHiddenUserCourse}
-                    completedLessonsTitle1={
-                        checkDeclension(course.completedLessons.length, [
-                            "Пройден",
-                            "Пройдено",
-                            "Пройдено",
-                        ]).text
-                    }
-                    completedLessonsTitle2={
-                        checkDeclension(course.completedLessons.length, [
-                            "урок",
-                            "урока",
-                            "уроков",
-                        ]).title
-                    }
-                    key={`training-section-block-${index}`}
-                />
-            ))}
+                {userInfo.courses.buy.map((course, index) => (
+                    <TrainingBuyBlock
+                        {...course}
+                        master={masters[course.masterId]}
+                        onClickHiddenUserCourse={onClickHiddenUserCourse}
+                        completedLessonsTitle1={
+                            checkDeclension(course.completedLessons.length, [
+                                "Пройден",
+                                "Пройдено",
+                                "Пройдено",
+                            ]).text
+                        }
+                        completedLessonsTitle2={
+                            checkDeclension(course.completedLessons.length, [
+                                "урок",
+                                "урока",
+                                "уроков",
+                            ]).title
+                        }
+                        key={`training-section-block-${index}`}
+                    />
+                ))}
+            </div>
         </div>
     );
 };

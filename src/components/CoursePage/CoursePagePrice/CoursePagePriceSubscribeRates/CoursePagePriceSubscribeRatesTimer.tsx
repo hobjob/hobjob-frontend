@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 
 const CoursePagePriceSubscribeRatesTimer: React.FC = () => {
-    let deadline: string = moment().add(1, "days").format("MMMM, DD, YYYY");
+    let deadline: string = moment().add(1, "days").locale('en').format("MMMM, DD, YYYY");
 
     const [days, setDays] = React.useState(0);
     const [hours, setHours] = React.useState(0);

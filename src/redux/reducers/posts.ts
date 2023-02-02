@@ -25,7 +25,6 @@ const initialState: PostsState = {
 	itemById: {
 		_id: "",
 		title: "",
-		description: "",
 		image: {
 			size_512: "",
 			size_768: "",

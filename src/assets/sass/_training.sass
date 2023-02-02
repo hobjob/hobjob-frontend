@@ -3,6 +3,14 @@
 	margin: 50px 0
 	+openAnimation
 
+	&-section-wrapper
+		position: relative
+
+		margin-bottom: 100px
+
+		&:last-child
+			margin-bottom: 50px
+
 	&-section
 		&-block
 			position: relative
@@ -48,7 +56,7 @@
 				overflow: hidden
 				min-width: 250px
 				height: 250px
-				
+
 				+borderRadiusBlock
 
 				&-placeholder
@@ -84,15 +92,44 @@
 				&__title
 					display: block
 					font-size: 36px
-					margin-bottom: 25px
 
 					overflow: hidden
 					white-space: nowrap
 					text-overflow: ellipsis
 
-				&__auth
-					font-size: 21px
-					color: $mainColor
+				&-auth
+					&__auth
+						font-size: 21px
+						color: $mainColor
+
+				&-progress
+					width: 75%
+
+					&-line-wrapper
+						display: flex
+						align-items: center
+
+					&-line
+						position: relative
+
+						width: 100%
+						height: 8px
+						background-color: #E9E9E9
+
+						border-radius: 100px
+						overflow: hidden
+
+						&-subline
+							height: 8px
+							background-color: $mainColor
+
+						&-success
+							margin-left: 15px
+
+					&__subtitle
+						margin-top: 10px
+						font-size: 18px
+						color: $gray
 
 			&__hidden
 				z-index: 2
@@ -110,11 +147,128 @@
 				color: $black
 
 				will-change: transform
-				
+
 				+transition
 
 				&:active
 					+transformScale
+
+	&-subscribe-section-wrapper
+
+	&-subscribe-section
+		&.close
+			+closePopup
+
+	&-subscribe-disabled-wrapper
+		padding: 20px
+		background-color: $backgroundGray
+
+		margin: 0 auto
+
+		width: 65%
+
+		+borderRadiusBlock
+		+openPopup
+
+	&-subscribe-disabled
+		background-color: $white
+
+		+borderRadiusBlock
+
+		&-text
+			padding: 35px
+
+			&__title
+				font-size: 38px
+				margin-bottom: 35px
+
+			&-types
+				overflow-x: auto
+				display: flex
+
+				&-item
+					cursor: pointer
+					margin-right: 15px
+
+					opacity: 0.5
+					transform: scale(.90)
+
+					+transition
+
+					&.active
+						opacity: 1
+						transform: scale(1)
+
+					&:last-child
+						margin-right: 0
+
+					& > svg
+						width: 225px
+
+			&-list
+				margin-top: 25px
+
+				&__item
+					display: flex
+					align-items: center
+
+					color: $mainColor
+					font-size: 21px
+					margin-bottom: 5px
+
+					&:last-child
+						margin-bottom: 0
+
+					& svg
+						margin-right: 7px
+
+				&-hobjob-good
+					display: flex
+					align-items: center
+
+					& svg
+						margin-right: 7px
+
+					&-text
+						display: flex
+						align-items: center
+
+						&__logo
+							user-select: none
+							pointer-events: none
+
+							width: 150px
+
+						&__text
+							margin-left: 7px
+
+							display: flex
+							align-items: center
+
+							color: $mainColor
+							font-size: 21px
+
+			&__btn
+				margin-top: 25px
+				width: 100%
+
+		&-image
+			padding-bottom: 35px
+			width: 100%
+
+			&__image
+				user-select: none
+				pointer-events: none
+
+				width: 100%
+
+		&-image-media
+			display: none
+			width: 45%
+			height: auto
+
+			+backgroundSetting
+			+borderRadiusBlock
 
 	&-null
 		display: flex

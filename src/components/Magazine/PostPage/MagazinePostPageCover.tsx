@@ -11,7 +11,6 @@ import {ReadDzen, ReadVk} from "../../";
 
 interface MagazinePostPageCoverProps {
     title: string;
-    description: string;
     image: Image;
     category: Category;
     master: Master;
@@ -19,7 +18,6 @@ interface MagazinePostPageCoverProps {
 
 const MagazinePostPageCover: React.FC<MagazinePostPageCoverProps> = ({
     title,
-    description,
     category,
     master,
     image,

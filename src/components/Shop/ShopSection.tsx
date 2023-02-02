@@ -45,14 +45,18 @@ const ShopSection: React.FC<ShopSectionProps> = ({
                     ...userInfo.courses.subscribe.map(
                         (course) => course.courseId
                     ),
-                ];
+				];
 
                 if (currentCourseId) excludeCoursesId.push(currentCourseId);
 
                 dispatch(fetchCoursesSection(excludeCoursesId));
             }
         } else {
-            dispatch(fetchCoursesSection([]));
+            const excludeCoursesId = [];
+
+            if (currentCourseId) excludeCoursesId.push(currentCourseId);
+
+            dispatch(fetchCoursesSection(excludeCoursesId));
         }
     }, [isLoadedUserInfo]);
 

@@ -14,7 +14,6 @@ export interface PostContent {
 export interface Post {
 	_id: string;
 	title: string;
-	description: string;
 	image: Image;
 	masterId: string;
 	category: string;

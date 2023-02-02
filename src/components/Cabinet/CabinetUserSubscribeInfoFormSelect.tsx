@@ -1,5 +1,7 @@
 import React from "react";
 
+import {rates} from "../../subscribeRates";
+
 interface CabinetUserSubscribeInfoFormSelectProps {
     changeNextTypeSubscribe: (value: string) => void;
     nextTypeSubscribe: string;
@@ -9,10 +11,10 @@ const CabinetUserSubscribeInfoFormSelect: React.FC<
     CabinetUserSubscribeInfoFormSelectProps
 > = ({changeNextTypeSubscribe, nextTypeSubscribe}) => {
     return (
-        <form className="cabinet-block-subscribe-info-item-select">
+        <form className="cabinet-block-subscribe-item-select">
             <div className="select">
                 <label className="select__label">
-                    Выберите следующую подписку
+                    После окончания текущей подписки, спишем этот тариф
                 </label>
                 <select
                     name="nextTypeSubscribe"
@@ -20,26 +22,16 @@ const CabinetUserSubscribeInfoFormSelect: React.FC<
                     className="select__field"
                     defaultValue={nextTypeSubscribe}
                 >
-                    {[
-                        {
-                            title: "Месячная подписка (499₽ / мес.)",
-                            type: "month-subscribe",
-                        },
-                        {
-                            title: "Годовая подписка (3490₽ / год)",
-                            type: "year-subscribe",
-                        },
-                    ].map((item, index) =>
-                        item.type !== "test-subscribe" ? (
-                            <option
-                                value={item.type}
-                                className="select__option"
-                                key={`select__option-${index}`}
-                            >
-                                {item.title}
-                            </option>
-                        ) : null
-                    )}
+                    {Object.keys(rates).map((key, index) => (
+                        <option
+                            value={rates[key].type}
+                            className="select__option"
+                            key={`select__option-${index}`}
+                        >
+                            {rates[key].subtitle}{" "}
+                            за {rates[key].fullPrice}₽
+                        </option>
+                    ))}
                 </select>
             </div>
         </form>

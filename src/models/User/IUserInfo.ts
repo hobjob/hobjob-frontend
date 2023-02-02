@@ -71,9 +71,3 @@ export interface UserInfo {
 	courses: UserInfoCourse;
 	payment: UserInfoPayment;
 }
-
-// export interface UserInfoState extends Omit<UserInfo, "courses"> {
-// 	courses: { buy: { [key: string]: UserInfoCourse }, subscribe: { [key: string]: UserInfoCourse } };
-// }
-
-export interface UserInfoState extends UserInfo { }

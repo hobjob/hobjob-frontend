@@ -15,6 +15,7 @@ import {
     CoursePageMaterials,
     CoursePageSkills,
     CoursePageUseSkills,
+    CoursePageFeedbacks,
     CoursePagePrice,
     CoursePageComparisonCourses,
     HobJobGood,
@@ -192,9 +193,13 @@ const CoursePage: React.FC = () => {
                             />
                         ) : null}
 
-                        <CoursePageSkills {...courseByUrl} />
-
+						<CoursePageSkills {...courseByUrl} />
+						
                         <CoursePageUseSkills {...courseByUrl} />
+
+                        {courseByUrl.url === "sewing-bears-from-flax" ? (
+                            <CoursePageFeedbacks />
+                        ) : null}
 
                         {userInfo.subscribe.working || isAdd ? null : (
                             <CoursePagePrice />

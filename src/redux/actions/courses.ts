@@ -9,7 +9,6 @@ import {
 } from "../types/courses/ICourses";
 
 import { CourseGood } from "../../models/Course/ICourseGood";
-import { UserInfoState } from "../../models/User/IUserInfo";
 
 export const fetchCourses = (
 	params?: {
@@ -92,14 +91,12 @@ export const fetchCoursesSection = (
 	return async (dispatch: Dispatch<CoursesActions>) => {
 		const { data } = await $api.get<CourseGood[]>(`/courses`);
 
-		const newCourses = data
+		const newCourses: any = excludeCoursesId.length ? [] : data
 
-		newCourses.map((course, index) => {
-			excludeCoursesId.map((courseId) => {
-				if (course._id === courseId) {
-					newCourses.splice(index, 1)
-				}
-			})
+		data.map((course) => {
+			if (!excludeCoursesId.includes(course._id)) {
+				newCourses.push(course)
+			}
 		})
 
 		dispatch({

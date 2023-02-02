@@ -76,6 +76,8 @@ export { default as CoursePageSkillsItem } from "./CoursePage/CoursePageSkills/C
 // CoursePageUseSkills
 export { default as CoursePageUseSkills } from "./CoursePage/CoursePageUseSkills/CoursePageUseSkills";
 export { default as CoursePageUseSkillsItem } from "./CoursePage/CoursePageUseSkills/CoursePageUseSkillsItem";
+// CoursePageFeedbacks
+export { default as CoursePageFeedbacks } from "./CoursePage/CoursePageFeedbacks/CoursePageFeedbacks";
 // CoursePagePrice
 export { default as CoursePagePrice } from "./CoursePage/CoursePagePrice/CoursePagePrice";
 export { default as CoursePagePriceSubscribe } from "./CoursePage/CoursePagePrice/CoursePagePriceSubscribe";
@@ -115,7 +117,9 @@ export { default as TrainingNull } from "./Training/TrainingNull";
 // TrainingSubscribe
 export { default as TrainingSubscribe } from "./Training/TrainingSubscribe/TrainingSubscribe";
 export { default as TrainingSubscribeBlock } from "./Training/TrainingSubscribe/TrainingSubscribeBlock";
-// TrainingSubscribe
+// TrainingSubscribeDisabled
+export { default as TrainingSubscribeDisabled } from "./Training/TrainingSubscribe/TrainingSubscribeDisabled/TrainingSubscribeDisabled";
+// TrainingBuy
 export { default as TrainingBuy } from "./Training/TrainingBuy/TrainingBuy";
 export { default as TrainingBuyBlock } from "./Training/TrainingBuy/TrainingBuyBlock";
 
@@ -139,10 +143,6 @@ export { default as CabinetUserSubscribeInfoFormSelect } from "./Cabinet/Cabinet
 export { default as ReferralsBlockLink } from "./Referrals/ReferralsBlockLink";
 export { default as ReferralsPartners } from "./Referrals/ReferralsPartners";
 export { default as ReferralsPartnersItem } from "./Referrals/ReferralsPartnersItem";
-
-// Payment
-// PaymentSubscribe
-export { default as PaymentSubscribeProlongation } from "./Payment/PaymentSubscribe/PaymentSubscribeProlongation";
 
 // Policy
 export { default as PolicyBlock } from "./Policy/PolicyBlock";

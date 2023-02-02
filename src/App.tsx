@@ -1,6 +1,7 @@
 import React from "react";
 import {Route, Routes, Navigate, useLocation} from "react-router-dom";
 import {compose} from "redux";
+import "moment/locale/ru";
 
 import {Header, Footer} from "./components/";
 

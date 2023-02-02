@@ -1,8 +1,8 @@
-import { UserInfoState, UserInfo } from "../../../models/User/IUserInfo";
+import { UserInfo } from "../../../models/User/IUserInfo";
 import { UserReferral } from "../../../models/User/IUserReferral";
 
 export interface UserState {
-	userInfo: UserInfoState;
+	userInfo: UserInfo;
 	referrals: UserReferral[];
 
 	isLoadedUserInfo: boolean;

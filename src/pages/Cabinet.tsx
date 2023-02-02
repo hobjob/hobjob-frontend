@@ -1,7 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import { Helmet } from "react-helmet";
-import {Navigate} from 'react-router-dom'
+import {Helmet} from "react-helmet";
+import {Navigate} from "react-router-dom";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
@@ -13,7 +13,6 @@ import {
     CabinetUserInfoForm,
     CabinetUserPassword,
     CabinetUserSubscribeInfo,
-    PaymentSubscribeProlongation,
 } from "../components/";
 
 const Cabinet: React.FC = () => {
@@ -21,8 +20,8 @@ const Cabinet: React.FC = () => {
 
     const dispatch = useDispatch();
 
-	const { userInfo, isLoadedUserInfo } = useTypedSelector(({ user }) => user);
-	
+    const {userInfo, isLoadedUserInfo} = useTypedSelector(({user}) => user);
+
     React.useEffect(() => {
         if (isLoadedUserInfo) {
             if (hash !== "") {
@@ -58,56 +57,52 @@ const Cabinet: React.FC = () => {
                         </Helmet>
                         <section className="cabinet">
                             <div className="container">
-                                {userInfo.subscribe.working ? (
-                                    <div className="cabinet-wrapper">
-                                        <CabinetCardUserInfo {...userInfo} />
+                                <div className="cabinet-wrapper">
+                                    <CabinetCardUserInfo {...userInfo} />
 
-                                        <div className="cabinet-block-wrapper">
-                                            <div className="cabinet-block">
-                                                <div className="cabinet-block-text">
-                                                    <h3 className="cabinet-block-text__title">
-                                                        О себе
-                                                    </h3>
-                                                </div>
-
-                                                <CabinetUserInfoForm
-                                                    onSubmit={
-                                                        onSubmitCabinetUserInfoForm
-                                                    }
-                                                    {...userInfo}
-                                                />
-                                            </div>
-                                            <div className="cabinet-block">
-                                                <div className="cabinet-block-text">
-                                                    <h3 className="cabinet-block-text__title">
-                                                        Изменение пароля
-                                                    </h3>
-                                                </div>
-
-                                                <CabinetUserPassword
-                                                    onSubmit={
-                                                        onSubmitCabinetUserPassword
-                                                    }
-                                                />
+                                    <div className="cabinet-block-wrapper">
+                                        <div className="cabinet-block">
+                                            <div className="cabinet-block-text">
+                                                <h3 className="cabinet-block-text__title">
+                                                    О себе
+                                                </h3>
                                             </div>
 
-                                            <div
-                                                className="cabinet-block"
-                                                id="subscribe"
-                                            >
-                                                <div className="cabinet-block-text">
-                                                    <h3 className="cabinet-block-text__title">
-                                                        Моя подписка
-                                                    </h3>
-                                                </div>
-
-                                                <CabinetUserSubscribeInfo />
+                                            <CabinetUserInfoForm
+                                                onSubmit={
+                                                    onSubmitCabinetUserInfoForm
+                                                }
+                                                {...userInfo}
+                                            />
+                                        </div>
+                                        <div className="cabinet-block">
+                                            <div className="cabinet-block-text">
+                                                <h3 className="cabinet-block-text__title">
+                                                    Изменение пароля
+                                                </h3>
                                             </div>
+
+                                            <CabinetUserPassword
+                                                onSubmit={
+                                                    onSubmitCabinetUserPassword
+                                                }
+                                            />
+                                        </div>
+
+                                        <div
+                                            className="cabinet-block"
+                                            id="subscribe"
+                                        >
+                                            <div className="cabinet-block-text">
+                                                <h3 className="cabinet-block-text__title">
+                                                    Моя подписка
+                                                </h3>
+                                            </div>
+
+                                            <CabinetUserSubscribeInfo />
                                         </div>
                                     </div>
-                                ) : (
-                                    <PaymentSubscribeProlongation />
-                                )}
+                                </div>
                             </div>
                         </section>
                     </>

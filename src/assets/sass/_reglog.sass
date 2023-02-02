@@ -35,12 +35,15 @@
 			user-select: none
 
 	&-progressbar
-		margin-bottom: 50px
-
+		overflow-x: auto
+		
 		width: 100%
-		display: flex
+
+		display: inline-flex
 		align-items: center
 		justify-content: center
+
+		margin-bottom: 50px
 
 		&-item
 			display: flex
@@ -84,7 +87,7 @@
 			background-color: $borderGray
 
 	&-form-wrapper
-		width: 47%
+		width: 50%
 
 		+openPopup
 
@@ -150,7 +153,7 @@
 				border-bottom: 1px solid $gray
 
 	&-product-wrapper
-		width: 48%
+		width: 45%
 
 	&-product-subscribe-block
 		width: 100%
@@ -226,7 +229,7 @@
 
 				width: 100%
 
-	&-buy-block
+	&-product-buy-block
 		position: relative
 		width: 100%
 		background-color: $white
@@ -310,3 +313,22 @@
 				width: 100%
 
 				+borderRadiusBlock
+
+	&-payment-error
+		margin-top: 100px
+		+openAnimation
+
+		&-text
+			&-logo
+				margin-bottom: 75px
+				display: block
+
+				&__img
+					width: 75px
+					user-select: none
+
+			&__title
+				margin-bottom: 25px
+
+			&__description
+				margin-bottom: 100px

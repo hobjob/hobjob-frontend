@@ -51,7 +51,7 @@ const PaymentSubscribe: React.FC = () => {
                     },
                 });
 
-                checkout.render("reglog-payment-form");
+                checkout.render("reglog-form-payment");
             } else {
                 window.location.href = "/";
             }
@@ -72,8 +72,8 @@ const PaymentSubscribe: React.FC = () => {
                                     <ReglogProgressbar number={1} />
 
                                     <div
-                                        className="reglog-payment-form"
-                                        id="reglog-payment-form"
+                                        className="reglog-form-payment"
+                                        id="reglog-form-payment"
                                     ></div>
                                 </div>
                                 <div className="reglog-product-wrapper">

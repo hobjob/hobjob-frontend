@@ -17,6 +17,7 @@ const TrainingBlock: React.FC<TrainingBlockProps> = ({
     image,
     title,
     totalLessons,
+    completedLessons,
     completedLessonsTitle1,
     completedLessonsTitle2,
     master,
@@ -52,18 +53,51 @@ const TrainingBlock: React.FC<TrainingBlockProps> = ({
                     ></div>
                 </div>
                 <div className="training-section-block-text">
-                    <div className="training-section-block-text-top">
-                        <h3 className="training-section-block-text__title">
-                            {title}
-                        </h3>
-                        <p className="subtitle training-section-block-text__subtitle">
+                    <h3 className="training-section-block-text__title">
+                        {title}
+                    </h3>
+
+                    <div className="training-section-block-text-progress">
+                        <div className="training-section-block-text-progress-line-wrapper">
+                            <div className="training-section-block-text-progress-line">
+                                <div
+                                    className="training-section-block-text-progress-line-subline"
+                                    style={{
+                                        width: `${
+                                            (completedLessons.length /
+                                                totalLessons) *
+                                            100
+                                        }%`,
+                                    }}
+                                ></div>
+                            </div>
+                            {completedLessons.length === totalLessons ? (
+                                <div className="training-section-block-text-progress-line-success">
+                                    <svg
+                                        width="17"
+                                        height="17"
+                                        viewBox="0 0 17 17"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M1 8.02633C1.46491 8.67924 2.05664 9.21751 2.55715 9.84238C3.85223 11.4592 4.95187 13.2217 6.11658 14.9309C6.14622 14.9745 6.83351 15.9388 6.88506 15.8489C7.11152 15.4539 7.28847 15.0025 7.4779 14.5887C8.05885 13.3197 8.68633 12.0915 9.39246 10.8861C10.5984 8.82762 11.8003 6.75994 13.1288 4.7775C13.7374 3.86927 14.4532 3.06849 15.1231 2.20911C15.415 1.83458 15.8043 1.43535 16 1"
+                                            stroke="#DD9E5E"
+                                            strokeWidth="2"
+                                        />
+                                    </svg>
+                                </div>
+                            ) : null}
+                        </div>
+
+                        <p className="training-section-block-text-progress__subtitle">
                             {completedLessonsTitle1} {completedLessonsTitle2} из{" "}
                             {totalLessons}
                         </p>
                     </div>
-                    <div className="training-section-block-text-bottom">
+                    <div className="training-section-block-text-auth">
                         {master ? (
-                            <p className="training-section-block-text__auth">
+                            <p className="training-section-block-text-auth__auth">
                                 {master.name} {master.surname}
                             </p>
                         ) : null}

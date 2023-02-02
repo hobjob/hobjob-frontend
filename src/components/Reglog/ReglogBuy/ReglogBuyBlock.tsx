@@ -11,24 +11,24 @@ const ReglogBuyBlock: React.FC = () => {
     } = useTypedSelector(({courses}) => courses);
 
     return (
-        <div className="reglog-buy-block">
+        <div className="reglog-product-buy-block">
             {isLoadedCourseById && title !== "" ? (
                 <>
-                    <div className="reglog-buy-block-text">
-                        <p className="reglog-buy-block-text__subprice">
+                    <div className="reglog-product-buy-block-text">
+                        <p className="reglog-product-buy-block-text__subprice">
                             Курс навсегда
                         </p>
-                        <div className="reglog-buy-block-text-price">
-                            <h3 className="reglog-buy-block-text-price__title">
+                        <div className="reglog-product-buy-block-text-price">
+                            <h3 className="reglog-product-buy-block-text-price__title">
                                 990₽
                                 <span>1980₽</span>
                             </h3>
-                            <p className="reglog-buy-block-text-price__sale">
+                            <p className="reglog-product-buy-block-text-price__sale">
                                 -50%
                             </p>
                         </div>
-                        <div className="reglog-buy-block-text-list">
-                            <p className="reglog-buy-block-text-list__item">
+                        <div className="reglog-product-buy-block-text-list">
+                            <p className="reglog-product-buy-block-text-list__item">
                                 <svg
                                     width="17"
                                     height="15"
@@ -51,7 +51,7 @@ const ReglogBuyBlock: React.FC = () => {
                                 </svg>
                                 Доступ только к этому курсу
                             </p>
-                            <p className="reglog-buy-block-text-list__item">
+                            <p className="reglog-product-buy-block-text-list__item">
                                 <svg
                                     width="17"
                                     height="15"
@@ -79,12 +79,12 @@ const ReglogBuyBlock: React.FC = () => {
                         <img
                             src={`${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_1024}`}
                             alt=""
-                            className="reglog-buy-block-text__image"
+                            className="reglog-product-buy-block-text__image"
                         />
                     </div>
                 </>
             ) : (
-                <div className="reglog-buy-block-loader">
+                <div className="reglog-product-buy-block-loader">
                     <Loader />
                 </div>
             )}

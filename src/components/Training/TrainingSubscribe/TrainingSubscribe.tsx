@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 
 import {hiddenUserCourse} from "../../../redux/actions/user";
 
-import {TrainingSubscribeBlock} from "../../";
+import {TrainingSubscribeDisabled, TrainingSubscribeBlock} from "../../";
 
 import {useTypedSelector} from "../../../hooks/useTypedSelector";
 
@@ -15,38 +15,64 @@ const TrainingSubscribe: React.FC = () => {
     const {userInfo} = useTypedSelector(({user}) => user);
     const masters = useTypedSelector(({masters}) => masters.items);
 
+    const [isVisibleDisabled, setIsVisibleDisabled] =
+        React.useState<boolean>(false);
+    const [
+        isActiveAnimationVisibleDisabled,
+        setIsActiveAnimationVisibleDisabled,
+    ] = React.useState<boolean>(false);
+
     const onClickHiddenUserCourse = (courseId: string) => {
         dispatch(hiddenUserCourse(courseId));
     };
 
-    return (
-        <div className="training-section">
-            <h3 className="title__mb training-section__title">
-                Курсы в подписке
-            </h3>
+    const onClickVisibleDisabled = () => {
+        setIsActiveAnimationVisibleDisabled(true);
 
-            {userInfo.courses.subscribe.map((course, index) => (
-                <TrainingSubscribeBlock
-                    {...course}
-                    master={masters[course.masterId]}
-                    onClickHiddenUserCourse={onClickHiddenUserCourse}
-                    completedLessonsTitle1={
-                        checkDeclension(course.completedLessons.length, [
-                            "Пройден",
-                            "Пройдено",
-                            "Пройдено",
-                        ]).text
-                    }
-                    completedLessonsTitle2={
-                        checkDeclension(course.completedLessons.length, [
-                            "урок",
-                            "урока",
-                            "уроков",
-                        ]).title
-                    }
-                    key={`training-section-block-${index}`}
-                />
-            ))}
+        setTimeout(() => {
+            setIsVisibleDisabled(true);
+            setIsActiveAnimationVisibleDisabled(false);
+        }, 180);
+    };
+
+    return (
+        <div className="training-section-wrapper training-subscribe-section-wrapper">
+            {isVisibleDisabled ? (
+                <TrainingSubscribeDisabled />
+            ) : (
+                <div
+                    className={`training-section training-subscribe-section ${
+                        isActiveAnimationVisibleDisabled ? "close" : ""
+                    }`}
+                >
+                    <h3 className="title__mb training-section__title">
+                        Курсы в подписке
+                    </h3>
+
+                    {userInfo.courses.subscribe.map((course, index) => (
+                        <TrainingSubscribeBlock
+                            {...course}
+                            onClickVisibleDisabled={onClickVisibleDisabled}
+                            isWorkSubscribe={userInfo.subscribe.working}
+                            master={masters[course.masterId]}
+                            onClickHiddenUserCourse={onClickHiddenUserCourse}
+                            completedLessonsTitle1={
+                                checkDeclension(
+                                    course.completedLessons.length,
+                                    ["Пройден", "Пройдено", "Пройдено"]
+                                ).text
+                            }
+                            completedLessonsTitle2={
+                                checkDeclension(
+                                    course.completedLessons.length,
+                                    ["урок", "урока", "уроков"]
+                                ).title
+                            }
+                            key={`training-section-block-${index}`}
+                        />
+                    ))}
+                </div>
+            )}
         </div>
     );
 };
