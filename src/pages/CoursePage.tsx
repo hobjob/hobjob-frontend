@@ -193,11 +193,11 @@ const CoursePage: React.FC = () => {
                             />
                         ) : null}
 
-						<CoursePageSkills {...courseByUrl} />
-						
+                        <CoursePageSkills {...courseByUrl} />
+
                         <CoursePageUseSkills {...courseByUrl} />
 
-                        {courseByUrl.url === "sewing-bears-from-flax" ? (
+                        {courseByUrl.feedbacks.images.length ? (
                             <CoursePageFeedbacks />
                         ) : null}
 

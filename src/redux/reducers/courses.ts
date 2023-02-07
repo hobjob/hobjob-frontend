@@ -41,6 +41,10 @@ const initialState: CoursesState = {
 		skills: [],
 		useSkills: [],
 		tools: [],
+		feedbacks: {
+			images: [],
+			mediaImages: []
+		},
 		HobJobProduction: false
 	},
 
@@ -65,6 +69,10 @@ const initialState: CoursesState = {
 		skills: [],
 		useSkills: [],
 		tools: [],
+		feedbacks: {
+			images: [],
+			mediaImages: []
+		},
 		HobJobProduction: false
 	},
 

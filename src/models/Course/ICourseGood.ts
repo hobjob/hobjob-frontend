@@ -24,6 +24,11 @@ export interface CourseGoodTool {
 	title: string
 }
 
+export interface CourseGoodFeedbacks {
+	images: Image[]
+	mediaImages: Image[]
+}
+
 export interface CourseGood {
 	_id: string;
 	url: string;
@@ -38,5 +43,6 @@ export interface CourseGood {
 	skills: CourseGoodSkill[];
 	useSkills: CourseGoodUseSkill[];
 	tools: CourseGoodTool[];
+	feedbacks: CourseGoodFeedbacks;
 	HobJobProduction: boolean;
 }

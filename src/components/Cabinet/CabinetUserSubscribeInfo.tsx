@@ -19,7 +19,7 @@ const CabinetUserSubscribeInfo: React.FC = () => {
     } = useTypedSelector(({user}) => user);
 
     const changeAutoPayment = () => {
-        // dispatch(fetchUpdateUser({autoPayment: !payment.auto}));
+        dispatch(fetchUpdateUser({autoPayment: !subscribe.auto}));
     };
 
     const changeNextTypeSubscribe = (value: string) => {

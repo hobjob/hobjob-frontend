@@ -840,6 +840,31 @@
 				&:last-child
 					margin-bottom: 0
 
+@media screen and ( max-width: 750px )
+	// course-page
+	.course-page
+		&-feedbacks
+			&-slider
+				margin-top: 0
+
+				&-carousel
+					width: 100%
+
+				&-arrow-wrapper
+					margin-top: 25px
+
+					display: flex
+					align-items: center
+					justify-content: center
+
+				&-arrow
+					position: static
+
+					margin: 0 10px
+
+					width: 30px
+					height: 30px
+
 @media screen and ( max-width: 700px )
 	// interface
 	.socials-read
@@ -905,12 +930,8 @@
 			&-item
 				padding: 20px
 
-				&-top
-					&__number
-						font-size: 24px
-
-					&__title
-						font-size: 32px
+				&__title
+					font-size: 32px
 
 		&-comparison-courses
 			&-block
@@ -1029,6 +1050,11 @@
 					align-items: center
 
 @media screen and ( max-width: 600px )
+	// interface
+	.category
+		font-size: 14px
+		padding: 6px 8px
+
 	// main
 	.main
 		&-text
@@ -1108,6 +1134,16 @@
 	// course-page
 	.course-page
 		&-main
+			&-text
+				&-subinfo
+					&-hobjob-production
+						width: 150px
+						margin-right: 5px
+						margin-bottom: 10px
+
+					&__category
+						margin-bottom: 10px
+
 			&-image
 				height: 300px
 
@@ -1277,12 +1313,9 @@
 			margin: 35px 0
 
 			&-item
-				&-top
-					&__number
-						font-size: 21px
-
-					&__title
-						font-size: 24px
+				&__title
+					font-size: 28px
+					margin-bottom: 15px
 
 				&__description
 					font-size: 18px
@@ -1301,6 +1334,9 @@
 
 						&__description
 							font-size: 18px
+
+		&-feedbacks
+			margin: 35px 0
 
 		&-price
 			&-subscribe

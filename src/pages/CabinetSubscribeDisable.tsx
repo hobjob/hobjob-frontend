@@ -16,7 +16,7 @@ const CabinetSubscribeDisable: React.FC = () => {
     const [daysSubscribe, setDaysSubscribe] = React.useState(0);
 
     const {
-        userInfo: {subscribe, payment},
+        userInfo: {subscribe},
         isLoadedUserInfo,
     } = useTypedSelector(({user}) => user);
 
@@ -33,8 +33,8 @@ const CabinetSubscribeDisable: React.FC = () => {
     }, [isLoadedUserInfo]);
 
     const changeAutoPayment = () => {
-        // dispatch(fetchUpdateUser({autoPayment: !payment.auto}));
-
+		dispatch(fetchUpdateUser({ autoPayment: !subscribe.auto }));
+		
         history("/go/cabinet#subscribe");
     };
 
