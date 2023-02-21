@@ -8,8 +8,6 @@ interface TrainingBlockProps extends UserInfoCourseBuy {
     completedLessonsTitle1: string;
     completedLessonsTitle2: string;
     master: Master;
-
-    onClickHiddenUserCourse: (_id: string) => void;
 }
 
 const TrainingBlock: React.FC<TrainingBlockProps> = ({

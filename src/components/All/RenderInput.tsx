@@ -12,23 +12,17 @@ const RenderInput: React.FC<any> = ({
 
     return (
         <>
-            <div style={{position: "relative"}}>
+            <div
+                style={{position: "relative"}}
+                className={`input ${touched && error ? "error" : ""}`}
+            >
                 <input
                     {...input}
                     type={passwordState ? "text" : type}
-                    className={`input__field ${classNameInput} ${
-                        touched && error ? "error" : ""
-                    }`}
-                    required
+                    className={`input__field ${classNameInput}`}
+                    placeholder={label}
                     disabled={disabled ? true : false}
                 />
-                <label
-                    className={`input__label ${
-                        touched && error ? "error" : ""
-                    } ${disabled ? "active" : ""}`}
-                >
-                    {label}
-                </label>
 
                 {type === "password" ? (
                     <div className="input-state">

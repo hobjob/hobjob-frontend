@@ -9,7 +9,7 @@ import {
 } from "../types/register/IRegister";
 
 export const sendRegister = (
-	data: { name: string; email: string; password: string; paymentInfo?: string },
+	data: { email: string; paymentInfo: string },
 	ref: string,
 	typePayment?: string
 ) => {

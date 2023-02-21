@@ -2,38 +2,16 @@ import React from "react";
 import {useTypedSelector} from "../../../hooks/useTypedSelector";
 
 import {
-    CoursePagePriceSubscribe,
-    CoursePagePriceBuy,
+    CoursePagePriceChoice,
     CoursePagePriceSubscribeRates,
+    CoursePagePriceRegisterSubscribe,
+    CoursePagePriceRegisterBuy,
 } from "../../";
 
+import {CoursePagePriceSections} from "../../../redux/types/coursePage/ICoursePage";
+
 const CoursePagePrice: React.FC = () => {
-    const {courseByUrl} = useTypedSelector(({courses}) => courses);
-
-    const [visibleSubscribeRates, setVisibleSubscribeRates] =
-        React.useState<boolean>(false);
-    const [isCloseAnimationPriceSubscribe, setIsCloseAnimationPriceSubscribe] =
-        React.useState<boolean>(false);
-    const [isCloseAnimationRatesSubscribe, setIsCloseAnimationRatesSubscribe] =
-        React.useState<boolean>(false);
-
-    const openSubscribeRates = () => {
-        setIsCloseAnimationPriceSubscribe(true);
-
-        setTimeout(() => {
-            setVisibleSubscribeRates(true);
-            setIsCloseAnimationPriceSubscribe(false);
-        }, 180);
-    };
-
-    const closeSubscribeRates = () => {
-        setIsCloseAnimationRatesSubscribe(true);
-
-        setTimeout(() => {
-            setVisibleSubscribeRates(false);
-            setIsCloseAnimationRatesSubscribe(false);
-        }, 180);
-    };
+    const {currentSection} = useTypedSelector(({coursePage}) => coursePage);
 
     return (
         <section className="course-page-price" id="price">
@@ -43,29 +21,24 @@ const CoursePagePrice: React.FC = () => {
                         Как получить доступ к курсу?
                     </h2>
 
-                    {visibleSubscribeRates ? (
-                        <div
-                            className={`course-page-price-subscribe-rates ${
-                                isCloseAnimationRatesSubscribe ? "close" : ""
-                            }`}
-                        >
-                            <CoursePagePriceSubscribeRates
-                                closeSubscribeRates={closeSubscribeRates}
-                            />
-                        </div>
-                    ) : (
-                        <div
-                            className={`course-page-price-blocks ${
-                                isCloseAnimationPriceSubscribe ? "close" : ""
-                            }`}
-                        >
-                            <CoursePagePriceSubscribe
-                                openSubscribeRates={openSubscribeRates}
-                            />
+                    {currentSection ===
+                    CoursePagePriceSections.CHOICE_TYPE_BUY ? (
+                        <CoursePagePriceChoice />
+                    ) : null}
 
-                            <CoursePagePriceBuy {...courseByUrl} />
-                        </div>
-                    )}
+                    {currentSection ===
+                    CoursePagePriceSections.SUBSCRIBE_RATES ? (
+                        <CoursePagePriceSubscribeRates />
+                    ) : null}
+
+                    {currentSection ===
+                    CoursePagePriceSections.SUBSCRIBE_REGISTER ? (
+                        <CoursePagePriceRegisterSubscribe />
+                    ) : null}
+
+                    {currentSection === CoursePagePriceSections.BUY_REGISTER ? (
+                        <CoursePagePriceRegisterBuy />
+                    ) : null}
                 </div>
             </div>
         </section>

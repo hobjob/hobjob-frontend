@@ -2,12 +2,13 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form'
 
 import courses from './courses';
+import coursePage from './coursePage';
 import posts from './posts';
 import categories from './categories';
 import masters from './masters';
 import register from './register';
 import login from './login';
-import password_recovery from './password_recovery';
+import passwordRecovery from './passwordRecovery';
 import user from './user';
 import passing from './passing';
 import paymentSubscribe from './payment/paymentSubscribe';
@@ -15,12 +16,13 @@ import paymentCourse from './payment/paymentCourse';
 
 export const rootReducer = combineReducers({
 	courses,
+	coursePage,
 	posts,
 	categories,
 	masters,
 	register,
 	login,
-	password_recovery,
+	passwordRecovery,
 	user,
 	passing,
 	paymentSubscribe,

@@ -14,7 +14,7 @@ let PasswordRecoveryEmailForm: React.FC<
         InjectedFormProps<{}, PasswordRecoveryEmailFormProps>
 > = ({handleSubmit}) => {
     const {isSend} = useTypedSelector(
-        ({password_recovery}) => password_recovery
+        ({passwordRecovery}) => passwordRecovery
     );
 
     return (
@@ -27,7 +27,7 @@ let PasswordRecoveryEmailForm: React.FC<
                     component={RenderInput}
                     type="email"
                     name="email"
-                    label="Email"
+                    label="Электронная почта"
                 />
             </div>
 

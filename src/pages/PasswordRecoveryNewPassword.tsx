@@ -5,7 +5,7 @@ import {useParams, Navigate, Link} from "react-router-dom";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
-import {sendPasswordRecoveryNewPassword} from "../redux/actions/password_recovery";
+import {sendPasswordRecoveryNewPassword} from "../redux/actions/passwordRecovery";
 
 import {
     PasswordRecoveryNewPasswordForm,
@@ -19,7 +19,7 @@ const PasswordRecoveryNewPassword: React.FC = () => {
     const {hash} = useParams();
 
     const {newPasswordStatus} = useTypedSelector(
-        ({password_recovery}) => password_recovery
+        ({passwordRecovery}) => passwordRecovery
     );
 
     const onSubmit = ({password, password_repeat}: any) => {

@@ -29,7 +29,7 @@ const validate = (values: validateInfoValues) => {
     } else if (
         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
     ) {
-        errors.email = "Неверный email";
+		errors.email = "Неверная электронная почта";
     } else if (values.email.length > defaultMax) {
         errors.email = `Не более ${defaultMax} символов`;
     } else if (values.email.length < defaultMin) {

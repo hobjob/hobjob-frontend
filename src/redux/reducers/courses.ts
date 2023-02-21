@@ -1,17 +1,8 @@
-import queryString from "query-string";
-import { createSearchParams } from "react-router-dom";
-
 import {
 	CoursesState,
 	CoursesActions,
 	CoursesActionTypes,
 } from "../types/courses/ICourses";
-
-import { CourseGood } from "../../models/Course/ICourseGood";
-
-// const parseQuery = queryString.parse(window.location.search.replace("?", "?"), {
-//     arrayFormat: "comma",
-// });
 
 const initialState: CoursesState = {
 	isLoadedAllCoursesFirst: false,

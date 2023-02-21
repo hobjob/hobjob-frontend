@@ -14,7 +14,7 @@ let PasswordRecoveryNewPasswordForm: React.FC<
         InjectedFormProps<{}, PasswordRecoveryNewPasswordFormProps>
 > = ({handleSubmit}) => {
     const {isSend} = useTypedSelector(
-        ({password_recovery}) => password_recovery
+        ({passwordRecovery}) => passwordRecovery
     );
 
     return (

@@ -19,7 +19,6 @@ import {
     PassingCourse,
     Cabinet,
     Referrals,
-    Register,
     PaymentCourse,
     PaymentSubscribe,
     PaymentStatus,
@@ -122,8 +121,6 @@ const App: React.FC = () => {
                             />
 
                             <Route path="/go/login" element={<Login />} />
-
-                            <Route path="/go/register" element={<Register />} />
 
                             <Route
                                 path="/go/password-recovery"

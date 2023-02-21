@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
-import {sendPasswordRecoveryEmail} from "../redux/actions/password_recovery";
+import {sendPasswordRecoveryEmail} from "../redux/actions/passwordRecovery";
 
 import {
     PasswordRecoveryEmailForm,
@@ -18,7 +18,7 @@ const PasswordRecoveryEmail: React.FC = () => {
     const dispatch = useDispatch();
 
     const {emailStatus} = useTypedSelector(
-        ({password_recovery}) => password_recovery
+        ({passwordRecovery}) => passwordRecovery
     );
 
     const onSubmit = ({email}: any) => {

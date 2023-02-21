@@ -1,7 +1,4 @@
 import React from "react";
-import {useDispatch} from "react-redux";
-
-import {hiddenUserCourse} from "../../../redux/actions/user";
 
 import {TrainingBuyBlock} from "../../";
 
@@ -10,14 +7,8 @@ import {useTypedSelector} from "../../../hooks/useTypedSelector";
 import {checkDeclension} from "../../../functions/checkDeclension";
 
 const TrainingSubscribe: React.FC = () => {
-    const dispatch = useDispatch();
-
     const {userInfo} = useTypedSelector(({user}) => user);
     const masters = useTypedSelector(({masters}) => masters.items);
-
-    const onClickHiddenUserCourse = (courseId: string) => {
-        dispatch(hiddenUserCourse(courseId));
-    };
 
     return (
         <div className="training-section-wrapper">
@@ -30,7 +21,6 @@ const TrainingSubscribe: React.FC = () => {
                     <TrainingBuyBlock
                         {...course}
                         master={masters[course.masterId]}
-                        onClickHiddenUserCourse={onClickHiddenUserCourse}
                         completedLessonsTitle1={
                             checkDeclension(course.completedLessons.length, [
                                 "Пройден",

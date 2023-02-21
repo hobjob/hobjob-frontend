@@ -6,6 +6,7 @@ import {Rate} from "../../../../models/IRate";
 interface CoursePagePriceSubscribeRatesBlockProps extends Rate {
     isLogin: boolean;
     createPaymentSubscribe: (type: string) => void;
+    onClickGoToRegisterSubscribe: (type: string) => void;
 }
 
 const CoursePagePriceSubscribeRatesBlock: React.FC<
@@ -20,6 +21,7 @@ const CoursePagePriceSubscribeRatesBlock: React.FC<
     type,
     isLogin,
     createPaymentSubscribe,
+    onClickGoToRegisterSubscribe,
 }) => {
     return (
         <div className="course-page-price-subscribe-rates-blocks-block">
@@ -63,12 +65,12 @@ const CoursePagePriceSubscribeRatesBlock: React.FC<
                         Оформить подписку
                     </button>
                 ) : (
-                    <Link
-                        to={`/go/register?typeSubscribe=${type}`}
+                    <button
+                        onClick={() => onClickGoToRegisterSubscribe(type)}
                         className="btn  course-page-price-subscribe-rates-blocks-block-bottom-text__btn"
                     >
                         Оформить подписку
-                    </Link>
+                    </button>
                 )}
 
                 <p className="course-page-price-subscribe-rates-blocks-block-bottom-text__subbtn">

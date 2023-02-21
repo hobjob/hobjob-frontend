@@ -80,12 +80,22 @@ export { default as CoursePageUseSkillsItem } from "./CoursePage/CoursePageUseSk
 export { default as CoursePageFeedbacks } from "./CoursePage/CoursePageFeedbacks/CoursePageFeedbacks";
 // CoursePagePrice
 export { default as CoursePagePrice } from "./CoursePage/CoursePagePrice/CoursePagePrice";
-export { default as CoursePagePriceSubscribe } from "./CoursePage/CoursePagePrice/CoursePagePriceSubscribe";
-export { default as CoursePagePriceBuy } from "./CoursePage/CoursePagePrice/CoursePagePriceBuy";
+// CoursePagePriceChoice
+export { default as CoursePagePriceChoice } from "./CoursePage/CoursePagePrice/CoursePagePriceChoice/CoursePagePriceChoice";
+export { default as CoursePagePriceChoiceSubscribe } from "./CoursePage/CoursePagePrice/CoursePagePriceChoice/CoursePagePriceChoiceSubscribe";
+export { default as CoursePagePriceChoiceBuy } from "./CoursePage/CoursePagePrice/CoursePagePriceChoice/CoursePagePriceChoiceBuy";
 // CoursePagePriceSubscribeRates
 export { default as CoursePagePriceSubscribeRates } from "./CoursePage/CoursePagePrice/CoursePagePriceSubscribeRates/CoursePagePriceSubscribeRates";
 export { default as CoursePagePriceSubscribeRatesBlock } from "./CoursePage/CoursePagePrice/CoursePagePriceSubscribeRates/CoursePagePriceSubscribeRatesBlock";
 export { default as CoursePagePriceSubscribeRatesTimer } from "./CoursePage/CoursePagePrice/CoursePagePriceSubscribeRates/CoursePagePriceSubscribeRatesTimer";
+// CoursePagePriceRegisterSubscribe
+export { default as CoursePagePriceRegisterSubscribe } from "./CoursePage/CoursePagePrice/CoursePagePriceRegisterSubscribe/CoursePagePriceRegisterSubscribe";
+export { default as CoursePagePriceRegisterSubscribeForm } from "./CoursePage/CoursePagePrice/CoursePagePriceRegisterSubscribe/CoursePagePriceRegisterSubscribeForm";
+export { default as CoursePagePriceRegisterSubscribeProductBlock } from "./CoursePage/CoursePagePrice/CoursePagePriceRegisterSubscribe/CoursePagePriceRegisterSubscribeProductBlock";
+// CoursePagePriceRegisterBuy
+export { default as CoursePagePriceRegisterBuy } from "./CoursePage/CoursePagePrice/CoursePagePriceRegisterBuy/CoursePagePriceRegisterBuy";
+export { default as CoursePagePriceRegisterBuyForm } from "./CoursePage/CoursePagePrice/CoursePagePriceRegisterBuy/CoursePagePriceRegisterBuyForm";
+export { default as CoursePagePriceRegisterBuyProductBlock } from "./CoursePage/CoursePagePrice/CoursePagePriceRegisterBuy/CoursePagePriceRegisterBuyProductBlock";
 // CoursePageComparisonCourses
 export { default as CoursePageComparisonCourses } from "./CoursePage/CoursePageComparisonCourses/CoursePageComparisonCourses";
 // CoursePagePassing

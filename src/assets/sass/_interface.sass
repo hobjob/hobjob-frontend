@@ -155,7 +155,7 @@ li
 			border: 1px solid #E9E9E9
 
 		& > svg
-			margin-right: 5px
+			margin-left: 10px
 
 .btn-regular
 	display: inline-flex
@@ -440,55 +440,55 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active
-	-webkit-box-shadow: 0 0 0 30px white inset !important
+	-webkit-box-shadow: 0 0 0 30px $backgroundGray inset !important
 
 .input
+	&.error &__field
+		background-color: $lightRedColor
+
+		&::placeholder
+			color: $red
+
+	&.error &-state
+		color: $red
+
 	&__field
-		background-color: transparent
-		resize: none
-		outline: none
-		font-size: 21px
-		padding: 15px 0
 		display: block
 		width: 100%
+
+		resize: none
+		outline: none
+
+		font-size: 18px
+
+		padding: 20px
+
+		background-color: $backgroundGray
 		border: none
-		border-bottom: 1px solid $gray
-		line-height: 1.4em
+
+		+borderRadius
+
 		+transition
 		+SfRegular
 
-		&:focus ~ label,
-		&:valid ~ label
-			top: -15px
-			font-size: 16px
-
-		&.error
-			border-bottom: 1px solid $red
-
-	&__label
-		color: $gray
-		font-size: 18px
-		position: absolute
-		pointer-events: none
-		top: 10px
-		+transition
-
-		&.error
-			color: $red
-
-		&.active
-			top: -15px
-			font-size: 14px
+		&::placeholder
+			font-size: 18px
+			color: $gray
+			+transition
 
 	&-state
 		position: absolute
-		right: 0
+		right: 20px
 		top: 50%
 		transform: translateY(-50%)
 
 		height: 18px
 		min-width: 70px
 		overflow: hidden
+
+		color: $gray
+
+		+transition
 
 		&__visible
 			position: absolute
@@ -500,7 +500,6 @@ input:-webkit-autofill:active
 			user-select: none
 			cursor: pointer
 			font-size: 15px
-			color: $gray
 			+transition
 
 			&.active
@@ -516,7 +515,6 @@ input:-webkit-autofill:active
 			user-select: none
 			cursor: pointer
 			font-size: 15px
-			color: $gray
 			+transition
 
 			&.active

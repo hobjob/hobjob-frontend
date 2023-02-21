@@ -5,6 +5,12 @@ import {useTypedSelector} from "../../../../hooks/useTypedSelector";
 
 import {sendCreatePaymentSubscribe} from "../../../../redux/actions/payment/paymentSubscribe";
 
+import {CoursePagePriceSections} from "../../../../redux/types/coursePage/ICoursePage";
+import {
+    changeCurrentSection,
+    changeTypeSubscribe,
+} from "../../../../redux/actions/coursePage";
+
 import {
     CoursePagePriceSubscribeRatesBlock,
     CoursePagePriceSubscribeRatesTimer,
@@ -12,27 +18,41 @@ import {
 
 import {rates} from "../../../../subscribeRates";
 
-interface CoursePagePriceSubscribeRatesProps {
-    closeSubscribeRates: () => void;
-}
-
-const CoursePagePriceSubscribeRates: React.FC<
-    CoursePagePriceSubscribeRatesProps
-> = ({closeSubscribeRates}) => {
+const CoursePagePriceSubscribeRates: React.FC = () => {
     const dispatch = useDispatch();
 
     const {isLoadedUserInfo} = useTypedSelector(({user}) => user);
+    const {isCloseAnimation} = useTypedSelector(({coursePage}) => coursePage);
 
     const createPaymentSubscribe = (type: string) => {
         dispatch(sendCreatePaymentSubscribe(type));
     };
+
+    const onClickGoToRegisterSubscribe = (type: string) => {
+        dispatch(changeTypeSubscribe(type));
+
+        dispatch(
+            changeCurrentSection(CoursePagePriceSections.SUBSCRIBE_REGISTER)
+        );
+    };
+
     return (
-        <>
+        <div
+            className={`course-page-price-subscribe-rates ${
+                isCloseAnimation ? "close" : ""
+            }`}
+        >
             <div className="course-page-price-subscribe-rates-text">
                 <div className="course-page-price-subscribe-rates-text-left">
                     <button
                         className="course-page-price-subscribe-rates-text-left__back"
-                        onClick={closeSubscribeRates}
+                        onClick={() =>
+                            dispatch(
+                                changeCurrentSection(
+                                    CoursePagePriceSections.CHOICE_TYPE_BUY
+                                )
+                            )
+                        }
                     >
                         ← Назад
                     </button>
@@ -51,11 +71,14 @@ const CoursePagePriceSubscribeRates: React.FC<
                         {...rates[key]}
                         isLogin={isLoadedUserInfo}
                         createPaymentSubscribe={createPaymentSubscribe}
+                        onClickGoToRegisterSubscribe={
+                            onClickGoToRegisterSubscribe
+                        }
                         key={`course-page-price-subscribe-rates-blocks-block-${index}`}
                     />
                 ))}
             </div>
-        </>
+        </div>
     );
 };
 

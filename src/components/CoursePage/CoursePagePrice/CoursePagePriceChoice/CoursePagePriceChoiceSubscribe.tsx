@@ -1,15 +1,22 @@
 import React from "react";
+import {useDispatch} from "react-redux";
+import {animateScroll} from "react-scroll";
 
-import CoursePageSubscribeBlockImage from "../../../assets/images/subscribe-block-image.jpg";
-import CoursePageSubscribeBlockImageMedia from "../../../assets/images/subscribe-block-image-media.jpg";
+import CoursePageSubscribeBlockImage from "../../../../assets/images/subscribe-block-image.jpg";
+import CoursePageSubscribeBlockImageMedia from "../../../../assets/images/subscribe-block-image-media.jpg";
 
-interface CoursePagePriceSubscribeProps {
-    openSubscribeRates: () => void;
-}
+import {CoursePagePriceSections} from "../../../../redux/types/coursePage/ICoursePage";
+import {changeCurrentSection} from "../../../../redux/actions/coursePage";
 
-const CoursePagePriceSubscribe: React.FC<CoursePagePriceSubscribeProps> = ({
-    openSubscribeRates,
-}) => {
+const CoursePagePriceChoiceSubscribe: React.FC = () => {
+    const dispatch = useDispatch();
+
+    const scroll = () => {
+        const to: any = document.getElementById(".price")?.offsetTop;
+
+        animateScroll.scrollTo(to);
+    };
+
     return (
         <div className="course-page-price-blocks-subscribe">
             <div className="course-page-price-blocks-subscribe-text">
@@ -127,8 +134,14 @@ const CoursePagePriceSubscribe: React.FC<CoursePagePriceSubscribeProps> = ({
                 </div>
 
                 <button
-                    onClick={openSubscribeRates}
                     className="btn course-page-price-blocks-subscribe-text__btn"
+                    onClick={() =>
+                        dispatch(
+                            changeCurrentSection(
+                                CoursePagePriceSections.SUBSCRIBE_RATES
+                            )
+                        )
+                    }
                 >
                     Оформить подписку
                 </button>
@@ -152,4 +165,4 @@ const CoursePagePriceSubscribe: React.FC<CoursePagePriceSubscribeProps> = ({
     );
 };
 
-export default CoursePagePriceSubscribe;
+export default CoursePagePriceChoiceSubscribe;

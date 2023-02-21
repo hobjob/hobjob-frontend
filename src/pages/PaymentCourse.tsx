@@ -10,8 +10,6 @@ import {fetchCourseById} from "../redux/actions/courses";
 
 import {
     ReglogProgressbar,
-    RegisterForm,
-    ReglogSubscribeBlock,
     ReglogBuyBlock,
     Loader,
 } from "../components/";

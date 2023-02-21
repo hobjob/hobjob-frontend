@@ -1,9 +1,6 @@
 // Login
 export { default as Login } from "./Login"
 
-// Register
-export { default as Register } from "./Register"
-
 // PasswordRecovery
 export { default as PasswordRecoveryEmail } from "./PasswordRecoveryEmail"
 export { default as PasswordRecoveryNewPassword } from "./PasswordRecoveryNewPassword"

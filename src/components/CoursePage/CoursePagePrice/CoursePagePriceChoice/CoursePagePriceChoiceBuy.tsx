@@ -1,19 +1,21 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 
-import {useTypedSelector} from "../../../hooks/useTypedSelector";
+import {useTypedSelector} from "../../../../hooks/useTypedSelector";
 
-import {sendCreatePaymentCourse} from "../../../redux/actions/payment/paymentCourse";
+import {sendCreatePaymentCourse} from "../../../../redux/actions/payment/paymentCourse";
 
-import {Image} from "../../../models/IImage";
+import {CoursePagePriceSections} from "../../../../redux/types/coursePage/ICoursePage";
+import {changeCurrentSection} from "../../../../redux/actions/coursePage";
+
+import {Image} from "../../../../models/IImage";
 
 interface CoursePagePriceBuyProps {
     _id: string;
     image: Image;
 }
 
-const CoursePagePriceBuy: React.FC<CoursePagePriceBuyProps> = ({
+const CoursePagePriceChoiceBuy: React.FC<CoursePagePriceBuyProps> = ({
     _id,
     image,
 }) => {
@@ -97,12 +99,18 @@ const CoursePagePriceBuy: React.FC<CoursePagePriceBuyProps> = ({
                         Купить курс
                     </button>
                 ) : (
-                    <Link
-                        to={`/go/register?course=${_id}`}
+                    <button
                         className="btn course-page-price-blocks-buy-text__btn"
+                        onClick={() => {
+                            dispatch(
+                                changeCurrentSection(
+                                    CoursePagePriceSections.BUY_REGISTER
+                                )
+                            );
+                        }}
                     >
                         Купить курс
-                    </Link>
+                    </button>
                 )}
             </div>
 
@@ -124,4 +132,4 @@ const CoursePagePriceBuy: React.FC<CoursePagePriceBuyProps> = ({
     );
 };
 
-export default CoursePagePriceBuy;
+export default CoursePagePriceChoiceBuy;

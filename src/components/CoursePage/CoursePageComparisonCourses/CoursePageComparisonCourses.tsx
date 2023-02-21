@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link as LinkScroll} from "react-scroll";
 
 const CoursePageComparisonCourses: React.FC = () => {
     return (
@@ -149,12 +149,17 @@ const CoursePageComparisonCourses: React.FC = () => {
                                 </p>
                             </div>
 
-                            <Link
-                                to="/go/register"
-                                className="btn course-page-comparison-courses-block-hobjob__btn"
+                            <LinkScroll
+                                to="price"
+                                spy={true}
+                                smooth={true}
+                                offset={-25}
+                                duration={1000}
                             >
-                                Начать обучение
-                            </Link>
+                                <button className="btn course-page-comparison-courses-block-hobjob__btn">
+                                    Начать обучение
+                                </button>
+                            </LinkScroll>
                         </div>
                     </div>
                 </div>

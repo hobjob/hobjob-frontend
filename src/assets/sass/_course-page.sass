@@ -795,6 +795,237 @@
 							text-align: center
 							color: $gray
 
+		&-register
+			padding: 35px
+			background-color: $backgroundGray
+
+			display: flex
+			justify-content: space-between
+
+			+borderRadiusBlock
+			+openPopup
+
+			&.close
+				+closePopup
+
+			&-form
+				width: 49%
+
+				display: flex
+				flex-direction: column
+				justify-content: center
+
+				padding: 35px 60px
+				background-color: $white
+
+				+borderRadiusBlock
+				+openPopup
+
+				&-text
+					width: 85%
+					margin-bottom: 50px
+
+					&__back
+						background-color: transparent
+						border: none
+
+						display: block
+						font-size: 24px
+						color: $gray
+						cursor: pointer
+
+						margin-bottom: 50px
+
+					&__title
+						font-size: 36px
+
+				&-input
+					margin-bottom: 35px
+
+				&__btn
+					width: 100%
+
+				&__policy
+					width: 75%
+
+					display: block
+					margin: 15px auto 0 auto
+
+					text-align: center
+					font-size: 14px
+					color: $gray
+
+					& > a
+						color: $gray
+						border-bottom: 1px solid $gray
+
+			&-subscribe-product-block
+				width: 49%
+				background-color: $white
+				overflow: hidden
+
+				+borderRadiusBlock
+				+openPopup
+
+				&-text
+					padding: 35px
+
+					&__subtitle
+						font-size: 24px
+						margin-bottom: 10px
+
+					&__title
+						max-width: 90%
+						font-size: 42px
+
+					&-list
+						margin-top: 25px
+
+						&__item
+							display: flex
+							align-items: center
+
+							color: $mainColor
+							font-size: 21px
+							margin-bottom: 5px
+
+							&:last-child
+								margin-bottom: 0
+
+							& svg
+								width: 15px
+								min-width: 15px
+
+								margin-right: 7px
+
+						&-hobjob-good
+							display: flex
+							align-items: center
+
+							& svg
+								width: 15px
+								min-width: 15px
+
+								margin-right: 7px
+
+							&-text
+								display: flex
+								align-items: center
+
+								&__logo
+									user-select: none
+									pointer-events: none
+
+									width: 150px
+
+								&__text
+									margin-left: 7px
+
+									display: flex
+									align-items: center
+
+									color: $mainColor
+									font-size: 21px
+
+				&-image
+					padding-bottom: 35px
+
+					&__image
+						user-select: none
+						pointer-events: none
+
+						width: 100%
+
+			&-buy-product-block
+				position: relative
+
+				width: 49%
+
+				background-color: $white
+
+				+borderRadiusBlock
+				+openPopup
+
+				&-loader
+					padding: 50px
+
+				&-text
+					padding: 35px
+
+					+openPopup
+
+					&__subprice
+						font-size: 24px
+						margin-bottom: 10px
+
+						& > span
+							font-size: 21px
+							color: $gray
+
+					&-price
+						display: flex
+						align-items: flex-end
+
+						&__title
+							font-size: 54px
+
+							& > span
+								font-size: 32px
+								text-decoration: line-through
+								margin-left: 15px
+								color: $gray
+
+						&__sale
+							display: flex
+							justify-content: center
+							align-items: center
+
+							position: absolute
+							right: 20px
+							top: 20px
+
+							width: 70px
+							height: 70px
+
+							font-size: 21px
+							color: $white
+							background-color: $mainColor
+							border-radius: 50%
+
+					&-list
+						margin-top: 25px
+
+						&__item
+							display: flex
+							align-items: center
+
+							color: $mainColor
+							font-size: 21px
+							margin-bottom: 5px
+
+							&:last-child
+								margin-bottom: 0
+
+							& svg
+								width: 15px
+								min-width: 15px
+								
+								margin-right: 7px
+
+					&__btn
+						margin-top: 25px
+						width: 100%
+
+					&__image
+						margin-top: 35px
+
+						user-select: none
+						pointer-events: none
+
+						width: 100%
+
+						+borderRadiusBlock
+
 	&-comparison-courses
 		margin: 75px 0
 

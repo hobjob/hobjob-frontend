@@ -28,12 +28,12 @@ const HobJobGood: React.FC = () => {
                             . Обучаясь новым навыкам на HobJob, вы помогаете
                             детям.
                         </p>
-                        <Link
+                        {/* <Link
                             to="/go/register"
                             className="btn hobjob-good-text__btn"
                         >
                             Оформить подписку
-                        </Link>
+                        </Link> */}
                     </div>
 
                     <img

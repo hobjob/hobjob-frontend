@@ -1,22 +1,26 @@
 import React from "react";
 
-import {Rate} from "../../../models/IRate";
+import {Rate} from "../../../../models/IRate";
 
-import ReglogSubscribeBlockImage from "../../../assets/images/reglog-subscribe-block-image.jpg";
+import ReglogSubscribeBlockImage from "../../../../assets/images/subscribe-block-image.jpg";
 
-const ReglogSubscribeBlock: React.FC<Rate> = ({subtitle, fullPrice, title}) => {
+interface CoursePagePriceRegisterSubscribeProductBlockProps extends Rate {}
+
+const CoursePagePriceRegisterSubscribeProductBlock: React.FC<
+    CoursePagePriceRegisterSubscribeProductBlockProps
+> = ({subtitle, fullPrice, title}) => {
     return (
-        <div className="reglog-product-subscribe-block">
-            <div className="reglog-product-subscribe-block-text">
-                <p className="reglog-product-subscribe-block-text__subtitle">
+        <div className="course-page-price-register-subscribe-product-block">
+            <div className="course-page-price-register-subscribe-product-block-text">
+                <p className="course-page-price-register-subscribe-product-block-text__subtitle">
                     {subtitle} за {fullPrice}₽
                 </p>
-                <h2 className="reglog-product-subscribe-block-text__title">
+                <h2 className="course-page-price-register-subscribe-product-block-text__title">
                     {title}
                 </h2>
 
-                <div className="reglog-product-subscribe-block-text-list">
-                    <p className="reglog-product-subscribe-block-text-list__item">
+                <div className="course-page-price-register-subscribe-product-block-text-list">
+                    <p className="course-page-price-register-subscribe-product-block-text-list__item">
                         <svg
                             width="17"
                             height="15"
@@ -39,7 +43,7 @@ const ReglogSubscribeBlock: React.FC<Rate> = ({subtitle, fullPrice, title}) => {
                         </svg>
                         Доступ ко всем курсам
                     </p>
-                    <p className="reglog-product-subscribe-block-text-list__item">
+                    <p className="course-page-price-register-subscribe-product-block-text-list__item">
                         <svg
                             width="17"
                             height="15"
@@ -62,7 +66,7 @@ const ReglogSubscribeBlock: React.FC<Rate> = ({subtitle, fullPrice, title}) => {
                         </svg>
                         Скачать дополнительные материалы
                     </p>
-                    <p className="reglog-product-subscribe-block-text-list__item">
+                    <p className="course-page-price-register-subscribe-product-block-text-list__item">
                         <svg
                             width="17"
                             height="15"
@@ -87,7 +91,7 @@ const ReglogSubscribeBlock: React.FC<Rate> = ({subtitle, fullPrice, title}) => {
                     </p>
                     <a
                         href="https://www.dobryaki.ru/wards"
-                        className="reglog-product-subscribe-block-text-list-hobjob-good"
+                        className="course-page-price-register-subscribe-product-block-text-list-hobjob-good"
                     >
                         <svg
                             width="17"
@@ -109,13 +113,13 @@ const ReglogSubscribeBlock: React.FC<Rate> = ({subtitle, fullPrice, title}) => {
                                 strokeLinecap="round"
                             />
                         </svg>
-                        <div className="reglog-product-subscribe-block-text-list-hobjob-good-text">
+                        <div className="course-page-price-register-subscribe-product-block-text-list-hobjob-good-text">
                             <img
                                 src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/hobjob-good.svg`}
                                 alt=""
-                                className="reglog-product-subscribe-block-text-list-hobjob-good-text__logo"
+                                className="course-page-price-register-subscribe-product-block-text-list-hobjob-good-text__logo"
                             />
-                            <p className="reglog-product-subscribe-block-text-list-hobjob-good-text__text">
+                            <p className="course-page-price-register-subscribe-product-block-text-list-hobjob-good-text__text">
                                 Обучаясь, вы помогаете детям
                             </p>
                         </div>
@@ -123,15 +127,15 @@ const ReglogSubscribeBlock: React.FC<Rate> = ({subtitle, fullPrice, title}) => {
                 </div>
             </div>
 
-            <div className="reglog-product-subscribe-block-image">
+            <div className="course-page-price-register-subscribe-product-block-image">
                 <img
                     src={ReglogSubscribeBlockImage}
                     alt=""
-                    className="reglog-product-subscribe-block-image__image"
+                    className="course-page-price-register-subscribe-product-block-image__image"
                 />
             </div>
         </div>
     );
 };
 
-export default ReglogSubscribeBlock;
+export default CoursePagePriceRegisterSubscribeProductBlock;

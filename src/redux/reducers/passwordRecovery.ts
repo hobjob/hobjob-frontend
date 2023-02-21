@@ -2,7 +2,7 @@ import {
     PasswordRecoveryState,
     PasswordRecoveryActions,
     PasswordRecoveryActionTypes,
-} from "../types/password_recovery/IPasswordRecovery";
+} from "../types/passwordRecovery/IPasswordRecovery";
 
 const initialState: PasswordRecoveryState = {
     emailStatus: "",
@@ -10,7 +10,7 @@ const initialState: PasswordRecoveryState = {
     isSend: false,
 };
 
-const password_recovery = (
+const passwordRecovery = (
     state = initialState,
     action: PasswordRecoveryActions
 ): PasswordRecoveryState => {
@@ -46,4 +46,4 @@ const password_recovery = (
     return state;
 };
 
-export default password_recovery;
+export default passwordRecovery;
