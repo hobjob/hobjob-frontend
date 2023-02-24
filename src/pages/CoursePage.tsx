@@ -207,7 +207,7 @@ const CoursePage: React.FC = () => {
 
                         <CoursePageComparisonCourses />
 
-                        <HobJobGood />
+                        <HobJobGood scrollToPrice />
 
                         <CoursePagePassing />
 

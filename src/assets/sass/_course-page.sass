@@ -1009,7 +1009,7 @@
 							& svg
 								width: 15px
 								min-width: 15px
-								
+
 								margin-right: 7px
 
 					&__btn
@@ -1172,35 +1172,232 @@
 	&-master
 		margin: 50px 0
 
-		&-wrapper
-			display: flex
-
+		&-section
 			padding: 35px
 			background-color: $backgroundGray
 
 			+borderRadiusBlock
 
-		&__title
-			font-size: 48px
-			margin-bottom: 25px
+			&-about
+				display: flex
+				align-items: center
 
-		&__description
-			margin-bottom: 75px
+				margin-bottom: 100px
 
-		&__btn
-			width: 400px
+				&-img
+					margin-right: 50px
 
-		&-img
-			margin-right: 75px
+					width: 300px
+					min-width: 300px
 
-			width: 250px
-			min-width: 250px
+					height: 300px
 
-			height: 250px
+					border-radius: 50%
 
-			border-radius: 50%
+					+backgroundSetting
 
-			+backgroundSetting
+				&-text
+					&__title
+						font-size: 42px
+						margin-bottom: 25px
+
+					&__description
+						width: 100%
+						margin-bottom: 25px
+
+					&-socials
+						&__subtitle
+							font-size: 21px
+							color: $gray
+							margin-bottom: 15px
+
+						&-links-wrapper
+							display: flex
+							align-items: center
+
+						&__link
+							margin-right: 25px
+
+							will-change: transform
+
+							+transition
+
+							& > svg
+								width: 60px
+
+							&:active
+								+transformScale
+
+							&:last-child
+								margin-right: 0
+
+			&-works
+				&__title
+					font-size: 42px
+					margin-bottom: 50px
+
+				&-modal
+					position: fixed
+
+					z-index: 100
+
+					top: 0
+					left: 0
+
+					width: 100%
+					height: 100vh
+
+					display: flex
+					justify-content: center
+					align-items: center
+
+					background-color: $blackTransparency
+
+					+openAnimation
+
+					&.close
+						+closeAnimation
+
+					&-close
+						position: absolute
+						cursor: pointer
+
+						will-change: transform
+
+						top: 25px
+						right: 25px
+
+						width: 60px
+						height: 60px
+
+						+transition
+
+						&:hover
+							transform: scale(0.98)
+
+						&:active
+							+transformScale
+
+					&-video
+						&-iframe
+							width: 700px
+							height: 90%
+
+							overflow: hidden
+
+							+borderRadiusBlock
+
+							& > iframe
+								+borderRadiusBlock
+
+					&-image-content
+						width: auto
+						height: 95%
+
+						overflow: hidden
+
+						+borderRadiusBlock
+
+						&__image
+							width: 100%
+							height: 100%
+
+				&.owl-item
+					width: 20%
+
+				&-item
+					cursor: zoom-in
+
+					width: 100%
+					height: 450px
+
+					will-change: transform
+
+					+backgroundSetting
+					+borderRadiusBlock
+
+					+transition
+
+					&:hover
+						transform: scale(0.99)
+
+					&:active
+						+transformScale
+
+				&-item-video
+					cursor: pointer
+
+					display: flex
+					justify-content: center
+					align-items: center
+
+					overflow: hidden
+
+					width: 100%
+					height: 450px
+
+					will-change: transform
+
+					border-radius: 150px
+
+					+backgroundSetting
+
+					+transition
+
+					&:hover
+						transform: scale(0.99)
+
+					&:active
+						+transformScale
+
+					&__btn
+						cursor: pointer
+						padding: 8px 14px 8px 8px
+
+						display: flex
+						justify-content: center
+						align-items: center
+
+						font-size: 17px
+
+						color: $black
+
+						border: none
+						border-radius: 100px
+
+						& > svg
+							margin-right: 10px
+
+				&-arrow-wrapper
+					margin-top: 35px
+
+					display: flex
+					align-items: center
+					justify-content: center
+
+				&-arrow
+					margin: 0 10px
+
+					width: 40px
+					height: 40px
+
+					cursor: pointer
+					will-change: transform
+
+					&  > svg
+						width: 100%
+						height: 100%
+
+						+transition
+
+						&:active
+							+transformScale
+
+					&.prev
+						left: 0
+
+					&.next
+						right: 0
 
 	&-faq
 		margin: 75px 0

@@ -14,6 +14,10 @@ const initialState: MastersState = {
 		name: "",
 		surname: "",
 		masterDescription: "",
+		
+		worksImage: [],
+		worksVideo: [],
+
 		avatar: {
 			size_512: "",
 			size_768: "",
@@ -30,7 +34,7 @@ const initialState: MastersState = {
 		courses: [],
 		posts: [],
 	},
-	
+
 	isLoadedById: false,
 };
 

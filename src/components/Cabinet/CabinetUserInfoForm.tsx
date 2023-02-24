@@ -73,10 +73,6 @@ let CabinetUserInfoForm: React.FC<
                     type="text"
                     name="dateOfBirth"
                     label="Дата рождения"
-                    {...createTextMask({
-                        pattern: "99.99.9999",
-                        stripMask: false,
-                    })}
                 />
             </div>
             <div className="cabinet-block-form-input">

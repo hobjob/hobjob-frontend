@@ -118,6 +118,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                             <p className="video-player-content-quality__title">
                                 {levels[currentIndexLevels] &&
                                     levels[currentIndexLevels].height}
+                                p
                                 {levels[currentIndexLevels] &&
                                 levels[currentIndexLevels].height == 1080 ? (
                                     <span>HD</span>

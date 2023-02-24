@@ -70,6 +70,12 @@ export { default as CoursePageMaterialsItem } from "./CoursePage/CoursePageMater
 export { default as CoursePageMaterialsModal } from "./CoursePage/CoursePageMaterials/CoursePageMaterialsModal";
 // CoursePageMaster
 export { default as CoursePageMaster } from "./CoursePage/CoursePageMaster/CoursePageMaster";
+// CoursePageMasterWorks
+export { default as CoursePageMasterWorks } from "./CoursePage/CoursePageMaster/CoursePageMasterWorks/CoursePageMasterWorks";
+export { default as CoursePageMasterWorksVideo } from "./CoursePage/CoursePageMaster/CoursePageMasterWorks/CoursePageMasterWorksVideo";
+export { default as CoursePageMasterWorksImage } from "./CoursePage/CoursePageMaster/CoursePageMasterWorks/CoursePageMasterWorksImage";
+export { default as CoursePageMasterWorksItemVideo } from "./CoursePage/CoursePageMaster/CoursePageMasterWorks/CoursePageMasterWorksItemVideo";
+export { default as CoursePageMasterWorksItemImage } from "./CoursePage/CoursePageMaster/CoursePageMasterWorks/CoursePageMasterWorksItemImage";
 // CoursePageSkills
 export { default as CoursePageSkills } from "./CoursePage/CoursePageSkills/CoursePageSkills";
 export { default as CoursePageSkillsItem } from "./CoursePage/CoursePageSkills/CoursePageSkillsItem";
