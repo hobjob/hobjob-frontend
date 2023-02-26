@@ -9,7 +9,7 @@ import {RenderInput, BtnLoader} from "../../../";
 import validate from "./validate";
 
 import {CoursePagePriceSections} from "../../../../redux/types/coursePage/ICoursePage";
-import {changeCurrentSection} from "../../../../redux/actions/coursePage";
+import {changePriceCurrentSection} from "../../../../redux/actions/coursePage";
 
 let CoursePagePriceRegisterBuyForm: React.FC<InjectedFormProps<{}>> = ({
     handleSubmit,
@@ -28,7 +28,7 @@ let CoursePagePriceRegisterBuyForm: React.FC<InjectedFormProps<{}>> = ({
                     className="course-page-price-register-form-text__back"
                     onClick={() =>
                         dispatch(
-                            changeCurrentSection(
+                            changePriceCurrentSection(
                                 CoursePagePriceSections.CHOICE_TYPE_BUY
                             )
                         )

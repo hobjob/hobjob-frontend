@@ -11,7 +11,9 @@ import {
 import {CoursePagePriceSections} from "../../../redux/types/coursePage/ICoursePage";
 
 const CoursePagePrice: React.FC = () => {
-    const {currentSection} = useTypedSelector(({coursePage}) => coursePage);
+    const {
+        price: {currentSection},
+    } = useTypedSelector(({coursePage}) => coursePage);
 
     return (
         <section className="course-page-price" id="price">

@@ -9,9 +9,11 @@ import {
 } from "../types/register/IRegister";
 
 export const sendRegister = (
-	data: { email: string; paymentInfo: string },
+	data: {
+		email: string; paymentInfo: string, addSubscribeCourseId?: string
+	},
 	ref: string,
-	typePayment?: string
+	typePayment?: string,
 ) => {
 	return async (dispatch: Dispatch<RegisterActions>) => {
 		dispatch({

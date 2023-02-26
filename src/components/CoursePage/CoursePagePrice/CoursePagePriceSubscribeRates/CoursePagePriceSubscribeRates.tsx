@@ -7,8 +7,8 @@ import {sendCreatePaymentSubscribe} from "../../../../redux/actions/payment/paym
 
 import {CoursePagePriceSections} from "../../../../redux/types/coursePage/ICoursePage";
 import {
-    changeCurrentSection,
-    changeTypeSubscribe,
+    changePriceCurrentSection,
+    changePriceTypeSubscribe,
 } from "../../../../redux/actions/coursePage";
 
 import {
@@ -22,17 +22,19 @@ const CoursePagePriceSubscribeRates: React.FC = () => {
     const dispatch = useDispatch();
 
     const {isLoadedUserInfo} = useTypedSelector(({user}) => user);
-    const {isCloseAnimation} = useTypedSelector(({coursePage}) => coursePage);
+    const {
+        price: {isCloseAnimation},
+    } = useTypedSelector(({coursePage}) => coursePage);
 
     const createPaymentSubscribe = (type: string) => {
         dispatch(sendCreatePaymentSubscribe(type));
     };
 
     const onClickGoToRegisterSubscribe = (type: string) => {
-        dispatch(changeTypeSubscribe(type));
+        dispatch(changePriceTypeSubscribe(type));
 
         dispatch(
-            changeCurrentSection(CoursePagePriceSections.SUBSCRIBE_REGISTER)
+            changePriceCurrentSection(CoursePagePriceSections.SUBSCRIBE_REGISTER)
         );
     };
 
@@ -48,7 +50,7 @@ const CoursePagePriceSubscribeRates: React.FC = () => {
                         className="course-page-price-subscribe-rates-text-left__back"
                         onClick={() =>
                             dispatch(
-                                changeCurrentSection(
+                                changePriceCurrentSection(
                                     CoursePagePriceSections.CHOICE_TYPE_BUY
                                 )
                             )

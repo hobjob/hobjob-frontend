@@ -1,21 +1,14 @@
 import React from "react";
-import {useDispatch} from "react-redux";
-import {animateScroll} from "react-scroll";
+import { useDispatch } from "react-redux";
 
 import CoursePageSubscribeBlockImage from "../../../../assets/images/subscribe-block-image.jpg";
 import CoursePageSubscribeBlockImageMedia from "../../../../assets/images/subscribe-block-image-media.jpg";
 
 import {CoursePagePriceSections} from "../../../../redux/types/coursePage/ICoursePage";
-import {changeCurrentSection} from "../../../../redux/actions/coursePage";
+import {changePriceCurrentSection} from "../../../../redux/actions/coursePage";
 
 const CoursePagePriceChoiceSubscribe: React.FC = () => {
     const dispatch = useDispatch();
-
-    const scroll = () => {
-        const to: any = document.getElementById(".price")?.offsetTop;
-
-        animateScroll.scrollTo(to);
-    };
 
     return (
         <div className="course-page-price-blocks-subscribe">
@@ -137,7 +130,7 @@ const CoursePagePriceChoiceSubscribe: React.FC = () => {
                     className="btn course-page-price-blocks-subscribe-text__btn"
                     onClick={() =>
                         dispatch(
-                            changeCurrentSection(
+                            changePriceCurrentSection(
                                 CoursePagePriceSections.SUBSCRIBE_RATES
                             )
                         )

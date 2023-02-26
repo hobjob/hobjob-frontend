@@ -6,7 +6,7 @@ import {useTypedSelector} from "../../../../hooks/useTypedSelector";
 import {sendCreatePaymentCourse} from "../../../../redux/actions/payment/paymentCourse";
 
 import {CoursePagePriceSections} from "../../../../redux/types/coursePage/ICoursePage";
-import {changeCurrentSection} from "../../../../redux/actions/coursePage";
+import {changePriceCurrentSection} from "../../../../redux/actions/coursePage";
 
 import {Image} from "../../../../models/IImage";
 
@@ -103,7 +103,7 @@ const CoursePagePriceChoiceBuy: React.FC<CoursePagePriceBuyProps> = ({
                         className="btn course-page-price-blocks-buy-text__btn"
                         onClick={() => {
                             dispatch(
-                                changeCurrentSection(
+                                changePriceCurrentSection(
                                     CoursePagePriceSections.BUY_REGISTER
                                 )
                             );

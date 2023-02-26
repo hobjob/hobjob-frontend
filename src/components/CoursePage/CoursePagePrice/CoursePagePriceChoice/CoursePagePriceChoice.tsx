@@ -7,7 +7,9 @@ import {
 } from "../../../";
 
 const CoursePagePriceChoice: React.FC = () => {
-    const {isCloseAnimation} = useTypedSelector(({coursePage}) => coursePage);
+    const {
+        price: {isCloseAnimation},
+    } = useTypedSelector(({coursePage}) => coursePage);
     const {courseByUrl} = useTypedSelector(({courses}) => courses);
 
     return (

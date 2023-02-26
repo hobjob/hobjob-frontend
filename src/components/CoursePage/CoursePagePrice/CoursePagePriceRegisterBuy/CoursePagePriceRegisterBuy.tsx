@@ -13,7 +13,9 @@ import {sendRegister} from "../../../../redux/actions/register";
 const CoursePagePriceRegisterBuy: React.FC = () => {
     const dispatch = useDispatch();
 
-    const {isCloseAnimation} = useTypedSelector(({coursePage}) => coursePage);
+    const {
+        price: {isCloseAnimation},
+    } = useTypedSelector(({coursePage}) => coursePage);
     const {courseByUrl} = useTypedSelector(({courses}) => courses);
 
     const onSubmit = ({email}: any) => {

@@ -1,17 +1,18 @@
 import React from "react";
+import {useDispatch} from "react-redux";
 import ReactPlayer from "react-player";
 
-interface CoursePageMasterWorksVideoProps {
-    currentUrlVideo: string;
-    isCloseAnimationVideo: boolean;
-    onClickCloseVideo: () => void;
-}
+import {closeWorksVideo} from "../../../../redux/actions/coursePage";
 
-const CoursePageMasterWorksVideo: React.FC<CoursePageMasterWorksVideoProps> = ({
-    currentUrlVideo,
-    isCloseAnimationVideo,
-    onClickCloseVideo,
-}) => {
+import {useTypedSelector} from "../../../../hooks/useTypedSelector";
+
+const CoursePageMasterWorksVideo: React.FC = () => {
+    const dispatch = useDispatch();
+
+    const {
+        works: {isCloseAnimation, currentUrlVideo},
+    } = useTypedSelector(({coursePage}) => coursePage);
+
     const CoursePageMasterWorksVideoContentRef =
         React.useRef<HTMLDivElement>(null);
 
@@ -23,7 +24,7 @@ const CoursePageMasterWorksVideo: React.FC<CoursePageMasterWorksVideoProps> = ({
                     .composedPath()
                     .includes(CoursePageMasterWorksVideoContentRef.current)
             ) {
-                onClickCloseVideo();
+                dispatch(closeWorksVideo());
             }
         });
     }, []);
@@ -31,12 +32,12 @@ const CoursePageMasterWorksVideo: React.FC<CoursePageMasterWorksVideoProps> = ({
     return (
         <div
             className={`course-page-master-section-works-modal course-page-master-section-works-modal-video ${
-                isCloseAnimationVideo ? "close" : ""
+                isCloseAnimation ? "close" : ""
             }`}
         >
             <div
                 className="course-page-master-section-works-modal-close"
-                onClick={onClickCloseVideo}
+                onClick={() => dispatch(closeWorksVideo())}
             >
                 <svg
                     viewBox="0 0 60 60"

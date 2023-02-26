@@ -6,31 +6,77 @@ export enum CoursePagePriceSections {
 }
 
 export interface CoursePageState {
-	currentSection: CoursePagePriceSections
-	isCloseAnimation: boolean
+	price: {
+		currentSection: CoursePagePriceSections
+		isCloseAnimation: boolean
 
-	typeSubscribe: string
+		typeSubscribe: string
+	}
+
+	works: {
+		isOpenVideo: boolean
+		currentUrlVideo: string
+
+		isOpenImage: boolean
+		currentUrlImage: string
+
+		isCloseAnimation: boolean
+	}
 }
 
 export enum CoursePageActionTypes {
-	SET_CURRENT_SECTION = "SET_CURRENT_SECTION",
-	SET_IS_CLOSE_ANIMATION = "SET_IS_CLOSE_ANIMATION",
-	SET_TYPE_SUBSCRIBE = "SET_TYPE_SUBSCRIBE"
+	SET_PRICE_CURRENT_SECTION = "SET_PRICE_CURRENT_SECTION",
+	SET_PRICE_IS_CLOSE_ANIMATION = "SET_PRICE_IS_CLOSE_ANIMATION",
+	SET_PRICE_TYPE_SUBSCRIBE = "SET_PRICE_TYPE_SUBSCRIBE",
+
+	SET_WORKS_IS_OPEN_VIDEO = "SET_WORKS_IS_OPEN_VIDEO",
+	SET_WORKS_CURRENT_URL_VIDEO = "SET_WORKS_CURRENT_URL_VIDEO",
+
+	SET_WORKS_IS_OPEN_IMAGE = "SET_WORKS_IS_OPEN_IMAGE",
+	SET_WORKS_CURRENT_URL_IMAGE = "SET_WORKS_CURRENT_URL_IMAGE",
+
+	SET_WORKS_IS_CLOSE_ANIMATION = "SET_WORKS_IS_CLOSE_ANIMATION",
 }
 
-interface setCurrentSection {
-	type: CoursePageActionTypes.SET_CURRENT_SECTION,
+interface setPriceCurrentSection {
+	type: CoursePageActionTypes.SET_PRICE_CURRENT_SECTION,
 	payload: CoursePagePriceSections
 }
 
-interface setIsCloseAnimation {
-	type: CoursePageActionTypes.SET_IS_CLOSE_ANIMATION,
+interface setPriceIsCloseAnimation {
+	type: CoursePageActionTypes.SET_PRICE_IS_CLOSE_ANIMATION,
 	payload: boolean
 }
 
-interface setTypeSubscribe {
-	type: CoursePageActionTypes.SET_TYPE_SUBSCRIBE,
+interface setPriceTypeSubscribe {
+	type: CoursePageActionTypes.SET_PRICE_TYPE_SUBSCRIBE,
 	payload: string
 }
 
-export type CoursePageActions = setCurrentSection | setIsCloseAnimation | setTypeSubscribe
+interface setWorksIsOpenVideo {
+	type: CoursePageActionTypes.SET_WORKS_IS_OPEN_VIDEO,
+	payload: boolean
+}
+
+interface setWorksCurrentUrlVideo {
+	type: CoursePageActionTypes.SET_WORKS_CURRENT_URL_VIDEO,
+	payload: string
+}
+
+
+interface setWorksIsOpenImage {
+	type: CoursePageActionTypes.SET_WORKS_IS_OPEN_IMAGE,
+	payload: boolean
+}
+
+interface setWorksCurrentUrlImage {
+	type: CoursePageActionTypes.SET_WORKS_CURRENT_URL_IMAGE,
+	payload: string
+}
+
+interface setWorksIsCloseAnimation {
+	type: CoursePageActionTypes.SET_WORKS_IS_CLOSE_ANIMATION,
+	payload: boolean
+}
+
+export type CoursePageActions = setPriceCurrentSection | setPriceIsCloseAnimation | setPriceTypeSubscribe | setWorksIsOpenVideo | setWorksCurrentUrlVideo | setWorksIsOpenImage | setWorksCurrentUrlImage | setWorksIsCloseAnimation

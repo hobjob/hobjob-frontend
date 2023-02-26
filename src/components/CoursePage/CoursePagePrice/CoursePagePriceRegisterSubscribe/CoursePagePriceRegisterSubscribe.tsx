@@ -15,14 +15,20 @@ import {rates} from "../../../../subscribeRates";
 const CoursePagePriceRegisterSubscribe: React.FC = () => {
     const dispatch = useDispatch();
 
-    const {isCloseAnimation, typeSubscribe} = useTypedSelector(
-        ({coursePage}) => coursePage
-    );
+    const {courseByUrl} = useTypedSelector(({courses}) => courses);
+
+    const {
+        price: {isCloseAnimation, typeSubscribe},
+    } = useTypedSelector(({coursePage}) => coursePage);
 
     const onSubmit = ({email}: any) => {
         return dispatch(
             sendRegister(
-                {email, paymentInfo: `subscribe.${typeSubscribe}`},
+                {
+                    email,
+                    paymentInfo: `subscribe.${typeSubscribe}`,
+                    addSubscribeCourseId: courseByUrl._id,
+                },
                 localStorage.getItem("ref")
                     ? (localStorage.getItem("ref") as string)
                     : "",

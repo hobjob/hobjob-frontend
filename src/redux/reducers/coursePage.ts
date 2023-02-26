@@ -6,32 +6,101 @@ import {
 } from "../types/coursePage/ICoursePage";
 
 const initialState: CoursePageState = {
-	currentSection: CoursePagePriceSections.CHOICE_TYPE_BUY,
-	isCloseAnimation: false,
+	price: {
+		currentSection: CoursePagePriceSections.CHOICE_TYPE_BUY,
+		isCloseAnimation: false,
 
-	typeSubscribe: "month"
+		typeSubscribe: "month"
+	},
+	works: {
+		isOpenVideo: false,
+		currentUrlVideo: "",
+
+		isOpenImage: false,
+		currentUrlImage: "",
+
+		isCloseAnimation: false
+	}
 }
 
 const coursePage = (state = initialState, action: CoursePageActions) => {
-	if (action.type === CoursePageActionTypes.SET_CURRENT_SECTION) {
+	if (action.type === CoursePageActionTypes.SET_PRICE_CURRENT_SECTION) {
 		return {
 			...state,
-			oldCurrentSection: state.currentSection,
-			currentSection: action.payload
+			price: {
+				...state.price,
+				currentSection: action.payload
+			}
 		}
 	}
 
-	if (action.type === CoursePageActionTypes.SET_IS_CLOSE_ANIMATION) {
+	if (action.type === CoursePageActionTypes.SET_PRICE_IS_CLOSE_ANIMATION) {
 		return {
 			...state,
-			isCloseAnimation: action.payload
+			price: {
+				...state.price,
+				isCloseAnimation: action.payload
+			}
 		}
 	}
 
-	if (action.type === CoursePageActionTypes.SET_TYPE_SUBSCRIBE) {
+	if (action.type === CoursePageActionTypes.SET_PRICE_TYPE_SUBSCRIBE) {
 		return {
 			...state,
-			typeSubscribe: action.payload
+			price: {
+				...state.price,
+				typeSubscribe: action.payload
+			}
+		}
+	}
+
+	if (action.type === CoursePageActionTypes.SET_WORKS_IS_OPEN_VIDEO) {
+		return {
+			...state,
+			works: {
+				...state.works,
+				isOpenVideo: action.payload
+			}
+		}
+	}
+
+	if (action.type === CoursePageActionTypes.SET_WORKS_CURRENT_URL_VIDEO) {
+		return {
+			...state,
+			works: {
+				...state.works,
+				currentUrlVideo: action.payload
+			}
+		}
+	}
+
+	if (action.type === CoursePageActionTypes.SET_WORKS_IS_OPEN_IMAGE) {
+		return {
+			...state,
+			works: {
+				...state.works,
+				isOpenImage: action.payload
+			}
+		}
+	}
+
+	if (action.type === CoursePageActionTypes.SET_WORKS_CURRENT_URL_IMAGE) {
+		return {
+			...state,
+			works: {
+				...state.works,
+				currentUrlImage: action.payload
+			}
+		}
+	}
+
+	if (action.type === CoursePageActionTypes.SET_WORKS_IS_CLOSE_ANIMATION) {
+		return {
+			...state,
+			works: {
+				...state.works,
+				isCloseAnimation: action.payload
+			}
 		}
 	}
 

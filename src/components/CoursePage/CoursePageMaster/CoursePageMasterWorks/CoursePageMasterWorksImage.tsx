@@ -1,16 +1,17 @@
 import React from "react";
+import {useDispatch} from "react-redux";
 
-interface CoursePageMasterWorksImageProps {
-    currentUrlImage: string;
-    isCloseAnimationImage: boolean;
-    onClickCloseImage: () => void;
-}
+import {closeWorksImage} from "../../../../redux/actions/coursePage";
 
-const CoursePageMasterWorksImage: React.FC<CoursePageMasterWorksImageProps> = ({
-    currentUrlImage,
-    isCloseAnimationImage,
-    onClickCloseImage,
-}) => {
+import {useTypedSelector} from "../../../../hooks/useTypedSelector";
+
+const CoursePageMasterWorksImage: React.FC = () => {
+    const dispatch = useDispatch();
+
+    const {
+        works: {isCloseAnimation, currentUrlImage},
+    } = useTypedSelector(({coursePage}) => coursePage);
+
     const CoursePageMasterWorksImageContentRef =
         React.useRef<HTMLDivElement>(null);
 
@@ -22,7 +23,7 @@ const CoursePageMasterWorksImage: React.FC<CoursePageMasterWorksImageProps> = ({
                     .composedPath()
                     .includes(CoursePageMasterWorksImageContentRef.current)
             ) {
-                onClickCloseImage();
+                dispatch(closeWorksImage());
             }
         });
     }, []);
@@ -30,12 +31,12 @@ const CoursePageMasterWorksImage: React.FC<CoursePageMasterWorksImageProps> = ({
     return (
         <div
             className={`course-page-master-section-works-modal course-page-master-section-works-modal-image ${
-                isCloseAnimationImage ? "close" : ""
+                isCloseAnimation ? "close" : ""
             }`}
         >
             <div
                 className="course-page-master-section-works-modal-close"
-                onClick={onClickCloseImage}
+                onClick={() => dispatch(closeWorksImage())}
             >
                 <svg
                     viewBox="0 0 60 60"
