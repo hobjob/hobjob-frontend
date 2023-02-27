@@ -153,8 +153,6 @@
 				&:active
 					+transformScale
 
-	&-subscribe-section-wrapper
-
 	&-subscribe-section
 		&.close
 			+closePopup
@@ -179,7 +177,8 @@
 			padding: 35px
 
 			&__title
-				font-size: 38px
+				width: 90%
+				font-size: 42px
 				margin-bottom: 35px
 
 			&-types
@@ -187,23 +186,26 @@
 				display: flex
 
 				&-item
+					width: 225px
+
 					cursor: pointer
 					margin-right: 15px
 
-					opacity: 0.5
-					transform: scale(.90)
-
 					+transition
-
-					&.active
-						opacity: 1
-						transform: scale(1)
 
 					&:last-child
 						margin-right: 0
 
 					& > svg
-						width: 225px
+						width: 100%
+						border-radius: 100px
+
+						border: 2px solid $white
+
+						+transition
+
+					&.active > svg
+						border: 2px solid $mainColor
 
 			&-list
 				margin-top: 25px

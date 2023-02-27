@@ -27,7 +27,7 @@ const TrainingSubscribeDisabled: React.FC = () => {
             <div className="training-subscribe-disabled">
                 <div className="training-subscribe-disabled-text">
                     <h3 className="training-subscribe-disabled-text__title">
-                        Арсений, ваша подписка HobJob истекла
+                        Выберите подписку HobJob, чтобы продолжить обучение
                     </h3>
 
                     <div className="training-subscribe-disabled-text-types">

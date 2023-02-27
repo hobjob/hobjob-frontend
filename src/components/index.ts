@@ -157,6 +157,10 @@ export { default as CabinetUserPassword } from "./Cabinet/CabinetUserPassword";
 export { default as CabinetUserSubscribeInfo } from "./Cabinet/CabinetUserSubscribeInfo";
 export { default as CabinetUserSubscribeInfoFormSelect } from "./Cabinet/CabinetUserSubscribeInfoFormSelect";
 
+// CabinetSubscribeDisable
+export { default as CabinetSubscribeDisableChoice } from "./CabinetSubscribeDisable/CabinetSubscribeDisableChoice";
+export { default as CabinetSubscribeDisableChoiceSaleSubscribe } from "./CabinetSubscribeDisable/CabinetSubscribeDisableChoiceSaleSubscribe";
+
 // Referrals
 export { default as ReferralsBlockLink } from "./Referrals/ReferralsBlockLink";
 export { default as ReferralsPartners } from "./Referrals/ReferralsPartners";

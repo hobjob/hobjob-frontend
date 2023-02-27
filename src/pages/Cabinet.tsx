@@ -89,18 +89,21 @@ const Cabinet: React.FC = () => {
                                             />
                                         </div>
 
-                                        <div
-                                            className="cabinet-block"
-                                            id="subscribe"
-                                        >
-                                            <div className="cabinet-block-text">
-                                                <h3 className="cabinet-block-text__title">
-                                                    Моя подписка
-                                                </h3>
-                                            </div>
+                                        {userInfo.subscribe
+                                            .registrationSubscribe !== "" ? (
+                                            <div
+                                                className="cabinet-block"
+                                                id="subscribe"
+                                            >
+                                                <div className="cabinet-block-text">
+                                                    <h3 className="cabinet-block-text__title">
+                                                        Моя подписка
+                                                    </h3>
+                                                </div>
 
-                                            <CabinetUserSubscribeInfo />
-                                        </div>
+                                                <CabinetUserSubscribeInfo />
+                                            </div>
+                                        ) : null}
                                     </div>
                                 </div>
                             </div>

@@ -136,7 +136,7 @@ const CoursePagePriceChoiceSubscribe: React.FC = () => {
                         )
                     }
                 >
-                    Оформить подписку
+                    Подробнее
                 </button>
             </div>
 

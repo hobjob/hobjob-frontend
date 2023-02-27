@@ -1,0 +1,53 @@
+// cabinet-subscribe-disable
+.cabinet-subscribe-disable
+	margin: 50px 0
+	+openAnimation
+
+	&-choice-block
+		position: relative
+		overflow: hidden
+
+		height: 600px
+
+		background-color: $backgroundGray
+
+		+borderRadiusBlock
+		+openPopup
+
+		&.close
+			+closePopup
+
+		&-text
+			padding-top: 50px
+			padding-left: 50px
+
+			&__title
+				width: 500px
+				font-size: 54px
+
+				margin-bottom: 25px
+
+			&__description
+				width: 60%
+
+				font-size: 24px
+
+				margin-bottom: 50px
+
+			&-btn
+				&__btn
+					&:first-child
+						margin-right: 10px
+
+		&__image
+			position: absolute
+
+			right: 0
+			top: -200px
+
+			width: 650px
+
+			transform: rotate(5deg)
+
+			user-select: none
+			pointer-events: none
