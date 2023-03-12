@@ -40,7 +40,7 @@ const HobJobGood: React.FC<HobJobGoodProps> = ({scrollToPrice}) => {
                                 to="price"
                                 spy={true}
                                 smooth={true}
-                                offset={-50}
+                                offset={0}
                                 duration={1000}
                                 className="btn hobjob-good-text__btn"
                             >

@@ -50,75 +50,80 @@ let CabinetUserInfoForm: React.FC<
     }, [name, surname, dateOfBirth, phone, city]);
 
     return (
-        <form className="cabinet-block-form" onSubmit={handleSubmit}>
-            <div className="cabinet-block-form-input">
-                <Field
-                    component={RenderInput}
-                    type="name"
-                    name="name"
-                    label="Имя"
-                />
-            </div>
-            <div className="cabinet-block-form-input">
-                <Field
-                    component={RenderInput}
-                    type="name"
-                    name="surname"
-                    label="Фамилия"
-                />
-            </div>
-            <div className="cabinet-block-form-input">
-                <Field
-                    component={RenderInput}
-                    type="text"
-                    name="dateOfBirth"
-                    label="Дата рождения"
-                />
-            </div>
-            <div className="cabinet-block-form-input">
-                <Field
-                    component={RenderInput}
-                    type="phone"
-                    name="phone"
-                    label="Номер телефона"
-                    {...createTextMask({
-                        pattern: "+7 999 999 99-99",
-                        guide: false,
-                        stripMask: false,
-                    })}
-                />
-            </div>
-            <div className="cabinet-block-form-input">
-                <Field
-                    component={RenderInput}
-                    type="text"
-                    name="city"
-                    label="Город"
-                />
-            </div>
-            {isSendUpdateUserInfo ? (
-                <button
-                    className="btn disabled cabinet-block-form-btn"
-                    disabled
-                >
-                    <BtnLoader />
-                </button>
-            ) : (
-                <button
-                    className={`btn ${
-                        nameValue !== name ||
-                        surnameValue !== surname ||
-                        dateOfBirthValue !== dateOfBirth ||
-                        phoneValue !== phone ||
-                        cityValue !== city
-                            ? ""
-                            : "disabled"
-                    } cabinet-block-form-btn`}
-                >
-                    Сохранить
-                </button>
-            )}
-        </form>
+        <div className="cabinet-section-content">
+            <form
+                className="cabinet-section-content-form"
+                onSubmit={handleSubmit}
+            >
+                <div className="cabinet-section-content-form-input">
+                    <Field
+                        component={RenderInput}
+                        type="name"
+                        name="name"
+                        label="Имя"
+                    />
+                </div>
+                <div className="cabinet-section-content-form-input">
+                    <Field
+                        component={RenderInput}
+                        type="name"
+                        name="surname"
+                        label="Фамилия"
+                    />
+                </div>
+                <div className="cabinet-section-content-form-input">
+                    <Field
+                        component={RenderInput}
+                        type="text"
+                        name="dateOfBirth"
+                        label="Дата рождения"
+                    />
+                </div>
+                <div className="cabinet-section-content-form-input">
+                    <Field
+                        component={RenderInput}
+                        type="phone"
+                        name="phone"
+                        label="Номер телефона"
+                        {...createTextMask({
+                            pattern: "+7 999 999 99-99",
+                            guide: false,
+                            stripMask: false,
+                        })}
+                    />
+                </div>
+                <div className="cabinet-section-content-form-input">
+                    <Field
+                        component={RenderInput}
+                        type="text"
+                        name="city"
+                        label="Город"
+                    />
+                </div>
+                {isSendUpdateUserInfo ? (
+                    <button
+                        className="btn disabled cabinet-section-content-form-btn"
+                        disabled
+                    >
+                        <BtnLoader />
+                    </button>
+                ) : (
+                    <button
+                        className={`btn ${
+                            nameValue !== name ||
+                            surnameValue !== surname ||
+                            dateOfBirthValue !== dateOfBirth ||
+                            phoneValue !== phone ||
+                            cityValue !== city
+                                ? ""
+                                : "disabled"
+                        } cabinet-section-content-form-btn`}
+                    >
+                        Сохранить
+                    </button>
+                )}
+            </form>
+        </div>
     );
 };
 

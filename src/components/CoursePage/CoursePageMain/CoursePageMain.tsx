@@ -34,7 +34,7 @@ const CoursePageMain: React.FC<CoursePageMainProps> = ({
                 <div className="course-page-main-wrapper">
                     <div className="course-page-main-text">
                         <div className="course-page-main-text-subinfo">
-                            {HobJobProduction ? (
+                            {/* {HobJobProduction ? (
                                 <div className="course-page-main-text-subinfo-hobjob-production">
                                     <img
                                         src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/hobjob-production.svg`}
@@ -42,7 +42,7 @@ const CoursePageMain: React.FC<CoursePageMainProps> = ({
                                         className="course-page-main-text-subinfo-hobjob-production__image"
                                     />
                                 </div>
-                            ) : null}
+                            ) : null} */}
 
                             {categories[category] ? (
                                 <a

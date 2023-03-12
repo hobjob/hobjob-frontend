@@ -5,9 +5,6 @@ import {useDispatch} from "react-redux";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 
 import {sendLogout} from "../../redux/actions/logout";
-import {fetchUserInfo} from "../../redux/actions/user";
-import {fetchMasters} from "../../redux/actions/masters";
-import {fetchCategories} from "../../redux/actions/categories";
 
 import {HeaderMenu, HeaderModalMenu} from "../";
 
@@ -17,8 +14,6 @@ const Header: React.FC = () => {
     const dispatch = useDispatch();
 
     const {userInfo, isLoadedUserInfo} = useTypedSelector(({user}) => user);
-    const masters = useTypedSelector(({masters}) => masters.items);
-    const categories = useTypedSelector(({categories}) => categories.items);
 
     const [modalMenuState, setModalMenuState] = React.useState<boolean>(false);
     const [modalMenuAnimationState, setModalMenuAnimationState] =
@@ -33,18 +28,6 @@ const Header: React.FC = () => {
     React.useEffect(() => {
         document.body.addEventListener("click", handHeaderModalMenu);
         document.body.addEventListener("click", handHeaderUserMenu);
-
-        if (userInfo._id == "" && localStorage.getItem("accessToken")) {
-            dispatch(fetchUserInfo());
-        }
-
-        if (!Object.keys(masters).length) {
-            dispatch(fetchMasters());
-        }
-
-        if (!Object.keys(categories).length) {
-            dispatch(fetchCategories());
-        }
     }, []);
 
     const openUserMenu = () => {

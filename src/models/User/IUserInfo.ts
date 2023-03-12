@@ -6,20 +6,22 @@ interface UserInfoSubscribe {
 	auto: boolean;
 	working: boolean;
 
-	typeSubscribe: string;
-	nextTypeSubscribe: string;
+	type: string;
+
+	saveOffers: {
+		isUsedSale: boolean;
+		isUsedFree: boolean;
+	},
 
 	periodInfo: {
 		count: number;
 		title: moment.unitOfTime.DurationConstructor;
 	};
 
-	registrationSubscribe: string;
+	registration: string;
 
-	stoppedSubscribe: string;
-	lastDebitStoppedSubscribe: string;
-
-	paymentId: string
+	stopped: string;
+	lastDebitStopped: string
 }
 
 export interface UserInfoCourseBuy {

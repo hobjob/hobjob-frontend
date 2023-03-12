@@ -22,18 +22,22 @@ const initialState: UserState = {
 			auto: false,
 			working: false,
 
-			typeSubscribe: "",
-			nextTypeSubscribe: "",
+			type: "",
+
+			saveOffers: {
+				isUsedSale: false,
+				isUsedFree: false
+			},
 
 			periodInfo: {
 				count: 0,
 				title: "month",
 			},
 
-			registrationSubscribe: "",
+			registration: "",
 
-			stoppedSubscribe: "",
-			lastDebitStoppedSubscribe: "",
+			stopped: "",
+			lastDebitStopped: "",
 
 			paymentId: ""
 		},
@@ -45,7 +49,7 @@ const initialState: UserState = {
 			title: ""
 		}
 	},
-	
+
 	referrals: [],
 
 	isLoadedUserInfo: false,

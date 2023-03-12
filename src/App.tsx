@@ -1,7 +1,14 @@
 import React from "react";
+import {useDispatch} from "react-redux";
 import {Route, Routes, Navigate, useLocation} from "react-router-dom";
 import {compose} from "redux";
 import "moment/locale/ru";
+
+import {useTypedSelector} from "./hooks/useTypedSelector";
+
+import {fetchUserInfo} from "./redux/actions/user";
+import {fetchMasters} from "./redux/actions/masters";
+import {fetchCategories} from "./redux/actions/categories";
 
 import {Header, Footer} from "./components/";
 
@@ -38,7 +45,13 @@ declare global {
 }
 
 const App: React.FC = () => {
+    const dispatch = useDispatch();
+
     const {pathname} = useLocation();
+
+    const {userInfo} = useTypedSelector(({user}) => user);
+    const masters = useTypedSelector(({masters}) => masters.items);
+    const categories = useTypedSelector(({categories}) => categories.items);
 
     React.useEffect(() => {
         let cords: any = ["scrollX", "scrollY"];
@@ -50,6 +63,18 @@ const App: React.FC = () => {
 
         // Прокручиваем страницу к scrollX и scrollY из localStorage (либо 0,0 если там еще ничего нет)
         window.scroll(...cords.map((cord: any) => localStorage[cord]));
+
+        if (userInfo._id == "" && localStorage.getItem("accessToken")) {
+            dispatch(fetchUserInfo());
+        }
+
+        if (!Object.keys(masters).length) {
+            dispatch(fetchMasters());
+        }
+
+        if (!Object.keys(categories).length) {
+            dispatch(fetchCategories());
+        }
     }, []);
 
     React.useEffect(() => {
@@ -66,7 +91,9 @@ const App: React.FC = () => {
                     pathname.indexOf("/login") !== -1 ||
                     pathname.indexOf("/register") !== -1 ||
                     pathname === "/go/password-recovery" ||
-                    pathname.indexOf("/go/password-recovery") !== -1 ? null : (
+                    pathname.indexOf("/go/password-recovery") !== -1 ||
+                    pathname.indexOf("/go/cabinet/subscribe/disable") !==
+                        -1 ? null : (
                         <Header />
                     )}
 
@@ -164,7 +191,9 @@ const App: React.FC = () => {
                     pathname.indexOf("/login") !== -1 ||
                     pathname.indexOf("/register") !== -1 ||
                     pathname === "/go/password-recovery" ||
-                    pathname.indexOf("/go/password-recovery") !== -1 ? null : (
+                    pathname.indexOf("/go/password-recovery") !== -1 ||
+                    pathname.indexOf("/go/cabinet/subscribe/disable") !==
+                        -1 ? null : (
                         <Footer />
                     )}
                 </div>

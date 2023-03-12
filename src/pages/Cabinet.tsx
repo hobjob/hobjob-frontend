@@ -12,7 +12,7 @@ import {
     CabinetCardUserInfo,
     CabinetUserInfoForm,
     CabinetUserPassword,
-    CabinetUserSubscribeInfo,
+    CabinetSubscribe,
 } from "../components/";
 
 const Cabinet: React.FC = () => {
@@ -55,15 +55,16 @@ const Cabinet: React.FC = () => {
                         <Helmet>
                             <title>Мой профиль - HobJob</title>
                         </Helmet>
+
                         <section className="cabinet">
                             <div className="container">
                                 <div className="cabinet-wrapper">
                                     <CabinetCardUserInfo {...userInfo} />
 
-                                    <div className="cabinet-block-wrapper">
-                                        <div className="cabinet-block">
-                                            <div className="cabinet-block-text">
-                                                <h3 className="cabinet-block-text__title">
+                                    <div className="cabinet-section-wrapper">
+                                        <div className="cabinet-section">
+                                            <div className="cabinet-section-title">
+                                                <h3 className="cabinet-section-title__title">
                                                     О себе
                                                 </h3>
                                             </div>
@@ -75,9 +76,9 @@ const Cabinet: React.FC = () => {
                                                 {...userInfo}
                                             />
                                         </div>
-                                        <div className="cabinet-block">
-                                            <div className="cabinet-block-text">
-                                                <h3 className="cabinet-block-text__title">
+                                        <div className="cabinet-section">
+                                            <div className="cabinet-section-title">
+                                                <h3 className="cabinet-section-title__title">
                                                     Изменение пароля
                                                 </h3>
                                             </div>
@@ -89,20 +90,9 @@ const Cabinet: React.FC = () => {
                                             />
                                         </div>
 
-                                        {userInfo.subscribe
-                                            .registrationSubscribe !== "" ? (
-                                            <div
-                                                className="cabinet-block"
-                                                id="subscribe"
-                                            >
-                                                <div className="cabinet-block-text">
-                                                    <h3 className="cabinet-block-text__title">
-                                                        Моя подписка
-                                                    </h3>
-                                                </div>
-
-                                                <CabinetUserSubscribeInfo />
-                                            </div>
+                                        {userInfo.subscribe.registration !==
+                                        "" ? (
+                                            <CabinetSubscribe />
                                         ) : null}
                                     </div>
                                 </div>

@@ -141,7 +141,7 @@ const CoursePage: React.FC = () => {
                                     to="price"
                                     spy={true}
                                     smooth={true}
-                                    offset={-50}
+                                    offset={0}
                                     duration={1000}
                                     className={`btn-small-round course-page__btn ${
                                         visibleButton ? "visible" : ""
@@ -155,7 +155,7 @@ const CoursePage: React.FC = () => {
                                 to="price"
                                 spy={true}
                                 smooth={true}
-                                offset={-50}
+                                offset={0}
                                 duration={1000}
                                 className={`btn-small-round course-page__btn ${
                                     visibleButton ? "visible" : ""

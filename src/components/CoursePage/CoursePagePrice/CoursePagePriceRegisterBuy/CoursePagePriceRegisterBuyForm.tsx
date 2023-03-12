@@ -38,7 +38,7 @@ let CoursePagePriceRegisterBuyForm: React.FC<InjectedFormProps<{}>> = ({
                     ← Назад
                 </button>
                 <h3 className="course-page-price-register-form-text__title">
-                    Введите электронную почту для начала обучения
+                    Создайте аккаунт для начала обучения
                 </h3>
             </div>
 
@@ -48,6 +48,15 @@ let CoursePagePriceRegisterBuyForm: React.FC<InjectedFormProps<{}>> = ({
                     type="text"
                     name="email"
                     label="Электронная почта"
+                />
+            </div>
+
+            <div className="course-page-price-register-form-input">
+                <Field
+                    component={RenderInput}
+                    type="password"
+                    name="password"
+                    label="Придумайте пароль"
                 />
             </div>
 

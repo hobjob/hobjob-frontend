@@ -76,10 +76,10 @@
 				font-size: 21px
 				color: $gray
 
-	&-block-wrapper
+	&-section-wrapper
 		margin-top: 25px
 
-	&-block
+	&-section
 		margin: 50px 0
 		padding-bottom: 100px
 		border-bottom: 1px solid $borderGray
@@ -92,71 +92,253 @@
 			padding-bottom: 0
 			margin: 50px 0 0 0
 
-		&-text
-			width: 35%
+		&-title
+			width: 30%
 
 			&__title
 				font-size: 48px
 
-		&-form
-			width: 55%
+		&-content
+			width: 60%
 
-			&-input
-				width: 100%
-				margin-bottom: 15px
-
-			&-btn
-				margin-top: 25px
+			&-form
 				width: 100%
 
-		&-subscribe
-			width: 55%
+				&-input
+					width: 100%
+					margin-bottom: 15px
 
-			&-item
+				&-btn
+					margin-top: 25px
+					width: 100%
+
+			&-subscribe
+				width: 100%
+
+				padding: 35px
+				background-color: $backgroundGray
+
 				display: flex
-				justify-content: space-between
 				align-items: center
 
-				padding-bottom: 35px
-				margin-bottom: 35px
-				border-bottom: 1px solid $borderGray
-
-				&:last-child
-					border: none
-					margin-bottom: 0
-					padding-bottom: 0
-
-				&__title
-					font-size: 21px
-
-				&__description
-					display: flex
-					align-items: center
-					justify-content: flex-end
-
-					background-color: $backgroundGray
-
-					padding: 10px 15px
-
-					font-size: 18px
-
-					border-radius: 15px
-
-					& > span
-						cursor: pointer
-						color: $gray
-
-			&-item-subscribe
-				&-icon > svg
-					min-width: 165px
-
-			&-item-card
-				&__description > svg
-					margin-right: 15px
-
-			&-item-select
-				padding: 20px 25px
-				background-color: $backgroundGray
-				margin-bottom: 50px
-
 				+borderRadiusBlock
+
+				&-current
+					padding-right: 35px
+					width: 45%
+
+					border-right: 1px solid $borderGray
+
+					&-type
+						&__subtitle
+							font-size: 18px
+							margin-bottom: 5px
+
+						&__title
+							font-size: 32px
+
+					&-period
+						margin-top: 35px
+
+						&.red
+							display: inline-block
+							
+							padding: 15px
+
+							background-color: $red
+							color: $white
+
+							+borderRadiusBlock
+
+						&__subtitle
+							font-size: 18px
+							margin-bottom: 5px
+
+						&__title
+							font-size: 24px
+
+						&__return
+							margin-top: 15px
+
+							border: none
+							text-align: center
+							border-radius: 100px
+							user-select: none
+
+							padding: 10px 15px
+							font-size: 15px
+
+							background-color: $white
+							color: $black
+
+							cursor: pointer
+
+							will-change: transform
+
+							+SfRegular
+							+transition
+
+							&:hover
+								transform: scale(0.99)
+
+							&:active
+								+transformScale
+
+					&-payments
+						margin-top: 35px
+
+						&__subtitle
+							font-size: 18px
+							margin-bottom: 5px
+
+						&-wallet
+							display: flex
+							align-items: center
+
+							&-item
+								cursor: pointer
+
+								display: inline-flex
+								align-items: center
+
+								padding: 10px 12px
+								background-color: $white
+
+								margin-right: 10px
+
+								border: 2px solid $backgroundGray
+
+								+borderRadius
+
+								& > svg
+									margin-right: 10px
+
+								&.active
+									border: 2px solid $mainColor
+
+								&__title
+									user-select: none
+
+							&-plus
+								cursor: pointer
+
+								display: inline-flex
+
+								padding: 12px
+								background-color: $white
+
+								border: 2px solid $backgroundGray
+
+								+borderRadius
+
+					&__cancel
+						display: inline-block
+
+						font-size: 18px
+
+						margin-top: 35px
+
+						border: none
+						background-color: transparent
+
+						border-bottom: 1px solid $black
+
+				&-upgrade
+					padding-left: 35px
+					width: 55%
+
+					will-change: transform
+
+					+openPopup
+
+					&.close
+						+closePopup
+
+					&__title
+						font-size: 24px
+
+					&-item-wrapper
+						margin-top: 35px
+
+					&-item
+						position: relative
+
+						cursor: pointer
+
+						padding: 15px
+						background-color: $white
+
+						margin-bottom: 15px
+
+						will-change: transform
+
+						+borderRadiusBlock
+						+transition
+
+						&:hover
+							transform: scale(0.99)
+
+						&:active
+							+transformScale
+
+						&:last-child
+							margin-bottom: 0
+
+						&__percent
+							position: absolute
+
+							display: inline-block
+
+							top: 10px
+							right: 10px
+
+							font-size: 15px
+							color: $white
+							background-color: $mainColor
+
+							padding: 5px 10px
+
+							border-radius: 100px
+
+						&-text
+							&__title
+								font-size: 28px
+								margin-bottom: 5px
+
+							&__subtitle
+								font-size: 16px
+								color: $gray
+
+				&-upgrade-success-wrapper
+					width: 55%
+
+					display: flex
+					justify-content: center
+					align-items: center
+
+				&-upgrade-success
+					display: flex
+					justify-content: center
+					align-items: center
+					flex-direction: column
+
+					will-change: transform
+
+					text-align: center
+
+					padding: 35px 50px
+					background-color: $white
+
+					+openPopup
+					+borderRadiusBlock
+
+					&.close
+						+closePopup
+
+					& > svg
+						width: 75px
+						height: 75px
+
+					&__title
+						margin-top: 25px
+						font-size: 21px

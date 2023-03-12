@@ -3,5 +3,5 @@ export interface PaymentSubscribe {
 	confirmation: any;
 	order: string;
 	status: string;
-	typeSubscribe: string;
+	type: string;
 }

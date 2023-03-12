@@ -26,7 +26,7 @@ export const fetchPaymentSubscribeById = (id: string) => {
 };
 
 export const sendCreatePaymentSubscribe = (
-	typeSubscribe: string
+	type: string
 ) => {
 	return async (dispatch: Dispatch<PaymentSubscribeActions>) => {
 		dispatch({
@@ -34,7 +34,7 @@ export const sendCreatePaymentSubscribe = (
 			payload: true,
 		});
 
-		$api.post(`/payment/subscribe`, { typeSubscribe }).then(({ data }) => {
+		$api.post(`/payment/subscribe`, { type }).then(({ data }) => {
 			window.location.href = `/payment/subscribe/${data.paymentNumber}`;
 		});
 	};

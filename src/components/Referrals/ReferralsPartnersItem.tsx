@@ -32,7 +32,7 @@ const ReferralsPartnersItem: React.FC<UserReferral> = ({
             <div className="referrals-partners-col">
                 <div className="referrals-partners-item-earnings">
                     <span className="referrals-partners-item-earnings__title">
-                        + 1 месяц
+                        + 30 дней
                     </span>
                 </div>
             </div>

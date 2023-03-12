@@ -10,7 +10,7 @@ const initialState: PaymentSubscribeState = {
 		confirmation: {},
 		order: "",
 		status: "",
-		typeSubscribe: "",
+		type: "",
 	},
 
 	isLoaded: false,

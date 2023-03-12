@@ -71,7 +71,7 @@ const PaymentSubscribe: React.FC = () => {
 
                                 <div className="reglog-product-wrapper">
                                     <ReglogSubscribeBlock
-                                        {...rates[payment.typeSubscribe]}
+                                        {...rates[payment.type]}
                                     />
                                 </div>
                             </div>

@@ -18,10 +18,10 @@ const CoursePagePriceRegisterBuy: React.FC = () => {
     } = useTypedSelector(({coursePage}) => coursePage);
     const {courseByUrl} = useTypedSelector(({courses}) => courses);
 
-    const onSubmit = ({email}: any) => {
+    const onSubmit = ({email, password}: any) => {
         return dispatch(
             sendRegister(
-                {email, paymentInfo: `buy.${courseByUrl._id}`},
+                {email, password, paymentInfo: `buy.${courseByUrl._id}`},
                 localStorage.getItem("ref")
                     ? (localStorage.getItem("ref") as string)
                     : "",

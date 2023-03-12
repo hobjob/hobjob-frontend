@@ -10,7 +10,10 @@ import {
 
 export const sendRegister = (
 	data: {
-		email: string; paymentInfo: string, addSubscribeCourseId?: string
+		email: string;
+		password: string;
+		paymentInfo: string,
+		addSubscribeCourseId?: string
 	},
 	ref: string,
 	typePayment?: string,

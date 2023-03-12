@@ -10,7 +10,7 @@ const initialState: CoursePageState = {
 		currentSection: CoursePagePriceSections.CHOICE_TYPE_BUY,
 		isCloseAnimation: false,
 
-		typeSubscribe: "month"
+		type: "month"
 	},
 	works: {
 		isOpenVideo: false,
@@ -49,7 +49,7 @@ const coursePage = (state = initialState, action: CoursePageActions) => {
 			...state,
 			price: {
 				...state.price,
-				typeSubscribe: action.payload
+				type: action.payload
 			}
 		}
 	}

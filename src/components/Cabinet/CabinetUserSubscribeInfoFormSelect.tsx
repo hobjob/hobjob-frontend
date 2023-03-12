@@ -3,13 +3,13 @@ import React from "react";
 import {rates} from "../../subscribeRates";
 
 interface CabinetUserSubscribeInfoFormSelectProps {
-    changeNextTypeSubscribe: (value: string) => void;
-    nextTypeSubscribe: string;
+    changeTypeSubscribe: (value: string) => void;
+    typeSubscribe: string;
 }
 
 const CabinetUserSubscribeInfoFormSelect: React.FC<
     CabinetUserSubscribeInfoFormSelectProps
-> = ({changeNextTypeSubscribe, nextTypeSubscribe}) => {
+> = ({changeTypeSubscribe, typeSubscribe}) => {
     return (
         <form className="cabinet-block-subscribe-item-select">
             <div className="select">
@@ -18,9 +18,9 @@ const CabinetUserSubscribeInfoFormSelect: React.FC<
                 </label>
                 <select
                     name="nextTypeSubscribe"
-                    onChange={(e) => changeNextTypeSubscribe(e.target.value)}
+                    onChange={(e) => changeTypeSubscribe(e.target.value)}
                     className="select__field"
-                    defaultValue={nextTypeSubscribe}
+                    defaultValue={typeSubscribe}
                 >
                     {Object.keys(rates).map((key, index) => (
                         <option
@@ -28,8 +28,7 @@ const CabinetUserSubscribeInfoFormSelect: React.FC<
                             className="select__option"
                             key={`select__option-${index}`}
                         >
-                            {rates[key].subtitle}{" "}
-                            за {rates[key].fullPrice}₽
+                            {rates[key].subtitle} за {rates[key].fullPrice}₽
                         </option>
                     ))}
                 </select>

@@ -18,15 +18,16 @@ const CoursePagePriceRegisterSubscribe: React.FC = () => {
     const {courseByUrl} = useTypedSelector(({courses}) => courses);
 
     const {
-        price: {isCloseAnimation, typeSubscribe},
+        price: {isCloseAnimation, type},
     } = useTypedSelector(({coursePage}) => coursePage);
 
-    const onSubmit = ({email}: any) => {
+    const onSubmit = ({email, password}: any) => {
         return dispatch(
             sendRegister(
                 {
-                    email,
-                    paymentInfo: `subscribe.${typeSubscribe}`,
+					email,
+					password,
+                    paymentInfo: `subscribe.${type}`,
                     addSubscribeCourseId: courseByUrl._id,
                 },
                 localStorage.getItem("ref")
@@ -46,7 +47,7 @@ const CoursePagePriceRegisterSubscribe: React.FC = () => {
             <CoursePagePriceRegisterSubscribeForm onSubmit={onSubmit} />
 
             <CoursePagePriceRegisterSubscribeProductBlock
-                {...rates[typeSubscribe]}
+                {...rates[type]}
             />
         </div>
     );

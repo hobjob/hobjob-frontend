@@ -11,7 +11,7 @@ import login from './login';
 import passwordRecovery from './passwordRecovery';
 import user from './user';
 import passing from './passing';
-import cabinetSubscribeDisabled from './cabinetSubscribeDisabled';
+import cabinetSubscribeDisable from './cabinetSubscribeDisable';
 import paymentSubscribe from './payment/paymentSubscribe';
 import paymentCourse from './payment/paymentCourse';
 
@@ -26,7 +26,7 @@ export const rootReducer = combineReducers({
 	passwordRecovery,
 	user,
 	passing,
-	cabinetSubscribeDisabled,
+	cabinetSubscribeDisable,
 	paymentSubscribe,
 	paymentCourse,
 	form: formReducer

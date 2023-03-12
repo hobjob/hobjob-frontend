@@ -10,7 +10,7 @@ export interface CoursePageState {
 		currentSection: CoursePagePriceSections
 		isCloseAnimation: boolean
 
-		typeSubscribe: string
+		type: string
 	}
 
 	works: {
