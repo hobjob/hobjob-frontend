@@ -114,7 +114,7 @@ const Shop: React.FC = () => {
 
             dispatch(
                 fetchCourses({
-                    limit: 8,
+                    limit: 16,
                     page: 1,
                     categories: categoriesArray,
                     masters: mastersArray,

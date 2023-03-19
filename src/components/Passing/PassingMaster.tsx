@@ -27,7 +27,7 @@ const PassingMaster: React.FC<Master> = ({
                 </p>
                 <Link
                     to={`/master/${_id}`}
-                    className="passing-master-text__link"
+                    className="btn-small-round passing-master-text__link"
                 >
                     Перейти на страницу мастера
                 </Link>

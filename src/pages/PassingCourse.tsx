@@ -57,31 +57,25 @@ const PassingCourse: React.FC = () => {
                     <>
                         <Helmet>
                             <title>
-                                {course.lessons[lessonIndex].title} -
-                                HobJob
+                                {course.lessons[lessonIndex].title} - HobJob
                             </title>
                         </Helmet>
 
                         <section className="passing">
                             <div className="container">
                                 <div className="passing-wrapper">
-                                    <div className="passing-top">
-                                        <PassingTopText
-                                            subtitle={course.title}
-                                            title={
-                                                course.lessons[
-                                                    lessonIndex
-                                                ].title
-                                            }
-                                        />
-                                    </div>
+                                    <PassingTopText
+                                        subtitle={course.title}
+                                        title={
+                                            course.lessons[lessonIndex].title
+                                        }
+                                    />
 
                                     <PassingVideo
                                         {...course}
                                         image={
-                                            course.lessons[
-                                                lessonIndex
-                                            ].image.size_2048
+                                            course.lessons[lessonIndex].image
+                                                .size_2048
                                         }
                                         courseId={courseId}
                                         lessonNum={lessonNum}
@@ -100,20 +94,18 @@ const PassingCourse: React.FC = () => {
                                             </h4>
                                             <p className="passing-lesson-info-block-text__description">
                                                 {
-                                                    course.lessons[
-                                                        lessonIndex
-                                                    ].description
+                                                    course.lessons[lessonIndex]
+                                                        .description
                                                 }
                                             </p>
                                         </div>
 
-                                        {course.lessons[lessonIndex]
-                                            .materials.length ? (
+                                        {course.lessons[lessonIndex].materials
+                                            .length ? (
                                             <PassingMaterials
                                                 materials={
-                                                    course.lessons[
-                                                        lessonIndex
-                                                    ].materials
+                                                    course.lessons[lessonIndex]
+                                                        .materials
                                                 }
                                                 downloadFunc={downloadFile}
                                             />

@@ -11,8 +11,7 @@ import {addUserCourse} from "../redux/actions/user";
 
 import {
     CoursePageMain,
-    CoursePageLessons,
-    CoursePageMaterials,
+    CoursePageContent,
     CoursePageSkills,
     CoursePageUseSkills,
     CoursePageFeedbacks,
@@ -175,23 +174,11 @@ const CoursePage: React.FC = () => {
                             onClickAddCourse={onClickAddCourse}
                         />
 
-                        <CoursePageLessons
-                            {...courseByUrl}
-                            onClickAddCourse={onClickAddCourse}
+                        <CoursePageContent
                             isLogin={isLogin}
                             isAdd={isAdd}
                             isSubscribe={userInfo.subscribe.working}
                         />
-
-                        {courseByUrl.materials.length ? (
-                            <CoursePageMaterials
-                                {...courseByUrl}
-                                onClickAddCourse={onClickAddCourse}
-                                isLogin={isLogin}
-                                isAdd={isAdd}
-                                isSubscribe={userInfo.subscribe.working}
-                            />
-                        ) : null}
 
                         <CoursePageSkills {...courseByUrl} />
 

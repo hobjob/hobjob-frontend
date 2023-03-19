@@ -60,14 +60,15 @@ export { default as ShopFiltersBlockMasters } from "./Shop/ShopFilters/ShopFilte
 // CoursePage
 // CoursePageMain
 export { default as CoursePageMain } from "./CoursePage/CoursePageMain/CoursePageMain";
-// CoursePageLessons
-export { default as CoursePageLessons } from "./CoursePage/CoursePageLessons/CoursePageLessons";
-export { default as CoursePageLessonsItem } from "./CoursePage/CoursePageLessons/CoursePageLessonsItem";
-export { default as CoursePageLessonsVideo } from "./CoursePage/CoursePageLessons/CoursePageLessonsVideo";
-// CoursePageMaterials
-export { default as CoursePageMaterials } from "./CoursePage/CoursePageMaterials/CoursePageMaterials";
-export { default as CoursePageMaterialsItem } from "./CoursePage/CoursePageMaterials/CoursePageMaterialsItem";
-export { default as CoursePageMaterialsModal } from "./CoursePage/CoursePageMaterials/CoursePageMaterialsModal";
+// CoursePageContent
+export { default as CoursePageContent } from "./CoursePage/CoursePageContent/CoursePageContent";
+export { default as CoursePageContentVideo } from "./CoursePage/CoursePageContent/CoursePageContentVideo";
+// CoursePageContentLessons
+export { default as CoursePageContentLessons } from "./CoursePage/CoursePageContent/CoursePageContentLessons/CoursePageContentLessons";
+export { default as CoursePageContentLessonsItem } from "./CoursePage/CoursePageContent/CoursePageContentLessons/CoursePageContentLessonsItem";
+// CoursePageContentMaterials
+export { default as CoursePageContentMaterials } from "./CoursePage/CoursePageContent/CoursePageContentMaterials/CoursePageContentMaterials";
+export { default as CoursePageContentMaterialsItem } from "./CoursePage/CoursePageContent/CoursePageContentMaterials/CoursePageContentMaterialsItem";
 // CoursePageMaster
 export { default as CoursePageMaster } from "./CoursePage/CoursePageMaster/CoursePageMaster";
 // CoursePageMasterWorks

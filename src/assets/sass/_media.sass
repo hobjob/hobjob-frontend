@@ -37,16 +37,6 @@
 							&__text
 								font-size: 18px
 
-@media screen and ( max-width: 1350px )
-	// course-page
-	.course-page
-		&-lessons
-			&-video
-				&-plaecholder
-					&__description, &__link
-						font-size: 42px
-						max-width: 100%
-
 @media screen and ( max-width: 1300px )
 	// main
 	.main
@@ -135,7 +125,7 @@
 
 						padding-bottom: 35px
 						padding-right: 0
-						
+
 						margin-bottom: 35px
 
 					&-upgrade
@@ -295,21 +285,6 @@
 			&-image
 				width: 40%
 
-		&-materials
-			&-wrapper
-				flex-direction: column
-				justify-content: flex-start
-
-				min-height: 100%
-
-			&__title
-				width: 100%
-
-			&-items-wrapper
-				margin-top: 25px
-
-				width: 100%
-
 	// hobjob-good
 	.hobjob-good
 		&-wrapper
@@ -415,41 +390,48 @@
 				height: 500px
 				width: 100%
 
-		&-lessons
+		&-content
 			margin: 50px 0
 
 			&-wrapper
 				flex-direction: column
 
+			&.vertical &-video
+				width: 100%
+				min-width: 100%
+
 			&-video
 				width: 100%
+				min-width: 100%
+
 				order: 2
 
 			&-list
 				width: 100%
 				order: 1
 
-				margin-bottom: 25px
+				margin-bottom: 50px
 
-				&-item-wrapper
-					max-height: 400px
-					overflow-y: auto
+				&__title
+					width: 100%
 
-					+borderRadiusBlock
+				&-lessons
+					&-items-wrapper
+						max-height: 500px
+						overflow-y: auto
 
-				&-item-shadow
-					display: block
+						+borderRadiusBlock
 
-		&-materials
-			&-modal
-				width: 80%
+					&-shadow
+						display: block
 
-				&__description
-					max-width: 100%
-					font-size: 46px
+				&-materials
+					&-items-wrapper
+						flex-direction: row
+						flex-wrap: wrap
 
-				&__link
-					font-size: 46px
+					&-item
+						margin-right: 10px
 
 		&-master
 			margin: 50px 0
@@ -1067,7 +1049,7 @@
 
 	// course-page
 	.course-page
-		&-lessons
+		&-content
 			&-video
 				&-plaecholder
 					&__description, &__link
@@ -1282,16 +1264,6 @@
 			&-image
 				height: 300px
 
-		&-materials
-			&-modal
-				width: 98%
-
-				&__description
-					font-size: 42px
-
-				&__link
-					font-size: 42px
-
 @media screen and ( max-width: 500px )
 	// interface
 	.title, .title__mb
@@ -1388,7 +1360,7 @@
 				&__btn
 					display: none
 
-		&-lessons
+		&-content
 			margin: 35px 0
 
 			&-video
@@ -1399,51 +1371,31 @@
 
 			&-list
 				&__title
-					font-size: 28px
+					font-size: 32px
+					margin-bottom: 25px
 
-				&-item
-					&-top
-						flex-direction: column
-						align-items: flex-start
+				&-lessons
+					margin-bottom: 50px
 
-						&-left
-							order: 2
+					&-item
+						&__title
+							font-size: 24px
 
-						&-right
-							order: 1
-							margin-bottom: 15px
+						&__description
+							font-size: 18px
 
-					&__description
-						font-size: 18px
+				&-materials
+					&-items-wrapper
+						overflow-y: auto
+						flex-wrap: nowrap
 
-		&-materials
-			margin: 35px 0
+					&-item
+						padding: 10px 15px
 
-			&-wrapper
-				padding: 20px
+						margin-right: 5px
 
-			&-item
-				margin-bottom: 15px
-
-				&__title
-					font-size: 18px
-
-			&-modal-wrapper
-				align-items: flex-start
-
-			&-modal
-				margin-top: 25px
-
-				&__description
-					font-size: 24px
-
-				&__link
-					margin-top: 35px
-					font-size: 24px
-
-				&-close
-					top: auto
-					bottom: 20px
+						&__title
+							white-space: nowrap
 
 		&-skills
 			margin: 35px 0
@@ -2059,7 +2011,7 @@
 @media screen and ( max-width: 350px )
 	// course-page
 	.course-page
-		&-lessons
+		&-content
 			&-video
 				&-plaecholder
 					&__description

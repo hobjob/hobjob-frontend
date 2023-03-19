@@ -116,13 +116,12 @@ const HeaderModalMenu: React.FC<HeaderModalMenuProps> = ({
                                 >
                                     Пригласи друга
                                 </NavLink>
-                                <a
-                                    href="/"
+                                <span
                                     onClick={clickLogout}
                                     className="header-modal-menu-nav-block-user__link"
                                 >
                                     Выйти
-                                </a>
+                                </span>
                             </>
                         ) : (
                             <>
@@ -146,11 +145,11 @@ const HeaderModalMenu: React.FC<HeaderModalMenuProps> = ({
                 </nav>
 
                 <div className="header-modal-menu-socials">
-					<div className="header-modal-menu-socials-read">
-						<ReadDzen />
+                    <div className="header-modal-menu-socials-read">
+                        <ReadDzen />
 
-						<ReadVk />
-					</div>
+                        <ReadVk />
+                    </div>
 
                     <div className="header-modal-menu-socials-links-wrapper">
                         <a

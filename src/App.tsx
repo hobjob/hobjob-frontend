@@ -3,6 +3,7 @@ import {useDispatch} from "react-redux";
 import {Route, Routes, Navigate, useLocation} from "react-router-dom";
 import {compose} from "redux";
 import "moment/locale/ru";
+import owl_carousel from "react-owl-carousel";
 
 import {useTypedSelector} from "./hooks/useTypedSelector";
 
@@ -41,8 +42,11 @@ declare global {
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
         YooMoneyCheckoutWidget?: any;
+        fn?: any;
     }
 }
+
+window.fn = owl_carousel;
 
 const App: React.FC = () => {
     const dispatch = useDispatch();

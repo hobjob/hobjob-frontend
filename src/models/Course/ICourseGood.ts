@@ -1,9 +1,10 @@
 import { Image } from '../IImage'
 
-export interface CourseGoodLessons {
+export interface CourseGoodLesson {
 	title: string;
 	video: {
 		duration: string;
+		vertical: boolean;
 	};
 
 	description?: string;
@@ -38,7 +39,7 @@ export interface CourseGood {
 	masterId: string;
 	category: string;
 	path?: string;
-	lessons: CourseGoodLessons[];
+	lessons: CourseGoodLesson[];
 	materials: string[];
 	skills: CourseGoodSkill[];
 	useSkills: CourseGoodUseSkill[];
