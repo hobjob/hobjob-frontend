@@ -25,7 +25,11 @@ export const sendRegister = (
 		});
 
 		let parseRef = JSON.parse(localStorage.getItem("ref") as string)
-		let ref = moment().subtract(1, "days").isBefore(moment(parseRef.date, "DD.MM.YYYY, HH:mm")) ? parseRef.ref : ""
+		let ref = ""
+
+		if (parseRef && Object.keys(parseRef).length) {
+			ref = moment().subtract(1, "days").isBefore(moment(parseRef.date, "DD.MM.YYYY, HH:mm")) ? parseRef.ref : ""
+		}
 
 		return $api
 			.post(`/register`, { ...data, ref })
