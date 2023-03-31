@@ -1,20 +1,9 @@
 import React from "react";
 import {Helmet} from "react-helmet";
-import {useSearchParams} from "react-router-dom";
 
 import {HomeMainSection, ShopSection, HobJobGood} from "../components/";
 
 const Home: React.FC = () => {
-    const [search] = useSearchParams();
-
-    React.useEffect(() => {
-        const ref = search.get("ref");
-
-        if (ref) {
-            localStorage.setItem("ref", ref);
-        }
-    }, []);
-
     return (
         <>
             <Helmet>

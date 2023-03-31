@@ -68,7 +68,7 @@ const TrainingSubscribeDisabled: React.FC = () => {
                                     strokeLinecap="round"
                                 />
                             </svg>
-                            Доступ ко всем курсам и дополнительным материалам
+                            Доступ ко всем курсам и материалам
                         </p>
                         <p className="training-subscribe-disabled-text-list__item">
                             <svg

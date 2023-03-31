@@ -25,14 +25,11 @@ const CoursePagePriceRegisterSubscribe: React.FC = () => {
         return dispatch(
             sendRegister(
                 {
-					email,
-					password,
+                    email,
+                    password,
                     paymentInfo: `subscribe.${type}`,
                     addSubscribeCourseId: courseByUrl._id,
                 },
-                localStorage.getItem("ref")
-                    ? (localStorage.getItem("ref") as string)
-                    : "",
                 "subscribe"
             )
         );
@@ -46,9 +43,7 @@ const CoursePagePriceRegisterSubscribe: React.FC = () => {
         >
             <CoursePagePriceRegisterSubscribeForm onSubmit={onSubmit} />
 
-            <CoursePagePriceRegisterSubscribeProductBlock
-                {...rates[type]}
-            />
+            <CoursePagePriceRegisterSubscribeProductBlock {...rates[type]} />
         </div>
     );
 };

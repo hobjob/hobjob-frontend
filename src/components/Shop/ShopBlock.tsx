@@ -35,7 +35,7 @@ const ShopBlock: React.FC<ShopBlockProps> = ({
         <div className="shop-block">
             <div className="shop-block-top">
                 <div className="shop-block-top-cover-wrapper">
-                    {/* {HobJobProduction ? (
+                    {HobJobProduction ? (
                         <Link
                             to={`/course/${url}`}
                             className="shop-block-top-cover-hobjob-production"
@@ -46,7 +46,7 @@ const ShopBlock: React.FC<ShopBlockProps> = ({
                                 className="shop-block-top-cover-hobjob-production__image"
                             />
                         </Link>
-                    ) : null} */}
+                    ) : null}
 
                     <Link
                         to={`/course/${url}`}

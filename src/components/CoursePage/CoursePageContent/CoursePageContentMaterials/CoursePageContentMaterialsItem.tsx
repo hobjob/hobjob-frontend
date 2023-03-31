@@ -1,4 +1,5 @@
 import React from "react";
+import {Link as LinkScroll} from "react-scroll";
 
 interface CoursePageContentMaterialsItemItemProps {
     title: string;
@@ -8,7 +9,14 @@ const CoursePageContentMaterialsItem: React.FC<
     CoursePageContentMaterialsItemItemProps
 > = ({title}) => {
     return (
-        <div className="course-page-content-list-materials-item">
+        <LinkScroll
+            to="price"
+            spy={true}
+            smooth={true}
+            offset={-25}
+            duration={1000}
+            className="course-page-content-list-materials-item"
+        >
             <div className="course-page-content-list-materials-item-icon">
                 <svg
                     width="25"
@@ -23,7 +31,7 @@ const CoursePageContentMaterialsItem: React.FC<
             <p className="course-page-content-list-materials-item__title">
                 {title}
             </p>
-        </div>
+        </LinkScroll>
     );
 };
 

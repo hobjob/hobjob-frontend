@@ -9,11 +9,14 @@ const ReglogSubscribeBlock: React.FC<Rate> = ({subtitle, fullPrice, title}) => {
         <div className="reglog-product-subscribe-block">
             <div className="reglog-product-subscribe-block-text">
                 <p className="reglog-product-subscribe-block-text__subtitle">
-                    {subtitle} за {fullPrice}₽
+                    Подписка HobJob
                 </p>
                 <h2 className="reglog-product-subscribe-block-text__title">
-                    {title}
+                    Попробуйте <span>30 дней</span> за 1₽
                 </h2>
+                <p className="reglog-product-subscribe-block-text__pricedesc">
+                    далее 499₽ в месяц
+                </p>
 
                 <div className="reglog-product-subscribe-block-text-list">
                     <p className="reglog-product-subscribe-block-text-list__item">
@@ -37,7 +40,7 @@ const ReglogSubscribeBlock: React.FC<Rate> = ({subtitle, fullPrice, title}) => {
                                 strokeLinecap="round"
                             />
                         </svg>
-                        Доступ ко всем курсам и дополнительным материалам
+                        Доступ ко всем курсам и материалам
                     </p>
                     <p className="reglog-product-subscribe-block-text-list__item">
                         <svg

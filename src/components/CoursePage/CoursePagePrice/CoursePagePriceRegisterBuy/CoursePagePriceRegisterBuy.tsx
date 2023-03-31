@@ -22,9 +22,6 @@ const CoursePagePriceRegisterBuy: React.FC = () => {
         return dispatch(
             sendRegister(
                 {email, password, paymentInfo: `buy.${courseByUrl._id}`},
-                localStorage.getItem("ref")
-                    ? (localStorage.getItem("ref") as string)
-                    : "",
                 "buy"
             )
         );

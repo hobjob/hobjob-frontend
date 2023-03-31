@@ -6,7 +6,7 @@ import { CoursePagePriceSections, CoursePageActions, CoursePageActionTypes } fro
 export const changePriceCurrentSection = (section: CoursePagePriceSections) => (dispatch: Dispatch<CoursePageActions>) => {
 	const to: any = document.getElementById("price")?.offsetTop;
 
-	animateScroll.scrollTo(to, { duration: 1000 });
+	animateScroll.scrollTo(to - 25, { duration: 1000 });
 
 	dispatch({
 		type: CoursePageActionTypes.SET_PRICE_IS_CLOSE_ANIMATION,

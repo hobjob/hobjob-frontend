@@ -1,7 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 import {Helmet} from "react-helmet";
-import {Navigate, useSearchParams, useParams} from "react-router-dom";
+import {Navigate, useParams} from "react-router-dom";
 import {Link as LinkScroll} from "react-scroll";
 
 import {useTypedSelector} from "../hooks/useTypedSelector";
@@ -29,7 +29,6 @@ import {
 import {checkIsAddCourse} from "../functions/checkIsAddCourse";
 
 const CoursePage: React.FC = () => {
-    const [search] = useSearchParams();
     const {url} = useParams();
 
     const dispatch = useDispatch();
@@ -52,12 +51,6 @@ const CoursePage: React.FC = () => {
 
     React.useEffect(() => {
         window.addEventListener("scroll", handlerScroll);
-
-        const ref = search.get("ref");
-
-        if (ref) {
-            localStorage.setItem("ref", ref);
-        }
     }, []);
 
     React.useEffect(() => {

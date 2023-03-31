@@ -64,7 +64,7 @@ const CoursePagePriceChoiceBuy: React.FC<CoursePagePriceBuyProps> = ({
                                 strokeLinecap="round"
                             />
                         </svg>
-                        Доступ только к этому курсу и дополнительным материалам
+                        Доступ только к этому курсу и материалам
                     </p>
                 </div>
 

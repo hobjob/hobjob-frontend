@@ -13,11 +13,14 @@ const CoursePagePriceRegisterSubscribeProductBlock: React.FC<
         <div className="course-page-price-register-subscribe-product-block">
             <div className="course-page-price-register-subscribe-product-block-text">
                 <p className="course-page-price-register-subscribe-product-block-text__subtitle">
-                    {subtitle} за {fullPrice}₽
+                    Подписка HobJob
                 </p>
                 <h2 className="course-page-price-register-subscribe-product-block-text__title">
-                    {title}
+                    Попробуйте <span>30 дней</span> за 1₽
                 </h2>
+                <p className="course-page-price-register-subscribe-product-block-text__pricedesc">
+                    далее 499₽ в месяц
+                </p>
 
                 <div className="course-page-price-register-subscribe-product-block-text-list">
                     <p className="course-page-price-register-subscribe-product-block-text-list__item">
@@ -41,7 +44,7 @@ const CoursePagePriceRegisterSubscribeProductBlock: React.FC<
                                 strokeLinecap="round"
                             />
                         </svg>
-                        Доступ ко всем курсам и дополнительным материалам
+                        Доступ ко всем курсам и материалам
                     </p>
                     <p className="course-page-price-register-subscribe-product-block-text-list__item">
                         <svg

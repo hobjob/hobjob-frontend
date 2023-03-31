@@ -1,9 +1,14 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import {Route, Routes, Navigate, useLocation} from "react-router-dom";
+import {
+    Route,
+    Routes,
+    Navigate,
+    useLocation,
+    useSearchParams,
+} from "react-router-dom";
 import {compose} from "redux";
 import "moment/locale/ru";
-import owl_carousel from "react-owl-carousel";
 
 import {useTypedSelector} from "./hooks/useTypedSelector";
 
@@ -37,20 +42,19 @@ import {
     EngineeringWorks,
     CabinetSubscribeDisable,
 } from "./pages/";
+import moment from "moment";
 
 declare global {
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
         YooMoneyCheckoutWidget?: any;
-        fn?: any;
     }
 }
-
-window.fn = owl_carousel;
 
 const App: React.FC = () => {
     const dispatch = useDispatch();
 
+    const [search] = useSearchParams();
     const {pathname} = useLocation();
 
     const {userInfo} = useTypedSelector(({user}) => user);
@@ -58,6 +62,18 @@ const App: React.FC = () => {
     const categories = useTypedSelector(({categories}) => categories.items);
 
     React.useEffect(() => {
+        const ref = search.get("ref");
+
+        if (ref) {
+            localStorage.setItem(
+                "ref",
+                JSON.stringify({
+                    ref,
+                    date: moment().format("DD.MM.YYYY, HH:mm"),
+                })
+            );
+        }
+
         let cords: any = ["scrollX", "scrollY"];
 
         // Перед закрытием записываем в локалсторадж window.scrollX и window.scrollY как scrollX и scrollY

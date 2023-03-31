@@ -1,3 +1,4 @@
+import moment from "moment";
 import { Dispatch } from "redux";
 import { SubmissionError } from "redux-form";
 
@@ -15,7 +16,6 @@ export const sendRegister = (
 		paymentInfo: string,
 		addSubscribeCourseId?: string
 	},
-	ref: string,
 	typePayment?: string,
 ) => {
 	return async (dispatch: Dispatch<RegisterActions>) => {
@@ -23,6 +23,9 @@ export const sendRegister = (
 			type: RegisterActionTypes.SET_SEND_REGISTER,
 			payload: true,
 		});
+
+		let parseRef = JSON.parse(localStorage.getItem("ref") as string)
+		let ref = moment().subtract(1, "days").isBefore(moment(parseRef.date, "DD.MM.YYYY, HH:mm")) ? parseRef.ref : ""
 
 		return $api
 			.post(`/register`, { ...data, ref })

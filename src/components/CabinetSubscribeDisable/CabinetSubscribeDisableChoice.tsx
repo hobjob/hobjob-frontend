@@ -99,7 +99,7 @@ const CabinetSubscribeDisableChoice: React.FC = () => {
                     </svg>
 
                     <p className="cabinet-subscribe-disable-block-content-text-list-item__text">
-                        Доступ ко всем курсам и дополнительным материалам через{" "}
+                        Доступ ко всем курсам и материалам через{" "}
                         {daysSubscribe}{" "}
                         {
                             checkDeclension(daysSubscribe, [

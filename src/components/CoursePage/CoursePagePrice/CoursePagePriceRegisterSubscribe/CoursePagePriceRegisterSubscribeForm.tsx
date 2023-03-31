@@ -29,7 +29,7 @@ let CoursePagePriceRegisterSubscribeForm: React.FC<InjectedFormProps<{}>> = ({
                     onClick={() =>
                         dispatch(
                             changePriceCurrentSection(
-                                CoursePagePriceSections.SUBSCRIBE_RATES
+                                CoursePagePriceSections.CHOICE_TYPE_BUY
                             )
                         )
                     }

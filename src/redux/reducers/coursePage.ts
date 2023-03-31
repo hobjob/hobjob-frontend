@@ -10,7 +10,7 @@ const initialState: CoursePageState = {
 		currentSection: CoursePagePriceSections.CHOICE_TYPE_BUY,
 		isCloseAnimation: false,
 
-		type: "month"
+		type: "test"
 	},
 	works: {
 		isOpenVideo: false,
