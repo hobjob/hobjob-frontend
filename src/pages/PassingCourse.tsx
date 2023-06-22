@@ -111,10 +111,10 @@ const PassingCourse: React.FC = () => {
                                             />
                                         ) : null}
                                     </div>
-
+{/* 
                                     <PassingMaster
                                         {...masters[course.masterId]}
-                                    />
+                                    /> */}
                                 </div>
                             </div>
                         </section>

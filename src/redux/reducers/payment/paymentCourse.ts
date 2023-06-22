@@ -6,7 +6,7 @@ import {
 
 const initialState: PaymentCourseState = {
 	payment: {
-		paymentNumber: "",
+		number: "",
 		confirmation: {},
 		order: "",
 		status: "",

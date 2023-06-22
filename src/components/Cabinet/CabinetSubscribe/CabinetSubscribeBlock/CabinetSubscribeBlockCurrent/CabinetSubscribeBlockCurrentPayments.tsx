@@ -48,9 +48,11 @@ const CabinetSubscribeBlockCurrentPayments: React.FC = () => {
                         />
                     </svg>
 
-                    <p className="cabinet-section-content-subscribe-current-payments-wallet-item__title">
-                        {payment.title}
-                    </p>
+                    {payment.title !== "" ? (
+                        <p className="cabinet-section-content-subscribe-current-payments-wallet-item__title">
+                            {payment.title}
+                        </p>
+                    ) : null}
                 </div>
                 {/* 
                 <div className="cabinet-section-content-subscribe-current-payments-wallet-plus">

@@ -148,18 +148,6 @@ const CoursePageComparisonCourses: React.FC = () => {
                                     проходили
                                 </p>
                             </div>
-
-                            <LinkScroll
-                                to="price"
-                                spy={true}
-                                smooth={true}
-                                offset={-25}
-                                duration={1000}
-                            >
-                                <button className="btn course-page-comparison-courses-block-hobjob__btn">
-                                    Начать обучение
-                                </button>
-                            </LinkScroll>
                         </div>
                     </div>
                 </div>

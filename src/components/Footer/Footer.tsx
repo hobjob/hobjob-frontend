@@ -1,148 +1,171 @@
 import React from "react";
 import {Link, NavLink} from "react-router-dom";
 
-import {Instagram, TikTok, Telegram, Youtube, ReadDzen, ReadVk} from "../";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
+
+import {Dzen, Vk, Youtube, Telegram, Instagram} from "../";
 
 import Logo from "../../assets/images/logo.svg";
-import LogoNagibin from "../../assets/images/nagibin-develompent.svg";
 
 const Footer: React.FC = () => {
+    const {items} = useTypedSelector(({categories}) => categories);
+
     return (
         <footer className="footer">
             <div className="container">
                 <div className="footer-wrapper">
-                    <div className="footer-block">
-                        <div className="footer-block-logos">
-                            <Link
-                                to="/"
-                                className="footer-block-logos-logo__link"
-                            >
+                    <div className="footer-block-wrapper">
+                        <div className="footer-block footer-block-menu-wrapper">
+                            <Link to="/" className="footer-block-logo">
                                 <img
                                     src={Logo}
                                     alt="HobJob"
-                                    className="footer-block-logos-logo__img"
+                                    className="footer-block-logo__img"
                                 />
                             </Link>
+                            <nav className="footer-block-menu">
+                                <div className="footer-block-menu-subblock">
+                                    {Object.keys(items).map((key, index) => (
+                                        <a
+                                            href={`/course?categories=${key}`}
+                                            className="footer-block-menu-subblock__link"
+                                            key={`footer-block-menu-subblock__link-${index}`}
+                                        >
+                                            {items[key].title}
+                                        </a>
+                                    ))}
 
-                            {/* Hi, we are Nagibin's studio */}
-                            <div className="nagibinstudio">
-                                <img
-                                    src={LogoNagibin}
-                                    alt=""
-                                    className="nagibinstudio__img"
-                                    style={{
-                                        width: "300px",
-                                        userSelect: "none",
-                                    }}
-                                />
-                            </div>
-                        </div>
+                                    <a
+                                        href="/course"
+                                        className="footer-block-menu-subblock__link"
+                                    >
+                                        Все курсы
+                                    </a>
+                                </div>
 
-                        <div className="footer-block-contact">
-                            <div className="footer-block-contact-email-wrapper">
+                                <div className="footer-block-menu-subblock">
+                                    <NavLink
+                                        to="/go/training"
+                                        className={({isActive}) =>
+                                            `footer-block-menu-subblock__link ${
+                                                isActive ? "active" : ""
+                                            }`
+                                        }
+                                    >
+                                        Мое обучение
+                                    </NavLink>
+
+                                    <NavLink
+                                        to="/go/cabinet"
+                                        className={({isActive}) =>
+                                            `footer-block-menu-subblock__link ${
+                                                isActive ? "active" : ""
+                                            }`
+                                        }
+                                    >
+                                        Мой профиль
+                                    </NavLink>
+
+                                    <NavLink
+                                        to="/go/referrals"
+                                        className={({isActive}) =>
+                                            `footer-block-menu-subblock__link ${
+                                                isActive ? "active" : ""
+                                            }`
+                                        }
+                                    >
+                                        Реферальная программа
+                                    </NavLink>
+
+                                    <NavLink
+                                        to="/magazine"
+                                        className={({isActive}) =>
+                                            `footer-block-menu-subblock__link ${
+                                                isActive ? "active" : ""
+                                            }`
+                                        }
+                                    >
+                                        Журнал
+                                    </NavLink>
+
+                                    <a
+                                        href={`${process.env.REACT_APP_DOMEN_MASTERS_SERVICES}`}
+                                        className="footer-block-menu-subblock__link"
+                                    >
+                                        Стать мастером HobJob
+                                    </a>
+                                </div>
+                            </nav>
+
+                            <div className="footer-block-emails">
                                 <a
                                     href="mailto:support@hobjob.ru"
-                                    className="footer-block-contact-email"
+                                    className="footer-block-emails-block"
                                 >
-                                    <span className="subtitle footer-block-contact-email__subtitle">
+                                    <p className="footer-block-emails-block__subtitle">
                                         Служба поддержки
-                                    </span>
-                                    <span className="footer-block-contact-email__email">
+                                    </p>
+                                    <p className="footer-block-emails-block__email">
                                         support@hobjob.ru
-                                    </span>
+                                    </p>
                                 </a>
+
                                 <a
                                     href="mailto:hello@hobjob.ru"
-                                    className="footer-block-contact-email"
+                                    className="footer-block-emails-block"
                                 >
-                                    <span className="subtitle footer-block-contact-email__subtitle">
+                                    <p className="footer-block-emails-block__subtitle">
                                         Для вопросов и предложений
-                                    </span>
-                                    <span className="footer-block-contact-email__email">
+                                    </p>
+                                    <p className="footer-block-emails-block__email">
                                         hello@hobjob.ru
-                                    </span>
+                                    </p>
                                 </a>
                             </div>
-                            <div className="footer-block-contact-socials">
+                        </div>
+                        <div className="footer-block footer-block-socials-wrapper">
+                            <div className="footer-block-socials">
                                 <a
-                                    href={process.env.REACT_APP_SOCIALS_INST}
-                                    className="footer-block-contact-socials__link"
+                                    href={process.env.REACT_APP_SOCIALS_DZEN}
+                                    className="footer-block-socials__link"
                                 >
-                                    <Instagram />
+                                    <Dzen />
+                                </a>
+
+                                <a
+                                    href={process.env.REACT_APP_SOCIALS_VK}
+                                    className="footer-block-socials__link"
+                                >
+                                    <Vk />
                                 </a>
 
                                 <a
                                     href={process.env.REACT_APP_SOCIALS_YOUTUBE}
-                                    className="footer-block-contact-socials__link"
+                                    className="footer-block-socials__link"
                                 >
                                     <Youtube />
-                                </a>
-                                <a
-                                    href={process.env.REACT_APP_SOCIALS_TIKTOK}
-                                    className="footer-block-contact-socials__link"
-                                >
-                                    <TikTok />
                                 </a>
 
                                 <a
                                     href={
                                         process.env.REACT_APP_SOCIALS_TELEGRAM
                                     }
-                                    className="footer-block-contact-socials__link"
+                                    className="footer-block-socials__link"
                                 >
                                     <Telegram />
                                 </a>
-                            </div>
 
-                            <div className="footer-block-contact-socials-read">
-                                <ReadDzen />
-                                <ReadVk />
+                                <a
+                                    href={process.env.REACT_APP_SOCIALS_INST}
+                                    className="footer-block-socials__link"
+                                >
+                                    <Instagram />
+                                </a>
                             </div>
                         </div>
-
-                        <nav className="footer-block-nav">
-                            <NavLink
-                                to="/"
-                                className={({isActive}) =>
-                                    `footer-block-nav__link ${
-                                        isActive ? "active" : ""
-                                    }`
-                                }
-                            >
-                                Главная
-                            </NavLink>
-
-                            <NavLink
-                                to="/course"
-                                className={({isActive}) =>
-                                    `footer-block-nav__link ${
-                                        isActive ? "active" : ""
-                                    }`
-                                }
-                            >
-                                Курсы
-                            </NavLink>
-
-                            <NavLink
-                                to="/magazine"
-                                className={({isActive}) =>
-                                    `footer-block-nav__link ${
-                                        isActive ? "active" : ""
-                                    }`
-                                }
-                            >
-                                Журнал
-                            </NavLink>
-
-                            <a
-                                href={`${process.env.REACT_APP_DOMEN_MASTERS_SERVICES}`}
-                                className="footer-block-nav__link"
-                            >
-                                Выложить курс
-                            </a>
-                        </nav>
                     </div>
-                    <div className="footer-block footer-block-subinfo">
+
+                    <div className="footer-block-subinfo">
                         <div className="footer-block-subinfo-block">
                             <span className="footer-block-subinfo-block__span">
                                 © HobJob {new Date().getFullYear()}

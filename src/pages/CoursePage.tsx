@@ -90,7 +90,7 @@ const CoursePage: React.FC = () => {
     return (
         <>
             {isLoadedCourseByUrl && isLoadedMasters && isLoadedCategories ? (
-                courseByUrl._id !== "" ? (
+                Object.keys(courseByUrl).length ? (
                     <>
                         <Helmet>
                             <title>{courseByUrl.title} - HobJob</title>
@@ -100,7 +100,7 @@ const CoursePage: React.FC = () => {
                             isAdd ? (
                                 <button
                                     className={`btn-small-round disabled course-page__btn ${
-                                        visibleButton ? "active" : ""
+                                        visibleButton ? "visible" : ""
                                     }`}
                                 >
                                     <svg
@@ -119,28 +119,15 @@ const CoursePage: React.FC = () => {
                                     </svg>
                                     Добавлен
                                 </button>
-                            ) : userInfo.subscribe.working ? (
+                            ) : (
                                 <button
                                     className={`btn-small-round course-page__btn ${
-                                        visibleButton ? "active" : ""
+                                        visibleButton ? "visible" : ""
                                     }`}
                                     onClick={onClickAddCourse}
                                 >
                                     Добавить в мое обучение
                                 </button>
-                            ) : (
-                                <LinkScroll
-                                    to="price"
-                                    spy={true}
-                                    smooth={true}
-                                    offset={0}
-                                    duration={1000}
-                                    className={`btn-small-round course-page__btn ${
-                                        visibleButton ? "visible" : ""
-                                    }`}
-                                >
-                                    Начать обучение
-                                </LinkScroll>
                             )
                         ) : (
                             <LinkScroll
@@ -161,17 +148,12 @@ const CoursePage: React.FC = () => {
                             {...courseByUrl}
                             isLogin={isLogin}
                             isAdd={isAdd}
-                            isSubscribe={userInfo.subscribe.working}
                             master={masters[courseByUrl.masterId]}
                             categories={categories}
                             onClickAddCourse={onClickAddCourse}
                         />
 
-                        <CoursePageContent
-                            isLogin={isLogin}
-                            isAdd={isAdd}
-                            isSubscribe={userInfo.subscribe.working}
-                        />
+                        <CoursePageContent isLogin={isLogin} isAdd={isAdd} />
 
                         <CoursePageSkills {...courseByUrl} />
 
@@ -181,9 +163,7 @@ const CoursePage: React.FC = () => {
                             <CoursePageFeedbacks />
                         ) : null}
 
-                        {userInfo.subscribe.working || isAdd ? null : (
-                            <CoursePagePrice />
-                        )}
+                        {userInfo._id !== "" ? null : <CoursePagePrice />}
 
                         <CoursePageComparisonCourses />
 

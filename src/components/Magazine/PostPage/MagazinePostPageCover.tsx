@@ -7,8 +7,6 @@ import {Category} from "../../../models/ICategory";
 import {Master} from "../../../models/IMaster";
 import {Image} from "../../../models/IImage";
 
-import {ReadDzen, ReadVk} from "../../";
-
 interface MagazinePostPageCoverProps {
     title: string;
     image: Image;
@@ -64,12 +62,6 @@ const MagazinePostPageCover: React.FC<MagazinePostPageCoverProps> = ({
                         >
                             {category.title}
                         </Link>
-                    </div>
-
-                    <div className="magazine-post-page-cover-text-top-socials">
-                        <ReadDzen />
-
-                        <ReadVk />
                     </div>
                 </div>
                 <h2 className="magazine-post-page-cover-text__title">

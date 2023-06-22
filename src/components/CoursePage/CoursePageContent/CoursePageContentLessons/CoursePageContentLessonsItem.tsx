@@ -17,9 +17,11 @@ const CoursePageContentLessonsItem: React.FC<
                     <h4 className="course-page-content-list-lessons-item__title">
                         {title}
                     </h4>
-                    <p className="course-page-content-list-lessons-item__description">
-                        {description}
-                    </p>
+                    {description !== "" ? (
+                        <p className="course-page-content-list-lessons-item__description">
+                            {description}
+                        </p>
+                    ) : null}
                 </div>
             ) : (
                 <LinkScroll
@@ -33,9 +35,11 @@ const CoursePageContentLessonsItem: React.FC<
                     <h4 className="course-page-content-list-lessons-item__title">
                         {title}
                     </h4>
-                    <p className="course-page-content-list-lessons-item__description">
-                        {description}
-                    </p>
+                    {description !== "" ? (
+                        <p className="course-page-content-list-lessons-item__description">
+                            {description}
+                        </p>
+                    ) : null}
                 </LinkScroll>
             )}
         </>

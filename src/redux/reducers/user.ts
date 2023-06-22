@@ -37,7 +37,9 @@ const initialState: UserState = {
 			registration: "",
 
 			stopped: "",
-			lastDebitStopped: ""
+			lastDebitStopped: "",
+
+			isPassingTesting: false
 		},
 		courses: {
 			buy: [],

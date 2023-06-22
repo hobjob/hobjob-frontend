@@ -12,13 +12,11 @@ import {
 interface CoursePageContentProps {
     isLogin: boolean;
     isAdd: boolean;
-    isSubscribe: boolean;
 }
 
 const CoursePageContent: React.FC<CoursePageContentProps> = ({
     isLogin,
     isAdd,
-    isSubscribe,
 }) => {
     const {
         courseByUrl: {_id, lessons, materials},

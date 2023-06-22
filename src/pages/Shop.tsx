@@ -132,7 +132,7 @@ const Shop: React.FC = () => {
     const onClickaddPaginationPageCourses = () => {
         dispatch(
             fetchAddPaginationCourses({
-                limit: 8,
+                limit: 16,
                 page: page + 1,
                 categories: categoriesArray,
                 masters: mastersArray,
@@ -210,8 +210,12 @@ const Shop: React.FC = () => {
                                                     )
                                                 )}
                                             </div>
-                                            {courses.length >=
-                                            totalCount ? null : (
+                                            {courses.length >= totalCount ? (
+                                                <p className="shop__totalcount">
+                                                    Показано {totalCount} курсов
+                                                    из {totalCount}
+                                                </p>
+                                            ) : (
                                                 <div className="shop-btn-pagination">
                                                     <button
                                                         className="shop-btn-pagination__btn btn__gray"

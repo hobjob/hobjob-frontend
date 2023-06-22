@@ -12,7 +12,6 @@ interface TrainingBlockProps extends UserInfoCourseSubscribe {
     isWorkSubscribe: boolean;
 
     onClickVisibleDisabled: () => void;
-    onClickHiddenUserCourse: (_id: string) => void;
 }
 
 const TrainingSubscribeBlock: React.FC<TrainingBlockProps> = ({
@@ -26,7 +25,6 @@ const TrainingSubscribeBlock: React.FC<TrainingBlockProps> = ({
     master,
     isWorkSubscribe,
     onClickVisibleDisabled,
-    onClickHiddenUserCourse,
 }) => {
     return (
         <div
@@ -64,7 +62,8 @@ const TrainingSubscribeBlock: React.FC<TrainingBlockProps> = ({
                             backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_768}")`,
                         }}
                     ></div>
-                </div>
+				</div>
+				
                 <div className="training-section-block-text">
                     <h3 className="training-section-block-text__title">
                         {title}
@@ -107,7 +106,8 @@ const TrainingSubscribeBlock: React.FC<TrainingBlockProps> = ({
                             {completedLessonsTitle1} {completedLessonsTitle2} из{" "}
                             {totalLessons}
                         </p>
-                    </div>
+					</div>
+					
                     <div className="training-section-block-text-auth">
                         {master ? (
                             <p className="training-section-block-text-auth__auth">
@@ -117,13 +117,6 @@ const TrainingSubscribeBlock: React.FC<TrainingBlockProps> = ({
                     </div>
                 </div>
             </Link>
-
-            <span
-                className="training-section-block__hidden"
-                onClick={() => onClickHiddenUserCourse(courseId)}
-            >
-                Удалить
-            </span>
         </div>
     );
 };

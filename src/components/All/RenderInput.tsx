@@ -7,6 +7,7 @@ const RenderInput: React.FC<any> = ({
     type,
     meta: {touched, error},
     classNameInput,
+    value,
 }) => {
     const [passwordState, setPasswordState] = React.useState<boolean>(false);
 
@@ -25,7 +26,11 @@ const RenderInput: React.FC<any> = ({
                 />
 
                 {type === "password" ? (
-                    <div className="input-state">
+                    <div
+                        className={`input-state ${
+                            input.value === "" ? "hidden" : ""
+                        }`}
+                    >
                         <span
                             className={`input-state__hidden ${
                                 passwordState ? "active" : ""

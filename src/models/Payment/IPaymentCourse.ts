@@ -1,5 +1,5 @@
 export interface PaymentCourse {
-	paymentNumber: string;
+	number: string;
 	confirmation: any;
 	order: string;
 	status: string;

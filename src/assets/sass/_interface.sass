@@ -85,7 +85,7 @@ li
 .container
 	position: relative
 	width: 95%
-	max-width: 1550px
+	max-width: 1750px
 
 	margin: 0 auto
 
@@ -500,6 +500,9 @@ input:-webkit-autofill:active
 
 		+transition
 
+		&.hidden
+			opacity: 0
+
 		&__visible
 			position: absolute
 			right: 0
@@ -706,17 +709,6 @@ input[type="file"]
 		pointer-events: none
 		+transition
 
-// nagibinstudio
-.nagibinstudio
-	margin-top: 50px
-
-	will-change: transform
-
-	+transition
-
-	&:active
-		+transformScale
-
 // loader
 .ball-pulse
 	display: flex
@@ -787,8 +779,10 @@ input[type="file"]
 
 			position: absolute
 
-			top: 10px
-			left: 10px
+			top: 15px
+			left: 15px
+
+			will-change: transform
 
 			+borderRadiusBlock
 			+transition
@@ -824,13 +818,14 @@ input[type="file"]
 
 			position: absolute
 
-			top: 50px
-			left: 10px
+			top: 60px
+			left: 15px
 
 			width: 150px
 
+			border-radius: 30px
+
 			+openPopup
-			+borderRadiusBlock
 			+transition
 
 			&.close
@@ -961,3 +956,46 @@ input[type="file"]
 
 			user-select: none
 			pointer-events: none
+
+// testing-subscribe
+.subscribe-message-testing
+	width: 100%
+	position: fixed
+
+	top: 0
+	left: 0
+
+	z-index: 10
+
+	padding: 15px
+	text-align: center
+	cursor: pointer
+	background-color: $mainColor
+
+	+openAnimation
+
+	&:hover &__title
+		+transformScaleHover
+
+	&:active &__title
+		+transformScaleClick
+
+	&-fake
+		width: 100%
+		height: 57px
+
+	&__title
+		font-size: 18px
+		color: $white
+
+		user-select: none
+
+		will-change: transform
+
+		+transition
+
+		& > svg
+			width: 20px
+			fill: $white
+
+			margin-left: 10px

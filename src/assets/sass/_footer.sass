@@ -4,100 +4,106 @@
 	+openAnimation
 
 	&-wrapper
-		padding: 50px 0 15px 0
+		padding: 35px 0 15px 0
 
 		border-top: 1px solid $borderGray
 
-	&-block
+	&-block-wrapper
 		display: flex
 		justify-content: space-between
+		align-items: flex-start
 
-		&-logos
-			&-logo
-				&__img
-					display: block
-					user-select: none
-					width: 65px
+	&-block
+		display: flex
+		align-items: flex-start
 
-					will-change: transform
-
-					+transition
-
-					&:active
-						+transformScale
-
-		&-contact
-			&-email-wrapper
-				display: flex
-
-				margin-bottom: 50px
-
-			&-email
-				margin-right: 15px
-
-				padding: 8px 12px
-
-				min-width: 250px
-
-				background-color: $backgroundGray
-
-				border-radius: 15px
+		&-logo
+			&__img
+				display: block
+				user-select: none
+				width: 55px
 
 				will-change: transform
 
 				+transition
 
+				&:hover
+					+transformScaleHover
+
 				&:active
-					+transformScale
+					+transformScaleClick
 
-				&:last-child
-					margin-right: 0
+		&-menu
+			display: flex
+			margin-left: 75px
 
-				&__subtitle
-					font-size: 16px
-					margin-bottom: 5px
+			&-subblock
+				margin-left: 50px
 
-				&__email
-					font-size: 22px
-
-			&-socials
-				display: flex
-				align-items: center
-
-				margin-bottom: 25px
+				&:first-child
+					margin-left: 0
 
 				&__link
-					margin-right: 15px
-
-					will-change: transform
+					display: block
+					font-size: 16px
+					margin-bottom: 15px
 
 					+transition
 
-					& > svg
-						width: 50px
-
-					&:active
-						+transformScale
-
 					&:last-child
-						margin-right: 0
+						margin-bottom: 0
 
-		&-nav
-			&__link
+					&:hover
+						color: $mainColor
+
+					&.active
+						color: $mainColor
+
+		&-emails
+			margin-left: 125px
+
+			&-block
 				display: block
-				margin-bottom: 15px
+				margin-bottom: 25px
+
+				&:last-child
+					margin-bottom: 0
+
+				&__subtitle
+					font-size: 16px
+
+				&__email
+					font-size: 21px
+					color: $mainColor
+
+		&-socials
+			display: flex
+			align-items: center
+
+			&__link
+				margin-right: 15px
+
+				will-change: transform
+
 				+transition
+
+				& > svg
+					width: 35px
+
+				&:hover
+					+transformScaleHover
+
+				&:active
+					+transformScaleClick
 
 				&:last-child
 					margin-right: 0
 
-				&.active
-					color: $mainColor
-
-				&:hover
-					color: $mainColor
-
 		&-subinfo
+			display: flex
+			justify-content: space-between
+			align-items: flex-start
+
 			margin-top: 50px
 
 			padding-top: 15px

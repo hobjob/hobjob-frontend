@@ -48,7 +48,8 @@ const ReglogBuyBlock: React.FC = () => {
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                     />
-                                </svg>
+								</svg>
+								
                                 Доступ только к этому курсу и материалам
                             </p>
                         </div>

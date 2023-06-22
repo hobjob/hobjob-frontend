@@ -9,11 +9,9 @@ export { default as VideoPlayer } from "./All/VideoPlayer";
 // Socials
 export { default as Instagram } from "./All/Socials/Instagram"
 export { default as Telegram } from "./All/Socials/Telegram"
-export { default as TikTok } from "./All/Socials/TikTok"
 export { default as Vk } from "./All/Socials/Vk"
 export { default as Youtube } from "./All/Socials/Youtube"
-export { default as ReadDzen } from "./All/Socials/ReadDzen"
-export { default as ReadVk } from "./All/Socials/ReadVk"
+export { default as Dzen } from "./All/Socials/Dzen"
 
 // Reglog
 // ReglogProgressbar
@@ -26,9 +24,6 @@ export { default as ReglogBuyBlock } from "./Reglog/ReglogBuy/ReglogBuyBlock";
 // Login
 export { default as LoginForm } from "./Login/LoginForm";
 
-// Register
-export { default as RegisterForm } from "./Register/RegisterForm";
-
 // PasswordRecovery
 export { default as PasswordRecoveryEmailForm } from "./PasswordRecovery/PasswordRecoveryEmailForm";
 export { default as PasswordRecoveryEmailSuccess } from "./PasswordRecovery/PasswordRecoveryEmailSuccess";
@@ -39,6 +34,9 @@ export { default as PasswordRecoveryNewPasswordError } from "./PasswordRecovery/
 export { default as Header } from "./Header/Header";
 export { default as HeaderMenu } from "./Header/HeaderMenu";
 export { default as HeaderModalMenu } from "./Header/HeaderModalMenu";
+
+// SubscribeMessage
+export { default as SubscribeMessageTesting } from "./SubscribeMessage/SubscribeMessageTesting";
 
 // Home
 export { default as HomeMainSection } from "./Home/HomeMainSection";

@@ -14,10 +14,14 @@ export const fetchPaymentCourseById = (id: string) => {
 
 		$api.get<PaymentCourse>(`/payment/course/${id}`)
 			.then(({ data }) => {
-				dispatch({
-					type: PaymentCourseActionTypes.SET_PAYMENT_COURSE,
-					payload: data,
-				});
+				if (data.status === "canceled") {
+					dispatch(sendCreatePaymentCourse(data.courseId) as any)
+				} else {
+					dispatch({
+						type: PaymentCourseActionTypes.SET_PAYMENT_COURSE,
+						payload: data,
+					});
+				}
 			})
 			.catch(() => {
 				window.location.href = `/go/training`;
@@ -35,7 +39,7 @@ export const sendCreatePaymentCourse = (
 		});
 
 		$api.post(`/payment/course`, { courseId }).then(({ data }) => {
-			window.location.href = `/payment/course/${data.paymentNumber}`;
+			window.location.href = `/payment/course/${data.number}`;
 		});
 	};
 }

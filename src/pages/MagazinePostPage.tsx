@@ -34,7 +34,7 @@ const MagazinePostPage: React.FC = ({}) => {
     return (
         <>
             {isLoadedByIdPosts && isLoadedAllCategories && isLoadedMasters ? (
-                itemById._id !== "" ? (
+                Object.keys(itemById).length && itemById._id !== "" ? (
                     <>
                         <Helmet>
                             <title>{itemById.title} - HobJob</title>

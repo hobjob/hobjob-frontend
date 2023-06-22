@@ -27,28 +27,24 @@
 
 			&-socials
 				margin-top: 35px
-
-				&__subtitle
-					font-size: 21px
-					color: $gray
-					margin-bottom: 15px
-
-				&-links-wrapper
-					display: flex
-					align-items: center
+				display: flex
+				align-items: center
 
 				&__link
 					margin-right: 25px
-					
+
 					will-change: transform
-					
+
 					+transition
 
 					& > svg
-						width: 60px
+						width: 40px
+
+					&:hover
+						+transformScaleHover
 
 					&:active
-						+transformScale
+						+transformScaleClick
 
 					&:last-child
 						margin-right: 0

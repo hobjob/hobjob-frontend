@@ -14,10 +14,14 @@ export const fetchPaymentSubscribeById = (id: string) => {
 
 		$api.get<PaymentSubscribe>(`/payment/subscribe/${id}`)
 			.then(({ data }) => {
-				dispatch({
-					type: PaymentSubscribeActionTypes.SET_PAYMENT,
-					payload: data,
-				});
+				if (data.status === "canceled") {
+					dispatch(sendCreatePaymentSubscribe(data.type) as any)
+				} else {
+					dispatch({
+						type: PaymentSubscribeActionTypes.SET_PAYMENT,
+						payload: data,
+					});
+				}
 			})
 			.catch(() => {
 				window.location.href = `/go/training`;
@@ -35,7 +39,7 @@ export const sendCreatePaymentSubscribe = (
 		});
 
 		$api.post(`/payment/subscribe`, { type }).then(({ data }) => {
-			window.location.href = `/payment/subscribe/${data.paymentNumber}`;
+			window.location.href = `/payment/subscribe/${data.number}`;
 		});
 	};
 };

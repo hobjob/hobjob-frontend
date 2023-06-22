@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import {compose} from "redux";
 import "moment/locale/ru";
+import moment from "moment";
 
 import {useTypedSelector} from "./hooks/useTypedSelector";
 
@@ -16,7 +17,7 @@ import {fetchUserInfo} from "./redux/actions/user";
 import {fetchMasters} from "./redux/actions/masters";
 import {fetchCategories} from "./redux/actions/categories";
 
-import {Header, Footer} from "./components/";
+import {SubscribeMessageTesting, Header, Footer} from "./components/";
 
 import {
     Home,
@@ -42,12 +43,12 @@ import {
     EngineeringWorks,
     CabinetSubscribeDisable,
 } from "./pages/";
-import moment from "moment";
 
 declare global {
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
         YooMoneyCheckoutWidget?: any;
+        _tmr?: any;
     }
 }
 
@@ -107,6 +108,19 @@ const App: React.FC = () => {
                 <EngineeringWorks />
             ) : (
                 <div className="wrapper">
+                    {pathname.indexOf("/go/training") !== -1 ||
+                    pathname.indexOf("/payment") !== -1 ||
+                    pathname.indexOf("/login") !== -1 ||
+                    pathname.indexOf("/register") !== -1 ||
+                    pathname === "/go/password-recovery" ||
+                    pathname.indexOf("/go/password-recovery") !== -1 ||
+                    pathname.indexOf("/go/cabinet/subscribe/disable") !==
+                        -1 ? null : userInfo.subscribe.working ||
+                      userInfo.subscribe.type === "" ? null : userInfo.subscribe
+                          .isPassingTesting ? null : (
+                        <SubscribeMessageTesting />
+                    )}
+
                     {pathname.indexOf("/payment") !== -1 ||
                     pathname.indexOf("/login") !== -1 ||
                     pathname.indexOf("/register") !== -1 ||

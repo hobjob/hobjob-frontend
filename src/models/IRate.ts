@@ -8,8 +8,5 @@ export interface Rate {
 	fullPrice: number;
 	subprice: string;
 	subbtn: string;
-
 	type: string
-
-	icon: React.SVGProps<SVGSVGElement>
 }

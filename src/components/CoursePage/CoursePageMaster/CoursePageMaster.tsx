@@ -2,7 +2,7 @@ import React from "react";
 
 import {Master} from "../../../models/IMaster";
 
-import {Instagram, Vk, TikTok, Telegram, CoursePageMasterWorks} from "../../";
+import {Instagram, Vk, Telegram, CoursePageMasterWorks} from "../../";
 
 interface CoursePageMasterProps {
     master: Master;
@@ -38,50 +38,40 @@ const CoursePageMaster: React.FC<CoursePageMasterProps> = ({master}) => {
                                     ) : null}
 
                                     <div className="course-page-master-section-about-text-socials">
-                                        <div className="course-page-master-section-about-text-socials-links-wrapper">
-                                            {master.socials.inst ? (
-                                                <a
-                                                    href={master.socials.inst}
-                                                    className="course-page-master-section-about-text-socials__link"
-                                                >
-                                                    <Instagram />
-                                                </a>
-                                            ) : null}
+                                        {master.socials.inst ? (
+                                            <a
+                                                href={master.socials.inst}
+                                                className="course-page-master-section-about-text-socials__link"
+                                            >
+                                                <Instagram />
+                                            </a>
+                                        ) : null}
 
-                                            {master.socials.vk ? (
-                                                <a
-                                                    href={master.socials.vk}
-                                                    className="course-page-master-section-about-text-socials__link"
-                                                >
-                                                    <Vk />
-                                                </a>
-                                            ) : null}
+                                        {master.socials.vk ? (
+                                            <a
+                                                href={master.socials.vk}
+                                                className="course-page-master-section-about-text-socials__link"
+                                            >
+                                                <Vk />
+                                            </a>
+                                        ) : null}
 
-                                            {master.socials.tiktok ? (
-                                                <a
-                                                    href={master.socials.tiktok}
-                                                    className="course-page-master-section-about-text-socials__link"
-                                                >
-                                                    <TikTok />
-                                                </a>
-                                            ) : null}
-
-                                            {master.socials.telegram ? (
-                                                <a
-                                                    href={
-                                                        master.socials.telegram
-                                                    }
-                                                    className="course-page-master-section-about-text-socials__link"
-                                                >
-                                                    <Telegram />
-                                                </a>
-                                            ) : null}
-                                        </div>
+                                        {master.socials.telegram ? (
+                                            <a
+                                                href={master.socials.telegram}
+                                                className="course-page-master-section-about-text-socials__link"
+                                            >
+                                                <Telegram />
+                                            </a>
+                                        ) : null}
                                     </div>
                                 </div>
                             </div>
 
-                            <CoursePageMasterWorks />
+                            {master.worksImage.length ||
+                            master.worksVideo.length ? (
+                                <CoursePageMasterWorks />
+                            ) : null}
                         </div>
                     </div>
                 </div>

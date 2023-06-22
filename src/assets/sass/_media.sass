@@ -104,11 +104,6 @@
 			&-items-wrapper
 				width: 100%
 
-	// training
-	.training
-		&-subscribe-disabled-wrapper
-			width: 100%
-
 	// cabinet
 	.cabinet
 		&-section
@@ -135,6 +130,17 @@
 					&-upgrade-success-wrapper, &-upgrade-success
 						width: 100%
 
+	// training
+	.training
+		&-section-wrapper
+			flex-direction: column
+
+		&-disabled-subscribe
+			width: 100%
+			position: static
+
+			margin-bottom: 50px
+
 @media screen and ( max-width: 1250px )
 	// course-page
 	.course-page
@@ -145,25 +151,11 @@
 						&__title
 							font-size: 42px
 
-						&-list
-							&__item
-								font-size: 15px
-
-							&-hobjob-good
-								&-text
-
-									&__text
-										font-size: 15px
-
 				&-buy
 					&-text
 						&-price
 							&__title
 								font-size: 42px
-
-						&-list
-							&__item
-								font-size: 15px
 
 			&-register
 				padding: 25px
@@ -192,18 +184,6 @@
 							max-width: 100%
 							font-size: 32px
 
-						&-list
-							&__item
-								font-size: 18px
-
-							&-hobjob-good
-								&-text
-									flex-direction: column
-									align-items: flex-start
-
-									&__text
-										font-size: 18px
-
 					&-image
 						padding-bottom: 25px
 
@@ -220,6 +200,18 @@
 						&-list
 							&__item
 								font-size: 18px
+
+	// footer
+	.footer
+		&-block
+			&-menu
+				margin-left: 50px
+
+				&-subblock
+					margin-left: 25px
+
+			&-emails
+				margin-left: 50px
 
 @media screen and ( max-width: 1200px )
 	// header
@@ -267,9 +259,8 @@
 				&-materials
 					margin-top: 50px
 
-		&-bottom-block
-			&-master
-				width: 100%
+		&-master
+			width: 100%
 
 	// reglog
 	.reglog
@@ -336,7 +327,6 @@
 
 		&-form-wrapper
 			width: 100%
-			margin-bottom: 50px
 
 		&-product-wrapper
 			width: 100%
@@ -472,12 +462,15 @@
 
 	// footer
 	.footer
-		&-block
-			&-nav
-				display: none
+		&-block-wrapper
+			flex-direction: column
 
-			&-contact
-				margin: 0
+		&-block-menu-wrapper
+			order: 2
+
+		&-block-socials-wrapper
+			order: 1
+			margin-bottom: 50px
 
 @media screen and ( max-width: 1050px )
 	// course-page
@@ -495,25 +488,6 @@
 					&-text
 						padding: 0
 						width: 50%
-
-						&-list
-							&-hobjob-good
-								margin-top: 10px
-								align-items: flex-start
-
-								& > svg
-									margin-top: 5px
-
-								&-text
-									flex-direction: column
-									align-items: flex-start
-
-									&__logo
-										width: 115px
-
-									&__text
-										margin-top: 5px
-										margin-left: 0
 
 					&-image
 						display: none
@@ -573,26 +547,6 @@
 								transform: scale(1)
 
 @media screen and ( max-width: 900px )
-	// header
-	.header
-		&-modal-menu
-			&-content
-				padding: 15px
-
-			&-nav
-				&-block
-					&-main
-						&__link
-							font-size: 36px
-
-					&-user
-						&__link
-							font-size: 28px
-
-							&-image
-								min-width: 40px
-								height: 40px
-
 	// master-card
 	.master-card
 		&-info
@@ -733,6 +687,9 @@
 	// training
 	.training
 		&-section
+			&__title
+				margin-bottom: 25px
+
 			&-block
 				padding-bottom: 25px
 
@@ -767,27 +724,19 @@
 					color: $white
 					background-color: $red
 
-		&-subscribe-disabled
-			&-text
-				&-types
-					&-item
-						transform: scale(1)
-						margin-right: 25px
-
 	// passing
 	.passing
-		&-top
-			flex-direction: column
+		&-top-text
+			margin-bottom: 25px
 
-			&-text
-				order: 2
-
-			&-next
-				order: 1
+			&-title
 				width: 100%
-				margin-bottom: 25px
-				padding-bottom: 25px
-				border-bottom: 1px solid $borderGray
+
+				&__subtitle
+					font-size: 21px
+
+				&__title
+					font-size: 32px
 
 		&-lessons-list
 			flex-direction: column
@@ -804,18 +753,20 @@
 					&-cover
 						height: 100px
 
-		&-bottom-block
-			&-master
-				flex-direction: column
-				align-items: center
+		&-master
+			flex-direction: column
+			align-items: flex-start
 
-				&-image
-					margin-right: 0
-					margin-bottom: 25px
+			&-text
+				width: 100%
 
-					width: 200px
-					min-width: 200px
-					height: 200px
+			&-image
+				margin-right: 0
+				margin-bottom: 25px
+
+				width: 200px
+				min-width: 200px
+				height: 200px
 
 	// referrals
 	.referrals
@@ -828,37 +779,6 @@
 	.policy
 		&-wrapper
 			width: 100%
-
-	// footer
-	.footer
-		&-block
-			flex-direction: column
-			align-items: center
-
-			&-logos
-				display: flex
-				flex-direction: column
-				align-items: center
-
-				margin-bottom: 50px
-
-			&-contact
-				display: flex
-				flex-direction: column
-				align-items: center
-
-			&-subinfo
-				flex-direction: column
-				align-items: center
-
-				&-block
-					margin-top: 15px
-					text-align: center
-
-				&-block
-					&__link
-						display: block
-						margin: 10px 0 0 0
 
 @media screen and ( max-width: 800px )
 	// interface
@@ -875,7 +795,7 @@
 	.course-page
 		&-price
 			&-blocks
-				padding: 15px 10px
+				padding: 15px
 
 				&-subscribe
 					padding: 0
@@ -893,7 +813,7 @@
 						display: none
 
 				&-buy
-					padding: 20px 25px
+					padding: 15px
 					flex-direction: column
 
 					&-text
@@ -966,6 +886,22 @@
 				&:last-child
 					margin-bottom: 0
 
+	// footer
+	.footer
+		&-block
+			flex-direction: column
+
+			&-menu
+				margin-top: 35px
+				margin-left: 0
+
+			&-emails
+				margin-top: 50px
+				margin-left: 0
+
+			&-subinfo
+				margin-top: 25px
+
 @media screen and ( max-width: 750px )
 	// course-page
 	.course-page
@@ -1003,35 +939,6 @@
 			&:last-child
 				margin-bottom: 0
 
-	// header
-	.header
-		&-modal-menu
-			&-content
-				width: 100%
-				height: 100%
-
-			&-nav
-				flex-direction: column
-
-				&-block
-					&-main, &-user
-						width: 100%
-
-					&-main
-						order: 2
-						margin-top: 15px
-
-					&-user
-						order: 1
-
-			&-socials
-				&-read
-					width: 100%
-
-					display: flex
-					flex-direction: column
-					align-items: flex-start
-
 	// main
 	.main
 		&-text
@@ -1046,12 +953,6 @@
 
 	// course-page
 	.course-page
-		&-content
-			&-video
-				&-plaecholder
-					&__description, &__link
-						font-size: 32px
-
 		&-skills
 			&-item
 				padding: 20px
@@ -1085,6 +986,11 @@
 				&-cover
 					height: 250px
 
+				&-text
+					&__title
+						overflow: visible
+						white-space: normal
+
 			&-bottom
 				&__link
 
@@ -1108,72 +1014,6 @@
 					&-socials
 						display: flex
 						flex-direction: column
-
-	// training
-	.training
-		&-subscribe-disabled
-			&-text
-				padding: 20px
-
-				&__title
-					font-size: 28px
-
-				&-types
-					&-item
-						margin-right: 15px
-
-						& > svg
-							width: 200px
-
-				&-list
-					&__item
-						font-size: 16px
-
-					&-hobjob-good
-						align-items: flex-start
-						margin-top: 10px
-
-						& > svg
-							margin-top: 7px
-
-						&-text
-							flex-direction: column
-							align-items: flex-start
-
-							&__text
-								font-size: 16px
-
-	// footer
-	.footer
-		&-block
-			&-contact
-				width: 100%
-
-				&-email-wrapper
-					flex-direction: column
-					align-items: center
-
-					width: 100%
-
-				&-email
-					display: block
-
-					text-align: center
-
-					min-width: 300px
-
-					margin-bottom: 15px
-					margin-right: 0
-
-					&:last-child
-						margin-bottom: 0
-
-				&-socials-read
-					width: 100%
-
-					display: flex
-					flex-direction: column
-					align-items: center
 
 @media screen and ( max-width: 600px )
 	// interface
@@ -1199,34 +1039,6 @@
 		&-form
 			&__title
 				font-size: 24px
-
-		&-product
-			&-subscribe
-				&-block
-					&-text
-						padding: 20px
-
-						&__title
-							max-width: 100%
-							font-size: 28px
-
-						&-list
-							&__item
-								font-size: 16px
-
-							&-hobjob-good
-								align-items: flex-start
-								margin-top: 10px
-
-								& > svg
-									margin-top: 7px
-
-								&-text
-									flex-direction: column
-									align-items: flex-start
-
-									&__text
-										font-size: 16px
 
 	// magazine-post-page
 	.magazine-post-page
@@ -1260,6 +1072,24 @@
 
 			&-image
 				height: 300px
+
+	// footer
+	.footer
+		&-block
+			&-subinfo
+				flex-direction: column
+
+				&-block
+					&:first-child
+						margin-bottom: 15px
+
+					&__link
+						display: block
+						margin-left: 0
+						margin-bottom: 10px
+
+						&:last-child
+							margin-bottom: 0
 
 @media screen and ( max-width: 500px )
 	// interface
@@ -1302,14 +1132,18 @@
 		&-menu-button
 			margin-left: 15px
 
-		&-modal
-			&-menu
-				&-social
-					&__link
-						margin-right: 15px
+		&-modal-menu
+			&-content
+				width: 98%
+				height: 98%
 
-						& > svg
-							width: 50px
+				padding: 15px
+
+				&-nav
+					&-block
+						&-main, &-user
+							&__link
+								font-size: 30px
 
 	// main
 	.main
@@ -1360,12 +1194,6 @@
 		&-content
 			margin: 35px 0
 
-			&-video
-				&-plaecholder
-					&__description, &__link
-						max-width: 100%
-						font-size: 21px
-
 			&-list
 				&__title
 					font-size: 32px
@@ -1381,7 +1209,7 @@
 
 				&-materials
 					margin-top: 50px
-					
+
 					&-items-wrapper
 						overflow-y: auto
 						flex-wrap: nowrap
@@ -1426,6 +1254,22 @@
 		&-price
 			margin: 35px 0
 
+			&-blocks
+				&-subscribe
+					&-text
+						&__title
+							font-size: 32px
+
+						&-list
+							&__item
+								font-size: 18px
+
+								& > svg
+									margin-top: 7px
+
+									min-width: 13px
+									width: 13px
+
 			&-subscribe
 				&-rates
 					padding: 20px 15px
@@ -1435,6 +1279,7 @@
 
 						&-left
 							margin-bottom: 25px
+
 							&__title
 								font-size: 28px
 
@@ -1473,21 +1318,13 @@
 
 						&-list
 							&__item
-								font-size: 14px
+								font-size: 18px
 
 								& > svg
-									width: 14px
+									margin-top: 7px
 
-							&-hobjob-good
-								& > svg
-									width: 14px
-
-								&-text
-									&__logo
-										width: 125px
-
-									&__text
-										font-size: 14px
+									min-width: 13px
+									width: 13px
 
 				&-buy-product-block
 					&-text
@@ -1497,11 +1334,13 @@
 
 						&-list
 							&__item
-								font-size: 14px
+								font-size: 18px
 
 								& > svg
-									width: 14px
-									min-width: 14px
+									margin-top: 7px
+
+									min-width: 13px
+									width: 13px
 
 						&__image
 							margin-top: 25px
@@ -1566,14 +1405,14 @@
 				padding: 20px 15px
 
 				&-about
-					margin-bottom: 50px
-
 					&-text
 						&__title
 							font-size: 36px
 							margin-bottom: 25px
 
 				&-works
+					margin-top: 50px
+
 					&__title
 						font-size: 36px
 						margin-bottom: 25px
@@ -1591,34 +1430,58 @@
 	// reglog
 	.reglog
 		&-progressbar
-			margin-bottom: 25px
+			justify-content: flex-start
 
-		&-form-wrapper
 			margin-bottom: 25px
 
 		&-form
 			padding: 35px
 
-		&-product-buy
+		&-product-subscribe
 			&-block
 				&-text
-					padding: 20px 15px
+					padding: 15px 15px 25px 15px
 
-					&-price
-						&__title
-							font-size: 36px
-
-						&__sale
-							width: 45px
-							height: 45px
-							font-size: 15px
-
-							right: 10px
-							top: 10px
+					&__title
+						font-size: 32px
 
 					&-list
 						&__item
-							font-size: 15px
+							font-size: 18px
+
+							& > svg
+								margin-top: 7px
+
+								min-width: 13px
+								width: 13px
+
+				&-image
+					padding-bottom: 15px
+
+		&-product-buy
+			&-block
+				&-text
+					padding: 15px
+
+					&-price
+						&__title
+							font-size: 32px
+
+							& > span
+								font-size: 32px
+
+						&__sale
+							transform: rotate(10deg) scale(1)
+
+					&-list
+						&__item
+							font-size: 18px
+
+							& > svg
+								margin-top: 7px
+
+								min-width: 13px
+								width: 13px
 
 					&__image
 						margin-top: 20px
@@ -1831,6 +1694,22 @@
 	.training
 		margin: 25px 0
 
+		&-disabled-subscribe
+			padding: 15px
+
+			&__title
+				font-size: 28px
+
+			&-list
+				&__item
+					font-size: 18px
+
+					& > svg
+						margin-top: 7px
+
+						min-width: 13px
+						width: 13px
+
 		&-section-wrapper
 			margin-bottom: 50px
 
@@ -1839,7 +1718,7 @@
 
 		&-section
 			&__title
-				margin-bottom: 25px
+				font-size: 32px
 
 			&-block
 				&-cover
@@ -1853,37 +1732,17 @@
 					&-progress
 						width: 100%
 
-		&-subscribe-disabled-wrapper
-			padding: 15px
-
-		&-subscribe-disabled
-			&-text
-				padding: 15px
-
-				&__title
-					margin-bottom: 25px
-
-				&-types
-					flex-direction: column
-
-					&-item
-						margin-bottom: 10px
-						margin-right: 0
-
-						&:last-child
-							margin-bottom: 0
-
-						& > svg
-							width: 80%
-
     // passing
 	.passing
 		margin: 25px 0
 
-		&-top
-			&-text
+		&-top-text
+			&-title
+				&__subtitle
+					font-size: 18px
+
 				&__title
-					font-size: 32px
+					font-size: 24px
 
 		&-video
 			margin-top: 15px
@@ -1909,31 +1768,48 @@
 					&__title
 						font-size: 32px
 
-		&-bottom-block
-			padding-top: 15px
-			margin-top: 15px
+		&-master
+			padding: 15px
 
-			&-master
-				padding: 15px
+			&-text
+				&__title
+					font-size: 24px
 
-				&-text
-					&__title
-						font-size: 24px
+				&__description
+					font-size: 18px
 
-					&__description
-						font-size: 18px
-
-					&__link
-						font-size: 18px
+				&__link
+					font-size: 18px
 
 	// master-card
 	.master-card
 		margin: 25px 0
 
-	// nagibinstudio
-	.nagibinstudio
-		margin-left: 0
-		margin-top: 50px
+	// footer
+	.footer
+		&-block-wrapper
+			align-items: stretch
+
+		&-block
+			&-menu
+				width: 100%
+				flex-direction: column
+
+				&-subblock
+					margin-left: 0
+					padding-bottom: 25px
+					margin-bottom: 25px
+
+					border-bottom: 1px solid $borderGray
+
+					&:last-child
+						margin-bottom: 0
+
+			&-emails
+				margin-top: 25px
+
+			&-socials-wrapper
+				margin-bottom: 35px
 
 @media screen and ( max-width: 450px )
 	// reglog
@@ -1943,6 +1819,16 @@
 
 			&__policy
 				font-size: 12px
+
+	// training
+	.training
+		&-disabled-subscribe
+			&__title
+				font-size: 24px
+
+			&-list
+				&__item
+					font-size: 16px
 
 @media screen and ( max-width: 400px )
 	// main
@@ -1969,13 +1855,14 @@
 							&__title
 								font-size: 32px
 
-							&__sale
-								width: 45px
-								height: 45px
-								font-size: 15px
+								& > span
+									font-size: 32px
 
-								right: 10px
-								top: 10px
+							&__sale
+								transform: rotate(10deg) scale(1)
+
+								right: -5px
+								top: -5px
 
 					&-image
 						padding-top: 25px
@@ -2004,12 +1891,3 @@
 		&-text
 			&__title
 				font-size: 30px !important
-
-@media screen and ( max-width: 350px )
-	// course-page
-	.course-page
-		&-content
-			&-video
-				&-plaecholder
-					&__description
-						font-size: 18px

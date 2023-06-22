@@ -22,6 +22,18 @@ const CoursePagePriceRegisterSubscribe: React.FC = () => {
     } = useTypedSelector(({coursePage}) => coursePage);
 
     const onSubmit = ({email, password}: any) => {
+        try {
+            var _tmr = window._tmr || (window._tmr = []);
+
+            _tmr.push({
+                type: "reachGoal",
+                id: 3311444,
+                goal: courseByUrl.adsVk.subscribe,
+            });
+        } catch (e) {
+            console.log(e);
+        }
+
         return dispatch(
             sendRegister(
                 {

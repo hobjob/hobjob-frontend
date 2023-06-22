@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import OwlCarousel from "react-owl-carousel";
+import Slider from "react-slick";
 
 import {
     CoursePageMasterWorksSliderItemVideo,
@@ -23,37 +23,39 @@ const CoursePageMasterWorksSlider: React.FC = React.memo(() => {
     const SliderRef: any = React.useRef(null);
 
     const configSlider = {
-        margin: 15,
-        items: 1,
+        speed: 300,
+        infinite: false,
         dots: false,
-        autoHeight: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
 
-        responsive: {
-            700: {
-                items: 2,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 2,
+                },
             },
-
-            1000: {
-                items: 3,
+            {
+                breakpoint: 700,
+                settings: {
+                    slidesToShow: 1,
+                },
             },
-
-            1200: {
-                items: 4,
-            },
-        },
+        ],
     };
 
     const clickPrevSlide = () => {
-        SliderRef.current.prev();
+        SliderRef.current.slickPrev();
     };
 
     const clickNextSlide = () => {
-        SliderRef.current.next();
+        SliderRef.current.slickNext();
     };
 
     return (
         <>
-            <OwlCarousel
+            <Slider
                 {...configSlider}
                 className="course-page-master-section-works-slider"
                 ref={SliderRef}
@@ -77,7 +79,7 @@ const CoursePageMasterWorksSlider: React.FC = React.memo(() => {
                         key={`course-page-master-section-works-slider-item-image-${index}`}
                     />
                 ))}
-            </OwlCarousel>
+            </Slider>
 
             <div className="course-page-master-section-works-arrow-wrapper">
                 <div

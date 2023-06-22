@@ -9,7 +9,7 @@ const PassingTopText: React.FC<PassingTopTextProps> = ({subtitle, title}) => {
     return (
         <div className="passing-top-text">
             <div className="passing-top-text-title">
-                <p className="subtitle__mb passing-top-text-title__subtitle">
+                <p className="passing-top-text-title__subtitle">
                     {subtitle}
                 </p>
                 <h2 className="passing-top-text-title__title">{title}</h2>

@@ -11,7 +11,6 @@ interface CoursePageMainProps extends CourseGood {
     master: Master;
     isLogin: boolean;
     isAdd: boolean;
-    isSubscribe: boolean;
     onClickAddCourse: () => void;
 }
 
@@ -25,7 +24,6 @@ const CoursePageMain: React.FC<CoursePageMainProps> = ({
     image,
     isLogin,
     isAdd,
-    isSubscribe,
     onClickAddCourse,
 }) => {
     return (
@@ -100,25 +98,13 @@ const CoursePageMain: React.FC<CoursePageMainProps> = ({
                                     </svg>
                                     Добавлен
                                 </button>
-                            ) : isSubscribe ? (
+                            ) : (
                                 <button
                                     className="btn course-page-main-text__btn"
                                     onClick={onClickAddCourse}
                                 >
                                     Добавить в мое обучение
                                 </button>
-                            ) : (
-                                <LinkScroll
-                                    to="price"
-                                    spy={true}
-                                    smooth={true}
-                                    offset={-25}
-                                    duration={1000}
-                                >
-                                    <button className="btn course-page-main-text__btn">
-                                        Начать обучение
-                                    </button>
-                                </LinkScroll>
                             )
                         ) : (
                             <LinkScroll

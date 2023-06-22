@@ -28,7 +28,6 @@ const initialState: MastersState = {
 		socials: {
 			inst: "",
 			vk: "",
-			tiktok: " ",
 			telegram: "",
 		},
 		courses: [],

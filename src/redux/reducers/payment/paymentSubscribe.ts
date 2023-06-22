@@ -6,7 +6,7 @@ import {
 
 const initialState: PaymentSubscribeState = {
 	payment: {
-		paymentNumber: "",
+		number: "",
 		confirmation: {},
 		order: "",
 		status: "",

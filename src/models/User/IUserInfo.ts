@@ -21,7 +21,9 @@ interface UserInfoSubscribe {
 	registration: string;
 
 	stopped: string;
-	lastDebitStopped: string
+	lastDebitStopped: string;
+
+	isPassingTesting: boolean;
 }
 
 export interface UserInfoCourseBuy {

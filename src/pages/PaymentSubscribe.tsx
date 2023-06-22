@@ -29,7 +29,7 @@ const PaymentSubscribe: React.FC = () => {
             if (payment.confirmation) {
                 const checkout = new window.YooMoneyCheckoutWidget({
                     confirmation_token: payment.confirmation.confirmation_token,
-                    return_url: `${process.env.REACT_APP_DOMEN}/payment/status/${payment.paymentNumber}`,
+                    return_url: `${process.env.REACT_APP_DOMEN}/payment/status/${payment.number}`,
 
                     customization: {
                         colors: {
@@ -70,9 +70,7 @@ const PaymentSubscribe: React.FC = () => {
                                 </div>
 
                                 <div className="reglog-product-wrapper">
-                                    <ReglogSubscribeBlock
-                                        {...rates[payment.type]}
-                                    />
+                                    <ReglogSubscribeBlock type={payment.type} />
                                 </div>
                             </div>
                         </div>

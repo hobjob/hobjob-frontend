@@ -5,7 +5,6 @@ import { Image } from "./IImage";
 export interface MasterSocials {
 	inst: string;
 	vk: string;
-	tiktok: string;
 	telegram: string;
 }
 

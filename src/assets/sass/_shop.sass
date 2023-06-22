@@ -169,7 +169,7 @@
 
 				&__title
 					display: block
-					font-size: 28px
+					font-size: 26px
 
 					overflow: hidden
 					white-space: nowrap
@@ -205,7 +205,10 @@
 						+transition
 
 						&:hover
-							+transformScale
+							+transformScaleHover
+
+						&:active
+							+transformScaleClick
 
 		&-bottom
 			margin-top: 20px
@@ -231,6 +234,12 @@
 
 		&__btn
 			width: 250px
+
+	&__totalcount
+		padding: 5px
+		margin-top: 15px
+		text-align: center
+		color: $gray
 
 	&-not-found
 		margin: 100px 0

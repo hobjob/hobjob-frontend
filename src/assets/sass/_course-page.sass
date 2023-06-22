@@ -20,10 +20,6 @@
 			opacity: 1
 			z-index: 15
 
-		&.active
-			opacity: 0 !important
-			z-index: -1
-
 	&-main
 		margin: 25px 0 75px 0
 		+openAnimation
@@ -116,16 +112,6 @@
 			min-width: 500px
 			margin-right: 75px
 
-		&.vertical &-video-plaecholder
-			justify-content: flex-start
-
-		&.vertical &-video-plaecholder__description
-			font-size: 36px
-
-		&.vertical &-video-plaecholder__link
-			margin-top: 25px
-			font-size: 42px
-
 		&.vertical &-list
 			width: 100%
 
@@ -135,10 +121,10 @@
 			align-items: flex-start
 
 		&-video
-			top: 50px
+			top: 75px
 			position: sticky
 
-			width: 50%
+			width: 52%
 
 			display: flex
 			justify-content: center
@@ -148,43 +134,6 @@
 				opacity: 0
 				pointer-events: none
 				user-select: none
-
-			&-plaecholder
-				display: flex
-				flex-direction: column
-				justify-content: space-between
-				align-items: flex-start
-
-				z-index: 10
-
-				position: absolute
-				left: 0
-				top: 0
-
-				padding: 15px 20px
-
-				width: 100%
-				height: 100%
-
-				background-color: $backgroundGray
-
-				+borderRadiusBlock
-				+openPopup
-
-				&.close
-					+closePopup
-
-				&__description
-					line-height: 1.3em
-
-					font-size: 40px
-
-				&__link
-					cursor: pointer
-					display: inline-block
-					border-bottom: 3px solid $mainColor
-					font-size: 48px
-					color: $mainColor
 
 		&-list
 			width: 45%
@@ -241,9 +190,9 @@
 
 					&__title
 						font-size: 32px
-						margin-bottom: 25px
 
 					&__description
+						margin-top: 25px
 						font-size: 24px
 
 			&-materials
@@ -363,6 +312,10 @@
 	&-feedbacks
 		margin: 75px 0
 
+		&__title
+			margin-left: 50px
+			margin-bottom: 50px
+
 		&-slider
 			position: relative
 			margin-top: 75px
@@ -371,7 +324,9 @@
 				width: 100%
 
 				&__image
-					width: 100%
+					margin: 0 25px
+
+					width: 700px
 
 					user-select: none
 					pointer-events: none
@@ -457,44 +412,32 @@
 
 						&__item
 							display: flex
-							align-items: center
+							align-items: flex-start
 
 							color: $mainColor
 							font-size: 21px
-							margin-bottom: 5px
+							margin-bottom: 8px
 
 							&:last-child
 								margin-bottom: 0
 
 							& > svg
-								margin-right: 7px
+								width: 17px
+								min-width: 17px
 
-						&-hobjob-good
-							display: flex
-							align-items: center
+								margin-top: 9px
+								margin-right: 10px
 
-							& > svg
-								margin-right: 7px
+							& > p > img
+								vertical-align: middle
 
-							&-text
-								display: flex
-								align-items: center
+								user-select: none
+								pointer-events: none
 
-								&__text
-									display: flex
-									align-items: center
+								margin-left: 2px
+								transform: translateY(-2px)
 
-									color: $mainColor
-									font-size: 21px
-
-								&__logo
-									user-select: none
-									pointer-events: none
-
-									width: 175px
-
-									margin-top: 5px
-									margin-left: 5px
+								width: 22px
 
 					&__btn
 						margin-top: 25px
@@ -554,8 +497,10 @@
 							align-items: center
 
 							position: absolute
-							right: 20px
-							top: 20px
+							right: -10px
+							top: -10px
+
+							transform: rotate(10deg) scale(1.3)
 
 							width: 70px
 							height: 70px
@@ -570,18 +515,32 @@
 
 						&__item
 							display: flex
-							align-items: center
+							align-items: flex-start
 
 							color: $mainColor
 							font-size: 21px
-							margin-bottom: 5px
+							margin-bottom: 8px
 
 							&:last-child
 								margin-bottom: 0
 
 							& > svg
-								margin-right: 7px
+								width: 17px
+								min-width: 17px
 
+								margin-top: 9px
+								margin-right: 10px
+
+							& > p > img
+								vertical-align: middle
+
+								user-select: none
+								pointer-events: none
+
+								margin-left: 2px
+								transform: translateY(-2px)
+
+								width: 22px
 					&__btn
 						margin-top: 25px
 						width: 100%
@@ -834,47 +793,32 @@
 
 						&__item
 							display: flex
-							align-items: center
+							align-items: flex-start
 
 							color: $mainColor
 							font-size: 21px
-							margin-bottom: 5px
+							margin-bottom: 8px
 
 							&:last-child
 								margin-bottom: 0
 
 							& > svg
-								width: 15px
-								min-width: 15px
+								width: 17px
+								min-width: 17px
 
-								margin-right: 7px
+								margin-top: 9px
+								margin-right: 10px
 
-						&-hobjob-good
-							display: flex
-							align-items: center
+							& > p > img
+								vertical-align: middle
 
-							& > svg
-								margin-right: 7px
+								user-select: none
+								pointer-events: none
 
-							&-text
-								display: flex
-								align-items: center
+								margin-left: 2px
+								transform: translateY(-2px)
 
-								&__text
-									display: flex
-									align-items: center
-
-									color: $mainColor
-									font-size: 21px
-
-								&__logo
-									user-select: none
-									pointer-events: none
-
-									width: 175px
-
-									margin-top: 5px
-									margin-left: 5px
+								width: 22px
 
 				&-image
 					padding-bottom: 35px
@@ -946,20 +890,32 @@
 
 						&__item
 							display: flex
-							align-items: center
+							align-items: flex-start
 
 							color: $mainColor
 							font-size: 21px
-							margin-bottom: 5px
+							margin-bottom: 8px
 
 							&:last-child
 								margin-bottom: 0
 
 							& > svg
-								width: 15px
-								min-width: 15px
+								width: 17px
+								min-width: 17px
 
-								margin-right: 7px
+								margin-top: 9px
+								margin-right: 10px
+
+							& > p > img
+								vertical-align: middle
+
+								user-select: none
+								pointer-events: none
+
+								margin-left: 2px
+								transform: translateY(-2px)
+
+								width: 22px
 
 					&__btn
 						margin-top: 25px
@@ -1102,6 +1058,10 @@
 
 			margin-bottom: 25px
 
+			& > a
+				color: $mainColor
+				border-bottom: 1px solid $mainColor
+
 			&::before
 				content: ""
 				position: absolute
@@ -1131,8 +1091,6 @@
 				display: flex
 				align-items: center
 
-				margin-bottom: 100px
-
 				&-img
 					margin-right: 50px
 
@@ -1155,14 +1113,8 @@
 						margin-bottom: 25px
 
 					&-socials
-						&__subtitle
-							font-size: 21px
-							color: $gray
-							margin-bottom: 15px
-
-						&-links-wrapper
-							display: flex
-							align-items: center
+						display: flex
+						align-items: center
 
 						&__link
 							margin-right: 25px
@@ -1172,15 +1124,20 @@
 							+transition
 
 							& > svg
-								width: 60px
+								width: 40px
+
+							&:hover
+								+transformScaleHover
 
 							&:active
-								+transformScale
+								+transformScaleClick
 
 							&:last-child
 								margin-right: 0
 
 			&-works
+				margin-top: 100px
+
 				&__title
 					font-size: 42px
 					margin-bottom: 50px
@@ -1251,12 +1208,12 @@
 							width: 100%
 							height: 100%
 
-				&.owl-item
-					width: 20%
-
 				&-slider
 					overflow: hidden
 					+borderRadiusBlock
+
+					& .slick-slide
+						padding: 0 10px
 
 					&-item-image
 						cursor: zoom-in

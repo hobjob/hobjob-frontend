@@ -30,6 +30,11 @@ export interface CourseGoodFeedbacks {
 	mediaImages: Image[]
 }
 
+export interface CourseGoodAdsVk {
+	subscribe: string
+	buy: string
+}
+
 export interface CourseGood {
 	_id: string;
 	url: string;
@@ -45,5 +50,6 @@ export interface CourseGood {
 	useSkills: CourseGoodUseSkill[];
 	tools: CourseGoodTool[];
 	feedbacks: CourseGoodFeedbacks;
+	adsVk: CourseGoodAdsVk;
 	HobJobProduction: boolean;
 }

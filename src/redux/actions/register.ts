@@ -4,6 +4,9 @@ import { SubmissionError } from "redux-form";
 
 import $api from "../../http/";
 
+import { CourseGoodAdsVk } from "../../models/Course/ICourseGood";
+
+
 import {
 	RegisterActions,
 	RegisterActionTypes,
@@ -16,7 +19,7 @@ export const sendRegister = (
 		paymentInfo: string,
 		addSubscribeCourseId?: string
 	},
-	typePayment?: string,
+	typePayment: string
 ) => {
 	return async (dispatch: Dispatch<RegisterActions>) => {
 		dispatch({
@@ -36,8 +39,8 @@ export const sendRegister = (
 			.then(({ data }) => {
 				localStorage.setItem("accessToken", data.accessToken);
 
-				if (data.paymentNumber) {
-					window.location.href = typePayment === "buy" ? `/payment/course/${data.paymentNumber}` : `/payment/subscribe/${data.paymentNumber}`;
+				if (data.number) {
+					window.location.href = typePayment === "buy" ? `/payment/course/${data.number}` : `/payment/subscribe/${data.number}`;
 				} else {
 					window.location.href = "/go/training"
 				}

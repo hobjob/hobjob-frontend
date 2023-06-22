@@ -35,7 +35,7 @@ const HobJobGood: React.FC<HobJobGoodProps> = ({scrollToPrice}) => {
                             детям.
                         </p>
 
-                        {scrollToPrice ? (
+                        {/* {scrollToPrice ? (
                             <LinkScroll
                                 to="price"
                                 spy={true}
@@ -53,7 +53,7 @@ const HobJobGood: React.FC<HobJobGoodProps> = ({scrollToPrice}) => {
                             >
                                 Начать обучение
                             </Link>
-                        )}
+                        )} */}
                     </div>
 
                     <img

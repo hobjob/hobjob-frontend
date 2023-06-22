@@ -36,6 +36,10 @@ const initialState: CoursesState = {
 			images: [],
 			mediaImages: []
 		},
+		adsVk: {
+			subscribe: "",
+			buy: ""
+		},
 		HobJobProduction: false
 	},
 
@@ -63,6 +67,10 @@ const initialState: CoursesState = {
 		feedbacks: {
 			images: [],
 			mediaImages: []
+		},
+		adsVk: {
+			subscribe: "",
+			buy: ""
 		},
 		HobJobProduction: false
 	},
