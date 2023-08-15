@@ -2,7 +2,15 @@ import React from "react";
 
 import {Master} from "../../../models/IMaster";
 
-import {Instagram, Vk, Telegram, CoursePageMasterWorks} from "../../";
+import {
+    Dzen,
+    Vk,
+    Youtube,
+    Instagram,
+	Telegram,
+	Tiktok,
+    CoursePageMasterWorks,
+} from "../../";
 
 interface CoursePageMasterProps {
     master: Master;
@@ -38,12 +46,12 @@ const CoursePageMaster: React.FC<CoursePageMasterProps> = ({master}) => {
                                     ) : null}
 
                                     <div className="course-page-master-section-about-text-socials">
-                                        {master.socials.inst ? (
+                                        {master.socials.dzen ? (
                                             <a
-                                                href={master.socials.inst}
+                                                href={master.socials.dzen}
                                                 className="course-page-master-section-about-text-socials__link"
                                             >
-                                                <Instagram />
+                                                <Dzen />
                                             </a>
                                         ) : null}
 
@@ -56,12 +64,39 @@ const CoursePageMaster: React.FC<CoursePageMasterProps> = ({master}) => {
                                             </a>
                                         ) : null}
 
+                                        {master.socials.youtube ? (
+                                            <a
+                                                href={master.socials.youtube}
+                                                className="course-page-master-section-about-text-socials__link"
+                                            >
+                                                <Youtube />
+                                            </a>
+                                        ) : null}
+
+                                        {master.socials.inst ? (
+                                            <a
+                                                href={master.socials.inst}
+                                                className="course-page-master-section-about-text-socials__link"
+                                            >
+                                                <Instagram />
+                                            </a>
+                                        ) : null}
+
                                         {master.socials.telegram ? (
                                             <a
                                                 href={master.socials.telegram}
                                                 className="course-page-master-section-about-text-socials__link"
                                             >
                                                 <Telegram />
+                                            </a>
+                                        ) : null}
+
+                                        {master.socials.tiktok ? (
+                                            <a
+                                                href={master.socials.tiktok}
+                                                className="course-page-master-section-about-text-socials__link"
+                                            >
+                                                <Tiktok />
                                             </a>
                                         ) : null}
                                     </div>

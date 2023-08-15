@@ -8,8 +8,8 @@ export { default as PasswordRecoveryNewPassword } from "./PasswordRecoveryNewPas
 // Home
 export { default as Home } from "./Home"
 
-// Shop
-export { default as Shop } from "./Shop"
+// Courses
+export { default as Courses } from "./Courses"
 
 // CoursePage
 export { default as CoursePage } from "./CoursePage"

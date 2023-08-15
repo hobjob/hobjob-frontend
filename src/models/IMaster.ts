@@ -3,9 +3,12 @@ import { Post } from "./IPost";
 import { Image } from "./IImage";
 
 export interface MasterSocials {
-	inst: string;
-	vk: string;
-	telegram: string;
+	dzen: string,
+	vk: string,
+	youtube: string,
+	telegram: string,
+	inst: string,
+	tiktok: string,
 }
 
 export interface MasterWorkVideo {

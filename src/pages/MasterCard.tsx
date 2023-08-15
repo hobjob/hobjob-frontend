@@ -10,7 +10,7 @@ import {addUserCourse} from "../redux/actions/user";
 
 import {
     MasterCardInfo,
-    ShopBlock,
+    CoursesBlock,
     Loader,
     MagazineBlockBig,
     MagazineBlock,
@@ -63,9 +63,9 @@ const MasterCard: React.FC = ({}) => {
                                             <div className="master-card-courses-block-wrapper">
                                                 {itemById.courses.map(
                                                     (course, index) => (
-                                                        <ShopBlock
+                                                        <CoursesBlock
                                                             {...course}
-                                                            key={`shop-master-card-block-${index}`}
+                                                            key={`courses-master-card-block-${index}`}
                                                             master={itemById}
                                                             categoryItem={
                                                                 categories[

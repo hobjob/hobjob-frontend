@@ -20,7 +20,9 @@ const CoursePageTools: React.FC<CoursePageToolsProps> = ({tools}) => {
                             <p
                                 className="course-page-tools__item"
                                 key={`course-page-tools-${index}__item`}
-                                dangerouslySetInnerHTML={{__html: tool.title}}
+                                dangerouslySetInnerHTML={{
+                                    __html: tool.title,
+                                }}
                             ></p>
                         ))}
                     </div>

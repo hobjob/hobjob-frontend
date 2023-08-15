@@ -7,17 +7,17 @@ import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {fetchCoursesSection} from "../../redux/actions/courses";
 import {addUserCourse} from "../../redux/actions/user";
 
-import {ShopBlock, Loader} from "../";
+import {CoursesBlock, Loader} from "../";
 
 import {checkIsAddCourse} from "../../functions/checkIsAddCourse";
 
-interface ShopSectionProps {
+interface CoursesSectionProps {
     title: string;
     description: string;
     currentCourseId?: string;
 }
 
-const ShopSection: React.FC<ShopSectionProps> = ({
+const CoursesSection: React.FC<CoursesSectionProps> = ({
     title,
     description,
     currentCourseId,
@@ -70,22 +70,22 @@ const ShopSection: React.FC<ShopSectionProps> = ({
             isLoadedMasters &&
             isLoadedAllCategories ? (
                 coursesSection.length ? (
-                    <section className="shop-section">
+                    <section className="courses-section">
                         <div className="container">
-                            <div className="shop-section-wrapper">
-                                <h2 className="title shop-section__title">
+                            <div className="courses-section-wrapper">
+                                <h2 className="title courses-section__title">
                                     {title}
                                 </h2>
-                                <p className="description shop-section__description">
+                                <p className="description courses-section__description">
                                     {description}
                                 </p>
 
-                                <div className="shop-section-block-wrapper">
+                                <div className="courses-section-block-wrapper">
                                     {coursesSection
                                         .map((course, index) => (
-                                            <ShopBlock
+                                            <CoursesBlock
                                                 {...course}
-                                                key={`shop-section-block-${index}`}
+                                                key={`courses-section-block-${index}`}
                                                 master={
                                                     masters[course.masterId]
                                                 }
@@ -111,12 +111,12 @@ const ShopSection: React.FC<ShopSectionProps> = ({
                                                 }
                                             />
                                         ))
-                                        .slice(0, 4)}
+                                        .slice(0, 6)}
                                 </div>
-                                <div className="shop-section-btn">
+                                <div className="courses-section-btn">
                                     <Link
                                         to="/course"
-                                        className="btn__gray shop-section__btn"
+                                        className="btn__gray courses-section__btn"
                                     >
                                         Показать еще
                                     </Link>
@@ -132,4 +132,4 @@ const ShopSection: React.FC<ShopSectionProps> = ({
     );
 };
 
-export default ShopSection;
+export default CoursesSection;

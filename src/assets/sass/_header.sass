@@ -1,19 +1,37 @@
 // header
 .header
+	position: sticky
+	top: -100px
+	z-index: 20
+
+	opacity: 1
+
+	background-filter: saturate(180%) blur(20px)
+	background: #fff
+
+	padding: 15px 25px
+
+	border-bottom: 1px solid $borderGray
+
 	+openAnimation
+	+transition
+
+	&.active
+		top: 0
 
 	&-wrapper
 		display: flex
 		justify-content: space-between
 		align-items: center
 
-		padding: 25px 0
-		border-bottom: 1px solid $borderGray
+	&-right-block, &-left-block
+		display: flex
+		align-items: center
 
 	&-logo
 		&__img
 			user-select: none
-			width: 65px
+			width: 60px
 
 			will-change: transform
 
@@ -21,10 +39,6 @@
 
 			&:active
 				+transformScale
-
-	&-right-block, &-left-block
-		display: flex
-		align-items: center
 
 	&-nav
 		margin-left: 75px
@@ -32,51 +46,50 @@
 		&__link
 			display: inline-block
 
-			border-radius: 100px
-			padding: 15px 30px
-			background-color: $backgroundGray
+			font-size: 21px
 
-			margin: 0 5px
+			margin: 0 20px
 
 			will-change: transform
 
 			+transition
 
 			&:hover
-				background-color: $mainColor
-				color: $white
+				color: $mainColor
 
 			&.active
-				background-color: $mainColor
-				color: $white
-
-				&:hover
-					background-color: $mainColor
+				color: $mainColor
 
 			&:active
 				+transformScale
 
 	&-login
 		&__link
-			font-size: 18px
 			display: inline-flex
 			align-items: center
 
+			font-size: 28px
 			color: $mainColor
 
 			will-change: transform
 
 			+transition
 
-			&:active
-				+transformScale
+			&:hover > svg
+				transform: rotate(15deg)
 
 			& > svg
-				margin-left: 15px
+				width: 18px
+				fill: $mainColor
+
+				will-change: transform
+
+				margin-left: 10px
+
 				+transition
 
-			&:hover svg
-				+rotate
+			&:active
+				+transformScale
 
 	&-user
 		display: flex

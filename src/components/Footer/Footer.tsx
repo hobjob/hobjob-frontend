@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
                                         href="/course"
                                         className="footer-block-menu-subblock__link"
                                     >
-                                        Все курсы
+                                        Все направления
                                     </a>
                                 </div>
 

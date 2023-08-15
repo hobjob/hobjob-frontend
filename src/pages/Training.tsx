@@ -9,7 +9,7 @@ import {
     TrainingNull,
     TrainingSubscribe,
     TrainingBuy,
-    ShopSection,
+    CoursesSection,
 } from "../components/";
 
 const Training: React.FC = () => {
@@ -52,7 +52,7 @@ const Training: React.FC = () => {
                             </div>
                         </section>
 
-                        <ShopSection
+                        <CoursesSection
                             title="Учитесь на практике"
                             description="Обучайтесь у лучших профессионалов
                             своего дела и раскройте самые сокровенные секреты

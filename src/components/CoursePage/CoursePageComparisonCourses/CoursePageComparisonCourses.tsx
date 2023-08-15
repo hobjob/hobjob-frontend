@@ -1,5 +1,4 @@
 import React from "react";
-import {Link as LinkScroll} from "react-scroll";
 
 const CoursePageComparisonCourses: React.FC = () => {
     return (

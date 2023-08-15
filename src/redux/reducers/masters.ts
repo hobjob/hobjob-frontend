@@ -26,9 +26,12 @@ const initialState: MastersState = {
 			size_2048: "",
 		},
 		socials: {
-			inst: "",
+			dzen: "",
 			vk: "",
+			youtube: "",
 			telegram: "",
+			inst: "",
+			tiktok: "",
 		},
 		courses: [],
 		posts: [],

@@ -21,7 +21,7 @@ import {SubscribeMessageTesting, Header, Footer} from "./components/";
 
 import {
     Home,
-    Shop,
+    Courses,
     CoursePage,
     Magazine,
     MagazinePostPage,
@@ -107,7 +107,7 @@ const App: React.FC = () => {
             {false ? (
                 <EngineeringWorks />
             ) : (
-                <div className="wrapper">
+                <div className="wrapper" id="wrapper">
                     {pathname.indexOf("/go/training") !== -1 ||
                     pathname.indexOf("/payment") !== -1 ||
                     pathname.indexOf("/login") !== -1 ||
@@ -135,7 +135,7 @@ const App: React.FC = () => {
                         <Routes>
                             <Route path="/" element={<Home />} />
 
-                            <Route path="/course" element={<Shop />} />
+                            <Route path="/course" element={<Courses />} />
 
                             <Route
                                 path="/course/:url"

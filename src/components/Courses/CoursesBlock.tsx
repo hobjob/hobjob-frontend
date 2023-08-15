@@ -5,7 +5,7 @@ import {CourseGood} from "../../models/Course/ICourseGood";
 import {Master} from "../../models/IMaster";
 import {Category} from "../../models/ICategory";
 
-interface ShopBlockProps extends CourseGood {
+interface CoursesBlockProps extends CourseGood {
     master: Master;
     categoryItem: Category;
 
@@ -16,7 +16,7 @@ interface ShopBlockProps extends CourseGood {
     onClickAddCourse: (_id: string) => void;
 }
 
-const ShopBlock: React.FC<ShopBlockProps> = ({
+const CoursesBlock: React.FC<CoursesBlockProps> = ({
     _id,
     url,
     image,
@@ -32,62 +32,61 @@ const ShopBlock: React.FC<ShopBlockProps> = ({
     onClickAddCourse,
 }) => {
     return (
-        <div className="shop-block">
-            <div className="shop-block-top">
-                <div className="shop-block-top-cover-wrapper">
+        <div className="courses-catalog-block">
+            <div className="courses-catalog-block-top">
+                <div className="courses-catalog-block-top-cover-wrapper">
                     {HobJobProduction ? (
                         <Link
                             to={`/course/${url}`}
-                            className="shop-block-top-cover-hobjob-production"
+                            className="courses-catalog-block-top-cover-hobjob-production"
                         >
                             <img
                                 src={`${process.env.REACT_APP_IMAGE_DOMEN}/all/hobjob-production.svg`}
                                 alt=""
-                                className="shop-block-top-cover-hobjob-production__image"
+                                className="courses-catalog-block-top-cover-hobjob-production__image"
                             />
                         </Link>
                     ) : null}
 
                     <Link
                         to={`/course/${url}`}
-                        className="shop-block-top-cover"
+                        className="courses-catalog-block-top-cover"
                         style={{
                             backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_768}")`,
                         }}
                     ></Link>
                 </div>
 
-                <div className="shop-block-top-text">
-                    <Link
-                        to={`/course/${url}`}
-                        className="shop-block-top-text__title"
+                <div className="courses-catalog-block-top-filters">
+                    <a
+                        href={`/course?categories=${categoryItem.transfer}`}
+                        className="category-small courses-catalog-block-top-filters__category"
                     >
-                        {title}
+                        {categoryItem ? categoryItem.title : null}
+                    </a>
+                    <Link
+                        to={`/master/${master._id}`}
+                        className="courses-catalog-block-top-filters__auth"
+                    >
+                        {master ? (
+                            <>
+                                {master.name} {master.surname}
+                            </>
+                        ) : null}
                     </Link>
-                    <div className="shop-block-top-text-filters">
-                        <a
-                            href={`/course?categories=${categoryItem.transfer}`}
-                            className="category-small shop-block-top-text-filters__category"
-                        >
-                            {categoryItem ? categoryItem.title : null}
-                        </a>
-                        <Link
-                            to={`/master/${master._id}`}
-                            className="shop-block-top-text-filters__auth"
-                        >
-                            {master ? (
-                                <>
-                                    {master.name} {master.surname}
-                                </>
-                            ) : null}
-                        </Link>
-                    </div>
                 </div>
+
+                <Link
+                    to={`/course/${url}`}
+                    className="courses-catalog-block-top__title"
+                >
+                    {title}
+                </Link>
             </div>
-            <div className="shop-block-bottom">
+            <div className="courses-catalog-block-bottom">
                 {isLogin ? (
                     isAdd ? (
-                        <button className="btn disabled shop-block-bottom__link">
+                        <button className="btn disabled courses-catalog-block-bottom__link">
                             <svg
                                 width="14"
                                 height="13"
@@ -106,7 +105,7 @@ const ShopBlock: React.FC<ShopBlockProps> = ({
                         </button>
                     ) : isSubscribe ? (
                         <button
-                            className="btn shop-block-bottom__link"
+                            className="btn courses-catalog-block-bottom__link"
                             onClick={() => onClickAddCourse(_id)}
                         >
                             Добавить в мое обучение
@@ -114,7 +113,7 @@ const ShopBlock: React.FC<ShopBlockProps> = ({
                     ) : (
                         <Link
                             to={`/course/${url}`}
-                            className="btn shop-block-bottom__link"
+                            className="btn courses-catalog-block-bottom__link"
                         >
                             Начать обучение
                         </Link>
@@ -122,7 +121,7 @@ const ShopBlock: React.FC<ShopBlockProps> = ({
                 ) : (
                     <Link
                         to={`/course/${url}`}
-                        className="btn shop-block-bottom__link"
+                        className="btn courses-catalog-block-bottom__link"
                     >
                         Смотреть
                     </Link>
@@ -132,4 +131,4 @@ const ShopBlock: React.FC<ShopBlockProps> = ({
     );
 };
 
-export default ShopBlock;
+export default CoursesBlock;

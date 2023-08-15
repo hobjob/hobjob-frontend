@@ -1,0 +1,152 @@
+// services
+.services
+	margin: 50px 0
+
+	+openAnimation
+
+	&-wrapper
+		display: grid
+
+		grid-gap: 20px
+		grid-template-rows: 50% 50%
+
+		margin-bottom: 40px
+
+		&:last-child
+			margin-bottom: 0
+
+		&.w50-50
+			grid-template-columns: 50% 50%
+
+		&.w35-65
+			grid-template-columns: 35% 65%
+			grid-template-rows: auto
+
+	&-block
+		background-color: $backgroundGray
+
+		overflow: hidden
+
+		+borderRadiusBlock
+
+		&-education
+			display: flex
+			flex-direction: column
+			justify-content: space-between
+
+			grid-column: 1
+			grid-row: 1 / 3
+
+			&-text
+				padding-top: 35px
+				padding-left: 35px
+				padding-bottom: 50px
+
+				&__title
+					font-size: 40px
+					margin-bottom: 15px
+
+				&__description
+					width: 75%
+					font-size: 24px
+
+			&__image
+				width: 100%
+				user-select: none
+				pointer-events: none
+
+		&-community
+			position: relative
+
+			grid-column: 2
+			grid-row: 1
+
+			padding-top: 35px
+			padding-left: 35px
+
+			&__title
+				font-size: 40px
+				margin-bottom: 15px
+
+			&__description
+				width: 75%
+				font-size: 24px
+
+			&__icon
+				position: absolute
+
+				width: 100%
+
+				left: 0
+				bottom: 30px
+
+				user-select: none
+				pointer-events: none
+
+		&-courses
+			display: flex
+			flex-direction: column
+			justify-content: space-between
+
+			grid-column: 2
+			grid-row: 2
+
+			padding: 35px
+
+			&__title
+				max-width: 75%
+
+				font-size: 40px
+				margin-bottom: 15px
+
+			&__image
+				width: 100%
+
+				user-select: none
+				pointer-events: none
+
+		&-hobjobgood
+			padding: 35px
+
+			display: flex
+			flex-direction: column
+			justify-content: space-between
+
+			grid-column: 1
+
+			&-logo
+				&__subtitle
+					font-size: 21px
+					margin-bottom: 15px
+
+				&__image
+					width: 250px
+
+					user-select: none
+					pointer-events: none
+
+			&__description
+				font-size: 24px
+
+				& > a
+					color: $mainColor
+					border-bottom: 2px solid $mainColor
+
+		&-passing
+			grid-column: 2
+
+			padding-top: 35px
+			padding-left: 35px
+			padding-bottom: 35px
+
+			&__title
+				max-width: 75%
+
+				font-size: 40px
+				margin-bottom: 35px
+
+			&__image
+				width: 100%
+
+				user-select: none
+				pointer-events: none

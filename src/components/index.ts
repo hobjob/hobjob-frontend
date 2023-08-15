@@ -7,11 +7,12 @@ export { default as FileInput } from "./All/FileInput";
 export { default as BtnLoader } from "./All/BtnLoader";
 export { default as VideoPlayer } from "./All/VideoPlayer";
 // Socials
-export { default as Instagram } from "./All/Socials/Instagram"
-export { default as Telegram } from "./All/Socials/Telegram"
+export { default as Dzen } from "./All/Socials/Dzen"
 export { default as Vk } from "./All/Socials/Vk"
 export { default as Youtube } from "./All/Socials/Youtube"
-export { default as Dzen } from "./All/Socials/Dzen"
+export { default as Telegram } from "./All/Socials/Telegram"
+export { default as Instagram } from "./All/Socials/Instagram"
+export { default as Tiktok } from "./All/Socials/Tiktok"
 
 // Reglog
 // ReglogProgressbar
@@ -41,19 +42,17 @@ export { default as SubscribeMessageTesting } from "./SubscribeMessage/Subscribe
 // Home
 export { default as HomeMainSection } from "./Home/HomeMainSection";
 
-// HobJobGood
-export { default as HobJobGood } from "./HobJobGood/HobJobGood";
+// Services
+export { default as ServicesSection } from "./Services/ServicesSection";
 
-// Shop
-export { default as ShopBlock } from "./Shop/ShopBlock";
-export { default as ShopSection } from "./Shop/ShopSection";
-export { default as ShopNotFound } from "./Shop/ShopNotFound";
-// ShopFilters
-export { default as ShopFiltersSearch } from "./Shop/ShopFilters/ShopFiltersSearch";
-export { default as ShopFiltersTop } from "./Shop/ShopFilters/ShopFiltersTop";
-export { default as ShopFilters } from "./Shop/ShopFilters/ShopFilters";
-export { default as ShopFiltersCategories } from "./Shop/ShopFilters/ShopFiltersCategories";
-export { default as ShopFiltersBlockMasters } from "./Shop/ShopFilters/ShopFiltersBlockMasters";
+// MasterSection
+export { default as MasterSection } from "./MasterSection/MasterSection";
+
+// Courses
+export { default as CoursesBlock } from "./Courses/CoursesBlock";
+export { default as CoursesSection } from "./Courses/CoursesSection";
+export { default as CoursesNotFound } from "./Courses/CoursesNotFound";
+export { default as CoursesCategories } from "./Courses/CoursesCategories";
 
 // CoursePage
 // CoursePageMain

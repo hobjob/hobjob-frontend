@@ -17,12 +17,11 @@ import {
     CoursePageFeedbacks,
     CoursePagePrice,
     CoursePageComparisonCourses,
-    HobJobGood,
     CoursePagePassing,
     CoursePageTools,
     CoursePageMaster,
     CoursePageFaq,
-    ShopSection,
+    CoursesSection,
     Loader,
 } from "../components";
 
@@ -50,15 +49,13 @@ const CoursePage: React.FC = () => {
     const [isAdd, setIsAdd] = React.useState(false);
 
     React.useEffect(() => {
-        window.addEventListener("scroll", handlerScroll);
-    }, []);
-
-    React.useEffect(() => {
+		window.addEventListener("scroll", handlerScroll);
+		
         return () => {
             window.removeEventListener("scroll", handlerScroll);
         };
-    }, []);
-
+	}, []);
+	
     React.useEffect(() => {
         dispatch(fetchCourseByUrl(url ? url : ""));
     }, [url]);
@@ -167,8 +164,6 @@ const CoursePage: React.FC = () => {
 
                         <CoursePageComparisonCourses />
 
-                        <HobJobGood scrollToPrice />
-
                         <CoursePagePassing />
 
                         <CoursePageTools {...courseByUrl} />
@@ -179,7 +174,7 @@ const CoursePage: React.FC = () => {
 
                         <CoursePageFaq />
 
-                        <ShopSection
+                        <CoursesSection
                             title="Вам может понравиться"
                             description="Новые курсы добавляются каждый месяц"
                             currentCourseId={courseByUrl._id}
