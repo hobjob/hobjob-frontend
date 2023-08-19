@@ -63,27 +63,20 @@ export { default as CoursePageContentVideo } from "./CoursePage/CoursePageConten
 // CoursePageContentLessons
 export { default as CoursePageContentLessons } from "./CoursePage/CoursePageContent/CoursePageContentLessons/CoursePageContentLessons";
 export { default as CoursePageContentLessonsItem } from "./CoursePage/CoursePageContent/CoursePageContentLessons/CoursePageContentLessonsItem";
-// CoursePageContentMaterials
-export { default as CoursePageContentMaterials } from "./CoursePage/CoursePageContent/CoursePageContentMaterials/CoursePageContentMaterials";
-export { default as CoursePageContentMaterialsItem } from "./CoursePage/CoursePageContent/CoursePageContentMaterials/CoursePageContentMaterialsItem";
 // CoursePageMaster
 export { default as CoursePageMaster } from "./CoursePage/CoursePageMaster/CoursePageMaster";
 // CoursePageMasterWorks
 export { default as CoursePageMasterWorks } from "./CoursePage/CoursePageMaster/CoursePageMasterWorks/CoursePageMasterWorks";
 export { default as CoursePageMasterWorksVideo } from "./CoursePage/CoursePageMaster/CoursePageMasterWorks/CoursePageMasterWorksVideo";
 export { default as CoursePageMasterWorksImage } from "./CoursePage/CoursePageMaster/CoursePageMasterWorks/CoursePageMasterWorksImage";
-// CoursePageMasterWorksSlider
-export { default as CoursePageMasterWorksSlider } from "./CoursePage/CoursePageMaster/CoursePageMasterWorks/CoursePageMasterWorksSlider/CoursePageMasterWorksSlider";
-export { default as CoursePageMasterWorksSliderItemVideo } from "./CoursePage/CoursePageMaster/CoursePageMasterWorks/CoursePageMasterWorksSlider/CoursePageMasterWorksSliderItemVideo";
-export { default as CoursePageMasterWorksSliderItemImage } from "./CoursePage/CoursePageMaster/CoursePageMasterWorks/CoursePageMasterWorksSlider/CoursePageMasterWorksSliderItemImage";
+export { default as CoursePageMasterWorksItemVideo } from "./CoursePage/CoursePageMaster/CoursePageMasterWorks/CoursePageMasterWorksItemVideo";
+export { default as CoursePageMasterWorksItemImage } from "./CoursePage/CoursePageMaster/CoursePageMasterWorks/CoursePageMasterWorksItemImage";
 // CoursePageSkills
 export { default as CoursePageSkills } from "./CoursePage/CoursePageSkills/CoursePageSkills";
 export { default as CoursePageSkillsItem } from "./CoursePage/CoursePageSkills/CoursePageSkillsItem";
 // CoursePageUseSkills
 export { default as CoursePageUseSkills } from "./CoursePage/CoursePageUseSkills/CoursePageUseSkills";
 export { default as CoursePageUseSkillsItem } from "./CoursePage/CoursePageUseSkills/CoursePageUseSkillsItem";
-// CoursePageFeedbacks
-export { default as CoursePageFeedbacks } from "./CoursePage/CoursePageFeedbacks/CoursePageFeedbacks";
 // CoursePagePrice
 export { default as CoursePagePrice } from "./CoursePage/CoursePagePrice/CoursePagePrice";
 // CoursePagePriceChoice
@@ -102,8 +95,6 @@ export { default as CoursePagePriceRegisterSubscribeProductBlock } from "./Cours
 export { default as CoursePagePriceRegisterBuy } from "./CoursePage/CoursePagePrice/CoursePagePriceRegisterBuy/CoursePagePriceRegisterBuy";
 export { default as CoursePagePriceRegisterBuyForm } from "./CoursePage/CoursePagePrice/CoursePagePriceRegisterBuy/CoursePagePriceRegisterBuyForm";
 export { default as CoursePagePriceRegisterBuyProductBlock } from "./CoursePage/CoursePagePrice/CoursePagePriceRegisterBuy/CoursePagePriceRegisterBuyProductBlock";
-// CoursePageComparisonCourses
-export { default as CoursePageComparisonCourses } from "./CoursePage/CoursePageComparisonCourses/CoursePageComparisonCourses";
 // CoursePagePassing
 export { default as CoursePagePassing } from "./CoursePage/CoursePagePassing/CoursePagePassing";
 // CoursePageFaq

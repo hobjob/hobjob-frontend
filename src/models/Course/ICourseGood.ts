@@ -2,6 +2,9 @@ import { Image } from '../IImage'
 
 export interface CourseGoodLesson {
 	title: string;
+
+	materials: string[];
+
 	video: {
 		duration: string;
 		vertical: boolean;
@@ -25,11 +28,6 @@ export interface CourseGoodTool {
 	title: string
 }
 
-export interface CourseGoodFeedbacks {
-	images: Image[]
-	mediaImages: Image[]
-}
-
 export interface CourseGoodAdsVk {
 	subscribe: string
 	buy: string
@@ -49,7 +47,6 @@ export interface CourseGood {
 	skills: CourseGoodSkill[];
 	useSkills: CourseGoodUseSkill[];
 	tools: CourseGoodTool[];
-	feedbacks: CourseGoodFeedbacks;
 	adsVk: CourseGoodAdsVk;
 	HobJobProduction: boolean;
 }

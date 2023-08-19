@@ -1,193 +1,185 @@
 import React from "react";
-import {useDispatch} from "react-redux";
-import {Helmet} from "react-helmet";
-import {Navigate, useParams} from "react-router-dom";
-import {Link as LinkScroll} from "react-scroll";
+import { useDispatch } from "react-redux";
+import { Helmet } from "react-helmet";
+import { Navigate, useParams } from "react-router-dom";
+import { Link as LinkScroll } from "react-scroll";
 
-import {useTypedSelector} from "../hooks/useTypedSelector";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
-import {fetchCourseByUrl} from "../redux/actions/courses";
-import {addUserCourse} from "../redux/actions/user";
+import { fetchCourseByUrl } from "../redux/actions/courses";
+import { addUserCourse } from "../redux/actions/user";
 
 import {
-    CoursePageMain,
-    CoursePageContent,
-    CoursePageSkills,
-    CoursePageUseSkills,
-    CoursePageFeedbacks,
-    CoursePagePrice,
-    CoursePageComparisonCourses,
-    CoursePagePassing,
-    CoursePageTools,
-    CoursePageMaster,
-    CoursePageFaq,
-    CoursesSection,
-    Loader,
+	CoursePageMain,
+	CoursePageContent,
+	CoursePageSkills,
+	CoursePageUseSkills,
+	CoursePagePrice,
+	CoursePagePassing,
+	CoursePageTools,
+	CoursePageMaster,
+	CoursePageFaq,
+	CoursesSection,
+	Loader,
+	ServicesSection,
 } from "../components";
 
-import {checkIsAddCourse} from "../functions/checkIsAddCourse";
+import { checkIsAddCourse } from "../functions/checkIsAddCourse";
 
 const CoursePage: React.FC = () => {
-    const {url} = useParams();
+	const { url } = useParams();
 
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-    const {courseByUrl, isLoadedCourseByUrl} = useTypedSelector(
-        ({courses}) => courses
-    );
-    const categories = useTypedSelector(({categories}) => categories.items);
-    const isLoadedCategories = useTypedSelector(
-        ({categories}) => categories.isLoadedAllCategories
-    );
-    const masters = useTypedSelector(({masters}) => masters.items);
-    const isLoadedMasters = useTypedSelector(({masters}) => masters.isLoaded);
-    const {userInfo, isLoadedUserInfo} = useTypedSelector(({user}) => user);
+	const { courseByUrl, isLoadedCourseByUrl } = useTypedSelector(
+		({ courses }) => courses
+	);
+	const categories = useTypedSelector(({ categories }) => categories.items);
+	const isLoadedCategories = useTypedSelector(
+		({ categories }) => categories.isLoadedAllCategories
+	);
+	const masters = useTypedSelector(({ masters }) => masters.items);
+	const isLoadedMasters = useTypedSelector(({ masters }) => masters.isLoaded);
+	const { userInfo, isLoadedUserInfo } = useTypedSelector(({ user }) => user);
 
-    const [visibleButton, setVisibleButton] = React.useState(false);
+	const [visibleButton, setVisibleButton] = React.useState(false);
 
-    const [isLogin, setIsLogin] = React.useState(false);
-    const [isAdd, setIsAdd] = React.useState(false);
+	const [isLogin, setIsLogin] = React.useState(false);
+	const [isAdd, setIsAdd] = React.useState(false);
 
-    React.useEffect(() => {
+	React.useEffect(() => {
 		window.addEventListener("scroll", handlerScroll);
-		
-        return () => {
-            window.removeEventListener("scroll", handlerScroll);
-        };
+
+		return () => {
+			window.removeEventListener("scroll", handlerScroll);
+		};
 	}, []);
-	
-    React.useEffect(() => {
-        dispatch(fetchCourseByUrl(url ? url : ""));
-    }, [url]);
 
-    React.useEffect(() => {
-        if (
-            localStorage.getItem("accessToken") &&
-            isLoadedUserInfo &&
-            isLoadedCourseByUrl
-        ) {
-            setIsLogin(true);
+	React.useEffect(() => {
+		dispatch(fetchCourseByUrl(url ? url : ""));
+	}, [url]);
 
-            setIsAdd(checkIsAddCourse(userInfo.courses, courseByUrl._id));
-        }
-    }, [url, isLoadedUserInfo, isLoadedCourseByUrl]);
+	React.useEffect(() => {
+		if (
+			localStorage.getItem("accessToken") &&
+			isLoadedUserInfo &&
+			isLoadedCourseByUrl
+		) {
+			setIsLogin(true);
 
-    const handlerScroll = () => {
-        if (Math.floor(window.pageYOffset) > 200) {
-            setVisibleButton(true);
-        } else {
-            setVisibleButton(false);
-        }
-    };
+			setIsAdd(checkIsAddCourse(userInfo.courses, courseByUrl._id));
+		}
+	}, [url, isLoadedUserInfo, isLoadedCourseByUrl]);
 
-    const onClickAddCourse = () => {
-        dispatch(addUserCourse(courseByUrl._id));
-    };
+	const handlerScroll = () => {
+		if (Math.floor(window.pageYOffset) > 200) {
+			setVisibleButton(true);
+		} else {
+			setVisibleButton(false);
+		}
+	};
 
-    return (
-        <>
-            {isLoadedCourseByUrl && isLoadedMasters && isLoadedCategories ? (
-                Object.keys(courseByUrl).length ? (
-                    <>
-                        <Helmet>
-                            <title>{courseByUrl.title} - HobJob</title>
-                        </Helmet>
+	const onClickAddCourse = () => {
+		dispatch(addUserCourse(courseByUrl._id));
+	};
 
-                        {isLogin ? (
-                            isAdd ? (
-                                <button
-                                    className={`btn-small-round disabled course-page__btn ${
-                                        visibleButton ? "visible" : ""
-                                    }`}
-                                >
-                                    <svg
-                                        width="14"
-                                        height="13"
-                                        viewBox="0 0 14 13"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M1.44632 6.0186C1.79012 6.50143 2.22771 6.89948 2.59784 7.36158C3.55556 8.55726 4.36875 9.86064 5.23006 11.1246C5.25198 11.1568 5.76023 11.8699 5.79835 11.8034C5.96582 11.5113 6.09668 11.1775 6.23676 10.8715C6.66638 9.93305 7.1304 9.0248 7.65259 8.13343C8.54438 6.61116 9.43319 5.0821 10.4156 3.61607C10.8657 2.94443 11.395 2.35225 11.8904 1.71673C12.1063 1.43977 12.3942 1.14453 12.5389 0.82259"
-                                            stroke="#000000"
-                                            strokeWidth="1.3"
-                                            strokeLinecap="round"
-                                        />
-                                    </svg>
-                                    Добавлен
-                                </button>
-                            ) : (
-                                <button
-                                    className={`btn-small-round course-page__btn ${
-                                        visibleButton ? "visible" : ""
-                                    }`}
-                                    onClick={onClickAddCourse}
-                                >
-                                    Добавить в мое обучение
-                                </button>
-                            )
-                        ) : (
-                            <LinkScroll
-                                to="price"
-                                spy={true}
-                                smooth={true}
-                                offset={0}
-                                duration={1000}
-                                className={`btn-small-round course-page__btn ${
-                                    visibleButton ? "visible" : ""
-                                }`}
-                            >
-                                Начать обучение
-                            </LinkScroll>
-                        )}
+	return (
+		<>
+			{isLoadedCourseByUrl && isLoadedMasters && isLoadedCategories ? (
+				Object.keys(courseByUrl).length ? (
+					<>
+						<Helmet>
+							<title>{courseByUrl.title} - HobJob</title>
+						</Helmet>
 
-                        <CoursePageMain
-                            {...courseByUrl}
-                            isLogin={isLogin}
-                            isAdd={isAdd}
-                            master={masters[courseByUrl.masterId]}
-                            categories={categories}
-                            onClickAddCourse={onClickAddCourse}
-                        />
+						{isLogin ? (
+							isAdd ? (
+								<button
+									className={`btn-small-round disabled course-page__btn ${visibleButton ? "visible" : ""
+										}`}
+								>
+									<svg
+										width="14"
+										height="13"
+										viewBox="0 0 14 13"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M1.44632 6.0186C1.79012 6.50143 2.22771 6.89948 2.59784 7.36158C3.55556 8.55726 4.36875 9.86064 5.23006 11.1246C5.25198 11.1568 5.76023 11.8699 5.79835 11.8034C5.96582 11.5113 6.09668 11.1775 6.23676 10.8715C6.66638 9.93305 7.1304 9.0248 7.65259 8.13343C8.54438 6.61116 9.43319 5.0821 10.4156 3.61607C10.8657 2.94443 11.395 2.35225 11.8904 1.71673C12.1063 1.43977 12.3942 1.14453 12.5389 0.82259"
+											stroke="#000000"
+											strokeWidth="1.3"
+											strokeLinecap="round"
+										/>
+									</svg>
+									Добавлен
+								</button>
+							) : (
+								<button
+									className={`btn-small-round course-page__btn ${visibleButton ? "visible" : ""
+										}`}
+									onClick={onClickAddCourse}
+								>
+									Добавить в мое обучение
+								</button>
+							)
+						) : (
+							<LinkScroll
+								to="price"
+								spy={true}
+								smooth={true}
+								offset={0}
+								duration={1000}
+								className={`btn-small-round course-page__btn ${visibleButton ? "visible" : ""
+									}`}
+							>
+								Начать обучение
+							</LinkScroll>
+						)}
 
-                        <CoursePageContent isLogin={isLogin} isAdd={isAdd} />
+						<CoursePageMain
+							{...courseByUrl}
+							isLogin={isLogin}
+							isAdd={isAdd}
+							master={masters[courseByUrl.masterId]}
+							categories={categories}
+							onClickAddCourse={onClickAddCourse}
+						/>
 
-                        <CoursePageSkills {...courseByUrl} />
+						<CoursePageContent />
 
-                        <CoursePageUseSkills {...courseByUrl} />
+						<CoursePageSkills {...courseByUrl} />
 
-                        {courseByUrl.feedbacks.images.length ? (
-                            <CoursePageFeedbacks />
-                        ) : null}
+						<CoursePageUseSkills {...courseByUrl} />
 
-                        {userInfo._id !== "" ? null : <CoursePagePrice />}
+						{userInfo._id !== "" ? null : <CoursePagePrice />}
 
-                        <CoursePageComparisonCourses />
+						<ServicesSection />
 
-                        <CoursePagePassing />
+						{/* <CoursePagePassing /> */}
 
-                        <CoursePageTools {...courseByUrl} />
+						<CoursePageTools {...courseByUrl} />
 
-                        <CoursePageMaster
-                            master={masters[courseByUrl.masterId]}
-                        />
+						<CoursePageMaster
+							master={masters[courseByUrl.masterId]}
+						/>
 
-                        <CoursePageFaq />
+						<CoursePageFaq />
 
-                        <CoursesSection
-                            title="Вам может понравиться"
-                            description="Новые курсы добавляются каждый месяц"
-                            currentCourseId={courseByUrl._id}
-                        />
-                    </>
-                ) : (
-                    <Navigate to="/course" />
-                )
-            ) : (
-                <Loader />
-            )}
-        </>
-    );
+						<CoursesSection
+							title="Вам может понравиться"
+							description="Новые курсы добавляются каждый месяц"
+							currentCourseId={courseByUrl._id}
+						/>
+					</>
+				) : (
+					<Navigate to="/course" />
+				)
+			) : (
+				<Loader />
+			)}
+		</>
+	);
 };
 
 export default CoursePage;

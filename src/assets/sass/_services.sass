@@ -4,7 +4,12 @@
 
 	+openAnimation
 
-	&-wrapper
+	&__title
+		font-size: 52px
+		text-align: center
+		margin-bottom: 35px
+
+	&-block-wrapper
 		display: grid
 
 		grid-gap: 20px
@@ -130,7 +135,7 @@
 
 				& > a
 					color: $mainColor
-					border-bottom: 2px solid $mainColor
+					+linkBorderBottom
 
 		&-passing
 			grid-column: 2

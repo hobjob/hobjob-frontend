@@ -30,12 +30,12 @@ const CoursePageMasterWorksImage: React.FC = () => {
 
     return (
         <div
-            className={`course-page-master-section-works-modal course-page-master-section-works-modal-image ${
+            className={`course-page-master-works-modal course-page-master-works-modal-image ${
                 isCloseAnimation ? "close" : ""
             }`}
         >
             <div
-                className="course-page-master-section-works-modal-close"
+                className="course-page-master-works-modal-close"
                 onClick={() => dispatch(closeWorksImage())}
             >
                 <svg
@@ -52,13 +52,13 @@ const CoursePageMasterWorksImage: React.FC = () => {
             </div>
 
             <div
-                className="course-page-master-section-works-modal-image-content"
+                className="course-page-master-works-modal-image-content"
                 ref={CoursePageMasterWorksImageContentRef}
             >
                 <img
                     src={`${process.env.REACT_APP_IMAGE_DOMEN}/${currentUrlImage}`}
                     alt=""
-                    className="course-page-master-section-works-modal-image-content__image"
+                    className="course-page-master-works-modal-image-content__image"
                 />
             </div>
         </div>

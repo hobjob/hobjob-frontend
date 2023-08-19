@@ -1,29 +1,48 @@
 import React from "react";
 
-import {Master} from "../../../models/IMaster";
+import { Master } from "../../../models/IMaster";
 
 import {
-    Dzen,
-    Vk,
-    Youtube,
-    Instagram,
+	Dzen,
+	Vk,
+	Youtube,
+	Instagram,
 	Telegram,
 	Tiktok,
-    CoursePageMasterWorks,
+	CoursePageMasterWorks,
 } from "../../";
 
 interface CoursePageMasterProps {
-    master: Master;
+	master: Master;
 }
 
-const CoursePageMaster: React.FC<CoursePageMasterProps> = ({master}) => {
-    return (
-        <>
-            <section className="course-page-master">
-                <div className="container">
-                    <div className="course-page-master-wrapper">
-                        <h2 className="course-page-master__title title__mb">
-                            О мастере
+const CoursePageMaster: React.FC<CoursePageMasterProps> = ({ master }) => {
+	return (
+		<>
+			<section className="course-page-master">
+				<div className="container">
+					<div className="course-page-master-wrapper">
+						<div className="course-page-master-title">
+							<span>Здравствуйте! Я </span>
+							<div
+								className="course-page-master-title-avatar"
+								style={{
+									backgroundImage: `url('${process.env.REACT_APP_IMAGE_DOMEN}/${master.avatar.size_768}')`,
+								}}
+							></div>
+							<span>{master.name} {master.surname}</span>
+						</div>
+
+						<div className="course-page-master-description">
+							<p className="course-page-master-description__text">
+								{master.masterDescription}
+							</p>
+						</div>
+
+						<CoursePageMasterWorks />
+
+						{/* <h2 className="course-page-master__title title__mb">
+                            Мастер
                         </h2>
 
                         <div className="course-page-master-section">
@@ -107,12 +126,12 @@ const CoursePageMaster: React.FC<CoursePageMasterProps> = ({master}) => {
                             master.worksVideo.length ? (
                                 <CoursePageMasterWorks />
                             ) : null}
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </>
-    );
+                        </div> */}
+					</div>
+				</div>
+			</section>
+		</>
+	);
 };
 
 export default CoursePageMaster;

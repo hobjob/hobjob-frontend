@@ -195,7 +195,7 @@ const Header: React.FC = () => {
                                 ) : null}
                             </div>
                         ) : (
-                            <Link to="/go/login" className="header-login__link">
+                            <Link to="/go/login" className="btn header-login__link">
                                 Войти
                                 <svg
                                     viewBox="0 0 14 14"

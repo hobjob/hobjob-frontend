@@ -1,6 +1,6 @@
 import React from "react";
 
-import {MasterWorkVideo} from "../../../../../models/IMaster";
+import {MasterWorkVideo} from "../../../../models/IMaster";
 
 interface CoursePageMasterWorksItemVideoProps extends MasterWorkVideo {
     onClickOpenVideo: () => void;
@@ -11,13 +11,13 @@ const CoursePageMasterWorksItemVideo: React.FC<
 > = ({cover, onClickOpenVideo}) => {
     return (
         <div
-            className="course-page-master-section-works-slider-item-video"
+            className="course-page-master-works-item-video"
             style={{
                 backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${cover.size_1024}")`,
             }}
             onClick={onClickOpenVideo}
         >
-            <button className="course-page-master-section-works-slider-item-video__btn">
+            <button className="course-page-master-works-item-video__btn">
                 <svg
                     width="25"
                     height="25"

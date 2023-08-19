@@ -32,10 +32,6 @@ const initialState: CoursesState = {
 		skills: [],
 		useSkills: [],
 		tools: [],
-		feedbacks: {
-			images: [],
-			mediaImages: []
-		},
 		adsVk: {
 			subscribe: "",
 			buy: ""
@@ -64,10 +60,6 @@ const initialState: CoursesState = {
 		skills: [],
 		useSkills: [],
 		tools: [],
-		feedbacks: {
-			images: [],
-			mediaImages: []
-		},
 		adsVk: {
 			subscribe: "",
 			buy: ""

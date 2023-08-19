@@ -31,12 +31,12 @@ const CoursePageMasterWorksVideo: React.FC = () => {
 
     return (
         <div
-            className={`course-page-master-section-works-modal course-page-master-section-works-modal-video ${
+            className={`course-page-master-works-modal course-page-master-works-modal-video ${
                 isCloseAnimation ? "close" : ""
             }`}
         >
             <div
-                className="course-page-master-section-works-modal-close"
+                className="course-page-master-works-modal-close"
                 onClick={() => dispatch(closeWorksVideo())}
             >
                 <svg
@@ -53,7 +53,7 @@ const CoursePageMasterWorksVideo: React.FC = () => {
             </div>
 
             <div
-                className="course-page-master-section-works-modal-video-iframe"
+                className="course-page-master-works-modal-video-iframe"
                 ref={CoursePageMasterWorksVideoContentRef}
             >
                 <ReactPlayer

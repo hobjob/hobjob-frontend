@@ -1,32 +1,64 @@
 import React from "react";
-
+import { useDispatch } from "react-redux";
 
 import {
-    CoursePageMasterWorksVideo,
-    CoursePageMasterWorksImage,
-    CoursePageMasterWorksSlider,
+	CoursePageMasterWorksVideo,
+	CoursePageMasterWorksImage,
+	CoursePageMasterWorksItemVideo,
+	CoursePageMasterWorksItemImage,
 } from "../../../";
 
-import {useTypedSelector} from "../../../../hooks/useTypedSelector";
+import {
+	openWorksVideo,
+	openWorksImage,
+} from "../../../../redux/actions/coursePage";
+
+import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 
 const CoursePageMasterWorks: React.FC = () => {
-    const {
-        works: {isOpenVideo, isOpenImage},
-    } = useTypedSelector(({coursePage}) => coursePage);
+	const dispatch = useDispatch();
 
-    return (
-        <div className="course-page-master-section-works">
-            <h2 className="course-page-master-section-works__title">
-                Работы мастера
-            </h2>
+	const {
+		works: { isOpenVideo, isOpenImage },
+	} = useTypedSelector(({ coursePage }) => coursePage);
 
-            {isOpenVideo ? <CoursePageMasterWorksVideo /> : null}
+	const { items } = useTypedSelector(({ masters }) => masters);
+	const { courseByUrl } = useTypedSelector(({ courses }) => courses);
 
-            {isOpenImage ? <CoursePageMasterWorksImage /> : null}
+	return (
+		<div className="course-page-master-works">
+			<h2 className="course-page-master-works__title">
+				Работы мастера
+			</h2>
 
-            <CoursePageMasterWorksSlider />
-        </div>
-    );
+			{isOpenVideo ? <CoursePageMasterWorksVideo /> : null}
+
+			{isOpenImage ? <CoursePageMasterWorksImage /> : null}
+
+
+			<div className="course-page-master-works-items-wrapper">
+				{items[courseByUrl.masterId].worksVideo.map((work, index) => (
+					<CoursePageMasterWorksItemVideo
+						{...work}
+						onClickOpenVideo={() =>
+							dispatch(openWorksVideo(work.url))
+						}
+						key={`course-page-master-works-item-video-${index}`}
+					/>
+				))}
+
+				{items[courseByUrl.masterId].worksImage.map((work, index) => (
+					<CoursePageMasterWorksItemImage
+						{...work}
+						onClickOpenImage={() =>
+							dispatch(openWorksImage(work.size_2048))
+						}
+						key={`course-page-master-works-item-image-${index}`}
+					/>
+				))}
+			</div>
+		</div>
+	);
 };
 
 export default CoursePageMasterWorks;
