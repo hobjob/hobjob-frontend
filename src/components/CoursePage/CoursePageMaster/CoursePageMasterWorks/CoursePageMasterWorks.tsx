@@ -31,9 +31,9 @@ const CoursePageMasterWorks: React.FC = () => {
 				Работы мастера
 			</h2>
 
-			{isOpenVideo ? <CoursePageMasterWorksVideo /> : null}
+			<CoursePageMasterWorksVideo />
 
-			{isOpenImage ? <CoursePageMasterWorksImage /> : null}
+			<CoursePageMasterWorksImage />
 
 
 			<div className="course-page-master-works-items-wrapper">

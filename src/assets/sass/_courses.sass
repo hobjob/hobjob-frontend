@@ -24,7 +24,7 @@
 
 	&-catalog
 		margin-top: 35px
-		
+
 		width: 100%
 
 		&-block-wrapper
@@ -62,7 +62,7 @@
 					width: 100%
 					height: 270px
 
-					border-radius: 40px 40px 0 0
+					border-radius: 50px 50px 0 0
 
 				&-cover
 					display: block
@@ -123,7 +123,10 @@
 				&__title
 					display: block
 
-					padding: 15px
+					padding-top: 15px
+					padding-left: 15px
+					padding-right: 15px
+
 					font-size: 24px
 
 					width: 95%
@@ -133,7 +136,7 @@
 			&-bottom
 				padding: 15px
 
-				&__link
+				&__btn
 					min-width: 100%
 					padding: 17px 20px
 					font-size: 16px
@@ -192,4 +195,77 @@
 		align-items: center
 
 	&__btn
-		width: 250px
+		margin-top: 10px
+		width: 220px
+
+// media
+@media screen and ( max-width: 1200px )
+	.courses
+		&-categories
+			width: 100%
+
+		&-section
+			&__description
+				width: 75%
+
+		&-catalog
+			&-block
+				width: calc( 50% - 10px )
+
+@media screen and ( max-width: 750px )
+	.courses
+		&-section
+			&__title
+				margin-bottom: 15px
+
+			&__description
+				width: 100%
+				font-size: 18px
+
+				margin-bottom: 25px
+
+		&-catalog
+			&-block
+				&-top
+					&-cover-wrapper
+						height: 220px
+
+					&-filters
+						flex-direction: column
+						align-items: flex-start
+
+						&__category
+							margin-bottom: 15px
+
+					&__title
+						font-size: 21px
+
+@media screen and ( max-width: 600px )
+	.courses
+		&-categories
+			margin-top: 15px
+
+			overflow-x: scroll
+			flex-wrap: nowrap
+
+			&__btn
+				margin-right: 3px
+				margin-bottom: 0
+
+		&-section
+			margin: 25px 0
+			
+			&__btn
+				margin: 0
+
+		&-catalog
+			&-block
+				width: 100%
+
+				margin: 0 0 10px 0
+
+@media screen and ( max-width: 550px )
+	.courses
+		&-section
+			&__description
+				font-size: 14px

@@ -14,17 +14,18 @@ const PassingMaterials: React.FC<PassingMaterialsProps> = ({
     downloadFunc,
 }) => {
     return (
-        <div className="passing-lesson-info-block-materials">
-            <h4 className="passing-lesson-info-block-materials__title">
+        <div className="passing-lesson-info-materials">
+            <h4 className="passing-lesson-info-materials__title">
                 Материалы к уроку
-            </h4>
-            <div className="passing-lesson-info-block-materials-items-wrapper">
+			</h4>
+			
+            <div className="passing-lesson-info-materials-items-wrapper">
                 {materials.map((item, index) => (
                     <PassingMaterialsItem
                         {...item}
                         index={index}
                         downloadFile={downloadFunc}
-                        key={`passing-lesson-info-block-materials-item-${index}`}
+                        key={`passing-lesson-info-materials-item-${index}`}
                     />
                 ))}
             </div>

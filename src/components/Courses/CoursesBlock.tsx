@@ -86,7 +86,7 @@ const CoursesBlock: React.FC<CoursesBlockProps> = ({
             <div className="courses-catalog-block-bottom">
                 {isLogin ? (
                     isAdd ? (
-                        <button className="btn disabled courses-catalog-block-bottom__link">
+                        <button className="btn disabled courses-catalog-block-bottom__btn">
                             <svg
                                 width="14"
                                 height="13"
@@ -105,7 +105,7 @@ const CoursesBlock: React.FC<CoursesBlockProps> = ({
                         </button>
                     ) : isSubscribe ? (
                         <button
-                            className="btn courses-catalog-block-bottom__link"
+                            className="btn courses-catalog-block-bottom__btn"
                             onClick={() => onClickAddCourse(_id)}
                         >
                             Добавить в мое обучение
@@ -113,7 +113,7 @@ const CoursesBlock: React.FC<CoursesBlockProps> = ({
                     ) : (
                         <Link
                             to={`/course/${url}`}
-                            className="btn courses-catalog-block-bottom__link"
+                            className="btn courses-catalog-block-bottom__btn"
                         >
                             Начать обучение
                         </Link>
@@ -121,7 +121,7 @@ const CoursesBlock: React.FC<CoursesBlockProps> = ({
                 ) : (
                     <Link
                         to={`/course/${url}`}
-                        className="btn courses-catalog-block-bottom__link"
+                        className="btn courses-catalog-block-bottom__btn"
                     >
                         Смотреть
                     </Link>

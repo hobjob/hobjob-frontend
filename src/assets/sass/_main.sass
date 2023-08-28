@@ -106,3 +106,77 @@
 				&:hover
 					background-color: $mainColor
 					color: $white
+
+// media
+@media screen and ( max-width: 1200px )
+	.main
+		&-text
+			&__title
+				font-size: 54px
+				margin-bottom: 25px
+
+			&__image
+				width: 700px
+				bottom: -75px
+
+		&-categories
+			&-text
+				&__item
+					font-size: 28px
+
+@media screen and ( max-width: 900px )
+	.main
+		&-text
+			&__title
+				font-size: 42px
+
+			&__image
+				width: 400px
+
+				bottom: -175px
+
+				right: 50%
+
+				transform: rotate(-3deg) translateX(50%)
+
+		&-categories
+			&-text
+				&__item
+					margin: 5px
+					padding: 12px 15px
+
+					font-size: 24px
+					border: 1.5px solid $mainColor
+
+@media screen and ( max-width: 600px )
+	.main
+		margin: 25px 0 125px 0
+
+		&__btn
+			padding: 15px
+
+			font-size: 15px
+
+			right: 10px
+			bottom: 10px
+
+		&-text
+			&__title
+				font-size: 24px
+				margin-bottom: 15px
+
+			&__image
+				top: calc( 100% + 25px )
+
+				transform: rotate(-3deg) translateX(40%)
+
+				width: 75%
+
+		&-categories
+			&-text
+				&-items-wrapper
+				&__item
+					margin: 3px
+
+					font-size: 16px
+					padding: 10px

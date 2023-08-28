@@ -17,9 +17,7 @@ const initialState: CoursePageState = {
 		currentUrlVideo: "",
 
 		isOpenImage: false,
-		currentUrlImage: "",
-
-		isCloseAnimation: false
+		currentUrlImage: ""
 	}
 }
 
@@ -90,16 +88,6 @@ const coursePage = (state = initialState, action: CoursePageActions) => {
 			works: {
 				...state.works,
 				currentUrlImage: action.payload
-			}
-		}
-	}
-
-	if (action.type === CoursePageActionTypes.SET_WORKS_IS_CLOSE_ANIMATION) {
-		return {
-			...state,
-			works: {
-				...state.works,
-				isCloseAnimation: action.payload
 			}
 		}
 	}

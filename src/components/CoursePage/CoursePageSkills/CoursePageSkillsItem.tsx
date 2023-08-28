@@ -1,20 +1,20 @@
 import React from "react";
 
-import {CourseGoodSkill} from "../../../models/Course/ICourseGood";
+import { CourseGoodSkill } from "../../../models/Course/ICourseGood";
 
 const CoursePageSkillsItem: React.FC<CourseGoodSkill> = ({
-    title,
-    description,
+	title,
+	description,
 }) => {
-    return (
-        <div className="course-page-skills-item">
-            <h3 className="course-page-skills-item__title">{title}</h3>
+	return (
+		<div className="course-page-skills-item">
+			<h3 className="course-page-skills-item__title">{title}</h3>
 
-            <p className="course-page-skills-item__description">
-                {description}
-            </p>
-        </div>
-    );
+			<p className="course-page-skills-item__description">
+				{description}
+			</p>
+		</div>
+	);
 };
 
 export default CoursePageSkillsItem;

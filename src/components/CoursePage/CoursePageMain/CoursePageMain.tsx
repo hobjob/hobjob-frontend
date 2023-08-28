@@ -6,6 +6,8 @@ import { CourseGood } from "../../../models/Course/ICourseGood";
 import { Category } from "../../../models/ICategory";
 import { Master } from "../../../models/IMaster";
 
+import { checkDeclension } from "../../../functions/checkDeclension";
+
 interface CoursePageMainProps extends CourseGood {
 	categories: { [key: string]: Category };
 	master: Master;
@@ -21,10 +23,16 @@ const CoursePageMain: React.FC<CoursePageMainProps> = ({
 	master,
 	categories,
 	image,
+	lessons,
+	materialsCount,
+	minutesLength,
 	isLogin,
 	isAdd,
 	onClickAddCourse,
 }) => {
+	let hours = minutesLength > 59 ? Math.round(minutesLength / 60) : 0
+	let minutes = minutesLength - hours * 60
+
 	return (
 		<>
 			<section className="course-page-main">
@@ -58,25 +66,31 @@ const CoursePageMain: React.FC<CoursePageMainProps> = ({
 								{title}
 							</h2>
 
-							<p className="description course-page-main-text__description">
+							<p className="course-page-main-text__description">
 								{description}
 							</p>
 
 							<div className="course-page-main-text-info">
 								<p className="course-page-main-text-info__text">
-									3 урока
+									{checkDeclension(lessons.length, ["урок", "урока", "уроков"]).title}
 								</p>
 
-								<div className="course-page-main-text-info-circle"></div>
+								{materialsCount ? <>
+									<p className="course-page-main-text-info__text">
+										{checkDeclension(materialsCount, ["материал", "материала", "материалов"]).title}
+									</p>
+								</> : null}
 
 								<p className="course-page-main-text-info__text">
-									2 материала
-								</p>
-
-								<div className="course-page-main-text-info-circle"></div>
-
-								<p className="course-page-main-text-info__text">
-									4 часа
+									{hours ?
+										<>
+											{checkDeclension(hours, ["час", "часа", "часов"]).title}
+											{" "}
+											{minutes ? checkDeclension(minutes, ["минута", "минуты", "минут"]).title : null}
+										</>
+										:
+										checkDeclension(minutesLength, ["минута", "минуты", "минут"]).title
+									}
 								</p>
 							</div>
 

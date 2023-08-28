@@ -6,8 +6,7 @@
 
 	opacity: 1
 
-	background-filter: saturate(180%) blur(20px)
-	background: #fff
+	background-color: #fff
 
 	padding: 15px 25px
 
@@ -24,46 +23,45 @@
 		justify-content: space-between
 		align-items: center
 
-	&-right-block, &-left-block
+	&-block
 		display: flex
 		align-items: center
 
-	&-logo
-		&__img
-			user-select: none
-			width: 60px
+		&-logo
+			&__img
+				user-select: none
+				width: 60px
 
-			will-change: transform
+				will-change: transform
 
-			+transition
+				+transition
 
-			&:active
-				+transformScale
+				&:active
+					+transformScale
 
-	&-nav
-		margin-left: 75px
+		&-nav
+			margin-left: 75px
 
-		&__link
-			display: inline-block
+			&__link
+				display: inline-block
 
-			font-size: 21px
+				font-size: 21px
 
-			margin: 0 20px
+				margin: 0 20px
 
-			will-change: transform
+				will-change: transform
 
-			+transition
+				+transition
 
-			&:hover
-				color: $mainColor
+				&:hover
+					color: $mainColor
 
-			&.active
-				color: $mainColor
+				&.active
+					color: $mainColor
 
-			&:active
-				+transformScale
+				&:active
+					+transformScale
 
-	&-login
 		&__link
 			display: inline-flex
 			align-items: center
@@ -88,238 +86,196 @@
 			&:active
 				+transformScale
 
-	&-user
-		display: flex
-		align-items: center
-		+openAnimation
+		&-user
+			&-avatar
+				margin-left: 15px
 
-		&-nav
-			display: flex
-			margin-right: 25px
-
-			&__link
-				height: 100%
-
-				display: inline-block
 				cursor: pointer
-				user-select: none
 
-				border-radius: 100px
-				padding: 15px 30px
+				width: 60px
+				height: 60px
+
+				border-radius: 50%
+
+				+backgroundSetting
+				+transition
+
+				&.active
+					opacity: .5
+
+			&-menu
+				position: absolute
+				width: 220px
+
+				right: 15px
+				top: calc( 100% + 15px )
+
+				padding: 15px
+
 				background-color: $backgroundGray
 
-				margin-right: 10px
+				visibility: hidden
+				pointer-events: none
+				opacity: 0
 
 				will-change: transform
 
+				+borderRadius
 				+transition
-
-				&:last-child
-					margin-right: 0
-
-				&:active
-					+transformScale
-
-				&:hover
-					background-color: $mainColor
-					color: $white
+				+boxShadow
 
 				&.active
-					background-color: $mainColor
-					color: $white
+					top: calc( 100% + 10px )
 
-					&:hover
-						background-color: $mainColor
+					visibility: visible
+					pointer-events: auto
+					opacity: 1
 
-		&-avatar
-			cursor: pointer
-			width: 55px
-			height: 55px
-			border-radius: 50%
-			+backgroundSetting
+				&__link
+					cursor: pointer
+
+					display: block
+					font-size: 21px
+
+					margin-bottom: 20px
+
+					+transition
+
+					&.active
+						color: $mainColor
+
+					&:last-child
+						margin-bottom: 0
+
+	&-modal-menu
+		position: absolute
+		width: 250px
+
+		right: 15px
+		top: calc( 100% + 15px )
+
+		padding: 15px
+
+		background-color: $backgroundGray
+
+		visibility: hidden
+		pointer-events: none
+		opacity: 0
+
+		will-change: transform
+
+		+borderRadius
+		+transition
+		+boxShadow
+
+		&.active
+			top: calc( 100% + 10px )
+
+			visibility: visible
+			pointer-events: auto
+			opacity: 1
+
+		&__btn
+			display: none
+			align-items: center
+
+			font-size: 24px
+			color: $mainColor
+			border: 1px solid $mainColor
+			background-color: transparent
+			border-radius: 100px
+
+			padding: 10px 20px
+
+			will-change: transform
+
+			margin-left: 15px
+
 			+transition
 
-			&.active
-				opacity: .5
+			&-avatar
+				margin-left: 10px
 
-		&-menu
-			z-index: 10
-			width: 250px
-			position: absolute
-			top: 100px
-			right: 0
+				width: 35px
+				height: 35px
 
-			overflow: hidden
+				border-radius: 50%
 
-			padding: 10px 0
+				+backgroundSetting
 
-			background-color: $white
-			+openPopup
+		&-block
+			padding-bottom: 10px
+			border-bottom: 1px solid $borderGray
+			margin-bottom: 10px
 
-			+boxShadow
-			+borderRadiusBlock
+			&:last-child
+				padding-bottom: 0
+				border-bottom: none
+				margin-bottom: 0
 
 			&__link
 				cursor: pointer
-				user-select: none
-				display: block
-				padding: 15px 20px
-				+transition
 
-				&:hover
-					background-color: #FAFAFA
-					color: $black
+				display: flex
+				align-items: center
+
+				font-size: 21px
+
+				margin-bottom: 20px
 
 				&.active
 					color: $mainColor
 
-				&.disabled
-					cursor: auto
-					pointer-events: none
-					color: $gray
+				&:last-child
+					margin-bottom: 0
 
-			&.close
-				+closePopup
+				& > img
+					margin-left: 10px
 
-	&-menu-button
-		display: none
-		margin-left: 25px
+					width: 35px
+					height: 35px
 
-// header-modal-menu
-.header-modal-menu
-	&-wrapper
-		z-index: 100
-		position: fixed
+					border-radius: 50%
 
-		top: 0
-		left: 0
+// media
+@media screen and ( max-width: 1000px )
+	.header
+		&-block
+			&-nav
+				display: none
 
-		width: 100%
-		height: 100%
+		&-modal-menu
+			&__btn
+				display: flex
 
-		background-color: rgba(0, 0, 0, 0.6)
-		+openAnimation
+@media screen and ( max-width: 500px )
+	.header
+		padding: 10px
 
-		&.hidden
-			+closeAnimation
+		&-block
+			&__link
+				padding: 10px 15px
+				font-size: 21px
 
-	&-content
-		overflow-y: auto
-		overflow-x: hidden
+		&-modal-menu
+			&__btn
+				margin-left: 5px
 
-		position: absolute
+				padding: 10px 15px
 
-		top: 50%
-		left: 50%
+				font-size: 21px
 
-		transform: translate(-50%, -50%)
+@media screen and ( max-width: 400px )
+	.header
+		&-block
+			&__link
+				padding: 10px
+				font-size: 16px
 
-		width: 95%
-		height: 95%
+				& > svg
+					width: 12px
 
-		padding: 35px
-
-		background-color: $white
-
-		+borderRadiusBlock
-
-		&-close
-			position: absolute
-			cursor: pointer
-
-			will-change: transform
-
-			top: 25px
-			right: 25px
-
-			width: 60px
-			height: 60px
-
-			border-radius: 100%
-
-			+transition
-			+boxShadow
-
-			&:hover
-				transform: scale(0.98)
-
-			&:active
-				+transformScale
-
-		&-nav
-			display: flex
-			flex-direction: column
-			justify-content: space-between
-
-			height: 100%
-
-			&-block
-				&-main
-					display: flex
-					flex-direction: column
-
-					width: 100%
-					margin-bottom: 25px
-
-					&__link
-						display: block
-						font-size: 48px
-
-						padding-bottom: 10px
-						margin-bottom: 10px
-
-						border-bottom: 1px solid $borderGray
-
-						+transition
-						+PtSerif
-
-						&:last-child
-							margin-bottom: 0
-
-						&.active
-							color: $mainColor
-							margin-left: 5px
-
-						&:hover
-							color: $mainColor
-							margin-left: 5px
-
-				&-user
-					width: 100%
-
-					&__link
-						text-align: center
-
-						display: flex
-						align-items: center
-						justify-content: center
-
-						font-size: 36px
-
-						color: $mainColor
-						border: 1px solid $mainColor
-
-						padding: 15px
-
-						border-radius: 100px
-
-						margin-bottom: 10px
-
-						+transition
-
-						&:hover
-							background-color: $mainColor
-							color: $white
-
-						&:last-child
-							margin-bottom: 0
-
-						&-image
-							margin-left: 15px
-
-							min-width: 50px
-							height: 50px
-
-							border-radius: 50%
-
-							+backgroundSetting
+		&-modal-menu
+			&__btn
+				padding: 10px
+				font-size: 16px

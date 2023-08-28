@@ -19,8 +19,6 @@ export interface CoursePageState {
 
 		isOpenImage: boolean
 		currentUrlImage: string
-
-		isCloseAnimation: boolean
 	}
 }
 
@@ -34,8 +32,6 @@ export enum CoursePageActionTypes {
 
 	SET_WORKS_IS_OPEN_IMAGE = "SET_WORKS_IS_OPEN_IMAGE",
 	SET_WORKS_CURRENT_URL_IMAGE = "SET_WORKS_CURRENT_URL_IMAGE",
-
-	SET_WORKS_IS_CLOSE_ANIMATION = "SET_WORKS_IS_CLOSE_ANIMATION",
 }
 
 interface setPriceCurrentSection {
@@ -74,9 +70,4 @@ interface setWorksCurrentUrlImage {
 	payload: string
 }
 
-interface setWorksIsCloseAnimation {
-	type: CoursePageActionTypes.SET_WORKS_IS_CLOSE_ANIMATION,
-	payload: boolean
-}
-
-export type CoursePageActions = setPriceCurrentSection | setPriceIsCloseAnimation | setPriceTypeSubscribe | setWorksIsOpenVideo | setWorksCurrentUrlVideo | setWorksIsOpenImage | setWorksCurrentUrlImage | setWorksIsCloseAnimation
+export type CoursePageActions = setPriceCurrentSection | setPriceIsCloseAnimation | setPriceTypeSubscribe | setWorksIsOpenVideo | setWorksCurrentUrlVideo | setWorksIsOpenImage | setWorksCurrentUrlImage

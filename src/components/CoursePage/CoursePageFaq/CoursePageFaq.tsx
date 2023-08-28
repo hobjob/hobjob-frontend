@@ -40,7 +40,7 @@ const CoursePageFaq: React.FC = () => {
         <section className="course-page-faq">
             <div className="container">
                 <div className="course-page-faq-wrapper">
-                    <h2 className="title__mb course-page-faq__title">
+                    <h2 className="course-page__title mb course-page-faq__title">
                         Часто задаваемые вопросы
                     </h2>
 

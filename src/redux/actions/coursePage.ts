@@ -52,21 +52,9 @@ export const closeWorksVideo = () => (dispatch: Dispatch<CoursePageActions>) => 
 	});
 
 	dispatch({
-		type: CoursePageActionTypes.SET_WORKS_IS_CLOSE_ANIMATION,
-		payload: true
+		type: CoursePageActionTypes.SET_WORKS_IS_OPEN_VIDEO,
+		payload: false
 	});
-
-	setTimeout(() => {
-		dispatch({
-			type: CoursePageActionTypes.SET_WORKS_IS_OPEN_VIDEO,
-			payload: false
-		});
-
-		dispatch({
-			type: CoursePageActionTypes.SET_WORKS_IS_CLOSE_ANIMATION,
-			payload: false
-		});
-	}, 180);
 }
 
 
@@ -89,19 +77,7 @@ export const closeWorksImage = () => (dispatch: Dispatch<CoursePageActions>) => 
 	});
 
 	dispatch({
-		type: CoursePageActionTypes.SET_WORKS_IS_CLOSE_ANIMATION,
-		payload: true
+		type: CoursePageActionTypes.SET_WORKS_IS_OPEN_IMAGE,
+		payload: false
 	});
-
-	setTimeout(() => {
-		dispatch({
-			type: CoursePageActionTypes.SET_WORKS_IS_OPEN_IMAGE,
-			payload: false
-		});
-
-		dispatch({
-			type: CoursePageActionTypes.SET_WORKS_IS_CLOSE_ANIMATION,
-			payload: false
-		});
-	}, 180);
 }

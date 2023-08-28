@@ -4,37 +4,62 @@ import { Link as LinkScroll } from "react-scroll";
 import { CourseGoodLesson } from "../../../../models/Course/ICourseGood";
 
 interface CoursePageContentLessonsItemProps extends CourseGoodLesson {
-	num: number;
+	num: number
 }
 
 const CoursePageContentLessonsItem: React.FC<
 	CoursePageContentLessonsItemProps
-> = ({ num, title, description, materials }) => {
+> = ({ num, image, title, description, materials }) => {
 	return (
 		<>
 			<LinkScroll
-				to={"price"}
+				to={num === 1 ? "" : "price"}
 				spy={true}
 				smooth={true}
 				offset={-25}
 				duration={1000}
 				className="course-page-content-list-lessons-item"
 			>
-				<h4 className="course-page-content-list-lessons-item__title">
-					{title}
-				</h4>
-				{description !== "" ? (
-					<p className="course-page-content-list-lessons-item__description">
-						{description}
-					</p>
-				) : null}
+				<div className="course-page-content-list-lessons-item-top">
+					<div className="course-page-content-list-lessons-item-top-image" style={{
+						backgroundImage: `url('${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_768}')`,
+					}}>
+						{num === 1 ? <>
+							<div className="course-page-content-list-lessons-item-top-image-icon">
+								<svg
+									viewBox="0 0 50 50"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<circle cx="25" cy="25" r="25" fill="white" />
+									<path
+										d="M33 24.5L20.25 31.8612V17.1388L33 24.5Z"
+										fill="black"
+									/>
+								</svg>
+							</div>
+
+							<div className="course-page-content-list-lessons-item-top-image-plaecholder"></div>
+						</> : null}
+					</div>
+
+					<div className="course-page-content-list-lessons-item-top-text">
+						<h4 className="course-page-content-list-lessons-item-top-text__title">
+							{title}
+						</h4>
+
+						{description !== "" ? (
+							<p className="course-page-content-list-lessons-item-top-text__description">
+								{description}
+							</p>
+						) : null}
+					</div>
+				</div>
 
 				{materials.length ? <div className="course-page-content-list-lessons-item-materials">
 					{materials.map((material, index) => (
 						<div className="course-page-content-list-lessons-item-materials-item" key={`course-page-content-list-lessons-item-materials-item-${index}`}>
 							<svg
-								width="20"
-								height="20"
 								viewBox="0 0 20 20"
 								fill="none"
 								xmlns="http://www.w3.org/2000/svg"

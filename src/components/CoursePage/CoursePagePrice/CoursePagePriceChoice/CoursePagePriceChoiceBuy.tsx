@@ -30,10 +30,6 @@ const CoursePagePriceChoiceBuy: React.FC<CoursePagePriceBuyProps> = ({
 	return (
 		<div className="course-page-price-blocks-buy">
 			<div className="course-page-price-blocks-buy-text">
-				<p className="course-page-price-blocks-buy-text__sale">
-					Скидка 50%
-				</p>
-
 				<p className="course-page-price-blocks-buy-text__subtitle">
 					Курс навсегда
 				</p>
@@ -43,6 +39,10 @@ const CoursePagePriceChoiceBuy: React.FC<CoursePagePriceBuyProps> = ({
 						990₽
 						<span>1980₽</span>
 					</h3>
+
+					<p className="course-page-price-blocks-buy-text-price__sale">
+						Скидка 50%
+					</p>
 				</div>
 
 				<div className="course-page-price-blocks-buy-text-list">
@@ -101,13 +101,6 @@ const CoursePagePriceChoiceBuy: React.FC<CoursePagePriceBuyProps> = ({
 					src={`${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_1024}`}
 				/>
 			</div>
-
-			<div
-				className="course-page-price-blocks-buy-image-media"
-				style={{
-					backgroundImage: `url(${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_1024})`,
-				}}
-			></div>
 		</div>
 	);
 };

@@ -14,22 +14,17 @@ const CoursePagePriceRegisterBuyProductBlock: React.FC<
 					Курс навсегда
 				</p>
 
-				<h2 className="course-page-price-register-buy-product-block-text__title">
-					{title}
-				</h2>
+				<div className="course-page-price-register-buy-product-block-text-price">
+					<h3 className="course-page-price-register-buy-product-block-text-price__title">
+						990₽
+						<span>1980₽</span>
+					</h3>
 
-				{/* <p className="course-page-price-register-buy-product-block-text__subprice">
-                    Курс навсегда
-                </p> */}
-				{/* <div className="course-page-price-register-buy-product-block-text-price">
-                    <h3 className="course-page-price-register-buy-product-block-text-price__title">
-                        990₽
-                        <span>1980₽</span>
-                    </h3>
-                    <p className="course-page-price-register-buy-product-block-text-price__sale">
-                        -50%
-                    </p>
-                </div> */}
+					<p className="course-page-price-register-buy-product-block-text-price__sale">
+						Скидка 50%
+					</p>
+				</div>
+				
 				<div className="course-page-price-register-buy-product-block-text-list">
 					<p className="course-page-price-register-buy-product-block-text-list__item">
 						<svg

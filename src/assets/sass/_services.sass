@@ -6,7 +6,6 @@
 
 	&__title
 		font-size: 52px
-		text-align: center
 		margin-bottom: 35px
 
 	&-block-wrapper
@@ -34,6 +33,19 @@
 
 		+borderRadiusBlock
 
+		&__title
+			font-size: 40px
+			margin-bottom: 15px
+
+		&__description
+			width: 75%
+			font-size: 24px
+
+			& > a
+				white-space: nowrap
+				color: $mainColor
+				+linkBorderBottom
+
 		&-education
 			display: flex
 			flex-direction: column
@@ -46,14 +58,6 @@
 				padding-top: 35px
 				padding-left: 35px
 				padding-bottom: 50px
-
-				&__title
-					font-size: 40px
-					margin-bottom: 15px
-
-				&__description
-					width: 75%
-					font-size: 24px
 
 			&__image
 				width: 100%
@@ -68,14 +72,6 @@
 
 			padding-top: 35px
 			padding-left: 35px
-
-			&__title
-				font-size: 40px
-				margin-bottom: 15px
-
-			&__description
-				width: 75%
-				font-size: 24px
 
 			&__icon
 				position: absolute
@@ -99,10 +95,7 @@
 			padding: 35px
 
 			&__title
-				max-width: 75%
-
-				font-size: 40px
-				margin-bottom: 15px
+				width: 70%
 
 			&__image
 				width: 100%
@@ -125,18 +118,14 @@
 					margin-bottom: 15px
 
 				&__image
-					width: 250px
+					width: 75%
 
 					user-select: none
 					pointer-events: none
 
 			&__description
-				font-size: 24px
-
-				& > a
-					color: $mainColor
-					+linkBorderBottom
-
+				width: 100%
+				
 		&-passing
 			grid-column: 2
 
@@ -145,9 +134,6 @@
 			padding-bottom: 35px
 
 			&__title
-				max-width: 75%
-
-				font-size: 40px
 				margin-bottom: 35px
 
 			&__image
@@ -155,3 +141,100 @@
 
 				user-select: none
 				pointer-events: none
+
+// media
+@media screen and ( max-width: 1300px )
+	.services
+		&-block
+			&__title
+				font-size: 32px
+
+			&__description
+				width: 90%
+
+				font-size: 18px
+
+			&-education
+				&-text
+					padding-top: 20px
+					padding-left: 20px
+					padding-bottom: 30px
+
+			&-community
+				padding-top: 20px
+				padding-left: 20px
+
+			&-courses
+				padding: 20px
+
+				&__title
+					width: 100%
+
+			&-hobjobgood
+				padding: 20px
+
+				&-logo
+					&__subtitle
+						font-size: 18px
+
+			&-passing
+				padding-top: 20px
+				padding-left: 20px
+				padding-bottom: 20px
+
+@media screen and ( max-width: 1100px )
+	.services
+		&-block-wrapper
+			display: block
+
+			margin-bottom: 0
+
+		&-block
+			margin-bottom: 20px
+
+			&-community
+				&__description
+					margin-bottom: 175px
+
+			&-hobjobgood
+				&-logo
+					margin-bottom: 25px
+
+@media screen and ( max-width: 900px )
+	.services
+		margin: 25px 0
+
+		&__title
+			font-size: 42px
+			margin-bottom: 25px
+
+@media screen and ( max-width: 600px )
+	.services
+		&-block
+			margin-bottom: 10px
+			
+			+borderRadiusBlockMedia
+
+		&__title
+			font-size: 32px
+
+@media screen and ( max-width: 550px )
+	.services
+		&-block
+			&__title
+				width: 90%
+				font-size: 24px
+
+			&__description
+				font-size: 16px
+
+			&-community
+				&__description
+					margin-bottom: 120px
+
+@media screen and ( max-width: 350px )
+	.services
+		&-block
+			&-community
+				&__description
+					margin-bottom: 100px

@@ -63,6 +63,7 @@
 			margin-left: 125px
 
 			&-block
+				cursor: pointer
 				display: block
 				margin-bottom: 25px
 
@@ -73,8 +74,30 @@
 					font-size: 16px
 
 				&__email
+					display: inline-flex
+					align-items: center
+
 					font-size: 21px
 					color: $mainColor
+
+					& > span
+						margin-left: 10px
+
+						padding: 2px 5px
+						background-color: $backgroundGray
+
+						font-size: 12px
+						color: $black
+
+						animation: openText .4s
+
+						+borderRadius
+
+						&.close
+							animation: closeText .4s
+
+						& > svg
+							margin-left: 5px
 
 		&-socials
 			display: flex
@@ -129,3 +152,21 @@
 				&__span
 					color: $gray
 					font-size: 15px
+
+@keyframes openText
+	0%
+		opacity: 0
+		transform: translateY(3px)
+
+	100%
+		opacity: 1
+		transform: translateY(0px)
+
+@keyframes closeText
+	0%
+		opacity: 1
+		transform: translateY(0px)
+
+	100%
+		opacity: 0
+		transform: translateY(3px)

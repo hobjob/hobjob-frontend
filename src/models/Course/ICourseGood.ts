@@ -10,8 +10,9 @@ export interface CourseGoodLesson {
 		vertical: boolean;
 	};
 
+	image: Image;
+	
 	description?: string;
-	image?: Image;
 }
 
 export interface CourseGoodSkill {
@@ -44,6 +45,8 @@ export interface CourseGood {
 	path?: string;
 	lessons: CourseGoodLesson[];
 	materials: string[];
+	materialsCount: number;
+	minutesLength: number;
 	skills: CourseGoodSkill[];
 	useSkills: CourseGoodUseSkill[];
 	tools: CourseGoodTool[];

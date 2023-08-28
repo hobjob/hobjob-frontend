@@ -33,8 +33,8 @@ export { default as PasswordRecoveryNewPasswordError } from "./PasswordRecovery/
 
 // Header
 export { default as Header } from "./Header/Header";
-export { default as HeaderMenu } from "./Header/HeaderMenu";
 export { default as HeaderModalMenu } from "./Header/HeaderModalMenu";
+export { default as HeaderUser } from "./Header/HeaderUser";
 
 // SubscribeMessage
 export { default as SubscribeMessageTesting } from "./SubscribeMessage/SubscribeMessageTesting";
@@ -174,3 +174,6 @@ export { default as PolicyBlock } from "./Policy/PolicyBlock";
 
 // Footer
 export { default as Footer } from "./Footer/Footer";
+// FooterEmail
+export { default as FooterEmailBlockSupport } from "./Footer/FooterEmail/FooterEmailBlockSupport";
+export { default as FooterEmailBlockHello } from "./Footer/FooterEmail/FooterEmailBlockHello";

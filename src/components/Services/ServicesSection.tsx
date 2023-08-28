@@ -15,13 +15,13 @@ const ServicesSection: React.FC = () => {
 					</h2>
 
 					<div className="services-block-wrapper w50-50">
-						<div className="services-block services-block-education">
+						<div className="services-block hover-scale services-block-education">
 							<div className="services-block-education-text">
-								<h3 className="services-block-education-text__title">
+								<h3 className="services-block__title services-block-education-text__title">
 									Обучение в удобном формате
 								</h3>
 
-								<p className="services-block-education-text__description">
+								<p className="services-block__description services-block-education-text__description">
 									В каждом курсе урок длится не более 20 минут, а
 									наша платформа доступна на любом устройстве с
 									доступом в интернет
@@ -34,11 +34,11 @@ const ServicesSection: React.FC = () => {
 							/>
 						</div>
 
-						<div className="services-block services-block-community">
-							<h3 className="services-block-community__title">
+						<div className="services-block hover-scale services-block-community">
+							<h3 className="services-block__title services-block-community__title">
 								Сообщество творческих людей
 							</h3>
-							<p className="services-block-community__description">
+							<p className="services-block__description services-block-community__description">
 								Наша цель собрать творческих людей на одной
 								платформе для совместного обучения и ежедневного
 								повышения своих навыков
@@ -50,8 +50,8 @@ const ServicesSection: React.FC = () => {
 							></img>
 						</div>
 
-						<div className="services-block services-block-courses">
-							<h3 className="services-block-courses__title">
+						<div className="services-block hover-scale services-block-courses">
+							<h3 className="services-block__title services-block-courses__title">
 								Доступ к любым курсам по одной подписке
 							</h3>
 							<img
@@ -64,7 +64,7 @@ const ServicesSection: React.FC = () => {
 
 
 					<div className="services-block-wrapper w35-65">
-						<div className="services-block services-block-hobjobgood">
+						<div className="services-block hover-scale services-block-hobjobgood">
 							<div className="services-block-hobjobgood-logo">
 								<p className="services-block-hobjobgood-logo__subtitle">
 									Участие в благотворительности
@@ -76,7 +76,7 @@ const ServicesSection: React.FC = () => {
 								/>
 							</div>
 
-							<p className="services-block-hobjobgood__description">
+							<p className="services-block__description services-block-hobjobgood__description">
 								Покупая подписку HobJob, вы помогаете детям с
 								заболеваниями, так как с каждой подписки мы
 								отправляем 9₽ в фонд{" "}
@@ -88,8 +88,8 @@ const ServicesSection: React.FC = () => {
 							</p>
 						</div>
 
-						<div className="services-block services-block-passing">
-							<h3 className="services-block-passing__title">
+						<div className="services-block hover-scale services-block-passing">
+							<h3 className="services-block__title services-block-passing__title">
 								Удобная платформа для обучения
 							</h3>
 							<img

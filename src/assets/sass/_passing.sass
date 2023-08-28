@@ -1,6 +1,7 @@
 // passing
 .passing
-	margin: 50px 0
+	margin: 35px 0 50px 0
+
 	+openAnimation
 
 	&-top-text
@@ -8,14 +9,14 @@
 		align-items: flex-start
 		justify-content: space-between
 
-		margin-bottom: 50px
+		margin-bottom: 35px
 
 		&-title
 			width: 75%
-			
+
 			&__subtitle
-				color: $gray
-				font-size: 24px
+				color: $black
+				font-size: 21px
 				margin-bottom: 15px
 
 			&__title
@@ -45,7 +46,7 @@
 			left: 50%
 
 			transform: translate(-50%, -50%)
-			
+
 		&-img
 			height: 100%
 			width: 100%
@@ -57,7 +58,7 @@
 		justify-content: space-between
 
 		margin-top: 25px
-		margin-bottom: 50px
+		margin-bottom: 35px
 
 		border-bottom: 1px solid $borderGray
 		overflow-y: auto
@@ -143,94 +144,96 @@
 			justify-content: space-between
 			align-items: flex-start
 
-			&-block
-				&-text
-					width: 45%
+			&__description
+				width: 600px
+
+				font-size: 24px
+
+			&-materials
+				width: 45%
+
+				&__title
+					font-size: 32px
+					margin-bottom: 25px
+
+				&-items-wrapper
+					max-height: 250px
+					overflow-y: auto
+
+					&::-webkit-scrollbar
+						width: 4px
+						height: 7px
+						background-color: #F0F0F0
+
+					&::-webkit-scrollbar-thumb
+						background-color: #E2E2E2
+						border-radius: 3px
+
+					&::-webkit-scrollbar-thumb:hover
+						background-color: #E2E2E2
+
+					&::-ms-scrollbar
+						width: 4px
+						height: 8px
+						background-color: #F0F0F0
+
+					&::-ms-scrollbar-thumb
+						background-color: #E2E2E2
+						border-radius: 3px
+
+					&::-ms-scrollbar-thumb:hover
+						background-color: #E2E2E2
+
+				&-item
+					cursor: pointer
+
+					display: inline-flex
+					align-items: center
+
+					padding: 10px 15px
+					border: 1px solid $mainColor
+
+					color: $mainColor
+
+					will-change: transform
+
+					margin-right: 10px
+					margin-bottom: 10px
+
+					+borderRadiusBlock
+					+transition
+
+					&:last-child
+						margin-right: 0
+
+					&:hover
+						background-color: $mainColor
+						color: $white
+
+						+transformScaleHover
+
+					&:hover &-icon
+						& > svg
+							fill: $white
+
+					&:active
+						+transformScaleClick
+
+					&-icon
+						display: flex
+						align-items: center
+
+						& > svg
+							fill: $mainColor
+							+transition
 
 					&__title
-						font-size: 36px
-						margin-bottom: 25px
-
-					&__description
 						font-size: 21px
+						margin-left: 10px
 
-				&-materials
-					width: 45%
-
-					&__title
-						font-size: 36px
-						margin-bottom: 25px
-
-					&-items-wrapper
-						max-height: 250px
-						overflow-y: auto
-
-						&::-webkit-scrollbar
-							width: 4px
-							height: 7px
-							background-color: #F0F0F0
-
-						&::-webkit-scrollbar-thumb
-							background-color: #E2E2E2
-							border-radius: 3px
-
-						&::-webkit-scrollbar-thumb:hover
-							background-color: #E2E2E2
-
-						&::-ms-scrollbar
-							width: 4px
-							height: 8px
-							background-color: #F0F0F0
-
-						&::-ms-scrollbar-thumb
-							background-color: #E2E2E2
-							border-radius: 3px
-
-						&::-ms-scrollbar-thumb:hover
-							background-color: #E2E2E2
-
-					&-item-wrapper
-						display: flex
-						justify-content: space-between
-						align-items: center
-
-						margin-bottom: 10px
-
-						&:last-child
-							margin-bottom: 0
-
-					&-item
-						width: 100%
-						cursor: pointer
-						display: flex
-						align-items: center
-
-						padding: 15px 20px
-						background-color: $backgroundGray
-
-						will-change: transform
-
-						+borderRadiusBlock
-						+transition
-
-						&:hover
-							+transformScale
-
-						&-icon
-							display: flex
-							align-items: center
-
-							& > svg
-								fill: $mainColor
-
-						&__title
-							font-size: 21px
-							margin-left: 10px
-							color: $mainColor
-
-							overflow: hidden
-							text-overflow: ellipsis
-							white-space: nowrap
+						overflow: hidden
+						text-overflow: ellipsis
+						white-space: nowrap
 
 				&-middle
 					display: flex
@@ -271,3 +274,128 @@
 
 			&__link
 				margin-top: 50px
+
+// media
+@media screen and ( max-width: 1200px )
+	.passing
+		&-lesson-info
+			flex-direction: column
+
+			&__description
+				width: 100%
+				margin-bottom: 25px
+
+			&-materials
+				width: 100%
+
+		&-master
+			width: 100%
+
+@media screen and ( max-width: 900px )
+	.passing
+		margin: 25px 0
+
+		&-top-text
+			margin-bottom: 25px
+
+			&-title
+				width: 100%
+
+				&__subtitle
+					font-size: 18px
+
+				&__title
+					font-size: 32px
+
+		&-video
+			margin-top: 15px
+
+		&-lessons-list
+			&-block
+				&__subtitle
+					font-size: 18px
+
+				&-item
+					margin-right: 10px
+
+		&-lesson-info
+			&-block
+				&-text
+					&__title
+						margin-bottom: 25px
+						font-size: 32px
+
+				&-materials
+					margin-top: 25px
+
+					&__title
+						font-size: 32px
+
+		&-master
+			padding: 15px
+
+			&-text
+				&__title
+					font-size: 24px
+
+				&__description
+					font-size: 18px
+
+				&__link
+					font-size: 18px
+
+@media screen and ( max-width: 600px )
+	.passing
+		&-lessons-list
+			&-item
+				&-cover
+					border-radius: 20px
+
+@media screen and ( max-width: 500px )
+	.passing
+		margin: 25px 0
+
+		&-top-text
+			&-title
+				&__subtitle
+					font-size: 18px
+
+				&__title
+					font-size: 24px
+
+		&-video
+			margin-top: 15px
+
+		&-lessons-list
+			&-block
+				&__subtitle
+					font-size: 18px
+
+				&-item
+					margin-right: 10px
+
+		&-lesson-info
+			&-block
+				&-text
+					&__title
+						margin-bottom: 25px
+						font-size: 32px
+
+				&-materials
+					margin-top: 25px
+
+					&__title
+						font-size: 32px
+
+		&-master
+			padding: 15px
+
+			&-text
+				&__title
+					font-size: 24px
+
+				&__description
+					font-size: 18px
+
+				&__link
+					font-size: 18px

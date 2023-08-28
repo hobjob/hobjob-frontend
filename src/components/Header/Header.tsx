@@ -1,242 +1,195 @@
 import React from "react";
-import {Link, NavLink} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import { useLocation, Link, NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-import {useTypedSelector} from "../../hooks/useTypedSelector";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
-import {sendLogout} from "../../redux/actions/logout";
+import { sendLogout } from "../../redux/actions/logout";
 
-import {HeaderMenu, HeaderModalMenu} from "../";
+import { HeaderUser, HeaderModalMenu } from "../";
 
 import Logo from "../../assets/images/logo.svg";
 
 const Header: React.FC = () => {
-    const dispatch = useDispatch();
+	const { pathname } = useLocation();
 
-    const {userInfo, isLoadedUserInfo} = useTypedSelector(({user}) => user);
+	const dispatch = useDispatch();
 
-    const [modalMenuState, setModalMenuState] = React.useState<boolean>(false);
-    const [modalMenuAnimationState, setModalMenuAnimationState] =
-        React.useState<boolean>(false);
-    const [headerUserMenu, setHeaderUserMenu] = React.useState<boolean>(false);
-    const [headerUserMenuAnimateClose, setHeaderUserMenuAnimateClose] =
-        React.useState<boolean>(false);
+	const { userInfo, isLoadedUserInfo } = useTypedSelector(({ user }) => user);
 
-    const HeaderModalMenuRef = React.useRef<HTMLDivElement>(null);
-    const headerUserMenuRef = React.useRef<HTMLDivElement>(null);
+	const [modalMenuState, setModalMenuState] = React.useState<boolean>(false);
+	const [stateGlobalHeader, setStateGlobalHeader] = React.useState<boolean>(true);
 
-    React.useEffect(() => {
-        document.body.addEventListener("click", handHeaderModalMenu);
-        document.body.addEventListener("click", handHeaderUserMenu);
-    }, []);
+	const [prevScrollpos, setPrevScrollpos] = React.useState<number>(0);
+	const [currentScrollPos, setCurrentScrollPos] = React.useState<number>(0);
 
-    const openUserMenu = () => {
-        setHeaderUserMenu(true);
-    };
+	const HeaderModalMenuRef = React.useRef<HTMLDivElement>(null);
+	const HeaderModalBtnRef = React.useRef<any>(null);
 
-    const closeUserMenu = () => {
-        setHeaderUserMenuAnimateClose(true);
+	React.useEffect(() => {
+		document.addEventListener("mousedown", handHeaderModalMenu);
+		document.addEventListener("touchstart", handHeaderModalMenu);
 
-        setTimeout(() => {
-            setHeaderUserMenuAnimateClose(false);
-            setHeaderUserMenu(false);
-        }, 180);
-    };
+		return () => {
+			document.removeEventListener("mousedown", handHeaderModalMenu);
+			document.removeEventListener("touchstart", handHeaderModalMenu);
+		};
+	}, []);
 
-    const handHeaderUserMenu = (e: Event) => {
-        if (e.target !== headerUserMenuRef.current) {
-            closeUserMenu();
-        }
-    };
+	const openModalMenu = () => {
+		setModalMenuState(true);
+	};
 
-    const clickLogout = () => {
-        dispatch(sendLogout());
-    };
+	const closeModalMenu = () => {
+		setModalMenuState(false);
+	};
 
-    const openModalMenu = () => {
-        document.body.style.overflow = "hidden";
-        setModalMenuState(true);
-    };
+	const onClickLogout = () => {
+		dispatch(sendLogout());
+	};
 
-    const closeModalMenu = () => {
-        setModalMenuAnimationState(true);
-        document.body.style.overflow = "visible";
+	const handHeaderModalMenu = (e: any) => {
+		if (HeaderModalMenuRef.current && !HeaderModalMenuRef.current.contains(e.target) && !HeaderModalBtnRef.current.contains(e.target)) {
+			closeModalMenu();
+		}
+	};
 
-        setTimeout(() => {
-            setModalMenuState(false);
-            setModalMenuAnimationState(false);
-        }, 180);
-    };
+	React.useEffect(() => {
+		setModalMenuState(false);
+	}, [pathname, stateGlobalHeader])
 
-    const handHeaderModalMenu = (e: Event) => {
-        if (e.target === HeaderModalMenuRef.current) {
-            closeModalMenu();
-        }
-    };
+	React.useEffect(() => {
+		const wrapper = document.getElementById("wrapper");
 
-    const [state, setState] = React.useState<boolean>(true);
+		if (wrapper) {
+			setPrevScrollpos(window.pageYOffset);
 
-    const [prevScrollpos, setPrevScrollpos] = React.useState<number>(0);
-    const [currentScrollPos, setCurrentScrollPos] = React.useState<number>(0);
+			document.body.onscroll = function () {
+				setCurrentScrollPos(window.pageYOffset);
 
-    React.useEffect(() => {
-        const wrapper = document.getElementById("wrapper");
+				if (prevScrollpos > currentScrollPos && currentScrollPos > 0) {
+					setStateGlobalHeader(true);
+				} else if (currentScrollPos > 200) {
+					setStateGlobalHeader(false);
+				}
 
-        if (wrapper) {
-            setPrevScrollpos(window.pageYOffset);
+				setPrevScrollpos(currentScrollPos);
+			};
+		}
+	}, [currentScrollPos]);
 
-            document.body.onscroll = function () {
-                setCurrentScrollPos(window.pageYOffset);
+	return (
 
-                if (prevScrollpos > currentScrollPos && currentScrollPos > 0) {
-                    setState(true);
-                } else if (currentScrollPos > 200) {
-                    setState(false);
-                }
+		<header className={`header ${stateGlobalHeader ? "active" : ""} `}>
+			<div className="header-wrapper">
+				<div className="header-block">
+					<Link to="/" className="header-block-logo__link">
+						<img
+							src={Logo}
+							alt="HobJob"
+							className="header-block-logo__img"
+						/>
+					</Link>
 
-                setPrevScrollpos(currentScrollPos);
-            };
-        }
-    }, [currentScrollPos]);
+					<nav className="header-block-nav">
+						<NavLink
+							to="/"
+							className={({ isActive }) =>
+								`header-block-nav__link ${isActive ? "active" : ""}`
+							}
+						>
+							Главная
+						</NavLink>
+						<NavLink
+							to="/course"
+							className={({ isActive }) =>
+								`header-block-nav__link ${isActive ? "active" : ""}`
+							}
+						>
+							Курсы
+						</NavLink>
+						<NavLink
+							to="/magazine"
+							className={({ isActive }) =>
+								`header-block-nav__link ${isActive ? "active" : ""}`
+							}
+						>
+							Журнал
+						</NavLink>
 
-    return (
-        <>
-            {modalMenuState ? (
-                <HeaderModalMenu
-                    HeaderModalMenuRef={HeaderModalMenuRef}
-                    closeModalMenu={closeModalMenu}
-                    modalMenuAnimationState={modalMenuAnimationState}
-                    clickLogout={clickLogout}
-                    isLogin={isLoadedUserInfo}
-                    userAvatar={`${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar.size_512}`}
-                />
-            ) : null}
+						<a
+							href={`${process.env.REACT_APP_DOMEN_MASTERS_SERVICES}`}
+							className="header-block-nav__link bg"
+						>
+							Выложить курс
+						</a>
+					</nav>
+				</div>
 
-            <header className={`header ${state ? "active" : ""} `}>
-                <div className="header-wrapper">
-                    <div className="header-left-block">
-                        <Link to="/" className="header-logo__link">
-                            <img
-                                src={Logo}
-                                alt="HobJob"
-                                className="header-logo__img"
-                            />
-                        </Link>
+				<div className="header-block">
+					{isLoadedUserInfo ?
+						<>
+							<NavLink
+								to="/go/training"
+								className={({ isActive }) =>
+									`btn header-block__link ${isActive ? "active" : ""
+									}`
+								}
+							>
+								Мое обучение
 
-                        <HeaderMenu />
-                    </div>
+								<svg
+									viewBox="0 0 14 14"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path d="M13.7438 10.7548H11.9374L11.9539 3.94334L2.16769 13.7296L0.891588 12.4535L10.6778 2.66723L3.86641 2.6838V0.877366H13.7438V10.7548Z" />
+								</svg>
+							</NavLink>
 
-                    <div className="header-right-block">
-                        {isLoadedUserInfo ? (
-                            <div className="header-user">
-                                <div className="header-user-nav">
-                                    <NavLink
-                                        to="/go/training"
-                                        className={({isActive}) =>
-                                            `header-user-nav__link ${
-                                                isActive ? "active" : ""
-                                            }`
-                                        }
-                                    >
-                                        Мое обучение
-                                    </NavLink>
-                                </div>
+							{document.documentElement.clientWidth > 1000 ?
+								<HeaderUser
+									stateGlobalHeader={stateGlobalHeader}
+									avatar={`${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar.size_512}`}
+									onClickLogout={onClickLogout}
+								/>
+								:
+								null
+							}
+						</>
+						:
+						<Link to="/go/login" className="btn header-block__link">
+							Войти
 
-                                {document.documentElement.clientWidth > 1200 ? (
-                                    <div
-                                        onClick={openUserMenu}
-                                        ref={headerUserMenuRef}
-                                        className={`header-user-avatar ${
-                                            headerUserMenu ? "active" : ""
-                                        }`}
-                                        style={{
-                                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar.size_512}")`,
-                                        }}
-                                    ></div>
-                                ) : (
-                                    <div
-                                        className="header-user-avatar"
-                                        style={{
-                                            backgroundImage: `url("${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar.size_512}")`,
-                                        }}
-                                        onClick={openModalMenu}
-                                    ></div>
-                                )}
+							<svg
+								viewBox="0 0 14 14"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path d="M13.7438 10.7548H11.9374L11.9539 3.94334L2.16769 13.7296L0.891588 12.4535L10.6778 2.66723L3.86641 2.6838V0.877366H13.7438V10.7548Z" />
+							</svg>
+						</Link>
+					}
 
-                                {headerUserMenu ? (
-                                    <div
-                                        className={`header-user-menu ${
-                                            headerUserMenuAnimateClose
-                                                ? "close"
-                                                : ""
-                                        }`}
-                                    >
-                                        <NavLink
-                                            to="/go/cabinet"
-                                            className="header-user-menu__link"
-                                        >
-                                            Мой профиль
-                                        </NavLink>
+					<button
+						className="header-modal-menu__btn hover-scale"
+						onClick={openModalMenu}
+						ref={HeaderModalBtnRef}
+					>
+						Меню
+					</button>
 
-                                        <NavLink
-                                            to="/go/referrals"
-                                            className="header-user-menu__link"
-                                        >
-                                            Пригласи друга
-                                        </NavLink>
-
-                                        <span
-                                            onClick={clickLogout}
-                                            className="header-user-menu__link"
-                                        >
-                                            Выйти
-                                        </span>
-                                    </div>
-                                ) : null}
-                            </div>
-                        ) : (
-                            <Link to="/go/login" className="btn header-login__link">
-                                Войти
-                                <svg
-                                    viewBox="0 0 14 14"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path d="M13.7438 10.7548H11.9374L11.9539 3.94334L2.16769 13.7296L0.891588 12.4535L10.6778 2.66723L3.86641 2.6838V0.877366H13.7438V10.7548Z" />
-                                </svg>
-                            </Link>
-                        )}
-
-                        <div
-                            className="header-menu-button"
-                            onClick={openModalMenu}
-                        >
-                            <svg
-                                width="25"
-                                height="16"
-                                viewBox="0 0 25 16"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M24.4792 0H0.52085C0.23335 0 0 0.23335 0 0.52085C0 0.80835 0.23335 1.0417 0.52085 1.0417H24.4792C24.7667 1.0417 25 0.80835 25 0.52085C25 0.23335 24.7667 0 24.4792 0Z"
-                                    fill="black"
-                                />
-                                <path
-                                    d="M24.4792 7.29166H0.52085C0.23335 7.29166 0 7.52501 0 7.81251C0 8.10001 0.23335 8.33336 0.52085 8.33336H24.4792C24.7667 8.33336 25 8.10001 25 7.81251C25 7.52501 24.7667 7.29166 24.4792 7.29166Z"
-                                    fill="black"
-                                />
-                                <path
-                                    d="M24.4792 14.5833H0.52085C0.23335 14.5833 0 14.8166 0 15.1041C0 15.3916 0.23335 15.625 0.52085 15.625H24.4792C24.7667 15.625 25 15.3916 25 15.1041C25 14.8166 24.7667 14.5833 24.4792 14.5833Z"
-                                    fill="black"
-                                />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </header>
-        </>
-    );
+					<HeaderModalMenu
+						state={modalMenuState}
+						HeaderModalMenuRef={HeaderModalMenuRef}
+						isLogin={isLoadedUserInfo}
+						avatar={`${process.env.REACT_APP_IMAGE_DOMEN}/${userInfo.avatar.size_512}`}
+						onClickLogout={onClickLogout}
+					/>
+				</div>
+			</div>
+		</header>
+	);
 };
 
 export default Header;

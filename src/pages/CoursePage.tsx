@@ -156,7 +156,7 @@ const CoursePage: React.FC = () => {
 
 						<ServicesSection />
 
-						{/* <CoursePagePassing /> */}
+						<CoursePagePassing title={courseByUrl.title} />
 
 						<CoursePageTools {...courseByUrl} />
 

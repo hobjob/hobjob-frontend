@@ -12,6 +12,18 @@ body
 
 	+SfRegular
 
+	// scrollBar
+	&::-webkit-scrollbar
+		width: 17px
+
+	&::-webkit-scrollbar-track
+		background-color: transparent
+
+	&::-webkit-scrollbar-thumb
+		background-color: $gray
+		border-radius: 100px
+		border: 5px solid $white
+
 // link
 a
 	text-decoration: none
@@ -86,7 +98,7 @@ li
 .container
 	position: relative
 	width: 95%
-	max-width: 1400px
+	max-width: 1500px
 
 	margin: 0 auto
 
@@ -160,12 +172,11 @@ li
 		+SfRegular
 		+transition
 
-		&:active
-			+transformScale
-
 		&:hover
-			background-color: #E9E9E9
-			border: 1px solid #E9E9E9
+			+transformScaleHover
+
+		&:active
+			+transformScaleClick
 
 		& > svg
 			margin-left: 10px
@@ -191,12 +202,11 @@ li
 	+SfRegular
 	+transition
 
-	&:active
-		+transformScale
-
 	&:hover
-		color: #e2ab74
-		border: 1px solid #e2ab74
+		+transformScaleHover
+
+	&:active
+		+transformScaleClick
 
 	&.disabled
 		pointer-events: none
@@ -241,10 +251,10 @@ li
 	+transition
 
 	&:hover
-		background-color: #FF4949
+		+transformScaleHover
 
 	&:active
-		+transformScale
+		+transformScaleClick
 
 .btn-small
 	border: none
@@ -266,11 +276,11 @@ li
 	+SfRegular
 	+transition
 
-	&:active
-		+transformScale
-
 	&:hover
-		background-color: #e2ab74
+		+transformScaleHover
+
+	&:active
+		+transformScaleClick
 
 .btn-small-regular
 	border: none
@@ -293,12 +303,11 @@ li
 	+SfRegular
 	+transition
 
-	&:active
-		+transformScale
-
 	&:hover
-		color: #e2ab74
-		border: 1px solid #e2ab74
+		+transformScaleHover
+
+	&:active
+		+transformScaleClick
 
 	&__gray
 		border: none
@@ -343,11 +352,11 @@ li
 	+SfRegular
 	+transition
 
-	&:active
-		+transformScale
-
 	&:hover
-		background-color: #e2ab74
+		+transformScaleHover
+
+	&:active
+		+transformScaleClick
 
 	& > svg
 		margin-right: 5px
@@ -383,12 +392,11 @@ li
 	+SfRegular
 	+transition
 
-	&:active
-		+transformScale
-
 	&:hover
-		background-color: #e3e3e3
-		border: 1px solid #e3e3e3
+		+transformScaleHover
+
+	&:active
+		+transformScaleClick
 
 .btn-small-round-delete
 	display: inline-flex
@@ -414,11 +422,11 @@ li
 	+SfRegular
 	+transition
 
-	&:active
-		+transformScale
-
 	&:hover
-		background-color: #FF4949
+		+transformScaleHover
+
+	&:active
+		+transformScaleClick
 
 .btn-small-round-regular
 	border: none
@@ -441,17 +449,11 @@ li
 	+SfRegular
 	+transition
 
-	&:active
-		+transformScale
-
 	&:hover
-		color: #e2ab74
-		border: 1px solid #e2ab74
+		+transformScaleHover
 
-	&.disabled
-		pointer-events: none
-		border: 1px solid $borderGray
-		color: $gray
+	&:active
+		+transformScaleClick
 
 // input
 input:-webkit-autofill,
@@ -1010,3 +1012,12 @@ input[type="file"]
 			fill: $white
 
 			margin-left: 10px
+
+// hover
+.hover-scale
+	will-change: transform
+
+	+transition
+
+	&:hover
+		+transformScaleHover
