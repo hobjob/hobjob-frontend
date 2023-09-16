@@ -49,6 +49,7 @@ declare global {
 		__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
 		YooMoneyCheckoutWidget?: any;
 		_tmr?: any;
+		ym: any
 	}
 }
 

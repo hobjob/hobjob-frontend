@@ -1,9 +1,11 @@
 interface validateValues {
 	email: string;
+	password: string;
 }
 
 interface validateErrors {
 	email?: string;
+	password?: string;
 }
 
 const validate = (values: validateValues) => {
@@ -22,6 +24,16 @@ const validate = (values: validateValues) => {
 		errors.email = `Не более ${defaultMax} символов`;
 	} else if (values.email.length < defaultMin) {
 		errors.email = `Не менее ${defaultMin} символов`;
+	}
+
+	if (!values.password) {
+		errors.password = "Поле не может быть пустым";
+	} else if (/[А-Яа-яЁё]/i.test(values.password)) {
+		errors.password = "Поле не может содержать кириллицу";
+	} else if (values.password.length > defaultMax) {
+		errors.password = `Не более ${defaultMax} символов`;
+	} else if (values.password.length < defaultMin) {
+		errors.password = `Не менее ${defaultMin} символов`;
 	}
 
 	return errors;

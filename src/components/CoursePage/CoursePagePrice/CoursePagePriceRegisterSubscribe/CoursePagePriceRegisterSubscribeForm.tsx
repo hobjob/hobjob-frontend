@@ -13,6 +13,9 @@ import { changePriceCurrentSection } from "../../../../redux/actions/coursePage"
 
 let CoursePagePriceRegisterSubscribeForm: React.FC<InjectedFormProps<{}>> = ({
 	handleSubmit,
+	invalid,
+	pristine,
+	submitting,
 }) => {
 	const dispatch = useDispatch();
 
@@ -75,6 +78,7 @@ let CoursePagePriceRegisterSubscribeForm: React.FC<InjectedFormProps<{}>> = ({
 				<button
 					className="btn course-page-price-register-form__btn"
 					type="submit"
+					disabled={invalid || submitting || pristine}
 				>
 					Перейти к оплате
 				</button>
