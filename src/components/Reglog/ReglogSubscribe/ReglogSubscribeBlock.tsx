@@ -23,7 +23,7 @@ const ReglogSubscribeBlock: React.FC<ReglogSubscribeBlockProps> = ({type}) => {
                             Попробуйте <span>30 дней</span> за 1₽
                         </h2>
                         <p className="reglog-product-subscribe-block-text__pricedesc">
-                            далее 499₽ в месяц
+                            далее 299₽ в месяц
                         </p>
                     </>
                 ) : (

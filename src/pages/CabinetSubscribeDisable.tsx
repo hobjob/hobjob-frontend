@@ -37,7 +37,7 @@ const CabinetSubscribeDisable: React.FC = () => {
 			dispatch(
 				changeCabinetSubscribeDisableCurrentSection(
 					CabinetSubscribeDisableSection.MAIN
-				)
+				) as any
 			);
 		};
 	}, []);

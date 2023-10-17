@@ -25,7 +25,7 @@ const TrainingSubscribeDisabled: React.FC<TrainingSubscribeDisabledProps> = ({
     const dispatch = useDispatch();
 
     const createPayment = () => {
-        dispatch(sendCreatePaymentSubscribe(type));
+        dispatch(sendCreatePaymentSubscribe(type) as any);
     };
 
     return (

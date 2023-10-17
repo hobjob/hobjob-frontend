@@ -16,22 +16,22 @@ const CabinetSubscribeDisableSaleSubscribe: React.FC = () => {
     );
 
     const onClickAddFreeMonthSubscribe = () => {
-        dispatch(fetchUpdateUser({isUsedFree: true}));
+        dispatch(fetchUpdateUser({isUsedFree: true}) as any);
 
         dispatch(
             changeCabinetSubscribeDisableCurrentSection(
                 CabinetSubscribeDisableSection.SUCCESS_FREE_MONTH_SUBSCRIBE
-            )
+            ) as any
         );
     };
 
     const onClickDisableSubscribe = () => {
-        dispatch(fetchUpdateUser({autoPayment: false}));
+        dispatch(fetchUpdateUser({autoPayment: false}) as any);
 
         dispatch(
             changeCabinetSubscribeDisableCurrentSection(
                 CabinetSubscribeDisableSection.SUCCESS_DISABLED
-            )
+            ) as any
         );
     };
 

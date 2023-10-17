@@ -39,7 +39,7 @@ const CoursePagePriceRegisterBuy: React.FC = () => {
 			sendRegister(
 				{ email, password, paymentInfo: `buy.${courseByUrl._id}` },
 				"buy"
-			)
+			) as any
 		);
 	};
 

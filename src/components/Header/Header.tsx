@@ -45,7 +45,7 @@ const Header: React.FC = () => {
 	};
 
 	const onClickLogout = () => {
-		dispatch(sendLogout());
+		dispatch(sendLogout() as any);
 	};
 
 	const handHeaderModalMenu = (e: any) => {

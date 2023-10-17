@@ -87,15 +87,15 @@ const App: React.FC = () => {
 		window.scroll(...cords.map((cord: any) => localStorage[cord]));
 
 		if (userInfo._id == "" && localStorage.getItem("accessToken")) {
-			dispatch(fetchUserInfo());
+			dispatch(fetchUserInfo() as any);
 		}
 
 		if (!Object.keys(masters).length) {
-			dispatch(fetchMasters());
+			dispatch(fetchMasters() as any);
 		}
 
 		if (!Object.keys(categories).length) {
-			dispatch(fetchCategories());
+			dispatch(fetchCategories() as any);
 		}
 	}, []);
 

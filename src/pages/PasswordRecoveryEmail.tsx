@@ -22,7 +22,7 @@ const PasswordRecoveryEmail: React.FC = () => {
     );
 
     const onSubmit = ({email}: any) => {
-        return dispatch(sendPasswordRecoveryEmail({email}));
+        return dispatch(sendPasswordRecoveryEmail({email}) as any);
     };
 
     return (

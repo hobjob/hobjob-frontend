@@ -10,7 +10,7 @@ import {Category} from "../../models/ICategory";
 
 export const fetchCategories = () => {
     return async (dispatch: Dispatch<CategoriesActions>) => {
-        const response = await $api.get<Category[]>(`/categories`);
+        const response = await $api.get<Category[]>(`/categories?isCourse=1`);
 
         dispatch({
             type: CategoriesActionTypes.SET_CATEGORIES,

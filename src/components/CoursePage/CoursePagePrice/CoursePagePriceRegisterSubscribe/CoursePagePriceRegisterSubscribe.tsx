@@ -47,7 +47,7 @@ const CoursePagePriceRegisterSubscribe: React.FC = () => {
 					addSubscribeCourseId: courseByUrl._id,
 				},
 				"subscribe"
-			)
+			) as any
 		);
 	};
 

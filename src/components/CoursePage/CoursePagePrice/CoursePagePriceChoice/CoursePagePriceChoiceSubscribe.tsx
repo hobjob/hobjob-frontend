@@ -21,7 +21,7 @@ const CoursePagePriceChoiceSubscribe: React.FC = () => {
 					Попробуйте <span>30 дней</span> за 1₽
 				</h3>
 				<p className="course-page-price-blocks-subscribe-text__pricedesc">
-					далее 499₽ в месяц
+					далее 299₽ в месяц
 				</p>
 				<div className="course-page-price-blocks-subscribe-text-list">
 					<p className="course-page-price-blocks-subscribe-text-list__item">
@@ -129,7 +129,7 @@ const CoursePagePriceChoiceSubscribe: React.FC = () => {
 						dispatch(
 							changePriceCurrentSection(
 								CoursePagePriceSections.SUBSCRIBE_REGISTER
-							)
+							) as any
 						)
 					}
 				>

@@ -26,12 +26,12 @@ const PaymentSubscribe: React.FC = () => {
 	const { courseById } = useTypedSelector(({ courses }) => courses);
 
     React.useEffect(() => {
-        dispatch(fetchPaymentCourseById(number ? number : ""));
+        dispatch(fetchPaymentCourseById(number ? number : "") as any);
     }, []);
 
     React.useEffect(() => {
         if (isLoaded) {
-            dispatch(fetchCourseById(payment.courseId));
+            dispatch(fetchCourseById(payment.courseId) as any);
 
             if (payment.confirmation) {
                 const checkout = new window.YooMoneyCheckoutWidget({

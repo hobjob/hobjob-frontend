@@ -118,7 +118,7 @@ const Courses: React.FC = () => {
                     categories: categoriesArray,
                     masters: mastersArray,
                     q: filters.search ? [filters.search] : [],
-                })
+                }) as any
             );
         }
     }, [
@@ -136,12 +136,12 @@ const Courses: React.FC = () => {
                 categories: categoriesArray,
                 masters: mastersArray,
                 q: filters.search ? [filters.search] : [],
-            })
+            }) as any
         );
     };
 
     const onClickAddCourse = (_id: string) => {
-        dispatch(addUserCourse(_id));
+        dispatch(addUserCourse(_id) as any);
     };
 
     return (

@@ -16,7 +16,7 @@ const Referrals: React.FC = () => {
 
     React.useEffect(() => {
         if (!referrals.length && isLoadedUserInfo) {
-            dispatch(fetchUserReferrals());
+            dispatch(fetchUserReferrals() as any);
         }
     }, [isLoadedUserInfo]);
 

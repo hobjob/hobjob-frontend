@@ -18,11 +18,11 @@ const CoursePageMasterWorksImage: React.FC = () => {
 	return (
 		<div
 			className={`course-page-master-works-modal ${isOpenImage ? "active" : ""} course-page-master-works-modal-image`}
-			onClick={() => dispatch(closeWorksImage())}
+			onClick={() => dispatch(closeWorksImage() as any)}
 		>
 			<div
 				className="course-page-master-works-modal-close"
-				onClick={() => dispatch(closeWorksImage())}
+				onClick={() => dispatch(closeWorksImage() as any)}
 			>
 				<svg
 					viewBox="0 0 60 60"

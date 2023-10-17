@@ -19,11 +19,11 @@ const CoursePageMasterWorksVideo: React.FC = () => {
 	return (
 		<div
 			className={`course-page-master-works-modal ${isOpenVideo ? "active" : ""} course-page-master-works-modal-video`}
-			onClick={() => dispatch(closeWorksVideo())}
+			onClick={() => dispatch(closeWorksVideo() as any)}
 		>
 			<div
 				className="course-page-master-works-modal-close"
-				onClick={() => dispatch(closeWorksVideo())}
+				onClick={() => dispatch(closeWorksVideo() as any)}
 			>
 				<svg
 					viewBox="0 0 60 60"

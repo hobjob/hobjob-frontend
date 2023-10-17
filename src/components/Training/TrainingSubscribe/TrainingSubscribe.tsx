@@ -56,7 +56,7 @@ const TrainingSubscribe: React.FC = () => {
                         <TrainingSubscribeDisabled
                             subtitle="У вас еще нет подписки"
                             title="Попробуйте 30 дней за 1₽"
-                            price="далее 499₽ в месяц"
+                            price="далее 299₽ в месяц"
                             btnText="Попробовать"
                             type="test"
                             isAnimationShake={isAnimationShake}

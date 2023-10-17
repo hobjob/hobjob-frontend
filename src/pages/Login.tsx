@@ -13,7 +13,7 @@ const Login: React.FC = () => {
 	const dispatch = useDispatch();
 
 	const onSubmit = ({ email, password }: any) => {
-		return dispatch(sendLogin({ email, password }));
+		return dispatch(sendLogin({ email, password }) as any);
 	};
 
 	return (

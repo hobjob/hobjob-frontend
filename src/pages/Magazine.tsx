@@ -93,7 +93,7 @@ const Magazine: React.FC = () => {
                     limit: 8,
                     page: 1,
                     categories: categoriesArray,
-                })
+                }) as any
             );
         }
     }, [Object.keys(filters.categories).length, filters.isParse]);
@@ -104,7 +104,7 @@ const Magazine: React.FC = () => {
                 limit: 8,
                 page: page + 1,
                 categories: categoriesArray,
-            })
+            }) as any
         );
     };
 

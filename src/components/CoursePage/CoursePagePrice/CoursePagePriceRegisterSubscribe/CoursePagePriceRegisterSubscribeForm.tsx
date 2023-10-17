@@ -33,7 +33,7 @@ let CoursePagePriceRegisterSubscribeForm: React.FC<InjectedFormProps<{}>> = ({
 						dispatch(
 							changePriceCurrentSection(
 								CoursePagePriceSections.CHOICE_TYPE_BUY
-							)
+							) as any
 						)
 					}
 					type="button"

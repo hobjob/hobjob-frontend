@@ -28,7 +28,7 @@ const CabinetCardUserInfo: React.FC<CabinetCardUserInfoProps> = ({
         let formData = new FormData();
         formData.append("avatar", file);
 
-        dispatch(fetchUpdateUser(formData));
+        dispatch(fetchUpdateUser(formData) as any);
     };
 
     const messageSubmitFile = (message: string) => {

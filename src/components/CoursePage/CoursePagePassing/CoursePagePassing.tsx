@@ -16,10 +16,6 @@ const CoursePagePassing: React.FC<CoursePagePassingProps> = ({ title }) => {
 						<h2 className="course-page__title course-page-passing-title__title">
 							Что будет после покупки?
 						</h2>
-
-						<p className="course-page-passing-title__subtitle">
-							Это пример, у вас будет <br /> «{title}»
-						</p>
 					</div>
 
 

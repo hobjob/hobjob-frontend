@@ -27,7 +27,7 @@ const PasswordRecoveryNewPassword: React.FC = () => {
             sendPasswordRecoveryNewPassword(
                 {password, password_repeat},
                 hash ? hash : ""
-            )
+            ) as any
         );
     };
 

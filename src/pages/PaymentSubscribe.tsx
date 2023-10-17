@@ -21,7 +21,7 @@ const PaymentSubscribe: React.FC = () => {
     );
 
     React.useEffect(() => {
-        dispatch(fetchPaymentSubscribeById(number ? number : ""));
+        dispatch(fetchPaymentSubscribeById(number ? number : "") as any);
     }, []);
 
     React.useEffect(() => {

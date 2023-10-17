@@ -41,7 +41,7 @@ const CoursePageMasterWorks: React.FC = () => {
 					<CoursePageMasterWorksItemVideo
 						{...work}
 						onClickOpenVideo={() =>
-							dispatch(openWorksVideo(work.url))
+							dispatch(openWorksVideo(work.url) as any)
 						}
 						key={`course-page-master-works-item-video-${index}`}
 					/>
@@ -51,7 +51,7 @@ const CoursePageMasterWorks: React.FC = () => {
 					<CoursePageMasterWorksItemImage
 						{...work}
 						onClickOpenImage={() =>
-							dispatch(openWorksImage(work.size_2048))
+							dispatch(openWorksImage(work.size_2048) as any)
 						}
 						key={`course-page-master-works-item-image-${index}`}
 					/>

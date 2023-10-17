@@ -53,7 +53,7 @@ const PassingVideo: React.FC<PassingVideoProps> = ({
     };
 
     const callbackPause = () => {
-        dispatch(updateCountViewingDuration(courseId, lessonIndex, duration));
+        dispatch(updateCountViewingDuration(courseId, lessonIndex, duration) as any);
 
         setPlay(false);
     };

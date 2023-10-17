@@ -14,7 +14,7 @@ const CabinetSubscribeBlockCurrentPeriod: React.FC = () => {
     } = useTypedSelector(({user}) => user);
 
     const changeAutoPayment = () => {
-        dispatch(fetchUpdateUser({autoPayment: !subscribe.auto}));
+        dispatch(fetchUpdateUser({autoPayment: !subscribe.auto}) as any);
     };
 
     return (

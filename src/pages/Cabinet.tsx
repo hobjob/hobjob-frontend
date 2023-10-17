@@ -40,11 +40,11 @@ const Cabinet: React.FC = () => {
     }, [isLoadedUserInfo]);
 
     const onSubmitCabinetUserInfoForm = (data: any) => {
-        dispatch(fetchUpdateUser(data));
+        dispatch(fetchUpdateUser(data) as any);
     };
 
     const onSubmitCabinetUserPassword = (data: any) => {
-        return dispatch(fetchUpdateUserPassword(data));
+        return dispatch(fetchUpdateUserPassword(data) as any);
     };
 
     return (

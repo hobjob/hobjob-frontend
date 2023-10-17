@@ -11,7 +11,7 @@ const SubscribeMessageTesting: React.FC = () => {
     const heightRef = React.useRef<HTMLDivElement>(null);
 
     const createPayment = () => {
-        dispatch(sendCreatePaymentSubscribe("test"));
+        dispatch(sendCreatePaymentSubscribe("test") as any);
 	};
 	
 	React.useEffect(() => {

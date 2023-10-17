@@ -15,12 +15,12 @@ const CabinetSubscribeDisableSaleSubscribe: React.FC = () => {
     );
 
     const onClickGetSaleSubscribe = () => {
-        dispatch(fetchUpdateUser({isUsedSale: true}));
+        dispatch(fetchUpdateUser({isUsedSale: true}) as any);
 
         dispatch(
             changeCabinetSubscribeDisableCurrentSection(
                 CabinetSubscribeDisableSection.SUCCESS_SALE_SUBSCRIBE
-            )
+            ) as any
         );
     };
 
@@ -55,7 +55,7 @@ const CabinetSubscribeDisableSaleSubscribe: React.FC = () => {
                         dispatch(
                             changeCabinetSubscribeDisableCurrentSection(
                                 CabinetSubscribeDisableSection.FREE_MONTH_SUBSCRIBE
-                            )
+                            ) as any
                         )
                     }
                 >

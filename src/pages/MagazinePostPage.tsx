@@ -28,7 +28,7 @@ const MagazinePostPage: React.FC = ({}) => {
     const isLoadedMasters = useTypedSelector(({masters}) => masters.isLoaded);
 
     React.useEffect(() => {
-        dispatch(fetchPostsById(id ? id : ""));
+        dispatch(fetchPostsById(id ? id : "") as any);
     }, [id]);
 
     return (

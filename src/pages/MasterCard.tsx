@@ -32,11 +32,11 @@ const MasterCard: React.FC = ({}) => {
     const {userInfo, isLoadedUserInfo} = useTypedSelector(({user}) => user);
 
     React.useEffect(() => {
-        dispatch(fetchMasterById(id ? id : ""));
+        dispatch(fetchMasterById(id ? id : "") as any);
     }, []);
 
     const onClickAddCourse = (id: string) => {
-        dispatch(addUserCourse(id));
+        dispatch(addUserCourse(id) as any);
     };
 
     return (

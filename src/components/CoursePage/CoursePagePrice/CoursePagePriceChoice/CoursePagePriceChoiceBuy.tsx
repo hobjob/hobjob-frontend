@@ -24,7 +24,7 @@ const CoursePagePriceChoiceBuy: React.FC<CoursePagePriceBuyProps> = ({
 	const { isLoadedUserInfo } = useTypedSelector(({ user }) => user);
 
 	const createPaymentCourse = () => {
-		dispatch(sendCreatePaymentCourse(_id));
+		dispatch(sendCreatePaymentCourse(_id) as any);
 	};
 
 	return (
@@ -85,7 +85,7 @@ const CoursePagePriceChoiceBuy: React.FC<CoursePagePriceBuyProps> = ({
 							dispatch(
 								changePriceCurrentSection(
 									CoursePagePriceSections.BUY_REGISTER
-								)
+								) as any
 							);
 						}}
 					>

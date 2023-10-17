@@ -24,7 +24,7 @@ const CabinetSubscribeBlockUpgrade: React.FC = () => {
         setTimeout(() => {
             setIsSuccess(true);
 
-            dispatch(fetchUpdateUser({typeSubscribe}));
+            dispatch(fetchUpdateUser({typeSubscribe}) as any);
 
             setTimeout(() => {
                 setIsCloseSuccessAnimation(true);

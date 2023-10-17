@@ -40,13 +40,13 @@ const PassingCourse: React.FC = () => {
 		scroll.scrollToTop({ duration: 500 });
 
 		if (isLoadedUserInfo) {
-			dispatch(fetchPassingCourseById(courseId));
+			dispatch(fetchPassingCourseById(courseId) as any);
 		}
 	}, [courseId, lessonNum, isLoadedUserInfo]);
 
 	const downloadFile = (title: string, index: number) => {
 		dispatch(
-			fetchPassingCourseLessonMaterial(courseId, lessonNum, index, title)
+			fetchPassingCourseLessonMaterial(courseId, lessonNum, index, title) as any
 		);
 	};
 

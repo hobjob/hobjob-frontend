@@ -54,7 +54,7 @@ if (
 	if (parseQuery.category) {
 		if (typeof parseQuery.category === "object") {
 			parseQuery.category.map(
-				(item) => (initialState.filters.categories[item] = item)
+				(item: any) => (initialState.filters.categories[item] = item)
 			);
 		} else {
 			initialState.filters.categories[parseQuery.category] =

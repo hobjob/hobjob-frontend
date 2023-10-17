@@ -56,7 +56,7 @@ const CoursePage: React.FC = () => {
 	}, []);
 
 	React.useEffect(() => {
-		dispatch(fetchCourseByUrl(url ? url : ""));
+		dispatch(fetchCourseByUrl(url ? url : "") as any);
 	}, [url]);
 
 	React.useEffect(() => {
@@ -80,7 +80,7 @@ const CoursePage: React.FC = () => {
 	};
 
 	const onClickAddCourse = () => {
-		dispatch(addUserCourse(courseByUrl._id));
+		dispatch(addUserCourse(courseByUrl._id) as any);
 	};
 
 	return (

@@ -81,7 +81,7 @@ const CoursePageMain: React.FC<CoursePageMainProps> = ({
 									</p>
 								</> : null}
 
-								<p className="course-page-main-text-info__text">
+								{/* <p className="course-page-main-text-info__text">
 									{hours ?
 										<>
 											{checkDeclension(hours, ["час", "часа", "часов"]).title}
@@ -91,7 +91,7 @@ const CoursePageMain: React.FC<CoursePageMainProps> = ({
 										:
 										checkDeclension(minutesLength, ["минута", "минуты", "минут"]).title
 									}
-								</p>
+								</p> */}
 							</div>
 
 							{isLogin ? (

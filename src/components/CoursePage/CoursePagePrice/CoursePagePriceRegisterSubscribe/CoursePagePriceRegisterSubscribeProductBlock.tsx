@@ -21,7 +21,7 @@ const CoursePagePriceRegisterSubscribeProductBlock: React.FC<
                     Попробуйте <span>30 дней</span> за 1₽
                 </h2>
                 <p className="course-page-price-register-subscribe-product-block-text__pricedesc">
-                    далее 499₽ в месяц
+                    далее 299₽ в месяц
                 </p>
 
                 <div className="course-page-price-register-subscribe-product-block-text-list">
