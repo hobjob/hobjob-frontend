@@ -41,6 +41,8 @@ export interface CourseGood {
 	description: string;
 	image: Image;
 	masterId: string;
+	price: number;
+	oldPrice: number;
 	category: string;
 	path?: string;
 	lessons: CourseGoodLesson[];

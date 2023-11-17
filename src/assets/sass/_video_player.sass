@@ -1,0 +1,492 @@
+// video-player
+// video::-webkit-media-controls
+// 	display: none !important
+
+.video-player
+	position: relative
+	width: 100%
+
+	&.fullScreen video
+		border-radius: 0
+
+	&.fullScreen &-content::before
+		border-radius: 0
+
+	& video
+		+borderRadius
+
+	&:hover &-content-quality
+		opacity: 1
+		z-index: 2
+
+	&:hover &-content-quality-select
+		opacity: 1
+		z-index: 2
+
+	&.play &-content-controls
+		opacity: 0
+		pointer-events: none
+
+	&.play:hover &-content-controls
+		opacity: 1
+		pointer-events: auto
+
+	&-content
+		position: relative
+
+		&::before
+			content: ""
+			position: absolute
+			bottom: 3px
+			left: 0
+			width: 100%
+			height: 120px
+			background: linear-gradient(180deg,rgba(0,0,0,.0001) 0%,rgba(0,0,0,.0156863) 9.22%,rgba(0,0,0,.054902) 18.76%,rgba(0,0,0,.117647) 28.48%,rgba(0,0,0,.2) 38.19%,rgba(0,0,0,.290196) 47.75%,rgba(0,0,0,.392157) 56.99%,rgba(0,0,0,.501961) 65.75%,rgba(0,0,0,.607843) 73.87%,rgba(0,0,0,.709804) 81.18%,rgba(0,0,0,.8) 87.52%,rgba(0,0,0,.882353) 92.74%,rgba(0,0,0,.945098) 96.66%,rgba(0,0,0,.984314) 99.14%,#000 100%)
+			opacity: .4
+			pointer-events: none !important
+
+			+borderRadius
+
+		&-cover-click
+			user-select: none
+
+			cursor: pointer
+
+			position: absolute
+			top: 0
+			left: 0
+
+			width: 100%
+			height: 100%
+
+			z-index: 1
+
+		&-loader
+			position: absolute
+
+			width: 75px
+			height: 75px
+
+			top: 50%
+			left: 50%
+
+			transform: translate(-50%, -50%)
+
+			&__loader
+				display: inline-block
+
+				width: 100%
+				height: 100%
+
+				z-index: 2
+
+				border: 4px solid $white
+				border-bottom-color: transparent
+				border-radius: 50%
+
+				animation: rotation 1s linear infinite
+
+		&__play
+			cursor: pointer
+
+			background-color: transparent
+			border: none
+
+			position: absolute
+
+			top: 50%
+			left: 50%
+
+			z-index: 2
+
+			transform: translate(-50%, -50%)
+
+			user-select: none
+			pointer-events: none
+			outline: none
+
+			&.active
+				user-select: auto
+				pointer-events: auto
+
+			&.active > svg
+				opacity: 1
+				transform: scale(1)
+
+			& > svg
+				will-change: transform
+				+transition
+
+				opacity: 0
+
+				+transformScaleClick
+
+				&:hover
+					+transformScaleClick
+
+		&-controls
+			position: absolute
+
+			bottom: 0
+			left: 0
+
+			z-index: 2
+
+			width: 100%
+
+			padding: 25px
+
+			+transition
+
+			&-bar
+				cursor: pointer
+
+				position: relative
+				z-index: 1
+
+				width: 100%
+				height: 6px
+
+				margin-bottom: 15px
+
+				&:hover &-main::before
+					transform: translateY(-50%) scale(1)
+
+				&:hover	&__hovertime
+					opacity: 1
+
+				&::before
+					content: ""
+					position: absolute
+					z-index: -1
+					display: block
+
+					left: 0
+					top: 0
+					height: 100%
+					width: 100%
+
+					border-radius: 100px
+
+					background-color: rgba(244, 244, 244, 0.5)
+
+				&__hovertime
+					position: absolute
+					display: inline-block
+					font-size: 12px
+
+					padding: 2px 6px
+
+					background-color: $backgroundGray
+
+					border-radius: 8px
+
+					opacity: 0
+					transform: translateX(-18px)
+
+					bottom: calc( 100% + 8px )
+
+					user-select: none
+					pointer-events: none
+
+					z-index: 1
+
+					transition: opacity .3s
+
+				&-main
+					position: absolute
+
+					top: 0
+					left: 0
+
+					height: 100%
+					border-radius: 100px
+
+					background-color: $mainColor
+
+					transition: 1s ease
+
+					&::before
+						position: absolute
+						content: ""
+						display: block
+
+						top: 50%
+						right: -7.5px
+
+						transform: translateY(-50%) scale(0)
+
+						width: 15px
+						height: 15px
+
+						border-radius: 100px
+
+						background-color: $mainColor
+
+						transition: .1s
+
+				&-load
+					position: absolute
+
+					top: 0
+					left: 0
+
+					height: 100%
+					border-radius: 100px
+
+					background-color: rgba(244, 244, 244, 0.5)
+
+					transition: 1s ease
+
+			&-btns
+				display: flex
+				justify-content: space-between
+				align-items: center
+
+				padding: 0 10px
+
+				&-block
+					display: flex
+					align-items: center
+
+					&__btn
+						cursor: pointer
+
+						display: inline-flex
+						align-items: center
+						justify-content: center
+
+						background-color: transparent
+						border: none
+
+						margin-right: 20px
+
+						&:last-child
+							margin-right: 0
+
+						&.menu > svg
+							+transition
+
+						&.menu.active > svg
+							transform: rotate(30deg)
+
+					&-nav
+						display: flex
+						align-items: center
+
+						margin-right: 20px
+
+						&__btn
+							margin-right: 10px
+
+					&-volume
+						display: flex
+						align-items: center
+
+						&__btn
+							margin-right: 0
+
+						&:hover &-bar
+							width: 60px
+							opacity: 1
+							margin-right: 20px
+
+						&-bar
+							display: flex
+							align-items: center
+
+							position: relative
+
+							cursor: pointer
+
+							margin-left: 15px
+
+							height: 4px
+							width: 0
+
+							opacity: 0
+
+							+transition
+
+							&__input
+								cursor: pointer
+
+								outline: none
+								-webkit-appearance: none
+								height: 100%
+								width: 100%
+								border-radius: 100px
+
+								&::-webkit-slider-thumb
+									-webkit-appearance: none
+									background-color: $white
+									width: 12px
+									height: 12px
+									border-radius: 50%
+									cursor: pointer
+
+					&-time
+						display: flex
+						align-items: center
+
+						&__text
+							font-size: 14px
+							color: $white
+
+							margin: 0 5px
+
+							&:first-child, &:last-child
+								margin: 0
+
+		&-menu
+			position: absolute
+
+			right: 25px
+			bottom: 80px
+
+			width: 250px
+			max-height: 250px
+
+			overflow-y: auto
+
+			background-color: $backgroundGray
+
+			border-radius: 25px
+
+			padding: 10px
+
+			will-change: transform
+
+			opacity: 0
+			pointer-events: none
+			transform: scale3d(.90, .90, .90)
+
+			z-index: 2
+
+			transition: .2s ease
+
+			&::-webkit-scrollbar
+				display: none
+
+			&.active
+				transform: scale3d(1, 1, 1)
+				opacity: 1
+				pointer-events: auto
+
+			&-media-title
+				display: none
+				justify-content: space-between
+				align-items: center
+
+				padding-bottom: 10px
+				border-bottom: 1px solid $borderGray
+
+				margin: 8px 10px
+
+			&-item
+				display: flex
+				align-items: center
+				justify-content: space-between
+
+				cursor: pointer
+
+				padding: 8px 10px
+
+				font-size: 17px
+
+				border-radius: 15px
+
+				margin-bottom: 3px
+
+				+transition
+
+				&:last-child
+					margin-bottom: 0
+
+				&:hover
+					background-color: $borderGray
+
+				&.active
+					color: $white
+					background-color: $mainColor
+
+				&.active &__value > span
+					color: $mainColor
+					background-color: $white
+
+				&__title
+					user-select: none
+
+					& > svg
+						margin-right: 10px
+
+				&__value
+					user-select: none
+
+					display: inline-flex
+					align-items: center
+
+					& > span
+						margin-left: 5px
+
+						font-size: 12px
+						color: $white
+						background-color: $mainColor
+
+						padding: 1px 6px
+
+						border-radius: 100px
+
+						+transition
+
+@media screen and ( max-width: 600px )
+	.video-player
+		&-content
+			&__play > svg
+				width: 50px
+				height: 50px
+
+			&-controls
+				padding: 20px
+
+				&-bar
+					&__hovertime
+						display: none
+
+				&-btns
+					&-block
+						&__btn
+							margin-right: 10px
+
+							& > svg
+								width: 18px
+								height: 18px
+
+						&-nav
+							margin-right: 10px
+
+							&__btn > svg
+								width: 22px
+								height: 22px
+
+						&-volume
+							display: none
+
+						&-time
+							&__text
+								font-size: 12px
+
+			&-menu
+				width: 100%
+				height: 100%
+
+				max-height: 100%
+
+				right: 0
+				bottom: 0
+
+				&-media-title
+					display: flex
+
+				&-item
+					font-size: 15px

@@ -114,7 +114,7 @@ const CoursePage: React.FC = () => {
 									</svg>
 									Добавлен
 								</button>
-							) : (
+							) : userInfo.subscribe.working ? (
 								<button
 									className={`btn-small-round course-page__btn ${visibleButton ? "visible" : ""
 										}`}
@@ -122,6 +122,18 @@ const CoursePage: React.FC = () => {
 								>
 									Добавить в мое обучение
 								</button>
+							) : (
+								<LinkScroll
+									to="price"
+									spy={true}
+									smooth={true}
+									offset={0}
+									duration={1000}
+									className={`btn-small-round course-page__btn ${visibleButton ? "visible" : ""
+										}`}
+								>
+									Начать обучение
+								</LinkScroll>
 							)
 						) : (
 							<LinkScroll
@@ -152,17 +164,17 @@ const CoursePage: React.FC = () => {
 
 						<CoursePageUseSkills {...courseByUrl} />
 
-						{userInfo._id !== "" ? null : <CoursePagePrice />}
-
-						<ServicesSection />
-
-						<CoursePagePassing title={courseByUrl.title} />
-
-						<CoursePageTools {...courseByUrl} />
-
 						<CoursePageMaster
 							master={masters[courseByUrl.masterId]}
 						/>
+
+						<CoursePageTools {...courseByUrl} />
+
+						<ServicesSection title="Почему с нами лучше?" />
+
+						{userInfo.subscribe.working ? null : <CoursePagePrice />}
+
+						<CoursePagePassing title={courseByUrl.title} />
 
 						<CoursePageFaq />
 

@@ -8,7 +8,11 @@ import ServicesPassingImage from "../../assets/images/services-passing-image.png
 // import ServicesСertificateImage from "../../assets/images/services-certificate-image.jpg";
 import ServicesСertificateImage from "../../assets/images/services-certificate-image.gif";
 
-const ServicesSection: React.FC = () => {
+interface ServicesSectionProps {
+	title?: string
+}
+
+const ServicesSection: React.FC<ServicesSectionProps> = ({ title }) => {
 	const cardX = useMotionValue(0);
 	const cardY = useMotionValue(0);
 
@@ -28,7 +32,7 @@ const ServicesSection: React.FC = () => {
 			<div className="container">
 				<div className="services-wrapper">
 					<h2 className="services__title">
-						Почему с нами лучше?
+						{title ? title : "Почему с нами лучше?"}
 					</h2>
 
 					<div className="services-block-wrapper w50-50">
@@ -39,7 +43,7 @@ const ServicesSection: React.FC = () => {
 								</h3>
 
 								<p className="services-block__description services-block-education-text__description">
-									В каждом курсе урок длится не более 20 минут, а
+									В каждом курсе урок длится не более 30 минут, а
 									наша платформа доступна на любом устройстве с
 									доступом в интернет
 								</p>
@@ -69,7 +73,7 @@ const ServicesSection: React.FC = () => {
 
 						<div className="services-block hover-scale services-block-courses">
 							<h3 className="services-block__title services-block-courses__title">
-								Доступ к любым курсам по одной подписке
+								Уникальные мастера своего дела
 							</h3>
 							<img
 								src={ServicesCoursesImage}
@@ -93,9 +97,9 @@ const ServicesSection: React.FC = () => {
 							</div>
 
 							<p className="services-block__description services-block-hobjobgood__description">
-								Покупая подписку HobJob, вы помогаете детям с
-								заболеваниями, так как с каждой подписки мы
-								отправляем 9₽ в фонд{" "}
+								Покупая курс HobJob, вы помогаете детям с
+								заболеваниями, так как с каждой покупки мы
+								отправляем 99₽ в фонд{" "}
 								<a href="https://www.dobryaki.ru/wards">
 									«Клуб добряков»
 								</a>.{" "}

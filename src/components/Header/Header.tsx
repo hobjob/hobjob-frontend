@@ -1,6 +1,5 @@
 import React from "react";
 import { useLocation, Link, NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
@@ -12,8 +11,6 @@ import Logo from "../../assets/images/logo.svg";
 
 const Header: React.FC = () => {
 	const { pathname } = useLocation();
-
-	const dispatch = useDispatch();
 
 	const { userInfo, isLoadedUserInfo } = useTypedSelector(({ user }) => user);
 
@@ -45,7 +42,7 @@ const Header: React.FC = () => {
 	};
 
 	const onClickLogout = () => {
-		dispatch(sendLogout() as any);
+		sendLogout();
 	};
 
 	const handHeaderModalMenu = (e: any) => {

@@ -6,10 +6,12 @@
 		position: fixed
 		z-index: 15
 
-		bottom: 10px
-		right: 10px
+		bottom: 20px
+		right: 15px
 
-		min-width: 220px
+		min-width: 250px
+
+		font-size: 21px
 
 		opacity: 0
 		visibility: hidden
@@ -366,10 +368,6 @@
 			padding: 35px
 			background-color: $backgroundGray
 
-			display: flex
-			justify-content: space-between
-			align-items: center
-
 			+borderRadiusBlock
 			+openPopup
 
@@ -377,37 +375,65 @@
 				+closePopup
 
 			&-subscribe
-				width: calc( 50% - 10px )
-				background-color: $white
+				width: 100%
 
 				display: flex
-				flex-direction: column
 				justify-content: space-between
 
-				+borderRadiusBlock
+				// padding-bottom: 25px
+				// margin-bottom: 50px
+
+				// border-bottom: 2px solid $borderGray
 
 				&-text
-					padding: 35px
+					width: 45%
 
 					&__subtitle
-						font-size: 24px
-						margin-bottom: 10px
+						font-size: 28px
+						margin-bottom: 15px
 
 					&__title
-						font-size: 42px
+						font-size: 46px
 
 						& > span
 							white-space: nowrap
 
-					&__pricedesc
-						font-size: 21px
-						margin-top: 10px
-						color: $gray
+					&-price
+						border-radius: 25px
+
+						&__title
+							margin-top: 15px
+							font-size: 46px
+
+							color: $mainColor
+
+							& > span
+								margin-left: 10px
+
+								display: inline-block
+
+								position: relative
+								color: $gray
+								font-size: 42px
+
+								&::before
+									content: ""
+									display: block
+									position: absolute
+									width: 100%
+									height: 2px
+									background-color: $gray
+
+									top: 50%
+
+									transform: rotate(-20deg) translateY(-50%)
 
 					&-list
-						margin-top: 25px
+						margin-top: 15px
 
 						&__item
+							position: relative
+
 							display: flex
 							align-items: flex-start
 
@@ -417,6 +443,30 @@
 
 							&:last-child
 								margin-bottom: 0
+
+							&:hover > span
+								pointer-events: auto
+								opacity: 1
+
+							& > span
+								position: absolute
+
+								width: 450px
+
+								bottom: calc( 100% + 10px )
+
+								padding: 10px 15px
+								background-color: $white
+								color: $black
+								font-size: 18px
+
+								border-radius: 25px
+
+								opacity: 0
+								pointer-events: none
+
+								+boxShadow
+								+transition
 
 							& > svg
 								width: 17px
@@ -428,27 +478,33 @@
 							& > p > img
 								vertical-align: middle
 
-								user-select: none
-								pointer-events: none
-
 								margin-left: 2px
 								transform: translateY(-2px)
 
 								width: 22px
 
-					&__btn
-						margin-top: 25px
-						width: 100%
+					&-btn
+						display: flex
+						flex-direction: column
+						align-items: center
+
+						&__btn
+							margin-top: 25px
+							width: 100%
+
+						&-timer
+							margin-top: 15px
+
+							&__title
+								font-size: 18px
+								color: $mainColor
+								margin-bottom: 5px
 
 				&-image
-					padding-bottom: 35px
-					width: 100%
+					width: 50%
 
-					&__image
-						user-select: none
-						pointer-events: none
-
-						width: 100%
+					+backgroundSetting
+					+borderRadiusBlock
 
 				&-image-media
 					display: none
@@ -459,247 +515,42 @@
 					+borderRadiusBlock
 
 			&-buy
-				position: relative
-
-				width: calc( 50% - 10px )
-
-				padding: 35px
 				background-color: $white
+				padding: 15px 30px
 
-				display: flex
-				flex-direction: column
-				justify-content: space-between
-
-				+borderRadiusBlock
-
-				&-text
-					&__subtitle
-						font-size: 24px
-						margin-bottom: 10px
-
-					&-price
-						display: flex
-						align-items: center
-
-						&__title
-							font-size: 42px
-
-							& > span
-								font-size: 32px
-								text-decoration: line-through
-								margin-left: 15px
-								color: $gray
-
-						&__sale
-							margin-left: 15px
-
-							display: inline-block
-							padding: 5px 10px
-
-							font-size: 21px
-
-							color: $mainColor
-							background-color: $lightMainColor
-
-							border-radius: 100px
-
-							transform: rotate(3deg)
-
-					&-list
-						margin-top: 15px
-
-						&__item
-							display: flex
-							align-items: flex-start
-
-							color: $mainColor
-							font-size: 21px
-							margin-bottom: 8px
-
-							&:last-child
-								margin-bottom: 0
-
-							& > svg
-								width: 17px
-								min-width: 17px
-
-								margin-top: 9px
-								margin-right: 10px
-
-							& > p > img
-								vertical-align: middle
-
-								user-select: none
-								pointer-events: none
-
-								margin-left: 2px
-								transform: translateY(-2px)
-
-								width: 22px
-					&__btn
-						margin-top: 25px
-						width: 100%
-
-				&-image
-					padding-top: 35px
-					width: 100%
-
-					&__image
-						user-select: none
-						pointer-events: none
-
-						width: 100%
-						+borderRadiusBlock
-
-				&-image-media
-					display: none
-					width: 45%
-					height: auto
-
-					+backgroundSetting
-					+borderRadiusBlock
-
-		&-subscribe-rates
-			padding: 35px 35px 50px 35px
-			background-color: $backgroundGray
-
-			+borderRadiusBlock
-			+openPopup
-
-			&.close
-				+closePopup
-
-			&-text
 				display: flex
 				justify-content: space-between
 				align-items: center
 
-				margin-bottom: 75px
+				+borderRadius
 
-				&-left
-					width: 40%
+				&__title
+					font-size: 21px
 
-					&__back
-						background-color: transparent
-						border: none
-
-						display: block
-						font-size: 24px
-						color: $gray
-						cursor: pointer
-
-						margin-bottom: 25px
-
-					&__title
-						font-size: 42px
-
-				&-timer
-					display: flex
-
-					&-block
-						display: flex
-						justify-content: center
-						align-items: center
-						flex-direction: column
-
+					& > span
+						display: inline-block
+						position: relative
 						margin: 0 5px
+						color: $gray
 
-						width: 95px
-						height: 95px
-
-						text-align: center
-
-						background-color: $mainColor
-						color: $white
-
-						+borderRadiusBlock
-
-						&__title
-							font-size: 30px
-
-						&__subtitle
-							font-size: 21px
-
-			&-blocks
-				display: flex
-				justify-content: space-between
-
-				&-block
-					display: flex
-					flex-direction: column
-					justify-content: space-between
-
-					position: relative
-
-					padding: 35px
-					width: 32%
-					background-color: $white
-
-					transform: scale(0.92)
-
-					+borderRadiusBlock
-
-					&:nth-child(2n)
-						transform: scale(1.05)
-
-					&__sale
-						display: flex
-						justify-content: center
-						align-items: center
-
-						position: absolute
-						right: 15px
-						top: 15px
-
-						width: 50px
-						height: 50px
-
-						font-size: 15px
-						color: $white
-						background-color: $mainColor
-						border-radius: 50%
-
-					&-top-text
-						margin-bottom: 50px
-
-						&__subtitle
-							font-size: 21px
-							margin-bottom: 10px
-
-						&__title
-							font-size: 32px
-
-					&-middle-text
-						margin-bottom: 50px
-
-						&__price
-							font-size: 58px
-							margin-bottom: 5px
-
-							& > span
-								font-size: 32px
-								color: $gray
-								text-decoration: line-through
-
-						&__subprice
-							font-size: 21px
-
-					&-bottom-text
-						&__btn
+						&::before
+							content: ""
+							display: block
+							position: absolute
 							width: 100%
-							margin-bottom: 10px
+							height: 1.5px
+							background-color: $gray
 
-						&__subbtn
-							font-size: 15px
-							text-align: center
-							color: $gray
+							top: 50%
+
+							transform: rotate(-20deg) translateY(-50%)
+
+				&__btn
+					width: 200px
 
 		&-register
-			padding: 35px
+			padding: 15px
 			background-color: $backgroundGray
-
-			display: flex
-			justify-content: space-between
 
 			+borderRadiusBlock
 			+openPopup
@@ -707,54 +558,72 @@
 			&.close
 				+closePopup
 
-			&-form
-				width: calc( 50% - 10px )
+			&-form-wrapper
+				position: relative
 
 				display: flex
-				flex-direction: column
 				justify-content: center
 
-				padding: 45px 60px
+				padding: 100px 50px
 				background-color: $white
 
-				+borderRadiusBlock
+				+borderRadius
 
-				&-text
-					width: 85%
-					margin-bottom: 50px
+			&-form
+				display: flex
+				flex-direction: column
+				align-items: center
 
-					&__back
-						display: flex
-						align-items: center
+				width: 50%
 
-						background-color: transparent
-						border: none
+				&__back
+					position: absolute
 
-						display: block
-						font-size: 24px
-						color: $gray
-						cursor: pointer
+					top: 25px
+					left: 25px
 
-						margin-bottom: 25px
+					padding: 10px 20px
 
-						& > svg
-							width: 20px
-							fill: $gray
-							margin-right: 5px
+					cursor: pointer
 
-					&__title
-						font-size: 42px
+					display: flex
+					align-items: center
+
+					background-color: $backgroundGray
+					border: none
+
+					display: block
+					font-size: 18px
+					color: $black
+
+					border-radius: 100px
+
+					& > svg
+						width: 13px
+						fill: $black
+						margin-right: 5px
+
+				&__subtitle
+					font-size: 24px
+					text-align: center
+
+					margin-bottom: 15px
+
+				&__title
+					font-size: 36px
+					text-align: center
+
+					margin-bottom: 35px
 
 				&-input
+					width: 100%
 					margin-bottom: 15px
 
 				&__btn
-					margin-top: 25px
+					margin-top: 15px
 					width: 100%
 
 				&__policy
-					width: 75%
-
 					display: block
 					margin: 15px auto 0 auto
 
@@ -765,166 +634,6 @@
 					& > a
 						color: $gray
 						border-bottom: 1px solid $gray
-
-			&-subscribe-product-block
-				width: calc( 50% - 10px )
-
-				background-color: $white
-				overflow: hidden
-
-				+borderRadiusBlock
-
-				&-text
-					padding: 35px
-
-					&__subtitle
-						font-size: 24px
-						margin-bottom: 10px
-
-					&__title
-						font-size: 42px
-
-						& > span
-							white-space: nowrap
-
-					&__pricedesc
-						font-size: 21px
-						margin-top: 10px
-						color: $gray
-
-					&-list
-						margin-top: 25px
-
-						&__item
-							display: flex
-							align-items: flex-start
-
-							color: $mainColor
-							font-size: 21px
-							margin-bottom: 8px
-
-							&:last-child
-								margin-bottom: 0
-
-							& > svg
-								width: 17px
-								min-width: 17px
-
-								margin-top: 9px
-								margin-right: 10px
-
-							& > p > img
-								vertical-align: middle
-
-								user-select: none
-								pointer-events: none
-
-								margin-left: 2px
-								transform: translateY(-2px)
-
-								width: 22px
-
-				&-image
-					padding-bottom: 35px
-
-					&__image
-						user-select: none
-						pointer-events: none
-
-						width: 100%
-
-			&-buy-product-block
-				position: relative
-
-				width: calc( 50% - 10px )
-
-				background-color: $white
-
-				+borderRadiusBlock
-
-				&-loader
-					padding: 50px
-
-				&-text
-					padding: 35px
-
-					&__subtitle
-						font-size: 24px
-						margin-bottom: 10px
-
-					&-price
-						display: flex
-						align-items: center
-
-						&__title
-							font-size: 42px
-
-							& > span
-								font-size: 32px
-								text-decoration: line-through
-								margin-left: 15px
-								color: $gray
-
-						&__sale
-							margin-left: 15px
-
-							display: inline-block
-							padding: 5px 10px
-
-							font-size: 21px
-
-							color: $mainColor
-							background-color: $lightMainColor
-
-							border-radius: 100px
-
-							transform: rotate(3deg)
-
-					&-list
-						margin-top: 25px
-
-						&__item
-							display: flex
-							align-items: flex-start
-
-							color: $mainColor
-							font-size: 21px
-							margin-bottom: 8px
-
-							&:last-child
-								margin-bottom: 0
-
-							& > svg
-								width: 17px
-								min-width: 17px
-
-								margin-top: 9px
-								margin-right: 10px
-
-							& > p > img
-								vertical-align: middle
-
-								user-select: none
-								pointer-events: none
-
-								margin-left: 2px
-								transform: translateY(-2px)
-
-								width: 22px
-
-					&__btn
-						margin-top: 25px
-						width: 100%
-
-					&__image
-						margin-top: 35px
-
-						user-select: none
-						pointer-events: none
-
-						width: 100%
-
-						+borderRadiusBlock
 
 	&-passing
 		margin: 50px 0
@@ -968,9 +677,6 @@
 
 			&__image
 				border-radius: 25px 25px 0 0
-
-				user-select: none
-				pointer-events: none
 
 				width: 100%
 
@@ -1283,70 +989,30 @@
 		&-price
 			// choice
 			&-blocks
-				padding: 20px
+				padding: 15px
+
+				+borderRadius
 
 				&-subscribe
-					&-text
-						padding: 20px
-
-						&__title
-							font-size: 32px
-
-						&-list
-							margin-top: 15px
-
-							&__item
-								font-size: 18px
-
-								& > svg
-									margin-top: 6px
-
-									min-width: 15px
-									width: 15px
-
-				&-buy
-					padding: 20px
+					flex-direction: column
 
 					&-text
-						&-price
-							&__title
-								font-size: 32px
+						width: 100%
 
-								& > span
-									font-size: 24px
+					&-image
+						margin-top: 25px
 
-						&-list
-							margin-top: 15px
+						width: 100%
+						height: 400px
 
-							&__item
-								font-size: 18px
-
-								& > svg
-									margin-top: 6px
-
-									min-width: 15px
-									width: 15px
-
-			// register
 			&-register
-				padding: 20px
+				padding: 15px
 
-				flex-direction: column
+				&-form-wrapper
+					padding: 30px 15px
 
 				&-form
 					width: 100%
-
-					padding: 35px
-
-					margin-bottom: 20px
-
-				&-subscribe
-					&-product-block
-						width: 100%
-
-				&-buy
-					&-product-block
-						width: 100%
 
 		// tools
 		&-tools
@@ -1504,18 +1170,6 @@
 
 							font-size: 21px
 
-		// price
-		&-price
-			// choice
-			&-blocks
-				flex-direction: column
-
-				&-subscribe
-					margin-bottom: 20px
-
-				&-subscribe, &-buy
-					width: 100%
-
 		// passing
 		&-passing
 			&-title
@@ -1545,6 +1199,39 @@
 				&__title
 					font-size: 32px
 
+		// price
+		&-price
+			&-blocks
+				&-buy
+					flex-direction: column
+					text-align: center
+
+					&__title
+						margin-bottom: 15px
+
+					&__btn
+						width: 100%
+
+			&-register
+				&-form-wrapper
+					padding: 15px
+
+				&-form
+					&__back
+						position: static
+						margin-bottom: 15px
+
+					&__subtitle
+						font-size: 18px
+						margin-bottom: 5px
+
+					&__title
+						font-size: 32px
+						margin-bottom: 25px
+
+					&__btn
+						margin-top: 0
+
 		// tools
 		&-tools
 			&__item
@@ -1567,7 +1254,10 @@
 			visibility: visible
 			pointer-events: auto
 
+			right: 10px
+
 		&__title
+			width: 100%
 			font-size: 32px
 
 		// main
@@ -1678,112 +1368,6 @@
 						&__description
 							font-size: 18px
 
-		// price
-		&-price
-			// choice
-			&-blocks
-				padding: 15px
-
-				&-subscribe, &-buy
-					+borderRadiusBlockMedia
-
-				&-subscribe
-					&-text
-						padding: 15px
-
-				&-buy
-					padding: 15px
-
-					&-text
-						&-price
-							flex-direction: column
-							align-items: flex-start
-
-							&__sale
-								margin-top: 10px
-								margin-left: 0
-
-								transform: rotate(0)
-
-					&-image
-						&__image
-							+borderRadiusBlockMedia
-
-			// register
-			&-register
-				&-form
-					padding: 25px
-
-					+borderRadiusBlockMedia
-
-					&-text
-						width: 100%
-
-						margin-bottom: 25px
-
-						&__title
-							font-size: 32px
-
-					&__btn
-						margin-top: 10px
-
-				&-subscribe
-					&-product-block
-						+borderRadiusBlockMedia
-
-						&-text
-							padding: 15px
-
-							&__title
-								font-size: 32px
-
-							&-list
-								margin-top: 15px
-
-								&__item
-									font-size: 18px
-
-									& > svg
-										margin-top: 6px
-
-										min-width: 15px
-										width: 15px
-
-				&-buy
-					&-product-block
-						+borderRadiusBlockMedia
-
-						&-text
-							padding: 15px
-
-							&__title
-								font-size: 32px
-
-							&-price
-								flex-direction: column
-								align-items: flex-start
-
-								&__sale
-									margin-top: 10px
-									margin-left: 0
-
-									transform: rotate(0)
-
-							&-list
-								margin-top: 15px
-
-								&__item
-									font-size: 18px
-
-									& > svg
-										margin-top: 6px
-
-										min-width: 15px
-										width: 15px
-
-							&__image
-								+borderRadiusBlockMedia
-
 		// passing
 		&-passing
 			&-block
@@ -1835,6 +1419,38 @@
 						&-iframe
 							width: 95%
 
+		// price
+		&-price
+			&-blocks
+				&-subscribe
+					&-text
+						&__subtitle
+							font-size: 24px
+
+						&__title
+							font-size: 32px
+
+						&-price
+							&__title
+								font-size: 36px
+
+								& > span
+									font-size: 32px
+
+						&-list
+							&__item
+								& > span
+									width: 100%
+									font-size: 14px
+
+						&-btn
+							&-timer
+								&__title
+									font-size: 14px
+
+					&-image
+						height: 300px
+
 		// faq
 		&-faq
 			&-item
@@ -1880,56 +1496,29 @@
 
 		// price
 		&-price
-			// choice
 			&-blocks
 				&-subscribe
 					&-text
-						&__subtitle
-							font-size: 18px
+						&-list
+							&__item
+								font-size: 16px
 
-						&__title
-							font-size: 24px
-
-						&__pricedesc
-							font-size: 18px
-
-				&-buy
-					padding: 15px
-
-					&-text
-						&__subtitle
-							font-size: 18px
-
-						&__title
-							font-size: 24px
-
-						&__pricedesc
-							font-size: 18px
-			// register
 			&-register
 				&-form
-					&-text
-						&__back
-							font-size: 18px
+					&__title
+						font-size: 24px
 
-							& > svg
-								width: 15px
-
-						&__title
-							font-size: 24px
-
-					&__policy
-						width: 95%
-						font-size: 10px
-
+@media screen and ( max-width: 350px )
+	.course-page
+		// price
+		&-price
+			&-blocks
 				&-subscribe
-					&-product-block
-						&-text
-							&__subtitle
-								font-size: 18px
+					&-text
+						&-btn
+							&-timer
+								&__title
+									font-size: 10px
 
-							&__title
-								font-size: 24px
-
-							&__pricedesc
-								font-size: 18px
+					&-image
+						height: 200px

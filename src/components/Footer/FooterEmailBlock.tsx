@@ -1,12 +1,17 @@
 import React from 'react'
 
-const FooterEmailBlockHello: React.FC = () => {
+interface FooterEmailBlockProps {
+	title: string
+	email: string
+}
+
+const FooterEmailBlock: React.FC<FooterEmailBlockProps> = ({ title, email }) => {
 	const [isCopy, setIsCopy] = React.useState<boolean>(false)
 	const [isCloseAnimationCopy, setIsCloseAnimationCopy] = React.useState<boolean>(false)
 
 	const onClickCopy = () => {
 		if (setIsCopy) {
-			navigator.clipboard.writeText("hello@hobjob.ru")
+			navigator.clipboard.writeText(email)
 
 			setIsCopy(true)
 
@@ -24,10 +29,10 @@ const FooterEmailBlockHello: React.FC = () => {
 	return (
 		<div className="footer-block-emails-block" onClick={onClickCopy}>
 			<p className="footer-block-emails-block__subtitle">
-				Для вопросов и предложений
+				{title}
 			</p>
 			<p className="footer-block-emails-block__email">
-				hello@hobjob.ru
+				{email}
 
 				{isCopy ? <span className={`${isCloseAnimationCopy ? "close" : ""}`}>
 					Скопировано
@@ -42,4 +47,4 @@ const FooterEmailBlockHello: React.FC = () => {
 	)
 }
 
-export default FooterEmailBlockHello
+export default FooterEmailBlock

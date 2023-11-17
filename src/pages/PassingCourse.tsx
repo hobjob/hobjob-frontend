@@ -8,16 +8,14 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 
 import {
 	fetchPassingCourseById,
-	fetchPassingCourseLessonMaterial,
+	setPassingIsLoadedCourse,
+	setPassingCurrentLessonIndex,
 } from "../redux/actions/passing";
 
 import {
 	Loader,
-	PassingTopText,
+	PassingCurrentLesson,
 	PassingLessonsList,
-	PassingVideo,
-	PassingMaterials,
-	PassingMaster,
 } from "../components/";
 
 const PassingCourse: React.FC = () => {
@@ -25,89 +23,41 @@ const PassingCourse: React.FC = () => {
 	const { id, num } = useParams();
 
 	const courseId = id ? id : "";
-	const lessonNum = num ? parseInt(num) : 1;
 
 	const { isLoadedUserInfo } = useTypedSelector(({ user }) => user);
-	const { course, isLoadedCourse } = useTypedSelector(({ passing }) => passing);
+	const { course, currentLessonIndex, isLoadedCourse } = useTypedSelector(({ passing }) => passing);
 
-	const isLoadedMasters = useTypedSelector(({ masters }) => masters.isLoaded);
-	const masters = useTypedSelector(({ masters }) => masters.items);
+	React.useEffect(() => {
+		dispatch(fetchPassingCourseById(courseId) as any);
 
-	// Array of lessons starts at zero
-	const lessonIndex = lessonNum - 1;
+		return () => {
+			dispatch(setPassingIsLoadedCourse(false))
+		}
+	}, [courseId]);
 
 	React.useEffect(() => {
 		scroll.scrollToTop({ duration: 500 });
 
-		if (isLoadedUserInfo) {
-			dispatch(fetchPassingCourseById(courseId) as any);
-		}
-	}, [courseId, lessonNum, isLoadedUserInfo]);
-
-	const downloadFile = (title: string, index: number) => {
-		dispatch(
-			fetchPassingCourseLessonMaterial(courseId, lessonNum, index, title) as any
-		);
-	};
+		dispatch(setPassingCurrentLessonIndex(num ? parseInt(num) - 1 : 0))
+	}, [courseId, num]);
 
 	return (
 		<>
 			{localStorage.getItem("accessToken") ? (
-				isLoadedCourse && isLoadedUserInfo && isLoadedMasters ? (
+				isLoadedCourse && isLoadedUserInfo ? (
 					<>
 						<Helmet>
 							<title>
-								{course.lessons[lessonIndex].title} - HobJob
+								{course.lessons[currentLessonIndex].title} - HobJob
 							</title>
 						</Helmet>
 
 						<section className="passing">
 							<div className="container">
 								<div className="passing-wrapper">
-									<PassingTopText
-										subtitle={course.title}
-										title={
-											course.lessons[lessonIndex].title
-										}
-									/>
+									<PassingCurrentLesson />
 
-									<PassingVideo
-										{...course}
-										image={
-											course.lessons[lessonIndex].image
-												.size_2048
-										}
-										courseId={courseId}
-										lessonNum={lessonNum}
-										lessonIndex={lessonIndex}
-									/>
-
-									<PassingLessonsList
-										lessonActive={lessonNum}
-										{...course}
-									/>
-
-									<div className="passing-lesson-info">
-										<p className="passing-lesson-info__description">
-											{course.lessons[lessonIndex].description}
-										</p>
-
-										{course.lessons[lessonIndex].materials
-											.length ? (
-											<PassingMaterials
-												materials={
-													course.lessons[lessonIndex]
-														.materials
-												}
-												downloadFunc={downloadFile}
-											/>
-										) : null}
-									</div>
-
-									{/* 
-                                    <PassingMaster
-                                        {...masters[course.masterId]}
-                                    />*/}
+									<PassingLessonsList />
 								</div>
 							</div>
 						</section>

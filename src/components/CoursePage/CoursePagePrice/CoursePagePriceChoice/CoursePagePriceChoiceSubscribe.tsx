@@ -1,28 +1,44 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import CoursePageSubscribeBlockImage from "../../../../assets/images/subscribe-block-image.jpg";
-
 import Love from "../../../../assets/images/love.png";
 
-import { CoursePagePriceSections } from "../../../../redux/types/coursePage/ICoursePage";
-import { changePriceCurrentSection } from "../../../../redux/actions/coursePage";
+import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 
-const CoursePagePriceChoiceSubscribe: React.FC = () => {
+import { CoursePagePriceSections } from "../../../../redux/types/coursePage/ICoursePage";
+
+import { changePriceCurrentSection } from "../../../../redux/actions/coursePage";
+import { sendCreatePaymentCourse } from "../../../../redux/actions/payment/paymentCourse";
+
+import { CourseGood } from '../../../../models/Course/ICourseGood'
+
+import { CoursePagePriceChoiceSubscribeTimer } from '../../../'
+
+const CoursePagePriceChoiceSubscribe: React.FC<CourseGood> = ({ _id, title, image, price, oldPrice }) => {
 	const dispatch = useDispatch();
+
+	const { userInfo } = useTypedSelector(({ user }) => user)
 
 	return (
 		<div className="course-page-price-blocks-subscribe">
 			<div className="course-page-price-blocks-subscribe-text">
+				{/* <h3 className="course-page-price-blocks-subscribe-text__title">
+					Получите доступ <br /> к курсу навсегда
+				</h3> */}
 				<p className="course-page-price-blocks-subscribe-text__subtitle">
-					Подписка HobJob
+					Курс навсегда
 				</p>
+
 				<h3 className="course-page-price-blocks-subscribe-text__title">
-					Попробуйте <span>30 дней</span> за 1₽
+					{title}
 				</h3>
-				<p className="course-page-price-blocks-subscribe-text__pricedesc">
-					далее 299₽ в месяц
-				</p>
+
+				<div className="course-page-price-blocks-subscribe-text-price">
+					<p className="course-page-price-blocks-subscribe-text-price__title">
+						{price}₽ <span>{oldPrice}₽</span>
+					</p>
+				</div>
+
 				<div className="course-page-price-blocks-subscribe-text-list">
 					<p className="course-page-price-blocks-subscribe-text-list__item">
 						<svg
@@ -45,8 +61,9 @@ const CoursePagePriceChoiceSubscribe: React.FC = () => {
 								strokeLinecap="round"
 							/>
 						</svg>
-						Можно отменить в любой момент
+						Доступ к курсу и материалам
 					</p>
+					{/* 
 					<p className="course-page-price-blocks-subscribe-text-list__item">
 						<svg
 							width="17"
@@ -68,8 +85,9 @@ const CoursePagePriceChoiceSubscribe: React.FC = () => {
 								strokeLinecap="round"
 							/>
 						</svg>
-						Доступ ко всем курсам и материалам
-					</p>
+						Сертификат после прохождения курса
+					</p> */}
+
 					<p className="course-page-price-blocks-subscribe-text-list__item">
 						<svg
 							width="17"
@@ -91,13 +109,17 @@ const CoursePagePriceChoiceSubscribe: React.FC = () => {
 								strokeLinecap="round"
 							/>
 						</svg>
-						Новые курсы добавляются каждый месяц
+						Удобный личный кабинет
 					</p>
 
 					<a
 						href="https://www.dobryaki.ru/wards"
 						className="course-page-price-blocks-subscribe-text-list__item"
 					>
+						<span>
+							Покупая курс HobJob, вы помогаете детям с заболеваниями, так как с каждой покупки мы отправляем 99₽ в фонд «Клуб добряков». Обучаясь новым навыкам на HobJob, вы помогаете детям.
+						</span>
+
 						<svg
 							viewBox="0 0 17 15"
 							fill="none"
@@ -123,26 +145,36 @@ const CoursePagePriceChoiceSubscribe: React.FC = () => {
 					</a>
 				</div>
 
-				<button
-					className="btn course-page-price-blocks-subscribe-text__btn"
-					onClick={() =>
-						dispatch(
-							changePriceCurrentSection(
-								CoursePagePriceSections.SUBSCRIBE_REGISTER
-							) as any
-						)
-					}
-				>
-					Попробовать
-				</button>
+				<div className="course-page-price-blocks-subscribe-text-btn">
+					{userInfo._id === "" ? (
+						<button
+							className="btn course-page-price-blocks-subscribe-text-btn__btn"
+							onClick={() =>
+								dispatch(
+									changePriceCurrentSection(
+										CoursePagePriceSections.BUY_REGISTER
+									) as any
+								)
+							}
+						>
+							Начать обучение
+						</button>
+					) : (
+						<button
+							className="btn course-page-price-blocks-subscribe-text-btn__btn"
+							onClick={() =>
+								dispatch(sendCreatePaymentCourse(_id) as any)
+							}
+						>
+							Начать обучение
+						</button>
+					)}
+
+					<CoursePagePriceChoiceSubscribeTimer />
+				</div>
 			</div>
 
-			<div className="course-page-price-blocks-subscribe-image">
-				<img
-					alt=""
-					className="course-page-price-blocks-subscribe-image__image"
-					src={CoursePageSubscribeBlockImage}
-				/>
+			<div className="course-page-price-blocks-subscribe-image" style={{ backgroundImage: `url('${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_1024}')` }}>
 			</div>
 		</div>
 	);

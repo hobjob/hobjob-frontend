@@ -1,401 +1,239 @@
 // passing
 .passing
-	margin: 35px 0 50px 0
+	margin: 35px 0
 
 	+openAnimation
 
-	&-top-text
+	&-wrapper
 		display: flex
+		justify-content: space-between
 		align-items: flex-start
-		justify-content: space-between
 
-		margin-bottom: 35px
+	&-current-lesson
+		width: 70%
 
-		&-title
-			width: 75%
+		&__back
+			display: inline-flex
+			align-items: center
 
-			&__subtitle
-				color: $black
-				font-size: 21px
-				margin-bottom: 15px
-
-			&__title
-				font-size: 46px
-
-	&-video
-		+openAnimation
-
-	&-cover
-		margin-top: 50px
-
-		position: relative
-		overflow: hidden
-
-		height: 600px
-		width: 100%
-
-		+openAnimation
-		+borderRadiusBlock
-
-		&-icon
-			position: absolute
-
-			z-index: 2
-
-			top: 50%
-			left: 50%
-
-			transform: translate(-50%, -50%)
-
-		&-img
-			height: 100%
-			width: 100%
-
-			+backgroundSetting
-
-	&-lessons-list
-		display: flex
-		justify-content: space-between
-
-		margin-top: 25px
-		margin-bottom: 35px
-
-		border-bottom: 1px solid $borderGray
-		overflow-y: auto
-
-		&-items-wrapper
-			display: flex
-
-			overflow-y: auto
-			padding-bottom: 25px
-			width: 100%
-
-			&::-webkit-scrollbar
-				width: 4px
-				height: 7px
-				background-color: #F0F0F0
-
-			&::-webkit-scrollbar-thumb
-				background-color: #E2E2E2
-				border-radius: 3px
-
-			&::-webkit-scrollbar-thumb:hover
-				background-color: #E2E2E2
-
-			&::-ms-scrollbar
-				width: 4px
-				height: 8px
-				background-color: #F0F0F0
-
-			&::-ms-scrollbar-thumb
-				background-color: #E2E2E2
-				border-radius: 3px
-
-			&::-ms-scrollbar-thumb:hover
-				background-color: #E2E2E2
-
-		&-item
-			cursor: pointer
-			display: block
-
-			min-width: 200px
-			width: 200px
-
-			margin-right: 15px
-
-			opacity: 0.3
-			user-select: none
+			margin-bottom: 35px
 
 			+transition
 
 			&:hover
-				opacity: 0.5
+				+transformScaleHover
 
-			&-cover
-				position: relative
-				width: 100%
-				height: 125px
+			&:active
+				+transformScaleClick
 
-				overflow: hidden
+			& > svg
+				margin-right: 10px
 
-				+borderRadius
+		&__title
+			font-size: 38px
+			margin-bottom: 25px
 
-				&-img
-					width: 100%
-					height: 100%
+		&-content
+			&__subtitle
+				margin-top: 25px
 
-					user-select: none
+				display: inline-block
 
-					+backgroundSetting
+				padding: 5px 15px
+				background-color: $backgroundGray
+				font-size: 18px
+				border-radius: 100px
+
+				margin-bottom: 15px
 
 			&__title
-				margin-top: 10px
-				overflow: hidden
-				text-overflow: ellipsis
-				white-space: nowrap
-
-			&.active
-				opacity: 1
-				user-select: auto
-
-	&-lesson
-		&-info
-			display: flex
-			justify-content: space-between
-			align-items: flex-start
+				font-size: 32px
 
 			&__description
-				width: 600px
+				margin-top: 15px
 
-				font-size: 24px
+				width: 80%
+				font-size: 18px
 
 			&-materials
-				width: 45%
+				margin-top: 35px
 
-				&__title
-					font-size: 32px
-					margin-bottom: 25px
-
-				&-items-wrapper
-					max-height: 250px
-					overflow-y: auto
-
-					&::-webkit-scrollbar
-						width: 4px
-						height: 7px
-						background-color: #F0F0F0
-
-					&::-webkit-scrollbar-thumb
-						background-color: #E2E2E2
-						border-radius: 3px
-
-					&::-webkit-scrollbar-thumb:hover
-						background-color: #E2E2E2
-
-					&::-ms-scrollbar
-						width: 4px
-						height: 8px
-						background-color: #F0F0F0
-
-					&::-ms-scrollbar-thumb
-						background-color: #E2E2E2
-						border-radius: 3px
-
-					&::-ms-scrollbar-thumb:hover
-						background-color: #E2E2E2
+				display: flex
 
 				&-item
 					cursor: pointer
 
 					display: inline-flex
 					align-items: center
+					justify-content: center
 
 					padding: 10px 15px
-					border: 1px solid $mainColor
 
-					color: $mainColor
+					border: 1px solid $mainColor
 
 					will-change: transform
 
 					margin-right: 10px
-					margin-bottom: 10px
 
-					+borderRadiusBlock
+					+borderRadius
 					+transition
 
-					&:last-child
-						margin-right: 0
-
 					&:hover
-						background-color: $mainColor
-						color: $white
-
 						+transformScaleHover
-
-					&:hover &-icon
-						& > svg
-							fill: $white
 
 					&:active
 						+transformScaleClick
+
+					&:last-child
+						margin-right: 0
 
 					&-icon
 						display: flex
 						align-items: center
 
-						& > svg
+						& svg
 							fill: $mainColor
-							+transition
 
 					&__title
-						font-size: 21px
+						font-size: 18px
 						margin-left: 10px
+						color: $mainColor
 
 						overflow: hidden
 						text-overflow: ellipsis
 						white-space: nowrap
 
-				&-middle
-					display: flex
-					justify-content: center
-					align-items: center
-					height: 250px
+					&__loader
+						margin-left: 10px
 
-	&-master
-		display: flex
+						width: 15px
+						height: 15px
+						border: 2px solid $mainColor
+						border-bottom-color: transparent
+						border-radius: 50%
+						display: inline-block
+						box-sizing: border-box
+						animation: rotation 1s linear infinite
 
-		width: 100%
-		padding: 25px
-		background-color: $backgroundGray
+	&-lessons-list
+		margin-top: 10px
+		width: 28%
 
-		+borderRadiusBlock
+		&-item
+			display: flex
+			align-items: center
 
-		&-image
-			margin-right: 35px
+			padding: 10px
 
-			width: 125px
-			min-width: 125px
+			+transition
+			+borderRadius
 
-			height: 125px
+			&:last-child
+				margin-bottom: 0
 
-			border-radius: 50%
+			&:hover
+				background-color: $backgroundGray
 
-			+backgroundSetting
+			&.active
+				background-color: $backgroundGray
 
-		&-text
-			width: 70%
+			&-image
+				width: 150px
+				min-width: 150px
+
+				height: 100px
+
+				border-radius: 25px
+
+				+backgroundSetting
+
+			&-text
+				margin-top: 15px
+				margin-left: 15px
+				margin-bottom: 15px
+
+				&__subtitle
+					font-size: 16px
+					margin-bottom: 5px
+
+				&__title
+					width: 200px
+
+					overflow: hidden
+					text-overflow: ellipsis
+					white-space: nowrap
+
+					font-size: 18px
+
+				&__materials
+					margin-top: 5px
+					font-size: 16px
+					color: $mainColor
+
+// media
+@media screen and ( max-width: 1400px )
+	.passing
+		&-lessons-list
+			&-item
+				&-text
+					&__title
+						width: 125px
+
+@media screen and ( max-width: 1200px )
+	.passing
+		margin: 25px 0
+
+		&-wrapper
+			flex-direction: column
+
+		&-current-lesson
+			width: 100%
+
+			&__back
+				margin-bottom: 25px
 
 			&__title
 				font-size: 32px
 
-			&__description
-				font-size: 21px
-				margin-top: 25px
-
-			&__link
-				margin-top: 50px
-
-// media
-@media screen and ( max-width: 1200px )
-	.passing
-		&-lesson-info
-			flex-direction: column
-
-			&__description
-				width: 100%
-				margin-bottom: 25px
-
-			&-materials
-				width: 100%
-
-		&-master
-			width: 100%
-
-@media screen and ( max-width: 900px )
-	.passing
-		margin: 25px 0
-
-		&-top-text
-			margin-bottom: 25px
-
-			&-title
-				width: 100%
-
+			&-content
 				&__subtitle
-					font-size: 18px
+					font-size: 16px
 
-				&__title
-					font-size: 32px
-
-		&-video
-			margin-top: 15px
-
-		&-lessons-list
-			&-block
-				&__subtitle
-					font-size: 18px
-
-				&-item
-					margin-right: 10px
-
-		&-lesson-info
-			&-block
-				&-text
-					&__title
-						margin-bottom: 25px
-						font-size: 32px
-
-				&-materials
-					margin-top: 25px
-
-					&__title
-						font-size: 32px
-
-		&-master
-			padding: 15px
-
-			&-text
 				&__title
 					font-size: 24px
 
 				&__description
-					font-size: 18px
+					width: 100%
+					font-size: 16px
 
-				&__link
-					font-size: 18px
+				&-materials
+					margin-top: 25px
 
-@media screen and ( max-width: 600px )
-	.passing
+					&-item
+						&__title
+							font-size: 16px
+
 		&-lessons-list
+			margin-top: 25px
+			width: 100%
+
 			&-item
-				&-cover
-					border-radius: 20px
+				&-text
+					&__title
+						width: 100%
 
 @media screen and ( max-width: 500px )
 	.passing
-		margin: 25px 0
-
-		&-top-text
-			&-title
-				&__subtitle
-					font-size: 18px
-
-				&__title
-					font-size: 24px
-
-		&-video
-			margin-top: 15px
-
 		&-lessons-list
-			&-block
-				&__subtitle
-					font-size: 18px
+			&-item
+				padding: 5px
 
-				&-item
-					margin-right: 10px
+				&-image
+					width: 100px
+					min-width: 100px
+					height: 100px
 
-		&-lesson-info
-			&-block
 				&-text
 					&__title
-						margin-bottom: 25px
-						font-size: 32px
-
-				&-materials
-					margin-top: 25px
-
-					&__title
-						font-size: 32px
-
-		&-master
-			padding: 15px
-
-			&-text
-				&__title
-					font-size: 24px
-
-				&__description
-					font-size: 18px
-
-				&__link
-					font-size: 18px
+						font-size: 16px
+						white-space: pre-wrap

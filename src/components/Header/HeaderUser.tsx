@@ -69,12 +69,12 @@ const HeaderUser: React.FC<HeaderUserProps> = ({ stateGlobalHeader, avatar, onCl
 					Мой профиль
 				</NavLink>
 
-				<NavLink
+				{/* <NavLink
 					to="/go/referrals"
 					className="header-block-user-menu__link"
 				>
 					Пригласи друга
-				</NavLink>
+				</NavLink> */}
 
 				<span
 					className="header-block-user-menu__link"

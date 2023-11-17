@@ -7,7 +7,8 @@ import {
 
 const initialState: CabinetSubscribeDisableState = {
 	isCloseAnimation: false,
-	currentSection: CabinetSubscribeDisableSection.MAIN,
+	currentSection: CabinetSubscribeDisableSection.FEEDBACK,
+	// currentSection: CabinetSubscribeDisableSection.MAIN,
 }
 
 const cabinetSubscribeDisable = (state = initialState, action: CabinetSubscribeDisableActions) => {

@@ -24,22 +24,30 @@ export const fetchPassingCourseById = (courseId: string) => {
 };
 
 
-export const fetchPassingCourseLessonMaterial = (
+export const fetchPassingCourseLessonMaterial = async (
 	courseId: string,
 	lessonNum: number,
 	materialNum: number,
-	title: string
+	title: string,
 ) => {
-	return async () => {
-		const response = await $api.get(
-			`/courses/${courseId}/materials/${lessonNum}/${materialNum}`,
-			{
-				responseType: "blob",
-			}
-		);
+	const response = await $api.get(
+		`/courses/${courseId}/materials/${lessonNum}/${materialNum}`,
+		{
+			responseType: "blob",
+		}
+	);
 
-		let myUrl = window.URL.createObjectURL(response.data);
+	let myUrl = window.URL.createObjectURL(response.data);
 
-		saveAs(myUrl, title);
-	};
+	saveAs(myUrl, title);
 };
+
+export const setPassingIsLoadedCourse = (status: boolean) => ({
+	type: PassingActionTypes.SET_PASSING_IS_LOADED_COURSE,
+	payload: status
+})
+
+export const setPassingCurrentLessonIndex = (number: number) => ({
+	type: PassingActionTypes.SET_PASSING_CURRENT_LESSON_INDEX,
+	payload: number
+})

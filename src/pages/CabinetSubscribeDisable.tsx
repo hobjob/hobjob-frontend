@@ -10,6 +10,7 @@ import {
 	CabinetSubscribeDisableChoice,
 	CabinetSubscribeDisableSaleSubscribe,
 	CabinetSubscribeDisableFreeMonthSubscribe,
+	CabinetSubscribeDisableFeedback,
 	CabinetSubscribeDisableSuccessSaleSubscribe,
 	CabinetSubscribeDisableSuccessFreeMonthSubscribe,
 	CabinetSubscribeDisableSuccessDisable,
@@ -77,6 +78,11 @@ const CabinetSubscribeDisable: React.FC = () => {
 										{currentSection ===
 											CabinetSubscribeDisableSection.FREE_MONTH_SUBSCRIBE ? (
 											<CabinetSubscribeDisableFreeMonthSubscribe />
+										) : null}
+
+										{currentSection ===
+											CabinetSubscribeDisableSection.FEEDBACK ? (
+											<CabinetSubscribeDisableFeedback />
 										) : null}
 
 										{currentSection ===

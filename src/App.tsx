@@ -50,6 +50,7 @@ declare global {
 		YooMoneyCheckoutWidget?: any;
 		_tmr?: any;
 		ym: any
+		Playerjs: any
 	}
 }
 
@@ -97,6 +98,16 @@ const App: React.FC = () => {
 		if (!Object.keys(categories).length) {
 			dispatch(fetchCategories() as any);
 		}
+
+		// console.log(
+		// 	`%cПривет! Мы всегда рады хорошим разработчикам в нашу IT команду HobJob - https://t.me/nagibinarseniy`,
+		// 	"font-size: 14px; border: 2px solid #fff; color: #fff; padding:5px 10px; border-radius:10px;"
+		// )
+
+		// @ts-ignore
+		// console.image(
+		// 	`https://sun9-77.userapi.com/impg/0-jlkv1WXM4zse8zyFVCkKJlmMOvawSJRtuXFw/enc7-oQ9AFE.jpg?size=2048x1536&quality=95&sign=4bcf874f6062acf0c65b309c0b383d33&type=album`
+		// )
 	}, []);
 
 	React.useEffect(() => {
@@ -127,8 +138,8 @@ const App: React.FC = () => {
 						pathname.indexOf("/register") !== -1 ||
 						pathname === "/go/password-recovery" ||
 						pathname.indexOf("/go/password-recovery") !== -1 ||
-						pathname.indexOf("/go/cabinet/subscribe/disable") !==
-						-1 ? null : (
+						pathname.indexOf("/go/cabinet/subscribe/disable") !== -1 ||
+						pathname.indexOf("/go/passing") !== -1 ? null : (
 						<Header />
 					)}
 

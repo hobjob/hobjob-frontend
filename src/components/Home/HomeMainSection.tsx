@@ -19,7 +19,7 @@ const HomeMainSection: React.FC = () => {
 						<div className="main-wrapper">
 							<div className="main-text">
 								<h1 className="main-text__title">
-									Творческие курсы по подписке <br />{" "}
+									Творческие курсы <br />{" "}
 									Научитесь создавать шедевры своими руками
 								</h1>
 							</div>
@@ -39,7 +39,7 @@ const HomeMainSection: React.FC = () => {
 										)}
 									</div>
 
-									<picture>
+									{/* <picture>
 										<source
 											media="(max-width: 900px)"
 											srcSet={MainOfferMedia}
@@ -50,7 +50,7 @@ const HomeMainSection: React.FC = () => {
 											className="main-text__image"
 											src={MainOffer}
 										/>
-									</picture>
+									</picture> */}
 								</div>
 							</div>
 						</div>

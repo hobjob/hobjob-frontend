@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
-import { Dzen, Vk, Youtube, Telegram, Instagram, FooterEmailBlockSupport, FooterEmailBlockHello } from "../";
+import { Dzen, Vk, Youtube, Telegram, Instagram, FooterEmailBlock } from "../";
 
 import Logo from "../../assets/images/logo.svg";
 
@@ -94,9 +94,9 @@ const Footer: React.FC = () => {
 							</nav>
 
 							<div className="footer-block-emails">
-								<FooterEmailBlockSupport />
+								<FooterEmailBlock title="Служба поддержки" email="support@hobjob.ru" />
 
-								<FooterEmailBlockHello />
+								<FooterEmailBlock title="Для вопросов и предложений" email="hello@hobjob.ru" />
 							</div>
 						</div>
 						<div className="footer-block footer-block-socials-wrapper">
@@ -131,12 +131,12 @@ const Footer: React.FC = () => {
 									<Telegram />
 								</a>
 
-								<a
+								{/* <a
 									href={process.env.REACT_APP_SOCIALS_INST}
 									className="footer-block-socials__link"
 								>
 									<Instagram />
-								</a>
+								</a> */}
 							</div>
 						</div>
 					</div>

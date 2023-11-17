@@ -18,6 +18,9 @@ const initialState: PassingState = {
 
 		lessons: []
 	},
+
+	currentLessonIndex: 0,
+
 	isLoadedCourse: false
 };
 
@@ -27,6 +30,20 @@ const passing = (state = initialState, action: PassingActions) => {
 			...state,
 			course: action.payload,
 			isLoadedCourse: true
+		}
+	}
+
+	if (action.type === PassingActionTypes.SET_PASSING_CURRENT_LESSON_INDEX) {
+		return {
+			...state,
+			currentLessonIndex: action.payload
+		}
+	}
+
+	if (action.type === PassingActionTypes.SET_PASSING_IS_LOADED_COURSE) {
+		return {
+			...state,
+			isLoadedCourse: action.payload
 		}
 	}
 

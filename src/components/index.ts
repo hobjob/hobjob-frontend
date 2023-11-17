@@ -1,18 +1,24 @@
-// All
-export { default as Loader } from "./All/Loader";
-export { default as RenderInput } from "./All/RenderInput";
-export { default as RenderSelect } from "./All/RenderSelect";
-export { default as RenderCheckbox } from "./All/RenderCheckbox";
-export { default as FileInput } from "./All/FileInput";
-export { default as BtnLoader } from "./All/BtnLoader";
-export { default as VideoPlayer } from "./All/VideoPlayer";
+// UI
+export { default as Loader } from "./UI/Loader";
+export { default as RenderInput } from "./UI/RenderInput";
+export { default as RenderSelect } from "./UI/RenderSelect";
+export { default as RenderCheckbox } from "./UI/RenderCheckbox";
+export { default as RenderRadio } from "./UI/RenderRadio";
+export { default as FileInput } from "./UI/FileInput";
+export { default as BtnLoader } from "./UI/BtnLoader";
 // Socials
-export { default as Dzen } from "./All/Socials/Dzen"
-export { default as Vk } from "./All/Socials/Vk"
-export { default as Youtube } from "./All/Socials/Youtube"
-export { default as Telegram } from "./All/Socials/Telegram"
-export { default as Instagram } from "./All/Socials/Instagram"
-export { default as Tiktok } from "./All/Socials/Tiktok"
+export { default as Dzen } from "./UI/Socials/Dzen"
+export { default as Vk } from "./UI/Socials/Vk"
+export { default as Youtube } from "./UI/Socials/Youtube"
+export { default as Telegram } from "./UI/Socials/Telegram"
+export { default as Instagram } from "./UI/Socials/Instagram"
+export { default as Tiktok } from "./UI/Socials/Tiktok"
+// VideoPlayer
+export { default as VideoPlayer } from "./UI/VideoPlayer/VideoPlayer"
+// VideoPlayerCustom
+export { default as VideoPlayerCustom } from "./UI/VideoPlayer/VideoPlayerCustom/VideoPlayerCustom"
+export { default as VideoPlayerCustomVolume } from "./UI/VideoPlayer/VideoPlayerCustom/VideoPlayerCustomVolume"
+export { default as VideoPlayerCustomMenu } from "./UI/VideoPlayer/VideoPlayerCustom/VideoPlayerCustomMenu"
 
 // Reglog
 // ReglogProgressbar
@@ -82,19 +88,11 @@ export { default as CoursePagePrice } from "./CoursePage/CoursePagePrice/CourseP
 // CoursePagePriceChoice
 export { default as CoursePagePriceChoice } from "./CoursePage/CoursePagePrice/CoursePagePriceChoice/CoursePagePriceChoice";
 export { default as CoursePagePriceChoiceSubscribe } from "./CoursePage/CoursePagePrice/CoursePagePriceChoice/CoursePagePriceChoiceSubscribe";
+export { default as CoursePagePriceChoiceSubscribeTimer } from "./CoursePage/CoursePagePrice/CoursePagePriceChoice/CoursePagePriceChoiceSubscribeTimer";
 export { default as CoursePagePriceChoiceBuy } from "./CoursePage/CoursePagePrice/CoursePagePriceChoice/CoursePagePriceChoiceBuy";
-// CoursePagePriceSubscribeRates
-export { default as CoursePagePriceSubscribeRates } from "./CoursePage/CoursePagePrice/CoursePagePriceSubscribeRates/CoursePagePriceSubscribeRates";
-export { default as CoursePagePriceSubscribeRatesBlock } from "./CoursePage/CoursePagePrice/CoursePagePriceSubscribeRates/CoursePagePriceSubscribeRatesBlock";
-export { default as CoursePagePriceSubscribeRatesTimer } from "./CoursePage/CoursePagePrice/CoursePagePriceSubscribeRates/CoursePagePriceSubscribeRatesTimer";
-// CoursePagePriceRegisterSubscribe
-export { default as CoursePagePriceRegisterSubscribe } from "./CoursePage/CoursePagePrice/CoursePagePriceRegisterSubscribe/CoursePagePriceRegisterSubscribe";
-export { default as CoursePagePriceRegisterSubscribeForm } from "./CoursePage/CoursePagePrice/CoursePagePriceRegisterSubscribe/CoursePagePriceRegisterSubscribeForm";
-export { default as CoursePagePriceRegisterSubscribeProductBlock } from "./CoursePage/CoursePagePrice/CoursePagePriceRegisterSubscribe/CoursePagePriceRegisterSubscribeProductBlock";
-// CoursePagePriceRegisterBuy
-export { default as CoursePagePriceRegisterBuy } from "./CoursePage/CoursePagePrice/CoursePagePriceRegisterBuy/CoursePagePriceRegisterBuy";
-export { default as CoursePagePriceRegisterBuyForm } from "./CoursePage/CoursePagePrice/CoursePagePriceRegisterBuy/CoursePagePriceRegisterBuyForm";
-export { default as CoursePagePriceRegisterBuyProductBlock } from "./CoursePage/CoursePagePrice/CoursePagePriceRegisterBuy/CoursePagePriceRegisterBuyProductBlock";
+// CoursePagePriceRegister
+export { default as CoursePagePriceRegister } from "./CoursePage/CoursePagePrice/CoursePagePriceRegister/CoursePagePriceRegister";
+export { default as CoursePagePriceRegisterForm } from "./CoursePage/CoursePagePrice/CoursePagePriceRegister/CoursePagePriceRegisterForm";
 // CoursePagePassing
 export { default as CoursePagePassing } from "./CoursePage/CoursePagePassing/CoursePagePassing";
 // CoursePageFaq
@@ -131,13 +129,17 @@ export { default as TrainingBuy } from "./Training/TrainingBuy/TrainingBuy";
 export { default as TrainingBuyBlock } from "./Training/TrainingBuy/TrainingBuyBlock";
 
 // Passing
-export { default as PassingTopText } from "./Passing/PassingTopText";
-export { default as PassingLessonsList } from "./Passing/PassingLessonsList";
-export { default as PassingLessonsListItem } from "./Passing/PassingLessonsListItem";
-export { default as PassingVideo } from "./Passing/PassingVideo";
-export { default as PassingMaterials } from "./Passing/PassingMaterials";
-export { default as PassingMaterialsItem } from "./Passing/PassingMaterialsItem";
-export { default as PassingMaster } from "./Passing/PassingMaster";
+// PassingCurrentLesson
+export { default as PassingCurrentLesson } from "./Passing/PassingCurrentLesson/PassingCurrentLesson";
+export { default as PassingCurrentVideo } from "./Passing/PassingCurrentLesson/PassingCurrentVideo";
+// PassingCurrentLessonContent
+export { default as PassingCurrentLessonContent } from "./Passing/PassingCurrentLesson/PassingCurrentLessonContent/PassingCurrentLessonContent";
+// PassingCurrentLessonContentMaterials
+export { default as PassingCurrentLessonContentMaterials } from "./Passing/PassingCurrentLesson/PassingCurrentLessonContent/PassingCurrentLessonContentMaterials/PassingCurrentLessonContentMaterials";
+export { default as PassingCurrentLessonContentMaterialsItem } from "./Passing/PassingCurrentLesson/PassingCurrentLessonContent/PassingCurrentLessonContentMaterials/PassingCurrentLessonContentMaterialsItem";
+// PassingLessonsList
+export { default as PassingLessonsList } from "./Passing/PassingLessonsList/PassingLessonsList";
+export { default as PassingLessonsListItem } from "./Passing/PassingLessonsList/PassingLessonsListItem";
 
 // Cabinet
 export { default as CabinetCardUserInfo } from "./Cabinet/CabinetCardUserInfo";
@@ -163,6 +165,9 @@ export { default as CabinetSubscribeDisableFreeMonthSubscribe } from "./CabinetS
 export { default as CabinetSubscribeDisableSuccessSaleSubscribe } from "./CabinetSubscribeDisable/CabinetSubscribeDisableSuccessSaleSubscribe";
 export { default as CabinetSubscribeDisableSuccessFreeMonthSubscribe } from "./CabinetSubscribeDisable/CabinetSubscribeDisableSuccessFreeMonthSubscribe";
 export { default as CabinetSubscribeDisableSuccessDisable } from "./CabinetSubscribeDisable/CabinetSubscribeDisableSuccessDisable";
+// CabinetSubscribeDisableFeedback
+export { default as CabinetSubscribeDisableFeedback } from "./CabinetSubscribeDisable/CabinetSubscribeDisableFeedback/CabinetSubscribeDisableFeedback";
+export { default as CabinetSubscribeDisableFeedbackForm } from "./CabinetSubscribeDisable/CabinetSubscribeDisableFeedback/CabinetSubscribeDisableFeedbackForm";
 
 // Referrals
 export { default as ReferralsBlockLink } from "./Referrals/ReferralsBlockLink";
@@ -174,6 +179,4 @@ export { default as PolicyBlock } from "./Policy/PolicyBlock";
 
 // Footer
 export { default as Footer } from "./Footer/Footer";
-// FooterEmail
-export { default as FooterEmailBlockSupport } from "./Footer/FooterEmail/FooterEmailBlockSupport";
-export { default as FooterEmailBlockHello } from "./Footer/FooterEmail/FooterEmailBlockHello";
+export { default as FooterEmailBlock } from "./Footer/FooterEmailBlock";

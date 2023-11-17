@@ -3,9 +3,7 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 import {
 	CoursePagePriceChoice,
-	CoursePagePriceSubscribeRates,
-	CoursePagePriceRegisterSubscribe,
-	CoursePagePriceRegisterBuy,
+	CoursePagePriceRegister,
 } from "../../";
 
 import { CoursePagePriceSections } from "../../../redux/types/coursePage/ICoursePage";
@@ -28,18 +26,9 @@ const CoursePagePrice: React.FC = () => {
 						<CoursePagePriceChoice />
 					) : null}
 
-					{currentSection ===
-						CoursePagePriceSections.SUBSCRIBE_RATES ? (
-						<CoursePagePriceSubscribeRates />
-					) : null}
-
-					{currentSection ===
+					{currentSection === CoursePagePriceSections.BUY_REGISTER || currentSection ===
 						CoursePagePriceSections.SUBSCRIBE_REGISTER ? (
-						<CoursePagePriceRegisterSubscribe />
-					) : null}
-
-					{currentSection === CoursePagePriceSections.BUY_REGISTER ? (
-						<CoursePagePriceRegisterBuy />
+						<CoursePagePriceRegister />
 					) : null}
 				</div>
 			</div>

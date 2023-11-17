@@ -93,12 +93,7 @@ const CabinetSubscribeBlockUpgrade: React.FC = () => {
                                     <div className="cabinet-section-content-subscribe-upgrade-item-text">
                                         <h5 className="cabinet-section-content-subscribe-upgrade-item-text__title">
                                             <>
-                                                {Math.floor(
-                                                    rates[key].price -
-                                                        (rates[key].price /
-                                                            100) *
-                                                            rates[key].sale
-                                                )}
+                                                {rates[key].price}
                                             </>
                                             ₽ в месяц
                                         </h5>
