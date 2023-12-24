@@ -24,7 +24,7 @@ const ReglogBuyBlock: React.FC = () => {
 						<p className="reglog-product-buy-block-text__pricedesc">
 							Курс навсегда за {price}₽
 						</p>
-
+{/* 
 						<div className="reglog-product-buy-block-text-list">
 							<p className="reglog-product-buy-block-text-list__item">
 								<svg
@@ -106,7 +106,7 @@ const ReglogBuyBlock: React.FC = () => {
 									<img src={Love} alt="" />
 								</p>
 							</a>
-						</div>
+						</div> */}
 
 						<img
 							src={`${process.env.REACT_APP_IMAGE_DOMEN}/${image.size_1024}`}

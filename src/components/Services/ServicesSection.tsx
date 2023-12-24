@@ -1,52 +1,37 @@
 import React from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
 
 import ServicesEducationImage from "../../assets/images/services-education-image.png";
 import ServicesCommunityImage from "../../assets/images/services-community-image.svg";
 import ServicesCoursesImage from "../../assets/images/services-courses-image.png";
 import ServicesPassingImage from "../../assets/images/services-passing-image.png";
-// import ServicesСertificateImage from "../../assets/images/services-certificate-image.jpg";
-import ServicesСertificateImage from "../../assets/images/services-certificate-image.gif";
 
 interface ServicesSectionProps {
 	title?: string
 }
 
 const ServicesSection: React.FC<ServicesSectionProps> = ({ title }) => {
-	const cardX = useMotionValue(0);
-	const cardY = useMotionValue(0);
-
-	const rotateX = useTransform(cardY, [-1600, 1600], [10, -10]);
-	const rotateY = useTransform(cardX, [-1600, 1600], [-10, 10]);
-
-	const handleMouseMove = (event: any) => {
-		const offsetX = event.clientX - window.innerWidth / 2;
-		const offsetY = event.clientY - window.innerHeight / 2
-
-		cardX.set(offsetX);
-		cardY.set(offsetY);
-	};
-
 	return (
 		<section className="services">
 			<div className="container">
 				<div className="services-wrapper">
 					<h2 className="services__title">
-						{title ? title : "Почему с нами лучше?"}
+						О платформе HobJob
+						{/* {title ? title : "Почему с нами лучше?"} */}
 					</h2>
 
 					<div className="services-block-wrapper w50-50">
 						<div className="services-block hover-scale services-block-education">
 							<div className="services-block-education-text">
 								<h3 className="services-block__title services-block-education-text__title">
-									Обучение в удобном формате
+									{/* Обучение в удобном формате */}
+									Удобное обучение творчеству в одном месте
 								</h3>
 
-								<p className="services-block__description services-block-education-text__description">
+								{/* <p className="services-block__description services-block-education-text__description">
 									В каждом курсе урок длится не более 30 минут, а
 									наша платформа доступна на любом устройстве с
 									доступом в интернет
-								</p>
+								</p> */}
 							</div>
 							<img
 								src={ServicesEducationImage}
@@ -119,42 +104,6 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ title }) => {
 							></img>
 						</div>
 					</div>
-
-					{/* <motion.div className="services-block services-block-certificate" onMouseMove={handleMouseMove}>
-						<h3 className="services-block__title services-block-certificate__title">
-							Сертификат к каждому курсу
-						</h3>
-
-						<motion.div
-							style={{
-								margin: "auto",
-								width: "100%",
-								height: "100%",
-								transformStyle: "preserve-3d",
-								perspective: 800,
-								display: "flex",
-								justifyContent: "center",
-								alignItems: "center",
-								rotateX,
-								rotateY
-							}}
-							transition={{ velocity: 0 }}
-						>
-							<motion.div
-								key="card"
-								style={{
-									transformStyle: "preserve-3d",
-									perspective: 800,
-									rotateX,
-									rotateY
-								}}
-								transition={{ velocity: 0 }}
-								className='services-block-certificate-image'
-							>
-								<img src={ServicesСertificateImage} alt="" className="services-block-certificate-image__image" />
-							</motion.div>
-						</motion.div>
-					</motion.div> */}
 				</div>
 			</div>
 		</section>

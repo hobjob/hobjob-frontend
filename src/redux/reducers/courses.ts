@@ -40,7 +40,8 @@ const initialState: CoursesState = {
 			subscribe: "",
 			buy: ""
 		},
-		HobJobProduction: false
+		HobJobProduction: false,
+		page: "",
 	},
 
 	isLoadedCourseById: false,
@@ -72,7 +73,8 @@ const initialState: CoursesState = {
 			subscribe: "",
 			buy: ""
 		},
-		HobJobProduction: false
+		HobJobProduction: false,
+		page: "",
 	},
 
 	totalCount: 0,

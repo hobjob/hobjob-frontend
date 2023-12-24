@@ -54,4 +54,5 @@ export interface CourseGood {
 	tools: CourseGoodTool[];
 	adsVk: CourseGoodAdsVk;
 	HobJobProduction: boolean;
+	page: string;
 }

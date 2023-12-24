@@ -26,7 +26,7 @@ const EngineeringWorks: React.FC = () => {
                             className="btn__gray"
                             onClick={() => window.location.reload()}
                         >
-                            Сохранить страницу
+                            Обновить страницу
                             <svg
                                 width="16"
                                 height="17"

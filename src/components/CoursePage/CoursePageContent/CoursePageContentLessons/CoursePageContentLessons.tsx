@@ -12,17 +12,17 @@ const CoursePageContentLessons: React.FC<CoursePageContentLessonsProps> = ({
     lessons,
 }) => {
     return (
-        <div className="course-page-content-list-lessons">
-            <h2 className="course-page-content-list__title">
+        <div className="course-page-content-list">
+            <h2 className="course-page__title mb course-page-content-list__title">
                 Уроки в этом курсе
 			</h2>
 			
-            <div className="course-page-content-list-lessons-shadow"></div>
+            <div className="course-page-content-list-shadow"></div>
 
-            <div className="course-page-content-list-lessons-items-wrapper">
+            <div className="course-page-content-list-items-wrapper">
                 {lessons.map((lesson, index) => (
                     <CoursePageContentLessonsItem
-                        key={`course-page-content-list-lessons-item-${index}`}
+                        key={`course-page-content-list-item-${index}`}
                         num={index + 1}
                         {...lesson}
                     />

@@ -27,14 +27,14 @@ const CoursePageMasterWorks: React.FC = () => {
 
 	return (
 		<div className="course-page-master-works">
-			<h2 className="course-page-master-works__title">
+			<h3 className="course-page-master-works__title">
 				Работы мастера
-			</h2>
+			</h3>
+
 
 			<CoursePageMasterWorksVideo />
 
 			<CoursePageMasterWorksImage />
-
 
 			<div className="course-page-master-works-items-wrapper">
 				{items[courseByUrl.masterId].worksVideo.map((work, index) => (

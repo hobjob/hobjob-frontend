@@ -11,8 +11,12 @@ import { addUserCourse } from "../redux/actions/user";
 
 import {
 	CoursePageMain,
-	CoursePageContent,
+	CoursePageWho,
+	CoursePageKnow,
 	CoursePageSkills,
+	CoursePageWorks,
+	CoursePageContent,
+	CoursePageFeedback,
 	CoursePageUseSkills,
 	CoursePagePrice,
 	CoursePagePassing,
@@ -22,6 +26,7 @@ import {
 	CoursesSection,
 	Loader,
 	ServicesSection,
+	CoursePageCertificate
 } from "../components";
 
 import { checkIsAddCourse } from "../functions/checkIsAddCourse";
@@ -90,6 +95,31 @@ const CoursePage: React.FC = () => {
 					<>
 						<Helmet>
 							<title>{courseByUrl.title} - HobJob</title>
+
+							<meta
+								name="description"
+								content={`${courseByUrl.description} - HobJob`} />
+							<meta
+								property="og:title"
+								content={`Курс «${courseByUrl.title}» - HobJob`} />
+							<meta
+								property="og:description"
+								content={`${courseByUrl.description} - HobJob`} />
+
+							<meta
+								property="vk:image"
+								content={`${process.env.REACT_APP_IMAGE_DOMEN}/${courseByUrl.image.size_768}`} />
+							<meta
+								property="og:image"
+								content={`${process.env.REACT_APP_IMAGE_DOMEN}/${courseByUrl.image.size_768}`} />
+							<meta property="og:image:width" content="600" />
+							<meta property="og:image:height" content="315" />
+							<meta
+								property="og:url"
+								content={`${process.env.REACT_APP_IMAGE_DOMEN}/${courseByUrl.image.size_768}`} />
+							<meta property="og:type" content="website" />
+							<meta name="color-scheme" content="light" />
+							<meta name="theme-color" content="#fff" />
 						</Helmet>
 
 						{isLogin ? (
@@ -120,7 +150,7 @@ const CoursePage: React.FC = () => {
 										}`}
 									onClick={onClickAddCourse}
 								>
-									Добавить в мое обучение
+									Купить курс
 								</button>
 							) : (
 								<LinkScroll
@@ -132,7 +162,7 @@ const CoursePage: React.FC = () => {
 									className={`btn-small-round course-page__btn ${visibleButton ? "visible" : ""
 										}`}
 								>
-									Начать обучение
+									Купить курс
 								</LinkScroll>
 							)
 						) : (
@@ -145,7 +175,7 @@ const CoursePage: React.FC = () => {
 								className={`btn-small-round course-page__btn ${visibleButton ? "visible" : ""
 									}`}
 							>
-								Начать обучение
+								Купить курс
 							</LinkScroll>
 						)}
 
@@ -158,21 +188,46 @@ const CoursePage: React.FC = () => {
 							onClickAddCourse={onClickAddCourse}
 						/>
 
-						<CoursePageContent />
+						{courseByUrl.page && JSON.parse(courseByUrl.page) ? <>
+							<CoursePageWho image={JSON.parse(courseByUrl.page).forWho.image} items={JSON.parse(courseByUrl.page).forWho.items} />
 
-						<CoursePageSkills {...courseByUrl} />
+							<CoursePageKnow title={JSON.parse(courseByUrl.page).know.title} items={JSON.parse(courseByUrl.page).know.items} />
 
-						<CoursePageUseSkills {...courseByUrl} />
+							<CoursePageWorks title={JSON.parse(courseByUrl.page).works.title} images={JSON.parse(courseByUrl.page).works.images} />
+
+							<CoursePageSkills items={JSON.parse(courseByUrl.page).skills.items} />
+						</> : null}
 
 						<CoursePageMaster
 							master={masters[courseByUrl.masterId]}
 						/>
 
+						<CoursePageContent />
+
+						<CoursePagePrice />
+
+						<CoursePageFaq />
+
+						<CoursesSection
+							title="Вам может понравиться"
+							description="Новые курсы добавляются каждый месяц"
+							currentCourseId={courseByUrl._id}
+						/>
+
+						{/* <ServicesSection /> */}
+
+						{/* <CoursePageFeedback /> */}
+
+						{/* */}
+
+						{/*
+						<CoursePageUseSkills {...courseByUrl} />
+
 						<CoursePageTools {...courseByUrl} />
 
-						<ServicesSection title="Почему с нами лучше?" />
+						{/* <CoursePageCertificate /> */}
 
-						{userInfo.subscribe.working ? null : <CoursePagePrice />}
+						{/* {userInfo.subscribe.working ? null : <CoursePagePrice />}
 
 						<CoursePagePassing title={courseByUrl.title} />
 
@@ -182,7 +237,7 @@ const CoursePage: React.FC = () => {
 							title="Вам может понравиться"
 							description="Новые курсы добавляются каждый месяц"
 							currentCourseId={courseByUrl._id}
-						/>
+						/> */}
 					</>
 				) : (
 					<Navigate to="/course" />

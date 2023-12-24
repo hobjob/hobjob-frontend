@@ -19,16 +19,12 @@ const CoursePageContent: React.FC = () => {
 		>
 			<div className="container">
 				<div className="course-page-content-wrapper">
-					<div className="course-page-content-list">
-						<CoursePageContentLessons lessons={lessons} />
-					</div>
+					<CoursePageContentLessons lessons={lessons} />
 
-					<div className="course-page-content-video">
-						<CoursePageContentVideo
-							courseId={_id}
-							image={lessons[0].image}
-						/>
-					</div>
+					<CoursePageContentVideo
+						courseId={_id}
+						image={lessons[0].image}
+					/>
 				</div>
 			</div>
 		</section>

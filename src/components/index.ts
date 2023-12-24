@@ -63,12 +63,23 @@ export { default as CoursesCategories } from "./Courses/CoursesCategories";
 // CoursePage
 // CoursePageMain
 export { default as CoursePageMain } from "./CoursePage/CoursePageMain/CoursePageMain";
+// CoursePageWho
+export { default as CoursePageWho } from "./CoursePage/CoursePageWho/CoursePageWho";
+// CoursePageKnow
+export { default as CoursePageKnow } from "./CoursePage/CoursePageKnow/CoursePageKnow";
+// CoursePageSkills
+export { default as CoursePageSkills } from "./CoursePage/CoursePageSkills/CoursePageSkills";
+export { default as CoursePageSkillsItem } from "./CoursePage/CoursePageSkills/CoursePageSkillsItem";
+// CoursePageWorks
+export { default as CoursePageWorks } from "./CoursePage/CoursePageWorks/CoursePageWorks";
 // CoursePageContent
 export { default as CoursePageContent } from "./CoursePage/CoursePageContent/CoursePageContent";
 export { default as CoursePageContentVideo } from "./CoursePage/CoursePageContent/CoursePageContentVideo";
 // CoursePageContentLessons
 export { default as CoursePageContentLessons } from "./CoursePage/CoursePageContent/CoursePageContentLessons/CoursePageContentLessons";
 export { default as CoursePageContentLessonsItem } from "./CoursePage/CoursePageContent/CoursePageContentLessons/CoursePageContentLessonsItem";
+// CoursePageFeedback
+export { default as CoursePageFeedback } from "./CoursePage/CoursePageFeedback/CoursePageFeedback";
 // CoursePageMaster
 export { default as CoursePageMaster } from "./CoursePage/CoursePageMaster/CoursePageMaster";
 // CoursePageMasterWorks
@@ -77,9 +88,6 @@ export { default as CoursePageMasterWorksVideo } from "./CoursePage/CoursePageMa
 export { default as CoursePageMasterWorksImage } from "./CoursePage/CoursePageMaster/CoursePageMasterWorks/CoursePageMasterWorksImage";
 export { default as CoursePageMasterWorksItemVideo } from "./CoursePage/CoursePageMaster/CoursePageMasterWorks/CoursePageMasterWorksItemVideo";
 export { default as CoursePageMasterWorksItemImage } from "./CoursePage/CoursePageMaster/CoursePageMasterWorks/CoursePageMasterWorksItemImage";
-// CoursePageSkills
-export { default as CoursePageSkills } from "./CoursePage/CoursePageSkills/CoursePageSkills";
-export { default as CoursePageSkillsItem } from "./CoursePage/CoursePageSkills/CoursePageSkillsItem";
 // CoursePageUseSkills
 export { default as CoursePageUseSkills } from "./CoursePage/CoursePageUseSkills/CoursePageUseSkills";
 export { default as CoursePageUseSkillsItem } from "./CoursePage/CoursePageUseSkills/CoursePageUseSkillsItem";
@@ -100,6 +108,8 @@ export { default as CoursePageFaq } from "./CoursePage/CoursePageFaq/CoursePageF
 export { default as CoursePageFaqItem } from "./CoursePage/CoursePageFaq/CoursePageFaqItem";
 // CoursePageTools
 export { default as CoursePageTools } from "./CoursePage/CoursePageTools/CoursePageTools";
+// CoursePageCertificate
+export { default as CoursePageCertificate } from "./CoursePage/CoursePageCertificate/CoursePageCertificate";
 
 // MasterCard
 export { default as MasterCardInfo } from "./MasterCard/MasterCardInfo";
