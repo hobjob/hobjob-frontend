@@ -22,7 +22,7 @@ const ReglogBuyBlock: React.FC = () => {
 						</h3>
 
 						<p className="reglog-product-buy-block-text__pricedesc">
-							Курс навсегда за {price}₽
+							Курс навсегда
 						</p>
 {/* 
 						<div className="reglog-product-buy-block-text-list">

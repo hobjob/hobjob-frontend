@@ -80,6 +80,7 @@ export { default as CoursePageContentLessons } from "./CoursePage/CoursePageCont
 export { default as CoursePageContentLessonsItem } from "./CoursePage/CoursePageContent/CoursePageContentLessons/CoursePageContentLessonsItem";
 // CoursePageFeedback
 export { default as CoursePageFeedback } from "./CoursePage/CoursePageFeedback/CoursePageFeedback";
+export { default as CoursePageFeedbackBlock } from "./CoursePage/CoursePageFeedback/CoursePageFeedbackBlock";
 // CoursePageMaster
 export { default as CoursePageMaster } from "./CoursePage/CoursePageMaster/CoursePageMaster";
 // CoursePageMasterWorks

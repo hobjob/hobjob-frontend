@@ -122,7 +122,7 @@ const CoursePage: React.FC = () => {
 							<meta name="theme-color" content="#fff" />
 						</Helmet>
 
-						{isLogin ? (
+						{/* {isLogin ? (
 							isAdd ? (
 								<button
 									className={`btn-small-round disabled course-page__btn ${visibleButton ? "visible" : ""
@@ -177,7 +177,7 @@ const CoursePage: React.FC = () => {
 							>
 								Купить курс
 							</LinkScroll>
-						)}
+						)} */}
 
 						<CoursePageMain
 							{...courseByUrl}
@@ -204,6 +204,10 @@ const CoursePage: React.FC = () => {
 
 						<CoursePageContent />
 
+						{courseByUrl.page && JSON.parse(courseByUrl.page) && JSON.parse(courseByUrl.page).feedbacks ? <>
+							<CoursePageFeedback feedbacks={JSON.parse(courseByUrl.page).feedbacks} />
+						</> : null}
+
 						<CoursePagePrice />
 
 						<CoursePageFaq />
@@ -215,10 +219,6 @@ const CoursePage: React.FC = () => {
 						/>
 
 						{/* <ServicesSection /> */}
-
-						{/* <CoursePageFeedback /> */}
-
-						{/* */}
 
 						{/*
 						<CoursePageUseSkills {...courseByUrl} />

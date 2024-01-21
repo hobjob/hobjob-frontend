@@ -64,7 +64,7 @@ const CoursePagePriceRegister: React.FC = () => {
 
 			return dispatch(
 				sendRegister(
-					{ email, password, paymentInfo: `buy.${courseByUrl._id}` },
+					{ email, password, paymentInfo: `buy.${courseByUrl._id}.${localStorage.getItem("device")}` },
 					"buy"
 				) as any
 			);

@@ -99,14 +99,18 @@ const App: React.FC = () => {
 			dispatch(fetchCategories() as any);
 		}
 
+		const userAgent = navigator.userAgent.toLowerCase();
+		const isIOS = /mobile|iphone|ipad|ipod\sce|palm/i.test(userAgent);
+
+		if (isIOS) {
+			localStorage.setItem("device", "ios")
+		} else {
+			localStorage.setItem("device", "android")
+		}
+
 		// console.log(
 		// 	`%cПривет! Мы всегда рады хорошим разработчикам в нашу IT команду HobJob - https://t.me/nagibinarseniy`,
 		// 	"font-size: 14px; border: 2px solid #fff; color: #fff; padding:5px 10px; border-radius:10px;"
-		// )
-
-		// @ts-ignore
-		// console.image(
-		// 	`https://sun9-77.userapi.com/impg/0-jlkv1WXM4zse8zyFVCkKJlmMOvawSJRtuXFw/enc7-oQ9AFE.jpg?size=2048x1536&quality=95&sign=4bcf874f6062acf0c65b309c0b383d33&type=album`
 		// )
 	}, []);
 

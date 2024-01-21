@@ -19,7 +19,7 @@ const CoursePagePriceChoice: React.FC = () => {
 		>
 			<CoursePagePriceChoiceSubscribe {...courseByUrl} />
 
-			{/* <CoursePagePriceChoiceBuy {...courseByUrl} /> */}
+			<CoursePagePriceChoiceBuy {...courseByUrl} />
 		</div>
 	);
 };

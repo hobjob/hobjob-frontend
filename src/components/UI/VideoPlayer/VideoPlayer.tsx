@@ -18,16 +18,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = React.memo(({
 	callbackError,
 	callbackPause,
 }) => {
-	const isIOSCheck = () => {
-		const userAgent = navigator.userAgent.toLowerCase();
-		const isIOS = /mobile|iphone|ipad|ipod\sce|palm/i.test(userAgent);
-
-		if (isIOS) {
-			return true;
-		}
-
-		return false
-	}
 	const config = {
 		file: {
 			attributes: {
@@ -38,8 +28,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = React.memo(({
 
 	return (
 		<>
-			{isIOSCheck() ? (
-
+			{localStorage.getItem("device") === "ios" ? (
 				<div className={`video-player`}>
 					<ReactPlayer
 						playsinline

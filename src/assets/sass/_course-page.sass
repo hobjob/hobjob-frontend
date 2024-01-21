@@ -30,7 +30,7 @@
 		font-size: 52px
 
 		&.mb
-			margin-bottom: 75px
+			margin-bottom: 60px
 
 	&-main
 		margin: 25px 0 50px 0
@@ -262,28 +262,27 @@
 	&-works
 		margin: 50px 0
 
-		&-slider-wrapper
-			position: relative
-
 		&-slider
-			&__btn
-				cursor: pointer
+			&-nav
+				margin-top: 25px
 
-				position: absolute
+				display: flex
+				align-items: center
+				justify-content: center
 
-				top: 50%
-				transform: translateY(-50%)
+				&__btn
+					cursor: pointer
 
-				z-index: 2
+					background-color: transparent
+					border: none
 
-				background-color: transparent
-				border: none
+					& > svg
+						width: 40px
 
-				&.prev
-					left: 25px
+				&__count
+					margin: 0 15px
 
-				&.next
-					right: 25px
+					font-size: 18px
 
 	&-skills
 		margin: 50px 0
@@ -501,8 +500,8 @@
 
 		&-block-wrapper
 			display: flex
-			justify-content: space-between
 			flex-wrap: wrap
+			justify-content: space-between
 
 		&-block
 			display: flex
@@ -518,14 +517,16 @@
 
 			+borderRadiusBlock
 
+			+openAnimation
+
 			&-avatar
 				display: flex
 				justify-content: center
 				align-items: center
 
-				min-width: 50px
-				width: 50px
-				height: 50px
+				min-width: 60px
+				width: 60px
+				height: 60px
 
 				background-color: $lightMainColor
 				color: $mainColor
@@ -535,19 +536,14 @@
 
 				border-radius: 50%
 
+				+backgroundSetting
+
 			&-text
 				margin-left: 25px
 
 				&__name
 					font-size: 24px
-					margin-bottom: 3px
-
-				&__subtitle
-					font-size: 16px
-					margin-bottom: 10px
-
-					& > span
-						color: $gray
+					margin-bottom: 5px
 
 				&-stars
 					margin-bottom: 10px
@@ -1394,6 +1390,24 @@
 			&-video
 				margin-top: 50px
 
+		&-feedback
+			margin: 25px 0
+			
+			&-block
+				flex-direction: column
+				justify-content: space-between
+
+				width: calc( 50% - 5px )
+				padding: 20px
+
+				margin-bottom: 10px
+
+				+borderRadius
+
+				&-text
+					margin-top: 25px
+					margin-left: 0
+
 		&-price
 			margin: 25px 0
 
@@ -1476,6 +1490,14 @@
 				&-item
 					&-image
 						height: 220px
+
+		&-feedback
+			&-block
+				width: 100%
+
+			&-btn
+				&__btn
+					width: 100%
 
 		&-price
 			&-blocks
@@ -1667,6 +1689,12 @@
 
 @media screen and ( max-width: 450px )
 	.course-page
+		&-feedback
+			&-block
+				&-text
+					&__description
+						font-size: 14px
+
 		&-price
 			&-blocks
 				&-subscribe

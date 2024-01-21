@@ -14,7 +14,7 @@ import { CourseGood } from '../../../../models/Course/ICourseGood'
 
 import { CoursePagePriceChoiceSubscribeTimer } from '../../../'
 
-const CoursePagePriceChoiceSubscribe: React.FC<CourseGood> = ({ _id, title, image, price, oldPrice, page }) => {
+const CoursePagePriceChoiceOnlyBuy: React.FC<CourseGood> = ({ _id, title, image, price, oldPrice, page }) => {
 	const dispatch = useDispatch();
 
 	const { userInfo } = useTypedSelector(({ user }) => user)
@@ -225,4 +225,4 @@ const CoursePagePriceChoiceSubscribe: React.FC<CourseGood> = ({ _id, title, imag
 	);
 };
 
-export default CoursePagePriceChoiceSubscribe;
+export default CoursePagePriceChoiceOnlyBuy
